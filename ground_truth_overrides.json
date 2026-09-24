@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "_help": [
+    "Record a facility's identity here ONLY after a person has confirmed it from a public record. Nothing in this file is inferred or generated.",
+    "Each entry needs: rto, queue_id, verified_label, confirmed_by, confirmed_on (YYYY-MM-DD) and at least one evidence item with a citation (url is optional but recommended).",
+    "verified_label must be one of: Confirmed Data Center Campus | Confirmed Industrial Park / Manufacturing | Confirmed Utility / Distribution Load Growth | Confirmed Cryptocurrency Mining | Confirmed Other Large Load | Ruled Out (Duplicate / Withdrawn / Data Error)",
+    "Optional per entry: verified_operator, notes. Optional per evidence item: accessed_on, type.",
+    "See ground_truth_overrides.example.json for a complete (fictional) entry. Keys starting with an underscore are ignored.",
+    "A malformed file stops investigate_ambiguous_loads.py with exit code 2 and lists every problem. Overrides change only the dossier, not the CSVs or index.html."
+  ],
+  "overrides": []
+}
