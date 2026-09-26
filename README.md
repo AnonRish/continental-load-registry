@@ -16,7 +16,7 @@ aimed at surfacing large requests that lack a confirmed public operator.
   `county`, `poi_substation`, `capacity_mw`, `projected_date`,
   `developer_entity`, plus `status` / `project_name` / `raw_fuel_technology`
   with `--include-raw-fields`). Run `python ingest_grid_queues.py --help`
-  for the full flag list, or `--selftest` to run the suite (122 checks)
+  for the full flag list, or `--selftest` to run the current 43-check suite
   against synthetic fixtures without hitting any network.
 - `compute_anomaly_detector.py` -- entity resolution against a small known
   hyperscaler/colocation-developer list, a PJM-specific heuristic for
@@ -210,12 +210,13 @@ CSVs in `data/` changed, it commits and pushes as
 `Automated Monthly Registry Sync: [YYYY-MM-DD]`. Logs and the fresh outputs are
 attached to every run for 30 days.
 
-**Read this before relying on it.** None of the nine `fetch_*()` helpers has
-been run against its live server from inside `ingest_grid_queues.py` (see that
-file's docstring), so the first real run is their first test. Start with a
-manual run with `dry_run` ticked and read the "Registry refresh gate" table in
-the run summary. Some RTO sites may also refuse requests from GitHub-hosted
-runners; that shows up as an unavailable feed, not as a failure.
+**Live validation status.** A production live-feed run completed successfully on
+September 26, 2026. All four offline self-test stages passed, the live ingest
+completed, the per-RTO refresh gate completed, and the registry update was
+committed. For future changes, a manual run with `dry_run` ticked remains the
+safe way to inspect the refresh gate before allowing publication. Some RTO
+sites may also refuse requests from GitHub-hosted runners; that shows up as an
+unavailable feed, not as a failure.
 
 Each RTO ends a run in one of three states:
 
