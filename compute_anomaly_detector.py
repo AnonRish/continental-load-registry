@@ -213,6 +213,14 @@ def classify_entity(raw_name: object) -> tuple[str, Optional[str], float]:
         if _whole_word_hit(name_lower, token):
             return category, matched_name, 100.0
 
+    # Low-confidence generic tokens are intentionally checked BEFORE fuzzy
+    # matching. A token such as "QTS" can score 100 against its alias, but the
+    # registry must still keep it in the human-audit state rather than treating
+    # the generic token as an automatic corporate identification.
+    for token, (matched_name, _category) in LOW_CONFIDENCE_WHOLE_WORD_TOKENS.items():
+        if _whole_word_hit(name_lower, token):
+            return "Possible Match (Needs Verification)", matched_name, 100.0
+
     match = process.extractOne(name_lower, _ALIAS_TO_MATCH.keys(), scorer=fuzz.WRatio)
     if match is not None:
         alias, score, _ = match
@@ -221,10 +229,6 @@ def classify_entity(raw_name: object) -> tuple[str, Optional[str], float]:
             return category, matched_name, score
     else:
         alias, score = None, 0.0
-
-    for token, (matched_name, _category) in LOW_CONFIDENCE_WHOLE_WORD_TOKENS.items():
-        if _whole_word_hit(name_lower, token):
-            return "Possible Match (Needs Verification)", matched_name, max(score, 50.0)
 
     if alias is not None and score >= FUZZY_GRAY_ZONE_FLOOR:
         logger.info(
@@ -619,6 +623,18 @@ def run_selftest() -> bool:
                     "'EdgeConneX Ashburn DC 3 LLC'",
                     classify_entity("EdgeConneX Ashburn DC 3 LLC")[:2]
                     == ("Wholesale Colocation Developer", "EdgeConneX")))
+    checks.append(("Low-confidence generic token 'QTS' never auto-confirms",
+                    classify_entity("QTS Realty Trust")[:2]
+                    == ("Possible Match (Needs Verification)", "QTS")))
+    checks.append(("Low-confidence generic token 'Vantage' never auto-confirms",
+                    classify_entity("Vantage Data Centers")[:2]
+                    == ("Possible Match (Needs Verification)", "Vantage")))
+    checks.append(("Low-confidence generic token 'Compass' never auto-confirms",
+                    classify_entity("Compass Datacenters")[:2]
+                    == ("Possible Match (Needs Verification)", "Compass Datacenters")))
+    checks.append(("Low-confidence generic token 'Rowan' never auto-confirms",
+                    classify_entity("Rowan Digital")[:2]
+                    == ("Possible Match (Needs Verification)", "Rowan Digital Infrastructure")))
 
     # --- PJM context ---
     checks.append(("Transmission Owner correctly parsed from PJM sentinel",
