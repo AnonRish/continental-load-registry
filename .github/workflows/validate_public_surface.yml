@@ -115,7 +115,13 @@ jobs:
           assert any(r["id"] == "DOMINION-LARGE-LOAD-QUEUE-2025-12-31" and r["capacity_mw"] == 70000 for r in supplemental["records"])
           assert any(r["id"] == "BCHYDRO-EMERGING-INDUSTRIES-2026" and r["record_count"] == 15 for r in supplemental["records"])
           assert any(r["id"] == "ALECTRA-VAUGHAN-MTS6-2026" and r["capacity_mva"] == 108 for r in supplemental["records"])
-          print("PASS: Plan A / Track 3 / expanded large-load JSON contracts")
+          universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
+          assert len(universe["markets"]) == 10
+          history = json.loads(Path("data/caiso_cluster_history.json").read_text(encoding="utf-8"))
+          assert sum(r["projects"] for r in history["records"][:7]) == 435
+          assert sum(r["capacity_mw"] for r in history["records"][:7]) == 121204
+          assert history["records"][7]["projects"] == 48 and history["records"][7]["capacity_mw"] == 14421
+          print("PASS: Plan A / Track 3 / expanded market-universe contracts")
           PY
       - name: Validate inline JavaScript
         run: |
