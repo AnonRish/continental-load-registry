@@ -56,6 +56,9 @@ jobs:
       - name: Build Track 3 evidence artifacts
         run: python build_track3_evidence.py
 
+      - name: Refresh Module 1 audit summary
+        run: python module1_physical_radar.py --audit
+
       - name: Validate Track 3 evidence artifacts
         run: |
           python - <<'PY'
@@ -66,6 +69,8 @@ jobs:
           status = json.loads((root/"site_status.json").read_text(encoding="utf-8"))
           evidence = json.loads((root/"evidence_records.json").read_text(encoding="utf-8"))
           queue = json.loads((root/"research_queue.json").read_text(encoding="utf-8"))
+          external = json.loads((root/"external_source_snapshots.json").read_text(encoding="utf-8"))
+          assert len(external["records"]) == 8
           assert summary["epoch_site_count"] == 93
           assert len(status["records"]) == 93
           assert evidence["record_count"] == len(evidence["records"])
