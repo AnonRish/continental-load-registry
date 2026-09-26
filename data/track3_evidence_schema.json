@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Track 3 evidence record",
+  "semantics": {
+    "purpose": "Normalize evidence used to investigate whether material AI compute can be accounted for across physical sites, electricity connections, hardware, and independent observations.",
+    "status_rule": "UNKNOWN, PENDING, and NOT_INGESTED are explicit states and never become positive or negative findings.",
+    "measurement_rule": "Queue MW, utility service capacity, IT power, chip power, and compute estimates are separate measurements."
+  },
+  "required_fields": [
+    "evidence_id",
+    "target_type",
+    "target_id",
+    "target_name",
+    "domain",
+    "evidence_type",
+    "claim_scope",
+    "status",
+    "source_kind",
+    "source_name",
+    "source_url",
+    "observed_on",
+    "captured_on",
+    "confidence",
+    "basis"
+  ],
+  "optional_fields": [
+    "record_id",
+    "authority",
+    "capacity_mw",
+    "capacity_kind",
+    "raw_value",
+    "normalized_value",
+    "units",
+    "site_specific",
+    "independent_of_other_source",
+    "supersedes_evidence_id",
+    "review_state",
+    "reviewer_note",
+    "search_terms",
+    "records_examined",
+    "negative_search_result"
+  ],
+  "domains": [
+    "site_identity",
+    "grid_connection",
+    "service_or_contract",
+    "regulatory",
+    "construction",
+    "power_telemetry",
+    "remote_sensing",
+    "cooling",
+    "transformer_supply_chain",
+    "chip_inventory",
+    "chip_ownership",
+    "chip_users",
+    "chip_shipments",
+    "independent_corroboration"
+  ],
+  "statuses": [
+    "VERIFIED_SITE_SPECIFIC",
+    "SITE_LEVEL_EVIDENCE",
+    "JURISDICTION_ONLY",
+    "PENDING_RESEARCH",
+    "SOURCE_AVAILABLE_NOT_INGESTED",
+    "NOT_INGESTED",
+    "UNKNOWN",
+    "CONTRADICTED",
+    "SUPERSEDED"
+  ]
+}
