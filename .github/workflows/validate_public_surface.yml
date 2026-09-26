@@ -96,10 +96,10 @@ jobs:
           assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
           assert scope["definitions"]["supplemental_evidence_units"]["records"] == 44
-          assert scope["definitions"]["project_level_extractions"]["records"] == 185
+          assert scope["definitions"]["project_level_extractions"]["records"] == 189
           assert len(supplemental["records"]) == 44
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
-          assert projects["record_count"] == len(projects["records"]) == 185
+          assert projects["record_count"] == len(projects["records"]) == 189
           assert len({r["id"] for r in projects["records"]}) == 185
           assert len(projects["sources"]) == 13
           source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
@@ -110,7 +110,7 @@ jobs:
           assert source_counts["IESO-LOAD"] == 6
           assert source_counts["ISO-NE-CELT"] == 2
           assert source_counts["COMED-NEW-PROJECTS"] == 28
-          assert source_counts["DOMINION-SERVICE-PROJECTS"] == 3
+          assert source_counts["DOMINION-SERVICE-PROJECTS"] == 7
           for record in projects["records"]:
               assert record["id"] and record["evidence_type"] and record["source_url"].startswith("https://")
           assert sum(r["evidence_type"] == "environmental_permit_record" for r in projects["records"]) == 33
@@ -149,7 +149,7 @@ jobs:
           pjm_history = json.loads(Path("data/pjm_large_load_submission_history.json").read_text(encoding="utf-8"))
           assert len(pjm_history["records"]) == 28
           project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
-          assert project_map["record_count"] == 154 and project_map["mapped_count"] == 154
+          assert project_map["record_count"] == 189 and project_map["mapped_count"] == 154
           assert len(project_map["records"]) == 154
           history = json.loads(Path("data/caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
