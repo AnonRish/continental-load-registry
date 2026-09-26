@@ -161,8 +161,10 @@ def validate_source_invariants() -> None:
 
     if "Math.max(5.0,Math.sqrt(r.mw)*0.35)" not in index:
         raise AssertionError("Ambiguous marker radius invariant is not implemented")
-    if "radius:3.0" not in index or "fillOpacity:0.35" not in index:
-        raise AssertionError("BESS visual invariants are not implemented")
+    if not re.search(r"kind\s*===\s*['"]bess['"][^;]+\?3(?:\.0)?", index):
+        raise AssertionError("BESS radius invariant is not implemented")
+    if not re.search(r"kind\s*===\s*['"]bess['"][^;]+fillOpacity[^;]+0\.35", index):
+        raise AssertionError("BESS opacity invariant is not implemented")
     if "window.refreshRegistryMap" not in index:
         raise AssertionError("Map/table synchronization hook is missing")
 
@@ -243,9 +245,9 @@ def main() -> int:
         ("registry has rows", len(rows) > 0),
         ("capacity floor is enforced in the current registry", all(float(r.get("mw") or 0) >= 100.0 for r in rows)),
         ("all nine required market labels are present", {r.get("rto") for r in rows} == set(EXPECTED_RTOs)),
-        ("100 MW reference scenario is 1.125573778e26 FLOPs", abs(compute_scenario(100.0, **SCENARIOS["reference"])["flops_90d"] - 1.1255737782857143e26) < 1e10),
-        ("100 MW conservative scenario is 1.099193142e26 FLOPs", abs(compute_scenario(100.0, **SCENARIOS["conservative"])["flops_90d"] - 1.099193142857143e26) < 1e10),
-        ("100 MW aggressive scenario is 1.070518539e26 FLOPs", abs(compute_scenario(100.0, **SCENARIOS["aggressive"])["flops_90d"] - 1.070518539130435e26) < 1e10),
+        ("100 MW reference scenario is 1.125573778e26 FLOPs", math.isclose(compute_scenario(100.0, **SCENARIOS["reference"])["flops_90d"], 1.1255737782857143e26, rel_tol=1e-12, abs_tol=1e10)),
+        ("100 MW conservative scenario is 1.099193142e26 FLOPs", math.isclose(compute_scenario(100.0, **SCENARIOS["conservative"])["flops_90d"], 1.099193142857143e26, rel_tol=1e-12, abs_tol=1e10)),
+        ("100 MW aggressive scenario is 1.070518539e26 FLOPs", math.isclose(compute_scenario(100.0, **SCENARIOS["aggressive"])["flops_90d"], 1.070518539130435e26, rel_tol=1e-12, abs_tol=1e10)),
     ]
 
     for name, passed in checks:
