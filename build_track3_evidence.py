@@ -31,6 +31,8 @@ SITE_DOMAINS = (
     "construction",
     "chip_inventory",
     "grid_connection",
+    "service_or_contract",
+    "compute_tenancy",
     "power_telemetry",
     "remote_sensing",
     "cooling",
@@ -98,6 +100,17 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "basis": "Epoch AI site-level chip-quantity records are retained."
             if rec.get("chip_quantity_record_count", 0) > 0 else "No retained site-level chip-quantity rows."
         }
+    if domain == "service_or_contract":
+        types = {"site_specific_service_contract","site_specific_service","site_specific_energy_contract","site_specific_utility_planning"}
+        matches = [x for x in ev if x.get("type") in types]
+        if matches:
+            return {"status":"SITE_LEVEL_EVIDENCE","basis":"A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."}
+        return {"status":"NOT_INGESTED","basis":"No site-specific service or energy-contract evidence is currently attached."}
+    if domain == "compute_tenancy":
+        matches = [x for x in ev if x.get("type") in {"site_specific_compute_tenancy","site_specific_compute_contract","site_specific_lease"}]
+        if matches:
+            return {"status":"INGESTED_SNAPSHOT","basis":"A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."}
+        return {"status":"UNKNOWN","basis":"No site-specific compute-tenancy contract has been attached in the current evidence layer."}
     if domain == "grid_connection":
         connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support"}
         connection_evidence = [x for x in ev if x.get("type") in connection_types]
@@ -175,6 +188,10 @@ def evidence_domain(ev: dict[str, Any]) -> str:
         return "regulatory"
     if t in {"site_specific_service_contract", "site_specific_service", "site_specific_utility_relationship", "site_specific_utility", "site_specific_power_request", "site_specific_load_request", "site_specific_queue"}:
         return "grid_connection"
+    if t in {"site_specific_energy_contract","site_specific_service_contract","site_specific_service","site_specific_utility_planning"}:
+        return "service_or_contract"
+    if t in {"site_specific_compute_tenancy","site_specific_compute_contract","site_specific_lease"}:
+        return "compute_tenancy"
     if t in {"site_specific_facility_record", "site_specific_project_record"}:
         return "site_identity"
     if t == "site_specific_utility_planning":
