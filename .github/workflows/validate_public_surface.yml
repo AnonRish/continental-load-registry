@@ -125,7 +125,7 @@ jobs:
           universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
           assert len(universe["markets"]) == 10
           project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
-          assert project_map["record_count"] == 152 and project_map["mapped_count"] == 152
+          assert project_map["record_count"] == 154 and project_map["mapped_count"] == 154
           assert len(project_map["records"]) == 152
           history = json.loads(Path("data/caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
