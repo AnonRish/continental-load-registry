@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "title": "AI 2040 Plan A — Track 3 contribution mapping",
+  "repository_role": "Independent open-source research implementation aligned to the public AI 2040 Plan A verification discussion. This repository is not an AI Futures Project publication, certification body, or endorsement.",
+  "primary_references": [
+    "https://ai-2040.com/supplements/verification-plan/get-involved",
+    "https://ai-2040.com/print/covert-ai-projects",
+    "https://ai-2040.com/print/scenario?book=1&plan=A"
+  ],
+  "mappings": [
+    {
+      "id": "t3-01",
+      "track3_element": "Account for AI-relevant compute",
+      "ai2040_reference": "Verification Plan / Track 3; Covert AI Projects §2.1",
+      "repo_artifacts": [
+        "data/external/epoch_ai/registry.json",
+        "data/external/epoch_ai/data_centers_chip_quantities.csv",
+        "data/track3/site_status.json"
+      ],
+      "status": "PARTIAL",
+      "contribution": "Expand beyond the 93-site Epoch universe to global compute inventories and auditable organization-level holdings.",
+      "scope_note": "Epoch records are a secondary site layer; they are not a complete global compute census."
+    },
+    {
+      "id": "t3-02",
+      "track3_element": "Trace inputs to AI compute production",
+      "ai2040_reference": "Covert AI Projects Recommendation #1",
+      "repo_artifacts": [
+        "data/external/epoch_ai/ai_chip_components_quarterly_by_chip.csv",
+        "data/external/epoch_ai/ai_chip_components_quarterly_by_designer.csv",
+        "data/external/epoch_ai/ai_chip_components_supply_denominators.csv"
+      ],
+      "status": "INGESTED_SNAPSHOT",
+      "contribution": "Preserve production-input snapshots and develop production reconciliation from component supply through finished accelerators.",
+      "scope_note": "Source snapshots do not by themselves establish complete vendor production."
+    },
+    {
+      "id": "t3-03",
+      "track3_element": "Audit accelerator vendor sales",
+      "ai2040_reference": "Covert AI Projects Recommendation #1 and Appendix B",
+      "repo_artifacts": [
+        "data/external/epoch_ai/ai_chip_sales_chip_types.csv",
+        "data/external/epoch_ai/ai_chip_sales_organizations.csv",
+        "data/external/epoch_ai/ai_chip_sales_timelines_by_chip.csv"
+      ],
+      "status": "INGESTED_SNAPSHOT",
+      "contribution": "Turn organization sales snapshots into source-specific, dated sales ledgers with provenance and reconciliation checks.",
+      "scope_note": "A sales snapshot is not automatically a transaction-level certificate."
+    },
+    {
+      "id": "t3-04",
+      "track3_element": "Trace sales and resales to physical end use",
+      "ai2040_reference": "Covert AI Projects Recommendation #2 and Appendix B",
+      "repo_artifacts": [
+        "data/track3/observation_queue.json",
+        "data/track3/evidence_records.json"
+      ],
+      "status": "PARTIAL",
+      "contribution": "Build auditable transfer chains from vendor → customer → reseller/transferee → current physical location.",
+      "scope_note": "Public data currently provides only partial organization/site linkage."
+    },
+    {
+      "id": "t3-05",
+      "track3_element": "Audit large compute owners above threshold T",
+      "ai2040_reference": "Covert AI Projects Recommendation #2",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json",
+        "data/track3/research_queue.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Add threshold-based audit population, recursive ownership graph, and audit-completion state.",
+      "scope_note": "Threshold T and audit authority are Plan A design parameters, not current public registry facts."
+    },
+    {
+      "id": "t3-06",
+      "track3_element": "Randomly sample the small-owner tail",
+      "ai2040_reference": "Covert AI Projects Recommendation #2 and Appendix B",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Implement reproducible sampling frames, seeds, weighted selection, sampled trace outcomes, and confidence accounting.",
+      "scope_note": "No statistical sampling result is asserted until a population and sampling frame are actually defined."
+    },
+    {
+      "id": "t3-07",
+      "track3_element": "Physical inspection of current compute",
+      "ai2040_reference": "Covert AI Projects Recommendation #2 and Appendix B",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Add inspection records, inspector authority, observed holdings, serial capture, and inspection evidence.",
+      "scope_note": "Physical inspections are outside the current public data pipeline."
+    },
+    {
+      "id": "t3-08",
+      "track3_element": "Serial-number continuity",
+      "ai2040_reference": "Covert AI Projects Appendix B",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Add serial-level inspection and continuity records and flag inconsistent reappearance.",
+      "scope_note": "Serial-level data should only be published where legally and operationally permissible."
+    },
+    {
+      "id": "t3-09",
+      "track3_element": "Decommissioning and recycling verification",
+      "ai2040_reference": "Covert AI Projects Appendix B",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Reconcile claimed destruction/recycling against recycler records, serials, witnessed events, and fleet attrition.",
+      "scope_note": "A decommissioning claim is not treated as verified without supporting evidence."
+    },
+    {
+      "id": "t3-10",
+      "track3_element": "Untraced compute pool L",
+      "ai2040_reference": "Covert AI Projects Appendix B",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Compute and expose a non-negative untraced pool from unresolved sales, transfers, and unverifiable decommissioning.",
+      "scope_note": "The repository does not currently calculate a treaty-certification quantity."
+    },
+    {
+      "id": "t3-11",
+      "track3_element": "Locate unrecorded compute",
+      "ai2040_reference": "Covert AI Projects Recommendation #3",
+      "repo_artifacts": [
+        "data/track3/observation_queue.json",
+        "data/track3/cooling_observations.json"
+      ],
+      "status": "PARTIAL",
+      "contribution": "Add multi-temporal aerial/thermal/SAR/optical observation records and candidate-site investigations.",
+      "scope_note": "Current remote sensing status is NOT_INGESTED."
+    },
+    {
+      "id": "t3-12",
+      "track3_element": "Incentives, amnesty, and buyback disclosures",
+      "ai2040_reference": "Covert AI Projects Recommendation #3",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "contribution": "Add voluntary disclosure, amnesty/buyback event, verification, and resolution records without assuming disclosure validity.",
+      "scope_note": "This is a policy-dependent extension, not an existing data feed."
+    },
+    {
+      "id": "t3-13",
+      "track3_element": "Physical infrastructure / datacenter discovery",
+      "ai2040_reference": "Covert AI Projects Recommendation #3; Verification Plan",
+      "repo_artifacts": [
+        "data/external/epoch_ai/registry.json",
+        "data/external/epoch_ai/data_center_timelines.csv"
+      ],
+      "status": "PARTIAL",
+      "contribution": "Expand site discovery beyond the current Epoch universe and preserve source-level observations.",
+      "scope_note": "Current sites are a research universe, not exhaustive proof of absence."
+    },
+    {
+      "id": "t3-14",
+      "track3_element": "Power and cooling corroboration",
+      "ai2040_reference": "Covert AI Projects covert-datacenter analysis",
+      "repo_artifacts": [
+        "data/track3/power_observations.json",
+        "data/track3/cooling_observations.json",
+        "data/track3/observation_queue.json"
+      ],
+      "status": "PARTIAL",
+      "contribution": "Add interval demand, site thermal observations, cooling equipment, transformer delivery, and corroboration links.",
+      "scope_note": "Current annual electricity snapshots and selected cooling records are supporting evidence, not complete telemetry."
+    },
+    {
+      "id": "t3-15",
+      "track3_element": "Compute ownership/users/shipments as aggregate evidence",
+      "ai2040_reference": "Track 3 / Covert AI Projects supply-chain tracing",
+      "repo_artifacts": [
+        "data/external/epoch_ai/ai_chip_owners_cumulative_by_designer.csv",
+        "data/external/epoch_ai/ai_chip_users_year_end_by_lab.csv",
+        "data/external/epoch_ai/ai_chip_sales_organizations.csv"
+      ],
+      "status": "INGESTED_SNAPSHOT",
+      "contribution": "Expose raw publisher values, capture hashes, and normalization without falsely converting aggregate sources into site-level claims.",
+      "scope_note": "Organization-level source snapshots require independent site linkage before site attribution."
+    },
+    {
+      "id": "t3-16",
+      "track3_element": "Global rather than North-America-only coverage",
+      "ai2040_reference": "Plan A verification framework",
+      "repo_artifacts": [
+        "data/external/epoch_ai/registry.json",
+        "data/external/epoch_ai/queue_source_universe.json"
+      ],
+      "status": "PARTIAL",
+      "contribution": "Extend the connection, compute, ownership, shipment, inspection, and physical-observation layers globally.",
+      "scope_note": "The nine organized North American markets remain a defined registry subset."
+    }
+  ]
+}
