@@ -31,6 +31,10 @@ on:
       - "data/project_level_map.json"
       - "data/pjm_large_load_submission_history.json"
       - "data/supplemental_aggregate_map.json"
+      - "data/epoch_connection_research_targets.csv"
+      - "data/epoch_connection_research_targets.json"
+      - "data/epoch_site_evidence_records.csv"
+      - "data/epoch_site_evidence_records.json"
       - "data/epoch_ai_map.json"
       - "data/epoch_ai_map.csv"
       - "data/project_level_map.csv"
@@ -152,6 +156,9 @@ jobs:
           assert "id=\"connectionTargetsToggle\"" in Path("index.html").read_text(encoding="utf-8")
           assert "id=\"projectEvidenceToggle\"" in Path("index.html").read_text(encoding="utf-8")
           assert "id=\"dataUniverseStatus\"" in Path("index.html").read_text(encoding="utf-8")
+          assert "id=\"completeProjectLedger\"" in Path("index.html").read_text(encoding="utf-8")
+          assert "id=\"completeConnectionTargetLedger\"" in Path("index.html").read_text(encoding="utf-8")
+          assert "id=\"completeSiteEvidenceLedger\"" in Path("index.html").read_text(encoding="utf-8")
           evidence_inventory = json.loads(Path("data/epoch_site_evidence_records.json").read_text(encoding="utf-8"))
           assert evidence_inventory["record_count"] == len(evidence_inventory["records"]) == 68
           assert evidence_inventory["site_count"] == 93
