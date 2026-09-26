@@ -161,9 +161,9 @@ def validate_source_invariants() -> None:
 
     if "Math.max(5.0,Math.sqrt(r.mw)*0.35)" not in index:
         raise AssertionError("Ambiguous marker radius invariant is not implemented")
-    if not re.search(r"kind\s*===\s*['"]bess['"][^;]+\?3(?:\.0)?", index):
+    if "kind==='bess'?3.0" not in index:
         raise AssertionError("BESS radius invariant is not implemented")
-    if not re.search(r"kind\s*===\s*['"]bess['"][^;]+fillOpacity[^;]+0\.35", index):
+    if "kind==='bess'?0.35" not in index:
         raise AssertionError("BESS opacity invariant is not implemented")
     if "window.refreshRegistryMap" not in index:
         raise AssertionError("Map/table synchronization hook is missing")
