@@ -515,7 +515,7 @@ def classify_status(raw: Any) -> Optional[str]:
 
     # Fuzzy fallback across common real-world phrasings for the same states.
     fuzzy_map = [
-        (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY"), "Active"),
+        (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY", "ACTIVE - IN SERVICE PARTIALLY", "CONFIRMED"), "Active"),
         (("UNDER STUDY", "SCREENING", "FEASIBILITY", "SYSTEM IMPACT"), "Under Study"),
         (("FACILITIES STUDY", "FACILITY STUDY", "FIS "), "Facilities Study"),
         (("ENGINEERING REVIEW", "ENGINEERING & PROCUREMENT", "ENGINEERING AND PROCUREMENT", "E&P"),
