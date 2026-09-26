@@ -44,7 +44,7 @@
           "it_power_mw": 1531,
           "power_mw": 2065,
           "h100_eq": 1824153.6129358262,
-          "performance_8bit_ops": 3.61e+21,
+          "performance_8bit_ops": 3610000000000000000000,
           "total_capital_cost_b": 57.997341999999996,
           "compute_cost_b": 39.979003,
           "construction_cost_b": 18.018338999999997,
@@ -67,8 +67,8 @@
             "number_units": 612228,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -107,24 +107,22 @@
       "grid_crosswalk": {
         "state_province": "TN",
         "queue_or_connection_system": "TVA / Tennessee transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/tn/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/tn/",
         "source_date": "2026-09-26",
-        "match_basis": "State TN is assigned to TVA / Tennessee transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TN is assigned to the TVA / Tennessee transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/xai-colossus-2-ff09d693",
           "grid_operator": "Tennessee Valley Authority",
-          "basis": "Exact xAI Colossus 2 address and site identity.",
-          "accessed": "2026-09-26"
+          "basis": "Exact xAI Colossus 2 address and site identity."
         }
       }
     },
@@ -155,7 +153,7 @@
           "it_power_mw": 636,
           "power_mw": 859,
           "h100_eq": 768768.7220818596,
-          "performance_8bit_ops": 1.521393301e+21,
+          "performance_8bit_ops": 1521393301000000110592,
           "total_capital_cost_b": 24.092952,
           "compute_cost_b": 16.607868,
           "construction_cost_b": 7.4850840000000005,
@@ -209,24 +207,22 @@
       "grid_crosswalk": {
         "state_province": "GA",
         "queue_or_connection_system": "SERC / Georgia transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/ga/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/ga/",
         "source_date": "2026-09-26",
-        "match_basis": "State GA is assigned to SERC / Georgia transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State GA is assigned to the SERC / Georgia transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/microsoft-fairwater-atlanta-9f8f329f",
           "grid_operator": "Southern Company",
-          "basis": "Exact campus address and Microsoft identity; public record identifies Southern Company as grid operator.",
-          "accessed": "2026-09-26"
+          "basis": "Exact campus address and Microsoft identity; public record identifies Southern Company."
         }
       }
     },
@@ -257,7 +253,7 @@
           "it_power_mw": 1925,
           "power_mw": 2310,
           "h100_eq": 1746038.4032339565,
-          "performance_8bit_ops": 3.45541e+21,
+          "performance_8bit_ops": 3455410000000000196608,
           "total_capital_cost_b": 72.92285,
           "compute_cost_b": 50.267525,
           "construction_cost_b": 22.655325,
@@ -311,17 +307,17 @@
       "grid_crosswalk": {
         "state_province": "IN",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IN is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State IN is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -351,7 +347,7 @@
           "it_power_mw": 368,
           "power_mw": 442,
           "h100_eq": 636685.1945426983,
-          "performance_8bit_ops": 1.26e+21,
+          "performance_8bit_ops": 1260000000000000000000,
           "total_capital_cost_b": 13.940576,
           "compute_cost_b": 9.609584,
           "construction_cost_b": 4.330992,
@@ -414,24 +410,22 @@
       "grid_crosswalk": {
         "state_province": "OK",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://opsportal.spp.org/Studies/GIActive",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://opsportal.spp.org/Studies/GIActive",
         "source_date": "2026-09-26",
-        "match_basis": "State OK is assigned to SPP; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State OK is assigned to the SPP queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_facility_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/google-pryor-north-be7b42dd",
           "grid_operator": "",
-          "basis": "Exact Google Pryor (North) address and facility identity.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Google Pryor (North) address and facility identity."
         }
       }
     },
@@ -462,7 +456,7 @@
           "it_power_mw": 1022,
           "power_mw": 1328,
           "h100_eq": 1234902.4254674078,
-          "performance_8bit_ops": 2.4438719e+21,
+          "performance_8bit_ops": 2443871900000000147456,
           "total_capital_cost_b": 38.715404,
           "compute_cost_b": 26.687486,
           "construction_cost_b": 12.027918,
@@ -525,24 +519,22 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/meta-prometheus-c979ce44",
           "grid_operator": "American Electric Power",
-          "basis": "Exact Meta Prometheus identity and address; public record identifies AEP.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Meta Prometheus identity and address; public record identifies AEP."
         }
       }
     },
@@ -573,7 +565,7 @@
           "it_power_mw": 843,
           "power_mw": 1180,
           "h100_eq": 1018696.3112683173,
-          "performance_8bit_ops": 2.016e+21,
+          "performance_8bit_ops": 2016000000000000000000,
           "total_capital_cost_b": 31.934525999999998,
           "compute_cost_b": 22.013258999999998,
           "construction_cost_b": 9.921267,
@@ -636,24 +628,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/openai-stargate-abilene-82570d68",
           "grid_operator": "Coleman County Electric Cooperative",
-          "basis": "Exact Stargate Abilene address; public record identifies the cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Stargate Abilene address; public record identifies the cooperative."
         }
       }
     },
@@ -684,7 +674,7 @@
           "it_power_mw": 2263,
           "power_mw": 2715,
           "h100_eq": 4527539.161192521,
-          "performance_8bit_ops": 8.96e+21,
+          "performance_8bit_ops": 8960000000000000000000,
           "total_capital_cost_b": 85.72696599999999,
           "compute_cost_b": 59.09371899999999,
           "construction_cost_b": 26.633247,
@@ -738,24 +728,22 @@
       "grid_crosswalk": {
         "state_province": "WI",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State WI is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State WI is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/microsoft-fairwater-wisconsin-45d98f47",
           "grid_operator": "Wisconsin Electric Power Company",
-          "basis": "Exact Fairwater Wisconsin address; public record identifies Wisconsin Electric Power Company.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Fairwater Wisconsin address; public record identifies Wisconsin Electric Power Company."
         }
       }
     },
@@ -801,7 +789,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "ByteDance #likely, Oracle #likely",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -839,8 +827,7 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Malaysia electricity grid connection / TNB",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Malaysia national / utility grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
@@ -849,8 +836,9 @@
         "source_type": "country-level connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -880,7 +868,7 @@
           "it_power_mw": 386,
           "power_mw": 464,
           "h100_eq": 576048.5093481556,
-          "performance_8bit_ops": 1.14e+21,
+          "performance_8bit_ops": 1140000000000000000000,
           "total_capital_cost_b": 14.622452,
           "compute_cost_b": 10.079618,
           "construction_cost_b": 4.542834,
@@ -961,17 +949,17 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -1073,24 +1061,22 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "DataCentersExposed",
           "url": "https://datacentersexposed.com/facilities/google-new-albany",
           "grid_operator": "AEP Ohio / PJM",
-          "basis": "Exact Google New Albany campus; public record identifies AEP Ohio and PJM.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Google New Albany campus; public record identifies AEP Ohio and PJM."
         }
       }
     },
@@ -1184,17 +1170,17 @@
       "grid_crosswalk": {
         "state_province": "AZ",
         "queue_or_connection_system": "WECC / Arizona serving utilities (APS / SRP)",
-        "queue_source_url": "https://wattstreet.net/state/az/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/az/",
         "source_date": "2026-09-26",
-        "match_basis": "State AZ is assigned to WECC / Arizona serving utilities (APS / SRP); this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State AZ is assigned to the WECC / Arizona serving utilities (APS / SRP) queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -1224,7 +1210,7 @@
           "it_power_mw": 473,
           "power_mw": 662,
           "h100_eq": 583836.7862556847,
-          "performance_8bit_ops": 1.155413e+21,
+          "performance_8bit_ops": 1155412999999999967232,
           "total_capital_cost_b": 17.918186,
           "compute_cost_b": 12.351448999999999,
           "construction_cost_b": 5.566737,
@@ -1239,7 +1225,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "ByteDance #likely, Oracle #likely",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "B300",
@@ -1248,7 +1234,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "ByteDance #likely, Oracle #likely",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -1286,8 +1272,7 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Malaysia electricity grid connection / TNB",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Malaysia national / utility grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
@@ -1296,8 +1281,9 @@
         "source_type": "country-level connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -1399,24 +1385,22 @@
       "grid_crosswalk": {
         "state_province": "TN",
         "queue_or_connection_system": "TVA / Tennessee transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/tn/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/tn/",
         "source_date": "2026-09-26",
-        "match_basis": "State TN is assigned to TVA / Tennessee transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TN is assigned to the TVA / Tennessee transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/xai-colossus-1-ce962f82",
           "grid_operator": "Tennessee Valley Authority",
-          "basis": "Exact xAI Colossus 1 address and site identity.",
-          "accessed": "2026-09-26"
+          "basis": "Exact xAI Colossus 1 address and site identity."
         }
       }
     },
@@ -1528,24 +1512,22 @@
       "grid_crosswalk": {
         "state_province": "IA",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IA is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State IA is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/google-council-bluffs-east-d8c434a9",
           "grid_operator": "MidAmerican Energy",
-          "basis": "Exact address/site identity; public record identifies MidAmerican Energy.",
-          "accessed": "2026-09-26"
+          "basis": "Exact address/site identity; public record identifies MidAmerican Energy."
         }
       }
     },
@@ -1630,17 +1612,17 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -1714,17 +1696,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -1754,7 +1736,7 @@
           "it_power_mw": 178,
           "power_mw": 241,
           "h100_eq": 215675.11520970188,
-          "performance_8bit_ops": 426821053000000000000,
+          "performance_8bit_ops": 426821053000000012288,
           "total_capital_cost_b": 6.742996,
           "compute_cost_b": 4.648114,
           "construction_cost_b": 2.094882,
@@ -1808,17 +1790,17 @@
       "grid_crosswalk": {
         "state_province": "MN",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State MN is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State MN is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -1848,7 +1830,7 @@
           "it_power_mw": 683,
           "power_mw": 819,
           "h100_eq": 514435.54450921173,
-          "performance_8bit_ops": 1.01806794258373e+21,
+          "performance_8bit_ops": 1018067942583730044928,
           "total_capital_cost_b": 25.873406000000003,
           "compute_cost_b": 17.835179,
           "construction_cost_b": 8.038227000000001,
@@ -1901,18 +1883,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "MS",
-        "queue_or_connection_system": "MISO / Mississippi transmission providers",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
+        "queue_or_connection_system": "MISO",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State MS is assigned to MISO / Mississippi transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State MS is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2023,17 +2005,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2126,17 +2108,17 @@
       "grid_crosswalk": {
         "state_province": "AZ",
         "queue_or_connection_system": "WECC / Arizona serving utilities (APS / SRP)",
-        "queue_source_url": "https://wattstreet.net/state/az/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/az/",
         "source_date": "2026-09-26",
-        "match_basis": "State AZ is assigned to WECC / Arizona serving utilities (APS / SRP); this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State AZ is assigned to the WECC / Arizona serving utilities (APS / SRP) queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2220,24 +2202,22 @@
       "grid_crosswalk": {
         "state_province": "IN",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IN is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State IN is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/meta-jeffersonville-646ed5d7",
           "grid_operator": "Duke Energy",
-          "basis": "Exact Meta Jeffersonville facility; public record identifies Duke Energy.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Meta Jeffersonville facility; public record identifies Duke Energy."
         }
       }
     },
@@ -2312,17 +2292,17 @@
       "grid_crosswalk": {
         "state_province": "MO",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://opsportal.spp.org/Studies/GIActive",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://opsportal.spp.org/Studies/GIActive",
         "source_date": "2026-09-26",
-        "match_basis": "State MO is assigned to SPP; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State MO is assigned to the SPP queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2433,24 +2413,22 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "DataCentersExposed",
           "url": "https://datacentersexposed.com/facilities/amazon-new-albany-2",
           "grid_operator": "AEP Ohio / PJM",
-          "basis": "Exact AWS New Albany campus; public record identifies AEP Ohio and PJM.",
-          "accessed": "2026-09-26"
+          "basis": "Exact AWS New Albany campus; public record identifies AEP Ohio and PJM."
         }
       }
     },
@@ -2481,7 +2459,7 @@
           "it_power_mw": 395,
           "power_mw": 474,
           "h100_eq": 904497.2208185953,
-          "performance_8bit_ops": 1.79e+21,
+          "performance_8bit_ops": 1790000000000000000000,
           "total_capital_cost_b": 14.96339,
           "compute_cost_b": 10.314635,
           "construction_cost_b": 4.648755,
@@ -2562,17 +2540,17 @@
       "grid_crosswalk": {
         "state_province": "NE",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://opsportal.spp.org/Studies/GIActive",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://opsportal.spp.org/Studies/GIActive",
         "source_date": "2026-09-26",
-        "match_basis": "State NE is assigned to SPP; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NE is assigned to the SPP queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2602,7 +2580,7 @@
           "it_power_mw": 283,
           "power_mw": 339,
           "h100_eq": 672056.5942395149,
-          "performance_8bit_ops": 1.33e+21,
+          "performance_8bit_ops": 1330000000000000000000,
           "total_capital_cost_b": 10.720606,
           "compute_cost_b": 7.389978999999999,
           "construction_cost_b": 3.330627,
@@ -2616,8 +2594,8 @@
             "number_units": 24067,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           },
           {
             "chip_type": "TPU v7",
@@ -2625,8 +2603,8 @@
             "number_units": 75060,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -2665,17 +2643,17 @@
       "grid_crosswalk": {
         "state_province": "NE",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://opsportal.spp.org/Studies/GIActive",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://opsportal.spp.org/Studies/GIActive",
         "source_date": "2026-09-26",
-        "match_basis": "State NE is assigned to SPP; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NE is assigned to the SPP queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2749,17 +2727,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2803,8 +2781,8 @@
             "number_units": 78028,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           },
           {
             "chip_type": "TPU v5p",
@@ -2812,8 +2790,8 @@
             "number_units": 24736,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           },
           {
             "chip_type": "TPU v5e",
@@ -2821,8 +2799,8 @@
             "number_units": 54734,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           },
           {
             "chip_type": "TPU v7",
@@ -2830,8 +2808,8 @@
             "number_units": 34648,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -2870,17 +2848,17 @@
       "grid_crosswalk": {
         "state_province": "OR",
         "queue_or_connection_system": "WECC / BPA and Pacific Northwest utilities",
-        "queue_source_url": "https://wattstreet.net/state/or/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/or/",
         "source_date": "2026-09-26",
-        "match_basis": "State OR is assigned to WECC / BPA and Pacific Northwest utilities; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State OR is assigned to the WECC / BPA and Pacific Northwest utilities queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2954,17 +2932,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -2994,7 +2972,7 @@
           "it_power_mw": 358,
           "power_mw": 465,
           "h100_eq": 407486.10409297625,
-          "performance_8bit_ops": 806415000000000000000,
+          "performance_8bit_ops": 806415000000000032768,
           "total_capital_cost_b": 13.561755999999999,
           "compute_cost_b": 9.348454,
           "construction_cost_b": 4.213302,
@@ -3048,17 +3026,17 @@
       "grid_crosswalk": {
         "state_province": "AL",
         "queue_or_connection_system": "SERC / Alabama transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/al/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/al/",
         "source_date": "2026-09-26",
-        "match_basis": "State AL is assigned to SERC / Alabama transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State AL is assigned to the SERC / Alabama transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3088,7 +3066,7 @@
           "it_power_mw": 152,
           "power_mw": 198,
           "h100_eq": 173247.67205659422,
-          "performance_8bit_ops": 342857143000000000000,
+          "performance_8bit_ops": 342857142999999971328,
           "total_capital_cost_b": 5.758064,
           "compute_cost_b": 3.969176,
           "construction_cost_b": 1.788888,
@@ -3141,18 +3119,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "ID",
-        "queue_or_connection_system": "WECC / Idaho serving utilities",
-        "queue_source_url": "https://wattstreet.net/state/id/",
+        "queue_or_connection_system": "WECC / Idaho Power, PacifiCorp, BPA and Avista",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/id/",
         "source_date": "2026-09-26",
-        "match_basis": "State ID is assigned to WECC / Idaho serving utilities; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State ID is assigned to the WECC / Idaho Power, PacifiCorp, BPA and Avista queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3182,7 +3160,7 @@
           "it_power_mw": 178,
           "power_mw": 231,
           "h100_eq": 202472.98777125112,
-          "performance_8bit_ops": 400694042799306000000,
+          "performance_8bit_ops": 400694042799305981952,
           "total_capital_cost_b": 6.742996,
           "compute_cost_b": 4.648114,
           "construction_cost_b": 2.094882,
@@ -3236,24 +3214,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2",
           "grid_operator": "Heart of Texas Electric Cooperative",
-          "basis": "Exact Meta Temple address; public record identifies the cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Meta Temple address; public record identifies the cooperative."
         }
       }
     },
@@ -3338,17 +3314,17 @@
       "grid_crosswalk": {
         "state_province": "WY",
         "queue_or_connection_system": "WECC / Wyoming serving utilities",
-        "queue_source_url": "https://wattstreet.net/state/wy/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/wy/",
         "source_date": "2026-09-26",
-        "match_basis": "State WY is assigned to WECC / Wyoming serving utilities; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State WY is assigned to the WECC / Wyoming serving utilities queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3378,7 +3354,7 @@
           "it_power_mw": 840,
           "power_mw": 1008,
           "h100_eq": 788276.907529055,
-          "performance_8bit_ops": 1.56e+21,
+          "performance_8bit_ops": 1560000000000000000000,
           "total_capital_cost_b": 31.820879999999995,
           "compute_cost_b": 21.934919999999998,
           "construction_cost_b": 9.885959999999999,
@@ -3440,18 +3416,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "MS",
-        "queue_or_connection_system": "MISO / Mississippi transmission providers",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
+        "queue_or_connection_system": "MISO",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State MS is assigned to MISO / Mississippi transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State MS is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3535,17 +3511,17 @@
       "grid_crosswalk": {
         "state_province": "AL",
         "queue_or_connection_system": "SERC / Alabama transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/al/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/al/",
         "source_date": "2026-09-26",
-        "match_basis": "State AL is assigned to SERC / Alabama transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State AL is assigned to the SERC / Alabama transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3575,7 +3551,7 @@
           "it_power_mw": 528,
           "power_mw": 800,
           "h100_eq": 638207.072947418,
-          "performance_8bit_ops": 1.26301179736294e+21,
+          "performance_8bit_ops": 1263011797362940051456,
           "total_capital_cost_b": 20.001696000000003,
           "compute_cost_b": 13.787664000000001,
           "construction_cost_b": 6.2140320000000004,
@@ -3629,24 +3605,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/coreweave-helios-581fb155",
           "grid_operator": "South Plains Electric Cooperative",
-          "basis": "Exact Coreweave Helios address; public record identifies the cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Coreweave Helios address; public record identifies the cooperative."
         }
       }
     },
@@ -3749,17 +3723,17 @@
       "grid_crosswalk": {
         "state_province": "IA",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IA is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State IA is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3842,18 +3816,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "UT",
-        "queue_or_connection_system": "WECC / Utah serving utilities",
-        "queue_source_url": "https://wattstreet.net/state/ut/",
+        "queue_or_connection_system": "WECC / Utah serving utility",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/ut/",
         "source_date": "2026-09-26",
-        "match_basis": "State UT is assigned to WECC / Utah serving utilities; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State UT is assigned to the WECC / Utah serving utility queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -3883,7 +3857,7 @@
           "it_power_mw": 103,
           "power_mw": 123,
           "h100_eq": 143580.85118746842,
-          "performance_8bit_ops": 284146504500000000000,
+          "performance_8bit_ops": 284146504499999997952,
           "total_capital_cost_b": 3.901846,
           "compute_cost_b": 2.6896389999999997,
           "construction_cost_b": 1.212207,
@@ -3897,8 +3871,8 @@
             "number_units": 48994,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           },
           {
             "chip_type": "TPU v6e",
@@ -3906,8 +3880,8 @@
             "number_units": 31636,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -3946,24 +3920,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/google-87bef61e",
           "grid_operator": "Hilco Electric Cooperative",
-          "basis": "Exact Google Midlothian site record; public record identifies Hilco Electric Cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Google Midlothian site record; public record identifies Hilco Electric Cooperative."
         }
       }
     },
@@ -3994,7 +3966,7 @@
           "it_power_mw": 300,
           "power_mw": 389,
           "h100_eq": 540677.109651339,
-          "performance_8bit_ops": 1.07e+21,
+          "performance_8bit_ops": 1070000000000000000000,
           "total_capital_cost_b": 11.3646,
           "compute_cost_b": 7.8339,
           "construction_cost_b": 3.5307,
@@ -4074,18 +4046,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "NV",
-        "queue_or_connection_system": "WECC / Nevada serving utilities (NV Energy)",
-        "queue_source_url": "https://wattstreet.net/state/nv/",
+        "queue_or_connection_system": "WECC / Nevada serving utility",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/nv/",
         "source_date": "2026-09-26",
-        "match_basis": "State NV is assigned to WECC / Nevada serving utilities (NV Energy); this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NV is assigned to the WECC / Nevada serving utility queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -4178,24 +4150,22 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/google-b095581c",
           "grid_operator": "American Electric Power",
-          "basis": "Exact Google Lancaster facility/address; public record identifies AEP.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Google Lancaster facility/address; public record identifies AEP."
         }
       }
     },
@@ -4226,7 +4196,7 @@
           "it_power_mw": 180,
           "power_mw": 243,
           "h100_eq": 123839,
-          "performance_8bit_ops": 245077381000000000000,
+          "performance_8bit_ops": 245077381000000012288,
           "total_capital_cost_b": 6.818759999999999,
           "compute_cost_b": 4.70034,
           "construction_cost_b": 2.11842,
@@ -4280,17 +4250,17 @@
       "grid_crosswalk": {
         "state_province": "OR",
         "queue_or_connection_system": "WECC / BPA and Pacific Northwest utilities",
-        "queue_source_url": "https://wattstreet.net/state/or/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/or/",
         "source_date": "2026-09-26",
-        "match_basis": "State OR is assigned to WECC / BPA and Pacific Northwest utilities; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State OR is assigned to the WECC / BPA and Pacific Northwest utilities queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -4373,18 +4343,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Great Britain NESO + local DNO connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Great Britain NESO + local distribution network connections",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national connection queue / contracted connections",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -4467,18 +4437,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "State Grid / provincial grid connection process",
-        "queue_source_url": null,
+        "queue_or_connection_system": "China State Grid / provincial grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / provincial connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -4523,7 +4493,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Google #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "TPU v7",
@@ -4532,7 +4502,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Google #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -4571,17 +4541,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -4625,8 +4595,8 @@
             "number_units": 116560,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -4665,24 +4635,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_utility_record",
           "source": "PUCT interchange",
           "url": "https://interchange.puc.texas.gov/Documents/58306_402_1549178.PDF",
           "grid_operator": "Oncor Electric Delivery",
-          "basis": "PUCT testimony explicitly identifies Google as a large-load customer in Oncor's service territory with data-center operations/development in Midlothian and Red Oak.",
-          "accessed": "2026-09-26"
+          "basis": "PUCT testimony identifies Google as a large-load customer in Oncor's service territory with data-center operations/development in Midlothian and Red Oak."
         }
       }
     },
@@ -4785,7 +4753,6 @@
       "grid_crosswalk": {
         "state_province": "NE",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "public_customer_planning_record",
         "site_specific_queue_id": null,
@@ -4794,8 +4761,9 @@
         "source_type": "OPPD public planning document",
         "source_url": "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf",
         "source_date": "2026-09-26",
-        "match_basis": "OPPD public planning material discusses transmission/distribution improvements, capacity purchases and new generation to meet Google's expected system demand.",
-        "confidence": "high"
+        "match_basis": "OPPD public planning material discusses transmission/distribution improvements, capacity purchases and new generation to meet Google's expected system demand for the Papillion data center.",
+        "confidence": "high",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -4879,24 +4847,22 @@
       "grid_crosswalk": {
         "state_province": "TN",
         "queue_or_connection_system": "TVA / Tennessee transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/tn/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/tn/",
         "source_date": "2026-09-26",
-        "match_basis": "State TN is assigned to TVA / Tennessee transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TN is assigned to the TVA / Tennessee transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "SueDataCenters",
           "url": "https://suedatacenters.org/data-centers/meta-gallatin-tn",
           "grid_operator": "TVA",
-          "basis": "Exact Meta Gallatin campus; source reports TVA and 300 MW operating/planned.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Meta Gallatin campus; source reports TVA and 300 MW operating/planned."
         }
       }
     },
@@ -4980,18 +4946,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "NM",
-        "queue_or_connection_system": "WECC / New Mexico serving utilities (PNM)",
-        "queue_source_url": "https://wattstreet.net/state/nm/",
+        "queue_or_connection_system": "WECC / PNM and other New Mexico serving utilities",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/nm/",
         "source_date": "2026-09-26",
-        "match_basis": "State NM is assigned to WECC / New Mexico serving utilities (PNM); this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NM is assigned to the WECC / PNM and other New Mexico serving utilities queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5021,7 +4987,7 @@
           "it_power_mw": 400,
           "power_mw": 520,
           "h100_eq": 505305.7099545225,
-          "performance_8bit_ops": 1e+21,
+          "performance_8bit_ops": 1000000000000000000000,
           "total_capital_cost_b": 15.1528,
           "compute_cost_b": 10.4452,
           "construction_cost_b": 4.7076,
@@ -5036,7 +5002,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -5075,17 +5041,17 @@
       "grid_crosswalk": {
         "state_province": "ND",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State ND is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State ND is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5169,17 +5135,17 @@
       "grid_crosswalk": {
         "state_province": "NE",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://opsportal.spp.org/Studies/GIActive",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://opsportal.spp.org/Studies/GIActive",
         "source_date": "2026-09-26",
-        "match_basis": "State NE is assigned to SPP; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NE is assigned to the SPP queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5209,7 +5175,7 @@
           "it_power_mw": 346.4,
           "power_mw": 414.6,
           "h100_eq": 168107.6301162203,
-          "performance_8bit_ops": 332685000000000000000,
+          "performance_8bit_ops": 332684999999999967232,
           "total_capital_cost_b": 13.122324799999998,
           "compute_cost_b": 9.0455432,
           "construction_cost_b": 4.0767815999999995,
@@ -5224,7 +5190,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Huawei #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -5262,18 +5228,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "State Grid / provincial grid connection process",
-        "queue_source_url": null,
+        "queue_or_connection_system": "China State Grid / provincial grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / provincial connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5318,7 +5284,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "B200",
@@ -5327,7 +5293,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -5366,17 +5332,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5421,7 +5387,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Oracle #likely",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "B300",
@@ -5430,7 +5396,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Oracle #likely",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -5468,18 +5434,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "PLN electricity grid connection process",
-        "queue_source_url": null,
+        "queue_or_connection_system": "PLN grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national utility connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5572,17 +5538,17 @@
       "grid_crosswalk": {
         "state_province": "PA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State PA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State PA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5627,7 +5593,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -5666,17 +5632,17 @@
       "grid_crosswalk": {
         "state_province": "NC",
         "queue_or_connection_system": "SERC / North Carolina transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/nc/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/nc/",
         "source_date": "2026-09-26",
-        "match_basis": "State NC is assigned to SERC / North Carolina transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NC is assigned to the SERC / North Carolina transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5760,17 +5726,17 @@
       "grid_crosswalk": {
         "state_province": "SC",
         "queue_or_connection_system": "SERC / South Carolina transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/sc/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/sc/",
         "source_date": "2026-09-26",
-        "match_basis": "State SC is assigned to SERC / South Carolina transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State SC is assigned to the SERC / South Carolina transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5800,7 +5766,7 @@
           "it_power_mw": 457,
           "power_mw": 526,
           "h100_eq": 221923.6988377969,
-          "performance_8bit_ops": 439187000000000000000,
+          "performance_8bit_ops": 439187000000000032768,
           "total_capital_cost_b": 17.312074,
           "compute_cost_b": 11.933641,
           "construction_cost_b": 5.378433,
@@ -5815,7 +5781,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Huawei #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -5853,18 +5819,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "State Grid / provincial grid connection process",
-        "queue_source_url": null,
+        "queue_or_connection_system": "China State Grid / provincial grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / provincial connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -5955,7 +5921,6 @@
       "grid_crosswalk": {
         "state_province": "NY",
         "queue_or_connection_system": "NYISO",
-        "queue_source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "site_specific_queue_verified",
         "site_specific_queue_id": "1670",
@@ -5964,8 +5929,9 @@
         "source_type": "NYISO Load Projects queue",
         "source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
         "source_date": "2026-09-26",
-        "match_basis": "Same Lake Mariner campus; Q1670 is a queue request/phase and is not a duplicate of Epoch's IT-power estimate.",
-        "confidence": "high"
+        "match_basis": "Same Lake Mariner campus as the Epoch Core42 record; queue is a request/phase and is not a 1:1 duplicate of Epoch IT power.",
+        "confidence": "high",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6010,7 +5976,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Microsoft #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "B300",
@@ -6019,7 +5985,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Microsoft #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -6058,24 +6024,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/sat40-data-center-c8935e71",
           "grid_operator": "Karnes Electric Cooperative",
-          "basis": "Exact SAT40 address and Microsoft identity; public record identifies Karnes Electric Cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact SAT40 address and Microsoft identity; public record identifies Karnes Electric Cooperative."
         }
       }
     },
@@ -6120,8 +6084,8 @@
             "number_units": 60911,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -6160,17 +6124,17 @@
       "grid_crosswalk": {
         "state_province": "VA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State VA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State VA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6200,7 +6164,7 @@
           "it_power_mw": 378,
           "power_mw": 441,
           "h100_eq": 527084.3860535624,
-          "performance_8bit_ops": 1.0431e+21,
+          "performance_8bit_ops": 1043100000000000000000,
           "total_capital_cost_b": 14.319396,
           "compute_cost_b": 9.870714,
           "construction_cost_b": 4.448682,
@@ -6261,7 +6225,6 @@
       "grid_crosswalk": {
         "state_province": "NY",
         "queue_or_connection_system": "NYISO",
-        "queue_source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "site_specific_queue_verified",
         "site_specific_queue_id": "1670",
@@ -6270,8 +6233,9 @@
         "source_type": "NYISO Load Projects queue",
         "source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
         "source_date": "2026-09-26",
-        "match_basis": "NYISO Q1670 Lake Mariner Data II in Niagara County; Epoch identifies the same Barker, NY campus.",
-        "confidence": "high"
+        "match_basis": "NYISO Q1670 Lake Mariner Data II in Niagara County; campus identity aligns with Epoch's Barker site.",
+        "confidence": "high",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6355,17 +6319,17 @@
       "grid_crosswalk": {
         "state_province": "NJ",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State NJ is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NJ is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6410,7 +6374,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -6448,18 +6412,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Statnett + local network connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Statnett + local distribution network connections",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / local connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6489,7 +6453,7 @@
           "it_power_mw": 145,
           "power_mw": 196,
           "h100_eq": 226233.83274381,
-          "performance_8bit_ops": 447716755000000000000,
+          "performance_8bit_ops": 447716754999999987712,
           "total_capital_cost_b": 5.492889999999999,
           "compute_cost_b": 3.7863849999999997,
           "construction_cost_b": 1.706505,
@@ -6504,7 +6468,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Estimate",
             "owner": "Nebius #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "B300",
@@ -6513,7 +6477,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Estimate",
             "owner": "Nebius #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "H200",
@@ -6522,7 +6486,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Estimate",
             "owner": "Nebius #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -6560,18 +6524,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Fingrid + local network connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Fingrid + local distribution network connections",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / local connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6616,7 +6580,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Company disclosure",
             "owner": "Firmus #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -6655,17 +6619,17 @@
       "grid_crosswalk": {
         "state_province": "",
         "queue_or_connection_system": "AEMO + local network service provider connections",
-        "queue_source_url": null,
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national market / NSP connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6709,8 +6673,8 @@
             "number_units": 46112,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -6749,17 +6713,17 @@
       "grid_crosswalk": {
         "state_province": "AZ",
         "queue_or_connection_system": "WECC / Arizona serving utilities (APS / SRP)",
-        "queue_source_url": "https://wattstreet.net/state/az/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/az/",
         "source_date": "2026-09-26",
-        "match_basis": "State AZ is assigned to WECC / Arizona serving utilities (APS / SRP); this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State AZ is assigned to the WECC / Arizona serving utilities (APS / SRP) queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -6804,7 +6768,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Microsoft #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "B300",
@@ -6813,7 +6777,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Microsoft #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -6852,24 +6816,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/sat14-data-center-2db58790",
           "grid_operator": "Karnes Electric Cooperative",
-          "basis": "Exact SAT14 address and Microsoft identity; public record identifies Karnes Electric Cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact SAT14 address and Microsoft identity; public record identifies Karnes Electric Cooperative."
         }
       }
     },
@@ -6914,8 +6876,8 @@
             "number_units": 61244,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -6954,24 +6916,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/tx11-187661c6",
           "grid_operator": "Karnes Electric Cooperative",
-          "basis": "Exact Vantage TX1 address; public record identifies Karnes Electric Cooperative at the operating TX11 facility.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Vantage TX1 address; public record identifies Karnes Electric Cooperative at the operating TX11 facility."
         }
       }
     },
@@ -7017,7 +6977,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -7056,17 +7016,17 @@
       "grid_crosswalk": {
         "state_province": "GA",
         "queue_or_connection_system": "SERC / Georgia transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/ga/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/ga/",
         "source_date": "2026-09-26",
-        "match_basis": "State GA is assigned to SERC / Georgia transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State GA is assigned to the SERC / Georgia transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7111,7 +7071,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Alibaba #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -7149,18 +7109,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "State Grid / provincial grid connection process",
-        "queue_source_url": null,
+        "queue_or_connection_system": "China State Grid / provincial grid connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / provincial connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7190,7 +7150,7 @@
           "it_power_mw": 233,
           "power_mw": 280,
           "h100_eq": 540677.109651339,
-          "performance_8bit_ops": 1.07e+21,
+          "performance_8bit_ops": 1070000000000000000000,
           "total_capital_cost_b": 8.826506,
           "compute_cost_b": 6.084329,
           "construction_cost_b": 2.7421770000000003,
@@ -7244,17 +7204,17 @@
       "grid_crosswalk": {
         "state_province": "",
         "queue_or_connection_system": "REN + local network connection process",
-        "queue_source_url": null,
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "transmission / distribution connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7299,7 +7259,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Company disclosure",
             "owner": "xAI #confident",
-            "user": null
+            "user": ""
           },
           {
             "chip_type": "A100",
@@ -7308,7 +7268,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Estimate",
             "owner": "xAI #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -7347,17 +7307,17 @@
       "grid_crosswalk": {
         "state_province": "GA",
         "queue_or_connection_system": "SERC / Georgia transmission providers",
-        "queue_source_url": "https://wattstreet.net/state/ga/",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/ga/",
         "source_date": "2026-09-26",
-        "match_basis": "State GA is assigned to SERC / Georgia transmission providers; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State GA is assigned to the SERC / Georgia transmission providers queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7440,18 +7400,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Landsnet + local network connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Landsnet + local distribution network connections",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "transmission / distribution connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7535,17 +7495,17 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7590,7 +7550,7 @@
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
             "owner": "Coreweave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -7629,17 +7589,17 @@
       "grid_crosswalk": {
         "state_province": "PA",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State PA is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State PA is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7684,7 +7644,7 @@
             "chip_type_source": "Company disclosure",
             "number_units_source": "Estimate",
             "owner": "CoreWeave #confident",
-            "user": null
+            "user": ""
           }
         ]
       },
@@ -7723,7 +7683,6 @@
       "grid_crosswalk": {
         "state_province": "OK",
         "queue_or_connection_system": "SPP",
-        "queue_source_url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "public_service_contract_verified",
         "site_specific_queue_id": null,
@@ -7732,15 +7691,14 @@
         "source_type": "SEC-filed electric service agreement",
         "source_url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
         "source_date": "2026-09-26",
-        "match_basis": "Public filing states an OG&E electric service agreement with estimated maximum demand of 100,000 kW for the Muskogee campus.",
+        "match_basis": "Public filing states power is supplied under an OG&E electric service agreement with estimated maximum demand of 100,000 kW for the Muskogee campus.",
         "confidence": "high",
         "site_level_public_evidence": {
           "status": "site_level_service_record",
           "source": "Core Scientific SEC filing",
           "url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
           "grid_operator": "Oklahoma Gas and Electric Company",
-          "basis": "SEC filing identifies the OG&E electric service agreement and 100,000 kW estimated maximum demand.",
-          "accessed": "2026-09-26"
+          "basis": "SEC filing identifies OG&E electric service agreement and 100,000 kW estimated maximum demand."
         }
       }
     },
@@ -7771,7 +7729,7 @@
           "it_power_mw": 672,
           "power_mw": 941,
           "h100_eq": 1707933.299646286,
-          "performance_8bit_ops": 3.38e+21,
+          "performance_8bit_ops": 3380000000000000000000,
           "total_capital_cost_b": 25.456704000000002,
           "compute_cost_b": 17.547936,
           "construction_cost_b": 7.908768,
@@ -7825,17 +7783,17 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7865,7 +7823,7 @@
           "it_power_mw": 48,
           "power_mw": 67,
           "h100_eq": 138912.3294593229,
-          "performance_8bit_ops": 274907500000000000000,
+          "performance_8bit_ops": 274907500000000016384,
           "total_capital_cost_b": 1.818336,
           "compute_cost_b": 1.253424,
           "construction_cost_b": 0.564912,
@@ -7918,18 +7876,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Svenska kraftnät + local network connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Svenska kraftnät + local distribution network connections",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / local connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -7959,7 +7917,7 @@
           "it_power_mw": 1006,
           "power_mw": 1294.1,
           "h100_eq": 2278928.7518948964,
-          "performance_8bit_ops": 4.51e+21,
+          "performance_8bit_ops": 4510000000000000000000,
           "total_capital_cost_b": 38.109291999999996,
           "compute_cost_b": 26.269678,
           "construction_cost_b": 11.839614000000001,
@@ -8022,24 +7980,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_regulatory_record_secondary",
           "source": "GridTracker",
           "url": "https://www.gridtracker.io/example-report",
           "grid_operator": "Greenbelt Electric Cooperative / ERCOT",
-          "basis": "GridTracker traces the Goodnight campus through ERCOT queue projects and PUCT dockets; facility records identify the site and utility context.",
-          "accessed": "2026-09-26"
+          "basis": "GridTracker traces Goodnight through ERCOT queue projects and PUCT dockets; facility records identify the site and utility context."
         }
       }
     },
@@ -8070,7 +8026,7 @@
           "it_power_mw": 261,
           "power_mw": 314,
           "h100_eq": 670136.4325416877,
-          "performance_8bit_ops": 1.3262e+21,
+          "performance_8bit_ops": 1326200000000000000000,
           "total_capital_cost_b": 9.887202,
           "compute_cost_b": 6.815493,
           "construction_cost_b": 3.0717090000000002,
@@ -8114,24 +8070,22 @@
       "grid_crosswalk": {
         "state_province": "IA",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IA is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State IA is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/google-cedar-rapids-fa5365cb",
           "grid_operator": "Interstate Power and Light Company",
-          "basis": "Exact address/site identity; public record identifies Interstate Power and Light.",
-          "accessed": "2026-09-26"
+          "basis": "Exact address/site identity; public record identifies Interstate Power and Light."
         }
       }
     },
@@ -8162,7 +8116,7 @@
           "it_power_mw": 863,
           "power_mw": 1035,
           "h100_eq": 2940879.231935321,
-          "performance_8bit_ops": 5.82e+21,
+          "performance_8bit_ops": 5820000000000000000000,
           "total_capital_cost_b": 32.692166,
           "compute_cost_b": 22.535519,
           "construction_cost_b": 10.156647,
@@ -8206,24 +8160,22 @@
       "grid_crosswalk": {
         "state_province": "IN",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IN is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State IN is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_utility_record",
           "source": "Indiana Michigan Power",
           "url": "https://www.indianamichiganpower.com/company/news/view?releaseID=10359",
           "grid_operator": "Indiana Michigan Power",
-          "basis": "I&M explicitly identifies Google as a large-load customer and says it partnered with Google at the Fort Wayne data center.",
-          "accessed": "2026-09-26"
+          "basis": "I&M explicitly identifies Google as a large-load customer and says it partnered with Google at the Fort Wayne data center."
         }
       }
     },
@@ -8254,7 +8206,7 @@
           "it_power_mw": 422,
           "power_mw": 570,
           "h100_eq": 855159.1712986357,
-          "performance_8bit_ops": 1.69236e+21,
+          "performance_8bit_ops": 1692360000000000000000,
           "total_capital_cost_b": 15.986204,
           "compute_cost_b": 11.019686,
           "construction_cost_b": 4.966518,
@@ -8317,24 +8269,22 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_utility_record_secondary",
           "source": "DEPLOY",
           "url": "https://registry.deploy.report/datacenters/facilities/meta-ohio-bowling-green",
           "grid_operator": "Toledo Edison",
-          "basis": "Exact Meta Bowling Green facility; public record identifies Toledo Edison as serving utility.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Meta Bowling Green facility; public record identifies Toledo Edison."
         }
       }
     },
@@ -8365,7 +8315,7 @@
           "it_power_mw": 1632,
           "power_mw": 2203,
           "h100_eq": 4142944.4163719052,
-          "performance_8bit_ops": 8.198887e+21,
+          "performance_8bit_ops": 8198887000000000163840,
           "total_capital_cost_b": 61.82342399999999,
           "compute_cost_b": 42.616415999999994,
           "construction_cost_b": 19.207008,
@@ -8419,17 +8369,17 @@
       "grid_crosswalk": {
         "state_province": "LA",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State LA is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State LA is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -8512,18 +8462,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "Statnett + local network connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "Statnett + local distribution network connections",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "national / local connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -8553,7 +8503,7 @@
           "it_power_mw": 214,
           "power_mw": 300,
           "h100_eq": 545730.1667508843,
-          "performance_8bit_ops": 1.08e+21,
+          "performance_8bit_ops": 1080000000000000000000,
           "total_capital_cost_b": 8.106748,
           "compute_cost_b": 5.588182,
           "construction_cost_b": 2.518566,
@@ -8607,17 +8557,17 @@
       "grid_crosswalk": {
         "state_province": "OH",
         "queue_or_connection_system": "PJM",
-        "queue_source_url": "https://www.pjm.com/planning/service-requests",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.pjm.com/planning/service-requests",
         "source_date": "2026-09-26",
-        "match_basis": "State OH is assigned to PJM; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State OH is assigned to the PJM queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -8647,7 +8597,7 @@
           "it_power_mw": 988,
           "power_mw": 1383,
           "h100_eq": 2880242.5467407783,
-          "performance_8bit_ops": 5.7e+21,
+          "performance_8bit_ops": 5700000000000000000000,
           "total_capital_cost_b": 37.427416,
           "compute_cost_b": 25.799644,
           "construction_cost_b": 11.627772,
@@ -8690,8 +8640,7 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "MI",
-        "queue_or_connection_system": "MISO / DTE Electric",
-        "queue_source_url": "https://www.michigan.gov/som/data-centers",
+        "queue_or_connection_system": "MISO",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "public_service_contract_verified",
         "site_specific_queue_id": null,
@@ -8700,8 +8649,9 @@
         "source_type": "Michigan Public Service Commission special-contract approval",
         "source_url": "https://www.michigan.gov/som/data-centers",
         "source_date": "2026-09-26",
-        "match_basis": "Michigan official data-center material identifies MPSC approval of DTE Electric energy contracts; Epoch cites the approval reporting 1,383 MW site capacity.",
-        "confidence": "high"
+        "match_basis": "Michigan's official data-center page identifies MPSC approval of DTE Electric energy contracts; Epoch's site record cites the approval reporting 1,383 MW site capacity.",
+        "confidence": "high",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -8731,7 +8681,7 @@
           "it_power_mw": 857,
           "power_mw": 1200,
           "h100_eq": 2496210.207175341,
-          "performance_8bit_ops": 4.94e+21,
+          "performance_8bit_ops": 4940000000000000000000,
           "total_capital_cost_b": 32.464873999999995,
           "compute_cost_b": 22.378840999999998,
           "construction_cost_b": 10.086033,
@@ -8775,17 +8725,17 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -8815,7 +8765,7 @@
           "it_power_mw": 1750,
           "power_mw": 2450,
           "h100_eq": 5103587.670540676,
-          "performance_8bit_ops": 1.01e+22,
+          "performance_8bit_ops": 10099999999999998951424,
           "total_capital_cost_b": 66.2935,
           "compute_cost_b": 45.69775,
           "construction_cost_b": 20.59575,
@@ -8858,18 +8808,18 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "NM",
-        "queue_or_connection_system": "WECC / New Mexico serving utilities (PNM)",
-        "queue_source_url": "https://wattstreet.net/state/nm/",
+        "queue_or_connection_system": "WECC / PNM and other New Mexico serving utilities",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/nm/",
         "source_date": "2026-09-26",
-        "match_basis": "State NM is assigned to WECC / New Mexico serving utilities (PNM); this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State NM is assigned to the WECC / PNM and other New Mexico serving utilities queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -8899,7 +8849,7 @@
           "it_power_mw": 1400,
           "power_mw": 1960,
           "h100_eq": 4562910.560889338,
-          "performance_8bit_ops": 9.03e+21,
+          "performance_8bit_ops": 9030000000000000524288,
           "total_capital_cost_b": 53.0348,
           "compute_cost_b": 36.5582,
           "construction_cost_b": 16.476599999999998,
@@ -8953,24 +8903,22 @@
       "grid_crosswalk": {
         "state_province": "TX",
         "queue_or_connection_system": "ERCOT",
-        "queue_source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.ercot.com/services/rq/large-load-integration",
         "source_date": "2026-09-26",
-        "match_basis": "State TX is assigned to ERCOT; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State TX is assigned to the ERCOT queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/openai-stargate-shackelford-4a71e560",
           "grid_operator": "Fort Belknap Electric Cooperative",
-          "basis": "Exact Shackelford site/address; public record identifies the cooperative.",
-          "accessed": "2026-09-26"
+          "basis": "Exact Shackelford site/address; public record identifies the cooperative."
         }
       }
     },
@@ -9001,7 +8949,7 @@
           "it_power_mw": 1000,
           "power_mw": 1400,
           "h100_eq": 2021222.83981809,
-          "performance_8bit_ops": 4e+21,
+          "performance_8bit_ops": 4000000000000000000000,
           "total_capital_cost_b": 37.882,
           "compute_cost_b": 26.113,
           "construction_cost_b": 11.769,
@@ -9063,18 +9011,18 @@
       "registry_crosswalk_reason": "Epoch site is outside the United States/Canada geographic scope of this queue registry.",
       "grid_crosswalk": {
         "state_province": "",
-        "queue_or_connection_system": "UAE transmission + local distribution connections",
-        "queue_source_url": null,
+        "queue_or_connection_system": "UAE transmission / local distribution connection process",
         "queue_scope_status": "outside_registry_geography",
         "site_record_status": "country_connection_system_mapped",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "country-level connection system",
+        "source_type": "utility connection system",
         "source_url": null,
         "source_date": "2026-09-26",
-        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; its national/utility connection system is recorded as the relevant external jurisdiction.",
-        "confidence": "jurisdiction"
+        "match_basis": "Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -9104,7 +9052,7 @@
           "it_power_mw": 902,
           "power_mw": 1300,
           "h100_eq": 2627589.691763517,
-          "performance_8bit_ops": 5.2e+21,
+          "performance_8bit_ops": 5200000000000000000000,
           "total_capital_cost_b": 34.169564,
           "compute_cost_b": 23.553926,
           "construction_cost_b": 10.615638,
@@ -9148,17 +9096,17 @@
       "grid_crosswalk": {
         "state_province": "WI",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State WI is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State WI is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     },
     {
@@ -9188,7 +9136,7 @@
           "it_power_mw": 1133,
           "power_mw": 1587,
           "h100_eq": 3668823.12124194,
-          "performance_8bit_ops": 7.2606009569378e+21,
+          "performance_8bit_ops": 7260600956937799991296,
           "total_capital_cost_b": 42.920306,
           "compute_cost_b": 29.586029,
           "construction_cost_b": 13.334277,
@@ -9202,8 +9150,8 @@
             "number_units": 325353,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -9242,24 +9190,22 @@
       "grid_crosswalk": {
         "state_province": "IA",
         "queue_or_connection_system": "MISO",
-        "queue_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "RTO/ISO official",
         "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "source_date": "2026-09-26",
-        "match_basis": "State IA is assigned to MISO; this establishes queue/connection coverage, not a site-specific queue ID.",
+        "match_basis": "State IA is assigned to the MISO queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
         "confidence": "jurisdiction",
         "site_level_public_evidence": {
           "status": "site_level_grid_record_secondary",
           "source": "Interconnection.fyi",
           "url": "https://www.interconnection.fyi/data-center/project/qts-cedar-rapids-1855c841",
           "grid_operator": "Interstate Power and Light Company",
-          "basis": "Exact address/site identity; public record identifies Interstate Power and Light.",
-          "accessed": "2026-09-26"
+          "basis": "Exact address/site identity; public record identifies Interstate Power and Light."
         }
       }
     },
@@ -9290,7 +9236,7 @@
           "it_power_mw": 304,
           "power_mw": 411,
           "h100_eq": 346968.16574027285,
-          "performance_8bit_ops": 686650000000000000000,
+          "performance_8bit_ops": 686649999999999934464,
           "total_capital_cost_b": 11.516128,
           "compute_cost_b": 7.938352,
           "construction_cost_b": 3.577776,
@@ -9304,8 +9250,8 @@
             "number_units": 137330,
             "chip_type_source": "Estimate",
             "number_units_source": "Estimate",
-            "owner": null,
-            "user": null
+            "owner": "",
+            "user": ""
           }
         ]
       },
@@ -9343,31 +9289,29 @@
       "registry_crosswalk_reason": "No conservative direct match was identified in the current nine-market queue registry fields.",
       "grid_crosswalk": {
         "state_province": "UT",
-        "queue_or_connection_system": "WECC / Utah serving utilities",
-        "queue_source_url": "https://wattstreet.net/state/ut/",
+        "queue_or_connection_system": "WECC / Utah serving utility",
         "queue_scope_status": "within_registry_geography",
         "site_record_status": "queue_jurisdiction_mapped_site_id_not_yet_verified",
         "site_specific_queue_id": null,
         "site_specific_queue_name": null,
         "site_specific_queue_capacity_mw": null,
-        "source_type": "queue jurisdiction discovery",
+        "source_type": "state queue coverage index",
         "source_url": "https://wattstreet.net/state/ut/",
         "source_date": "2026-09-26",
-        "match_basis": "State UT is assigned to WECC / Utah serving utilities; this establishes queue/connection coverage, not a site-specific queue ID.",
-        "confidence": "jurisdiction"
+        "match_basis": "State UT is assigned to the WECC / Utah serving utility queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID.",
+        "confidence": "jurisdiction",
+        "site_level_public_evidence": null
       }
     }
   ],
   "grid_crosswalk_summary": {
+    "all_epoch_sites_have_jurisdiction": true,
     "all_sites_have_queue_or_connection_jurisdiction": true,
-    "site_specific_queue_ids": 2,
-    "public_service_or_planning_records": 3,
-    "jurisdiction_only_us_sites": 72,
-    "outside_registry_geography": 16
-  },
-  "site_level_public_evidence_summary": {
-    "findings_added": 27,
-    "note": "Site-level public evidence is distinct from a verified interconnection queue ID.",
+    "sites_with_site_specific_queue_id": 2,
+    "sites_with_public_service_or_planning_record": 3,
+    "sites_with_queue_jurisdiction_only": 72,
+    "sites_with_site_level_public_evidence": 27,
+    "sites_outside_current_registry_geography": 16,
     "as_of": "2026-09-26"
   }
 }
