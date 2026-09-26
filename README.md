@@ -187,6 +187,8 @@ Current examples include:
 - Virginia DEQ: a data-center air-permit identity inventory alongside reports of 72 operating data centers in Loudoun County and nine more in planning.
 - Ontario: the IESO application-status universe and OEB Centralized Capacity Information Map are preserved as broader connection/grid-context layers.
 
+Additional utility layers now include APS's reported 19 GW uncommitted extra-large-customer queue, AEP's 69 GW of contracted load growth through 2030, AEP Ohio's approximately 12 GW of new contracted load through 2030, the planned 10 GW Piketon data-center campus, Ameren Missouri's up-to-2 GW demand-planning envelope, and PacifiCorp's ongoing tens-to-hundreds-of-MW large-customer request stream. These remain supplemental and are not added to the core total without project-level deduplication.
+
 These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
 
 ### Facility research records
