@@ -16,6 +16,9 @@ name: Monthly Registry Update
 #     committed and the run then fails so a human looks at the rejected one.
 
 on:
+  push:
+    branches:
+      - test/pjm-active-statuses-20260926
   schedule:
     - cron: "0 6 1 * *" # 06:00 UTC on the 1st of every month
   workflow_dispatch:
