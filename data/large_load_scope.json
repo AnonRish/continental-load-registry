@@ -35,9 +35,26 @@
       "accounting": "Evidence/source units are not summed with the core or expanded known scope. One ERCOT Batch Zero entry is a public process/source layer, not a facility population."
     },
     "project_level_extractions": {
-      "records": 46,
+      "records": 92,
       "additive_to_core_row_level": false,
       "accounting": "Discrete public permit, utility-customer, contract and connection records. These records are not additions to the 1,558-row core or 1,641-record expanded-known scope without project-level deduplication."
+    },
+    "caiso_historical_cluster_series": {
+      "records": 435,
+      "capacity_gw": 121.204,
+      "additive_to_core_row_level": false
+    },
+    "aeso_data_load_projects": {
+      "records": 28,
+      "additive_to_core_row_level": false
+    },
+    "nyiso_named_load_project_sites": {
+      "records": 12,
+      "additive_to_core_row_level": false
+    },
+    "ieso_current_load_applications": {
+      "records": 6,
+      "additive_to_core_row_level": false
     }
   },
   "accounting_rule": "Do not treat the 83 additional MISO requests or the 1802-record historical snapshot as independent additive facility populations beyond the explicitly defined arithmetic above."
