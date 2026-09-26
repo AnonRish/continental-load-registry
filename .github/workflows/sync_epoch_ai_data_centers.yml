@@ -83,6 +83,11 @@ jobs:
           assert evidence["record_count"] == len(evidence["records"])
           assert queue["count"] == len(queue["records"])
           assert summary["pending_grid_connection_research_count"] == queue["count"]
+          observation = json.loads((root/"observation_queue.json").read_text(encoding="utf-8"))
+          assert observation["task_count"] == len(observation["tasks"])
+          assert summary["observation_task_count"] == observation["task_count"]
+          assert summary["observation_task_counts_by_domain"] == observation["task_counts_by_domain"]
+          assert summary["observation_task_counts_by_priority"] == observation["task_counts_by_priority"]
           print("verified: Track 3 artifacts")
           print("site evidence:", summary["site_level_evidence_site_count"])
           print("site queue IDs:", summary["site_specific_queue_id_count"])
