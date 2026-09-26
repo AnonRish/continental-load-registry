@@ -519,6 +519,49 @@
       "granularity": "full public queue report source",
       "source_url": "https://www.caiso.com/documents/publicqueuereport.pdf",
       "notes": "CAISO's current Public Queue Report is a full active/completed/withdrawn interconnection report. The 2026-09-26 report exposed 181 pages in the current public document, with queue position, project name, study process, project type, MW totals, county/state, utility, PTO region, POI/station/line and date/status fields. The registry currently keeps CAISO Cluster 15 rows in the core and a historical cluster series separately; this source record is the direct lead for full row-level refresh."
+    },
+    {
+      "id": "IDAHO-POWER-LARGE-LOAD-REQUESTS-2026",
+      "jurisdiction": "Idaho, US",
+      "provider": "Idaho Power",
+      "evidence_type": "large_load_service_request_aggregate",
+      "record_count": 24,
+      "capacity_mw": 307,
+      "threshold_mw": null,
+      "capture_date": "2026-09-22",
+      "additive_to_core_row_level": false,
+      "granularity": "utility request aggregate",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "notes": "Secondary public cross-reference reports 24 Idaho Power large-load requests totaling about 307 MW. This utility population is outside the nine-market core geography and is not added to core totals."
+    },
+    {
+      "id": "PSE-LARGE-LOAD-SERVICE-REQUESTS",
+      "jurisdiction": "Washington, US",
+      "provider": "Puget Sound Energy",
+      "evidence_type": "large_customer_service_request_source",
+      "record_count": null,
+      "capacity_mw": null,
+      "threshold_mw": null,
+      "capture_date": "2026-09-22",
+      "additive_to_core_row_level": false,
+      "granularity": "utility source lead",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "notes": "Public secondary utility-queue cross-reference identifies Puget Sound Energy as receiving large-load/service requests. No uniform current aggregate is published in the cited public source, so no MW total is inferred."
+    },
+    {
+      "id": "AVISTA-LARGE-CUSTOMER-SERVICE-REQUESTS",
+      "jurisdiction": "Washington / Idaho, US",
+      "provider": "Avista Utilities",
+      "evidence_type": "large_customer_service_request_source",
+      "record_count": null,
+      "capacity_mw": null,
+      "threshold_mw": null,
+      "capture_date": "2026-09-22",
+      "additive_to_core_row_level": false,
+      "granularity": "utility source lead",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "notes": "Public secondary utility-queue cross-reference identifies Avista as receiving large-load/service requests. No uniform current aggregate is published in the cited public source, so no MW total is inferred."
     }
-  ]
+  ],
+  "record_count": 41
 }
