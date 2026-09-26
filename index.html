@@ -290,6 +290,27 @@
     </div>
   </section>
 
+  <!-- ============ EPOCH SITE EVIDENCE INVENTORY ============ -->
+  <section id="epochSiteEvidenceInventory" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Track 3 evidence assertions</p>
+        <h2 class="font-serif-display text-xl mt-1">Epoch site-level evidence inventory</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">The 93-site target layer is backed by discrete source assertions where public evidence exists. One site can have multiple assertions; these are evidence records, not additional facilities.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/epoch_site_evidence_records.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open evidence JSON</a>
+        <a href="data/epoch_site_evidence_records.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download evidence CSV</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">68</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Discrete site-level evidence assertions</p></div>
+      <div class="p-4"><p class="mono text-xl">59 / 93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites with at least one assertion</p></div>
+      <div class="p-4"><p class="mono text-xl">34</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites still requiring site-specific search</p></div>
+    </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">Evidence confidence and source type are retained item-by-item. A source assertion that identifies a utility relationship, contract, facility or planning record is not silently promoted to a formal interconnection queue ID.</p>
+  </section>
+
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
