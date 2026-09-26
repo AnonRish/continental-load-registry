@@ -173,9 +173,11 @@ The published dashboard currently contains **1,558 row-level facilities / reques
 
 ### Data-universe completion
 
+The project-level dataset now includes **60 BPA large-load request records** with public request identifiers, filed MW, POI text and status where the public cross-check exposes them. These are secondary reproductions of BPA public load-queue rows and remain non-additive.
+
 The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
 
-The project-level layer has grown to **92 records**: 33 Virginia DEQ permit identities, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
+The project-level layer has grown to **154 records**: 33 Virginia DEQ permit identities, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
 
 CAISO historical coverage is now represented in `data/caiso_cluster_history.json` and CSV. The series contains 49 Cluster 8-and-prior projects, 27 Cluster 9, 21 Cluster 10, 30 Cluster 11, 44 Cluster 12, 60 Cluster 13 and 204 Cluster 14 projects — 435 projects and 121.204 GW in that historical series. A separately published Cluster 15 energy-only subset is recorded at 48 projects / 14.421 GW. These generator-queue figures are a distinct history layer and are not added to the large-load total.
 
