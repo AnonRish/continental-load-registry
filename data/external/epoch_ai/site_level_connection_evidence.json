@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 55,
+    "evidence_found": 56,
     "site_queue_ids": 2,
-    "pending": 38
+    "pending": 37
   },
   "records": [
     {
@@ -901,9 +901,19 @@
       "country": "United States",
       "state_province": "VA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Dominion Energy",
+          "record_name": "Google Arcola serving-utility relationship",
+          "source_url": "https://suedatacenters.org/data-centers/google-arcola-loudoun-va",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The SueDataCenters facility record identifies Dominion Energy as the utility for Google's Arcola data-center site in Loudoun County, Virginia. This establishes site-level utility evidence, not a public queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Dominion Energy, Virginia SCC, PJM and local Loudoun County records for the exact service/interconnection case, contract, substation or project identifier."
     },
     {
       "epoch_id": "EPOCH-f1a2bcdd78478bc2",
