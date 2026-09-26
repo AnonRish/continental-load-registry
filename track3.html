@@ -52,7 +52,7 @@
 </section>
 
 <section class="section panel" style="padding:16px">
-<h2>Evidence records</h2><p class="soft small">126 retained evidence records in the canonical Track 3 evidence ledger. Use this table to see the underlying claims, source type, confidence and provenance rather than just a status label.</p>
+<h2>Evidence records</h2><p id="evidenceMeta" class="soft small">Loading canonical Track 3 evidence ledger…</p>
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Domain</th><th>Evidence type</th><th>Source</th><th>Status</th><th>Confidence</th><th>Claim</th></tr></thead><tbody id="evidence"></tbody></table></div>
 </section>
 
@@ -155,7 +155,7 @@ function renderSites(){
  }).join('')||'<tr><td colspan="7" class="faint">No matching sites.</td></tr>';
  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openSite(b.getAttribute('data-open'))));
 }
-function renderEvidence(){
+function renderEvidence(){ const meta=document.getElementById('evidenceMeta'); if(meta)meta.textContent=DATA.evidence.length+' retained evidence records in the canonical Track 3 evidence ledger. Underlying claims, source type, confidence and provenance are shown below.';
  const rows=DATA.evidence.slice().sort((a,b)=>String(a.target_name).localeCompare(String(b.target_name))).slice(0,220);
  document.getElementById('evidence').innerHTML=rows.map(r=>'<tr><td><strong>'+esc(r.target_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.target_id)+'</div></td><td>'+esc(r.domain)+'</td><td>'+esc(r.evidence_type)+'</td><td><strong>'+esc(r.source_name)+'</strong><div class="small faint">'+esc(r.source_kind)+'</div></td><td><span class="status '+stateClass(r.status)+'">'+esc(r.status)+'</span></td><td>'+esc(r.confidence)+'</td><td class="small">'+esc(r.basis)+'</td></tr>').join('');
 }
