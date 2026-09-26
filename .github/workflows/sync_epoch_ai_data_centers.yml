@@ -99,13 +99,14 @@ jobs:
           python - <<'PY'
           import re
           from pathlib import Path
-          html = Path("index.html").read_text(encoding="utf-8")
-          scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
-          for i, script in enumerate(scripts, 1):
-              Path(f"/tmp/index-script-{i}.js").write_text(script, encoding="utf-8")
-          print(f"extracted {len(scripts)} inline script blocks")
+          for html_name, stem in [("index.html","index"),("track3.html","track3")]:
+              html = Path(html_name).read_text(encoding="utf-8")
+              scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+              for i, script in enumerate(scripts, 1):
+                  Path(f"/tmp/{stem}-script-{i}.js").write_text(script, encoding="utf-8")
+              print(f"{html_name}: extracted {len(scripts)} inline script blocks")
           PY
-          for f in /tmp/index-script-*.js; do
+          for f in /tmp/index-script-*.js /tmp/track3-script-*.js; do
             node --check "$f"
           done
 
