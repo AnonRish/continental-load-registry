@@ -517,8 +517,10 @@ def classify_status(raw: Any) -> Optional[str]:
         (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY"), "Active"),
         (("UNDER STUDY", "SCREENING", "FEASIBILITY", "SYSTEM IMPACT"), "Under Study"),
         (("FACILITIES STUDY", "FACILITY STUDY", "FIS "), "Facilities Study"),
-        (("ENGINEERING REVIEW", "ENGINEERING & PROCUREMENT", "E&P"), "Engineering Review"),
-        (("IA IN PROGRESS", "INTERCONNECTION AGREEMENT", "IA DRAFT", "IA NEGOTIATION"),
+        (("ENGINEERING REVIEW", "ENGINEERING & PROCUREMENT", "ENGINEERING AND PROCUREMENT", "E&P"),
+         "Engineering Review"),
+        (("IA IN PROGRESS", "INTERCONNECTION AGREEMENT", "IA DRAFT", "IA NEGOTIATION",
+          "UNDER CONSTRUCTION", "UNDERCONSTRUCTION - IN SERVICE PARTIALLY"),
          "IA in Progress"),
     ]
     for keywords, canonical in fuzzy_map:
