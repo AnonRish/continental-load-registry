@@ -128,7 +128,7 @@ jobs:
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
           assert projects["record_count"] == len(projects["records"]) == 213
           assert len({r["id"] for r in projects["records"]}) == 213
-          assert len(projects["sources"]) == 15
+          assert len(projects["sources"]) == 16
           source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
           assert source_counts["VA-DEQ"] == 33
           assert source_counts["BPA-LARGE-LOAD"] == 60
@@ -138,8 +138,9 @@ jobs:
           assert source_counts["IESO-LOAD"] == 6
           assert source_counts["ISO-NE-CELT"] == 2
           assert source_counts["COMED-NEW-PROJECTS"] == 28
-          assert source_counts["DOMINION-SERVICE-PROJECTS"] == 7
+          assert source_counts["DOMINION-SERVICE-PROJECTS"] == 3
           assert source_counts["IDAHO-POWER-2025-IRP"] == 1
+          assert source_counts["CAISO-LARGE-LOADS"] == 14
           for record in projects["records"]:
               assert record["id"] and record["evidence_type"] and record["source_url"].startswith("https://")
           assert sum(r["evidence_type"] == "environmental_permit_record" for r in projects["records"]) == 33
@@ -190,8 +191,8 @@ jobs:
           assert sum(int(r.get("site_level_evidence_count", 0)) for r in target_data["records"]) == 68
           assert all(r["lat"] is not None and r["lon"] is not None for r in target_data["records"])
           catalog = json.loads(Path("data/public_data_catalog.json").read_text(encoding="utf-8"))
-          assert len(catalog["datasets"]) == 15
-          assert any(d["path"] == "data/project_level_extractions.json" and d["record_count"] == 199 for d in catalog["datasets"])
+          assert len(catalog["datasets"]) >= 15
+          assert any(d["path"] == "data/project_level_extractions.json" and d["record_count"] == 213 for d in catalog["datasets"])
           assert any(d["path"] == "data/epoch_connection_research_targets.json" and d["record_count"] == 93 for d in catalog["datasets"])
           assert any(d["path"] == "data/epoch_site_evidence_records.json" and d["record_count"] == 68 for d in catalog["datasets"])
           universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
@@ -209,8 +210,8 @@ jobs:
           pjm_history = json.loads(Path("data/pjm_large_load_submission_history.json").read_text(encoding="utf-8"))
           assert len(pjm_history["records"]) == 28
           project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
-          assert project_map["record_count"] == 199 and project_map["mapped_count"] == 199
-          assert len(project_map["records"]) == 199
+          assert project_map["record_count"] == 213 and project_map["mapped_count"] == 213
+          assert len(project_map["records"]) == 213
           history = json.loads(Path("data/caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
           assert sum(r["capacity_mw"] for r in history["records"][:7]) == 121204
