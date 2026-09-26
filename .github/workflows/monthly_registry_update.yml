@@ -16,6 +16,9 @@ name: Monthly Registry Update
 #     committed and the run then fails so a human looks at the rejected one.
 
 on:
+  push:
+    branches:
+      - test/pjm-reconciliation-20260926
   schedule:
     - cron: "0 6 1 * *" # 06:00 UTC on the 1st of every month
   workflow_dispatch:
@@ -85,6 +88,7 @@ jobs:
         # others; the script exits non-zero only if every source failed.
         run: |
           python ingest_grid_queues.py --include-raw-fields \
+            --pjm-audit-output "$WORK/pjm_raw_audit.csv" \
             --output "$WORK/registry_raw.csv" 2>&1 | tee "$WORK/ingest.log"
 
       - name: Pipeline 2/5 - require at least one row
