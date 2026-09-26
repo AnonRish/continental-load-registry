@@ -4,7 +4,7 @@
   "title": "Supplemental aggregate evidence map",
   "purpose": "Display non-facility utility, regulatory and planning evidence as geographic footprints where jurisdiction is public.",
   "accounting": "These are aggregate/source-level overlays. They are never treated as facilities and are not added to the core row count.",
-  "record_count": 45,
+  "record_count": 47,
   "mapped_count": 17,
   "records": [
     {
@@ -771,6 +771,40 @@
       "label": "CAISO historical queue footprint",
       "source_url": "https://www.caiso.com/library/public-queue-report",
       "notes": "Cluster 15 energy-only subset: historical generator-interconnection queue footprint. This is a regional historical population, not a facility location; it is not added to the current large-load total."
+    },
+    {
+      "id": "PJM-TRANSITION-QUEUE-2025",
+      "evidence_type": "pjm_service_request_aggregate",
+      "provider": "PJM",
+      "jurisdiction": "US / PJM",
+      "records": null,
+      "capacity_mw": 63000,
+      "capture_date": "2025-06-01",
+      "accounting": "Non-additive",
+      "geometry_type": "footprint",
+      "radius_km": 350,
+      "lat": 39.5,
+      "lon": -77.5,
+      "label": "historical PJM transition queue",
+      "source_url": "https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/fact-sheets/interconnection-reform-progress-fact-sheet.pdf",
+      "notes": "Aggregate service/interconnection evidence; regional footprint only, not a facility location."
+    },
+    {
+      "id": "PJM-TRANSITION-CYCLE1-2026",
+      "evidence_type": "pjm_service_request_aggregate",
+      "provider": "PJM",
+      "jurisdiction": "US / PJM",
+      "records": 81,
+      "capacity_mw": 13600,
+      "capture_date": "2026-05-14",
+      "accounting": "Non-additive",
+      "geometry_type": "footprint",
+      "radius_km": 350,
+      "lat": 39.5,
+      "lon": -77.5,
+      "label": "PJM Transition Cycle 1 service requests",
+      "source_url": "https://www.pjm.com/pjmfiles/pub/planning/project-queues/Cluster-Reports/TC1/TC1_FINAL_Executive_Summary.htm",
+      "notes": "Aggregate service/interconnection evidence; regional footprint only, not a facility location."
     }
   ]
 }
