@@ -53,6 +53,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/spp_public_queue.json data/spp_public_queue.csv data/spp_public_queue_summary.json
+          git add data/queue_layer_status.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Automated SPP active public queue sync: $(date -u +%Y-%m-%d)"
           git fetch origin main
