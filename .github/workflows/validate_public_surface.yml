@@ -1,0 +1,107 @@
+name: Validate public research surface
+
+on:
+  push:
+    paths:
+      - "index.html"
+      - "track3.html"
+      - "plan-a.html"
+      - "PLAN_A.md"
+      - "CONTRIBUTING.md"
+      - "CITATION.cff"
+      - "CITATION.md"
+      - "README.md"
+      - "llms.txt"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "CI_AUDIT_2026-09-26.md"
+      - "data/ci/commit_audit.json"
+      - "data/track3/ai2040_plan_a_mapping.json"
+      - "data/track3/ai2040_plan_a_traceability.json"
+      - "data/track3/plan_a_audit_schema.json"
+      - "data/track3_evidence_schema.json"
+  pull_request:
+    paths:
+      - "index.html"
+      - "track3.html"
+      - "plan-a.html"
+      - "PLAN_A.md"
+      - "CONTRIBUTING.md"
+      - "CITATION.cff"
+      - "CITATION.md"
+      - "README.md"
+      - "llms.txt"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "CI_AUDIT_2026-09-26.md"
+      - "data/ci/commit_audit.json"
+      - "data/track3/ai2040_plan_a_mapping.json"
+      - "data/track3/ai2040_plan_a_traceability.json"
+      - "data/track3/plan_a_audit_schema.json"
+      - "data/track3_evidence_schema.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Validate machine-readable Track 3 / Plan A files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [
+              "data/track3/ai2040_plan_a_mapping.json",
+              "data/track3/ai2040_plan_a_traceability.json",
+              "data/track3/plan_a_audit_schema.json",
+              "data/track3_evidence_schema.json",
+          ]
+          for path in paths:
+              obj = json.loads(Path(path).read_text(encoding="utf-8"))
+              assert obj, path
+          mapping = json.loads(Path("data/track3/ai2040_plan_a_mapping.json").read_text(encoding="utf-8"))
+          trace = json.loads(Path("data/track3/ai2040_plan_a_traceability.json").read_text(encoding="utf-8"))
+          schema = json.loads(Path("data/track3_evidence_schema.json").read_text(encoding="utf-8"))
+          assert len(mapping["mappings"]) >= 16
+          assert len(trace["rows"]) >= 12
+          assert len(schema["domains"]) >= 15
+          print("PASS: Plan A / Track 3 JSON contracts")
+          PY
+      - name: Validate inline JavaScript
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          for html_name in ("index.html", "track3.html", "plan-a.html"):
+              html = Path(html_name).read_text(encoding="utf-8")
+              scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+              for i, script in enumerate(scripts, 1):
+                  Path(f"/tmp/{html_name}-{i}.js").write_text(script, encoding="utf-8")
+              print(f"{html_name}: {len(scripts)} script blocks")
+          PY
+          for f in /tmp/index.html-*.js /tmp/track3.html-*.js /tmp/plan-a.html-*.js; do
+            node --check "$f"
+          done
+      - name: Validate discovery files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          robots = Path("robots.txt").read_text(encoding="utf-8")
+          sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
+          assert "Sitemap: https://anonrish.github.io/continental-load-registry/sitemap.xml" in robots
+          urls = re.findall(r"<loc>(.*?)</loc>", sitemap)
+          assert urls
+          for url in urls:
+              assert url.startswith("https://anonrish.github.io/continental-load-registry/")
+          for target in ("index.html", "track3.html", "plan-a.html"):
+              assert target in sitemap
+          print("PASS: robots.txt and sitemap.xml")
+          PY
