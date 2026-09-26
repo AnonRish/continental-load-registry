@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "title": "AI 2040 Plan A Track 3 traceability",
+  "primary_reference": "https://ai-2040.com/print/covert-ai-projects",
+  "rows": [
+    {
+      "id": "recommendation-1",
+      "reference": "Recommendation #1",
+      "requirement": "Audit semiconductor supply chain and accelerator-vendor sales to establish an accurate record of pre-deal compute production.",
+      "repo_artifacts": [
+        "data/external/epoch_ai/ai_chip_components_quarterly_by_chip.csv",
+        "data/external/epoch_ai/ai_chip_components_quarterly_by_designer.csv",
+        "data/external/epoch_ai/ai_chip_components_supply_denominators.csv",
+        "data/external/epoch_ai/ai_chip_sales_chip_types.csv",
+        "data/external/epoch_ai/ai_chip_sales_organizations.csv",
+        "data/external/epoch_ai/ai_chip_sales_timelines_by_chip.csv"
+      ],
+      "status": "PARTIAL",
+      "gap": "Public source snapshots are preserved, but complete production reconciliation is not claimed."
+    },
+    {
+      "id": "recommendation-2",
+      "reference": "Recommendation #2",
+      "requirement": "Trace declared compute sales to physical end-use location, audit large owners recursively, and sample smaller owners.",
+      "repo_artifacts": [
+        "data/track3/observation_queue.json",
+        "data/track3/evidence_records.json",
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "PARTIAL",
+      "gap": "Public site and aggregate compute evidence exist; transaction-level recursive transfer chains and physical inspections are not yet public."
+    },
+    {
+      "id": "recommendation-3",
+      "reference": "Recommendation #3",
+      "requirement": "Locate remaining unaccounted compute with incentives and aerial imagery.",
+      "repo_artifacts": [
+        "data/track3/observation_queue.json",
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "PARTIAL",
+      "gap": "The remote-sensing worklist exists; site-level TIR/SAR/optical observations and disclosure programs are not yet ingested."
+    },
+    {
+      "id": "appendix-b-1",
+      "reference": "Appendix B §1",
+      "requirement": "Starting from verified vendor sales, recursively audit every direct customer above threshold T and continue until unaudited recipients are below T.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "Threshold-based recursive audit graph is not implemented as a completed dataset."
+    },
+    {
+      "id": "appendix-b-2",
+      "reference": "Appendix B §2",
+      "requirement": "Add untraceable sales and unverifiable decommissioning to an untraced pool L.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "The repository does not currently calculate certification quantity L."
+    },
+    {
+      "id": "appendix-b-3",
+      "reference": "Appendix B §3",
+      "requirement": "Complete the account so compute is physically verified, added to L, or delivered to a below-threshold recipient.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json",
+        "data/track3/evidence_records.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "End-to-end account reconciliation is not yet present."
+    },
+    {
+      "id": "appendix-b-4",
+      "reference": "Appendix B §4",
+      "requirement": "Randomly sample H100e units from below-threshold deliveries and trace each through resales to physical inspection or failure.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "Sampling frame, reproducible selection, and trace outcomes are not yet implemented."
+    },
+    {
+      "id": "appendix-b-5",
+      "reference": "Appendix B §5",
+      "requirement": "Sample units from the tail proportional to deliveries and audit the selected recipient's account.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "No public tail sampling population or audit result is asserted."
+    },
+    {
+      "id": "appendix-b-6",
+      "reference": "Appendix B §6",
+      "requirement": "Resolve sampled units proportionally between current holdings and onward sales.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "No unit-level proportional trace ledger is implemented."
+    },
+    {
+      "id": "appendix-b-7",
+      "reference": "Appendix B §7",
+      "requirement": "Classify each sample trace as pass or fail and statistically constrain the undetected tail.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "No confidence calculation from actual trace outcomes is published."
+    },
+    {
+      "id": "appendix-b-8",
+      "reference": "Appendix B §8",
+      "requirement": "Use minimal-notice inspections and record serial numbers to prevent borrowed-chip audit evasion.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "Serial-level physical inspection data are not publicly ingested."
+    },
+    {
+      "id": "appendix-b-9",
+      "reference": "Appendix B §9",
+      "requirement": "Control post-deal transfers above de minimis and require witnessed destruction or serial-verified recycling.",
+      "repo_artifacts": [
+        "data/track3/ai2040_plan_a_mapping.json"
+      ],
+      "status": "DESIGN_ONLY",
+      "gap": "This repository does not implement a post-deal enforcement authority."
+    }
+  ]
+}
