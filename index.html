@@ -189,7 +189,7 @@
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
           <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
           <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
-          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="misoQueueToggle" aria-pressed="true">MISO full queue</button><button type="button" class="map-mode-btn" id="sppQueueToggle" aria-pressed="true">SPP active queue</button><button type="button" class="map-mode-btn" id="nyisoQueueToggle" aria-pressed="true">NYISO full queue</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
           <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
         </div>
       </div>
@@ -1399,10 +1399,19 @@ openFacilityFromHash();
   let showConnectionTargets=true;
   map.addLayer(connectionTargetLayer);
   const CAISO_QUEUE_COLOR='#3F6B4F';
+  const MISO_QUEUE_COLOR='#355C7D';
+  const SPP_QUEUE_COLOR='#7B4F7B';
+  const NYISO_QUEUE_COLOR='#4F6B5C';
   const caisoQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(CAISO_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   let caisoQueueRecords=[];
   let showCaisoQueue=true;
   map.addLayer(caisoQueueCluster);
+  const misoQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(MISO_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  const sppQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(SPP_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  const nyisoQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(NYISO_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  let misoQueueRecords=[],sppQueueRecords=[],nyisoQueueRecords=[];
+  let showMisoQueue=true,showSppQueue=true,showNyisoQueue=true;
+  map.addLayer(misoQueueCluster);map.addLayer(sppQueueCluster);map.addLayer(nyisoQueueCluster);
   const AGGREGATE_COLOR='#9A6B37';
   const HISTORICAL_COLOR='#6E7D4F';
   const aggregateLayer=L.layerGroup();
@@ -1643,6 +1652,34 @@ openFacilityFromHash();
     marker.bindPopup(caisoQueuePopupHtml(r,loc.precision),{maxWidth:360});
     return marker;
   }
+  function genericQueueLocation(n){
+    const st=String(n.state||'').trim().toUpperCase();
+    const raw=String(n.county||n.nearest_town_or_county||'').trim();
+    const variants=[raw,raw.replace(/\s+(County|Parish|Borough|Census Area)$/i,''),raw.replace(/\s+counties?$/i,'')];
+    for(const co of variants){if(!co)continue;const p=COUNTY_CENTROIDS[st+'|'+co];if(p)return {point:p,precision:'county/town centroid'};}
+    const fallback=STATE_CENTROIDS[st];
+    return fallback?{point:fallback,precision:'state/province centroid fallback'}:null;
+  }
+  function genericQueueMarker(r,market,color){
+    const n=r.normalized||{},loc=genericQueueLocation(n);if(!loc)return null;
+    const mw=Number(n.capacity_mw),radius=Number.isFinite(mw)?Math.max(3.5,Math.min(11,Math.sqrt(Math.max(1,mw))*0.11)):4.5;
+    const marker=L.circleMarker(loc.point,{radius:radius,color:color,weight:1.25,fillColor:color,fillOpacity:0.22,opacity:0.78});
+    marker.bindTooltip('<span class="mono">'+escapeHtml(market)+' · '+escapeHtml(String(n.queue_id||'queue'))+' · '+escapeHtml(Number.isFinite(mw)?mw.toLocaleString()+' MW':'MW unavailable')+'</span>',{sticky:true,direction:'top',opacity:0.96});
+    const name=n.project_name||n.queue_id||'Unnamed queue record';
+    const place=(n.county||n.nearest_town_or_county||'')+(n.state?', '+n.state:'');
+    marker.bindPopup('<div style="min-width:270px;max-width:350px;">'+
+      '<p style="font-weight:650;font-size:13px;line-height:1.3;">'+escapeHtml(String(name))+'</p>'+
+      '<p class="mono" style="font-size:10.5px;color:var(--ink-faint);margin-top:3px;">'+escapeHtml(market)+' · '+escapeHtml(String(n.queue_id||'not published'))+'</p>'+
+      '<p style="font-size:11.5px;margin-top:7px;color:var(--ink-soft);">'+escapeHtml(place)+'</p>'+
+      '<div style="height:1px;background:var(--line);margin:8px 0;"></div>'+
+      '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Capacity</td><td style="text-align:right;">'+escapeHtml(Number.isFinite(mw)?mw.toLocaleString(undefined,{maximumFractionDigits:2})+' MW':'Not parsed')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Status</td><td style="text-align:right;">'+escapeHtml(String(n.status||r.status_class||'Not published'))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">POI / line</td><td style="text-align:right;">'+escapeHtml(String(n.poi||n.interconnection_point||n.substation_or_line||n.station_or_line||'Not published'))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Type</td><td style="text-align:right;">'+escapeHtml(String(n.generation_type||n.type_fuel||n.fuel_type||'Not published'))+'</td></tr>'+
+      '</table><p style="margin-top:7px;font-size:10.5px;color:var(--ink-faint);">'+escapeHtml(loc.precision)+'; display geometry only.</p></div>',{maxWidth:360});
+    return marker;
+  }
   function buildProjectMarker(p){
     if(p.lat==null||p.lon==null)return null;
     const radius=p.mw==null?5:Math.max(4,Math.min(14,Math.sqrt(Math.max(1,p.mw))*0.12));
@@ -1729,6 +1766,15 @@ openFacilityFromHash();
     caisoQueueToggle.setAttribute('aria-pressed',showCaisoQueue?'true':'false');
     updateCaisoQueueLayer();
   });
+  const misoQueueToggle=document.getElementById('misoQueueToggle');
+  if(misoQueueToggle)misoQueueToggle.addEventListener('click',function(){showMisoQueue=!showMisoQueue;misoQueueToggle.setAttribute('aria-pressed',showMisoQueue?'true':'false');updateMisoQueueLayer();});
+  const sppQueueToggle=document.getElementById('sppQueueToggle');
+  if(sppQueueToggle)sppQueueToggle.addEventListener('click',function(){showSppQueue=!showSppQueue;sppQueueToggle.setAttribute('aria-pressed',showSppQueue?'true':'false');updateSppQueueLayer();});
+  const nyisoQueueToggle=document.getElementById('nyisoQueueToggle');
+  if(nyisoQueueToggle)nyisoQueueToggle.addEventListener('click',function(){showNyisoQueue=!showNyisoQueue;nyisoQueueToggle.setAttribute('aria-pressed',showNyisoQueue?'true':'false');updateNyisoQueueLayer();});
+  fetch('data/miso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('MISO full queue unavailable');return res.json();}).then(function(payload){misoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateMisoQueueLayer();}).catch(function(err){console.warn(err);});
+  fetch('data/spp_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('SPP full queue unavailable');return res.json();}).then(function(payload){sppQueueRecords=Array.isArray(payload.records)?payload.records:[];updateSppQueueLayer();}).catch(function(err){console.warn(err);});
+  fetch('data/nyiso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('NYISO full queue unavailable');return res.json();}).then(function(payload){nyisoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateNyisoQueueLayer();}).catch(function(err){console.warn(err);});
   fetch('data/caiso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('CAISO complete queue unavailable');return res.json();}).then(function(payload){
     caisoQueueRecords=Array.isArray(payload.records)?payload.records:[];
     updateCaisoQueueLayer();
@@ -1741,6 +1787,9 @@ openFacilityFromHash();
     const cap=document.getElementById('caisoFullQueueCaptured');if(cap)cap.textContent=String(payload.captured_at||'unknown').slice(0,10);
     const st=document.getElementById('caisoFullQueueStatus');if(st)st.textContent='Snapshot loaded from the official CAISO public-queue workbook; active, completed and withdrawn sheets are preserved separately.';
   }).catch(function(err){const st=document.getElementById('caisoFullQueueStatus');if(st)st.textContent='CAISO full-queue snapshot is not available yet; the scheduled GitHub Actions sync will populate it.';console.warn(err);});
+  function updateMisoQueueLayer(){misoQueueCluster.clearLayers();if(!showMisoQueue)return;misoQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'MISO',MISO_QUEUE_COLOR);if(m)misoQueueCluster.addLayer(m);});}
+  function updateSppQueueLayer(){sppQueueCluster.clearLayers();if(!showSppQueue)return;sppQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'SPP',SPP_QUEUE_COLOR);if(m)sppQueueCluster.addLayer(m);});}
+  function updateNyisoQueueLayer(){nyisoQueueCluster.clearLayers();if(!showNyisoQueue)return;nyisoQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'NYISO',NYISO_QUEUE_COLOR);if(m)nyisoQueueCluster.addLayer(m);});}
   function updateMapMarkers(animate){
     otherCluster.clearLayers();bessCluster.clearLayers();flagCluster.clearLayers();
     const pts=[],counts={ambiguous:0,bess:0,other:0,mapped:0,fallback:0,eligible:0};
