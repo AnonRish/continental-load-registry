@@ -1,0 +1,78 @@
+name: Validate Track 3 Evidence Layer
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "build_track3_evidence.py"
+      - "data/track3/**"
+      - "data/track3_evidence_schema.json"
+      - "data/track3_source_stack.json"
+      - "data/external/epoch_ai/site_level_connection_evidence.json"
+      - "data/external/epoch_ai/registry.json"
+      - ".github/workflows/track3_validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Compile Python
+        run: |
+          python -m py_compile build_track3_evidence.py module1_physical_radar.py
+
+      - name: Validate Track 3 JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("data")
+          for p in [
+              root / "track3_evidence_schema.json",
+              root / "track3_source_stack.json",
+              root / "track3" / "site_status.json",
+              root / "track3" / "evidence_records.json",
+              root / "track3" / "research_queue.json",
+              root / "track3" / "summary.json",
+          ]:
+              json.loads(p.read_text(encoding="utf-8"))
+          summary = json.loads((root/"track3"/"summary.json").read_text(encoding="utf-8"))
+          status = json.loads((root/"track3"/"site_status.json").read_text(encoding="utf-8"))
+          evidence = json.loads((root/"track3"/"evidence_records.json").read_text(encoding="utf-8"))
+          queue = json.loads((root/"track3"/"research_queue.json").read_text(encoding="utf-8"))
+          epoch = json.loads((root/"external"/"epoch_ai"/"site_level_connection_evidence.json").read_text(encoding="utf-8"))
+          assert summary["epoch_site_count"] == 93
+          assert len(status["records"]) == 93
+          assert evidence["record_count"] == len(evidence["records"])
+          assert queue["count"] == len(queue["records"])
+          assert summary["pending_grid_connection_research_count"] == queue["count"]
+          assert epoch["record_count"] == 93
+          assert epoch["summary"]["total"] == 93
+          assert epoch["summary"]["evidence_found"] == summary["site_level_evidence_site_count"]
+          print("Track 3 JSON/artifact validation passed.")
+          PY
+
+      - name: Validate inline JavaScript
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+          for i, script in enumerate(scripts, 1):
+              Path(f"/tmp/index-script-{i}.js").write_text(script, encoding="utf-8")
+          print(f"extracted {len(scripts)} inline script blocks")
+          PY
+          for f in /tmp/index-script-*.js; do node --check "$f"; done

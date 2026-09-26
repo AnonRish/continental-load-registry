@@ -38,6 +38,21 @@ URLS = {
     "data_centers_chip_quantities.csv": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
 }
 
+# Additional public compute-accounting and cooling datasets. These remain
+# source-specific snapshots; they are not silently joined into site facts.
+EXTERNAL_URLS = {
+    "ai_chip_owners_cumulative_by_designer.csv": "https://epoch.ai/data/ai_chip_owners_cumulative_by_designer.csv",
+    "ai_chip_owners_quarters_by_chip_type.csv": "https://epoch.ai/data/ai_chip_owners_quarters_by_chip_type.csv",
+    "ai_chip_owners_cumulative_by_chip_type.csv": "https://epoch.ai/data/ai_chip_owners_cumulative_by_chip_type.csv",
+    "ai_chip_users_year_end_by_lab.csv": "https://epoch.ai/data/ai_chip_users_year_end_by_lab.csv",
+    "ai_chip_users_intermediates_by_lab.csv": "https://epoch.ai/data/ai_chip_users_intermediates_by_lab.csv",
+    "ai_chip_sales_chip_types.csv": "https://epoch.ai/data/ai_chip_sales_chip_types.csv",
+    "ai_chip_sales_organizations.csv": "https://epoch.ai/data/ai_chip_sales_organizations.csv",
+    "ai_chip_sales_timelines_by_chip.csv": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+    "data_center_chillers.csv": "https://epoch.ai/data/data_centers/data_center_chillers.csv",
+    "data_center_cooling_towers.csv": "https://epoch.ai/data/data_centers/data_center_cooling_towers.csv",
+}
+
 ALIASES = {
     "name": ["Name"],
     "country": ["Country"],
@@ -303,6 +318,8 @@ def sync() -> None:
         tmp = Path(tmp_s)
         for filename, url in URLS.items():
             download(url, tmp / filename)
+        for filename, url in EXTERNAL_URLS.items():
+            download(url, tmp / filename)
 
         centers = load_csv(tmp / "data_centers.csv")
         timelines = load_csv(tmp / "data_center_timelines.csv")
@@ -312,8 +329,28 @@ def sync() -> None:
         if not centers or not pick(centers[0], ALIASES["name"]):
             raise RuntimeError("Epoch AI data centers dataset has no recognizable Name field")
 
-        for filename in URLS:
+        for filename in {**URLS, **EXTERNAL_URLS}:
             shutil.copy2(tmp / filename, OUT / filename)
+
+        # Mark the cataloged external source snapshots as ingested only after
+        # their bytes have successfully been downloaded and copied.
+        stack_path = ROOT / "data" / "track3_source_stack.json"
+        if stack_path.exists():
+            stack = json.loads(stack_path.read_text(encoding="utf-8"))
+            snapshot_ids = {
+                "epoch-chip-sales": "ai_chip_sales_",
+                "epoch-chip-owners": "ai_chip_owners_",
+                "epoch-chip-users": "ai_chip_users_",
+                "epoch-chillers": "data_center_chillers.csv",
+                "epoch-cooling-towers": "data_center_cooling_towers.csv",
+            }
+            for source in stack.get("sources", []):
+                sid = source.get("id")
+                marker = snapshot_ids.get(sid)
+                if marker and any(name.startswith(marker) or name == marker for name in EXTERNAL_URLS):
+                    source["status"] = "INGESTED_SNAPSHOT"
+                    source["capture_on"] = today
+            stack_path.write_text(json.dumps(stack, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
         timeline_by_center: dict[str, list[dict[str, str]]] = {}
         for row in timelines:
@@ -441,7 +478,8 @@ def sync() -> None:
                        "data_centers_url":URLS["data_centers.csv"],"timelines_url":URLS["data_center_timelines.csv"],
                        "chip_quantities_url":URLS["data_centers_chip_quantities.csv"],
                        "license":"Creative Commons Attribution 4.0",
-                       "raw_sha256": {name: sha256(OUT/name) for name in URLS}},
+                       "raw_sha256": {name: sha256(OUT/name) for name in {**URLS, **EXTERNAL_URLS}},
+                       "external_raw_sha256": {name: sha256(OUT/name) for name in EXTERNAL_URLS}},
             "records": records
         }, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 
@@ -462,7 +500,8 @@ def sync() -> None:
             "outside_registry_geographic_scope_epoch_records": sum(1 for r in records if r["registry_crosswalk_status"] == "outside_registry_geographic_scope"),
             "manual_override_count": len(overrides),
             "site_evidence": evidence_summary,
-            "raw_files": {name: {"url": URLS[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in URLS},
+            "raw_files": {name: {"url": {**URLS, **EXTERNAL_URLS}[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in {**URLS, **EXTERNAL_URLS}},
+            "external_raw_files": {name: {"url": EXTERNAL_URLS[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in EXTERNAL_URLS},
             "method": "Raw Epoch rows preserved; normalized fields joined to latest available timeline and chip records; registry matching is conservative and does not overwrite queue facts."
         }
         (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2)+"\n", encoding="utf-8")
