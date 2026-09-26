@@ -101,7 +101,12 @@ jobs:
           assert urls
           for url in urls:
               assert url.startswith("https://anonrish.github.io/continental-load-registry/")
-          for target in ("index.html", "track3.html", "plan-a.html"):
-              assert target in sitemap
+          expected_urls = {
+              "index.html": "https://anonrish.github.io/continental-load-registry/",
+              "track3.html": "https://anonrish.github.io/continental-load-registry/track3.html",
+              "plan-a.html": "https://anonrish.github.io/continental-load-registry/plan-a.html",
+          }
+          for target, url in expected_urls.items():
+              assert url in urls, (target, url)
           print("PASS: robots.txt and sitemap.xml")
           PY
