@@ -998,6 +998,7 @@ openFacilityFromHash();
   let track3SourceStackById=new Map();
   let track3ObservationTasksBySite=new Map();
   let track3PowerObservationsBySite=new Map();
+  let track3CoolingObservationsBySite=new Map();
 
   function epochText(v){
     if(v===null || v===undefined || v==='') return 'Not published / not retained';
@@ -1116,6 +1117,17 @@ openFacilityFromHash();
       });
       html+='</tbody></table></div>';
       html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">These are aggregate company-reported annual consumption observations, not interval meter readings. Meta states its report metrics are non-audited estimates unless otherwise noted.</p></section>';
+    }
+
+    const coolingObs=track3CoolingObservationsBySite.get(rec.epoch_id)||[];
+    if(coolingObs.length){
+      html+='<section class="mt-7"><h4 class="font-serif-display text-base">Cooling equipment observations</h4>';
+      html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Observed</th><th class="px-3 py-2">Equipment</th><th class="px-3 py-2">Manufacturer</th><th class="px-3 py-2">Model</th><th class="px-3 py-2 text-right">Units</th><th class="px-3 py-2 text-right">Capacity</th><th class="px-3 py-2">Source</th></tr></thead><tbody>';
+      coolingObs.forEach(function(obs){
+        html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(obs.observed_on))+'</td><td class="px-3 py-2">'+escapeHtml(obs.equipment_type||'')+'</td><td class="px-3 py-2">'+escapeHtml(obs.manufacturer||'')+'</td><td class="px-3 py-2">'+escapeHtml(obs.model||'')+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(obs.units))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(obs.capacity))+' '+escapeHtml(obs.capacity_units||'')+'</td><td class="px-3 py-2"><a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(powerObservationSourceUrl(obs))+'">'+escapeHtml((obs.source&&obs.source.source_name)||'Source')+'</a></td></tr>';
+      });
+      html+='</tbody></table></div>';
+      html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">Cooling snapshots are supporting physical-infrastructure evidence. They are not direct thermal observations and do not by themselves establish actual facility load.</p></section>';
     }
 
     const t3Timeline=(canonicalTrack3&&Array.isArray(canonicalTrack3.timeline))?canonicalTrack3.timeline:[];
@@ -1353,16 +1365,19 @@ openFacilityFromHash();
         fetch('data/track3/summary.json?v=1',{cache:'no-store'}),
         fetch('data/track3/site_status.json?v=1',{cache:'no-store'}),
         fetch('data/track3/observation_queue.json?v=1',{cache:'no-store'}),
-        fetch('data/track3/power_observations.json?v=1',{cache:'no-store'})
+        fetch('data/track3/power_observations.json?v=1',{cache:'no-store'}),
+        fetch('data/track3/cooling_observations.json?v=1',{cache:'no-store'})
       ]);
-      if(!responses[0].ok || !responses[1].ok || !responses[2].ok || !responses[3].ok) throw new Error('canonical Track 3 artifact unavailable');
+      if(!responses[0].ok || !responses[1].ok || !responses[2].ok || !responses[3].ok || !responses[4].ok) throw new Error('canonical Track 3 artifact unavailable');
       const summary=await responses[0].json();
       const status=await responses[1].json();
       const observation=await responses[2].json();
       const powerPayload=await responses[3].json();
+      const coolingPayload=await responses[4].json();
       if(!status || !Array.isArray(status.records) || status.records.length!==93) throw new Error('expected 93 Track 3 site records');
       if(!observation || !Array.isArray(observation.tasks) || observation.tasks.length!==651) throw new Error('expected 651 Track 3 observation tasks');
       if(!powerPayload || !Array.isArray(powerPayload.records)) throw new Error('invalid Track 3 power observation artifact');
+      if(!coolingPayload || !Array.isArray(coolingPayload.records)) throw new Error('invalid Track 3 cooling observation artifact');
       track3SiteRecords=status.records;
       track3SiteStatusById=new Map(track3SiteRecords.map(function(x){return [x.epoch_id,x];}));
       track3ObservationTasksBySite=new Map();
@@ -1374,6 +1389,11 @@ openFacilityFromHash();
       powerPayload.records.forEach(function(obs){
         if(!track3PowerObservationsBySite.has(obs.epoch_id)) track3PowerObservationsBySite.set(obs.epoch_id,[]);
         track3PowerObservationsBySite.get(obs.epoch_id).push(obs);
+      });
+      track3CoolingObservationsBySite=new Map();
+      coolingPayload.records.forEach(function(obs){
+        if(!track3CoolingObservationsBySite.has(obs.epoch_id)) track3CoolingObservationsBySite.set(obs.epoch_id,[]);
+        track3CoolingObservationsBySite.get(obs.epoch_id).push(obs);
       });
       const grid=(summary.domain_status_counts&&summary.domain_status_counts.grid_connection)||{};
       const combined=Number(summary.combined_site_level_evidence_site_count||0);
