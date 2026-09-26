@@ -497,11 +497,15 @@ def main() -> int:
         "semantics": "Observation tasks describe missing acquisition work. They do not assert that the underlying physical condition is absent.",
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     with (OUT / "observation_queue.csv").open("w", encoding="utf-8", newline="") as f:
-        headers = ["task_id", "epoch_id", "site_name", "country", "state_province", "domain", "current_state", "priority", "action", "required_fields", "next_action_from_site"]
-        writer = csv.DictWriter(f, fieldnames=headers)
+        base_headers = ["task_id", "epoch_id", "site_name", "country", "state_province", "domain", "current_state", "priority", "action", "required_fields", "next_action_from_site"]
+        extra_headers = sorted({key for task in observation_queue for key in task} - set(base_headers))
+        headers = base_headers + extra_headers
+        writer = csv.DictWriter(f, fieldnames=headers, extrasaction="ignore")
         writer.writeheader()
         for task in observation_queue:
-            writer.writerow({**task, "required_fields": "; ".join(task["required_fields"])})
+            row = {key: task.get(key) for key in headers}
+            row["required_fields"] = "; ".join(task["required_fields"])
+            writer.writerow(row)
 
 
     external_audit = []
