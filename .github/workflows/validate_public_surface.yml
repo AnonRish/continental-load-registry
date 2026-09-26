@@ -44,6 +44,11 @@ on:
       - "data/epoch_connection_research_targets.csv"
       - "data/epoch_site_evidence_records.json"
       - "data/epoch_site_evidence_records.csv"
+      - "sync_caiso_public_queue.py"
+      - "sync_miso_public_queue.py"
+      - "sync_spp_public_queue.py"
+      - "sync_nyiso_public_queue.py"
+      - "sync_pjm_cycle_public_queue.py"
       - ".github/workflows/validate_public_surface.yml"
   pull_request:
     paths:
@@ -219,6 +224,14 @@ jobs:
           assert history["records"][7]["projects"] == 48 and history["records"][7]["capacity_mw"] == 14421
           print("PASS: Plan A / Track 3 / expanded market-universe contracts")
           PY
+      - name: Test complete queue parser scripts
+        run: |
+          python sync_caiso_public_queue.py --selftest
+          python sync_miso_public_queue.py --selftest
+          python sync_spp_public_queue.py --selftest
+          python sync_nyiso_public_queue.py --selftest
+          python sync_pjm_cycle_public_queue.py --selftest
+
       - name: Validate inline JavaScript
         run: |
           python - <<'PY'
