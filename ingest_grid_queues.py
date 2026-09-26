@@ -1622,6 +1622,27 @@ def run_selftest() -> bool:
 
     checks: list[tuple[str, bool]] = []
 
+    checks.append((
+        "PJM short status 'EP' maps to Engineering Review",
+        classify_status("EP") == "Engineering Review",
+    ))
+    checks.append((
+        "PJM short status 'UC' maps to IA in Progress",
+        classify_status("UC") == "IA in Progress",
+    ))
+    checks.append((
+        "PJM live status 'Engineering and Procurement' maps to Engineering Review",
+        classify_status("Engineering and Procurement") == "Engineering Review",
+    ))
+    checks.append((
+        "PJM live status 'Under Construction' maps to IA in Progress",
+        classify_status("Under Construction") == "IA in Progress",
+    ))
+    checks.append((
+        "PJM live status 'Pending Termination' remains excluded",
+        classify_status("Pending Termination") is None,
+    ))
+
     # Real-data finding (see classify_load_type / _accept_keyword_hits
     # docstrings): ERCOT's own technology-code description for Steam
     # Turbine contains the literal substring "other" as ordinary English
