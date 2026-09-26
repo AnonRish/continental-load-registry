@@ -134,7 +134,7 @@
 
 <div id="facilityModal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4" aria-hidden="true">
   <div id="facilityModalBackdrop" class="absolute inset-0" style="background:rgba(12,18,28,.58);backdrop-filter:blur(3px);"></div>
-  <section role="dialog" aria-modal="true" aria-labelledby="facilityModalTitle" class="relative w-full max-w-2xl max-h-[88vh] overflow-auto panel rounded-xl p-5 sm:p-6 shadow-2xl">
+  <section role="dialog" aria-modal="true" aria-labelledby="facilityModalTitle" class="relative w-full max-w-5xl max-h-[92vh] overflow-auto panel rounded-xl p-5 sm:p-6 shadow-2xl">
     <div class="flex items-start justify-between gap-4">
       <div>
         <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Facility record</p>
@@ -420,7 +420,7 @@ function render(){
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   document.getElementById('pageIndicator').textContent = `Page ${currentPage+1} of ${totalPages} \u00b7 ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} rows`;
-  document.getElementById('resultCount').textContent = `Showing ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} facilities · every row has an Open details view`;
+  document.getElementById('resultCount').textContent = `Showing ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} facilities · every row has a research record`;
   document.getElementById('prevPage').disabled = currentPage === 0;
   document.getElementById('nextPage').disabled = currentPage >= totalPages - 1;
 }
@@ -433,30 +433,120 @@ document.getElementById('nextPage').addEventListener('click', () => { currentPag
 
 render();
 
-function openFacility(r){
+const researchRecordCache = new Map();
+let facilityOpenToken = 0;
+
+function humanFieldName(key){
+  return key.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+function recordValue(value){
+  if(value === null || value === undefined || value === '') return 'Not published / not retained';
+  if(typeof value === 'boolean') return value ? 'Yes' : 'No';
+  if(typeof value === 'number'){
+    if(!Number.isFinite(value)) return String(value);
+    if(Math.abs(value) >= 1e20) return value.toExponential(4);
+    return value.toLocaleString(undefined,{maximumFractionDigits:6});
+  }
+  return String(value);
+}
+function normalizeLookupPayload(payload){
+  if(!payload || !Array.isArray(payload.records)) throw new Error('Invalid research-record file');
+  payload.records.forEach(rec => researchRecordCache.set(rec.record_id, rec));
+  return payload;
+}
+async function loadResearchRecord(r){
+  if(researchRecordCache.has(r.id)) return researchRecordCache.get(r.id);
+  const response = await fetch('data/facility_records/'+encodeURIComponent(r.rto)+'.json',{cache:'no-store'});
+  if(!response.ok) throw new Error('Research record file unavailable ('+response.status+')');
+  const payload = normalizeLookupPayload(await response.json());
+  const rec = researchRecordCache.get(r.id);
+  if(!rec) throw new Error('Facility record not found');
+  return rec;
+}
+function renderResearchRecord(r, rec, warning){
+  const n=rec?.normalized || {
+    queue_id:r.id,rto_region:r.rto,state_province:r.st,county_or_zone:r.co,poi_substation:r.poi,
+    capacity_mw:r.mw,projected_date:null,status:r.status,project_name:r.proj,developer_entity:r.dev,
+    raw_fuel_technology:null,entity_category:r.ent,matched_public_entity:null,entity_match_score:null,
+    load_type_tier:r.tier,transmission_owner:null,in_known_high_density_zone:null,
+    project_name_keyword_hits:null,reached_ia_stage:null,gpus_estimate_low:null,
+    gpus_estimate_reference:r.gpu,gpus_estimate_high:null,run_flops_90d_low:null,
+    run_flops_90d_reference:r.flops,run_flops_90d_high:null,clears_1e26_flops_all_scenarios:null,
+    review_priority:r.flag,review_reason:null
+  };
+  const raw=rec?.raw || {availability:'not_loaded',source_columns:[],values:{}};
+  const src=rec?.source || {};
+  const provenance=Array.isArray(rec?.provenance)?rec.provenance:[];
+  const kind=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'Confirmed BESS':(r.flag?'Ambiguous / unresolved':'Registry record');
+  const badge=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'tag-storage':(r.flag?'tag-flag':'tag-neutral');
+  let html='<div class="flex flex-wrap gap-2 mb-5">';
+  html+='<span class="inline-block px-2.5 py-1 rounded text-[11px] '+badge+'">'+escapeHtml(kind)+'</span>';
+  html+='<span class="map-status-pill">'+escapeHtml(r.status)+'</span>';
+  html+='<span class="tag-neutral inline-block px-2.5 py-1 rounded text-[11px]">'+(raw.availability==='retained_csv_row'?'Original raw row retained':'Raw source row not retained')+'</span>';
+  html+='</div>';
+  if(warning) html+='<div class="mb-5 p-3 rounded-lg" style="background:var(--amber-soft);border:1px solid var(--amber-line);"><p class="text-xs" style="color:var(--ink-soft);"><strong style="color:var(--ink);">Research-record warning:</strong> '+escapeHtml(warning)+'</p></div>';
+
+  const coreKeys=['queue_id','rto_region','state_province','county_or_zone','poi_substation','capacity_mw','projected_date','status','project_name','developer_entity','raw_fuel_technology','entity_category','load_type_tier','review_priority','review_reason'];
+  html+='<section><div class="flex items-end justify-between gap-4"><h3 class="font-serif-display text-base">Normalized record</h3><p class="text-[11px]" style="color:var(--ink-faint);">'+(rec?.available_normalized_fields?.length||0)+' available fields</p></div>';
+  html+='<dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-3">';
+  coreKeys.forEach(k=>{html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(humanFieldName(k))+'</dt><dd class="text-sm mt-1 break-words" style="color:var(--ink);">'+escapeHtml(recordValue(n[k]))+'</dd></div>';});
+  html+='</dl></section>';
+
+  const enrichKeys=['matched_public_entity','entity_match_score','transmission_owner','in_known_high_density_zone','project_name_keyword_hits','reached_ia_stage','gpus_estimate_low','gpus_estimate_reference','gpus_estimate_high','run_flops_90d_low','run_flops_90d_reference','run_flops_90d_high','clears_1e26_flops_all_scenarios'];
+  html+='<section class="mt-7"><h3 class="font-serif-display text-base">Enrichment &amp; computed fields</h3><dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-3">';
+  enrichKeys.forEach(k=>{html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(humanFieldName(k))+'</dt><dd class="text-sm mt-1 break-words" style="color:var(--ink);">'+escapeHtml(recordValue(n[k]))+'</dd></div>';});
+  html+='</dl><p class="text-xs mt-3" style="color:var(--ink-faint);">GPU/FLOPs fields are estimates from requested interconnection capacity, not measurements of a facility’s actual hardware or load.</p></section>';
+
+  html+='<section class="mt-7"><div class="flex items-center justify-between gap-4"><h3 class="font-serif-display text-base">Original source values</h3><span class="mono text-[10px]" style="color:var(--ink-faint);">'+escapeHtml(raw.availability==='retained_csv_row'?'retained':'not retained')+'</span></div>';
+  if(raw.availability==='retained_csv_row'){
+    html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Source column</th><th class="px-3 py-2">Original value</th></tr></thead><tbody>';
+    Object.entries(raw.values||{}).forEach(([k,v])=>{html+='<tr><td class="px-3 py-2 mono">'+escapeHtml(k)+'</td><td class="px-3 py-2 whitespace-pre-wrap break-words">'+escapeHtml(recordValue(v))+'</td></tr>';});
+    html+='</tbody></table></div>';
+  } else {
+    html+='<div class="mt-3 p-3 rounded-lg" style="background:var(--panel);border:1px solid var(--line);"><p class="text-sm" style="color:var(--ink-soft);">The exact source row was not retained for this RTO in the repository. The record shows the normalized values that are publicly published in the current registry; it does not fabricate an “original raw” value.</p></div>';
+  }
+  html+='</section>';
+
+  html+='<section class="mt-7"><h3 class="font-serif-display text-base">Source &amp; capture</h3><dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-3">';
+  [['Publisher',src.publisher],['Source',src.source_name],['Capture date',src.capture_date],['Capture precision',src.capture_precision],['Capture basis',src.capture_basis],['Source file',src.source_file],['Source SHA-256',src.source_sha256],['Scope',src.scope]].forEach(f=>{if(f[1])html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(f[0])+'</dt><dd class="text-sm mt-1 break-words" style="color:var(--ink);">'+escapeHtml(String(f[1]))+'</dd></div>';});
+  html+='</dl><div class="flex flex-wrap gap-2 mt-4">';
+  if(src.official_source_url) html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(src.official_source_url)+'">Open official source</a>';
+  if(src.publisher_page_url) html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(src.publisher_page_url)+'">Open publisher page</a>';
+  html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="data/facility_records/'+encodeURIComponent(r.rto)+'.json">Open RTO research-record JSON</a></div>';
+  if(src.notes) html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">'+escapeHtml(src.notes)+'</p>';
+  html+='</section>';
+
+  html+='<section class="mt-7"><h3 class="font-serif-display text-base">Provenance trail</h3><ol class="mt-3 space-y-3">';
+  provenance.forEach((p,idx)=>{html+='<li class="panel rounded-lg p-3"><div class="flex items-center gap-2"><span class="mono text-[10px]" style="color:var(--ink-faint);">'+String(idx+1).padStart(2,'0')+'</span><strong class="text-sm">'+escapeHtml(p.stage||'step')+'</strong></div><p class="text-xs mt-1" style="color:var(--ink-soft);">'+escapeHtml(p.description||'')+'</p>'+ (p.script?'<p class="mono text-[10px] mt-2" style="color:var(--ink-faint);">'+escapeHtml(p.script)+'</p>':'') + (p.official_source_url?'<a class="text-[11px] link-underline mt-2 inline-block" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(p.official_source_url)+'">Official source</a>':'') + '</li>';});
+  html+='</ol></section>';
+
+  html+='<div class="mt-6 p-3 rounded-lg" style="background:var(--amber-soft);border:1px solid var(--amber-line);"><p class="text-xs leading-relaxed" style="color:var(--ink-soft);"><strong style="color:var(--ink);">Research-record limitation:</strong> a source can omit applicants, substations, dates, or other fields. Missing fields remain explicitly marked rather than being inferred. Geographic display elsewhere on the site may fall back to a state/province centroid; that is not a facility address.</p></div>';
+  return html;
+}
+
+async function openFacility(r){
   const modal=document.getElementById('facilityModal'); if(!modal)return;
   const kind=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'Confirmed BESS':(r.flag?'Ambiguous / unresolved':'Registry record');
   const badge=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'tag-storage':(r.flag?'tag-flag':'tag-neutral');
-  const fields=[
-    ['Queue ID',r.id],['RTO / ISO',r.rto],['State / province',r.st],['County / zone',r.co],
-    ['Point of interconnection',r.poi],['Requested capacity',r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1})+' MW'],
-    ['Queue status',r.status],['Project name',r.proj],['Developer / applicant',r.dev],['Entity classification',r.ent],
-    ['Registry tier',r.tier],['Estimated GPUs (reference)',r.gpu.toLocaleString()],
-    ['90-day FLOPs (reference)',fmtFlops(r.flops).replace('<sup>','×10^').replace('</sup>','')]
-  ];
+  const token=++facilityOpenToken;
   document.getElementById('facilityModalTitle').textContent=r.proj||'(unnamed project)';
   document.getElementById('facilityModalSubtitle').textContent=r.id+' · '+r.rto;
-  let html='<div class="flex flex-wrap gap-2 mb-4"><span class="inline-block px-2.5 py-1 rounded text-[11px] '+badge+'">'+escapeHtml(kind)+'</span><span class="map-status-pill">'+escapeHtml(r.status)+'</span></div>';
-  html+='<dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3">';
-  fields.forEach(function(f){html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(f[0])+'</dt><dd class="text-sm mt-1 break-words" style="color:var(--ink);">'+escapeHtml(String(f[1]||'Not published / not available in this source'))+'</dd></div>';});
-  html+='</dl><div class="mt-5 p-3 rounded-lg" style="background:var(--amber-soft);border:1px solid var(--amber-line);"><p class="text-xs leading-relaxed" style="color:var(--ink-soft);"><strong style="color:var(--ink);">Location precision:</strong> county/zone centroid where available; otherwise state/province centroid because the public location string could not be matched. This is not a facility address.</p></div>';
-  document.getElementById('facilityModalBody').innerHTML=html;
+  document.getElementById('facilityModalBody').innerHTML='<div class="flex flex-wrap gap-2 mb-5"><span class="inline-block px-2.5 py-1 rounded text-[11px] '+badge+'">'+escapeHtml(kind)+'</span><span class="map-status-pill">'+escapeHtml(r.status)+'</span></div><div class="p-4 panel rounded-lg text-sm" style="color:var(--ink-soft);">Loading the full research record…</div>';
   modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
   history.replaceState(null,'','#facility='+encodeURIComponent(r.id));
   document.getElementById('facilityModalClose').focus();
+  try{
+    const rec=await loadResearchRecord(r);
+    if(token!==facilityOpenToken)return;
+    document.getElementById('facilityModalBody').innerHTML=renderResearchRecord(r,rec,null);
+  }catch(err){
+    if(token!==facilityOpenToken)return;
+    document.getElementById('facilityModalBody').innerHTML=renderResearchRecord(r,null,err.message||'Could not load the full research record.');
+  }
 }
 function closeFacility(){
   const modal=document.getElementById('facilityModal'); if(!modal)return;
+  facilityOpenToken++;
   modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';
   if(location.hash.indexOf('#facility=')===0)history.replaceState(null,'',location.pathname+location.search);
 }
