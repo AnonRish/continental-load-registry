@@ -1,7 +1,7 @@
 # Continental Large-Load Interconnection & Telemetry Registry
 
-**Version 2.2** -- adds the automated monthly refresh and the ambiguous-facility
-investigation engine on top of the v2.0 nine-source registry.
+**Version 2.3** -- adds per-facility research records, an official source catalog,
+and automated regeneration of those records during refresh.
 
 Open-source ETL pipeline and public dashboard tracking large (>=100 MW)
 bulk-power interconnection requests across nine RTOs/ISOs -- PJM, ERCOT,
@@ -29,6 +29,18 @@ aimed at surfacing large requests that lack a confirmed public operator.
   replaced, so one source can be refreshed without re-running the other
   eight, and re-running it is idempotent. `--dry-run` prints the
   before/after row and GW counts without writing.
+- `build_facility_records.py` -- turns each published facility into a
+  research-record artifact with the full union of normalized fields, retained
+  ingest-level source fields when available, source/capture metadata, official
+  links, and a source -> raw extract -> normalization -> enrichment ->
+  publication provenance trail. `--check` verifies that every published
+  facility has exactly one research record.
+- `data/source_manifest.json` -- machine-readable official source catalog,
+  including publisher, source URL, capture date/precision, scope, and source
+  snapshot hashes where a source snapshot was retained by the build.
+- `data/facility_records/` -- one JSON record set per RTO plus `index.json`.
+  The public dashboard loads the relevant RTO file when a facility's Details
+  view is opened.
 - `index.html` -- the public dashboard. Single-file, Tailwind (CDN) +
   vanilla JS, no build step. The registry table's data is embedded
   directly in the file (by `embed_registry_data.py`), not fetched at
@@ -52,136 +64,85 @@ aimed at surfacing large requests that lack a confirmed public operator.
   `ground_truth_overrides.example.json` (a complete, fictional entry) and
   `ambiguous_facilities_dossier.md` (generated from this build's data with
   `--input data/computational_load_estimates_new5.csv`).
-- `data/` -- the five most recently added sources' outputs
-  (`registry_raw_new5.csv`, `computational_load_estimates_new5.csv`) and
-  `SOURCES.md` (URLs, capture time, SHA-256 of each parsed file). The raw
-  captures themselves are not bundled. The monthly workflow also writes
-  `registry_raw.csv` and `computational_load_estimates.csv` here.
+- `data/` -- the retained ingest outputs, source manifest, per-RTO research
+  records, historical snapshot, and `SOURCES.md`. The publisher's original
+  source files are not bundled; where a source snapshot was preserved for the
+  build, its SHA-256 is recorded.
 - `requirements.txt` (unchanged: the 2.1 scripts use only the standard library), `LICENSE` (Apache 2.0).
 
 ## Current data coverage -- read this before citing a number from the site
 
-The dashboard reflects **all nine sources**: 1,802 facilities, 420.2 GW. (That
-is the v2.0 snapshot and the table below is static text; once the monthly
-workflow has run, the dashboard's own figures -- filled in from its embedded
-data -- are the current ones.)
+The published dashboard currently contains **1,558 facilities and about
+361.9 GW** across nine organized markets. The live GitHub Pages site is the
+publication surface; the exact total is calculated from the embedded
+`REGISTRY_DATA` array at page load.
 
 | Source | Rows | GW | Origin | Read this before citing it |
 |---|---:|---:|---|---|
-| PJM | 281 | 66.0 | queue export, Aug 2026 | unchanged |
-| ERCOT | 714 | 154.8 | queue export, Aug 2026 | unchanged |
-| SPP | 139 | 30.5 | `GenerateActiveCSV`, Sept 2026 | unchanged; no applicant name |
-| IESO | 30 | 10.0 | `applicationstatusdata.json`, Sept 2026 | unchanged |
-| MISO | 404 | 81.5 | `/api/giqueue/getprojects` JSON, 2026-09-19 | 83 live requests (35.9 GW) **excluded**: no state published |
+| PJM | 37 | 7.6 | live queue export, 2026-09-26 | current accepted refresh |
+| ERCOT | 714 | 154.8 | live GIS Report, 2026-09-26 | registry uses the GIS/interconnection product; not a complete per-project large-load register |
+| SPP | 139 | 30.5 | GI active-request listing, Sept 2026 | applicant name is not published in the retained build |
+| IESO | 30 | 10.0 | application status listing, Sept 2026 | exact capture time was not retained |
+| MISO | 404 | 81.5 | GI Queue JSON, 2026-09-19 | 83 live >=100 MW requests (35.9 GW) lacked a published state and were excluded |
 | CAISO | 63 | 23.1 | Cluster 15 request workbook, 2026-09-19 | **Cluster 15 only -- not CAISO's whole queue** |
-| NYISO | 105 | 25.3 | queue workbook, 2026-09-19 | includes its Load Projects sheet (38 loads, 13.5 GW) |
-| ISO-NE | 19 | 4.9 | IRTT public queue page, 2026-09-19 | no study stage; 2 NY-sited duplicates excluded |
-| AESO | 47 | 24.2 | Connection Project List (Sept 2026), 2026-09-19 | 30 loads (20.4 GW); 27 of 28 data loads have no date |
+| NYISO | 105 | 25.3 | interconnection queue workbook, 2026-09-19 | includes the Load Projects sheet |
+| ISO-NE | 19 | 4.9 | IRTT public queue, 2026-09-19 | study stage is not published in the retained table |
+| AESO | 47 | 24.2 | September 2026 Connection Project List | includes Data Load / Industrial Load rows |
 
-PJM, ERCOT, SPP, and IESO are as they were in the previous build (the
-SPP/IESO note in that build -- fetched from the live endpoint outside the
-script and parsed by the same code -- still applies). MISO, CAISO, NYISO,
-ISO-NE, and AESO were parsed from five raw files captured 2026-09-19
-(`data/SOURCES.md`), and are the first sources written against real files
-rather than documentation. `--miso-file` / `--caiso-file` / `--nyiso-file` /
-`--isone-file` / `--aeso-file` are the tested path; the `fetch_*_bytes()`
-helpers behind them are plain GETs of the same URLs that have **not** been
-run from inside the script (the environment that wrote them cannot reach
-those hosts).
+### Facility research records
 
-What the new sources do and do not tell you:
+Every row visible in the dashboard has a corresponding JSON research record
+under `data/facility_records/`. The record schema is deliberately broader than
+the table display and includes the union of fields available from the registry
+and enrichment pipeline:
 
-1. **CAISO is Cluster 15 only.** The file is the Cluster 15 request list (86
-   live requests). Earlier clusters and serial projects still in CAISO's
-   queue are not in it. CAISO's 63 rows are a floor, not its queue; the
-   whole-queue workbook is the next thing to add.
-2. **MISO withholds detail on its newest requests.** All of DPP-2026, plus a
-   few others, publish no state, county, POI, or technology. 83 live
-   requests of >=100 MW (35.9 GW) have no state and fail the registry's
-   requirement that every row carry one; they are excluded, and the ingest
-   log says so (`schema_rejected=83` plus a WARNING with the MW), rather
-   than a state being guessed from the transmission owner. 36 more (8.6 GW)
-   state a location but no technology and are kept, in the ambiguous tier.
-   If you would rather show the 83 with an "unknown" state, that is a change
-   to the state validator, not to the adapter.
-3. **Only NYISO names the applicant** (of these five). MISO, CAISO, ISO-NE,
-   and AESO publish none, so "Developer Not Disclosed" on those rows is a
-   property of the source, not a finding about the developer.
-4. **NYISO and AESO carry load requests, not just generator-queue rows.**
-   NYISO's Load Projects sheet (named developers, peak MW, an End-Use code
-   such as `DAT-AI`) and AESO's `Data Load` / `Industrial Load` rows are
-   loads. The End-Use is carried into `raw_fuel_technology` (`Load - Data
-   Center (AI)`, `Load - Manufacturing (Microchip Fabrication)`), so a chip
-   fab and an AI data center are not the same line. Non-data-center loads are
-   kept -- "industrial" and "large load" are on the spec's accept list -- but
-   labeled as what NYISO says they are.
-5. **ISO-NE:** capacity is `Net MW`, not `Summer MW`, because ISO-NE lists
-   capacity-rights-only requests (Net MW 0, Summer MW hundreds) that duplicate
-   another queue position. Two requests sited in New York that appear only
-   for capacity rights (QP 1595 and QP 1596) are the same projects as NYISO's
-   C24-148 and C24-304-004 and are excluded so 450 MW is not counted twice.
-6. **Status mapping is informed judgment, not a literal translation**, and is
-   documented at each mapping (`derive_miso_status`, `derive_nyiso_status`,
-   `derive_aeso_status`): e.g. MISO `Done` with post-GIA work not yet
-   complete, NYISO 10-12 (through *Under Construction*), and AESO stages 4-5
-   all land in "IA in Progress", the most advanced pre-operational bucket,
-   the same call the SPP and IESO adapters already make.
+`queue_id`, `rto_region`, `state_province`, `county_or_zone`,
+`poi_substation`, `capacity_mw`, `projected_date`, `status`, `project_name`,
+`developer_entity`, `raw_fuel_technology`, `entity_category`,
+`matched_public_entity`, `entity_match_score`, `load_type_tier`,
+`transmission_owner`, `in_known_high_density_zone`,
+`project_name_keyword_hits`, `reached_ia_stage`, low/reference/high GPU
+estimates, low/reference/high 90-day FLOPs estimates,
+`clears_1e26_flops_all_scenarios`, `review_priority`, and `review_reason`.
 
-With all nine sources, 142 facilities (54.3 GW) land in the genuinely
-ambiguous tier -- unresolved developer, no storage signal -- versus 38
-(11.8 GW) with the first four. 104 of the 142 come from the new sources:
-NYISO's loads (38, 13.5 GW), AESO's loads (30, 20.4 GW), and MISO's
-unclassified rows (36, 8.6 GW). That is stated loads and undisclosed
-technology, not evidence about any specific facility; see the dashboard's
-Methodology section for what the tier does and doesn't mean.
+The research record also contains:
 
-Two of the location columns are not municipalities. For IESO the `county`
-column holds the IESO electrical zone (`Essa`, `West`, `Toronto`, `Southwest`,
-`East`, `Northeast`); `Essa` is one of IESO's ten zones, not the Township of
-Essa. For AESO it holds the planning area, a hub named for a town. Searching
-either as a place name produces confident but wrong answers, and
-`investigate_ambiguous_loads.py` deliberately does not.
+- **Retained source-field extract:** when the repository has a raw-field CSV
+  row, the record preserves those source columns and their values exactly as
+  represented in that retained CSV.
+- **Source and capture metadata:** publisher, official source URL, optional
+  publisher page, capture date and precision, source scope, and snapshot hash
+  where one exists.
+- **Provenance trail:** source -> retained extract -> `ingest_grid_queues.py`
+  normalization -> `compute_anomaly_detector.py` enrichment -> dashboard /
+  research-record publication.
+- **Explicit missingness:** a field that was not published or whose original
+  source bytes were not retained stays null / unavailable. The builder never
+  reconstructs a normalized value and labels it as an original publisher
+  value.
 
-"Continental" in this repo's name now spans all nine organized markets, but
-not utilities outside them.
+This distinction matters. **1,389 of the 1,558 records currently have a
+retained ingest-level source-field row** in the repository (PJM, ERCOT, MISO,
+CAISO, NYISO, ISO-NE, and AESO). **169 records (SPP + IESO) do not have the
+original source row retained.** The per-record source metadata still links to
+the relevant official publisher source.
 
-Bugs found by running real data through the code, fixed, and covered by new
-self-test checks (the earlier build's two parsing bugs are described in
-`ingest_grid_queues.py`'s docstring and the `_clean_cell` / header-detection
-comments):
+The current committed enriched CSV covers **751 records (PJM + ERCOT)**.
+Other RTO records still receive the complete normalized schema, but enrichment
+fields that were not retained for that source are left unavailable; the
+low/high compute-range fields are recomputed from normalized MW using the
+documented scenario constants and marked in the record provenance.
 
-- `titlecase_county` turned real county names into `MacOn`, `MacOmb`,
-  `MacOupin`, `MacKinac` (a `MacXxx` rule that never matched a real county)
-  and flattened `DeKalb` / `LaSalle` / `DuPage`. **One row already in the
-  published table was affected -- PJM `C01-2046`, IL, `MacOn` -- and is
-  corrected to `Macon` in this build.** It also now capitalizes both halves
-  of AESO's `Strathmore/Blackie`-style planning areas.
-- The shared generation-technology reject list missed `Diesel`,
-  `Waste Heat Recovery`, and `High Voltage DC` (real MISO values), which fell
-  through the accept-unclassified default; a separate additive layer now
-  rejects them for the five new sources only, so PJM/ERCOT/SPP/IESO
-  filtering behaves as before.
-- The state map covered only the PJM/ERCOT/SPP footprint; NYISO writes
-  `New York` in full on a row, which would have dropped it.
-- NYISO cells carry non-breaking spaces (`TransGrid\xa0Energy\xa0LLC`), so a
-  search for a name with a plain space would never match; text cells are now
-  normalized, and one MISO POI with a UTF-8-as-cp1252 en dash is repaired.
-- `classify_status("Inactive")` returns "Active" (it matches the substring
-  "ACTIVE"). The five new adapters use their own status classifiers and do
-  not touch it; the four earlier sources' raw files were not available for
-  this update, so whether any of them contains an "Inactive" status was not
-  checked. Noted here, not changed.
+To verify the research-record layer independently:
 
-Found while building 2.1 (documented, not changed):
+```bash
+python build_facility_records.py --check
+```
 
-- `compute_anomaly_detector.py` raises `KeyError: 'review_priority'` when its
-  input CSV has a header but no rows (for example when every source is filtered
-  out). The monthly workflow checks for an empty CSV first and stops with a
-  readable message instead.
-- `ingest_grid_queues.py` exits 0 when some sources fail and others succeed (it
-  exits 1 only if every source fails), and its output simply lacks the failed
-  RTOs. That is why the workflow gates each RTO with `guard_registry_refresh.py`
-  instead of trusting the exit code.
+The monthly refresh runs this same check after embedding the registry, so the
+record count must continue to match the published dashboard before the commit
+step.
+
 
 ## Regulatory filings section
 
