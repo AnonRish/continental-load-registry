@@ -258,6 +258,38 @@
     </div>
   </section>
 
+  <!-- ============ DATA UNIVERSE STATUS ============ -->
+  <section id="dataUniverseStatus" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Coverage accounting</p>
+        <h2 class="font-serif-display text-xl mt-1">Data-universe completion status</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">This table separates actual project extraction from aggregate or process-only evidence. “Not public” means the operator has not exposed the per-project field needed for a defensible row; it does not mean the projects do not exist.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/market_universe_manifest.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open machine-readable manifest</a>
+        <a href="data/large_load_scope.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open scope accounting</a>
+      </div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[980px]">
+        <thead><tr><th class="px-3 py-2 text-left">Market / source family</th><th class="px-3 py-2 text-left">Current state</th><th class="px-3 py-2 text-right">Project records</th><th class="px-3 py-2 text-right">Aggregate / historical</th><th class="px-3 py-2 text-left">Public-data limit</th></tr></thead>
+        <tbody>
+          <tr><td class="px-3 py-2">CAISO</td><td class="px-3 py-2">Historical clusters + current C15</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">435 historical + C15 subset</td><td class="px-3 py-2">Every historical cluster workbook is not yet ingested row-by-row.</td></tr>
+          <tr><td class="px-3 py-2">MISO</td><td class="px-3 py-2">Core + 83 excluded requests</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">83 / 35.9 GW</td><td class="px-3 py-2">Captured public response lacks required site-location fields.</td></tr>
+          <tr><td class="px-3 py-2">PJM</td><td class="px-3 py-2">Core + service history + LAS</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">81 / 13.6 GW Cycle 1 + historical submissions</td><td class="px-3 py-2">Public Large Load Registry is not yet a complete per-project public load table.</td></tr>
+          <tr><td class="px-3 py-2">ERCOT</td><td class="px-3 py-2">Core + Batch Zero + pipeline</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">410.6 GW aggregate pipeline</td><td class="px-3 py-2">Completed RIOO verification responses are not a complete public table.</td></tr>
+          <tr><td class="px-3 py-2">SPP</td><td class="px-3 py-2">Core + HILL/HILLGA process</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">Process/source evidence</td><td class="px-3 py-2">No complete public customer-level HILL list.</td></tr>
+          <tr><td class="px-3 py-2">NYISO</td><td class="px-3 py-2">Named load crosswalk + Gold Book</td><td class="px-3 py-2 text-right">21</td><td class="px-3 py-2 text-right">&gt;11.9 GW regulatory aggregate</td><td class="px-3 py-2">Not every current load request is site-matched.</td></tr>
+          <tr><td class="px-3 py-2">ISO-NE</td><td class="px-3 py-2">Forecast records + study source</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Full study/service-stage ladder is not public.</td></tr>
+          <tr><td class="px-3 py-2">AESO</td><td class="px-3 py-2">All 28 Data Load rows named</td><td class="px-3 py-2 text-right">28</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Commercial customer/proponent remains undisclosed where omitted.</td></tr>
+          <tr><td class="px-3 py-2">IESO / Ontario</td><td class="px-3 py-2">Load applications + CCIM context</td><td class="px-3 py-2 text-right">6</td><td class="px-3 py-2 text-right">2,074 application universe</td><td class="px-3 py-2">Detailed technical records can be confidential.</td></tr>
+          <tr><td class="px-3 py-2">Outside organized markets</td><td class="px-3 py-2">Utility/regulator project layer</td><td class="px-3 py-2 text-right">142</td><td class="px-3 py-2 text-right">47 supplemental units</td><td class="px-3 py-2">Utility disclosures and overlaps vary by provider.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
