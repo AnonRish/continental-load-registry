@@ -58,6 +58,11 @@ def main() -> int:
     if summary.get("source_stack_count") != len(source_stack.get("sources", [])):
         raise SystemExit("FAIL: summary source_stack_count does not match catalog")
     for rec in sites:
+        grid_state = (next((x.get("state_province") for x in crosswalk["records"] if x.get("epoch_id") == rec.get("epoch_id")), "") or "").strip()
+        if grid_state and rec.get("state_province") != grid_state:
+            raise SystemExit(f"FAIL: {rec.get("epoch_id")} state_province does not match curated crosswalk state")
+
+    for rec in sites:
         state = rec.get("domains", {}).get("grid_connection", {}).get("status")
         if state not in ALLOWED:
             raise SystemExit(f"FAIL: invalid grid_connection state on {rec.get("epoch_id")}: {state}")

@@ -279,7 +279,10 @@ def main() -> int:
             "epoch_id": rec["epoch_id"],
             "site_name": rec.get("normalized", {}).get("name"),
             "country": rec.get("normalized", {}).get("country"),
-            "state_province": rec.get("normalized", {}).get("region_inferred_from_address"),
+            "state_province": (rec.get("grid_crosswalk") or {}).get("state_province")
+            or rec.get("normalized", {}).get("region_inferred_from_address"),
+            "state_province_source": "grid_crosswalk" if (rec.get("grid_crosswalk") or {}).get("state_province") else "epoch_address_inference",
+            "epoch_region_inferred_from_address": rec.get("normalized", {}).get("region_inferred_from_address"),
             "current_it_power_mw": rec.get("normalized", {}).get("current_power_mw"),
             "current_h100_equivalents": rec.get("normalized", {}).get("current_h100_equivalents"),
             "domains": domains,
