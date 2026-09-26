@@ -210,8 +210,8 @@ step.
 - `BIS_Rulemaking_Petition_5USC553e_Computational_Load_CEII_Protocol.pdf`
 
 The links are live (`available: true` in the `FILINGS` array near the
-bottom of `index.html`), but **this archive does not contain the PDF
-files themselves** -- they weren't accessible to bundle at build time.
+bottom of `index.html`), and both PDF files are now present in the repository
+root with those exact filenames.
 Place both files, with those exact names, in the same directory as
 `index.html` (the repository root) before deploying, or the two Download
 buttons will 404. The monthly workflow fails if either link stops being marked
