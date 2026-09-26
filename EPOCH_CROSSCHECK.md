@@ -2,6 +2,19 @@
 
 Audit date: 2026-09-26
 
+## Implemented repository integration
+
+The complete current Epoch AI AI Data Centers dataset is now imported under
+[data/external/epoch_ai/](data/external/epoch_ai/). The September 24, 2026
+snapshot contains 93 data-center rows, 545 timeline rows and 227 chip-quantity
+rows. The dashboard exposes all 93 Epoch sites in a searchable secondary
+evidence table, with raw source fields and a crosswalk back to this registry.
+
+Current conservative crosswalk result: **2 of 93 Epoch sites have a direct
+queue-record relationship recorded by the repository's human-reviewed
+overrides (the two Lake Mariner records map to NYISO Q1670).** The remaining
+sites are intentionally not force-matched.
+
 ## What is being compared
 
 Epoch AI's current AI Data Centers dataset was updated September 24, 2026 and covers 93 sites, about 14.0 million H100-equivalents and 13.5 GW of IT power. Epoch describes the database as an independently researched set built from satellite imagery, permits, company disclosures, regulatory filings and other public evidence.
@@ -81,23 +94,19 @@ These should be added as a secondary evidence layer, not overwrite queue-origin 
 
 ## Recommended record semantics
 
-A future external_evidence object for each research record should keep source-specific values separate:
+The implemented external evidence layer keeps source-specific values separate
+from queue-origin fields. Each generated Epoch record contains registry
+crosswalk status/reason fields alongside the raw Epoch row, latest timeline
+snapshot and latest chip quantities.
 
-source = Epoch AI
-relationship = same_campus | same_phase | possible_match | not_matched | below_threshold | outside_coverage
-epoch_name
-epoch_location
-epoch_current_it_power_mw
-epoch_projected_it_power_mw
-epoch_current_h100_eq
-epoch_projected_h100_eq
-epoch_owner
-epoch_users
-epoch_status
-epoch_source_url
-epoch_accessed_on
-match_basis
-match_confidence
+The normalized record stores fields such as:
+- source / dataset metadata;
+- Epoch site name, address, country, owner and users;
+- current H100-equivalents and current IT power;
+- latest available timeline record;
+- latest chip quantities by chip type;
+- the full original Epoch data-center row under raw;
+- registry crosswalk IDs, relationship, confidence and basis.
 
 The queue record should remain authoritative for the public queue fields, and Epoch should remain authoritative only for its own estimates.
 
@@ -105,4 +114,9 @@ The queue record should remain authoritative for the public queue fields, and Ep
 
 Epoch AI is a useful independent cross-check for this project, but it also demonstrates why the phrase 'all publicly available information' should not be attached to the current queue-only dataset.
 
-The cross-check currently gives one strong facility/phase overlap (Lake Mariner) and several material non-matches that are better interpreted as evidence of additional source coverage to investigate, especially ERCOT Large Load Integration.
+The repository therefore has a complete Epoch AI secondary registry now. The
+crosswalk remains deliberately conservative: Lake Mariner is the currently
+documented direct queue overlap, while the other 91 sites are retained as
+separate Epoch records rather than being assigned speculative queue IDs. This
+makes the difference between “not matched in this nine-market queue layer” and
+“not a real data center” explicit.
