@@ -99,6 +99,14 @@ jobs:
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
           assert projects["record_count"] == len(projects["records"]) == 154
           assert len({r["id"] for r in projects["records"]}) == 154
+          assert len(projects["sources"]) == 11
+          source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
+          assert source_counts["VA-DEQ"] == 33
+          assert source_counts["BPA-LARGE-LOAD"] == 60
+          assert source_counts["AESO-DATA-LOAD"] == 28
+          assert source_counts["NYISO-LOAD-PROJECTS"] == 12
+          assert source_counts["IESO-LOAD"] == 6
+          assert source_counts["ISO-NE-CELT"] == 2
           for record in projects["records"]:
               assert record["id"] and record["evidence_type"] and record["source_url"].startswith("https://")
           assert sum(r["evidence_type"] == "environmental_permit_record" for r in projects["records"]) == 33
