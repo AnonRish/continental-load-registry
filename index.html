@@ -995,6 +995,7 @@ openFacilityFromHash();
   let track3ResearchFiltered=[];
   let track3ResearchPage=0;
   let track3SourceStackById=new Map();
+  let track3ObservationTasksBySite=new Map();
 
   function epochText(v){
     if(v===null || v===undefined || v==='') return 'Not published / not retained';
@@ -1123,6 +1124,21 @@ openFacilityFromHash();
       html+='</tbody></table></div><p class="text-xs mt-3" style="color:var(--ink-faint);">Chip quantities are source-reported estimates. They are not automatically attributed to the site&#39;s current operator or utility demand.</p></section>';
     }
 
+    const siteTasks=track3ObservationTasksBySite.get(rec.epoch_id)||[];
+    if(siteTasks.length){
+      html+='<section class="mt-7"><h4 class="font-serif-display text-base">Track 3 acquisition tasks for this site</h4>';
+      html+='<p class="text-xs mt-1" style="color:var(--ink-faint);">'+escapeHtml(String(siteTasks.length))+' domain tasks. A task is complete only when the resulting observation or record is attached with provenance.</p>';
+      html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Domain</th><th class="px-3 py-2">Priority</th><th class="px-3 py-2">State</th><th class="px-3 py-2">Primary source</th><th class="px-3 py-2">Research sources</th><th class="px-3 py-2">Required fields</th></tr></thead><tbody>';
+      siteTasks.forEach(function(task){
+        const source=task.grid_primary_source_url
+          ? '<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(task.grid_primary_source_url)+'">'+escapeHtml(task.grid_source_type||'Open source')+'</a>'
+          : '<span style="color:var(--ink-faint);">Not assigned</span>';
+        html+='<tr><td class="px-3 py-2 font-medium">'+escapeHtml(task.domain||'')+'</td><td class="px-3 py-2 mono">'+escapeHtml(task.priority||'')+'</td><td class="px-3 py-2 mono">'+escapeHtml(task.current_state||'')+'</td><td class="px-3 py-2">'+source+'</td><td class="px-3 py-2">'+escapeHtml(task.next_research_sources||'')+'</td><td class="px-3 py-2">'+escapeHtml((task.required_fields||[]).join(', '))+'</td></tr>';
+      });
+      html+='</tbody></table></div>';
+      html+='<div class="flex flex-wrap gap-3 mt-3"><a class="text-xs link-underline" target="_blank" rel="noopener noreferrer" href="data/track3/observation_queue.json">Open full observation queue</a><a class="text-xs link-underline" target="_blank" rel="noopener noreferrer" href="data/track3/observation_queue.csv">Open CSV research queue</a></div>';
+      html+='</section>';
+    }
     html+='<section class="mt-6"><h4 class="font-serif-display text-base">Original Epoch source fields</h4><div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Original column</th><th class="px-3 py-2">Original value</th></tr></thead><tbody>';
     Object.entries(raw).forEach(([k,v])=>{html+='<tr><td class="px-3 py-2 mono">'+escapeHtml(k)+'</td><td class="px-3 py-2 whitespace-pre-wrap break-words">'+escapeHtml(epochText(v))+'</td></tr>';});
     html+='</tbody></table></div></section>';
@@ -1321,14 +1337,22 @@ openFacilityFromHash();
     try{
       const responses=await Promise.all([
         fetch('data/track3/summary.json?v=1',{cache:'no-store'}),
-        fetch('data/track3/site_status.json?v=1',{cache:'no-store'})
+        fetch('data/track3/site_status.json?v=1',{cache:'no-store'}),
+        fetch('data/track3/observation_queue.json?v=1',{cache:'no-store'})
       ]);
-      if(!responses[0].ok || !responses[1].ok) throw new Error('canonical Track 3 artifact unavailable');
+      if(!responses[0].ok || !responses[1].ok || !responses[2].ok) throw new Error('canonical Track 3 artifact unavailable');
       const summary=await responses[0].json();
       const status=await responses[1].json();
+      const observation=await responses[2].json();
       if(!status || !Array.isArray(status.records) || status.records.length!==93) throw new Error('expected 93 Track 3 site records');
+      if(!observation || !Array.isArray(observation.tasks) || observation.tasks.length!==651) throw new Error('expected 651 Track 3 observation tasks');
       track3SiteRecords=status.records;
       track3SiteStatusById=new Map(track3SiteRecords.map(function(x){return [x.epoch_id,x];}));
+      track3ObservationTasksBySite=new Map();
+      observation.tasks.forEach(function(task){
+        if(!track3ObservationTasksBySite.has(task.epoch_id)) track3ObservationTasksBySite.set(task.epoch_id,[]);
+        track3ObservationTasksBySite.get(task.epoch_id).push(task);
+      });
       const grid=(summary.domain_status_counts&&summary.domain_status_counts.grid_connection)||{};
       const combined=Number(summary.combined_site_level_evidence_site_count||0);
       const usPending=track3SiteRecords.filter(function(x){return x.country==='United States' && x.domains?.grid_connection?.status==='PENDING_RESEARCH';}).length;
