@@ -63,7 +63,7 @@ def main()->int:
     args=ap.parse_args()
     if args.selftest:
         assert all(g["files"] for g in GROUPS.values())
-        assert len({f for g in GROUPS.values() for f in g["files"]})==11
+        assert len({f for g in GROUPS.values() for f in g["files"]})==12
         print("PASS: Track 3 external source map self-test")
         return 0
     EPOCH.mkdir(parents=True,exist_ok=True)
