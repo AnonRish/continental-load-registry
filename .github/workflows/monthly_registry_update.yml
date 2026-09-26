@@ -16,6 +16,9 @@ name: Monthly Registry Update
 #     committed and the run then fails so a human looks at the rejected one.
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "0 6 1 * *" # 06:00 UTC on the 1st of every month
   workflow_dispatch:
@@ -85,6 +88,7 @@ jobs:
         # others; the script exits non-zero only if every source failed.
         run: |
           python ingest_grid_queues.py --include-raw-fields \
+            --source-health-output "$WORK/source_health.json" \
             --output "$WORK/registry_raw.csv" 2>&1 | tee "$WORK/ingest.log"
 
       - name: Pipeline 2/5 - require at least one row
@@ -114,6 +118,7 @@ jobs:
             --enriched "$WORK/computational_load_estimates.csv" \
             --out-raw data/registry_raw.csv \
             --out-enriched data/computational_load_estimates.csv \
+            --source-health "$WORK/source_health.json" \
             --summary-md "$GITHUB_STEP_SUMMARY" \
             --github-output "$GITHUB_OUTPUT"
 
