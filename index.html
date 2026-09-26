@@ -835,7 +835,9 @@ openFacilityFromHash();
       });
       html+='</div>';
     } else {
-      html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">No direct registry match was identified by the conservative current crosswalk. This is a source-coverage result, not evidence that the site has no grid connection or load request.</p>';
+      const crossStatus=rec.registry_crosswalk_status||'no_direct_match';
+      const crossReason=rec.registry_crosswalk_reason||'No conservative direct match was identified in the current nine-market queue registry fields.';
+      html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">'+escapeHtml(crossReason)+' This is a source-coverage result, not evidence that the site has no grid connection or load request.</p>';
     }
     html+='</section>';
     const tl=n.latest_timeline;
@@ -869,8 +871,10 @@ openFacilityFromHash();
       const n=rec.normalized||{};
       if(country && n.country!==country) return false;
       const hasMatch=Array.isArray(rec.registry_crosswalk)&&rec.registry_crosswalk.length>0;
+      const crossStatus=rec.registry_crosswalk_status||'no_direct_match';
       if(match==='matched' && !hasMatch) return false;
-      if(match==='unmatched' && hasMatch) return false;
+      if(match==='unmatched' && crossStatus!=='no_direct_match') return false;
+      if(match==='outside' && crossStatus!=='outside_registry_geographic_scope') return false;
       if(q){
         const hay=[n.name,n.country,n.address,n.owner,n.users,n.project,(n.selected_sources||''),...(rec.registry_crosswalk||[]).map(x=>x.queue_id)].join(' ').toLowerCase();
         if(!hay.includes(q)) return false;
@@ -890,8 +894,9 @@ openFacilityFromHash();
       tbody.innerHTML=rows.map(rec=>{
         const n=rec.normalized||{};
         const matches=Array.isArray(rec.registry_crosswalk)?rec.registry_crosswalk:[];
+        const crossStatus=rec.registry_crosswalk_status||'no_direct_match';
         const owner=(n.owner&&n.users)?String(n.owner)+' / '+String(n.users):(n.owner||n.users||'Not published / not retained');
-        const matchHtml=matches.length ? matches.map(m=>'<button type="button" class="link-underline mono text-xs epoch-row-registry" data-queue-id="'+escapeHtml(m.queue_id)+'">'+escapeHtml(m.queue_id)+'</button>').join('<span style="color:var(--ink-faint);">, </span>') : '<span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">No direct match</span>';
+        const matchHtml=matches.length ? matches.map(m=>'<button type="button" class="link-underline mono text-xs epoch-row-registry" data-queue-id="'+escapeHtml(m.queue_id)+'">'+escapeHtml(m.queue_id)+'</button>').join('<span style="color:var(--ink-faint);">, </span>') : (crossStatus==='outside_registry_geographic_scope' ? '<span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">Outside nine-market scope</span>' : '<span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">No direct match</span>');
         return '<tr><td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(n.name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</div></td><td class="px-3 py-2.5">'+escapeHtml(n.country||'—')+'</td><td class="px-3 py-2.5 max-w-[260px] truncate" title="'+escapeHtml(n.address||'')+'">'+escapeHtml(n.address||'Not published / not retained')+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_power_mw))+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_h100_equivalents))+'</td><td class="px-3 py-2.5 max-w-[230px] truncate" title="'+escapeHtml(owner)+'">'+escapeHtml(owner)+'</td><td class="px-3 py-2.5">'+matchHtml+'</td><td class="px-3 py-2.5 text-right"><button type="button" class="epoch-detail-button px-2.5 py-1 rounded-md border hairline text-xs" data-epoch-id="'+escapeHtml(rec.epoch_id)+'">Open</button></td></tr>';
       }).join('');
     }
