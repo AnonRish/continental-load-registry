@@ -40,6 +40,7 @@ SITE_DOMAINS = (
     "chip_ownership",
     "chip_users",
     "chip_shipments",
+    "independent_corroboration",
 )
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -169,6 +170,17 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         return {
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest its measurements."
+        }
+    if domain == "independent_corroboration":
+        independent = [x for x in ev if x.get("independent_of_other_source") is True]
+        if independent:
+            return {
+                "status": "INGESTED",
+                "basis": "At least one attached evidence record is explicitly marked independent of another source."
+            }
+        return {
+            "status": "NOT_ASSESSED",
+            "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
     if domain in {"chip_ownership", "chip_users", "chip_shipments"}:
         if external_snapshot_available(domain):
@@ -489,10 +501,20 @@ def main() -> int:
         "semantics": "A pending record means the registry has not attached site-specific grid/service evidence yet; it does not mean the site lacks a connection.",
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    task_counts_by_domain = {
+        domain: sum(1 for task in observation_queue if task["domain"] == domain)
+        for domain in sorted({task["domain"] for task in observation_queue})
+    }
+    task_counts_by_priority = {
+        priority: sum(1 for task in observation_queue if task["priority"] == priority)
+        for priority in sorted({task["priority"] for task in observation_queue})
+    }
     (OUT / "observation_queue.json").write_text(json.dumps({
         "schema_version": 1,
         "generated_at_utc": summary["generated_at_utc"],
         "task_count": len(observation_queue),
+        "task_counts_by_domain": task_counts_by_domain,
+        "task_counts_by_priority": task_counts_by_priority,
         "tasks": observation_queue,
         "semantics": "Observation tasks describe missing acquisition work. They do not assert that the underlying physical condition is absent.",
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
