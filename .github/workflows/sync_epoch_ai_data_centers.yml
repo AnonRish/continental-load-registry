@@ -10,6 +10,7 @@ on:
     paths:
       - "index.html"
       - "sync_epoch_ai_data_centers.py"
+      - "build_epoch_grid_crosswalk.py"
       - "data/external/epoch_ai/match_overrides.json"
       - ".github/workflows/sync_epoch_ai_data_centers.yml"
   workflow_dispatch:
@@ -40,7 +41,10 @@ jobs:
 
       - name: Download and normalize Epoch AI datasets
         run: python sync_epoch_ai_data_centers.py --sync
-\n      - name: Validate inline JavaScript syntax
+\n      - name: Build grid and queue crosswalk
+        run: python build_epoch_grid_crosswalk.py
+
+      - name: Validate inline JavaScript syntax
         run: |
           python - <<'PY'
           import re
@@ -71,13 +75,15 @@ jobs:
           assert (root/"data_centers_chip_quantities.csv").stat().st_size > 0
           cw = list(csv.DictReader((root/"crosswalk.csv").open("r", encoding="utf-8", newline="")))
           assert len(cw) == 93
-          print("verified: 93 Epoch AI data-center records + crosswalk")
+          grid = reg.get("grid_crosswalk_summary", {})
+          assert grid.get("all_sites_have_queue_or_connection_jurisdiction") is True
+          print("verified: 93 Epoch AI data-center records + queue crosswalk")
           print("matched:", reg["source"]["raw_sha256"]["data_centers.csv"])
           PY
 
       - name: Commit Epoch snapshot and crosswalk
         run: |
-          git add data/external/epoch_ai
+          git add data/external/epoch_ai build_epoch_grid_crosswalk.py sync_epoch_ai_data_centers.py
           if git diff --cached --quiet; then
             echo "Epoch data unchanged; nothing to commit."
           else
