@@ -86,6 +86,23 @@ STATE_BY_SITE = {
     "Google The Dalles":"OR","Meta-QTS Hillsboro 2":"OR",
 }
 
+USPS_STATE_CODES = {
+    "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+    "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+    "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY","DC"
+}
+
+def state_from_address(address: str) -> str | None:
+    """Infer a U.S. state from a postal-style Epoch address when no site-name
+    override exists. Epoch's CSV does not expose a standalone state column;
+    using the address keeps the crosswalk resilient when new campuses are
+    added, while still preferring curated STATE_BY_SITE assignments."""
+    text = str(address or "").upper()
+    for code in USPS_STATE_CODES:
+        if re.search(rf"(?:,|\s)\s*{code}(?:\s+\d{{5}}(?:-\d{{4}})?)?\b", text):
+            return code
+    return None
+
 RTO = {
     "TX": ("ERCOT", "RTO/ISO official", "https://www.ercot.com/services/rq/large-load-integration"),
     "NY": ("NYISO", "RTO/ISO official", "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"),
@@ -212,9 +229,13 @@ def main():
         address=row.get("Address","")
         site=SITE_SPECIFIC.get(name,{})
         if country=="United States":
-            st=STATE_BY_SITE.get(name)
+            # Prefer curated site-name mappings; fall back to the state embedded
+            # in Epoch's postal address so newly-added U.S. campuses do not
+            # fail the entire 93-site import merely because the lookup table
+            # has not yet received a hand-written name override.
+            st=STATE_BY_SITE.get(name) or state_from_address(address)
             if not st:
-                raise RuntimeError(f"missing U.S. state mapping for {name!r}")
+                raise RuntimeError(f"missing U.S. state mapping for {name!r} (no curated mapping and no state found in address {address!r})")
             if st in RTO:
                 queue_system,source_type,source_url=RTO[st]
             else:
