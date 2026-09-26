@@ -18,9 +18,11 @@ This layer turns the continental registry from a queue table into an auditable e
 
 ## Current site evidence
 
-As of 2026-09-26, the preserved 93-site Epoch universe has 46 sites with at least one attached primary site-level evidence record. The queue crosswalk contributes additional public site-level evidence records; across the combined layers, 52 of 93 sites have at least one evidence item. Two sites have site-specific queue IDs.
+As of 2026-09-26, the preserved 93-site Epoch universe has 59 sites with at least one attached site-level evidence record. The queue crosswalk contributes additional public site-level evidence records; across the combined layers, 67 of 93 sites have at least one evidence item. Two sites have site-specific queue IDs.
 
-The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 52 `SITE_LEVEL_EVIDENCE`, and 39 `PENDING_RESEARCH`. The 39 pending records are sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 39 current grid-connection gaps. The 23 U.S. records in that backlog are the current domestic site-specific search target. The absence of a public record after a particular search is not treated as proof of absence.
+The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 61 `SITE_LEVEL_EVIDENCE`, and 30 `PENDING_RESEARCH`. The 30 pending records are sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 30 current grid-connection gaps. The absence of a public record after a particular search is not treated as proof of absence.
+
+A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are also retained for Google Arcola and Google Kansas City East; these support physical verification but are not thermal telemetry.
 
 ## Evidence domains
 
@@ -49,7 +51,7 @@ Epoch IT power, projected IT power, utility service capacity, queue/interconnect
 
 ## Observation acquisition queue
 
-`data/track3/observation_queue.json` contains 651 acquisition tasks for the 93 Epoch sites. It covers seven missing evidence domains: interval power telemetry, remote sensing, cooling equipment, HV transformer supply, chip ownership, chip users, and chip shipments.
+`data/track3/observation_queue.json` contains 651 acquisition tasks for the 93 Epoch sites. Four power tasks now carry an `INGESTED_SNAPSHOT` supporting state, but they remain open because an annual aggregate does not satisfy the interval-demand requirement. It covers seven missing evidence domains: interval power telemetry, remote sensing, cooling equipment, HV transformer supply, chip ownership, chip users, and chip shipments.
 
 Each task carries its current state, priority, required fields, site-specific next action, and—where available—the primary grid source URL/type/date plus the existing public source families to search. `data/track3/observation_queue.csv` is the flattened review version.
 

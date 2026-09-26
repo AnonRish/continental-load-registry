@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 49,
+    "evidence_found": 59,
     "site_queue_ids": 2,
-    "pending": 44
+    "pending": 34
   },
   "records": [
     {
@@ -526,10 +526,19 @@
           "source_kind": "official Google location disclosure",
           "confidence": "high",
           "basis": "Google's Nebraska data-center page identifies Omaha as one of Google's Nebraska data-center communities and documents continued data-center investment there."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Omaha Public Power District",
+          "record_name": "Google Omaha demand-response / utility relationship",
+          "source_url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/how-were-making-data-centers-more-flexible-to-benefit-power-grids/",
+          "source_kind": "official Google utility-interaction disclosure",
+          "confidence": "high",
+          "basis": "Google's published data-center grid-flexibility update says Google demonstrated demand response with Omaha Public Power District by reducing power demand associated with machine-learning workloads during three grid events. This establishes a site-specific utility interaction, not a queue ID or interval meter dataset."
         }
       ],
       "site_level_evidence_status": "evidence_found",
-      "next_action": "Search OPPD, Nebraska Power Review Board and local permitting records for the Google Omaha service/interconnection record."
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-e06bc7faa8b1b187",
@@ -700,9 +709,19 @@
       "country": "United States",
       "state_province": "WY",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Black Hills Energy",
+          "record_name": "Meta Cheyenne grid / energy relationship",
+          "source_url": "https://datacenters.atmeta.com/2024/07/hello-cheyenne/",
+          "source_kind": "official Meta project disclosure",
+          "confidence": "high",
+          "basis": "Meta's July 2, 2024 first-party Cheyenne project announcement says Meta will work with Black Hills Energy to add new resources to the grid, including renewables. This establishes a site-specific utility/grid relationship, not a queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-4a87099a6d1e001f",
@@ -782,9 +801,19 @@
       "country": "United States",
       "state_province": "UT",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Rocky Mountain Power",
+          "record_name": "Meta Eagle Mountain grid infrastructure relationship",
+          "source_url": "https://datacenters.atmeta.com/2026/09/deepening-our-investment-in-eagle-mountain-utah/",
+          "source_kind": "official Meta project disclosure",
+          "confidence": "high",
+          "basis": "Meta's September 14, 2026 first-party Eagle Mountain update says Meta fully funded new generation and grid infrastructure supporting operations on the Rocky Mountain Power grid. This establishes site-specific grid evidence, not a public queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-85492d2b8df586a1",
@@ -802,9 +831,19 @@
       "country": "United States",
       "state_province": "NV",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Public Utilities Commission of Nevada / NV Energy",
+          "record_name": "Google Storey County energy supply agreement",
+          "source_url": "https://puc.nv.gov/uploadedFiles/puc.nv.gov/Content/About/Media_Outreach/NewsletterJuly2024.pdf",
+          "source_kind": "state utility regulator filing index",
+          "confidence": "high",
+          "basis": "The Nevada PUC's July 2024 newsletter lists Docket 24-06014, a joint application by Sierra Pacific Power Company d/b/a NV Energy and Callisto Enterprises LLC for approval of an Energy Supply Agreement. The associated public record identifies Google as the customer for data-center electric service in Storey County. This is regulatory/site-service evidence, not a queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-f92e98f4b76a9bcd",
@@ -842,9 +881,20 @@
       "country": "United Kingdom",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "epoch_id": "EPOCH-a2c9f0846296fe65",
+          "type": "site_specific_energy_contract",
+          "authority": "Shell Energy Europe Limited / Google",
+          "record_name": "Google Waltham Cross 24/7 carbon-free energy management agreement",
+          "source_url": "https://www.datacenters.google/locations/waltham-cross/",
+          "source_kind": "official Google facility disclosure",
+          "confidence": "high",
+          "basis": "Google's Waltham Cross facility page says Google selected Shell Energy Europe Limited as its 24/7 Carbon-Free Energy Manager in the UK and describes the arrangement as contributing to grid stability and the energy transition. This is energy-contract evidence, not a utility interconnection record."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier."
     },
     {
       "epoch_id": "EPOCH-a286a89bd1c1b6e7",
@@ -862,9 +912,19 @@
       "country": "United States",
       "state_province": "VA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Dominion Energy",
+          "record_name": "Google Arcola serving-utility relationship",
+          "source_url": "https://suedatacenters.org/data-centers/google-arcola-loudoun-va",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The SueDataCenters facility record identifies Dominion Energy as the utility for Google's Arcola data-center site in Loudoun County, Virginia. This establishes site-level utility evidence, not a public queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Dominion Energy, Virginia SCC, PJM and local Loudoun County records for the exact service/interconnection case, contract, substation or project identifier."
     },
     {
       "epoch_id": "EPOCH-f1a2bcdd78478bc2",
@@ -912,9 +972,19 @@
       "country": "United States",
       "state_province": "NM",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Public Service Company of New Mexico (PNM)",
+          "record_name": "Meta Los Lunas serving-utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/meta-new-mexico-los-lunas",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The DEPLOY facility record identifies Public Service Company of New Mexico (PNM) as the serving utility for Meta Los Lunas and records PNM procurement of renewable energy and hybrid BESS to serve the campus. This is secondary site-level utility evidence, not a queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-768183e4de6062d2",
@@ -922,9 +992,20 @@
       "country": "United States",
       "state_province": "ND",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "epoch_id": "EPOCH-768183e4de6062d2",
+          "type": "site_specific_compute_tenancy",
+          "authority": "CoreWeave / Applied Digital",
+          "record_name": "CoreWeave Ellendale Campus 250 MW datacenter leases",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1144879/000164117225013199/form8-k.htm",
+          "source_kind": "SEC-filed definitive agreement",
+          "confidence": "high",
+          "basis": "Applied Digital's May 28, 2025 SEC filing says subsidiaries entered leases with CoreWeave to deliver up to an aggregate 250 MW of infrastructure at the 400 MW Ellendale, North Dakota campus, covering Building 2 (100 MW) and Building 3 (150 MW). This establishes a site-specific compute-tenant/capacity contract, not a utility connection or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the serving utility, North Dakota regulatory records, MISO/SPP-relevant records and site permitting sources for the electrical service/interconnection record associated with the leased compute capacity."
     },
     {
       "epoch_id": "EPOCH-4b5df4f52274f2ba",
@@ -932,9 +1013,19 @@
       "country": "United States",
       "state_province": "NE",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Omaha Public Power District",
+          "record_name": "Meta Sarpy serving-utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/meta-nebraska-sarpy",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The DEPLOY facility record identifies Omaha Public Power District as the serving utility for Meta Sarpy in Papillion, Nebraska. This is site-level utility evidence, not a queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-77e196fc5320fd70",
@@ -1003,9 +1094,19 @@
       "country": "United States",
       "state_province": "SC",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Aiken Electric Cooperative",
+          "record_name": "Meta Aiken serving-utility relationship",
+          "source_url": "https://suedatacenters.org/data-centers/meta-aiken-county-sc",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The SueDataCenters record identifies Aiken Electric Cooperative as the utility for Meta's Aiken data center in Graniteville, South Carolina. This is secondary utility evidence, not a queue ID or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
     },
     {
       "epoch_id": "EPOCH-af62ae3440fe885a",
@@ -1542,9 +1643,20 @@
       "country": "United States",
       "state_province": "UT",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "epoch_id": "EPOCH-4b4d686b6c457a68",
+          "type": "site_specific_utility_relationship",
+          "authority": "Rocky Mountain Power",
+          "record_name": "QTS Eagle Mountain serving-utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "DEPLOY identifies Rocky Mountain Power as the serving utility for QTS's Eagle Mountain facility in Utah. The QTS facility record independently states it is working directly with local utilities on power needs and that QTS will pay for project energy infrastructure."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record."
     }
   ],
   "record_count": 93

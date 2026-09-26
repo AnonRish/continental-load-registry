@@ -362,6 +362,12 @@
           </div>
         </div>
       </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Annual power snapshots</div><div id="track3PowerSnapshots" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Cooling snapshots</div><div id="track3CoolingSnapshots" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Service / contract evidence</div><div id="track3ServiceEvidence" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Compute-tenancy evidence</div><div id="track3TenancyEvidence" class="font-serif-display text-xl mt-1">—</div></div>
+        </div>
         <div class="mt-4 rounded-lg panel p-4">
           <div class="flex items-center justify-between gap-3">
             <div>
@@ -399,7 +405,8 @@
             <a class="text-xs link-underline" href="data/track3/site_status.json" target="_blank" rel="noopener noreferrer">Site status JSON</a>
             <a class="text-xs link-underline" href="data/track3/evidence_records.json" target="_blank" rel="noopener noreferrer">Evidence records JSON</a>
             <a class="text-xs link-underline" href="data/track3/research_queue.json" target="_blank" rel="noopener noreferrer">Grid research queue</a>
-            <a class="text-xs link-underline" href="data/track3/observation_queue.json" target="_blank" rel="noopener noreferrer">651-task observation queue</a>
+            <a class="text-xs link-underline" href="data/track3/observation_queue.json" target="_blank" rel="noopener noreferrer">Observation acquisition queue</a>
+            <a class="text-xs link-underline" href="data/track3/power_observations.json" target="_blank" rel="noopener noreferrer">Power observations</a>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 mt-4">
@@ -996,6 +1003,8 @@ openFacilityFromHash();
   let track3ResearchPage=0;
   let track3SourceStackById=new Map();
   let track3ObservationTasksBySite=new Map();
+  let track3PowerObservationsBySite=new Map();
+  let track3CoolingObservationsBySite=new Map();
 
   function epochText(v){
     if(v===null || v===undefined || v==='') return 'Not published / not retained';
@@ -1006,6 +1015,7 @@ openFacilityFromHash();
     return String(v);
   }
   function epochNum(v){ return (typeof v==='number' && Number.isFinite(v)) ? v : Number(v); }
+  function powerObservationSourceUrl(obs){ return (obs.source&&obs.source.source_url)||''; }
   function epochSourceUrl(name){
     const slug=String(name||'').toLowerCase().normalize('NFKD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
     return 'https://epoch.ai/data/ai-data-centers/directory/'+slug;
@@ -1079,22 +1089,24 @@ openFacilityFromHash();
         : (siteEvidence.length ? 'SITE_LEVEL_EVIDENCE' : 'PENDING_RESEARCH')));
     const d=canonicalTrack3?.domains||{};
     const track3Rows=[
-      ['Site identity','INGESTED','Epoch AI site record is present in the 93-site reference universe.'],
-      ['Construction history',d.physical_site||(Number(rec.timeline_record_count)||0)>0?'EPOCH_TIMELINE_AVAILABLE':'UNKNOWN','Dated Epoch timeline records are retained; this is not continuous physical telemetry.'],
-      ['Site chip inventory',d.chip_inventory||(Number(rec.chip_quantity_record_count)||0)>0?'EPOCH_CHIP_RECORDS_AVAILABLE':'UNKNOWN','Epoch site-level chip-quantity records are retained when published.'],
-      ['Grid / connection',d.electricity_connection||gridStatus,gridStatus==='PENDING_RESEARCH'?'No site-specific connection/service evidence is currently attached.':'See the attached site-level records above; a queue ID is only asserted when defensible.'],
-      ['Actual power telemetry',d.actual_electricity_metering||'NOT_INGESTED','No interval utility-meter/load-series dataset is currently ingested.'],
-      ['TIR thermal',d.tir_thermal||'NOT_INGESTED','No numeric thermal-anomaly observation dataset is currently ingested.'],
-      ['SAR / optical change detection',d.sar_optical_change_detection||'NOT_INGESTED','No numeric SAR/optical construction-change dataset is currently ingested.'],
-      ['Cooling equipment',d.cooling_equipment||'NOT_INGESTED','Cooling-equipment source families are cataloged separately; no structured site-level equipment event stream is currently ingested.'],
-      ['HV transformer supply',d.transformer_supply_chain||'NOT_INGESTED','Procurement, delivery and installation event records are not yet ingested.'],
-      ['Global chip ownership',track3SourceStackById.get('epoch-chip-owners')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
-      ['Global chip usage',track3SourceStackById.get('epoch-chip-users')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
-      ['Global chip shipments',track3SourceStackById.get('epoch-chip-sales')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
-      ['Global GPU clusters',track3SourceStackById.get('epoch-gpu-clusters')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate external source; it is not automatically mapped to this site.'],
+      ['Site identity',d.site_identity?.status||'INGESTED','Epoch AI site record is present in the 93-site reference universe.'],
+      ['Construction history',d.construction?.status||'UNKNOWN',d.construction?.status==='INGESTED'?'Dated Epoch construction/history records are retained.':'No retained Epoch construction timeline was available.'],
+      ['Site chip inventory',d.chip_inventory?.status||'UNKNOWN',d.chip_inventory?.status==='INGESTED'?'Epoch AI site-level chip-quantity records are retained when published.':'No retained site-level chip-quantity rows.'],
+      ['Grid / connection',d.grid_connection?.status||gridStatus,gridStatus==='PENDING_RESEARCH'?'No site-specific connection/service evidence is currently attached.':'See the attached site-level records above; a queue ID is only asserted when defensible.'],
+      ['Actual power telemetry',d.power_telemetry?.status||'NOT_INGESTED',d.power_telemetry?.status==='INGESTED_SNAPSHOT'?'A site-level annual electricity-consumption snapshot is retained; interval demand telemetry remains open.':'No site-level interval-demand telemetry dataset is currently ingested.'],
+      ['Service / contract',d.service_or_contract?.status||'NOT_INGESTED','Site-level utility/service/energy-contract evidence is tracked separately from queue-ID verification.'],
+      ['Compute tenancy',d.compute_tenancy?.status||'UNKNOWN','Site-specific compute-tenancy or capacity-contract evidence is kept separate from electricity connection and measured load.'],
+      ['TIR thermal',d.remote_sensing?.status||'NOT_INGESTED','No numeric site-specific TIR thermal-anomaly dataset is currently ingested.'],
+      ['SAR / optical change detection',d.remote_sensing?.status||'NOT_INGESTED','No numeric site-specific SAR/optical construction-change dataset is currently ingested.'],
+      ['Cooling equipment',d.cooling?.status||'NOT_INGESTED','Cooling-equipment source families are cataloged separately; structured site-level equipment events are not yet ingested.'],
+      ['HV transformer supply',d.transformer_supply_chain?.status||'NOT_INGESTED','Procurement, delivery and installation event records are not yet ingested.'],
+      ['Global chip ownership',track3SourceStackById.get('epoch-chip-owners')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate external ownership source; it is not automatically attributed to this site.'],
+      ['Global chip usage',track3SourceStackById.get('epoch-chip-users')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate external usage source; it is not automatically attributed to this site.'],
+      ['Global chip shipments',track3SourceStackById.get('epoch-chip-sales')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate external shipment source; it is not automatically attributed to this site.'],
+      ['Global GPU clusters',track3SourceStackById.get('epoch-gpu-clusters')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate external compute-location source; it is not automatically mapped to this site.'],
       ['AI chip components',track3SourceStackById.get('epoch-chip-components')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate semiconductor-supply source; it is not automatically mapped to this site.'],
-      ['Ownership accounting',d.ownership_accounting||'NOT_ASSESSED','Owner/user fields are evidence inputs, not a complete legal or beneficial-ownership graph.'],
-      ['Independent corroboration',d.independent_corroboration||'NOT_ASSESSED','No independence score is inferred from the number of records or sources.']
+      ['Ownership accounting','NOT_ASSESSED','Owner/user fields are evidence inputs, not a complete legal or beneficial-ownership graph.'],
+      ['Independent corroboration','NOT_ASSESSED','No independence score is inferred from the number of records or sources.']
     ];
     html+='<section class="mt-7"><h4 class="font-serif-display text-base">Track 3 evidence matrix</h4>';
     html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Domain</th><th class="px-3 py-2">State</th><th class="px-3 py-2">What the state means</th></tr></thead><tbody>';
@@ -1103,6 +1115,28 @@ openFacilityFromHash();
     });
     html+='</tbody></table></div>';
     html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">Attached site-level evidence count: '+siteEvidence.length+'. This count is not an independence or truth score; provenance and source records must be reviewed individually.</p></section>';
+
+    const powerObs=track3PowerObservationsBySite.get(rec.epoch_id)||[];
+    if(powerObs.length){
+      html+='<section class="mt-7"><h4 class="font-serif-display text-base">Reported electricity observations</h4>';
+      html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Period</th><th class="px-3 py-2">Measurement</th><th class="px-3 py-2 text-right">Value</th><th class="px-3 py-2">Units</th><th class="px-3 py-2">Source</th></tr></thead><tbody>';
+      powerObs.forEach(function(obs){
+        html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(obs.observed_period))+'</td><td class="px-3 py-2">'+escapeHtml(obs.measurement_type||'annual electricity consumption')+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(obs.normalized_value))+'</td><td class="px-3 py-2">'+escapeHtml(obs.units||'')+'</td><td class="px-3 py-2"><a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(powerObservationSourceUrl(obs))+'">'+escapeHtml((obs.source&&obs.source.source_name)||'Source')+'</a></td></tr>';
+      });
+      html+='</tbody></table></div>';
+      html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">These are aggregate company-reported annual consumption observations, not interval meter readings. Meta states its report metrics are non-audited estimates unless otherwise noted.</p></section>';
+    }
+
+    const coolingObs=track3CoolingObservationsBySite.get(rec.epoch_id)||[];
+    if(coolingObs.length){
+      html+='<section class="mt-7"><h4 class="font-serif-display text-base">Cooling equipment observations</h4>';
+      html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Observed</th><th class="px-3 py-2">Equipment</th><th class="px-3 py-2">Manufacturer</th><th class="px-3 py-2">Model</th><th class="px-3 py-2 text-right">Units</th><th class="px-3 py-2 text-right">Capacity</th><th class="px-3 py-2">Source</th></tr></thead><tbody>';
+      coolingObs.forEach(function(obs){
+        html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(obs.observed_on))+'</td><td class="px-3 py-2">'+escapeHtml(obs.equipment_type||'')+'</td><td class="px-3 py-2">'+escapeHtml(obs.manufacturer||'')+'</td><td class="px-3 py-2">'+escapeHtml(obs.model||'')+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(obs.units))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(obs.capacity))+' '+escapeHtml(obs.capacity_units||'')+'</td><td class="px-3 py-2"><a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(powerObservationSourceUrl(obs))+'">'+escapeHtml((obs.source&&obs.source.source_name)||'Source')+'</a></td></tr>';
+      });
+      html+='</tbody></table></div>';
+      html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">Cooling snapshots are supporting physical-infrastructure evidence. They are not direct thermal observations and do not by themselves establish actual facility load.</p></section>';
+    }
 
     const t3Timeline=(canonicalTrack3&&Array.isArray(canonicalTrack3.timeline))?canonicalTrack3.timeline:[];
     if(t3Timeline.length){
@@ -1338,20 +1372,36 @@ openFacilityFromHash();
       const responses=await Promise.all([
         fetch('data/track3/summary.json?v=1',{cache:'no-store'}),
         fetch('data/track3/site_status.json?v=1',{cache:'no-store'}),
-        fetch('data/track3/observation_queue.json?v=1',{cache:'no-store'})
+        fetch('data/track3/observation_queue.json?v=1',{cache:'no-store'}),
+        fetch('data/track3/power_observations.json?v=1',{cache:'no-store'}),
+        fetch('data/track3/cooling_observations.json?v=1',{cache:'no-store'})
       ]);
-      if(!responses[0].ok || !responses[1].ok || !responses[2].ok) throw new Error('canonical Track 3 artifact unavailable');
+      if(!responses[0].ok || !responses[1].ok || !responses[2].ok || !responses[3].ok || !responses[4].ok) throw new Error('canonical Track 3 artifact unavailable');
       const summary=await responses[0].json();
       const status=await responses[1].json();
       const observation=await responses[2].json();
+      const powerPayload=await responses[3].json();
+      const coolingPayload=await responses[4].json();
       if(!status || !Array.isArray(status.records) || status.records.length!==93) throw new Error('expected 93 Track 3 site records');
       if(!observation || !Array.isArray(observation.tasks) || observation.tasks.length!==651) throw new Error('expected 651 Track 3 observation tasks');
+      if(!powerPayload || !Array.isArray(powerPayload.records)) throw new Error('invalid Track 3 power observation artifact');
+      if(!coolingPayload || !Array.isArray(coolingPayload.records)) throw new Error('invalid Track 3 cooling observation artifact');
       track3SiteRecords=status.records;
       track3SiteStatusById=new Map(track3SiteRecords.map(function(x){return [x.epoch_id,x];}));
       track3ObservationTasksBySite=new Map();
       observation.tasks.forEach(function(task){
         if(!track3ObservationTasksBySite.has(task.epoch_id)) track3ObservationTasksBySite.set(task.epoch_id,[]);
         track3ObservationTasksBySite.get(task.epoch_id).push(task);
+      });
+      track3PowerObservationsBySite=new Map();
+      powerPayload.records.forEach(function(obs){
+        if(!track3PowerObservationsBySite.has(obs.epoch_id)) track3PowerObservationsBySite.set(obs.epoch_id,[]);
+        track3PowerObservationsBySite.get(obs.epoch_id).push(obs);
+      });
+      track3CoolingObservationsBySite=new Map();
+      coolingPayload.records.forEach(function(obs){
+        if(!track3CoolingObservationsBySite.has(obs.epoch_id)) track3CoolingObservationsBySite.set(obs.epoch_id,[]);
+        track3CoolingObservationsBySite.get(obs.epoch_id).push(obs);
       });
       const grid=(summary.domain_status_counts&&summary.domain_status_counts.grid_connection)||{};
       const combined=Number(summary.combined_site_level_evidence_site_count||0);
@@ -1361,6 +1411,11 @@ openFacilityFromHash();
       document.getElementById('track3Evidence').textContent=combined.toLocaleString()+' / 93';
       document.getElementById('track3USGaps').textContent=usPending.toLocaleString();
       document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
+      const domainCounts=summary.domain_status_counts||{};
+      document.getElementById('track3PowerSnapshots').textContent=Number(domainCounts.power_telemetry?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
+      document.getElementById('track3CoolingSnapshots').textContent=Number(domainCounts.cooling?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
+      document.getElementById('track3ServiceEvidence').textContent=Number(domainCounts.service_or_contract?.SITE_LEVEL_EVIDENCE||0).toLocaleString()+' / 93';
+      document.getElementById('track3TenancyEvidence').textContent=Number(domainCounts.compute_tenancy?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
       const obsCount=Number(summary.observation_task_count||0);
       document.getElementById('track3ObservationTasks').textContent=obsCount.toLocaleString();
       const breakdown=summary.observation_task_counts_by_domain||{};

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-26T19:40:00Z",
+  "generated_at_utc": "2026-09-26T19:50:52.479Z",
   "epoch_site_count": 93,
-  "site_level_evidence_site_count": 49,
+  "site_level_evidence_site_count": 59,
   "site_specific_queue_id_count": 2,
-  "pending_grid_connection_research_count": 39,
+  "pending_grid_connection_research_count": 30,
   "domain_status_counts": {
     "site_identity": {
       "INGESTED": 93
@@ -17,18 +17,28 @@
       "UNKNOWN": 10
     },
     "grid_connection": {
-      "VERIFIED_SITE_SPECIFIC": 2,
-      "SITE_LEVEL_EVIDENCE": 52,
-      "PENDING_RESEARCH": 39
+      "SITE_LEVEL_EVIDENCE": 61,
+      "PENDING_RESEARCH": 30,
+      "VERIFIED_SITE_SPECIFIC": 2
+    },
+    "service_or_contract": {
+      "NOT_INGESTED": 88,
+      "SITE_LEVEL_EVIDENCE": 5
+    },
+    "compute_tenancy": {
+      "UNKNOWN": 92,
+      "INGESTED_SNAPSHOT": 1
     },
     "power_telemetry": {
-      "NOT_INGESTED": 93
+      "NOT_INGESTED": 87,
+      "INGESTED_SNAPSHOT": 6
     },
     "remote_sensing": {
       "NOT_INGESTED": 93
     },
     "cooling": {
-      "NOT_INGESTED": 93
+      "NOT_INGESTED": 91,
+      "INGESTED_SNAPSHOT": 2
     },
     "transformer_supply_chain": {
       "NOT_INGESTED": 93
@@ -41,11 +51,14 @@
     },
     "chip_shipments": {
       "SOURCE_AVAILABLE_NOT_INGESTED": 93
+    },
+    "independent_corroboration": {
+      "NOT_ASSESSED": 93
     }
   },
-  "source_stack_count": 13,
+  "source_stack_count": 14,
   "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. Grid-facility, utility-service, utility-planning, and relevant electricity regulatory evidence types are included only where the source record itself describes electricity service or connection.",
-  "combined_site_level_evidence_site_count": 52,
+  "combined_site_level_evidence_site_count": 67,
   "observation_task_count": 651,
   "observation_task_counts_by_domain": {
     "power_telemetry": 93,
