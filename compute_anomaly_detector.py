@@ -285,7 +285,7 @@ class ComputeScenario:
     pue: float          # total facility power / IT power
     kw_per_rack: float
     gpus_per_rack: int
-    chip_tflops_fp8: float  # dense FP8 TFLOPs per chip (H100 SXM baseline)
+    chip_tflops_baseline: float  # dense baseline TFLOPs per chip (H100 SXM FP16/BF16 baseline)
     mfu: float               # model FLOPs utilization, sustained
 
     def run_flops(self, capacity_mw: float, run_days: int = 90) -> dict:
@@ -298,13 +298,13 @@ class ComputeScenario:
 
 
 # The REFERENCE scenario reproduces the brief's exact constants (PUE 1.25,
-# 35kW/rack, 8 GPU/rack, H100 SXM 1,979 TFLOPs dense FP8, 40% MFU, 90-day
+# 35kW/rack, 8 GPU/rack, H100 SXM 1,979 TFLOPs FP16/BF16 Tensor Core, 40% MFU, 90-day
 # run). LOW and HIGH bracket it with assumptions that are each individually
 # defensible for real facilities (older air-cooled halls run lower density
 # and lower sustained utilization; new liquid-cooled halls run denser and
 # higher PUE-efficiency) -- see module docstring for how close together
 # these land at exactly 100MW despite the spread in inputs.
-REFERENCE_SCENARIO = ComputeScenario("reference (as specified)", pue=1.25, kw_per_rack=35.0, gpus_per_rack=8, chip_tflops_fp8=1979.0, mfu=0.40)
+REFERENCE_SCENARIO = ComputeScenario("reference (as specified)", pue=1.25, kw_per_rack=35.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.40)
 LOW_SCENARIO = ComputeScenario("low (air-cooled, lower utilization)", pue=1.4, kw_per_rack=20.0, gpus_per_rack=8, chip_tflops_fp8=1979.0, mfu=0.25)
 HIGH_SCENARIO = ComputeScenario("high (liquid-cooled, high utilization)", pue=1.15, kw_per_rack=50.0, gpus_per_rack=8, chip_tflops_fp8=1979.0, mfu=0.50)
 
@@ -421,6 +421,13 @@ def enrich_row(row: "pd.Series", have_optional_columns: bool, have_fuel_column: 
         f"Matched to {matched_entity}" if matched_entity else "Below capacity threshold or entity already resolved"
     )
 
+    module1_tier = (
+        "Tier 3: Confirmed Grid-Scale Storage (BESS)" if is_confirmed_storage
+        else "Tier 1: Confirmed Hyperscaler" if entity_category == "Confirmed Hyperscaler"
+        else "Tier 2: Wholesale Colocation Developer" if entity_category == "Wholesale Colocation Developer"
+        else "Tier 4: Genuinely Ambiguous / Unclassified Large Load"
+    )
+
     return {
         "queue_id": row.get("queue_id"),
         "rto_region": row.get("rto_region"),
@@ -429,6 +436,7 @@ def enrich_row(row: "pd.Series", have_optional_columns: bool, have_fuel_column: 
         "capacity_mw": capacity_mw,
         "developer_entity_raw": row.get("developer_entity"),
         "entity_category": entity_category,
+        "module1_tier": module1_tier,
         "matched_public_entity": matched_entity,
         "entity_match_score": round(match_score, 1),
         "load_type_tier": load_type_tier,

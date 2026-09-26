@@ -66,6 +66,10 @@ jobs:
       - name: Self-test compute_anomaly_detector.py
         run: python compute_anomaly_detector.py --selftest
 
+      - name: Self-test Module 1 physical radar
+        run: |
+          python module1_physical_radar.py --selftest
+
       - name: Self-test investigate_ambiguous_loads.py and guard_registry_refresh.py
         run: |
           python investigate_ambiguous_loads.py --selftest
@@ -130,6 +134,9 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Validate and summarize Module 1 radar
+        run: python module1_physical_radar.py --selftest --audit
+
       - name: Build facility research records
         run: |
           python build_facility_records.py \
@@ -180,7 +187,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/registry_raw.csv data/computational_load_estimates.csv data/source_manifest.json data/facility_records
+          git add index.html data/registry_raw.csv data/computational_load_estimates.csv data/source_manifest.json data/facility_records data/module1_radar_summary.json module1_physical_radar.py
           if git diff --cached --quiet; then
             echo "Registry unchanged; nothing to commit."
           else

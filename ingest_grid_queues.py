@@ -513,9 +513,21 @@ def classify_status(raw: Any) -> Optional[str]:
     if upper in PJM_SHORT_STATUS_CODES:
         return PJM_SHORT_STATUS_CODES[upper]
 
+    # Exclusion-first gate: reject terminal/inactive states before any accept-side
+    # substring matching. This prevents INACTIVE from satisfying ACTIVE and keeps
+    # terminal words from leaking through a later fuzzy match.
+    reject_keywords = (
+        "WITHDRAWN", "CANCELLED", "CANCELED", "DEACTIVATED", "DEACTIVATION",
+        "TERMINATED", "SUSPENDED", "COMPLETED", "IN SERVICE", "RETIRED",
+        "PENDING TERMINATION", "INACTIVE",
+    )
+    normalized_upper = re.sub(r"[_-]+", " ", upper)
+    if any(k in normalized_upper for k in reject_keywords):
+        return None
+
     # Fuzzy fallback across common real-world phrasings for the same states.
     fuzzy_map = [
-        (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY", "ACTIVE - IN SERVICE PARTIALLY", "CONFIRMED"), "Active"),
+        (("ACTIVE", "IN QUEUE", "CONFIRMED"), "Active"),
         (("UNDER STUDY", "SCREENING", "FEASIBILITY", "SYSTEM IMPACT"), "Under Study"),
         (("FACILITIES STUDY", "FACILITY STUDY", "FIS "), "Facilities Study"),
         (("ENGINEERING REVIEW", "ENGINEERING & PROCUREMENT", "ENGINEERING AND PROCUREMENT", "E&P"),
@@ -528,11 +540,6 @@ def classify_status(raw: Any) -> Optional[str]:
         if any(k in upper for k in keywords):
             return canonical
 
-    reject_keywords = ("WITHDRAWN", "CANCELLED", "CANCELED", "SUSPENDED",
-                        "COMPLETED", "IN SERVICE", "TERMINATED", "RETIRED",
-                        "PENDING TERMINATION")
-    if any(k in upper for k in reject_keywords):
-        return None
 
     logger.debug("Unrecognized status value %r (row excluded)", raw)
     return None

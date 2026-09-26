@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "module": "Module 1: Multi-Modal Physical Radar",
+  "as_of": "2026-09-26",
+  "status_semantics": "The radar is an evidence-evaluation framework. UNKNOWN and NOT_INGESTED are never converted to PASS. A site is only Module-1-qualified when all five domains have a passing gate; the current public repository does not yet contain numeric TIR/SAR telemetry or transformer procurement-event evidence, so those domains remain unverified until such evidence is ingested.",
+  "domain_1_physics": {
+    "criterion_1_1_electrical_capacity_floor": {
+      "minimum_capacity_mw": 100,
+      "minimum_interconnection_voltage_kv": 115,
+      "voltage_class": "HV/EHV bulk-power transmission"
+    },
+    "criterion_1_2_flop_bounding_box": {
+      "run_days": 90,
+      "threshold_flops": 1e+26,
+      "rack_gpu_count": 8,
+      "baseline_chip": "NVIDIA H100 SXM FP16/BF16 Tensor Core",
+      "baseline_chip_tflops": 1979,
+      "baseline_chip_source": "https://www.nvidia.com/en-eu/data-center/h100/",
+      "scenarios": [
+        {
+          "name": "Reference",
+          "pue": 1.25,
+          "rack_density_kw": 35,
+          "mfu": 0.4,
+          "computed_100mw_90d_flops": 1.1255737782857143e+26
+        },
+        {
+          "name": "Conservative",
+          "pue": 1.4,
+          "rack_density_kw": 20,
+          "mfu": 0.25,
+          "computed_100mw_90d_flops": 1.099193142857143e+26
+        },
+        {
+          "name": "Aggressive",
+          "pue": 1.15,
+          "rack_density_kw": 50,
+          "mfu": 0.5,
+          "computed_100mw_90d_flops": 1.070518539130435e+26
+        }
+      ],
+      "formula": {
+        "usable_it_power_kw": "P_total_MW * 1000 / PUE",
+        "total_racks": "P_IT_kW / rack_density_kW",
+        "total_accelerators": "total_racks * 8",
+        "theoretical_90d_flops": "N_GPU * 1.979e15 * (90 * 86400) * MFU"
+      },
+      "invariant": "At exactly 100 MW all three scenarios fall between 1.0705e26 and 1.1256e26 FLOPs; the scenario labels describe their facility assumptions, not the numerical ordering of their FLOP outputs."
+    },
+    "criterion_1_3_thermodynamic_heat_signature": {
+      "continuous_heat_rejection_w": "P_total_MW * 1e6",
+      "water_consumption_l_per_kwh_range": [
+        1.5,
+        3
+      ],
+      "surface_water_delta_t_formula": "DeltaT = Q / (m_dot * Cp)",
+      "cp_j_per_kg_k": 4184,
+      "minimum_heat_signature_w_at_100mw": 100000000,
+      "status": "computed from electrical capacity; site-specific cooling telemetry is not inferred"
+    }
+  },
+  "domain_2_ingestion": {
+    "organized_market_scope": [
+      "PJM",
+      "ERCOT",
+      "SPP",
+      "MISO",
+      "CAISO",
+      "NYISO",
+      "ISO-NE",
+      "IESO",
+      "AESO"
+    ],
+    "streams": {
+      "A_wholesale_market_queues": {
+        "status": "INGESTED_WITH_SOURCE_LIMITATIONS",
+        "sources": {
+          "PJM": "https://www.pjm.com/planning/service-requests",
+          "ERCOT": "https://www.ercot.com/mp/data-products/data-product-details?id=pg7-200-er",
+          "SPP": "https://opsportal.spp.org/Studies/GIActive",
+          "MISO": "https://www.misoenergy.org/api/giqueue/getprojects",
+          "CAISO": "https://www.caiso.com/",
+          "NYISO": "https://www.nyiso.com/interconnections",
+          "ISO-NE": "https://irtt.iso-ne.com/reports/external",
+          "IESO": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+          "AESO": "https://www.aeso.ca/grid/transmission-projects/connection-project-reporting/"
+        },
+        "limitation": "The repository is a public-queue/connection registry, not a complete load census for every utility. ERCOT GIS and SPP GI are not themselves equivalent to complete load-project registers; CAISO is Cluster-15-only in the current snapshot; MISO's generator queue is not synonymous with new-load requests."
+      },
+      "B_satellite_remote_sensing": {
+        "criteria": {
+          "tir": "Landsat-8/9 TIRS and Sentinel-3 SLSTR, 8-14 micrometre LWIR, anomaly threshold >=0.5 K over ambient baseline",
+          "sar": "Sentinel-1 C-band and commercial X-band SAR such as Capella for multi-temporal construction activity",
+          "optical": "Commercial optical imagery <=0.5 m/pixel for physical cooling/chiller verification"
+        },
+        "status": "NOT_INGESTED",
+        "safe_semantics": "Epoch AI site evidence is retained as independent facility evidence, but it is not converted into numeric TIR/SAR anomaly measurements."
+      },
+      "C_transformer_supply_chain": {
+        "criteria": {
+          "primary_voltage_kv": [
+            115,
+            500
+          ],
+          "minimum_rating_mva": 100,
+          "secondary_voltage_examples_kv": [
+            13.8,
+            34.5
+          ],
+          "manufacturers_to_track": [
+            "Hitachi Energy",
+            "Siemens Energy",
+            "Hyosung",
+            "WEG"
+          ]
+        },
+        "status": "NOT_INGESTED",
+        "sources_to_cross_reference": [
+          "state utility commission filings",
+          "EIS/environmental records",
+          "utility procurement filings",
+          "public project schedules"
+        ]
+      },
+      "D_epoch_ai": {
+        "status": "INGESTED",
+        "current_record_count": 93,
+        "dataset_url": "https://epoch.ai/data/ai-data-centers",
+        "semantics": "Epoch values remain separate from queue-origin capacity. Queue IDs are recorded only when the site identity is defensible."
+      }
+    }
+  },
+  "domain_3_entity_resolution": {
+    "fuzzy_algorithm": "RapidFuzz WRatio",
+    "auto_confirm_threshold": 88,
+    "human_audit_gray_zone": [
+      70,
+      88
+    ],
+    "unmatched_below": 70,
+    "high_confidence_whole_word_tokens": [
+      "vadata",
+      "edgeconnex",
+      "cyrusone"
+    ],
+    "low_confidence_whole_word_tokens": [
+      "stack",
+      "vantage",
+      "compass",
+      "rowan",
+      "qts"
+    ],
+    "storage_tokens": [
+      "bess",
+      "battery",
+      "energy storage",
+      "storage"
+    ],
+    "public_labels": [
+      "Confirmed Hyperscaler",
+      "Wholesale Colocation Developer",
+      "Confirmed Grid-Scale Storage (BESS)",
+      "Developer Not Matched To Known List",
+      "Developer Not Disclosed",
+      "Possible Match (Needs Verification)",
+      "Genuinely Ambiguous / Unclassified Large Load"
+    ],
+    "anti_defamation_rule": "No public dashboard record is labeled as a shell company, front, diversion front, illegal cluster, or similar unsupported characterization."
+  },
+  "domain_4_geospatial_interface": {
+    "map_engine": "Leaflet.js",
+    "base_tiles": [
+      "CartoDB",
+      "OpenStreetMap"
+    ],
+    "api_keys_required": false,
+    "coordinate_policy": "Use embedded county/zone lookup where available; otherwise state/province centroid fallback. Missing coordinates are skipped without throwing.",
+    "ambiguous_radius_px": "max(5.0, capacity_mw * 0.35)",
+    "ambiguous_visual": "amber/orange with glow",
+    "bess_radius_px": 3,
+    "bess_opacity": 0.35,
+    "rto_filter_behavior": "Table RTO filtering updates map markers and fits the viewport to the filtered region.",
+    "inspector_fields": [
+      "queue_id",
+      "project_name",
+      "rto_region",
+      "state/county",
+      "capacity_mw",
+      "estimated_gpus",
+      "theoretical_90_day_flops",
+      "entity_classification",
+      "review_priority"
+    ]
+  },
+  "domain_5_governance": {
+    "current_primary_references": {
+      "federal_power_act_215": {
+        "citation": "16 U.S.C. 824o",
+        "url": "https://www.law.cornell.edu/uscode/text/16/824o"
+      },
+      "ferc_rm26_4_000": {
+        "citation": "FERC Docket RM26-4-000",
+        "url": "https://www.ferc.gov/rm26-4",
+        "status_semantics": "FERC docket/proceeding reference"
+      },
+      "ferc_rd26_7_000": {
+        "citation": "196 FERC 61,031, issued July 16, 2026",
+        "url": "https://www.ferc.gov/sites/default/files/2026-07/RD26-7-000.pdf",
+        "status_semantics": "FERC order directing NERC to file reliability standards concerning computational load integration; it is not itself a telemetry rule for private software."
+      },
+      "nerc_project_2026_02": {
+        "citation": "Project 2026-02 Computational Loads; August 2026 formal posting includes CLO-001-1, CLO-002-1 and CLO-003-1 drafts",
+        "url": "https://www.nerc.com/globalassets/standards/projects/2026-02/formal-posting-1/formal-posting-1/2026-02-formal_cp_ib_word_announcement_8-20-26.pdf",
+        "status_semantics": "Draft standards under development, not a final effective standard as of this record."
+      },
+      "ceii_18_cfr_388_113": {
+        "citation": "18 CFR 388.113",
+        "url": "https://www.law.cornell.edu/cfr/text/18/388.113",
+        "status_semantics": "Existing CEII designation/access framework; the radar does not assume a particular dataset qualifies as CEII."
+      },
+      "apa_553e": {
+        "citation": "5 U.S.C. 553(e)",
+        "url": "https://www.law.cornell.edu/uscode/text/5/553"
+      },
+      "ai_action_plan_2025": {
+        "citation": "America's AI Action Plan, released July 23, 2025",
+        "url": "https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/"
+      }
+    },
+    "proposed_policy_components": {
+      "electrical_rebuttable_presumption": "PROPOSED_RESEARCH_FRAMEWORK_ONLY",
+      "ceii_to_bis_transfer": "PROPOSED_RESEARCH_PROTOCOL_ONLY",
+      "bis_diversion_triage": "PROPOSED_RESEARCH_USE_ONLY",
+      "important_limit": "The public dashboard does not represent these proposed mechanisms as currently enacted authority."
+    }
+  }
+}

@@ -282,6 +282,70 @@
     <button id="nextPage" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Next &rarr;</button>
   </div>
 
+
+  <!-- ============ MODULE 1 PHYSICAL RADAR ============ -->
+  <section id="module1-radar" class="mt-16 pt-10 border-t hairline">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.1em]" style="color:var(--amber);">Module 1</p>
+        <h2 class="font-serif-display text-xl mt-1">Multi-Modal Physical Radar</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">A transparent physics, evidence-ingestion, entity-resolution, geospatial, and governance layer. The radar evaluates observable infrastructure evidence; missing evidence remains <strong>UNKNOWN</strong> or <strong>NOT INGESTED</strong>.</p>
+      </div>
+      <div class="mono text-xs" style="color:var(--ink-faint);">Spec v1 · 2026-09-26</div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-6">
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Registry rows</div><div id="module1Rows" class="font-serif-display text-xl mt-1">—</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Capacity</div><div id="module1MW" class="font-serif-display text-xl mt-1">—</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">≥115 kV explicit</div><div id="module1HV" class="font-serif-display text-xl mt-1">—</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">All scenarios ≥10<sup>26</sup></div><div id="module1Flops" class="font-serif-display text-xl mt-1">—</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="module1Epoch" class="font-serif-display text-xl mt-1">—</div></div>
+    </div>
+
+    <div id="module1DomainGrid" class="grid md:grid-cols-2 xl:grid-cols-5 gap-3 mt-4">
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 1 · Physics</div><div class="text-sm mt-2">Computing…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 2 · Ingestion</div><div class="text-sm mt-2">Computing…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 3 · Taxonomy</div><div class="text-sm mt-2">Computing…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 4 · Interface</div><div class="text-sm mt-2">Computing…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 5 · Governance</div><div class="text-sm mt-2">Computing…</div></div>
+    </div>
+
+    <div class="panel rounded-lg mt-4 p-5">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h3 class="font-serif-display text-base">Three-scenario 90-day FLOP bound at 100 MW</h3>
+          <p class="text-xs mt-1" style="color:var(--ink-faint);">The 1,979 TFLOPS baseline is the H100 SXM FP16/BF16 Tensor Core specification; NVIDIA lists 3,958 TFLOPS for FP8, so the registry intentionally keeps 1,979 as the conservative baseline used by this model.</p>
+        </div>
+        <a class="text-xs link-underline" target="_blank" rel="noopener noreferrer" href="https://www.nvidia.com/en-eu/data-center/h100/">NVIDIA H100 specifications</a>
+      </div>
+      <div class="scroll-x mt-4">
+        <table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Scenario</th><th class="px-3 py-2 text-right">PUE</th><th class="px-3 py-2 text-right">Rack kW</th><th class="px-3 py-2 text-right">MFU</th><th class="px-3 py-2 text-right">90-day FLOPs</th></tr></thead>
+        <tbody>
+          <tr><td class="px-3 py-2">Reference</td><td class="px-3 py-2 text-right">1.25</td><td class="px-3 py-2 text-right">35</td><td class="px-3 py-2 text-right">40%</td><td class="px-3 py-2 text-right">1.126×10<sup>26</sup></td></tr>
+          <tr><td class="px-3 py-2">Conservative</td><td class="px-3 py-2 text-right">1.40</td><td class="px-3 py-2 text-right">20</td><td class="px-3 py-2 text-right">25%</td><td class="px-3 py-2 text-right">1.099×10<sup>26</sup></td></tr>
+          <tr><td class="px-3 py-2">Aggressive</td><td class="px-3 py-2 text-right">1.15</td><td class="px-3 py-2 text-right">50</td><td class="px-3 py-2 text-right">50%</td><td class="px-3 py-2 text-right">1.071×10<sup>26</sup></td></tr>
+        </tbody></table>
+      </div>
+      <p class="text-xs mt-3" style="color:var(--ink-soft);">The numerical ordering is conservative &gt; reference &gt; aggressive for these particular assumptions. The invariant is the interval: every scenario remains above 1.0×10<sup>26</sup> FLOPs at exactly 100 MW.</p>
+    </div>
+
+    <div class="panel rounded-lg mt-4 p-5">
+      <h3 class="font-serif-display text-base">Evidence boundaries</h3>
+      <div class="grid md:grid-cols-3 gap-4 mt-3 text-xs leading-relaxed" style="color:var(--ink-soft);">
+        <div><strong style="color:var(--ink);">Stream A</strong><br>All nine required market labels are present in the current registry. Source limitations remain explicit; no market row is treated as a universal large-load census.</div>
+        <div><strong style="color:var(--ink);">Streams B/C</strong><br>Satellite TIR/SAR numeric telemetry and transformer procurement-event records are defined by the spec but are <strong>not yet ingested</strong>. Their absence never becomes a PASS.</div>
+        <div><strong style="color:var(--ink);">Epoch</strong><br>93 Epoch AI sites are retained separately. Current site-level evidence and queue IDs remain distinct from queue-origin MW.</div>
+      </div>
+      <div class="flex flex-wrap gap-3 mt-4">
+        <a class="text-xs link-underline" href="data/module1_radar_spec.json" target="_blank" rel="noopener noreferrer">Open machine-readable Module 1 spec</a>
+        <a class="text-xs link-underline" href="data/module1_radar_summary.json" target="_blank" rel="noopener noreferrer">Open current Module 1 audit summary</a>
+        <a class="text-xs link-underline" href="https://www.ferc.gov/rm26-4" target="_blank" rel="noopener noreferrer">FERC RM26-4-000</a>
+        <a class="text-xs link-underline" href="https://www.ferc.gov/sites/default/files/2026-07/RD26-7-000.pdf" target="_blank" rel="noopener noreferrer">FERC RD26-7-000</a>
+      </div>
+      <p id="module1Gate" class="text-xs mt-4" style="color:var(--amber);">Module-1 five-domain gate: evaluating…</p>
+    </div>
+  </section>
+
   <!-- ============ METHODOLOGY ============ -->
   <section class="mt-16 pt-10 border-t hairline">
     <h2 class="font-serif-display text-xl mb-6">Methodology</h2>
@@ -293,7 +357,7 @@
       </summary>
       <div class="mt-3 text-sm leading-relaxed max-w-3xl" style="color:var(--ink-soft);">
         <p>Every row here cleared two filters before entering the registry: a &ge;100&nbsp;MW requested-capacity floor, applied at ingestion, and a training-scale check applied afterward &mdash; whether that capacity, run continuously for 90&nbsp;days, plausibly clears 10<sup>26</sup> FLOP under every scenario below, not just the reference one.</p>
-        <p class="mt-3">FLOPs are estimated across three named scenarios spanning a defensible range of real facility characteristics, not a single point estimate: PUE 1.15&ndash;1.40, rack density 20&ndash;50&nbsp;kW, and sustained model-FLOPs utilization 25&ndash;50%, bracketing a reference scenario (PUE 1.25, 35&nbsp;kW/rack, 8&nbsp;GPU/rack at H100-SXM dense FP8 throughput, 40% MFU). At exactly 100&nbsp;MW the three scenarios land close together &mdash; 1.07&times;&ndash;1.13&times; the 10<sup>26</sup> mark &mdash; because lower PUE efficiency and lower rack density partially offset each other in this formula, which is why the boundary is reported as a range rather than a single verified fact.</p>
+        <p class="mt-3">FLOPs are estimated across three named scenarios spanning a defensible range of real facility characteristics, not a single point estimate: PUE 1.15&ndash;1.40, rack density 20&ndash;50&nbsp;kW, and sustained model-FLOPs utilization 25&ndash;50%, bracketing a reference scenario (PUE 1.25, 35&nbsp;kW/rack, 8&nbsp;GPU/rack at H100-SXM FP16/BF16 Tensor Core baseline throughput, 40% MFU). At exactly 100&nbsp;MW the three scenarios land between 1.071&times; and 1.126&times; the 10<sup>26</sup> mark &mdash; because lower PUE efficiency and lower rack density partially offset each other in this formula, which is why the boundary is reported as a range rather than a single verified fact.</p>
         <p class="mt-3 text-xs" style="color:var(--ink-faint);">GPU and FLOPs figures are illustrative order-of-magnitude estimates derived only from requested interconnection capacity &mdash; not a claim about actual hardware, and not verified against any facility's real power-to-compute conversion.</p>
       </div>
     </details>
@@ -479,6 +543,7 @@ function render(){
   document.getElementById('resultCount').textContent = `Showing ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} facilities · every row has a research record`;
   document.getElementById('prevPage').disabled = currentPage === 0;
   document.getElementById('nextPage').disabled = currentPage >= totalPages - 1;
+  if(window.refreshRegistryMap) window.refreshRegistryMap(true);
 }
 
 document.getElementById('searchBox').addEventListener('input', applyFilters);
@@ -677,7 +742,7 @@ openFacilityFromHash();
   }
 
   const AMBER = '#D98A1A';
-  const TEAL  = '#3F8E70';
+  const BESS_BLUE = '#64748B';
   const NEUTRAL = '#7B8797';
   const FALLBACK = '#8A7A63';
   const root = document.documentElement;
@@ -712,18 +777,19 @@ openFacilityFromHash();
   refreshBasemap();
 
   function clearBoundaries(){boundaryLayers.forEach(function(layer){try{map.removeLayer(layer);}catch(e){}});boundaryLayers=[];}
-  function loadBoundaryLayer(url,label){
+  function loadBoundaryLayer(url,label,weight,opacity){
     return fetch(url,{mode:'cors',cache:'force-cache'}).then(function(res){if(!res.ok)throw new Error(label+' '+res.status);return res.json();}).then(function(geo){
       const line=cssVar('--line-strong')||'#667085';
-      const layer=L.geoJSON(geo,{style:function(){return {color:line,weight:1.35,opacity:useDarkTiles()?0.95:0.9,fill:false,interactive:false};}}).addTo(map);
+      const layer=L.geoJSON(geo,{style:function(){return {color:line,weight:weight||1.35,opacity:opacity!=null?opacity:(useDarkTiles()?0.95:0.9),fill:false,interactive:false};}}).addTo(map);
       layer.bringToBack(); boundaryLayers.push(layer);
     });
   }
   function loadBoundaries(){
     clearBoundaries();
     return Promise.allSettled([
-      loadBoundaryLayer('https://raw.githubusercontent.com/mapbox/mapboxgl-jupyter/master/examples/data/us-states.geojson','US state boundaries'),
-      loadBoundaryLayer('https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/master/canada_provinces.geojson','Canadian province boundaries')
+      loadBoundaryLayer('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json','Country boundaries',0.9,0.6),
+      loadBoundaryLayer('https://raw.githubusercontent.com/mapbox/mapboxgl-jupyter/master/examples/data/us-states.geojson','US state boundaries',1.5,1.0),
+      loadBoundaryLayer('https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/master/canada_provinces.geojson','Canadian province boundaries',1.5,1.0)
     ]);
   }
   loadBoundaries();
@@ -737,7 +803,7 @@ openFacilityFromHash();
     };
   }
   const otherCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(NEUTRAL),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
-  const bessCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(TEAL),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  const bessCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(BESS_BLUE),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   const flagCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(AMBER),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   map.addLayer(otherCluster);map.addLayer(bessCluster);map.addLayer(flagCluster);
 
@@ -745,7 +811,7 @@ openFacilityFromHash();
   legend.onAdd=function(){
     const div=L.DomUtil.create('div','map-legend');
     div.innerHTML='<div><span class="dot" style="background:'+AMBER+';"></span>Ambiguous / unresolved</div>'+
-      '<div><span class="dot" style="background:'+TEAL+';"></span>Confirmed BESS</div>'+
+      '<div><span class="dot" style="background:'+BESS_BLUE+';"></span>Confirmed BESS</div>'+
       '<div><span class="dot" style="background:'+NEUTRAL+';"></span>Other registry rows</div>'+
       '<div><span class="dot" style="background:'+FALLBACK+';"></span>State / province fallback</div>'+
       '<div id="legendCounts" style="margin-top:5px;opacity:.78;"></div>';
@@ -770,7 +836,7 @@ openFacilityFromHash();
       '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Capacity</td><td style="text-align:right;">'+r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1})+' MW</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Status</td><td style="text-align:right;">'+escapeHtml(r.status)+'</td></tr>'+
-      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Est. GPUs</td><td style="text-align:right;">'+r.gpu.toLocaleString()+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Est. GPUs</td><td style="text-align:right;">'+r.gpu.toLocaleString()+'</td></tr><tr><td style="color:var(--ink-faint);padding:2px 0;">90-day FLOPs (ref.)</td><td style="text-align:right;">'+fmtFlops(r.flops)+'</td></tr><tr><td style="color:var(--ink-faint);padding:2px 0;">Review priority</td><td style="text-align:right;">'+(r.flag?'Yes — ambiguous/unresolved':'No')+'</td></tr>'+
       '</table>'+
       '<p style="margin-top:8px;"><span class="inline-block px-2 py-0.5 rounded text-[10.5px] '+badge+'">'+escapeHtml(kind+' · '+entLabel)+'</span></p>'+
       '<p style="margin-top:8px;font-size:10.5px;color:var(--ink-faint);">'+escapeHtml(precision==='county/zone'?'County/zone centroid':'State/province centroid fallback')+'</p>'+
@@ -779,10 +845,11 @@ openFacilityFromHash();
   }
   function buildMarker(r,kind,pts){
     const loc=locationFor(r);if(!loc)return null;pts.push(loc.point);
-    const radius=kind==='ambiguous'?Math.min(12,Math.max(5.5,Math.sqrt(r.mw)*0.22)):kind==='bess'?Math.min(9.5,Math.max(3.5,Math.sqrt(r.mw)*0.16)):Math.min(8,Math.max(3,Math.sqrt(r.mw)*0.15));
+    const radius=kind==='ambiguous'?Math.max(5.0,r.mw*0.35):kind==='bess'?3.0:Math.max(3.0,Math.sqrt(r.mw)*0.15);
     const color=loc.precision==='state/province'?FALLBACK:(kind==='ambiguous'?AMBER:(kind==='bess'?TEAL:NEUTRAL));
-    const marker=L.circleMarker(loc.point,{radius:radius,color:color,weight:loc.precision==='state/province'?1.6:(kind==='ambiguous'?2:1.2),fillColor:color,fillOpacity:loc.precision==='state/province'?0.18:(kind==='ambiguous'?0.48:0.24),opacity:loc.precision==='state/province'?0.82:(kind==='ambiguous'?0.92:(kind==='bess'?0.8:0.72))});
+    const marker=L.circleMarker(loc.point,{radius:radius,color:color,weight:loc.precision==='state/province'?1.6:(kind==='ambiguous'?2:1.2),fillColor:color,fillOpacity:loc.precision==='state/province'?0.18:(kind==='ambiguous'?0.48:(kind==='bess'?0.35:0.24)),opacity:loc.precision==='state/province'?0.82:(kind==='ambiguous'?0.92:(kind==='bess'?0.35:0.72))});
     marker.bindTooltip('<span class="mono">'+escapeHtml(r.rto)+' · '+r.mw.toLocaleString(undefined,{maximumFractionDigits:1})+' MW</span>',{sticky:true,direction:'top',opacity:0.96});
+    marker.on('add',function(){if(kind==='ambiguous' && marker._path){marker._path.style.filter='drop-shadow(0 0 6px rgba(217,138,26,.85))';}});
     marker.bindPopup(popupHtml(r,loc.precision),{maxWidth:315});
     marker.on('popupopen',function(){const b=document.querySelector('[data-map-facility-id="'+CSS.escape(String(r.id))+'"]');if(b)b.addEventListener('click',function(){openFacility(r);},{once:true});});
     return marker;
@@ -811,6 +878,7 @@ openFacilityFromHash();
     if(pts.length){const bounds=L.latLngBounds(pts),options={padding:[34,34],maxZoom:mapMode==='all'?7:8,duration:animate?0.45:0};if(animate)map.flyToBounds(bounds,options);else map.fitBounds(bounds,options);}
     else if(animate)map.flyTo([45,-95],4,{duration:0.45});
   }
+  window.refreshRegistryMap = function(animate){ updateMapMarkers(!!animate); };
   document.querySelectorAll('[data-map-mode]').forEach(function(btn){btn.addEventListener('click',function(){mapMode=btn.getAttribute('data-map-mode');updateModeButtons();updateMapMarkers(true);});});
   document.getElementById('mapReset').addEventListener('click',function(){updateMapMarkers(true);});
   window.addEventListener('resize',function(){map.invalidateSize();});

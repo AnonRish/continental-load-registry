@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-26T18:06:37.156Z",
+  "as_of": "2026-09-26",
+  "module": "Module 1: Multi-Modal Physical Radar",
+  "registry_record_count": 1558,
+  "registry_capacity_mw": 361875.2999999994,
+  "domains": {
+    "domain_1_physics": {
+      "capacity_floor_pass_count": 1558,
+      "voltage_explicit_count": 1205,
+      "voltage_pass_count": 1186,
+      "voltage_fail_count": 19,
+      "voltage_unknown_count": 353,
+      "all_scenarios_1e26_pass_count": 1558,
+      "heat_signature_is_computable_from_capacity": true,
+      "site_specific_cooling_telemetry_ingested": false
+    },
+    "domain_2_ingestion": {
+      "required_market_count": 9,
+      "present_market_count": 9,
+      "markets_present": [
+        "AESO",
+        "CAISO",
+        "ERCOT",
+        "IESO",
+        "ISO-NE",
+        "MISO",
+        "NYISO",
+        "PJM",
+        "SPP"
+      ],
+      "epoch": {
+        "record_count": 93,
+        "site_level_evidence_count": 18,
+        "site_specific_queue_ids": 2,
+        "pending_site_specific_search": 75
+      },
+      "satellite_tir_sar_numeric_status": "NOT_INGESTED",
+      "transformer_supply_chain_status": "NOT_INGESTED"
+    },
+    "domain_3_entity_resolution": {
+      "tier_counts": {
+        "Tier 4: Genuinely Ambiguous / Unclassified Large Load": 141,
+        "Tier 3: Confirmed Grid-Scale Storage (BESS)": 1416,
+        "Tier 2: Wholesale Colocation Developer": 1
+      },
+      "review_priority_count": 141,
+      "wRatio_thresholds": {
+        "auto_confirm": 88,
+        "gray_zone_floor": 70
+      },
+      "storage_tier_isolated": true
+    },
+    "domain_4_interface": {
+      "leaflet_map": true,
+      "table_to_map_rto_sync": true,
+      "ambiguous_radius_formula": "max(5.0, capacity_mw * 0.35)",
+      "bess_radius_px": 3,
+      "bess_opacity": 0.35,
+      "country_and_state_boundaries": true
+    },
+    "domain_5_governance": {
+      "references_documented": true,
+      "rebuttable_presumption_status": "PROPOSED_RESEARCH_FRAMEWORK_ONLY",
+      "ceii_to_bis_transfer_status": "PROPOSED_RESEARCH_PROTOCOL_ONLY"
+    }
+  },
+  "five_domain_gate": "UNVERIFIED_PENDING_REMOTE_SENSING_AND_TRANSFORMER_EVIDENCE",
+  "note": "Queue capacity, Epoch IT power, and calculated FLOPs remain separate measurements; missing voltage or evidence never becomes PASS."
+}
