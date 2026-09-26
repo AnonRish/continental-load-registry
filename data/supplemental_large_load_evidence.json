@@ -437,6 +437,75 @@
       "granularity": "public process/source layer",
       "source_url": "https://www.ercot.com/services/rq/large-load-integration",
       "notes": "ERCOT publicly publishes Batch Zero forms, question reference guides and process/timeline material for large-load integration. The public page does not enumerate completed individual RFI responses, and RIOO submissions are controlling. Illustrative LLI-9001-style rows in an ERCOT demo update are not treated as real projects. No Batch Zero project rows are fabricated."
+    },
+    {
+      "id": "BPA-LARGE-LOAD-LEDGER-2026-09-22",
+      "jurisdiction": "US / BPA",
+      "provider": "Bonneville Power Administration / Watt Street secondary normalization",
+      "evidence_type": "western_large_load_request_universe",
+      "record_count": 457,
+      "capacity_mw": 72400,
+      "threshold_mw": null,
+      "capture_date": "2026-09-22",
+      "additive_to_core_row_level": false,
+      "granularity": "aggregate large-load request queue",
+      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "notes": "Watt Street's public Load Ledger reports 457 BPA large-load requests totaling 72.4 GW as of 2026-09-22. This is a secondary normalization of public transmission-provider queues, not a BPA-issued aggregate. It is outside the nine-market core and is not added to core totals."
+    },
+    {
+      "id": "PJM-LAS-UTILITY-LARGE-LOAD-FILES-2026-09-24",
+      "jurisdiction": "US / PJM",
+      "provider": "PJM Load Analysis Subcommittee",
+      "evidence_type": "utility_large_load_forecast_submission_set",
+      "record_count": 12,
+      "capacity_mw": null,
+      "capture_date": "2026-09-24",
+      "additive_to_core_row_level": false,
+      "granularity": "utility submission set",
+      "source_url": "https://www.pjm.com/committees-and-groups/subcommittees/las",
+      "notes": "The 2026-09-24 LAS materials list large-load/data-center forecast submissions from Dominion, NOVEC, Rappahannock, ODEC, PPL, AEP, Duquesne, FirstEnergy, Exelon, Dayton AES, Duke and PSEG. The meeting page exposes filenames but not a uniform machine-readable capacity table."
+    },
+    {
+      "id": "PJM-LARGE-LOAD-FOUR-ZONE-2026",
+      "jurisdiction": "US / PJM",
+      "provider": "PJM / FERC filing",
+      "evidence_type": "four_zone_large_load_adjustment",
+      "record_count": null,
+      "capacity_mw": 38900,
+      "threshold_mw": null,
+      "capture_date": "2026-05-07",
+      "additive_to_core_row_level": false,
+      "granularity": "four-zone forecast adjustment aggregate",
+      "source_url": "https://www.pjm.com/-/media/DotCom/documents/ferc/filings/2026/20260507-el26-63-000.pdf",
+      "notes": "PJM filing materials describe 38.9 GW of large-load adjustments concentrated in the Dominion, AEP, ComEd and PPL zones. Forecast/adjustment aggregate; not a unique facility population."
+    },
+    {
+      "id": "COMED-LARGE-DEMAND-PIPELINE-2025",
+      "jurisdiction": "Illinois, US",
+      "provider": "ComEd / Illinois Commerce Commission",
+      "evidence_type": "large_demand_project_pipeline",
+      "record_count": 75,
+      "capacity_mw": 28000,
+      "threshold_mw": 50,
+      "capture_date": "2025-08-29",
+      "additive_to_core_row_level": false,
+      "granularity": "utility customer pipeline",
+      "source_url": "https://www.icc.illinois.gov/docket/P2025-0677/documents/371138/files/650717.pdf",
+      "notes": "Illinois ICC material records ComEd at more than 75 large demand projects with requested demand of 28,000 MW; at least 50 were expected to take 138 kV or higher service. This is an aggregate utility pipeline and may overlap the 16 GW later high-probability measure."
+    },
+    {
+      "id": "MISO-EPR-CYCLE-LARGE-LOAD-2026-03",
+      "jurisdiction": "US / MISO",
+      "provider": "MISO stakeholder record / MidAmerican Energy",
+      "evidence_type": "epr_large_load_population",
+      "record_count": 35,
+      "capacity_mw": 19777,
+      "threshold_mw": 75,
+      "capture_date": "2026-03-19",
+      "additive_to_core_row_level": false,
+      "granularity": "EPR project subset",
+      "source_url": "https://www.misoenergy.org/engage/stakeholder-feedback/2026/pac-definition-of-large-load-proposal-and-requirements-pac-2024-1-20260225/",
+      "notes": "MidAmerican's March 2026 stakeholder feedback cites 35 of 46 proposed load-addition EPR projects, totaling 19,777 MW of 20,105.6 MW, as meeting a proposed >=75 MW definition. This is a stakeholder interpretation of an EPR statistics presentation, not a second queue population."
     }
   ]
 }
