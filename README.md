@@ -66,6 +66,8 @@ Machine-readable Plan A mapping is in `data/track3/ai2040_plan_a_mapping.json`; 
 
 The repository is an independent research contribution. It is not an AI Futures Project publication, does not speak for AI 2040, and does not certify a verification regime.
 
+The public research-surface CI is defined in `.github/workflows/validate_public_surface.yml` and separately validates the Plan A / Track 3 pages and machine-readable documentation contracts.
+
 
 - `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
   from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
