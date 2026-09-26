@@ -311,6 +311,59 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Evidence confidence and source type are retained item-by-item. A source assertion that identifies a utility relationship, contract, facility or planning record is not silently promoted to a formal interconnection queue ID.</p>
   </section>
 
+  <!-- ============ COMPLETE PROJECT LEDGER ============ -->
+  <section id="completeProjectLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Full machine-readable project layer</p>
+        <h2 class="font-serif-display text-xl mt-1">Complete project ledger</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Browse all 199 extracted project-level records in the page itself. Search matches project name, customer, provider, jurisdiction, queue ID, permit number and status. Capacity cells show the first source-specific claim only; open the JSON/CSV for every retained raw claim.</p>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center">
+        <input id="projectLedgerSearch" type="search" placeholder="Search 199 project records" class="text-sm px-3 py-2 rounded-md w-[260px]" />
+        <select id="projectLedgerType" class="text-sm px-3 py-2 rounded-md">
+          <option value="">All evidence types</option>
+        </select>
+      </div>
+    </div>
+    <div id="projectLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading project ledger…</div>
+    <div class="scroll-x mt-4">
+      <table class="w-full text-xs min-w-[1180px]">
+        <thead><tr><th class="px-3 py-2">ID</th><th class="px-3 py-2">Project</th><th class="px-3 py-2">Customer / developer</th><th class="px-3 py-2">Provider</th><th class="px-3 py-2">Jurisdiction</th><th class="px-3 py-2">Capacity claim</th><th class="px-3 py-2">Status</th><th class="px-3 py-2">Source</th></tr></thead>
+        <tbody id="projectLedgerBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="flex items-center justify-between gap-3 mt-4 text-xs">
+      <button id="projectLedgerPrev" type="button" class="map-reset-btn">Previous</button>
+      <span id="projectLedgerPage" class="mono" style="color:var(--ink-faint);">Page 1</span>
+      <button id="projectLedgerNext" type="button" class="map-reset-btn">Next</button>
+    </div>
+  </section>
+
+  <!-- ============ COMPLETE CONNECTION TARGET LEDGER ============ -->
+  <section id="completeConnectionTargetLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Full 93-site Track 3 target layer</p>
+        <h2 class="font-serif-display text-xl mt-1">Complete connection-target ledger</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Every canonical Epoch site is searchable here alongside its grid jurisdiction, site-specific queue state, site-evidence count and next research action.</p>
+      </div>
+      <input id="targetLedgerSearch" type="search" placeholder="Search 93 connection targets" class="text-sm px-3 py-2 rounded-md w-[260px]" />
+    </div>
+    <div id="targetLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading connection targets…</div>
+    <div class="scroll-x mt-4">
+      <table class="w-full text-xs min-w-[1100px]">
+        <thead><tr><th class="px-3 py-2">Epoch ID</th><th class="px-3 py-2">Site</th><th class="px-3 py-2">State / country</th><th class="px-3 py-2">Grid jurisdiction</th><th class="px-3 py-2">Research state</th><th class="px-3 py-2">Evidence items</th><th class="px-3 py-2">Queue ID</th><th class="px-3 py-2">Next action</th></tr></thead>
+        <tbody id="targetLedgerBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="flex items-center justify-between gap-3 mt-4 text-xs">
+      <button id="targetLedgerPrev" type="button" class="map-reset-btn">Previous</button>
+      <span id="targetLedgerPage" class="mono" style="color:var(--ink-faint);">Page 1</span>
+      <button id="targetLedgerNext" type="button" class="map-reset-btn">Next</button>
+    </div>
+  </section>
+
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -2049,6 +2102,64 @@ openFacilityFromHash();
   });
 })();
 
+</script>
+
+<script id="completeProjectLedger-js">
+(function(){
+  function escLedger(v){const s=v==null?'':String(v);return s.replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+  function firstCapacity(r){
+    const a=Array.isArray(r.capacity_claims)?r.capacity_claims[0]:null;
+    if(!a)return '—';
+    if(a.value_mw!=null)return String(a.value_mw)+' MW'+(a.qualifier?' · '+a.qualifier:'');
+    if(a.value_mva!=null)return String(a.value_mva)+' MVA'+(a.qualifier?' · '+a.qualifier:'');
+    return a.raw_value||'—';
+  }
+  let projects=[],projectFiltered=[],projectPage=0;
+  const PP=25;
+  function renderProjects(){
+    const body=document.getElementById('projectLedgerBody'), pages=Math.max(1,Math.ceil(projectFiltered.length/PP));
+    projectPage=Math.min(projectPage,pages-1);
+    const rows=projectFiltered.slice(projectPage*PP,(projectPage+1)*PP);
+    body.innerHTML=rows.length?rows.map(function(r){
+      const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escLedger(r.source_url)+'">Open</a>':'—';
+      return '<tr><td class="px-3 py-2 mono">'+escLedger(r.id)+'</td><td class="px-3 py-2"><div class="font-medium">'+escLedger(r.project_name||'—')+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escLedger(r.evidence_type||'')+'</div></td><td class="px-3 py-2">'+escLedger(r.customer_or_developer||'—')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_provider||'—')+'</td><td class="px-3 py-2">'+escLedger(r.jurisdiction||'—')+'</td><td class="px-3 py-2">'+escLedger(firstCapacity(r))+'</td><td class="px-3 py-2">'+escLedger(r.status||'—')+'</td><td class="px-3 py-2">'+src+'</td></tr>';
+    }).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No project records match.</td></tr>';
+    document.getElementById('projectLedgerPage').textContent='Page '+(projectPage+1)+' of '+pages;
+    document.getElementById('projectLedgerPrev').disabled=projectPage===0;
+    document.getElementById('projectLedgerNext').disabled=projectPage>=pages-1;
+    document.getElementById('projectLedgerStatus').textContent=projectFiltered.length+' of '+projects.length+' project records';
+  }
+  function filterProjects(){
+    const q=document.getElementById('projectLedgerSearch').value.trim().toLowerCase(), typ=document.getElementById('projectLedgerType').value;
+    projectFiltered=projects.filter(function(r){
+      if(typ&&r.evidence_type!==typ)return false;
+      if(!q)return true;
+      return [r.id,r.project_name,r.customer_or_developer,r.utility_or_provider,r.jurisdiction,r.location,r.queue_id,r.permit_number,r.status,r.source_scope].join(' ').toLowerCase().includes(q);
+    });
+    projectPage=0;renderProjects();
+  }
+  document.getElementById('projectLedgerSearch').addEventListener('input',filterProjects);
+  document.getElementById('projectLedgerType').addEventListener('change',filterProjects);
+  document.getElementById('projectLedgerPrev').addEventListener('click',function(){if(projectPage>0){projectPage--;renderProjects();}});
+  document.getElementById('projectLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(projectFiltered.length/PP));if(projectPage<pages-1){projectPage++;renderProjects();}});
+  fetch('data/project_level_extractions.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('project ledger unavailable');return res.json();}).then(function(p){projects=Array.isArray(p.records)?p.records:[];const types=[...new Set(projects.map(x=>x.evidence_type).filter(Boolean))].sort();const sel=document.getElementById('projectLedgerType');types.forEach(function(t){const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});filterProjects();}).catch(function(err){document.getElementById('projectLedgerStatus').textContent='Project ledger unavailable: '+err.message;});
+  let targets=[],targetFiltered=[],targetPage=0;
+  const TP=20;
+  function renderTargets(){
+    const body=document.getElementById('targetLedgerBody'),pages=Math.max(1,Math.ceil(targetFiltered.length/TP));targetPage=Math.min(targetPage,pages-1);
+    const rows=targetFiltered.slice(targetPage*TP,(targetPage+1)*TP);
+    body.innerHTML=rows.length?rows.map(function(r){return '<tr><td class="px-3 py-2 mono">'+escLedger(r.epoch_id)+'</td><td class="px-3 py-2">'+escLedger(r.epoch_name||'—')+'</td><td class="px-3 py-2">'+escLedger([r.state_province,r.country].filter(Boolean).join(' · ')||'—')+'</td><td class="px-3 py-2">'+escLedger(r.grid_or_queue_jurisdiction||'—')+'</td><td class="px-3 py-2">'+escLedger(r.status||'UNKNOWN')+'</td><td class="px-3 py-2 text-right">'+escLedger(r.site_level_evidence_count||0)+'</td><td class="px-3 py-2">'+escLedger(r.site_specific_queue_id||'Not verified')+'</td><td class="px-3 py-2 max-w-[360px]">'+escLedger(r.next_action||'—')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No target records match.</td></tr>';
+    document.getElementById('targetLedgerPage').textContent='Page '+(targetPage+1)+' of '+pages;
+    document.getElementById('targetLedgerPrev').disabled=targetPage===0;
+    document.getElementById('targetLedgerNext').disabled=targetPage>=pages-1;
+    document.getElementById('targetLedgerStatus').textContent=targetFiltered.length+' of '+targets.length+' connection targets';
+  }
+  function filterTargets(){const q=document.getElementById('targetLedgerSearch').value.trim().toLowerCase();targetFiltered=targets.filter(function(r){return !q||[r.epoch_id,r.epoch_name,r.state_province,r.country,r.grid_or_queue_jurisdiction,r.status,r.site_specific_queue_id,r.next_action].join(' ').toLowerCase().includes(q);});targetPage=0;renderTargets();}
+  document.getElementById('targetLedgerSearch').addEventListener('input',filterTargets);
+  document.getElementById('targetLedgerPrev').addEventListener('click',function(){if(targetPage>0){targetPage--;renderTargets();}});
+  document.getElementById('targetLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(targetFiltered.length/TP));if(targetPage<pages-1){targetPage++;renderTargets();}});
+  fetch('data/epoch_connection_research_targets.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('connection targets unavailable');return res.json();}).then(function(p){targets=Array.isArray(p.records)?p.records:[];filterTargets();}).catch(function(err){document.getElementById('targetLedgerStatus').textContent='Connection targets unavailable: '+err.message;});
+})();
 </script>
 
 </body>
