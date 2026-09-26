@@ -30,6 +30,7 @@ on:
       - "data/caiso_cluster_history.csv"
       - "data/project_level_map.json"
       - "data/pjm_large_load_submission_history.json"
+      - "data/supplemental_aggregate_map.json"
       - "data/project_level_map.csv"
       - ".github/workflows/validate_public_surface.yml"
   pull_request:
@@ -125,6 +126,8 @@ jobs:
           assert any(r["id"] == "ALECTRA-VAUGHAN-MTS6-2026" and r["capacity_mva"] == 108 for r in supplemental["records"])
           universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
           assert len(universe["markets"]) == 10
+          aggregate_map = json.loads(Path("data/supplemental_aggregate_map.json").read_text(encoding="utf-8"))
+          assert aggregate_map["record_count"] == 17 and aggregate_map["mapped_count"] == 17
           pjm_history = json.loads(Path("data/pjm_large_load_submission_history.json").read_text(encoding="utf-8"))
           assert len(pjm_history["records"]) == 28
           project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
