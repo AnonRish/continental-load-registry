@@ -454,15 +454,31 @@ function normalizeLookupPayload(payload){
   payload.records.forEach(rec => researchRecordCache.set(rec.record_id, rec));
   return payload;
 }
+const researchRecordIndexCache = new Map();
+const RECORD_STORAGE_VERSION = '2';
+
+async function fetchResearchJson(url){
+  const response = await fetch(url + '?v=' + RECORD_STORAGE_VERSION, {cache:'no-store'});
+  if(!response.ok) throw new Error('Research record resource unavailable ('+response.status+')');
+  return response.json();
+}
 async function loadResearchRecord(r){
   if(researchRecordCache.has(r.id)) return researchRecordCache.get(r.id);
-  const response = await fetch('data/facility_records/'+encodeURIComponent(r.rto)+'.json',{cache:'no-store'});
-  if(!response.ok) throw new Error('Research record file unavailable ('+response.status+')');
-  const payload = normalizeLookupPayload(await response.json());
+  let rtoIndex = researchRecordIndexCache.get(r.rto);
+  if(!rtoIndex){
+    rtoIndex = await fetchResearchJson('data/facility_records/'+encodeURIComponent(r.rto)+'/index.json');
+    if(!rtoIndex || rtoIndex.schema_version !== 2 || !rtoIndex.lookup) throw new Error('Invalid research-record index');
+    researchRecordIndexCache.set(r.rto, rtoIndex);
+  }
+  const shardPath = rtoIndex.lookup[r.id];
+  if(!shardPath) throw new Error('Facility record not found in RTO index');
+  const payload = await fetchResearchJson(shardPath);
+  normalizeLookupPayload(payload);
   const rec = researchRecordCache.get(r.id);
-  if(!rec) throw new Error('Facility record not found');
+  if(!rec) throw new Error('Facility record not found in shard');
   return rec;
 }
+
 function renderResearchRecord(r, rec, warning){
   const n=rec?.normalized || {
     queue_id:r.id,rto_region:r.rto,state_province:r.st,county_or_zone:r.co,poi_substation:r.poi,
@@ -512,7 +528,7 @@ function renderResearchRecord(r, rec, warning){
   html+='</dl><div class="flex flex-wrap gap-2 mt-4">';
   if(src.official_source_url) html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(src.official_source_url)+'">Open official source</a>';
   if(src.publisher_page_url) html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(src.publisher_page_url)+'">Open publisher page</a>';
-  html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="data/facility_records/'+encodeURIComponent(r.rto)+'.json">Open RTO research-record JSON</a></div>';
+  html+='<a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="data/facility_records/'+encodeURIComponent(r.rto)+'/index.json">Open RTO research-record JSON</a></div>';
   if(src.notes) html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">'+escapeHtml(src.notes)+'</p>';
   html+='</section>';
 
