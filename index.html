@@ -362,6 +362,16 @@
           </div>
         </div>
       </div>
+        <div class="mt-4 rounded-lg panel p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <strong class="text-sm">Observation acquisition backlog</strong>
+              <p class="text-xs mt-1" style="color:var(--ink-faint);">Generated for all 93 Epoch sites. These are acquisition tasks for missing evidence streams, not findings about the sites.</p>
+            </div>
+            <span id="track3ObservationTasks" class="font-serif-display text-xl">—</span>
+          </div>
+          <div id="track3ObservationBreakdown" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 mt-3 text-[10px] mono" style="color:var(--ink-faint);"></div>
+        </div>
       <div class="panel rounded-lg mt-5 p-5">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
@@ -388,8 +398,8 @@
           <div class="flex flex-wrap gap-3">
             <a class="text-xs link-underline" href="data/track3/site_status.json" target="_blank" rel="noopener noreferrer">Site status JSON</a>
             <a class="text-xs link-underline" href="data/track3/evidence_records.json" target="_blank" rel="noopener noreferrer">Evidence records JSON</a>
-            <a class="text-xs link-underline" href="data/track3/research_queue.json" target="_blank" rel="noopener noreferrer">Research queue JSON</a>
-            <a class="text-xs link-underline" href="data/track3/evidence_records.json" target="_blank" rel="noopener noreferrer">Evidence item JSON</a>
+            <a class="text-xs link-underline" href="data/track3/research_queue.json" target="_blank" rel="noopener noreferrer">Grid research queue</a>
+            <a class="text-xs link-underline" href="data/track3/observation_queue.json" target="_blank" rel="noopener noreferrer">651-task observation queue</a>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 mt-4">
@@ -1327,6 +1337,12 @@ openFacilityFromHash();
       document.getElementById('track3Evidence').textContent=combined.toLocaleString()+' / 93';
       document.getElementById('track3USGaps').textContent=usPending.toLocaleString();
       document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
+      const obsCount=Number(summary.observation_task_count||0);
+      document.getElementById('track3ObservationTasks').textContent=obsCount.toLocaleString();
+      const breakdown=summary.observation_task_counts_by_domain||{};
+      document.getElementById('track3ObservationBreakdown').innerHTML=Object.keys(breakdown).map(function(domain){
+        return '<div class="border hairline rounded px-2 py-1">'+escapeHtml(domain.replace(/_/g,' '))+': '+escapeHtml(String(breakdown[domain]))+'</div>';
+      }).join('');
       applyTrack3ResearchFilters();
     }catch(err){
       document.getElementById('track3ResearchStatusText').textContent='Canonical Track 3 site status unavailable: '+(err.message||'unknown error');
