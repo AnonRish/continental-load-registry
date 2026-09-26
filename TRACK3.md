@@ -55,8 +55,8 @@ Epoch IT power, projected IT power, utility service capacity, queue/interconnect
 
 ## Observation acquisition queue
 
-`data/track3/observation_queue.json` contains 651 acquisition tasks for the 93 Epoch sites. Four power tasks now carry an `INGESTED_SNAPSHOT` supporting state, but they remain open because an annual aggregate does not satisfy the interval-demand requirement. It covers seven missing evidence domains: interval power telemetry, remote sensing, cooling equipment, HV transformer supply, chip ownership, chip users, and chip shipments.
+`data/track3/observation_queue.json` is a generated, state-dependent acquisition worklist for the 93 Epoch sites. Its task count changes automatically when supporting source snapshots become available. The current build retains separate tasks for interval power telemetry, remote sensing, cooling equipment, and HV-transformer supply; chip ownership, chip users, and chip shipments are promoted to snapshot-backed evidence when all required public source files are present.
 
-Each task carries its current state, priority, required fields, site-specific next action, and—where available—the primary grid source URL/type/date plus the existing public source families to search. `data/track3/observation_queue.csv` is the flattened review version.
+Each task carries its current state, priority, required fields, site-specific next action, and—where available—the primary grid source URL/type/date plus the existing public source families to search. `data/track3/observation_queue.csv` is the flattened review version, and the JSON includes generated counts by domain and priority so CI can verify that the summary and task list agree.
 
 Completing a task requires attaching the resulting observation or record with source provenance. A task's `NOT_INGESTED`, `SOURCE_AVAILABLE_NOT_INGESTED`, `UNKNOWN`, or `PENDING_RESEARCH` state is not evidence that the underlying facility condition is absent.
