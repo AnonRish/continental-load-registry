@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "definitions": {
+    "current_row_level": {
+      "records": 1558,
+      "capacity_gw": 361.875,
+      "label": "Current row-level registry",
+      "meaning": "Published facility/request rows retained in REGISTRY_DATA and shown in the main registry table."
+    },
+    "additional_known_miso": {
+      "records": 83,
+      "capacity_gw": 35.9,
+      "capture_date": "2026-09-19",
+      "label": "Additional MISO requests held outside the row-level table",
+      "meaning": "MISO live >=100 MW requests whose public source omitted state/location fields required by the current row-level schema. They are not site-level rows and are not assigned guessed locations.",
+      "official_source_url": "https://www.misoenergy.org/api/giqueue/getprojects"
+    },
+    "expanded_known_scope": {
+      "records": 1641,
+      "capacity_gw": 397.775,
+      "label": "Expanded known large-load scope",
+      "arithmetic": "1558 + 83 records; 361.875 + 35.9 GW"
+    },
+    "historical_archive": {
+      "records": 1802,
+      "capacity_gw": 420.2054,
+      "capture_date": "2026-09-24",
+      "label": "Historical archived registry snapshot",
+      "meaning": "Prior point-in-time publication preserved separately for auditability; not additive to the current row-level or expanded-known totals."
+    }
+  },
+  "accounting_rule": "Do not treat the 83 additional MISO requests or the 1802-record historical snapshot as independent additive facility populations beyond the explicitly defined arithmetic above."
+}
