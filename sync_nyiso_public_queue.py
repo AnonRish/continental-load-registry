@@ -10,7 +10,7 @@ def main():
     if a.selftest:
         assert len(SHEETS)==5
         print("PASS: NYISO parser self-test");return
-    r=requests.get(URL,headers={"User-Agent":"Mozilla/5.0 Chrome/153.0 Safari/537.36"},timeout=60);r.raise_for_status();book=pd.ExcelFile(io.BytesIO(r.content));recs=[]
+    r=requests.get(URL,headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36","Accept":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream;q=0.9,*/*;q=0.8","Referer":"https://www.nyiso.com/interconnections"},timeout=90);r.raise_for_status();book=pd.ExcelFile(io.BytesIO(r.content));recs=[]
     for sheet,status in SHEETS.items():
         if sheet not in book.sheet_names:raise RuntimeError(f"missing sheet: {sheet}")
         df=pd.read_excel(book,sheet_name=sheet,header=[0,1] if sheet=="In Service" else 0).dropna(how="all")
