@@ -1,31 +1,263 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "audited_on": "2026-09-26",
   "repository": "AnonRish/continental-load-registry",
-  "head_sha": "0b12c86478df98237ea4c5a9e7c9efd2f7642fce",
-  "head_message": "Document full repository and Track 3 CI audit",
+  "audit_cutoff_parent_sha": "2f4c6c873c6c199f06ddf2bd1f4d4ae2ea2582b0",
+  "scope": "All commits reachable from main at the cutoff above; the commit that writes this refreshed audit is the publication record and is intentionally excluded from its own commit list.",
   "counts": {
-    "commits": 164,
-    "actions_runs": 300,
+    "commits": 174,
+    "actions_runs": 330,
     "track3_sync_runs": 93,
     "track3_sync_success": 6,
     "track3_sync_failure": 40,
     "track3_sync_cancelled": 1,
-    "pages_runs": 147,
-    "commits_with_sync_success": 6,
-    "commits_with_sync_failure": 40,
-    "commits_pages_only_success": 29,
-    "commits_pages_superseded": 72,
-    "commits_without_exact_sha_workflow": 17
+    "pages_runs": 166,
+    "pages_success": 53,
+    "pages_failure": 0,
+    "pages_cancelled": 111,
+    "public_surface_runs": 5,
+    "public_surface_success": 2,
+    "public_surface_failure": 2,
+    "commits_with_track3_sync_success": 6,
+    "commits_with_track3_sync_failure": 40,
+    "commits_pages_only_success": 38,
+    "commits_without_exact_sha_workflow": 8
   },
-  "latest_successful_sync": 111,
+  "latest_successful_track3_sync": 111,
+  "latest_successful_track3_sync_sha": "05fabf4dcd8155eac04fdcc33854e821da0da8b5",
   "latest_pages_run": {
-    "run": 156,
-    "status": "completed",
-    "conclusion": "success",
-    "sha": "0b12c86478df98237ea4c5a9e7c9efd2f7642fce"
+    "run": 166,
+    "sha": "2f4c6c873c6c199f06ddf2bd1f4d4ae2ea2582b0",
+    "status": "pending",
+    "conclusion": null
+  },
+  "latest_public_surface_run": {
+    "run": 5,
+    "sha": "2f4c6c873c6c199f06ddf2bd1f4d4ae2ea2582b0",
+    "status": "in_progress",
+    "conclusion": null
   },
   "commit_records": [
+    {
+      "sha": "2f4c6c873c6c199f06ddf2bd1f4d4ae2ea2582b0",
+      "date": "2026-09-26T20:38:28Z",
+      "message": "Refresh complete commit and CI audit",
+      "classification": "WORKFLOW_PENDING",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 166,
+          "id": 36270218594,
+          "status": "pending",
+          "conclusion": null,
+          "created_at": "2026-09-26T20:38:29Z"
+        }
+      ],
+      "public_surface_runs": [
+        {
+          "run": 5,
+          "id": 36270219515,
+          "status": "in_progress",
+          "conclusion": null,
+          "created_at": "2026-09-26T20:38:30Z"
+        }
+      ],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "d0f109ed7bf9dba0c94170e3d14587e8527fc39d",
+      "date": "2026-09-26T20:37:52Z",
+      "message": "Document public research-surface CI",
+      "classification": "WORKFLOW_PENDING",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 165,
+          "id": 36270183862,
+          "status": "in_progress",
+          "conclusion": null,
+          "created_at": "2026-09-26T20:37:54Z"
+        }
+      ],
+      "public_surface_runs": [
+        {
+          "run": 4,
+          "id": 36270183825,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T20:37:54Z"
+        }
+      ],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "68ed9ae93f37fa8bbce840b9d0c88315446b2d87",
+      "date": "2026-09-26T20:37:48Z",
+      "message": "Trigger public-surface CI when its workflow changes",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 164,
+          "id": 36270179867,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:37:50Z"
+        }
+      ],
+      "public_surface_runs": [
+        {
+          "run": 3,
+          "id": 36270180049,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T20:37:50Z"
+        }
+      ],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "2d8bec011f0e7d0b16a05b0f8be70487ead192ff",
+      "date": "2026-09-26T20:37:35Z",
+      "message": "Fix sitemap validation for root registry URL",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 163,
+          "id": 36270168362,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:37:37Z"
+        }
+      ],
+      "public_surface_runs": [],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "6e63f41cbe0b581150dc26b3c9e482cf18379bbb",
+      "date": "2026-09-26T20:36:55Z",
+      "message": "Strengthen Plan A reference and citation guidance",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 162,
+          "id": 36270129595,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:36:57Z"
+        }
+      ],
+      "public_surface_runs": [
+        {
+          "run": 2,
+          "id": 36270129828,
+          "status": "completed",
+          "conclusion": "failure",
+          "created_at": "2026-09-26T20:36:57Z"
+        }
+      ],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "ffd6816d8813479e360789da2a29e6c24eb02f1a",
+      "date": "2026-09-26T20:36:46Z",
+      "message": "Expose CI audit and citation infrastructure on Plan A page",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 161,
+          "id": 36270121953,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:36:48Z"
+        }
+      ],
+      "public_surface_runs": [
+        {
+          "run": 1,
+          "id": 36270122364,
+          "status": "completed",
+          "conclusion": "failure",
+          "created_at": "2026-09-26T20:36:48Z"
+        }
+      ],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "24253a1c1124b58551efe8f61ececfd0e8043a8b",
+      "date": "2026-09-26T20:36:37Z",
+      "message": "Add CI for Plan A public research surface",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 160,
+          "id": 36270114196,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:36:39Z"
+        }
+      ],
+      "public_surface_runs": [],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "1fcc8ca238f55fa4d994ec24a9cb5b5c994c85c6",
+      "date": "2026-09-26T20:36:29Z",
+      "message": "Add human-readable citation guide",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 159,
+          "id": 36270107292,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:36:31Z"
+        }
+      ],
+      "public_surface_runs": [],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "d4d70bc021f21113d9313367db578135f6db256c",
+      "date": "2026-09-26T20:36:23Z",
+      "message": "Add public research discovery index",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 158,
+          "id": 36270100491,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:36:25Z"
+        }
+      ],
+      "public_surface_runs": [],
+      "failed_sync_steps": []
+    },
+    {
+      "sha": "1fd529c0b2fca6e222f4247ee79207a7da104103",
+      "date": "2026-09-26T20:35:59Z",
+      "message": "Add machine-readable complete commit CI audit",
+      "classification": "PAGES_SUPERSEDED",
+      "sync_runs": [],
+      "pages_runs": [
+        {
+          "run": 157,
+          "id": 36270076810,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-09-26T20:36:01Z"
+        }
+      ],
+      "public_surface_runs": [],
+      "failed_sync_steps": []
+    },
     {
       "sha": "0b12c86478df98237ea4c5a9e7c9efd2f7642fce",
       "date": "2026-09-26T20:33:45Z",
@@ -41,6 +273,7 @@
           "created_at": "2026-09-26T20:33:47Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -58,6 +291,7 @@
           "created_at": "2026-09-26T20:32:44Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -75,6 +309,7 @@
           "created_at": "2026-09-26T20:32:43Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -92,6 +327,7 @@
           "created_at": "2026-09-26T20:32:38Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -109,6 +345,7 @@
           "created_at": "2026-09-26T20:32:35Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -134,6 +371,7 @@
           "created_at": "2026-09-26T20:32:18Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -151,6 +389,7 @@
           "created_at": "2026-09-26T20:31:43Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -168,6 +407,7 @@
           "created_at": "2026-09-26T20:31:37Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -185,6 +425,7 @@
           "created_at": "2026-09-26T20:31:35Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -202,6 +443,7 @@
           "created_at": "2026-09-26T20:31:33Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -219,6 +461,7 @@
           "created_at": "2026-09-26T20:31:12Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -244,6 +487,7 @@
           "created_at": "2026-09-26T20:30:58Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -261,6 +505,7 @@
           "created_at": "2026-09-26T20:30:19Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -286,6 +531,7 @@
           "created_at": "2026-09-26T20:30:15Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 109,
@@ -308,6 +554,7 @@
           "created_at": "2026-09-26T20:29:44Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -325,6 +572,7 @@
           "created_at": "2026-09-26T20:29:37Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -350,6 +598,7 @@
           "created_at": "2026-09-26T20:29:32Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 108,
@@ -380,6 +629,7 @@
           "created_at": "2026-09-26T20:29:27Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 107,
@@ -402,6 +652,7 @@
           "created_at": "2026-09-26T20:29:17Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -419,6 +670,7 @@
           "created_at": "2026-09-26T20:29:00Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -436,6 +688,7 @@
           "created_at": "2026-09-26T20:28:58Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -453,6 +706,7 @@
           "created_at": "2026-09-26T20:28:57Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -470,6 +724,7 @@
           "created_at": "2026-09-26T20:28:55Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -487,6 +742,7 @@
           "created_at": "2026-09-26T20:28:26Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -512,6 +768,7 @@
           "created_at": "2026-09-26T20:28:11Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 106,
@@ -542,6 +799,7 @@
           "created_at": "2026-09-26T20:28:00Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -567,6 +825,7 @@
           "created_at": "2026-09-26T20:27:46Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 104,
@@ -597,6 +856,7 @@
           "created_at": "2026-09-26T20:21:48Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 103,
@@ -627,6 +887,7 @@
           "created_at": "2026-09-26T20:21:37Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 102,
@@ -657,6 +918,7 @@
           "created_at": "2026-09-26T20:21:17Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 101,
@@ -679,6 +941,7 @@
           "created_at": "2026-09-26T20:21:09Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -704,6 +967,7 @@
           "created_at": "2026-09-26T20:20:39Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 100,
@@ -734,6 +998,7 @@
           "created_at": "2026-09-26T20:08:33Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 99,
@@ -764,6 +1029,7 @@
           "created_at": "2026-09-26T20:08:14Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 98,
@@ -786,6 +1052,7 @@
           "created_at": "2026-09-26T20:08:08Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -811,6 +1078,7 @@
           "created_at": "2026-09-26T20:07:54Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 97,
@@ -833,6 +1101,7 @@
           "created_at": "2026-09-26T20:07:48Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -850,6 +1119,7 @@
           "created_at": "2026-09-26T20:07:25Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -875,6 +1145,7 @@
           "created_at": "2026-09-26T20:07:17Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 96,
@@ -905,6 +1176,7 @@
           "created_at": "2026-09-26T20:07:07Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 95,
@@ -927,6 +1199,7 @@
           "created_at": "2026-09-26T20:06:57Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -944,6 +1217,7 @@
           "created_at": "2026-09-26T19:53:32Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -969,6 +1243,7 @@
           "created_at": "2026-09-26T19:52:46Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 94,
@@ -999,6 +1274,7 @@
           "created_at": "2026-09-26T19:37:00Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 83,
@@ -1029,6 +1305,7 @@
           "created_at": "2026-09-26T19:35:24Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 81,
@@ -1059,6 +1336,7 @@
           "created_at": "2026-09-26T19:31:25Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 77,
@@ -1081,6 +1359,7 @@
           "created_at": "2026-09-26T19:27:52Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1106,6 +1385,7 @@
           "created_at": "2026-09-26T19:27:33Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 72,
@@ -1128,6 +1408,7 @@
           "created_at": "2026-09-26T19:25:47Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1145,6 +1426,7 @@
           "created_at": "2026-09-26T19:24:19Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1162,6 +1444,7 @@
           "created_at": "2026-09-26T19:22:48Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1187,6 +1470,7 @@
           "created_at": "2026-09-26T19:20:31Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 69,
@@ -1217,6 +1501,7 @@
           "created_at": "2026-09-26T19:19:23Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 66,
@@ -1247,6 +1532,7 @@
           "created_at": "2026-09-26T19:17:14Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 64,
@@ -1277,6 +1563,7 @@
           "created_at": "2026-09-26T19:15:56Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 62,
@@ -1307,6 +1594,7 @@
           "created_at": "2026-09-26T19:12:02Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 58,
@@ -1337,6 +1625,7 @@
           "created_at": "2026-09-26T18:58:56Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 51,
@@ -1359,6 +1648,7 @@
           "created_at": "2026-09-26T18:48:23Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1384,6 +1674,7 @@
           "created_at": "2026-09-26T18:48:07Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1401,6 +1692,7 @@
           "created_at": "2026-09-26T18:18:54Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1426,6 +1718,7 @@
           "created_at": "2026-09-26T18:18:40Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1450,6 +1743,7 @@
           "created_at": "2026-09-26T18:14:06Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1475,6 +1769,7 @@
           "created_at": "2026-09-26T18:13:53Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1492,6 +1787,7 @@
         }
       ],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 35,
@@ -1522,6 +1818,7 @@
           "created_at": "2026-09-26T18:12:11Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 33,
@@ -1552,6 +1849,7 @@
           "created_at": "2026-09-26T18:11:39Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 32,
@@ -1581,6 +1879,7 @@
           "created_at": "2026-09-26T18:11:14Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1598,6 +1897,7 @@
         }
       ],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 31,
@@ -1620,6 +1920,7 @@
           "created_at": "2026-09-26T18:08:49Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1645,6 +1946,7 @@
           "created_at": "2026-09-26T18:08:08Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 30,
@@ -1675,6 +1977,7 @@
           "created_at": "2026-09-26T18:06:56Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 29,
@@ -1697,6 +2000,7 @@
           "created_at": "2026-09-26T17:55:55Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1714,6 +2018,7 @@
           "created_at": "2026-09-26T17:55:53Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1731,6 +2036,7 @@
           "created_at": "2026-09-26T17:55:51Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1756,6 +2062,7 @@
           "created_at": "2026-09-26T17:55:29Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 28,
@@ -1786,6 +2093,7 @@
           "created_at": "2026-09-26T17:55:12Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 27,
@@ -1808,6 +2116,7 @@
           "created_at": "2026-09-26T17:54:56Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1825,6 +2134,7 @@
           "created_at": "2026-09-26T17:54:53Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1850,6 +2160,7 @@
           "created_at": "2026-09-26T17:46:32Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 26,
@@ -1872,6 +2183,7 @@
           "created_at": "2026-09-26T17:46:02Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1889,6 +2201,7 @@
           "created_at": "2026-09-26T17:36:39Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1914,6 +2227,7 @@
           "created_at": "2026-09-26T17:36:10Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 25,
@@ -1944,6 +2258,7 @@
           "created_at": "2026-09-26T17:35:55Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 24,
@@ -1966,6 +2281,7 @@
           "created_at": "2026-09-26T17:35:47Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -1991,6 +2307,7 @@
           "created_at": "2026-09-26T17:35:35Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 23,
@@ -2013,6 +2330,7 @@
           "created_at": "2026-09-26T17:35:23Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2030,6 +2348,7 @@
           "created_at": "2026-09-26T17:35:20Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2047,6 +2366,7 @@
           "created_at": "2026-09-26T17:35:11Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2064,6 +2384,7 @@
           "created_at": "2026-09-26T17:33:48Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2081,6 +2402,7 @@
           "created_at": "2026-09-26T17:28:35Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2106,6 +2428,7 @@
           "created_at": "2026-09-26T17:28:25Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 22,
@@ -2128,6 +2451,7 @@
           "created_at": "2026-09-26T17:28:22Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2145,6 +2469,7 @@
           "created_at": "2026-09-26T17:28:05Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2162,6 +2487,7 @@
           "created_at": "2026-09-26T17:27:58Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2179,6 +2505,7 @@
           "created_at": "2026-09-26T17:26:57Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2196,6 +2523,7 @@
           "created_at": "2026-09-26T17:26:54Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2213,6 +2541,7 @@
           "created_at": "2026-09-26T17:26:51Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2230,6 +2559,7 @@
           "created_at": "2026-09-26T17:24:58Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2247,6 +2577,7 @@
           "created_at": "2026-09-26T17:22:40Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2264,6 +2595,7 @@
           "created_at": "2026-09-26T17:16:45Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2281,6 +2613,7 @@
           "created_at": "2026-09-26T17:16:42Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2298,6 +2631,7 @@
           "created_at": "2026-09-26T17:16:40Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2315,6 +2649,7 @@
           "created_at": "2026-09-26T17:16:21Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2332,6 +2667,7 @@
           "created_at": "2026-09-26T17:15:39Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2349,6 +2685,7 @@
           "created_at": "2026-09-26T17:15:28Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2366,6 +2703,7 @@
           "created_at": "2026-09-26T17:15:08Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2383,6 +2721,7 @@
           "created_at": "2026-09-26T17:14:43Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2400,6 +2739,7 @@
           "created_at": "2026-09-26T17:14:02Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2417,6 +2757,7 @@
           "created_at": "2026-09-26T17:14:00Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2442,6 +2783,7 @@
           "created_at": "2026-09-26T17:13:58Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 3,
@@ -2464,6 +2806,7 @@
           "created_at": "2026-09-26T17:13:15Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2489,6 +2832,7 @@
           "created_at": "2026-09-26T17:12:52Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2514,6 +2858,7 @@
           "created_at": "2026-09-26T17:12:47Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": [
         {
           "run": 1,
@@ -2536,6 +2881,7 @@
           "created_at": "2026-09-26T17:12:40Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2553,6 +2899,7 @@
           "created_at": "2026-09-26T17:09:28Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2570,6 +2917,7 @@
           "created_at": "2026-09-26T17:02:10Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2587,6 +2935,7 @@
           "created_at": "2026-09-26T17:02:08Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2604,6 +2953,7 @@
           "created_at": "2026-09-26T17:01:48Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2621,6 +2971,7 @@
           "created_at": "2026-09-26T17:01:36Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2638,6 +2989,7 @@
           "created_at": "2026-09-26T17:01:29Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2655,6 +3007,7 @@
           "created_at": "2026-09-26T17:01:18Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2672,6 +3025,7 @@
           "created_at": "2026-09-26T17:00:58Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2689,6 +3043,7 @@
           "created_at": "2026-09-26T16:37:43Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2706,6 +3061,7 @@
           "created_at": "2026-09-26T16:35:51Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2723,6 +3079,7 @@
           "created_at": "2026-09-26T16:35:23Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2740,6 +3097,7 @@
           "created_at": "2026-09-26T16:35:16Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2757,6 +3115,7 @@
           "created_at": "2026-09-26T16:34:28Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2774,6 +3133,7 @@
           "created_at": "2026-09-26T16:33:51Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2791,6 +3151,7 @@
           "created_at": "2026-09-26T16:33:49Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2808,6 +3169,7 @@
           "created_at": "2026-09-26T16:33:46Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2825,6 +3187,7 @@
           "created_at": "2026-09-26T16:33:43Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2842,6 +3205,7 @@
           "created_at": "2026-09-26T16:33:39Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2859,6 +3223,7 @@
           "created_at": "2026-09-26T16:33:37Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2876,6 +3241,7 @@
           "created_at": "2026-09-26T16:33:34Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2893,6 +3259,7 @@
           "created_at": "2026-09-26T16:33:31Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2910,6 +3277,7 @@
           "created_at": "2026-09-26T16:33:29Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2927,6 +3295,7 @@
           "created_at": "2026-09-26T16:33:26Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2944,6 +3313,7 @@
           "created_at": "2026-09-26T16:33:06Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2961,6 +3331,7 @@
           "created_at": "2026-09-26T16:32:44Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2978,6 +3349,7 @@
           "created_at": "2026-09-26T16:27:00Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -2987,6 +3359,7 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3004,6 +3377,7 @@
           "created_at": "2026-09-26T16:20:02Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3013,6 +3387,7 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3022,6 +3397,7 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3031,6 +3407,7 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3048,6 +3425,7 @@
           "created_at": "2026-09-26T16:14:37Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3057,6 +3435,7 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3066,6 +3445,7 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3083,6 +3463,7 @@
           "created_at": "2026-09-26T16:10:05Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3100,6 +3481,7 @@
           "created_at": "2026-09-26T16:08:56Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3117,6 +3499,7 @@
           "created_at": "2026-09-26T16:08:17Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3134,6 +3517,7 @@
           "created_at": "2026-09-26T16:08:05Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3151,33 +3535,61 @@
           "created_at": "2026-09-26T16:07:56Z"
         }
       ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "45e52c355b669726a37bf3a0a2f29d17fb0e0f33",
       "date": "2026-09-26T15:53:24Z",
       "message": "Remove temporary PJM test-branch workflow trigger",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 9,
+          "id": 36253505162,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T15:53:26Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "6cdd8d5ebb9ed83e619c92a1bad8133946a290ea",
       "date": "2026-09-26T15:52:20Z",
       "message": "Add PJM status regression tests",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 8,
+          "id": 36253446151,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T15:52:22Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "67950d0269023a1b10bec1aaacd5cd3013c11513",
       "date": "2026-09-26T15:51:25Z",
       "message": "Merge pull request #1 from AnonRish/test/pjm-classifier-fix-20260926",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 7,
+          "id": 36253392291,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T15:51:27Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3187,15 +3599,25 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "58474e5a1150799bda545a0bc59154b5e818c4de",
       "date": "2026-09-26T15:50:30Z",
       "message": "Handle live PJM status labels",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 6,
+          "id": 36253338122,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T15:50:31Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
@@ -3205,51 +3627,97 @@
       "classification": "NO_EXACT_SHA_WORKFLOW",
       "sync_runs": [],
       "pages_runs": [],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "dfd764b881e4870d6635955314911b108e8fa3a6",
       "date": "2026-09-26T15:48:23Z",
       "message": "Fix PJM short status codes and add exclusion diagnostics",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 5,
+          "id": 36253215352,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T15:48:25Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "35b86122338f1a0ae45fb5c437051573f10b7884",
       "date": "2026-09-26T15:27:40Z",
       "message": "Automated Monthly Registry Sync: [2026-09-26]",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 4,
+          "id": 36252013785,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-26T15:27:43Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "bb938d63faa5fa8e75a061de924ad7f67dc51c7a",
       "date": "2026-09-24T20:24:28Z",
       "message": "Automated Monthly Registry Sync: [2026-09-24]",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 3,
+          "id": 36054661506,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-24T20:24:31Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "398afba6c1ae2e046c144127f4bd8460a0c59ac7",
       "date": "2026-09-24T20:16:06Z",
       "message": "Add grid queue ingestion self-test",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 2,
+          "id": 36053718939,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-24T20:16:13Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     },
     {
       "sha": "304c9730c2f0739e2d82710be71c6f45c8fbc019",
       "date": "2026-09-24T20:04:33Z",
       "message": "Initial commit: Continental Load Registry v2.1",
-      "classification": "NO_EXACT_SHA_WORKFLOW",
+      "classification": "PAGES_PASSED",
       "sync_runs": [],
-      "pages_runs": [],
+      "pages_runs": [
+        {
+          "run": 1,
+          "id": 36053066026,
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-09-24T20:10:24Z"
+        }
+      ],
+      "public_surface_runs": [],
       "failed_sync_steps": []
     }
   ]
