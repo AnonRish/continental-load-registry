@@ -33,46 +33,68 @@
       "id": "epoch-chip-sales",
       "name": "Epoch AI — AI chip sales",
       "kind": "secondary global supply dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-08-27",
       "url": "https://epoch.ai/data/ai-chip-sales",
-      "role": "Aggregate accelerator shipments, compute, chip power, and spending over time."
+      "role": "Aggregate accelerator shipments, compute, chip power, and spending over time.",
+      "capture_on": "2026-09-26",
+      "snapshot_files": [
+        "ai_chip_sales_chip_types.csv",
+        "ai_chip_sales_organizations.csv",
+        "ai_chip_sales_timelines_by_chip.csv"
+      ],
+      "last_captured_utc": "2026-09-26T20:31:08.541197+00:00"
     },
     {
       "id": "epoch-chip-owners",
       "name": "Epoch AI — AI chip owners",
       "kind": "secondary global ownership dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-05-12",
       "url": "https://epoch.ai/data/ai-chip-owners",
-      "role": "Estimated ownership by company/category, chip type, and time period."
+      "role": "Estimated ownership by company/category, chip type, and time period.",
+      "capture_on": "2026-09-26",
+      "snapshot_files": [
+        "ai_chip_owners_cumulative_by_designer.csv",
+        "ai_chip_owners_quarters_by_chip_type.csv",
+        "ai_chip_owners_cumulative_by_chip_type.csv"
+      ],
+      "last_captured_utc": "2026-09-26T20:31:08.541197+00:00"
     },
     {
       "id": "epoch-chip-users",
       "name": "Epoch AI — AI chip users",
       "kind": "secondary global usage dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-09-09",
       "url": "https://epoch.ai/data/ai-chip-users",
-      "role": "Estimated compute used by major frontier AI developers."
+      "role": "Estimated compute used by major frontier AI developers.",
+      "capture_on": "2026-09-26",
+      "snapshot_files": [
+        "ai_chip_users_year_end_by_lab.csv",
+        "ai_chip_users_intermediates_by_lab.csv"
+      ],
+      "last_captured_utc": "2026-09-26T20:31:08.541197+00:00"
     },
     {
       "id": "epoch-chillers",
       "name": "Epoch AI — data-center chillers",
       "kind": "secondary cooling-equipment dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-06-08",
       "url": "https://epoch.ai/data/data_centers/data_center_chillers.csv",
-      "role": "Cooling-equipment evidence that can complement thermal/physical verification."
+      "role": "Cooling-equipment evidence that can complement thermal/physical verification.",
+      "capture_on": "2026-09-26"
     },
     {
       "id": "epoch-cooling-towers",
       "name": "Epoch AI — data-center cooling towers",
       "kind": "secondary cooling-equipment dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-01-20",
       "url": "https://epoch.ai/data/data_centers/data_center_cooling_towers.csv",
-      "role": "Cooling-equipment evidence for site-scale physical verification."
+      "role": "Cooling-equipment evidence for site-scale physical verification.",
+      "capture_on": "2026-09-26"
     },
     {
       "id": "tir-sar",
@@ -105,19 +127,29 @@
       "id": "epoch-gpu-clusters",
       "name": "Epoch AI — GPU clusters",
       "kind": "secondary global compute-location dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-03-13",
       "url": "https://epoch.ai/data/gpu-clusters",
-      "role": "Independent reference for geographically identified GPU clusters and compute infrastructure; not yet joined to site-level Track 3 records."
+      "role": "Independent reference for geographically identified GPU clusters and compute infrastructure; not yet joined to site-level Track 3 records.",
+      "snapshot_files": [
+        "gpu_clusters.csv"
+      ],
+      "last_captured_utc": "2026-09-26T20:31:08.541197+00:00"
     },
     {
       "id": "epoch-chip-components",
       "name": "Epoch AI — AI chip components",
       "kind": "secondary global semiconductor supply dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "INGESTED_SNAPSHOT",
       "updated": "2026-07-23",
       "url": "https://epoch.ai/data/ai-chip-components",
-      "role": "Upstream semiconductor constraints and components relevant to AI accelerator supply accounting; not yet joined to site-level Track 3 records."
+      "role": "Upstream semiconductor constraints and components relevant to AI accelerator supply accounting; not yet joined to site-level Track 3 records.",
+      "snapshot_files": [
+        "ai_chip_components_quarterly_by_chip.csv",
+        "ai_chip_components_quarterly_by_designer.csv",
+        "ai_chip_components_supply_denominators.csv"
+      ],
+      "last_captured_utc": "2026-09-26T20:31:08.541197+00:00"
     },
     {
       "id": "meta-facility-electricity",
