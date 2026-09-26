@@ -387,3 +387,6 @@ Apache License 2.0 -- see `LICENSE`.
 ## Contact
 
 grid.telemetry.initiative@gmail.com
+
+
+**Map coverage:** `data/project_level_map.json` contains 199 project-level records and currently has numeric display coordinates for all 199. `data/supplemental_aggregate_map.json` contains 47 aggregate/historical records and currently has numeric display coordinates for all 47. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
