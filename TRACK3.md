@@ -18,9 +18,9 @@ This layer turns the continental registry from a queue table into an auditable e
 
 ## Current site evidence
 
-As of 2026-09-26, the preserved 93-site Epoch universe has 35 sites with at least one attached site-level evidence item and 58 without one. Two have site-specific queue IDs in the current crosswalk.
+As of 2026-09-26, the preserved 93-site Epoch universe has 44 sites with at least one item in the primary site-level evidence layer. The queue crosswalk contributes 27 additional public site-level evidence records; 8 of those are attached to sites that had no primary-layer evidence, so 52 of 93 sites have at least one evidence item across the combined layers. Two sites have site-specific queue IDs.
 
-The pending research queue is deliberately retained as a worklist. The absence of a public record after a particular search is not treated as proof of absence.
+The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 33 `SITE_LEVEL_EVIDENCE`, and 58 `PENDING_RESEARCH`. The 58 pending records include all sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist. The absence of a public record after a particular search is not treated as proof of absence.
 
 ## Evidence domains
 
@@ -31,6 +31,8 @@ Each Epoch site receives machine-readable status for site identity, construction
 ```
 python build_track3_evidence.py
 ```
+
+The builder joins both the primary site-level evidence file and the public evidence embedded in the queue crosswalk. Crosswalk evidence is retained as a separate provenance layer and is never promoted to a queue ID without a defensible match.
 
 Outputs:
 

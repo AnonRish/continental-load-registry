@@ -69,6 +69,8 @@ def external_snapshot_available(domain: str) -> bool:
 def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
     ev = rec.get("site_level_connection_evidence") or []
     grid = rec.get("grid_crosswalk") or {}
+    crosswalk_ev = grid.get("site_level_public_evidence") or {}
+    crosswalk_status = str(crosswalk_ev.get("status") or "").lower()
     if domain == "site_identity":
         return {
             "status": "INGESTED",
@@ -89,6 +91,16 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
     if domain == "grid_connection":
         connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request"}
         connection_evidence = [x for x in ev if x.get("type") in connection_types]
+        crosswalk_connection_evidence = bool(
+            crosswalk_ev and (
+                "grid_record" in crosswalk_status
+                or "utility_record" in crosswalk_status
+                or "service_record" in crosswalk_status
+                or "regulatory_record" in crosswalk_status
+                or "power_request" in crosswalk_status
+                or "load_request" in crosswalk_status
+            )
+        )
         if grid.get("site_specific_queue_id"):
             return {
                 "status": "VERIFIED_SITE_SPECIFIC",
@@ -99,10 +111,10 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
                 "status": "VERIFIED_SITE_SPECIFIC",
                 "basis": "Site-level queue evidence is attached to the Epoch record."
             }
-        if connection_evidence:
+        if connection_evidence or crosswalk_connection_evidence:
             return {
                 "status": "SITE_LEVEL_EVIDENCE",
-                "basis": "At least one site-level utility, service, power-request, or load-request record is attached; no queue ID is asserted."
+                "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
             }
         return {
             "status": "PENDING_RESEARCH",
@@ -137,8 +149,9 @@ def evidence_domain(ev: dict[str, Any]) -> str:
         return "service_or_contract"
     return "grid_connection"
 
-def build_evidence_index(evidence: dict[str, Any]) -> list[dict[str, Any]]:
+def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any]) -> list[dict[str, Any]]:
     rows = []
+    registry_by_id = {x["epoch_id"]: x for x in registry["records"]}
     for rec in evidence["records"]:
         for idx, ev in enumerate(rec.get("site_level_evidence") or [], start=1):
             raw = {
@@ -174,6 +187,49 @@ def build_evidence_index(evidence: dict[str, Any]) -> list[dict[str, Any]]:
                 "review_state": "PUBLISHED_RECORD",
             }
             rows.append(item)
+
+    # Preserve the public grid/facility evidence embedded in the queue
+    # crosswalk as its own provenance layer. These values are source-specific
+    # and are never silently promoted to a queue ID or measured load.
+    for rec in registry["records"]:
+        grid = rec.get("grid_crosswalk") or {}
+        ev = grid.get("site_level_public_evidence")
+        if not ev:
+            continue
+        raw = {
+            "epoch_id": rec["epoch_id"],
+            "source": ev.get("source"),
+            "url": ev.get("url"),
+            "status": ev.get("status"),
+        }
+        eid = "EVID-XW-" + rec["epoch_id"]
+        status = str(ev.get("status") or "").lower()
+        domain = "grid_connection" if any(
+            token in status for token in ("grid_record", "utility_record", "service_record", "regulatory_record", "power_request", "load_request")
+        ) else "site_identity"
+        rows.append({
+            "evidence_id": eid,
+            "target_type": "epoch_site",
+            "target_id": rec["epoch_id"],
+            "target_name": rec.get("normalized", {}).get("name"),
+            "domain": domain,
+            "evidence_type": ev.get("status"),
+            "claim_scope": "site_level",
+            "status": "SITE_LEVEL_EVIDENCE",
+            "source_kind": "queue crosswalk public evidence",
+            "source_name": ev.get("source") or ev.get("authority"),
+            "source_url": ev.get("url"),
+            "observed_on": None,
+            "captured_on": grid.get("source_date") or evidence.get("generated_on"),
+            "confidence": None,
+            "basis": ev.get("basis"),
+            "record_id": ev.get("record_id"),
+            "authority": ev.get("grid_operator") or ev.get("authority"),
+            "capacity_mw": None,
+            "site_specific": False,
+            "independent_of_other_source": None,
+            "review_state": "PUBLISHED_CROSSWALK_EVIDENCE",
+        })
     return rows
 
 def main() -> int:
@@ -209,6 +265,8 @@ def main() -> int:
             domains[domain] = s
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
 
+        base_evidence_count = len(ev.get("site_level_evidence") or [])
+        crosswalk_evidence_count = 1 if (rec.get("grid_crosswalk") or {}).get("site_level_public_evidence") else 0
         site_records.append({
             "epoch_id": rec["epoch_id"],
             "site_name": rec.get("normalized", {}).get("name"),
@@ -217,18 +275,24 @@ def main() -> int:
             "current_it_power_mw": rec.get("normalized", {}).get("current_power_mw"),
             "current_h100_equivalents": rec.get("normalized", {}).get("current_h100_equivalents"),
             "domains": domains,
-            "site_level_evidence_count": len(ev.get("site_level_evidence") or []),
+            "site_level_evidence_count": base_evidence_count,
+            "crosswalk_public_evidence_count": crosswalk_evidence_count,
+            "combined_site_level_evidence_count": base_evidence_count + crosswalk_evidence_count,
             "next_action": ev.get("next_action"),
         })
 
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
-    evidence_index = build_evidence_index(evidence)
+    evidence_index = build_evidence_index(evidence, reg)
 
     summary = {
         "schema_version": 1,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "epoch_site_count": len(site_records),
         "site_level_evidence_site_count": sum(1 for x in site_records if x["site_level_evidence_count"] > 0),
+        "combined_site_level_evidence_site_count": sum(
+            1 for x in site_records
+            if x["combined_site_level_evidence_count"] > 0
+        ),
         "site_specific_queue_id_count": sum(1 for x in site_records if x["domains"]["grid_connection"]["status"] == "VERIFIED_SITE_SPECIFIC"),
         "pending_grid_connection_research_count": len(pending),
         "domain_status_counts": status_counts,

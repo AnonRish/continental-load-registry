@@ -31,7 +31,11 @@ jobs:
 
       - name: Compile Python
         run: |
-          python -m py_compile build_track3_evidence.py module1_physical_radar.py
+          python -m py_compile build_track3_evidence.py module1_physical_radar.py validate_track3_ledger.py
+
+      - name: Validate canonical Track 3 joins
+        run: |
+          python validate_track3_ledger.py
 
       - name: Validate Track 3 JSON
         run: |
