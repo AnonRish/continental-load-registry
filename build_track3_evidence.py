@@ -251,7 +251,9 @@ def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str
         "chip_shipments": ("P1", "Acquire accelerator sales/shipment records and test organization-to-site assignment only when independently supportable.", ["observed_on", "buyer", "seller", "chip_type", "quantity", "destination", "source_url", "source_kind"]),
     }
     tasks = []
+    gap_by_id = {str(row.get("epoch_id")): row for row in list(csv.DictReader(GAP.open("r", encoding="utf-8-sig", newline="")))}
     for site in site_records:
+        gap = gap_by_id.get(str(site["epoch_id"]), {})
         for domain, (priority, action, required_fields) in task_definitions.items():
             state = (site.get("domains") or {}).get(domain, {}).get("status", "UNKNOWN")
             if state in {"NOT_INGESTED", "SOURCE_AVAILABLE_NOT_INGESTED", "UNKNOWN", "PENDING_RESEARCH"}:
@@ -267,6 +269,10 @@ def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str
                     "action": action,
                     "required_fields": required_fields,
                     "next_action_from_site": site.get("next_action"),
+                    "grid_primary_source_url": gap.get("primary_source_url") or None,
+                    "grid_source_type": gap.get("source_type") or None,
+                    "grid_source_date": gap.get("source_date") or None,
+                    "next_research_sources": gap.get("next_research_sources") or None,
                 })
     return tasks
 
@@ -382,7 +388,7 @@ def main() -> int:
         "semantics": "Observation tasks describe missing acquisition work. They do not assert that the underlying physical condition is absent.",
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     with (OUT / "observation_queue.csv").open("w", encoding="utf-8", newline="") as f:
-        headers = ["task_id", "epoch_id", "site_name", "country", "state_province", "domain", "current_state", "priority", "action", "required_fields", "next_action_from_site"]
+        headers = ["task_id", "epoch_id", "site_name", "country", "state_province", "domain", "current_state", "priority", "action", "required_fields", "next_action_from_site", "grid_primary_source_url", "grid_source_type", "grid_source_date", "next_research_sources"]
         writer = csv.DictWriter(f, fieldnames=headers)
         writer.writeheader()
         for task in observation_queue:
