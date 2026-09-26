@@ -24,6 +24,7 @@ on:
       - "data/supplemental_large_load_evidence.json"
       - "data/project_level_extractions.json"
       - "data/project_level_extractions.csv"
+      - "data/public_data_catalog.json"
       - "data/market_universe_manifest.json"
       - "data/market_universe_manifest.csv"
       - "data/caiso_cluster_history.json"
@@ -169,6 +170,11 @@ jobs:
           assert len({r["epoch_id"] for r in target_data["records"]}) == 93
           assert sum(int(r.get("site_level_evidence_count", 0)) for r in target_data["records"]) == 68
           assert all(r["lat"] is not None and r["lon"] is not None for r in target_data["records"])
+          catalog = json.loads(Path("data/public_data_catalog.json").read_text(encoding="utf-8"))
+          assert len(catalog["datasets"]) == 15
+          assert any(d["path"] == "data/project_level_extractions.json" and d["record_count"] == 199 for d in catalog["datasets"])
+          assert any(d["path"] == "data/epoch_connection_research_targets.json" and d["record_count"] == 93 for d in catalog["datasets"])
+          assert any(d["path"] == "data/epoch_site_evidence_records.json" and d["record_count"] == 68 for d in catalog["datasets"])
           universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
           assert len(universe["markets"]) == 10
           epoch_map = json.loads(Path("data/epoch_ai_map.json").read_text(encoding="utf-8"))
