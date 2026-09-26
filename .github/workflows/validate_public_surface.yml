@@ -221,8 +221,10 @@ jobs:
           pjm_history = json.loads(Path("data/pjm_large_load_submission_history.json").read_text(encoding="utf-8"))
           assert len(pjm_history["records"]) == 28
           project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
-          assert project_map["record_count"] == 213 and project_map["mapped_count"] == 213
-          assert len(project_map["records"]) == 213
+          assert project_map["record_count"] == 235 and project_map["mapped_count"] == 235
+          assert len(project_map["records"]) == 235
+          assert {r["id"] for r in projects["records"]} == {r["id"] for r in project_map["records"]}
+          assert all(r.get("lat") is not None and r.get("lon") is not None for r in project_map["records"])
           history = json.loads(Path("data/caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
           assert sum(r["capacity_mw"] for r in history["records"][:7]) == 121204
