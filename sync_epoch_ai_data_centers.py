@@ -241,7 +241,8 @@ def selftest() -> None:
     rows = [{"id":"1670","rto":"NYISO","st":"NY","co":"Niagara","proj":"Lake Mariner Data II","dev":"Lake Mariner Data LLC","poi":"Kintigh 345kV"}]
     ep = {"name":"Anthropic Lake Mariner","owner":"Anthropic","users":"Anthropic","address":"Barker, NY","country":"United States"}
     assert conservative_matches(ep, rows, {"anthropic lake mariner":{"registry_ids":["1670"],"relationship":"same_phase","match_confidence":"high","match_basis":"Known NYISO Lake Mariner cross-check."}})[0]["queue_id"] == "1670"
-    print("selftest: 4 checks passed")
+    assert not conservative_matches({"name":"Google Columbus","owner":"Google","users":"Google","address":"Columbus, OH","country":"United States"}, rows, {})
+    print("selftest: 5 checks passed")
 
 
 def download(url: str, dest: Path) -> None:
@@ -298,6 +299,7 @@ def sync() -> None:
                 ct = str(pick(cr, CHIP_ALIASES["chip_type"]) or "")
                 if ct:
                     latest_chips[ct] = {
+                        "chip_type": ct,
                         "date": pick(cr, CHIP_ALIASES["date"]),
                         "number_units": numeric(pick(cr, CHIP_ALIASES["number_units"])),
                         "chip_type_source": pick(cr, CHIP_ALIASES["chip_type_source"]),
@@ -347,7 +349,18 @@ def sync() -> None:
                 },
             }
             matches = conservative_matches(normalized, registry, overrides)
+            if matches:
+                crosswalk_status = "matched_or_candidate"
+                crosswalk_reason = "One or more conservative registry IDs were identified; inspect relationship and confidence."
+            elif norm(country) not in {"united states", "usa", "us", "canada"}:
+                crosswalk_status = "outside_registry_geographic_scope"
+                crosswalk_reason = "Epoch site is outside the United States/Canada geographic scope of this queue registry."
+            else:
+                crosswalk_status = "no_direct_match"
+                crosswalk_reason = "No conservative direct match was identified in the current nine-market queue registry fields."
             epoch_obj["registry_crosswalk"] = matches
+            epoch_obj["registry_crosswalk_status"] = crosswalk_status
+            epoch_obj["registry_crosswalk_reason"] = crosswalk_reason
             records.append(epoch_obj)
             crosswalk_rows.append({
                 "epoch_id": epoch_id,
@@ -356,6 +369,8 @@ def sync() -> None:
                 "epoch_address": address,
                 "registry_match_count": len(matches),
                 "registry_queue_ids": ";".join(m["queue_id"] for m in matches),
+                "crosswalk_status": crosswalk_status,
+                "crosswalk_reason": crosswalk_reason,
                 "relationship": ";".join(m["relationship"] for m in matches),
                 "match_confidence": ";".join(m["match_confidence"] for m in matches),
                 "match_basis": " | ".join(m["match_basis"] for m in matches),
@@ -385,6 +400,8 @@ def sync() -> None:
             "chip_quantity_record_count": len(chips),
             "current_registry_record_count": len(registry),
             "matched_epoch_records": sum(1 for r in records if r["registry_crosswalk"]),
+            "no_direct_match_epoch_records": sum(1 for r in records if r["registry_crosswalk_status"] == "no_direct_match"),
+            "outside_registry_geographic_scope_epoch_records": sum(1 for r in records if r["registry_crosswalk_status"] == "outside_registry_geographic_scope"),
             "manual_override_count": len(overrides),
             "raw_files": {name: {"url": URLS[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in URLS},
             "method": "Raw Epoch rows preserved; normalized fields joined to latest available timeline and chip records; registry matching is conservative and does not overwrite queue facts."
