@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 185,
+  "record_count": 189,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -5058,6 +5058,111 @@
       "source_scope": "Dominion Tributary Station application",
       "precision": "county display point",
       "notes": "Dominion filing identifies a 230 kV DP request from REC to serve SpotsyTech Campus and gives both project-wide and data-center-specific load figures. The figures are preserved as different measures rather than summed."
+    },
+    {
+      "id": "DOMINION-CAMPUS-C-LUNAR-APOLLO-2024",
+      "evidence_type": "utility_data_center_service_project",
+      "project_name": "Customer C — Campus C / Lunar and Apollo Substations",
+      "customer_or_developer": "Customer C (name not public in filing)",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Eastern Loudoun County, Virginia",
+      "county_or_zone": "Loudoun County",
+      "status": "service planning / substation project",
+      "capacity_claims": [
+        {
+          "value_mw": 12,
+          "unit": "MW",
+          "raw_value": "12 MW",
+          "qualifier": "summer peak projected for 2026",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-1-of-3-2024.pdf",
+          "capture_date": "2024"
+        },
+        {
+          "value_mw": 278,
+          "unit": "MW",
+          "raw_value": "approximately 278 MW",
+          "qualifier": "summer peak projected for 2036",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-1-of-3-2024.pdf",
+          "capture_date": "2024"
+        },
+        {
+          "value_mw": 27,
+          "unit": "MW",
+          "raw_value": "27 MW",
+          "qualifier": "summer peak projected for 2027",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-1-of-3-2024.pdf",
+          "capture_date": "2024"
+        },
+        {
+          "value_mw": 239,
+          "unit": "MW",
+          "raw_value": "approximately 239 MW",
+          "qualifier": "summer peak projected for 2037",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-1-of-3-2024.pdf",
+          "capture_date": "2024"
+        }
+      ],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-1-of-3-2024.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Dominion NOVA Application Volume 1 of 3 (2024)",
+      "precision": "county display point",
+      "notes": "Dominion identifies Campus C as a new data-center campus in eastern Loudoun County served by proposed Lunar and Apollo substations. The filing publishes two DP-request load ramps for Campus C; customer identity is retained as confidential."
+    },
+    {
+      "id": "DOMINION-CULPEPER-DATABANK-CAMPUS-2024",
+      "evidence_type": "utility_data_center_service_project",
+      "project_name": "Culpeper DataBank data-center campus / Campus A",
+      "customer_or_developer": "Culpeper DataBank (DataBank)",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Culpeper County / Town of Culpeper, Virginia",
+      "county_or_zone": "Culpeper County",
+      "status": "service planning / transmission project",
+      "capacity_claims": [],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/culpeper-tech-zone/pdfs/2024-culpeper-tech-zone-scc-application-volume-1-of-5-part-1-of-3.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Dominion Culpeper Tech Zone SCC Application",
+      "precision": "county/city display point",
+      "notes": "Dominion filing explicitly names DataBank as Customer A/Culpeper DataBank and says the customer requested service for a new data-center campus. The source excerpt does not expose a uniform customer MW claim, so capacity remains empty."
+    },
+    {
+      "id": "DOMINION-STACK-CULPEPER-CAMPUS-2024",
+      "evidence_type": "utility_data_center_service_project",
+      "project_name": "STACK Infrastructure data-center campus / Campus B",
+      "customer_or_developer": "STACK Infrastructure Inc. (STACK)",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Culpeper County / Town of Culpeper, Virginia",
+      "county_or_zone": "Culpeper County",
+      "status": "service planning / transmission project",
+      "capacity_claims": [],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/culpeper-tech-zone/pdfs/2024-culpeper-tech-zone-scc-application-volume-1-of-5-part-1-of-3.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Dominion Culpeper Tech Zone SCC Application",
+      "precision": "county/city display point",
+      "notes": "Dominion filing explicitly identifies STACK Infrastructure as Customer B and ties the customer to a new data-center campus in the project area. No project MW is inferred."
+    },
+    {
+      "id": "DOMINION-COPPER-RIDGE-CULPEPER-CAMPUS-2024",
+      "evidence_type": "utility_data_center_service_project",
+      "project_name": "Copper Ridge Data Center Campus / Campus C",
+      "customer_or_developer": "Copper Ridge Data Center Campus",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Culpeper County / Town of Culpeper, Virginia",
+      "county_or_zone": "Culpeper County",
+      "status": "service planning / transmission project",
+      "capacity_claims": [],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/culpeper-tech-zone/pdfs/2024-culpeper-tech-zone-scc-application-volume-1-of-5-part-1-of-3.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Dominion Culpeper Tech Zone SCC Application",
+      "precision": "county/city display point",
+      "notes": "Dominion filing explicitly identifies Copper Ridge Data Center Campus as Customer C and ties it to a new data-center campus in the project area. No project MW is inferred."
     }
   ]
 }
