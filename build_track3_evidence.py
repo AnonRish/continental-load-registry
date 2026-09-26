@@ -90,8 +90,8 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
         }
     if domain in {"chip_ownership", "chip_users", "chip_shipments"}:
         return {
-            "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-            "basis": "A relevant external source family is cataloged in data/track3_source_stack.json but is not yet joined into the site evidence graph."
+            "status": "INGESTED_SNAPSHOT",
+            "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         }
     raise KeyError(domain)
 
@@ -203,6 +203,10 @@ def main() -> int:
         "pending_grid_connection_research_count": len(pending),
         "domain_status_counts": status_counts,
         "source_stack_count": len(source_stack.get("sources", [])),
+        "source_stack_status_counts": {
+            status: sum(1 for source in source_stack.get("sources", []) if source.get("status") == status)
+            for status in sorted({source.get("status") for source in source_stack.get("sources", []) if source.get("status")})
+        },
         "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence.",
     }
 
