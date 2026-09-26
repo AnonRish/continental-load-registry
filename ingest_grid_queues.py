@@ -82,6 +82,7 @@ used if already installed; otherwise a hardcoded rotating pool is used (see
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import io
 import logging
 import math
@@ -501,6 +502,16 @@ def classify_status(raw: Any) -> Optional[str]:
     if upper in VALID_STATUSES_UPPER:
         return next(c for c in STATUS_CANONICAL if c.upper() == upper)
 
+    # PJM short status codes -- exact match only. These are short codes, so
+    # they intentionally stay outside the fuzzy substring matcher.
+    PJM_SHORT_STATUS_CODES = {
+        "EP": "Engineering Review",
+        "UC": "IA in Progress",
+        "UC-ISP": "IA in Progress",
+    }
+    if upper in PJM_SHORT_STATUS_CODES:
+        return PJM_SHORT_STATUS_CODES[upper]
+
     # Fuzzy fallback across common real-world phrasings for the same states.
     fuzzy_map = [
         (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY"), "Active"),
@@ -515,7 +526,8 @@ def classify_status(raw: Any) -> Optional[str]:
             return canonical
 
     reject_keywords = ("WITHDRAWN", "CANCELLED", "CANCELED", "SUSPENDED",
-                        "COMPLETED", "IN SERVICE", "TERMINATED", "RETIRED")
+                        "COMPLETED", "IN SERVICE", "TERMINATED", "RETIRED",
+                        "PENDING TERMINATION")
     if any(k in upper for k in reject_keywords):
         return None
 
@@ -698,6 +710,7 @@ class SourceStats:
     source: str
     rows_fetched: int = 0
     excluded_by_status: int = 0
+    excluded_status_values: Counter = field(default_factory=Counter)
     excluded_by_capacity: int = 0
     excluded_by_load_type: int = 0
     passed_filters: int = 0
@@ -831,6 +844,7 @@ def normalize_pjm_records(df: pd.DataFrame, stats: SourceStats) -> list[dict]:
             status_label = classify_status(row.get(col_status))
             if status_label is None:
                 stats.excluded_by_status += 1
+                stats.excluded_status_values[str(row.get(col_status) or "BLANK")] += 1
                 continue
             capacity = parse_capacity_mw(row.get(col_capacity))
             if capacity is None or capacity < MIN_CAPACITY_MW:
@@ -1448,6 +1462,13 @@ def log_run_summary(result: PipelineResult, output_path: Path) -> None:
             s.excluded_by_load_type, s.passed_filters, s.rows_valid,
             s.rows_rejected_validation, s.aggregate_mw,
         )
+        if s.excluded_status_values:
+            top = s.excluded_status_values.most_common(8)
+            logger.info(
+                "[%s] top excluded-by-status values: %s",
+                name,
+                ", ".join(f"{v!r}={n}" for v, n in top),
+            )
         if s.fetch_errors:
             for err in s.fetch_errors:
                 logger.warning("[%s] error: %s", name, err)
