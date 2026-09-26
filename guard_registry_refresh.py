@@ -56,6 +56,12 @@ from typing import Optional
 
 KNOWN_RTOS = ("PJM", "ERCOT", "SPP", "MISO", "CAISO", "NYISO", "ISO-NE", "IESO", "AESO")
 
+KNOWN_PJM_TERMINAL_STATUSES = {
+    "WITHDRAWN", "CANCELLED", "CANCELED", "IN SERVICE", "TERMINATED",
+    "RETIRED", "DEACTIVATED", "SUSPENDED", "RETRACTED", "ANNULLED",
+    "PENDING TERMINATION",
+}
+
 # Exactly the columns embed_registry_data.rows_from_csvs reads.
 ENRICHED_REQUIRED = ("queue_id", "rto_region", "state", "county", "capacity_mw", "developer_entity_raw",
                      "entity_category", "load_type_tier", "gpus_estimate_reference",
@@ -78,6 +84,45 @@ class Decision:
     new_rows: int = 0
     new_mw: float = 0.0
     reason: str = ""
+
+
+def read_source_health(path: Optional[Path]) -> dict[str, dict]:
+    """Read optional source-health evidence produced by the ingest pipeline."""
+    if path is None or not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    sources = payload.get("sources", {})
+    return sources if isinstance(sources, dict) else {}
+
+
+def shrink_is_explainable(
+    rto: str, old_rows: int, new_rows: int, health: dict[str, dict],
+) -> bool:
+    """Allow a large PJM shrink only when raw-feed health explains it."""
+    if rto != "PJM" or new_rows >= old_rows:
+        return False
+    h = health.get(rto)
+    if not isinstance(h, dict) or h.get("fetch_errors"):
+        return False
+    try:
+        rows_fetched = int(h.get("rows_fetched", 0))
+        excluded_by_status = int(h.get("excluded_by_status", 0))
+        status_values = h.get("excluded_status_values", {})
+        if rows_fetched < max(1000, old_rows * 2):
+            return False
+        if not isinstance(status_values, dict):
+            return False
+        if excluded_by_status != sum(int(v) for v in status_values.values()):
+            return False
+        return all(
+            str(raw).strip().upper() in KNOWN_PJM_TERMINAL_STATUSES
+            for raw in status_values
+        )
+    except (TypeError, ValueError):
+        return False
 
 
 def safe_label(label: str) -> str:
@@ -136,6 +181,7 @@ def decide(
     current: dict[str, tuple[int, float]], raw_header: list[str], raw_rows: list[list[str]],
     enr_header: list[str], enr_rows: list[list[str]], *, min_ratio: float = 0.5,
     max_ratio: float = 2.0, min_old_rows: int = 5,
+    source_health: Optional[dict[str, dict]] = None,
 ) -> list[Decision]:
     """One Decision per RTO seen in either the current registry or the fresh CSVs."""
     e_rto, e_id, e_mw = (enr_header.index(c) for c in ("rto_region", "queue_id", "capacity_mw"))
@@ -176,7 +222,13 @@ def decide(
         else:
             problem = _range_problem(old_rows, old_mw, f["rows"], f["mw"], min_ratio, max_ratio, min_old_rows)
         if problem:
-            d.outcome, d.reason = "rejected", problem + ("; previous rows kept" if old_rows else "")
+            if shrink_is_explainable(rto, old_rows, f["rows"], source_health or {}) and problem.startswith("row count "):
+                d.reason = (
+                    problem + "; accepted because source-health evidence shows a substantial "
+                    "raw feed and only known terminal PJM statuses were excluded"
+                )
+            else:
+                d.outcome, d.reason = "rejected", problem + ("; previous rows kept" if old_rows else "")
         elif old_rows == 0:
             d.outcome, d.reason = "new", "not in the registry yet"
         decisions.append(d)
@@ -213,12 +265,14 @@ def run(args: argparse.Namespace) -> int:
         current = registry_stats(Path(args.html).read_text(encoding="utf-8"))
         raw_header, raw_rows = read_table(Path(args.raw), RAW_REQUIRED)
         enr_header, enr_rows = read_table(Path(args.enriched), ENRICHED_REQUIRED)
+        source_health = read_source_health(Path(args.source_health) if args.source_health else None)
     except (GuardInputError, OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 
     decisions = decide(current, raw_header, raw_rows, enr_header, enr_rows, min_ratio=args.min_ratio,
-                       max_ratio=args.max_ratio, min_old_rows=args.min_old_rows)
+                       max_ratio=args.max_ratio, min_old_rows=args.min_old_rows,
+                       source_health=source_health)
     by_outcome = {k: [d.rto for d in decisions if d.outcome == k] for k in ("accepted", "new", "rejected", "unavailable")}
     accepted = set(by_outcome["accepted"]) | set(by_outcome["new"])
 
@@ -266,6 +320,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-ratio", type=float, default=2.0, help="highest fresh/current ratio accepted (default: %(default)s)")
     p.add_argument("--min-old-rows", type=int, default=5,
                    help="RTOs with fewer current rows skip the ratio test (default: %(default)s)")
+    p.add_argument("--source-health",
+                   help="Optional JSON source-health manifest for evidence-based "
+                        "acceptance of a large PJM shrink.")
     p.add_argument("--summary-md", help="append a Markdown table here (e.g. $GITHUB_STEP_SUMMARY)")
     p.add_argument("--github-output", help="append accepted=/rejected=/unavailable= lines here (e.g. $GITHUB_OUTPUT)")
     p.add_argument("--selftest", action="store_true", help="run against synthetic fixtures and exit")
@@ -322,6 +379,39 @@ def run_selftest() -> bool:
         else:
             failed += 1
             print(f"  [FAIL] {name}" + (f" -- {detail}" if detail else ""))
+
+    check("large PJM shrink accepted when source health explains it",
+          shrink_is_explainable("PJM", 281, 37, {
+              "PJM": {
+                  "rows_fetched": 9263,
+                  "excluded_by_status": 8,
+                  "excluded_status_values": {
+                      "Withdrawn": 3, "In Service": 2, "Retracted": 1,
+                      "Deactivated": 1, "Suspended": 1,
+                  },
+                  "fetch_errors": [],
+              }
+          }))
+    check("large PJM shrink rejected with an unknown status",
+          not shrink_is_explainable("PJM", 281, 37, {
+              "PJM": {
+                  "rows_fetched": 9263,
+                  "excluded_by_status": 9,
+                  "excluded_status_values": {
+                      "Withdrawn": 8, "Brand New Status": 1,
+                  },
+                  "fetch_errors": [],
+              }
+          }))
+    check("large PJM shrink rejected when raw feed is too small",
+          not shrink_is_explainable("PJM", 281, 37, {
+              "PJM": {
+                  "rows_fetched": 500,
+                  "excluded_by_status": 8,
+                  "excluded_status_values": {"Withdrawn": 8},
+                  "fetch_errors": [],
+              }
+          }))
 
     current = {"MISO": (10, 100.0), "SPP": (10, 100.0), "CAISO": (10, 100.0), "NYISO": (10, 100.0),
                "ISO-NE": (10, 100.0), "IESO": (3, 100.0), "PJM": (10, 100.0), "AESO": (10, 100.0)}
