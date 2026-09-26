@@ -223,6 +223,47 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The gap analysis is deliberately conservative. A jurisdiction-only record means the correct queue/connection family is known, while the physical campus has not yet been tied to a specific public queue row. Operational sites may instead be represented by service contracts, regulatory dockets or completed connection records.</p>
   </section>
 
+  <!-- ============ SUPPLEMENTAL PUBLIC LARGE-LOAD EVIDENCE ============ -->
+  <section id="supplementalLargeLoad" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Beyond the nine queue feeds</p>
+        <h2 class="font-serif-display text-xl mt-1">Supplemental public large-load evidence</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">The core registry is deliberately conservative: a number is only counted in the row-level table when it can be represented as a published facility/request row under the current schema. This companion layer preserves additional public utility, regulator, planning, connection, permit and large-load evidence that would otherwise disappear.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/supplemental_large_load_evidence.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open evidence JSON</a>
+        <a href="https://www.oeb.ca/ontarios-energy-sector/centralized-capacity-information-map" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Ontario CCIM</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">17</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
+      <div class="p-4"><p class="mono text-xl">83</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Additional quantified MISO requests</p></div>
+      <div class="p-4"><p class="mono text-xl">70 GW</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Dominion aggregate large-load queue evidence</p></div>
+      <div class="p-4"><p class="mono text-xl">6.9M</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Ontario CCIM data points</p></div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[980px]">
+        <thead><tr><th class="px-3 py-2 text-left">Jurisdiction / provider</th><th class="px-3 py-2 text-left">Evidence</th><th class="px-3 py-2 text-right">Records / units</th><th class="px-3 py-2 text-right">Capacity / measure</th><th class="px-3 py-2 text-left">Date</th><th class="px-3 py-2 text-left">Accounting</th></tr></thead>
+        <tbody>
+          <tr><td class="px-3 py-2">MISO</td><td class="px-3 py-2">Unlocated live large-load requests</td><td class="px-3 py-2 text-right">83</td><td class="px-3 py-2 text-right">35.9 GW</td><td class="px-3 py-2">2026-09-19</td><td class="px-3 py-2">Added to expanded known scope</td></tr>
+          <tr><td class="px-3 py-2">Dominion Energy Virginia</td><td class="px-3 py-2">Large-load connection queue</td><td class="px-3 py-2 text-right">Aggregate</td><td class="px-3 py-2 text-right">70 GW</td><td class="px-3 py-2">2025-12-31</td><td class="px-3 py-2">Non-additive aggregate</td></tr>
+          <tr><td class="px-3 py-2">ComEd / Exelon</td><td class="px-3 py-2">High-probability large-load request pipeline</td><td class="px-3 py-2 text-right">Aggregate</td><td class="px-3 py-2 text-right">16 GW</td><td class="px-3 py-2">2026-02-12</td><td class="px-3 py-2">Non-additive aggregate</td></tr>
+          <tr><td class="px-3 py-2">Salt River Project</td><td class="px-3 py-2">Large-business customer pipeline</td><td class="px-3 py-2 text-right">80 projects</td><td class="px-3 py-2 text-right">15.308 GW</td><td class="px-3 py-2">2025-09-25</td><td class="px-3 py-2">External geography; not additive</td></tr>
+          <tr><td class="px-3 py-2">BC Hydro</td><td class="px-3 py-2">AI/data-centre call for demand</td><td class="px-3 py-2 text-right">15 applications</td><td class="px-3 py-2 text-right">~0.8 GW</td><td class="px-3 py-2">2026-09</td><td class="px-3 py-2">External geography; not additive</td></tr>
+          <tr><td class="px-3 py-2">Portland General Electric</td><td class="px-3 py-2">Executed data-center contracts</td><td class="px-3 py-2 text-right">5 contracts</td><td class="px-3 py-2 text-right">430 MW</td><td class="px-3 py-2">2026-02-17</td><td class="px-3 py-2">External geography; not additive</td></tr>
+          <tr><td class="px-3 py-2">Entergy Louisiana / Hut 8</td><td class="px-3 py-2">River Bend named AI data center</td><td class="px-3 py-2 text-right">1 facility</td><td class="px-3 py-2 text-right">330 MW utility / 245 MW IT / up to 1 GW</td><td class="px-3 py-2">2025-12</td><td class="px-3 py-2">Potential MISO/Epoch overlap</td></tr>
+          <tr><td class="px-3 py-2">ISO New England</td><td class="px-3 py-2">CELT 2026 large-load forecast</td><td class="px-3 py-2 text-right">1 data center</td><td class="px-3 py-2 text-right">200 MW</td><td class="px-3 py-2">2026</td><td class="px-3 py-2">Forecast evidence; potential queue overlap</td></tr>
+          <tr><td class="px-3 py-2">New York PSC / NYISO</td><td class="px-3 py-2">Regulatory large-load queue summary</td><td class="px-3 py-2 text-right">48 projects</td><td class="px-3 py-2 text-right">&gt;11.9 GW</td><td class="px-3 py-2">2026-02</td><td class="px-3 py-2">Non-additive regulatory aggregate</td></tr>
+          <tr><td class="px-3 py-2">Virginia DEQ</td><td class="px-3 py-2">Data-center air-permit identity inventory</td><td class="px-3 py-2 text-right">72 operating + 9 planning</td><td class="px-3 py-2 text-right">Not published as uniform MW</td><td class="px-3 py-2">2026-09</td><td class="px-3 py-2">Facility identity evidence</td></tr>
+          <tr><td class="px-3 py-2">Alectra Utilities</td><td class="px-3 py-2">Vaughan MTS #6 data-center connection</td><td class="px-3 py-2 text-right">1 facility</td><td class="px-3 py-2 text-right">108 MVA</td><td class="px-3 py-2">2026-09</td><td class="px-3 py-2">MVA retained; no MW conversion</td></tr>
+          <tr><td class="px-3 py-2">OEB</td><td class="px-3 py-2">Centralized Capacity Information Map</td><td class="px-3 py-2 text-right">Geospatial dataset</td><td class="px-3 py-2 text-right">~6.9M data points</td><td class="px-3 py-2">2026-04</td><td class="px-3 py-2">Grid-context evidence</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">The table is intentionally not summed. These sources differ in geography, vintage, unit, stage and population definition, and several overlap the nine-market queue universe. The machine-readable artifact records the source date, granularity and overlap treatment for every evidence unit.</p>
+  </section>
+
   <!-- ============ EPOCH AI FRONTIER DATA-CENTER REGISTRY ============ -->
   <section id="epochRegistry" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
