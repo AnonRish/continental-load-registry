@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 127,
+  "record_count": 152,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -2161,8 +2161,8 @@
       "jurisdiction": "Washington, US",
       "location": "Adams County, WA",
       "county_or_zone": "Adams County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0705",
+      "status": "RECEIVED",
       "filed_month": "2026-08",
       "capacity_claims": [
         {
@@ -2170,18 +2170,27 @@
           "unit": "MW",
           "raw_value": "3.3 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 3300,
+          "unit": "MW",
+          "raw_value": "3300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.99,
         -117.16
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Lower Monumental-Hanford No 1 Lower Monumental-Ashe No 1 Grand Coulee-Hanford No 1"
     },
     {
       "id": "BPA-DOE-DATA-CENTER",
@@ -2192,8 +2201,8 @@
       "jurisdiction": "Washington, US",
       "location": "Benton County, WA",
       "county_or_zone": "Benton County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0673",
+      "status": "STUDY",
       "filed_month": "2025-11",
       "capacity_claims": [
         {
@@ -2201,18 +2210,27 @@
           "unit": "MW",
           "raw_value": "2.8 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 2750,
+          "unit": "MW",
+          "raw_value": "2750 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.24,
         -119.51
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Ashe Substation"
     },
     {
       "id": "BPA-LONGHORN-MCNARY-LOOP",
@@ -2223,8 +2241,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Umatilla and Morrow, OR",
       "county_or_zone": "Umatilla and Morrow",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0653",
+      "status": "STUDY",
       "filed_month": "2025-06",
       "capacity_claims": [
         {
@@ -2232,18 +2250,27 @@
           "unit": "MW",
           "raw_value": "2.2 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 2225,
+          "unit": "MW",
+          "raw_value": "2225 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.57,
         -118.92
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Longhorn Substation, McNary Substation"
     },
     {
       "id": "BPA-NW-HILLSBORO-NORTH-PLAINS-PH2",
@@ -2254,8 +2281,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Washington County, OR",
       "county_or_zone": "Washington County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0561",
+      "status": "STUDY",
       "filed_month": "2023-05",
       "capacity_claims": [
         {
@@ -2263,18 +2290,27 @@
           "unit": "MW",
           "raw_value": "1.8 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1800,
+          "unit": "MW",
+          "raw_value": "1800 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.55,
         -123.1
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Allston-Keeler No. 1"
     },
     {
       "id": "BPA-CAC-GREEN-H2",
@@ -2347,8 +2383,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Linn County, OR",
       "county_or_zone": "Linn County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0585",
+      "status": "STUDY",
       "filed_month": "2023-11",
       "capacity_claims": [
         {
@@ -2356,18 +2392,27 @@
           "unit": "MW",
           "raw_value": "1.4 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1450,
+          "unit": "MW",
+          "raw_value": "1450 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         44.5,
         -122.5
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "McNary Substation"
     },
     {
       "id": "BPA-WEST-HILLSBORO-DATA-CENTER-PH1",
@@ -2378,8 +2423,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Washington County, OR",
       "county_or_zone": "Washington County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0560",
+      "status": "STUDY",
       "filed_month": "2023-05",
       "capacity_claims": [
         {
@@ -2387,18 +2432,27 @@
           "unit": "MW",
           "raw_value": "1.4 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1400,
+          "unit": "MW",
+          "raw_value": "1400 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.55,
         -123.1
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Keeler-Forest Grove No. 1 & No. 2 Lines"
     },
     {
       "id": "BPA-LAKESIDE-INDUSTRIES",
@@ -2409,8 +2463,8 @@
       "jurisdiction": "Washington, US",
       "location": "Klickitat County, WA",
       "county_or_zone": "Klickitat County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0690",
+      "status": "RECEIVED",
       "filed_month": "2026-03",
       "capacity_claims": [
         {
@@ -2418,18 +2472,27 @@
           "unit": "MW",
           "raw_value": "1.3 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1260,
+          "unit": "MW",
+          "raw_value": "1260 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.87,
         -120.8
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Big Eddy Substation"
     },
     {
       "id": "BPA-MCNARY-230KV-LOOPED",
@@ -2440,8 +2503,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Umatilla, OR",
       "county_or_zone": "Umatilla",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0636",
+      "status": "STUDY",
       "filed_month": "2024-11",
       "capacity_claims": [
         {
@@ -2449,18 +2512,27 @@
           "unit": "MW",
           "raw_value": "1.3 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1256,
+          "unit": "MW",
+          "raw_value": "1256 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.59,
         -118.33
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "McNary Substation"
     },
     {
       "id": "BPA-SSP-SUNSET",
@@ -2471,8 +2543,8 @@
       "jurisdiction": "Washington, US",
       "location": "Yakima County, WA",
       "county_or_zone": "Yakima County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0684",
+      "status": "STUDY",
       "filed_month": "2026-02",
       "capacity_claims": [
         {
@@ -2480,18 +2552,27 @@
           "unit": "MW",
           "raw_value": "1.2 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1200,
+          "unit": "MW",
+          "raw_value": "1200 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.46,
         -120.74
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Wautoma-Rock Creek No. 1 line or Spring Creek-Wine Country No. 1 line"
     },
     {
       "id": "BPA-SECOND-1200MW-DATA-CENTER-LOAD",
@@ -2502,8 +2583,8 @@
       "jurisdiction": "Washington, US",
       "location": "Walla Walla County, WA",
       "county_or_zone": "Walla Walla County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0682",
+      "status": "RECEIVED",
       "filed_month": "2026-01",
       "capacity_claims": [
         {
@@ -2511,18 +2592,27 @@
           "unit": "MW",
           "raw_value": "1.2 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1200,
+          "unit": "MW",
+          "raw_value": "1200 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.23,
         -118.48
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Lower Monumental-McNary No. 1 line"
     },
     {
       "id": "BPA-1200MW-DATA-CENTER-LOADS",
@@ -2533,8 +2623,8 @@
       "jurisdiction": "Washington, US",
       "location": "Walla Walla County, WA",
       "county_or_zone": "Walla Walla County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0649",
+      "status": "STUDY",
       "filed_month": "2025-04",
       "capacity_claims": [
         {
@@ -2542,18 +2632,27 @@
           "unit": "MW",
           "raw_value": "1.2 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1200,
+          "unit": "MW",
+          "raw_value": "1200 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.23,
         -118.48
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Between #37/1 & 32/1 on the Lower Monumental-McNary line"
     },
     {
       "id": "BPA-PSE-CHERRY-POINT",
@@ -2688,8 +2787,8 @@
       "jurisdiction": "Washington, US",
       "location": "Klickitat County, WA",
       "county_or_zone": "Klickitat County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0704",
+      "status": "RECEIVED",
       "filed_month": "2026-07",
       "capacity_claims": [
         {
@@ -2697,18 +2796,27 @@
           "unit": "MW",
           "raw_value": "1 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1000,
+          "unit": "MW",
+          "raw_value": "1000 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.87,
         -120.8
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "McNary-John Day No. 1 line McNary-John Day No. 2 line"
     },
     {
       "id": "BPA-ENERGIZER-II",
@@ -2719,8 +2827,8 @@
       "jurisdiction": "Washington, US",
       "location": "Klickitat County, WA",
       "county_or_zone": "Klickitat County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0702",
+      "status": "RECEIVED",
       "filed_month": "2026-06",
       "capacity_claims": [
         {
@@ -2728,18 +2836,27 @@
           "unit": "MW",
           "raw_value": "1 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1000,
+          "unit": "MW",
+          "raw_value": "1000 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.87,
         -120.8
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Rock Creek Substation at"
     },
     {
       "id": "BPA-DALLESPORT-SERVER-FARM",
@@ -2750,8 +2867,8 @@
       "jurisdiction": "Washington, US",
       "location": "Klickitat County, WA",
       "county_or_zone": "Klickitat County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0664",
+      "status": "STUDY",
       "filed_month": "2025-08",
       "capacity_claims": [
         {
@@ -2759,18 +2876,27 @@
           "unit": "MW",
           "raw_value": "1 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1000,
+          "unit": "MW",
+          "raw_value": "1000 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.87,
         -120.8
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Big Eddy Substation or Big Eddy-Chenowith No. 2 line"
     },
     {
       "id": "BPA-TWO-RIVERS-230KV",
@@ -2781,8 +2907,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Umatilla, OR",
       "county_or_zone": "Umatilla",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0660",
+      "status": "STUDY",
       "filed_month": "2025-07",
       "capacity_claims": [
         {
@@ -2790,18 +2916,27 @@
           "unit": "MW",
           "raw_value": "1 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1000,
+          "unit": "MW",
+          "raw_value": "1000 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.59,
         -118.33
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "McNary Substation"
     },
     {
       "id": "BPA-MARION-CHEMAWA",
@@ -2843,8 +2978,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Umatilla County, OR",
       "county_or_zone": "Umatilla County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0510",
+      "status": "CONST AGRMT EXE",
       "filed_month": "2021-12",
       "capacity_claims": [
         {
@@ -2852,18 +2987,27 @@
           "unit": "MW",
           "raw_value": "1 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1000,
+          "unit": "MW",
+          "raw_value": "1000 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.65,
         -118.68
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "BPA's Ashe - Slatt No.1 line"
     },
     {
       "id": "BPA-KEELER-SUBSTATION",
@@ -2874,8 +3018,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Washington County, OR",
       "county_or_zone": "Washington County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0452",
+      "status": "CONST AGRMT EXE",
       "filed_month": "2018-09",
       "capacity_claims": [
         {
@@ -2883,18 +3027,27 @@
           "unit": "MW",
           "raw_value": "1 GW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 1000,
+          "unit": "MW",
+          "raw_value": "1000 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.55,
         -123.1
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "BPA's Keeler Substation"
     },
     {
       "id": "BPA-YELLOW-ROSEBUSH",
@@ -2905,8 +3058,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Wasco, OR",
       "county_or_zone": "Wasco",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0699",
+      "status": "STUDY",
       "filed_month": "2026-06",
       "capacity_claims": [
         {
@@ -2914,18 +3067,27 @@
           "unit": "MW",
           "raw_value": "970 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 970,
+          "unit": "MW",
+          "raw_value": "970 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.18,
         -121.17
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Buckley Substation or Buckley-Marion No. 1 line or Ashe-Marion No. 2 line."
     },
     {
       "id": "BPA-STACK-IPI-DATA-CENTER",
@@ -2936,8 +3098,8 @@
       "jurisdiction": "Washington, US",
       "location": "Klickitat County, WA",
       "county_or_zone": "Klickitat County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0545",
+      "status": "STUDY",
       "filed_month": "2022-12",
       "capacity_claims": [
         {
@@ -2945,18 +3107,27 @@
           "unit": "MW",
           "raw_value": "958 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 958,
+          "unit": "MW",
+          "raw_value": "958 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.87,
         -120.8
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "RKCR-JDAY-1 or MCNY-ROSS-2 near Harvalum Substation"
     },
     {
       "id": "BPA-PLYMOUTH-950MW",
@@ -2967,8 +3138,8 @@
       "jurisdiction": "Washington, US",
       "location": "Benton County, WA",
       "county_or_zone": "Benton County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0703",
+      "status": "RECEIVED",
       "filed_month": "2026-07",
       "capacity_claims": [
         {
@@ -2976,18 +3147,27 @@
           "unit": "MW",
           "raw_value": "950 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 950,
+          "unit": "MW",
+          "raw_value": "950 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.24,
         -119.51
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "McNary-John Day No. 2 line or McNary-Ross No. 1 line or McNary-Horse Heaven No. 1"
     },
     {
       "id": "BPA-WEST-RICHLAND-DATA-CENTER",
@@ -2998,8 +3178,8 @@
       "jurisdiction": "Washington, US",
       "location": "Benton County, WA",
       "county_or_zone": "Benton County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0621",
+      "status": "STUDY",
       "filed_month": "2024-09",
       "capacity_claims": [
         {
@@ -3007,18 +3187,27 @@
           "unit": "MW",
           "raw_value": "912 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 912,
+          "unit": "MW",
+          "raw_value": "912 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.24,
         -119.51
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Ashe-Slatt No 1 line; Ashe-Marion No 2 line"
     },
     {
       "id": "BPA-PLYMOUTH-DATA-CENTER-CAMPUS",
@@ -3060,8 +3249,8 @@
       "jurisdiction": "Washington, US",
       "location": "Benton County, WA",
       "county_or_zone": "Benton County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0685",
+      "status": "STUDY",
       "filed_month": "2026-02",
       "capacity_claims": [
         {
@@ -3069,18 +3258,27 @@
           "unit": "MW",
           "raw_value": "800 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 800,
+          "unit": "MW",
+          "raw_value": "800 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         46.24,
         -119.51
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "McNary-John Day No. 2 line"
     },
     {
       "id": "BPA-LONGHORN-230KV-SUBSTATION",
@@ -3091,8 +3289,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Linn County, OR",
       "county_or_zone": "Linn County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0586",
+      "status": "STUDY",
       "filed_month": "2023-11",
       "capacity_claims": [
         {
@@ -3100,18 +3298,27 @@
           "unit": "MW",
           "raw_value": "750 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 750,
+          "unit": "MW",
+          "raw_value": "750 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         44.5,
         -122.5
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Longhorn Substation"
     },
     {
       "id": "BPA-WOODBURN-700MW",
@@ -3122,8 +3329,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Marion, OR",
       "county_or_zone": "Marion",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0659",
+      "status": "STUDY",
       "filed_month": "2025-07",
       "capacity_claims": [
         {
@@ -3131,18 +3338,27 @@
           "unit": "MW",
           "raw_value": "700 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 700,
+          "unit": "MW",
+          "raw_value": "700 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         44.92,
         -122.8
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "Big Eddy-Chemawa No 1 line"
     },
     {
       "id": "BPA-PARS-CLATSKANIE",
@@ -3153,8 +3369,8 @@
       "jurisdiction": "Oregon, US",
       "location": "Columbia County, OR",
       "county_or_zone": "Columbia County",
-      "queue_id": null,
-      "status": "active",
+      "queue_id": "L0701",
+      "status": "RECEIVED",
       "filed_month": "2026-06",
       "capacity_claims": [
         {
@@ -3162,18 +3378,27 @@
           "unit": "MW",
           "raw_value": "680 MW",
           "qualifier": "Watt Street large-load ledger request capacity"
+        },
+        {
+          "value_mw": 680,
+          "unit": "MW",
+          "raw_value": "680 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
         }
       ],
-      "source_authority": "secondary normalization of public BPA load-queue data",
-      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
       "capture_date": "2026-09-22",
-      "source_scope": "BPA largest requests publicly displayed by Watt Street",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "map_point": [
         45.98,
         -123.1
       ],
       "map_precision": "county display point",
-      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+      "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests. Current cross-check adds BPA request ID and POI/status from Substation Scout's reproduction of the BPA published spreadsheet; the source explicitly says requested MW are as filed and not study results or entitlements.",
+      "poi_substation": "TBD"
     },
     {
       "id": "BPA-ROZA",
@@ -3236,6 +3461,731 @@
       ],
       "map_precision": "county display point",
       "notes": "Public secondary cross-reference of a BPA large-load request. The displayed BPA ledger does not identify this as a data center unless the project name itself does so. Capacity is requested load, not contracted or energized demand. Transmission/substation names are retained because the source classifies them as large-load requests."
+    },
+    {
+      "id": "BPA-LARGE-L0661",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Steelhead 230 kV",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Morrow County, OR",
+      "county_or_zone": "Morrow County",
+      "queue_id": "L0661",
+      "poi_substation": "Sixmile Canyon Substation at",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 600,
+          "unit": "MW",
+          "raw_value": "600 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0201",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Juan de Fuca HVDC (Port Angeles)",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Clallam County, WA",
+      "county_or_zone": "Clallam County",
+      "queue_id": "L0201",
+      "poi_substation": "Port Angeles",
+      "status": "STUDY COMPLETED",
+      "capacity_claims": [
+        {
+          "value_mw": 550,
+          "unit": "MW",
+          "raw_value": "550 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0202",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Juan de Fuca HVDC (Fairmount)",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Jefferson County, WA",
+      "county_or_zone": "Jefferson County",
+      "queue_id": "L0202",
+      "poi_substation": "Fairmount",
+      "status": "STUDY COMPLETED",
+      "capacity_claims": [
+        {
+          "value_mw": 550,
+          "unit": "MW",
+          "raw_value": "550 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0482",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Morrow Flat_Longhorn",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Umatilla County, OR",
+      "county_or_zone": "Umatilla County",
+      "queue_id": "L0482",
+      "poi_substation": "Morrow Flat Substation",
+      "status": "ENERGIZED",
+      "capacity_claims": [
+        {
+          "value_mw": 500,
+          "unit": "MW",
+          "raw_value": "500 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0674",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Starbuck 500 MW",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Columbia County, WA",
+      "county_or_zone": "Columbia County",
+      "queue_id": "L0674",
+      "poi_substation": "Central Ferry-Lower Monumental No. 1 line",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 500,
+          "unit": "MW",
+          "raw_value": "500 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0499",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Project Pivot and Specialized",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Umatilla County, OR",
+      "county_or_zone": "Umatilla County",
+      "queue_id": "L0499",
+      "poi_substation": "McNary Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 484,
+          "unit": "MW",
+          "raw_value": "484 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0389",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Industrial Load",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Morrow County, OR",
+      "county_or_zone": "Morrow County",
+      "queue_id": "L0389",
+      "poi_substation": "Mcnary Substation or Morrow Flat Substation",
+      "status": "ENERGIZED",
+      "capacity_claims": [
+        {
+          "value_mw": 450,
+          "unit": "MW",
+          "raw_value": "450 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0481",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "McNary 230kV",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Umatilla County, OR",
+      "county_or_zone": "Umatilla County",
+      "queue_id": "L0481",
+      "poi_substation": "McNary , Bay 28",
+      "status": "CONST AGRMT EXE",
+      "capacity_claims": [
+        {
+          "value_mw": 450,
+          "unit": "MW",
+          "raw_value": "450 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0417",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Boundary Substation",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Pend Oreille County, WA",
+      "county_or_zone": "Pend Oreille County",
+      "queue_id": "L0417",
+      "poi_substation": "Boundary Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 370,
+          "unit": "MW",
+          "raw_value": "370 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0534",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Atlas Agro",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Benton County, WA",
+      "county_or_zone": "Benton County",
+      "queue_id": "L0534",
+      "poi_substation": "Benton-White Bluffs No 1 line or White Bluffs-Richland No 1 line",
+      "status": "STUDY COMPLETED",
+      "capacity_claims": [
+        {
+          "value_mw": 350,
+          "unit": "MW",
+          "raw_value": "350 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0380",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Network Load Expansion 3",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Wasco County, OR",
+      "county_or_zone": "Wasco County",
+      "queue_id": "L0380",
+      "poi_substation": "Chenoweth Substation",
+      "status": "ENERGIZED",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0433",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Network Load Expansion 4 Quenett Creek Substation",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Wasco County, OR",
+      "county_or_zone": "Wasco County",
+      "queue_id": "L0433",
+      "poi_substation": "Quenett Creek Substation",
+      "status": "ENERGIZED",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0543",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Bonanza",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Crook County, OR",
+      "county_or_zone": "Crook County",
+      "queue_id": "L0543",
+      "poi_substation": "Ponderosa Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0558",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Stearns Lane",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Washington County, OR",
+      "county_or_zone": "Washington County",
+      "queue_id": "L0558",
+      "poi_substation": "BPA's Green Valley Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0494",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Ponderary Renewable Fiber and Blockchain Project",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Pend Oreille County, WA",
+      "county_or_zone": "Pend Oreille County",
+      "queue_id": "L0494",
+      "poi_substation": "Usk Substation",
+      "status": "ENERGIZED",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0603",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Getchell Substation",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Snohomish County, WA",
+      "county_or_zone": "Snohomish County",
+      "queue_id": "L0603",
+      "poi_substation": "Snohomish-Murray line",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0630",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Data Storage Facility",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Walla Walla County, WA",
+      "county_or_zone": "Walla Walla County",
+      "queue_id": "L0630",
+      "poi_substation": "Lower Monumental-McNary No. 1 line",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0647",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Atlas Agro Data Server Facility",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Benton County, WA",
+      "county_or_zone": "Benton County",
+      "queue_id": "L0647",
+      "poi_substation": "Benton-White Bluffs No 1 line or White Bluffs-Richland No 1 line",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0657",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "Atlas Agro Data Server Facility, Phase 2",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Benton County, WA",
+      "county_or_zone": "Benton County",
+      "queue_id": "L0657",
+      "poi_substation": "Benton-White Bluffs No 1 line or White Bluffs-Richland No 1 line",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0650",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "300 MW Data Center Load Served from Grizzly",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "US / BPA",
+      "location": "Jefferson County",
+      "county_or_zone": "Jefferson County",
+      "queue_id": "L0650",
+      "poi_substation": "Grizzly Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0700",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "PARS - MW&L",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Oregon, US",
+      "location": "Yamhill County, OR",
+      "county_or_zone": "Yamhill County",
+      "queue_id": "L0700",
+      "poi_substation": "TBD",
+      "status": "RECEIVED",
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0610",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "PW1 & PW2",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Columbia County, WA",
+      "county_or_zone": "Columbia County",
+      "queue_id": "L0610",
+      "poi_substation": "Allston Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 250,
+          "unit": "MW",
+          "raw_value": "250 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0668",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "ATP TES Data Server",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "US / BPA",
+      "location": "Benton County",
+      "county_or_zone": "Benton County",
+      "queue_id": "L0668",
+      "poi_substation": "Benton Substation",
+      "status": "RECEIVED",
+      "capacity_claims": [
+        {
+          "value_mw": 250,
+          "unit": "MW",
+          "raw_value": "250 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0677",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "TC KERR Data Center",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Cowlitz County, WA",
+      "county_or_zone": "Cowlitz County",
+      "queue_id": "L0677",
+      "poi_substation": "Longview Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 240,
+          "unit": "MW",
+          "raw_value": "240 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
+    },
+    {
+      "id": "BPA-LARGE-L0693",
+      "evidence_type": "secondary_large_load_request_record",
+      "project_name": "230 kV Feed from Longview Substation to Alcoa",
+      "customer_or_developer": null,
+      "utility_or_provider": "Bonneville Power Administration",
+      "jurisdiction": "Washington, US",
+      "location": "Cowlitz County, WA",
+      "county_or_zone": "Cowlitz County",
+      "queue_id": "L0693",
+      "poi_substation": "Cowlitz Substation",
+      "status": "STUDY",
+      "capacity_claims": [
+        {
+          "value_mw": 240,
+          "unit": "MW",
+          "raw_value": "240 MW",
+          "qualifier": "BPA large-load request MW as filed",
+          "source_url": "https://substationscout.com/large-load-registry/",
+          "capture_date": "2026-09-23"
+        }
+      ],
+      "source_authority": "secondary reproduction of BPA public load queue",
+      "source_url": "https://substationscout.com/large-load-registry/",
+      "capture_date": "2026-09-23",
+      "source_scope": "BPA Large Load Registry — 50 largest live requests",
+      "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
+      "map_point": null
     }
   ]
 }
