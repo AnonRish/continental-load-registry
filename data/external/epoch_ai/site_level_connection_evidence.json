@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 49,
+    "evidence_found": 51,
     "site_queue_ids": 2,
-    "pending": 44
+    "pending": 42
   },
   "records": [
     {
@@ -700,9 +700,20 @@
       "country": "United States",
       "state_province": "WY",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Black Hills Energy / Cheyenne Light, Fuel & Power",
+          "record_name": "Meta Cheyenne electric utility relationship",
+          "source_url": "https://datacenters.blackhillsenergy.com/resources/black-hills-energy-partners-meta-power-new-data-center-wyoming",
+          "source_kind": "utility-published data-center partnership record",
+          "confidence": "high",
+          "basis": "Black Hills Energy states that it partnered with Meta to provide power for its newest data center in Cheyenne, Wyoming, and identifies Cheyenne Light, Fuel & Power Company, doing business as Black Hills Energy, as the electric utility serving the area. This is direct utility-published site-level evidence of the utility relationship; it is not a site-specific queue ID or metered load series.",
+          "next": "Search Black Hills Energy, Wyoming Public Service Commission, FERC and local Cheyenne records for the underlying customer-specific contract, transmission/service case, and any site-specific capacity record."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Black Hills Energy, Wyoming Public Service Commission, FERC and local Cheyenne records for the underlying customer-specific contract, transmission/service case, and any site-specific capacity record."
     },
     {
       "epoch_id": "EPOCH-4a87099a6d1e001f",
@@ -912,9 +923,20 @@
       "country": "United States",
       "state_province": "NM",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Public Service Company of New Mexico (PNM)",
+          "record_name": "Meta Los Lunas utility/regulatory relationship",
+          "source_url": "https://www.pnm.com/documents/28767612/40780649/Case-No-23-00251-UT.pdf/871bc00d-2805-2796-91e3-06376b6c0326",
+          "source_kind": "PNM regulatory filing",
+          "confidence": "high",
+          "basis": "PNM's regulatory filing has a section titled Meta's Current Expansion in New Mexico and states that commission approval of PNM's application is an important part of the data-center expansion underway in Los Lunas. This is direct utility/regulatory evidence linking PNM to the Meta Los Lunas expansion; the figures in the filing describe associated clean-energy resources and are not substituted for the data center's queue capacity or measured load.",
+          "next": "Search PNM, New Mexico PRC, local Los Lunas records and any interconnection/service filings for the specific customer service and capacity record."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search PNM, New Mexico PRC, local Los Lunas records and any interconnection/service filings for the specific customer service and capacity record."
     },
     {
       "epoch_id": "EPOCH-768183e4de6062d2",
