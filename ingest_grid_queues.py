@@ -516,13 +516,17 @@ def classify_status(raw: Any) -> Optional[str]:
     # Exclusion-first gate: reject terminal/inactive states before any accept-side
     # substring matching. This prevents INACTIVE from satisfying ACTIVE and keeps
     # terminal words from leaking through a later fuzzy match.
-    reject_keywords = (
-        "WITHDRAWN", "CANCELLED", "CANCELED", "DEACTIVATED", "DEACTIVATION",
-        "TERMINATED", "SUSPENDED", "COMPLETED", "IN SERVICE", "RETIRED",
-        "PENDING TERMINATION", "INACTIVE",
+    reject_patterns = (
+        r"\bWITHDRAWN\b", r"\bCANCELLED\b", r"\bCANCELED\b",
+        r"\bDEACTIVATED\b", r"\bDEACTIVATION\b", r"\bTERMINATED\b",
+        r"\bSUSPENDED\b", r"\bCOMPLETED\b", r"\bRETIRED\b",
+        r"\bPENDING\s+TERMINATION\b", r"\bINACTIVE\b",
+        # Treat a completed/in-service terminal state as excluded, while
+        # allowing the distinct live status "Active - In Service Partially".
+        r"\bIN[\s-]+SERVICE\b(?!\s+PARTIALLY\b)",
     )
     normalized_upper = re.sub(r"[_-]+", " ", upper)
-    if any(k in normalized_upper for k in reject_keywords):
+    if any(re.search(pattern, normalized_upper) for pattern in reject_patterns):
         return None
 
     # Fuzzy fallback across common real-world phrasings for the same states.
@@ -1683,6 +1687,27 @@ def run_selftest() -> bool:
         "PJM live status 'Pending Termination' remains excluded",
         classify_status("Pending Termination") is None,
     ))
+    checks.append((
+        "Status gate: 'INACTIVE' is rejected before 'ACTIVE'",
+        classify_status("INACTIVE") is None,
+    ))
+    checks.append((
+        "Status gate: 'Deactivated' is terminal",
+        classify_status("Deactivated") is None,
+    ))
+    checks.append((
+        "Status gate: exact 'In Service' is terminal",
+        classify_status("In Service") is None,
+    ))
+    checks.append((
+        "Status gate: 'Active - In Service Partially' remains live",
+        classify_status("Active - In Service Partially") == "Active",
+    ))
+    checks.append((
+        "Other-than technology guard rejects the exact false-positive phrase",
+        classify_load_type("Steam Turbine other than Combined-Cycle")[0] is False,
+    ))
+
 
     # Real-data finding (see classify_load_type / _accept_keyword_hits
     # docstrings): ERCOT's own technology-code description for Steam

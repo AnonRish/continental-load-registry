@@ -147,9 +147,9 @@ def validate_source_invariants() -> None:
     status_start = ingest.find("def classify_status")
     status_end = ingest.find("_OTHER_KEYWORD_RE", status_start)
     status_block = ingest[status_start:status_end if status_end >= 0 else None]
-    reject_pos = status_block.find("reject_keywords =")
+    reject_pos = status_block.find("reject_patterns =")
     active_pos = status_block.find("fuzzy_map =")
-    inactive_pos = status_block.find('"INACTIVE"')
+    inactive_pos = status_block.find('r"\\bINACTIVE\\b"')
     if reject_pos < 0 or inactive_pos < 0 or active_pos < 0 or not reject_pos < active_pos or not inactive_pos < active_pos:
         raise AssertionError("Status exclusion gate or INACTIVE guard is not placed before accept matching")
 
