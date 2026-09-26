@@ -1800,6 +1800,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pjm-file", type=Path, default=None,
                          help="Path to a local PJM queue export (.xlsx) to parse instead of "
                               "fetching it live -- same parser either way, just skips the HTTP call.")
+    parser.add_argument("--pjm-audit-output", type=Path, default=None,
+                         help="Optional CSV snapshot of the unfiltered PJM export for "
+                              "diagnostic reconciliation; never used as registry input.")
     parser.add_argument("--ercot-file", type=Path, default=None,
                          help="Path to a local ERCOT GIS Report workbook (.xlsx) to parse "
                               "instead of fetching it live -- same parser either way, just "
@@ -1841,6 +1844,26 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     logger.info("Starting grid interconnection queue ingestion")
     logger.info("Filters: capacity >= %.1f MW | statuses=%s", MIN_CAPACITY_MW, STATUS_CANONICAL)
+
+    # Optional diagnostic snapshot of the exact unfiltered PJM workbook fetched
+    # for this run. This is intentionally outside the registry output path.
+    if args.pjm_audit_output and "pjm" not in fixture_bytes:
+        try:
+            audit_session = build_http_session()
+            audit_bytes = fetch_pjm_raw_bytes(audit_session, export_key=args.pjm_export_key)
+            audit_df = load_pjm_dataframe_from_bytes(audit_bytes)
+            audit_cols = {}
+            for key in ("queue_id", "status", "capacity_mw", "fuel", "project_name"):
+                col = locate_column(audit_df.columns, PJM_COLUMN_ALIASES[key])
+                if col:
+                    audit_cols[key] = col
+            audit_df = audit_df.rename(columns={v:k for k,v in audit_cols.items()})
+            keep_cols = [k for k in ("queue_id", "status", "capacity_mw", "fuel", "project_name") if k in audit_df.columns]
+            args.pjm_audit_output.parent.mkdir(parents=True, exist_ok=True)
+            audit_df[keep_cols].to_csv(args.pjm_audit_output, index=False)
+            logger.info("Wrote PJM raw audit to %s (%d rows)", args.pjm_audit_output, len(audit_df))
+        except Exception as exc:
+            logger.warning("Could not write PJM raw audit: %s", exc)
 
     result = run_pipeline(
         pjm_export_key=args.pjm_export_key,
