@@ -1,280 +1,392 @@
-name: Validate public research surface
+# Continental Large-Load Interconnection & Telemetry Registry
 
-on:
-  push:
-    paths:
-      - "index.html"
-      - "track3.html"
-      - "plan-a.html"
-      - "PLAN_A.md"
-      - "CONTRIBUTING.md"
-      - "CITATION.cff"
-      - "CITATION.md"
-      - "README.md"
-      - "llms.txt"
-      - "robots.txt"
-      - "sitemap.xml"
-      - "CI_AUDIT_2026-09-26.md"
-      - "data/ci/commit_audit.json"
-      - "data/track3/ai2040_plan_a_mapping.json"
-      - "data/track3/ai2040_plan_a_traceability.json"
-      - "data/track3/plan_a_audit_schema.json"
-      - "data/track3_evidence_schema.json"
-      - "data/large_load_scope.json"
-      - "data/supplemental_large_load_evidence.json"
-      - "data/project_level_extractions.json"
-      - "data/project_level_extractions.csv"
-      - "data/public_data_catalog.json"
-      - "data/market_universe_manifest.json"
-      - "data/market_universe_manifest.csv"
-      - "data/caiso_cluster_history.json"
-      - "data/caiso_cluster_history.csv"
-      - "data/project_level_map.json"
-      - "data/pjm_large_load_submission_history.json"
-      - "data/supplemental_aggregate_map.json"
-      - "data/supplemental_aggregate_map.csv"
-      - "data/epoch_connection_research_targets.csv"
-      - "data/epoch_connection_research_targets.json"
-      - "data/epoch_site_evidence_records.csv"
-      - "data/epoch_site_evidence_records.json"
-      - "data/epoch_ai_map.json"
-      - "data/epoch_ai_map.csv"
-      - "data/project_level_map.csv"
-      - "data/epoch_connection_research_targets.json"
-      - "data/epoch_connection_research_targets.csv"
-      - "data/epoch_site_evidence_records.json"
-      - "data/epoch_site_evidence_records.csv"
-      - "sync_caiso_public_queue.py"
-      - "sync_miso_public_queue.py"
-      - "sync_spp_public_queue.py"
-      - "sync_nyiso_public_queue.py"
-      - "sync_pjm_cycle_public_queue.py"
-      - "data/queue_layer_status.json"
-      - ".github/workflows/validate_public_surface.yml"
-  pull_request:
-    paths:
-      - "index.html"
-      - "track3.html"
-      - "plan-a.html"
-      - "PLAN_A.md"
-      - "CONTRIBUTING.md"
-      - "CITATION.cff"
-      - "CITATION.md"
-      - "README.md"
-      - "llms.txt"
-      - "robots.txt"
-      - "sitemap.xml"
-      - "CI_AUDIT_2026-09-26.md"
-      - "data/ci/commit_audit.json"
-      - "data/track3/ai2040_plan_a_mapping.json"
-      - "data/track3/ai2040_plan_a_traceability.json"
-      - "data/track3/plan_a_audit_schema.json"
-      - "data/track3_evidence_schema.json"
-      - "data/large_load_scope.json"
-      - "data/supplemental_large_load_evidence.json"
-      - "data/project_level_extractions.json"
-      - "data/project_level_extractions.csv"
-      - "data/project_level_map.json"
-      - "data/market_universe_manifest.json"
-      - "data/market_universe_manifest.csv"
-      - "data/caiso_cluster_history.json"
-      - "data/caiso_cluster_history.csv"
-      - "data/supplemental_aggregate_map.json"
-      - "data/epoch_ai_map.json"
-      - "data/epoch_ai_map.csv"
-      - "data/epoch_connection_research_targets.json"
-      - "data/epoch_connection_research_targets.csv"
-      - "data/epoch_site_evidence_records.json"
-      - "data/epoch_site_evidence_records.csv"
-      - "data/public_data_catalog.json"
-      - "data/pjm_large_load_submission_history.json"
-      - "data/pjm_large_load_submission_history.csv"
+**Version 2.3** -- adds per-facility research records, an official source catalog,
+and automated regeneration of those records during refresh.
 
-permissions:
-  contents: read
+Open-source ETL pipeline and public dashboard tracking large (>=100 MW)
+bulk-power interconnection requests across nine RTOs/ISOs -- PJM, ERCOT,
+SPP, MISO, CAISO, NYISO, and ISO-NE in the U.S., and Canada's IESO and
+AESO -- with an entity-resolution and power-to-compute estimation pass
+aimed at surfacing large requests that lack a confirmed public operator.
 
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-      - name: Validate machine-readable Track 3 / Plan A files
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          paths = [
-              "data/track3/ai2040_plan_a_mapping.json",
-              "data/track3/ai2040_plan_a_traceability.json",
-              "data/track3/plan_a_audit_schema.json",
-              "data/track3_evidence_schema.json",
-          ]
-          for path in paths:
-              obj = json.loads(Path(path).read_text(encoding="utf-8"))
-              assert obj, path
-          mapping = json.loads(Path("data/track3/ai2040_plan_a_mapping.json").read_text(encoding="utf-8"))
-          trace = json.loads(Path("data/track3/ai2040_plan_a_traceability.json").read_text(encoding="utf-8"))
-          schema = json.loads(Path("data/track3_evidence_schema.json").read_text(encoding="utf-8"))
-          assert len(mapping["mappings"]) >= 16
-          assert len(trace["rows"]) >= 12
-          assert len(schema["domains"]) >= 15
+## What's in this repository
 
-          scope = json.loads(Path("data/large_load_scope.json").read_text(encoding="utf-8"))
-          supplemental = json.loads(Path("data/supplemental_large_load_evidence.json").read_text(encoding="utf-8"))
-          assert scope["definitions"]["current_row_level"]["records"] == 1558
-          assert scope["definitions"]["additional_known_miso"]["records"] == 83
-          assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
-          assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
-          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 53
-          assert scope["definitions"]["project_level_extractions"]["records"] == 235
-          assert len(supplemental["records"]) == 53
-          projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
-          assert projects["record_count"] == len(projects["records"]) == 235
-          assert len({r["id"] for r in projects["records"]}) == 235
-          assert len(projects["sources"]) == 16
-          source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
-          assert source_counts["VA-DEQ"] == 33
-          assert source_counts["BPA-LARGE-LOAD"] == 60
-          assert source_counts["AESO-DATA-LOAD"] == 28
-          assert source_counts["NYISO-LOAD-PROJECTS"] == 12
-          assert source_counts["NYISO-GOLD-BOOK-2024"] == 9
-          assert source_counts["IESO-LOAD"] == 6
-          assert source_counts["ISO-NE-CELT"] == 2
-          assert source_counts["COMED-NEW-PROJECTS"] == 28
-          assert source_counts["DOMINION-SERVICE-PROJECTS"] == 3
-          assert source_counts["IDAHO-POWER-2025-IRP"] == 1
-          assert source_counts["CAISO-LARGE-LOADS"] == 14
-          for record in projects["records"]:
-              assert record["id"] and record["evidence_type"] and record["source_url"].startswith("https://")
-          assert sum(r["evidence_type"] == "environmental_permit_record" for r in projects["records"]) == 33
-          assert sum(r["evidence_type"] == "aeso_data_load_project_record" for r in projects["records"]) == 28
-          assert sum(r["evidence_type"] == "ieso_load_application_record" for r in projects["records"]) == 6
-          assert sum(r["evidence_type"] == "nyiso_load_project_site_record" for r in projects["records"]) == 12
-          assert sum(r["evidence_type"] == "nyiso_gold_book_large_load_record" for r in projects["records"]) == 31
-          assert sum(r["evidence_type"] == "caiso_large_load_interconnection_project" for r in projects["records"]) == 14
-          camellia = next(r for r in projects["records"] if r["id"] == "GA-OPENAI-CAMELLIA-2026")
-          assert sorted(x.get("value_mw") for x in camellia["capacity_claims"]) == [3200, 3210]
-          alectra = next(r for r in projects["records"] if r["id"] == "ALECTRA-VAUGHAN-MTS6-2026")
-          assert sorted(x.get("value_mva") for x in alectra["capacity_claims"]) == [108, 125]
-          piketon = next(r for r in projects["records"] if r["id"] == "AEP-SBENERGY-PIKETON-2026")
-          assert any(x.get("value_mw") == 10000 for x in piketon["capacity_claims"])
-          ids = [r["id"] for r in supplemental["records"]]
-          assert len(ids) == len(set(ids))
-          for record in supplemental["records"]:
-              assert record["id"]
-              assert record["jurisdiction"]
-              assert record["provider"]
-              assert record["evidence_type"]
-              assert record["source_url"].startswith("https://")
-          assert any(r["id"] == "DOMINION-LARGE-LOAD-QUEUE-2025-12-31" and r["capacity_mw"] == 70000 for r in supplemental["records"])
-          assert any(r["id"] == "BCHYDRO-EMERGING-INDUSTRIES-2026" and r["record_count"] == 15 for r in supplemental["records"])
-          assert any(r["id"] == "ALECTRA-VAUGHAN-MTS6-2026" and r["capacity_mva"] == 108 for r in supplemental["records"])
-          targets = json.loads(Path("data/epoch_connection_research_targets.json").read_text(encoding="utf-8"))
-          assert targets["record_count"] == len(targets["records"]) == 93
-          assert len({r["epoch_id"] for r in targets["records"]}) == 93
-          assert sum(r["status"] == "queue_jurisdiction_mapped_site_id_not_yet_verified" for r in targets["records"]) == 72
-          assert sum(r["status"] == "country_connection_system_mapped" for r in targets["records"]) == 16
-          assert sum(r["status"] == "site_specific_queue_verified" for r in targets["records"]) == 2
-          assert sum(r["status"] == "public_service_contract_verified" for r in targets["records"]) == 2
-          assert sum(r["status"] == "public_customer_planning_record" for r in targets["records"]) == 1
-          assert all(r["lat"] is not None and r["lon"] is not None for r in targets["records"])
-          assert "id=\"connectionTargetsToggle\"" in Path("index.html").read_text(encoding="utf-8")
-          assert "id=\"projectEvidenceToggle\"" in Path("index.html").read_text(encoding="utf-8")
-          assert "id=\"dataUniverseStatus\"" in Path("index.html").read_text(encoding="utf-8")
-          assert "id=\"completeProjectLedger\"" in Path("index.html").read_text(encoding="utf-8")
-          assert "id=\"completeConnectionTargetLedger\"" in Path("index.html").read_text(encoding="utf-8")
-          assert "id=\"completeSiteEvidenceLedger\"" in Path("index.html").read_text(encoding="utf-8")
-          evidence_inventory = json.loads(Path("data/epoch_site_evidence_records.json").read_text(encoding="utf-8"))
-          assert evidence_inventory["record_count"] == len(evidence_inventory["records"]) == 68
-          assert evidence_inventory["site_count"] == 93
-          assert evidence_inventory["sites_with_evidence"] == 59
-          assert len({r["id"] for r in evidence_inventory["records"]}) == 68
-          target_data = json.loads(Path("data/epoch_connection_research_targets.json").read_text(encoding="utf-8"))
-          assert target_data["record_count"] == len(target_data["records"]) == 93
-          assert len({r["epoch_id"] for r in target_data["records"]}) == 93
-          assert sum(int(r.get("site_level_evidence_count", 0)) for r in target_data["records"]) == 68
-          assert all(r["lat"] is not None and r["lon"] is not None for r in target_data["records"])
-          catalog = json.loads(Path("data/public_data_catalog.json").read_text(encoding="utf-8"))
-          assert len(catalog["datasets"]) >= 15
-          assert any(d["path"] == "data/project_level_extractions.json" and d["record_count"] == 213 for d in catalog["datasets"])
-          assert any(d["path"] == "data/epoch_connection_research_targets.json" and d["record_count"] == 93 for d in catalog["datasets"])
-          assert any(d["path"] == "data/epoch_site_evidence_records.json" and d["record_count"] == 68 for d in catalog["datasets"])
-          queue_status = json.loads(Path("data/queue_layer_status.json").read_text(encoding="utf-8"))
-          assert len(queue_status["feeds"]) == 5
-          assert all(f["source_url"].startswith("https://") and f["workflow"] and f["snapshot"] for f in queue_status["feeds"])
-          universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
-          assert len(universe["markets"]) == 10
-          epoch_map = json.loads(Path("data/epoch_ai_map.json").read_text(encoding="utf-8"))
-          assert epoch_map["record_count"] == 93 and epoch_map["mapped_count"] == 93
-          assert sum(1 for r in epoch_map["records"] if r["site_level_evidence_status"] == "evidence_found") == 59
-          assert sum(1 for r in epoch_map["records"] if r["site_level_evidence_status"] == "pending_site_specific_search") == 34
-          import csv as _csv
-          with open("data/epoch_ai_map.csv", newline="", encoding="utf-8") as fh:
-              assert len(list(_csv.DictReader(fh))) == 93
-          assert len(epoch_map["records"]) == 93
-          aggregate_map = json.loads(Path("data/supplemental_aggregate_map.json").read_text(encoding="utf-8"))
-          assert aggregate_map["record_count"] == 61 and aggregate_map["mapped_count"] == 61
-          pjm_history = json.loads(Path("data/pjm_large_load_submission_history.json").read_text(encoding="utf-8"))
-          assert len(pjm_history["records"]) == 28
-          project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
-          assert project_map["record_count"] == 235 and project_map["mapped_count"] == 235
-          assert len(project_map["records"]) == 235
-          assert {r["id"] for r in projects["records"]} == {r["id"] for r in project_map["records"]}
-          assert all(r.get("lat") is not None and r.get("lon") is not None for r in project_map["records"])
-          history = json.loads(Path("data/caiso_cluster_history.json").read_text(encoding="utf-8"))
-          assert sum(r["projects"] for r in history["records"][:7]) == 435
-          assert sum(r["capacity_mw"] for r in history["records"][:7]) == 121204
-          assert history["records"][7]["projects"] == 48 and history["records"][7]["capacity_mw"] == 14421
-          print("PASS: Plan A / Track 3 / expanded market-universe contracts")
-          PY
-      - name: Test complete queue parser scripts
-        run: |
-          python sync_caiso_public_queue.py --selftest
-          python sync_miso_public_queue.py --selftest
-          python sync_spp_public_queue.py --selftest
-          python sync_nyiso_public_queue.py --selftest
-          python sync_pjm_cycle_public_queue.py --selftest
+- `ingest_grid_queues.py` -- extracts, normalizes, and filters the nine
+  source registers into one schema (`queue_id`, `rto_region`, `state`,
+  `county`, `poi_substation`, `capacity_mw`, `projected_date`,
+  `developer_entity`, plus `status` / `project_name` / `raw_fuel_technology`
+  with `--include-raw-fields`). Run `python ingest_grid_queues.py --help`
+  for the full flag list, or `--selftest` to run the current 43-check suite
+  against synthetic fixtures without hitting any network.
+- `compute_anomaly_detector.py` -- entity resolution against a small known
+  hyperscaler/colocation-developer list, a PJM-specific heuristic for
+  undisclosed developers, and a low/reference/high power-to-compute (FLOPs)
+  range estimate. Also has `--selftest`. Unchanged in the MISO/CAISO/NYISO/
+  ISO-NE/AESO update: its "Developer Not Disclosed" check already keys on the
+  `NOT PUBLISHED...` prefix the new adapters use.
+- `embed_registry_data.py` -- refreshes the data embedded in `index.html`
+  from the two scripts' CSVs. Only the RTOs present in the CSVs are
+  replaced, so one source can be refreshed without re-running the other
+  eight, and re-running it is idempotent. `--dry-run` prints the
+  before/after row and GW counts without writing.
+- `build_facility_records.py` -- turns each published facility into a
+  research-record artifact with the full union of normalized fields, retained
+  ingest-level source fields when available, source/capture metadata, official
+  links, and a source -> raw extract -> normalization -> enrichment ->
+  publication provenance trail. `--check` verifies that every published
+  facility has exactly one research record.
+- `data/source_manifest.json` -- machine-readable official source catalog,
+  including publisher, source URL, capture date/precision, scope, and source
+  snapshot hashes where a source snapshot was retained by the build.
+- `data/facility_records/` -- one JSON record set per RTO plus `index.json`.
+  The public dashboard loads the relevant RTO file when a facility's Details
+  view is opened.
+- `index.html` -- the public dashboard. Single-file, Tailwind (CDN) +
+  vanilla JS, no build step. The registry table's data is embedded
+  directly in the file (by `embed_registry_data.py`), not fetched at
+  page-load. Prose that quotes a count or a GW figure is filled in from
+  that data at load time, so a re-embed cannot leave a stale number behind.
+- `track3.html` -- the public Track 3 Evidence Observatory. It loads the canonical Track 3 site-status, evidence, observation, power/cooling, source-stack, queue/source-universe, Module 1 gate, and external-source status artifacts, with site search, grid-state filtering, per-site evidence inspection, domain coverage accounting, source links, and explicit missingness semantics.
+- `plan-a.html` -- public AI 2040 Plan A Track 3 research bridge. It maps the repository's current evidence and research tasks to the public AI 2040 Track 3 / Covert AI Projects discussion, provides direct AI 2040 reference links, and explains what is implemented, partial, or still design-only.
+- `PLAN_A.md` -- the repository-level Plan A contribution notes and scope boundary. This is an independent research contribution, not an AI Futures Project publication or certification.
+- `CONTRIBUTING.md` -- evidence-submission protocol for adding reproducible Track 3 records.
+- `CITATION.cff` -- machine-readable repository citation metadata.
 
-      - name: Validate inline JavaScript
-        run: |
-          python - <<'PY'
-          import re
-          from pathlib import Path
-          for html_name in ("index.html", "track3.html", "plan-a.html"):
-              html = Path(html_name).read_text(encoding="utf-8")
-              scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
-              for i, script in enumerate(scripts, 1):
-                  Path(f"/tmp/{html_name}-{i}.js").write_text(script, encoding="utf-8")
-              print(f"{html_name}: {len(scripts)} script blocks")
-          PY
-          for f in /tmp/index.html-*.js /tmp/track3.html-*.js /tmp/plan-a.html-*.js; do
-            node --check "$f"
-          done
-      - name: Validate discovery files
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          robots = Path("robots.txt").read_text(encoding="utf-8")
-          sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
-          assert "Sitemap: https://anonrish.github.io/continental-load-registry/sitemap.xml" in robots
-          urls = re.findall(r"<loc>(.*?)</loc>", sitemap)
-          assert urls
-          for url in urls:
-              assert url.startswith("https://anonrish.github.io/continental-load-registry/")
-          expected_urls = {
-              "index.html": "https://anonrish.github.io/continental-load-registry/",
-              "track3.html": "https://anonrish.github.io/continental-load-registry/track3.html",
-              "plan-a.html": "https://anonrish.github.io/continental-load-registry/plan-a.html",
-          }
-          for target, url in expected_urls.items():
-              assert url in urls, (target, url)
-          print("PASS: robots.txt and sitemap.xml")
-          PY
+## AI 2040 Plan A / Track 3 reference surface
 
-# CI invariant: changes to this workflow must execute the complete public-surface validation.
-# Re-run the public-surface contract when this validator changes.
+For researchers using this repository specifically in the context of AI 2040 Plan A Track 3, start with the public [Plan A / Track 3 research bridge](https://anonrish.github.io/continental-load-registry/plan-a.html), then use the [Track 3 Evidence Observatory](https://anonrish.github.io/continental-load-registry/track3.html) for the underlying site/evidence layer.
+
+The repository separates three things that should not be conflated:
+
+- AI 2040's public proposal and terminology, which should be cited directly from AI 2040.
+- Repository-derived observations and generated artifacts, which should be cited by artifact path and commit/version.
+- Upstream datasets and source records, which should be cited alongside the repository when they support a factual claim.
+
+Machine-readable Plan A mapping is in `data/track3/ai2040_plan_a_mapping.json`; Recommendation / Appendix B traceability is in `data/track3/ai2040_plan_a_traceability.json`; the audit-chain schema is in `data/track3/plan_a_audit_schema.json`; and the complete commit-level CI audit is in `data/ci/commit_audit.json` with a human-readable companion at `CI_AUDIT_2026-09-26.md`.
+
+The repository is an independent research contribution. It is not an AI Futures Project publication, does not speak for AI 2040, and does not certify a verification regime.
+
+The public research-surface CI is defined in `.github/workflows/validate_public_surface.yml` and separately validates the Plan A / Track 3 pages and machine-readable documentation contracts.
+
+
+- `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
+  from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
+  commits the result to `main`. See "Automated monthly refresh".
+- `data/archive/registry_snapshot_2026-09-24.csv` -- preserved 1,802-record
+  publication snapshot from September 24, 2026. It is intentionally separate
+  from the current registry so superseded queue rows remain auditable without
+  being counted as current active facilities.
+- `guard_registry_refresh.py` -- (2.1) the per-RTO sanity gate that workflow
+  runs between the pipeline and `embed_registry_data.py`. Has `--selftest`.
+- `investigate_ambiguous_loads.py` -- (2.1) builds
+  `ambiguous_facilities_dossier.md`, a worklist of search leads for the
+  ambiguous large loads, and applies human-verified identities from
+  `ground_truth_overrides.json`. Has `--selftest`. See "Investigating the
+  ambiguous tier".
+- `ground_truth_overrides.json` (empty template),
+  `ground_truth_overrides.example.json` (a complete, fictional entry) and
+  `ambiguous_facilities_dossier.md` (generated from this build's data with
+  `--input data/computational_load_estimates_new5.csv`).
+- `data/` -- the retained ingest outputs, source manifest, per-RTO research
+  records, historical snapshot, and `SOURCES.md`. The publisher's original
+  source files are not bundled; where a source snapshot was preserved for the
+  build, its SHA-256 is recorded.
+- `requirements.txt` (unchanged: the 2.1 scripts use only the standard library), `LICENSE` (Apache 2.0).
+
+## Epoch AI secondary evidence layer
+
+The repository also imports the current Epoch AI AI Data Centers dataset as a
+separate research layer. Epoch's public dataset was updated September 24,
+2026 and currently covers 93 major AI data-center sites. Epoch describes the
+dataset as independent research using satellite imagery, permits, public
+documents, company disclosures and regulatory filings. Its public
+documentation defines core site fields including current H100-equivalents,
+current IT power, owner/user confidence, country, address and selected
+sources, with separate timeline and chip-quantity records. See:
+https://epoch.ai/data/ai-data-centers
+and https://epoch.ai/data/data-centers-documentation/records.
+
+The repository keeps the source-specific values separate:
+
+- data/external/epoch_ai/data_centers.csv -- raw Epoch data-center table.
+- data/external/epoch_ai/data_center_timelines.csv -- raw dated timeline records.
+- data/external/epoch_ai/data_centers_chip_quantities.csv -- raw chip-quantity records.
+- data/external/epoch_ai/registry.json -- 93 normalized Epoch site records, latest available timeline snapshot, latest chip quantities by type, all raw data-center row values, source metadata and crosswalk.
+- data/external/epoch_ai/crosswalk.csv -- one row for every Epoch site, showing conservative matches to current queue records.
+- data/external/epoch_ai/queue_crosswalk.csv -- one row for every Epoch site with its geographic grid/queue jurisdiction and any site-specific queue/service evidence found.
+- data/external/epoch_ai/queue_crosswalk.json -- the same 93-site geographic queue/connection crosswalk in machine-readable JSON.
+- data/external/epoch_ai/manifest.json -- capture metadata, row counts and SHA-256 hashes.
+- data/external/epoch_ai/match_overrides.json -- human-reviewed queue crosswalk overrides; currently records the Lake Mariner campus/phase relationship to NYISO Q1670.
+- build_epoch_grid_crosswalk.py -- rebuilds the 93-site geographic queue/connection crosswalk and embeds it into registry.json.
+
+A complete source-universe catalog is maintained in `QUEUE_REGISTRY_UNIVERSE.md`
+and as `data/external/epoch_ai/queue_source_universe.json`. The catalog currently
+contains **26 direct queue/connection registries, 14 cross-cutting public
+sources, and 4 supporting public-record source families**.
+
+The project also produces:
+- `data/external/epoch_ai/queue_crosswalk.csv` -- geographic queue/connection jurisdiction for every Epoch site.
+- `data/external/epoch_ai/queue_gap_analysis.csv` -- the 93-site research worklist for closing remaining site-specific queue/connection gaps.
+- `data/external/epoch_ai/queue_gap_analysis.json` -- machine-readable version of the same worklist.
+`data/track3/` -- canonical Track 3 site-status, evidence-record, research-queue, observation-queue, and summary artifacts.
+`data/track3/power_observations.json` -- site-level annual electricity-consumption observations with source provenance; these are not interval meter telemetry.
+`data/track3/cooling_observations.json` -- selected site-level cooling-equipment observations with source provenance.
+- `build_epoch_grid_crosswalk.py` -- rebuilds the complete jurisdiction layer.
+- `build_epoch_queue_gap_analysis.py` -- rebuilds the 93-site gap analysis.
+The crosswalk is intentionally conservative. **All 93 Epoch sites now have a
+grid/queue or connection-system jurisdiction.** That is different from a
+site-specific queue ID. For the 77 U.S. sites, the jurisdiction points to the
+applicable RTO/ISO or utility/transmission-provider queue family. For the 16
+international sites, the record identifies the relevant national or utility
+connection system while keeping them outside the North American queue totals.
+
+A "site-specific queue ID not yet verified" result means the repository has not
+established that the Epoch campus is a particular row in the public queue.
+Operational sites can also have a service agreement, customer planning record,
+or completed connection rather than a current queue entry. Queue MW and Epoch
+IT-power MW are different measurements and must not be summed as though they
+were the same metric.
+
+.github/workflows/sync_epoch_ai_data_centers.yml refreshes the three Epoch CSV
+datasets daily at 07:30 UTC, on demand, and whenever index.html or the
+crosswalk tooling changes. It refuses to publish a malformed/non-93 center
+dataset and validates all inline dashboard JavaScript before committing.
+Epoch states that its data are free to use, distribute and reproduce with
+attribution under CC BY 4.0.
+
+## Current data coverage -- read this before citing a number from the site
+
+The published dashboard currently contains **1,558 row-level facilities / requests and 361.875 GW** across nine organized markets. A separate scope layer also records **83 additional MISO requests totaling 35.9 GW** whose public source omits required location fields; these are held outside the row-level table rather than assigned guessed geography. The resulting **expanded known scope is 1,641 requests / records and 397.775 GW**. The archived September 24 snapshot contains 1,802 rows and 420.2054 GW, but is retained separately and is not additive to current totals. The live GitHub Pages site is the publication surface; the exact row-level total is calculated from the embedded
+`REGISTRY_DATA` array at page load.
+
+| Source | Rows | GW | Origin | Read this before citing it |
+|---|---:|---:|---|---|
+| PJM | 37 | 7.6 | live queue export, 2026-09-26 | current accepted refresh |
+| ERCOT | 714 | 154.8 | live GIS Report, 2026-09-26 | registry uses the GIS/interconnection product; not a complete per-project large-load register |
+| SPP | 139 | 30.5 | GI active-request listing, Sept 2026 | applicant name is not published in the retained build |
+| IESO | 30 | 10.0 | application status listing, Sept 2026 | exact capture time was not retained |
+| MISO | 404 | 81.5 | GI Queue JSON, 2026-09-19 | 83 live >=100 MW requests (35.9 GW) lacked a published state and were excluded |
+| CAISO | 63 | 23.1 | Cluster 15 request workbook, 2026-09-19 | **Cluster 15 only -- not CAISO's whole queue** |
+| NYISO | 105 | 25.3 | interconnection queue workbook, 2026-09-19 | includes the Load Projects sheet |
+| ISO-NE | 19 | 4.9 | IRTT public queue, 2026-09-19 | study stage is not published in the retained table |
+| AESO | 47 | 24.2 | September 2026 Connection Project List | includes Data Load / Industrial Load rows |
+
+### Data-universe completion
+
+The project-level dataset now includes **60 BPA large-load request records** with public request identifiers, filed MW, POI text and status where the public cross-check exposes them. These are secondary reproductions of BPA public load-queue rows and remain non-additive.
+
+The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
+
+The project-level layer has grown to **154 records** and all 154 are mapped in `data/project_level_map.json`. A separate `data/supplemental_aggregate_map.json` adds **17 geographic footprints** for utility/regulatory aggregates; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
+
+The project-level layer has grown to **154 records**: 33 Virginia DEQ permit identities, 60 BPA large-load request records, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, two ISO-NE forecast project records, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
+
+PJM large-load history is cataloged in `data/pjm_large_load_submission_history.json` with **28 public 2025–2026 LAS material entries**, preserving the utility submission/document trail without treating documents as facility rows.
+
+CAISO historical coverage is now represented in `data/caiso_cluster_history.json` and CSV. The series contains 49 Cluster 8-and-prior projects, 27 Cluster 9, 21 Cluster 10, 30 Cluster 11, 44 Cluster 12, 60 Cluster 13 and 204 Cluster 14 projects — 435 projects and 121.204 GW in that historical series. A separately published Cluster 15 energy-only subset is recorded at 48 projects / 14.421 GW. These generator-queue figures are a distinct history layer and are not added to the large-load total.
+
+The remaining hard limits are explicit rather than hidden: MISO's 83 additional >=100 MW requests remain unlocated in the accessible public response; ERCOT's Batch Zero process has public forms and eligibility/verification notices but not a public completed-response table; PJM's public service-request pages expose generation/merchant-transmission/long-term-firm service structures but do not establish a per-load-request dataset; SPP's HILL framework is public but its customer-level load list is not; ISO-NE publishes a small forecast table but not project-specific study stages. These are tracked as source/disclosure states, not silently converted into fake rows.
+
+
+
+The repository also preserves public utility, regulator, planning, connection and permit evidence that cannot safely be collapsed into the core nine-market row-level total without double-counting or inventing missing fields. See `data/supplemental_large_load_evidence.json`.
+
+Current examples include:
+- MISO: 83 additional live >=100 MW requests (35.9 GW) lacking published location fields.
+- Dominion Energy Virginia: approximately 70 GW of large-load DP Requests advancing through its connection queue at the end of 2025.
+- ComEd: 16 GW of highly probable large-load interconnection requests in its 2026 planning material.
+- Salt River Project: 80 projects above 10 MW totaling 15.308 GW, including 52 data-center projects totaling 14.140 GW.
+- BC Hydro: 15 AI/data-centre applications representing close to 800 MW.
+- Portland General Electric: five executed data-centre customer contracts totaling 430 MW.
+- Entergy Louisiana/Hut 8: River Bend initial 330 MW utility capacity for 245 MW critical IT load, with potential scaling to 1 GW utility capacity.
+- ISO New England: a 200 MW data-center project listed in the CELT 2026 large-load forecast.
+- Virginia DEQ: a data-center air-permit identity inventory alongside reports of 72 operating data centers in Loudoun County and nine more in planning.
+- Ontario: the IESO application-status universe and OEB Centralized Capacity Information Map are preserved as broader connection/grid-context layers.
+
+Additional utility layers now include APS's reported 19 GW uncommitted extra-large-customer queue, AEP's 69 GW of contracted load growth through 2030, AEP Ohio's approximately 12 GW of new contracted load through 2030, the planned 10 GW Piketon data-center campus, Ameren Missouri's up-to-2 GW demand-planning envelope, and PacifiCorp's ongoing tens-to-hundreds-of-MW large-customer request stream. These remain supplemental and are not added to the core total without project-level deduplication.
+
+The supplemental evidence file now contains **47 source/evidence units**, including the current CAISO full public-queue report metadata and additional BPA/PJM/ComEd/MISO utility and planning evidence. These units are not automatically additive.
+
+These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
+
+### Epoch connection research targets
+
+Every one of the **93 canonical Epoch AI sites** now has a connection-research target record in `data/epoch_connection_research_targets.json` with grid jurisdiction, site-specific queue state, current site IT-power context, evidence count, source trail, coordinates and next research action. The companion `data/epoch_connection_research_targets.csv` is a flat export. The target layer is intentionally separate from verified queue membership: a dashed map target can mean only that the relevant queue/utility system is known.
+
+The underlying Track 3 evidence inventory is preserved independently in `data/epoch_site_evidence_records.json` and CSV. It contains **68 discrete site-level evidence assertions across 59 of the 93 sites**. These assertions can identify utilities, public contracts, facility records or other site-specific evidence without establishing a formal queue ID. They are not additive capacity records.
+
+On the map, the **Connection targets** toggle overlays all 93 research targets on the same site geometry as the Epoch layer. Target popups show the current grid jurisdiction, research state, queue ID/name where verified, site-specific capacity when known, evidence-item count, source links, and the next action. Geometry precision is carried through from the canonical Epoch map record.
+
+### Project-level extraction
+
+The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **235 individually identifiable records** extracted from public source material:
+
+- **60 BPA large-load request records**, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed.
+- **33 Virginia DEQ issued-air permit records**, with permit number, named site/project, county and issuance date.
+- **28 AESO Data Load projects**, with project IDs, project names, planning-area/town identities and public DTS/contract-capacity values.
+- **12 NYISO Load Project records**, with queue ID, project/developer, MW, county and POI/site information where publicly exposed.
+- **6 IESO load/increase-load application records**, including applicant, project name, zone, MW and target date.
+- **8 AEP named customer/project records**, **2 EEI-listed projects**, **2 ISO-NE forecast project records**, and **3 named utility/service/contract/distribution records** (Project Camellia, River Bend AI campus, and Vaughan MTS #6), plus **28 historical ComEd data-center forecast rows**, **7 Dominion data-center service projects**, **9 additional NYISO Gold Book rows**, and **1 Idaho Power named data-center project**.
+
+The project layer is deliberately **not additive** to the 1,558-row core queue table or the 1,641-record expanded-known scope. Multiple dated capacity claims inside one project are retained separately. No MW is inferred when a utility does not publish the load.
+
+The interactive map now overlays **all 235 project-level records**. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **61 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
+
+The Epoch AI map layer contains **93 frontier-site observations** and is backed by the canonical `data/external/epoch_ai/site_level_connection_evidence.json` crosswalk. Of the 93 sites, **59 currently have site-level grid evidence records and 34 remain pending site-specific grid-record research**. The map popups expose the evidence status and available source links.
+
+The remaining hard limits are explicit rather than hidden. MISO's 83 additional >=100 MW requests remain outside the row-level table because the captured public response lacks the state/location fields needed to make defensible site rows. ERCOT's Batch Zero process is public, but completed RIOO responses are not exposed as a public per-project table. PJM's public Load Analysis Subcommittee materials provide a dated utility-submission history, but they do not establish a public per-load-request database. SPP's HILL process is public without a customer-level public load list. ISO-NE's forecast material names large-load projects but does not publish a complete project-specific study-stage history.
+
+### PJM large-load submission history
+
+`data/pjm_large_load_submission_history.json` and its CSV companion preserve **28 public 2025–2026 PJM Load Analysis Subcommittee material entries**, including the named utility large-load/data-center submission trail from the September 2025 and September 2026 meetings. These are document/evidence records, not unique facilities or additive MW rows.
+
+### CAISO historical queue coverage
+
+`data/caiso_cluster_history.json` and its CSV companion preserve a historical generator-interconnection series covering Cluster 8-and-prior through Cluster 14: **435 projects / 121.204 GW** in the historical series. A separately published Cluster 15 energy-only subset is recorded at **48 projects / 14.421 GW**. The current full CAISO Public Queue Report is linked from the dashboard as the source for future complete row-level refreshes; historical series values are kept separate and non-additive.
+
+### Supplemental public large-load evidence
+
+The supplemental evidence file now contains **41 source/evidence units**. The website provides a searchable browser for all of them. These include MISO's unlocated requests, utility pipelines, regulatory aggregates, planning forecasts, connection/process sources, permit inventories, ERCOT Batch Zero source material and non-RTO utility evidence. The measures are not summed because their populations, dates, units and overlap relationships differ.
+
+## Regulatory filings section
+
+`index.html`'s "Regulatory filings" section links to two PDFs by filename:
+
+- `FERC_Docket_RM26-4-000_Comments_Computational_Load_Telemetry.pdf`
+- `BIS_Rulemaking_Petition_5USC553e_Computational_Load_CEII_Protocol.pdf`
+
+The links are live (`available: true` in the `FILINGS` array near the
+bottom of `index.html`), and both PDF files are now present in the repository
+root with those exact filenames.
+Place both files, with those exact names, in the same directory as
+`index.html` (the repository root) before deploying, or the two Download
+buttons will 404. The monthly workflow fails if either link stops being marked
+`available: true` in `index.html`, and raises a warning if either PDF is not in
+the repository root.
+
+## Automated monthly refresh
+
+`.github/workflows/monthly_registry_update.yml` runs at 06:00 UTC on the 1st of
+every month and on demand (Actions tab, *Monthly Registry Update*, Run
+workflow; tick `dry_run` to execute everything without committing). It checks
+out the repo, sets up Python 3.12 with a pip cache, installs
+`requirements.txt`, runs the self-tests of `ingest_grid_queues.py`,
+`compute_anomaly_detector.py`, `investigate_ambiguous_loads.py` and
+`guard_registry_refresh.py`, fetches every live feed, estimates compute load,
+gates each RTO, embeds the accepted RTOs into `index.html`, and checks the two
+regulatory PDF links. Then, only on `main` and only if `index.html` or the two
+CSVs in `data/` changed, it commits and pushes as
+`Automated Monthly Registry Sync: [YYYY-MM-DD]`. Logs and the fresh outputs are
+attached to every run for 30 days.
+
+**Live validation status.** A production live-feed run completed successfully on
+September 26, 2026. All four offline self-test stages passed, the live ingest
+completed, the per-RTO refresh gate completed, and the registry update was
+committed. For future changes, a manual run with `dry_run` ticked remains the
+safe way to inspect the refresh gate before allowing publication. Some RTO
+sites may also refuse requests from GitHub-hosted runners; that shows up as an
+unavailable feed, not as a failure.
+
+Each RTO ends a run in one of three states:
+
+| Outcome | When | Effect |
+|---|---|---|
+| accepted | fresh row count and capacity are within 50%-200% of what `index.html` holds, or the RTO is new | its rows are replaced |
+| unavailable | the run produced no rows for it (blocked, moved or failed feed) | previous rows kept; a warning is raised |
+| rejected | outside that range, unknown RTO label, duplicate queue IDs, unreadable capacity, or the raw and enriched CSVs disagree | previous rows kept; an error is raised; the other RTOs are still committed and the run then ends red |
+
+The two CSVs the workflow commits (`data/registry_raw.csv`,
+`data/computational_load_estimates.csv`) hold only the RTOs accepted in the
+latest run; `index.html` is the cumulative registry. Automated runs do not
+record a SHA-256 of each raw capture the way `data/SOURCES.md` does for the
+v2.0 build; the run log and the git history are the record. The thresholds are
+the `--min-ratio` / `--max-ratio` arguments of the `guard_registry_refresh.py`
+call.
+
+Requirements: GitHub Actions enabled for the repository, no secrets, and a
+`main` branch that accepts pushes from `github-actions[bot]` (a rule that
+requires pull requests will make the final push fail).
+
+## Investigating the ambiguous tier
+
+`investigate_ambiguous_loads.py` turns the "genuinely ambiguous" large loads
+into a worklist, `ambiguous_facilities_dossier.md`:
+
+```bash
+python investigate_ambiguous_loads.py                    # all nine sources, from index.html
+python investigate_ambiguous_loads.py --input data/computational_load_estimates_new5.csv
+                                                         # adds POI, status, technology and dates for those RTOs
+python investigate_ambiguous_loads.py --rto PJM,ERCOT,SPP,IESO   # the original four sources
+python investigate_ambiguous_loads.py --top 25 --engine bing --json leads.json
+python investigate_ambiguous_loads.py --selftest
+```
+
+It reads the registry embedded in `index.html` (all nine RTOs) and lets an
+enriched CSV replace the rows of the RTOs it contains, so a partial CSV never
+drops an RTO. It keeps records with `capacity_mw >= 100`, tier `Genuinely
+Ambiguous / Unclassified Large Load` and entity category `Developer Not Matched
+To Known List` or `Developer Not Disclosed`, largest first. In this build that
+is **141 facilities (53.9 GW)**: NYISO 38, MISO 36, AESO 30, IESO 25, SPP 12.
+The "38" quoted for the first four sources is the four-source tier count; under
+this filter those sources give 37, because IESO `2026-866` (Project ONT1, 450
+MW) has a developer that resolved to a known colocation developer and is
+excluded. PJM and ERCOT contribute none.
+
+For each facility the dossier has up to seven search leads -- municipal council
+minutes and zoning approvals, environmental and utility-regulator registries,
+substation and interconnection filings -- worded for that jurisdiction (an
+Ontario rezoning is a "zoning by-law amendment", an Alberta one a
+"redesignation"). The script makes no network requests and verifies nothing: a
+lead is a search, not a finding.
+
+**Recording a verified identity.** When a person confirms a facility from a
+public record, add an entry to `ground_truth_overrides.json` (format:
+`ground_truth_overrides.example.json`) with `rto`, `queue_id`, a
+`verified_label`, `confirmed_by`, `confirmed_on` and at least one `evidence`
+citation. The allowed labels are Confirmed Data Center Campus; Confirmed
+Industrial Park / Manufacturing; Confirmed Utility / Distribution Load Growth;
+Confirmed Cryptocurrency Mining; Confirmed Other Large Load; Ruled Out
+(Duplicate / Withdrawn / Data Error). Re-run and the facility gets a VERIFIED
+block with the label and citations. An entry with no evidence, an unknown
+label or a mistyped key stops the run (exit code 2) and lists every problem; an
+entry that matches nothing in the registry is listed in the dossier's audit
+section. Overrides change only the dossier -- not the CSVs, the tier
+classification or the dashboard.
+
+## Running the pipeline
+
+```bash
+pip install -r requirements.txt
+python ingest_grid_queues.py --selftest
+python compute_anomaly_detector.py --selftest
+python ingest_grid_queues.py --pjm-file <path> --ercot-file <path> \
+    --miso-file miso_gi_queue.json --caiso-file <cluster xlsx> \
+    --nyiso-file <queue xlsx> --isone-file irtt.html --aeso-file <project list xlsx> \
+    --include-raw-fields --output registry_raw.csv
+python compute_anomaly_detector.py --input registry_raw.csv --output computational_load_estimates.csv
+python embed_registry_data.py --raw registry_raw.csv --enriched computational_load_estimates.csv
+```
+
+Sources without a `--*-file` flag are fetched live. For a partial refresh,
+run the two scripts on just the files you have and `embed_registry_data.py`
+replaces only those RTOs in `index.html`.
+
+To produce the dossier after a refresh: `python investigate_ambiguous_loads.py`.
+
+## Deploying the dashboard
+
+`index.html` is fully static and self-contained -- no server, no build,
+no API keys. Open it directly in a browser, or serve the repository root
+with any static host. See the GitHub Pages instructions provided alongside
+this archive.
+
+## License
+
+Apache License 2.0 -- see `LICENSE`.
+
+## Contact
+
+grid.telemetry.initiative@gmail.com
+
+
+**Map coverage:** `data/project_level_map.json` contains 235 project-level records and currently has numeric display coordinates for all 235. `data/supplemental_aggregate_map.json` contains 61 aggregate/historical records and currently has numeric display coordinates for all 61. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
