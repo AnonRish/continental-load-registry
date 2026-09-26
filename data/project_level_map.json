@@ -4,8 +4,8 @@
   "title": "Project-level map overlay",
   "purpose": "Plot project-level public evidence using public county, zone, town or site-area geography.",
   "accounting": "Supplemental evidence overlay; not additional core queue rows. Map coordinates are display geometry. The source's state field is retained separately and is not silently completed.",
-  "record_count": 213,
-  "mapped_count": 213,
+  "record_count": 235,
+  "mapped_count": 235,
   "records": [
     {
       "id": "VIRGINIA-DEQ-74150-3",
@@ -7152,6 +7152,908 @@
       "source_scope": "PG&E 2025-2026 Transmission Planning Process presentation, LC24 and Serial Data Center tables",
       "capture_date": "2026-09-26",
       "notes": "Public large-load interconnection study record. The source provides load-pocket/planning-area geography and proposed POI, not a customer/site street address. Map uses a planning-area display point; this is not an exact facility coordinate. The three serial loads total 700 MW; the eleven LC24 loads total 840 MW, and these populations are not added to the nine-market core."
+    },
+    {
+      "id": "NYISO-GB25-580",
+      "project_name": "WNY STAMP",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Genesee",
+      "mw": 300,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Genesee County Economic Development Corporation",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county display point",
+      "lat": 42.9992,
+      "lon": -78.1959,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Genesee",
+      "county_or_zone": "Genesee",
+      "queue_id": "580",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "B"
+    },
+    {
+      "id": "NYISO-GB25-776",
+      "project_name": "Greenidge Load",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Yates",
+      "mw": 60,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Greenidge Generation LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 42.6335,
+      "lon": -77.1052,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Yates",
+      "county_or_zone": "Yates",
+      "queue_id": "776",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "C"
+    },
+    {
+      "id": "NYISO-GB25-850",
+      "project_name": "Cayuga Load",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Cayuga",
+      "mw": 50,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Cayuga Operating Company, LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county centroid",
+      "lat": 42.9281,
+      "lon": -76.5614,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Cayuga",
+      "county_or_zone": "Cayuga",
+      "queue_id": "850",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 50,
+          "unit": "MW",
+          "raw_value": "50",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 50,
+          "unit": "MW",
+          "raw_value": "50",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "C"
+    },
+    {
+      "id": "NYISO-GB25-979",
+      "project_name": "North Country Data Center",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "St. Lawrence",
+      "mw": 176,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "North Country Data Center",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 44.4969,
+      "lon": -75.0675,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "St. Lawrence",
+      "county_or_zone": "St. Lawrence",
+      "queue_id": "979",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 176,
+          "unit": "MW",
+          "raw_value": "176",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 176,
+          "unit": "MW",
+          "raw_value": "176",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "D"
+    },
+    {
+      "id": "NYISO-GB25-1213",
+      "project_name": "St Lawrence Data and Agricultural Center",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "St. Lawrence",
+      "mw": 200,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Petawatt Holdings, Inc.",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 44.4969,
+      "lon": -75.0675,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "St. Lawrence",
+      "county_or_zone": "St. Lawrence",
+      "queue_id": "1213",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "D"
+    },
+    {
+      "id": "NYISO-GB25-1315",
+      "project_name": "SDC St. Lawrence",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "St. Lawrence",
+      "mw": 120,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Sabey Data Center Properties, LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 44.4969,
+      "lon": -75.0675,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "St. Lawrence",
+      "county_or_zone": "St. Lawrence",
+      "queue_id": "1315",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 120,
+          "unit": "MW",
+          "raw_value": "120",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 120,
+          "unit": "MW",
+          "raw_value": "120",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "D"
+    },
+    {
+      "id": "NYISO-GB25-1465",
+      "project_name": "Digihost Load",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Niagara",
+      "mw": 50.2,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Digihost Technologies, Inc.",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 43.2011,
+      "lon": -78.7446,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Niagara",
+      "county_or_zone": "Niagara",
+      "queue_id": "1465",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 50.2,
+          "unit": "MW",
+          "raw_value": "50.2",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 50.2,
+          "unit": "MW",
+          "raw_value": "50.2",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "A"
+    },
+    {
+      "id": "NYISO-GB25-1484",
+      "project_name": "580 STAMP load increase",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Genesee",
+      "mw": 300,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "GCEDC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county display point",
+      "lat": 42.9992,
+      "lon": -78.1959,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Genesee",
+      "county_or_zone": "Genesee",
+      "queue_id": "1484",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "B"
+    },
+    {
+      "id": "NYISO-GB25-1536",
+      "project_name": "White Pine Phase 1",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Onondaga",
+      "mw": 480,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Micron New York Semiconductor Manufacturing LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 43.0104,
+      "lon": -76.1952,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Onondaga",
+      "county_or_zone": "Onondaga",
+      "queue_id": "1536",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 480,
+          "unit": "MW",
+          "raw_value": "480",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 480,
+          "unit": "MW",
+          "raw_value": "480",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "C"
+    },
+    {
+      "id": "NYISO-GB25-1627",
+      "project_name": "Micron Fab 2",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Onondaga",
+      "mw": 576,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Micron New York Semiconductor Manufacturing LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 43.0104,
+      "lon": -76.1952,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Onondaga",
+      "county_or_zone": "Onondaga",
+      "queue_id": "1627",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 576,
+          "unit": "MW",
+          "raw_value": "576",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 507,
+          "unit": "MW",
+          "raw_value": "507",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "C"
+    },
+    {
+      "id": "NYISO-GB25-1646",
+      "project_name": "POWI Project",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Albany",
+      "mw": 50,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "P&M Brick LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 42.6003,
+      "lon": -73.9776,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Albany",
+      "county_or_zone": "Albany",
+      "queue_id": "1646",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 50,
+          "unit": "MW",
+          "raw_value": "50",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 50,
+          "unit": "MW",
+          "raw_value": "50",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "F"
+    },
+    {
+      "id": "NYISO-GB25-1670",
+      "project_name": "Lake Mariner Data II",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Niagara",
+      "mw": 250,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Lake Mariner data LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 43.2011,
+      "lon": -78.7446,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Niagara",
+      "county_or_zone": "Niagara",
+      "queue_id": "1670",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 250,
+          "unit": "MW",
+          "raw_value": "250",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 250,
+          "unit": "MW",
+          "raw_value": "250",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "A"
+    },
+    {
+      "id": "NYISO-GB25-1681",
+      "project_name": "Niagara Digital Campus",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Niagara",
+      "mw": 140,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Niagara Falls Redevelopment LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 43.2011,
+      "lon": -78.7446,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Niagara",
+      "county_or_zone": "Niagara",
+      "queue_id": "1681",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 140,
+          "unit": "MW",
+          "raw_value": "140",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 140,
+          "unit": "MW",
+          "raw_value": "140",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "A"
+    },
+    {
+      "id": "NYISO-GB25-1683",
+      "project_name": "Cayuga Compute",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Cayuga",
+      "mw": 150,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Cayuga Operating Company, LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county centroid",
+      "lat": 42.9281,
+      "lon": -76.5614,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Cayuga",
+      "county_or_zone": "Cayuga",
+      "queue_id": "1683",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 150,
+          "unit": "MW",
+          "raw_value": "150",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 150,
+          "unit": "MW",
+          "raw_value": "150",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "C"
+    },
+    {
+      "id": "NYISO-GB25-1713",
+      "project_name": "Project Sycamore Orangeburg",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Orangeburg",
+      "mw": 25.3,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Project Sycamore - Orangeburg",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "town display point (public locality, no street-level inference)",
+      "lat": 41.02,
+      "lon": -73.95,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Orangeburg",
+      "county_or_zone": "Orangeburg",
+      "queue_id": "1713",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 25.3,
+          "unit": "MW",
+          "raw_value": "25.3",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 25.3,
+          "unit": "MW",
+          "raw_value": "25.3",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "G"
+    },
+    {
+      "id": "NYISO-GB25-1714",
+      "project_name": "Hudson Valley Data Center",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Orangeburg",
+      "mw": 25,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Robert Delcalzo",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "town display point (public locality, no street-level inference)",
+      "lat": 41.02,
+      "lon": -73.95,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Orangeburg",
+      "county_or_zone": "Orangeburg",
+      "queue_id": "1714",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 25,
+          "unit": "MW",
+          "raw_value": "25",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 25,
+          "unit": "MW",
+          "raw_value": "25",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "G"
+    },
+    {
+      "id": "NYISO-GB25-1715",
+      "project_name": "1547 CSR - Orangeburg LLC",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Orangeburg",
+      "mw": 60,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Jerry Martin",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "town display point (public locality, no street-level inference)",
+      "lat": 41.02,
+      "lon": -73.95,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Orangeburg",
+      "county_or_zone": "Orangeburg",
+      "queue_id": "1715",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "G"
+    },
+    {
+      "id": "NYISO-GB25-1716",
+      "project_name": "Orangeburg Expansion Phase 2",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Orangeburg",
+      "mw": 60,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "DataBank Holdings, LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "town display point (public locality, no street-level inference)",
+      "lat": 41.02,
+      "lon": -73.95,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Orangeburg",
+      "county_or_zone": "Orangeburg",
+      "queue_id": "1716",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "G"
+    },
+    {
+      "id": "NYISO-GB25-1717",
+      "project_name": "Proposed Datacenters at 450 Broadway, Buchanan, NY 10511",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Westchester",
+      "mw": 200,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Holtec Decommissioning International (HDI)",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county centroid",
+      "lat": 41.1616,
+      "lon": -73.7564,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Westchester",
+      "county_or_zone": "Westchester",
+      "queue_id": "1717",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "H"
+    },
+    {
+      "id": "NYISO-GB25-1721",
+      "project_name": "Brookhaven Logistics Center",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Suffolk",
+      "mw": 176,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "WF Industrial XII LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 40.8693,
+      "lon": -72.8471,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Suffolk",
+      "county_or_zone": "Suffolk",
+      "queue_id": "1721",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 176,
+          "unit": "MW",
+          "raw_value": "176",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 176,
+          "unit": "MW",
+          "raw_value": "176",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "K"
+    },
+    {
+      "id": "NYISO-GB25-1725",
+      "project_name": "Greenidge 200 MW Data Center Project",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Yates",
+      "mw": 200,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Greenidge Generation, LLC",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 42.6335,
+      "lon": -77.1052,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Yates",
+      "county_or_zone": "Yates",
+      "queue_id": "1725",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "C"
+    },
+    {
+      "id": "NYISO-GB25-1726",
+      "project_name": "Data & Technology Campus",
+      "rto": "NYISO",
+      "st": "NY",
+      "co": "Niagara",
+      "mw": 300,
+      "status": "2025 Gold Book large-load interconnection request",
+      "provider": "NYISO",
+      "customer_or_developer": "Riverview Innovation & Technology Campus, Inc.",
+      "source_url": "https://www.nyiso.com/documents/20142/2226333/2025-Gold-Book-Public.pdf/088438e1-02f1-5316-211b-dbca17c01b4b",
+      "precision": "county/zone centroid",
+      "lat": 43.2011,
+      "lon": -78.7446,
+      "evidence_type": "nyiso_gold_book_large_load_record",
+      "jurisdiction": "New York, US",
+      "location": "Niagara",
+      "county_or_zone": "Niagara",
+      "queue_id": "1726",
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300",
+          "qualifier": "NYISO 2025 Gold Book summer value"
+        },
+        {
+          "value_mw": 300,
+          "unit": "MW",
+          "raw_value": "300",
+          "qualifier": "NYISO 2025 Gold Book winter value"
+        }
+      ],
+      "source_authority": "NYISO primary source",
+      "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
+      "capture_date": "2026-09-26",
+      "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code. Map point is display geometry, not a claimed street address.",
+      "nyiso_zone_code": "A"
     }
   ]
 }
