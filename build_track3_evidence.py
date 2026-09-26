@@ -62,25 +62,26 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
             if rec.get("chip_quantity_record_count", 0) > 0 else "No retained site-level chip-quantity rows."
         }
     if domain == "grid_connection":
+        connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request"}
+        connection_evidence = [x for x in ev if x.get("type") in connection_types]
         if grid.get("site_specific_queue_id"):
             return {
                 "status": "VERIFIED_SITE_SPECIFIC",
                 "basis": "A site-specific queue/connection ID is present in the preserved crosswalk."
             }
-        queue_evidence = [x for x in ev if x.get("type") == "site_specific_queue"]
-        if queue_evidence:
+        if any(x.get("type") == "site_specific_queue" for x in connection_evidence):
             return {
                 "status": "VERIFIED_SITE_SPECIFIC",
                 "basis": "Site-level queue evidence is attached to the Epoch record."
             }
-        if ev:
+        if connection_evidence:
             return {
                 "status": "SITE_LEVEL_EVIDENCE",
-                "basis": "At least one site-level service, utility, planning, regulatory, or facility record is attached; no queue ID is asserted."
+                "basis": "At least one site-level utility, service, power-request, or load-request record is attached; no queue ID is asserted."
             }
         return {
             "status": "PENDING_RESEARCH",
-            "basis": "No site-level connection/service/regulatory evidence is currently attached."
+            "basis": "No site-level connection/service evidence is currently attached."
         }
     if domain in {"power_telemetry", "remote_sensing", "cooling", "transformer_supply_chain"}:
         return {
@@ -93,6 +94,18 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
             "basis": "A relevant external source family is cataloged in data/track3_source_stack.json but is not yet joined into the site evidence graph."
         }
     raise KeyError(domain)
+
+def evidence_domain(ev: dict[str, Any]) -> str:
+    t = str(ev.get("type") or "")
+    if t == "site_specific_regulatory" or "regulatory" in t:
+        return "regulatory"
+    if t in {"site_specific_service_contract", "site_specific_service", "site_specific_utility_relationship", "site_specific_utility", "site_specific_power_request", "site_specific_load_request", "site_specific_queue"}:
+        return "grid_connection"
+    if t in {"site_specific_facility_record", "site_specific_project_record"}:
+        return "site_identity"
+    if t == "site_specific_utility_planning":
+        return "service_or_contract"
+    return "grid_connection"
 
 def build_evidence_index(evidence: dict[str, Any]) -> list[dict[str, Any]]:
     rows = []
@@ -112,7 +125,7 @@ def build_evidence_index(evidence: dict[str, Any]) -> list[dict[str, Any]]:
                 "target_type": "epoch_site",
                 "target_id": rec["epoch_id"],
                 "target_name": rec.get("epoch_name"),
-                "domain": "grid_connection",
+                "domain": evidence_domain(ev),
                 "evidence_type": ev.get("type"),
                 "claim_scope": "site_level",
                 "status": "VERIFIED_SITE_SPECIFIC" if ev.get("type") == "site_specific_queue" else "SITE_LEVEL_EVIDENCE",
