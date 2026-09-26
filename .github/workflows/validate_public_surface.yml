@@ -20,6 +20,8 @@ on:
       - "data/track3/ai2040_plan_a_traceability.json"
       - "data/track3/plan_a_audit_schema.json"
       - "data/track3_evidence_schema.json"
+      - "data/large_load_scope.json"
+      - "data/supplemental_large_load_evidence.json"
       - ".github/workflows/validate_public_surface.yml"
   pull_request:
     paths:
@@ -40,6 +42,8 @@ on:
       - "data/track3/ai2040_plan_a_traceability.json"
       - "data/track3/plan_a_audit_schema.json"
       - "data/track3_evidence_schema.json"
+      - "data/large_load_scope.json"
+      - "data/supplemental_large_load_evidence.json"
       - ".github/workflows/validate_public_surface.yml"
 
 permissions:
@@ -74,7 +78,26 @@ jobs:
           assert len(mapping["mappings"]) >= 16
           assert len(trace["rows"]) >= 12
           assert len(schema["domains"]) >= 15
-          print("PASS: Plan A / Track 3 JSON contracts")
+
+          scope = json.loads(Path("data/large_load_scope.json").read_text(encoding="utf-8"))
+          supplemental = json.loads(Path("data/supplemental_large_load_evidence.json").read_text(encoding="utf-8"))
+          assert scope["definitions"]["current_row_level"]["records"] == 1558
+          assert scope["definitions"]["additional_known_miso"]["records"] == 83
+          assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
+          assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
+          assert len(supplemental["records"]) == 17
+          ids = [r["id"] for r in supplemental["records"]]
+          assert len(ids) == len(set(ids))
+          for record in supplemental["records"]:
+              assert record["id"]
+              assert record["jurisdiction"]
+              assert record["provider"]
+              assert record["evidence_type"]
+              assert record["source_url"].startswith("https://")
+          assert any(r["id"] == "DOMINION-LARGE-LOAD-QUEUE-2025-12-31" and r["capacity_mw"] == 70000 for r in supplemental["records"])
+          assert any(r["id"] == "BCHYDRO-EMERGING-INDUSTRIES-2026" and r["record_count"] == 15 for r in supplemental["records"])
+          assert any(r["id"] == "ALECTRA-VAUGHAN-MTS6-2026" and r["capacity_mva"] == 108 for r in supplemental["records"])
+          print("PASS: Plan A / Track 3 / expanded large-load JSON contracts")
           PY
       - name: Validate inline JavaScript
         run: |
