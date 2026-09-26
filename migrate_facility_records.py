@@ -87,37 +87,10 @@ def main() -> int:
     (RECORDS / "index.json").write_text(json.dumps(top, indent=2) + "\n", encoding="utf-8")
 
     html = HTML.read_text(encoding="utf-8")
-    pattern = re.compile(
-        r"const researchRecordCache = new Map\(\);.*?function renderResearchRecord",
-        re.S,
-    )
-    # The cache declaration belongs immediately before normalizeLookupPayload;
-    # preserve that function and everything after it.
-    current = pattern.search(html)
-    if not current:
-        raise SystemExit("could not find the research-record loader block in index.html")
-
-    replacement = (
-        "const researchRecordCache = new Map();\n"
-        "\n"
-        "function humanFieldName"  # marker removed below; used only to fail safely
-    )
-    # Replace only the loader/cache segment from cache declaration through the
-    # function immediately preceding renderResearchRecord.
-    cache_start = html.find("const researchRecordCache = new Map();")
-    render_start = html.find("function renderResearchRecord", cache_start)
-    if cache_start < 0 or render_start < 0:
-        raise SystemExit("could not locate research-record loader boundaries")
-    block = html[cache_start:render_start]
-
-    # Keep normalizeLookupPayload and everything before the old loader, then
-    # replace the cache + old loader portion with the sharded implementation.
-    norm_start = block.find("function normalizeLookupPayload")
-    if norm_start < 0:
-        raise SystemExit("normalizeLookupPayload not found")
-    normalize_fn = block[norm_start:block.find("async function loadResearchRecord", norm_start)]
-    new_block = "const researchRecordCache = new Map();\n\n" + normalize_fn + NEW_LOADER + "\n"
-    html = html[:cache_start] + new_block + html[render_start:]
+    loader_pat = re.compile(r"async function loadResearchRecord\(r\)\{.*?\n\}\n", re.S)
+    html, replacements = loader_pat.subn(NEW_LOADER + "\n", html, count=1)
+    if replacements != 1:
+        raise SystemExit("could not find the existing research-record loader in index.html")
 
     html = html.replace(
         "data/facility_records/'+encodeURIComponent(r.rto)+'.json",
@@ -125,7 +98,7 @@ def main() -> int:
     )
     if "data/facility_records/'+encodeURIComponent(r.rto)+'.json" in html:
         raise SystemExit("legacy monolithic RTO link remains in index.html")
-    if "RECORD_STORAGE_VERSION = '2'" not in html:
+    if "const RECORD_STORAGE_VERSION = '2'" not in html:
         raise SystemExit("sharded record loader marker missing from index.html")
 
     HTML.write_text(html, encoding="utf-8")
