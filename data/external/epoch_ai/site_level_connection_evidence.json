@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 18,
+    "evidence_found": 27,
     "site_queue_ids": 2,
-    "pending": 75
+    "pending": 66
   },
   "records": [
     {
@@ -16,9 +16,19 @@
       "country": "United States",
       "state_province": "TN",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_power_request",
+          "authority": "Tennessee Valley Authority (TVA)",
+          "record_name": "Colossus II direct-supply power request",
+          "source_url": "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva",
+          "source_kind": "dated local reporting on utility request",
+          "confidence": "medium",
+          "basis": "The August 20, 2026 report states that SpaceXAI asked TVA to directly supply more electricity to its Colossus II campus spanning Memphis and Southaven. This establishes a site-specific TVA power relationship/request, not a queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number."
     },
     {
       "epoch_id": "EPOCH-d9050b43689ed24c",
@@ -26,9 +36,19 @@
       "country": "United States",
       "state_province": "GA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Georgia Power",
+          "record_name": "Fairwater Atlanta utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/qts-fayetteville-ga-campus",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The facility record identifies Georgia Power as the utility and describes the Ashley Park 500/230-kV substation and customer substations serving the Fayetteville campus. This is utility/site evidence, not a site-specific queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Georgia PSC and Georgia Power large-load filings for the Fairwater/QTS Fayetteville campus, including docket records and service/interconnection documentation."
     },
     {
       "epoch_id": "EPOCH-45b3c74314eb1f26",
@@ -36,9 +56,19 @@
       "country": "United States",
       "state_province": "IN",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Indiana Michigan Power (AEP)",
+          "record_name": "Project Rainier / New Carlisle power supply",
+          "source_url": "https://www.compute-atlas.com/facilities/amazon-project-rainier-new-carlisle-in",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The facility record identifies grid power from Indiana Michigan Power together with natural-gas generation for the Amazon Project Rainier campus in New Carlisle. This is site-level utility evidence, not a formal queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-ea699c935d46e066",
@@ -46,9 +76,19 @@
       "country": "United States",
       "state_province": "OK",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Grand River Dam Authority (GRDA)",
+          "record_name": "Google Pryor power supply / customer relationship",
+          "source_url": "https://grda.com/wp-content/uploads/2025/06/Continuing-Disclosure-2024_06.26.2025-FINAL.pdf",
+          "source_kind": "official GRDA continuing-disclosure document",
+          "confidence": "medium",
+          "basis": "GRDA's official continuing-disclosure filing identifies Google Inc. as a major industrial/commercial power customer. Combined with the Epoch Pryor site identity, this establishes a public utility/customer relationship but not a site-specific interconnection case."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number."
     },
     {
       "epoch_id": "EPOCH-8838deed95ffb554",
@@ -56,9 +96,19 @@
       "country": "United States",
       "state_province": "OH",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "AEP Ohio",
+          "record_name": "Meta New Albany / Prometheus utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/meta-ohio-new-albany",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The facility record identifies AEP Ohio as the grid-interconnection utility for the Meta New Albany campus and places it within PJM. This is utility evidence, not a queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM records for the Meta Prometheus site-specific interconnection/service case."
     },
     {
       "epoch_id": "EPOCH-2c2e40ddb178da3e",
@@ -66,9 +116,19 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "AEP Texas / Oncor",
+          "record_name": "Stargate Abilene serving-utility record",
+          "source_url": "https://registry.deploy.report/datacenters/stargate-infrastructure-stargate-abilene",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The facility record identifies ERCOT as the grid operator and Oncor / AEP Texas as the serving utility for the Stargate Abilene campus. It also distinguishes grid connection from behind-the-meter generation. This is not a formal queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search ERCOT large-load records, AEP Texas/Oncor service records, TCEQ permits and Taylor County filings for a site-specific case or agreement."
     },
     {
       "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
@@ -76,9 +136,19 @@
       "country": "United States",
       "state_province": "WI",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "We Energies",
+          "record_name": "Fairwater Mount Pleasant utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/microsoft-fairwater-wisconsin",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "The facility record identifies We Energies as the sole grid power supplier for Microsoft's Fairwater campus and identifies MISO as the grid operator. This is site-level utility evidence, not a queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Wisconsin PSC, We Energies and MISO records for the Fairwater service/interconnection case and associated generation/transmission filings."
     },
     {
       "epoch_id": "EPOCH-04f65e1aee6c98ab",
@@ -156,9 +226,19 @@
       "country": "United States",
       "state_province": "IA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_facility_utility_relationship",
+          "authority": "MidAmerican Energy",
+          "record_name": "Google Council Bluffs utility relationship",
+          "source_url": "https://suedatacenters.org/data-centers/google-council-bluffs-ia",
+          "source_kind": "secondary public-record facility registry",
+          "confidence": "medium",
+          "basis": "The facility registry identifies MidAmerican Energy as the utility for Google's Council Bluffs campus and provides a site-specific facility record. The evidence establishes the utility relationship but does not identify a queue case number."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search MidAmerican, Iowa Utilities Board and MISO records for a site-specific Google Council Bluffs service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
@@ -186,9 +266,19 @@
       "country": "United States",
       "state_province": "MN",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Xcel Energy",
+          "record_name": "Meta Rosemount data-center power supply",
+          "source_url": "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center",
+          "source_kind": "official utility disclosure",
+          "confidence": "high",
+          "basis": "Xcel Energy's March 15, 2024 announcement states it would provide the energy needed to power Meta's new Rosemount data center and identifies the facility as supporting Meta AI workloads."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents."
     },
     {
       "epoch_id": "EPOCH-0d287943c30fe239",
