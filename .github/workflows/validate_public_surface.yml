@@ -136,6 +136,9 @@ jobs:
           assert len(universe["markets"]) == 10
           epoch_map = json.loads(Path("data/epoch_ai_map.json").read_text(encoding="utf-8"))
           assert epoch_map["record_count"] == 93 and epoch_map["mapped_count"] == 93
+          import csv as _csv
+          with open("data/epoch_ai_map.csv", newline="", encoding="utf-8") as fh:
+              assert len(list(_csv.DictReader(fh))) == 93
           assert len(epoch_map["records"]) == 93
           aggregate_map = json.loads(Path("data/supplemental_aggregate_map.json").read_text(encoding="utf-8"))
           assert aggregate_map["record_count"] == 17 and aggregate_map["mapped_count"] == 17
