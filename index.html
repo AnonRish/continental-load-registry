@@ -71,16 +71,27 @@
   .chev{transition:transform .2s ease;}
   details[open] .chev{transform:rotate(180deg);}
   .theme-toggle{width:2rem; height:2rem;}
-  /* ---- map (added) ---- */
-  #registryMap{height:480px; width:100%; background:var(--panel); z-index:0;}
-  #registryMap .leaflet-popup-content-wrapper{background:var(--panel); color:var(--ink); border:1px solid var(--line-strong); border-radius:8px; box-shadow:0 6px 24px rgba(0,0,0,.35);}
-  #registryMap .leaflet-popup-tip{background:var(--panel); border:1px solid var(--line-strong); border-top:none; border-left:none;}
-  #registryMap .leaflet-popup-content{margin:12px 14px; font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;}
+  /* ---- map ---- */
+  .map-shell{background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 8px 28px rgba(22,35,58,.08);}
+  .map-toolbar{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 14px; border-bottom:1px solid var(--line); background:var(--panel);}
+  .map-toolbar-copy{min-width:0;}
+  .map-toolbar-actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+  .map-mode-btn,.map-reset-btn{appearance:none; border:1px solid var(--line-strong); background:transparent; color:var(--ink-soft); border-radius:999px; padding:6px 10px; font-size:11px; line-height:1; cursor:pointer; white-space:nowrap;}
+  .map-mode-btn:hover,.map-reset-btn:hover{color:var(--ink); border-color:var(--ink-faint); background:var(--amber-soft);}
+  .map-mode-btn[aria-pressed="true"]{background:var(--ink); color:var(--panel); border-color:var(--ink); box-shadow:0 1px 3px rgba(0,0,0,.12);}
+  #registryMap{height:540px; width:100%; background:var(--panel); z-index:0;}
+  #registryMap .leaflet-control-zoom a,#registryMap .leaflet-control-attribution,.map-legend{background:color-mix(in srgb,var(--panel) 92%,transparent); color:var(--ink-soft); border-color:var(--line);}
+  #registryMap .leaflet-control-zoom a{color:var(--ink-soft); border-bottom-color:var(--line);}
+  #registryMap .leaflet-control-zoom a:hover{background:var(--amber-soft); color:var(--ink);}
+  #registryMap .leaflet-control-attribution{backdrop-filter:blur(8px); box-shadow:0 1px 5px rgba(0,0,0,.08);}
+  #registryMap .leaflet-control-attribution a{color:var(--ink);}
+  #registryMap .leaflet-popup-content-wrapper{background:var(--panel); color:var(--ink); border:1px solid var(--line-strong); border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,.22);}
+  #registryMap .leaflet-popup-tip{background:var(--panel); border-right:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong);}
+  #registryMap .leaflet-popup-content{margin:13px 15px; font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;}
   #registryMap .leaflet-popup-close-button{color:var(--ink-faint) !important;}
-  #registryMap .leaflet-control-attribution{background:rgba(15,22,32,.7); color:#9fb0c3;}
-  #registryMap .leaflet-control-attribution a{color:#c7d3e0;}
-  .map-legend{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; color:var(--ink-soft); line-height:1.6; box-shadow:0 2px 10px rgba(0,0,0,.25);}
-  .map-legend .dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; vertical-align:middle;}
+  .registry-cluster-icon{filter:drop-shadow(0 2px 5px rgba(0,0,0,.16));}
+  .map-legend{border:1px solid var(--line); border-radius:10px; padding:9px 11px; font-size:11px; color:var(--ink-soft); line-height:1.65; box-shadow:0 4px 14px rgba(0,0,0,.12); backdrop-filter:blur(8px);}
+  .map-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle;}
 </style>
 </head>
 <body class="min-h-screen">
@@ -130,9 +141,31 @@
     <p class="mt-2"><span style="color:var(--ink-soft);">Across these sources, <span id="ambigCount">&hellip;</span> facilities (<span id="ambigGW">&hellip;</span>&nbsp;GW) carry both an unresolved developer identity and no storage/BESS signal in their project name or technology code &mdash; the genuinely ambiguous tier this registry exists to surface. Some are generator-queue rows of unknown type; many of the newest are self-described load requests (NYISO's Load Projects, AESO's Data Load and Industrial Load). Filter Entity Classification to anything other than "Confirmed" to find them, or look for the amber tag in the table below. Being in this tier is not a finding about any specific facility; see Methodology for what "unresolved" does and doesn't mean.</span></p>
   </div>
 
+  <div class="panel rounded-lg px-5 py-4 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div>
+      <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Historical snapshot archive</p>
+      <p class="font-medium mt-1">1,802-record registry snapshot · September 24, 2026</p>
+      <p class="text-sm mt-1 max-w-3xl" style="color:var(--ink-soft);">The current registry remains a point-in-time view of the latest accepted data. This separate snapshot preserves the earlier 281-record PJM cohort and the full 1,802-record publication for auditability; archived rows are not mixed into current totals.</p>
+    </div>
+    <a href="data/archive/registry_snapshot_2026-09-24.csv" download class="shrink-0 text-sm px-3 py-2 rounded-md border hairline link-underline">Download snapshot CSV</a>
+  </div>
+
   <!-- ============ MAP ============ -->
   <div class="mb-8">
-    <div class="rounded-lg overflow-hidden hairline border" style="position:relative;">
+    <div class="map-shell" style="position:relative;">
+      <div class="map-toolbar">
+        <div class="map-toolbar-copy">
+          <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Geographic overview</p>
+          <p class="text-xs mt-1" style="color:var(--ink-soft);" id="mapSubcaption">Current filter · county/zone centroids</p>
+        </div>
+        <div class="map-toolbar-actions" role="group" aria-label="Map display filters">
+          <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
+          <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
+          <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button>
+          <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
+        </div>
+      </div>
       <div id="registryMap"></div>
     </div>
     <p class="text-xs mt-2" style="color:var(--ink-faint);" id="mapCaption"></p>
@@ -420,154 +453,221 @@ render();
     return COUNTY_CENTROIDS[r.st + '|' + r.co] || null;
   }
 
-  const AMBER = '#E3A458';
-  const TEAL  = '#7FB69E';
+  const AMBER = '#D98A1A';
+  const TEAL  = '#3F8E70';
+  const NEUTRAL = '#7B8797';
+  const root = document.documentElement;
+  let baseLayer = null;
+  let mapMode = 'all';
 
   const map = L.map('registryMap', {
     preferCanvas: true,
-    worldCopyJump: false
-  }).setView([45, -95], 4);
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
-    subdomains: 'abcd',
+    worldCopyJump: false,
+    zoomControl: true,
     minZoom: 2,
     maxZoom: 19
-  }).addTo(map);
+  }).setView([45, -95], 4);
 
-  /* Two independent cluster groups (never merge amber with teal in one bubble),
-     each with its own colored count-icon. County-centroid plotting means many
-     facilities legitimately share one exact point -- clustering (with spiderfy
-     on click at max zoom) keeps every one of them individually visible/clickable
-     instead of silently stacking underneath whichever marker was drawn last. */
+  L.control.scale({ metric: true, imperial: false, position: 'bottomleft', maxWidth: 120 }).addTo(map);
+
+  function useDarkTiles(){
+    const theme = root.getAttribute('data-theme');
+    return theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  function refreshBasemap(){
+    if (baseLayer) map.removeLayer(baseLayer);
+    const dark = useDarkTiles();
+    const url = dark
+      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+      : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    baseLayer = L.tileLayer(url, {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+      subdomains: 'abcd',
+      minZoom: 2,
+      maxZoom: 19,
+      updateWhenIdle: true,
+      keepBuffer: 2
+    }).addTo(map);
+    baseLayer.bringToBack();
+  }
+  refreshBasemap();
+
+  const themeObserver = new MutationObserver(refreshBasemap);
+  themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+
   function makeClusterIcon(color){
     return function(cluster){
       const count = cluster.getChildCount();
-      const size = count < 10 ? 30 : (count < 100 ? 38 : 46);
+      const size = count < 10 ? 30 : (count < 50 ? 36 : (count < 250 ? 42 : 48));
       return L.divIcon({
-        html: '<div style="width:100%; height:100%; border-radius:50%; display:flex; align-items:center; justify-content:center;' +
-              'background:' + color + '; opacity:0.88; border:1px solid rgba(0,0,0,.25);' +
-              'font:600 12px \'IBM Plex Sans\',ui-sans-serif,sans-serif; color:#10151c;">' + count + '</div>',
+        html: '<div style="width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;' +
+              'background:' + color + ';border:2px solid rgba(255,255,255,.9);box-shadow:0 3px 12px rgba(0,0,0,.18);' +
+              'font:600 11px \'IBM Plex Sans\',ui-sans-serif,sans-serif;color:#12202d;">' + count.toLocaleString() + '</div>',
         className: 'registry-cluster-icon',
         iconSize: L.point(size, size)
       });
     };
   }
 
+  const otherCluster = L.markerClusterGroup({
+    iconCreateFunction: makeClusterIcon(NEUTRAL),
+    maxClusterRadius: 38,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    removeOutsideVisibleBounds: true,
+    chunkedLoading: true
+  });
   const bessCluster = L.markerClusterGroup({
     iconCreateFunction: makeClusterIcon(TEAL),
-    maxClusterRadius: 42,
+    maxClusterRadius: 38,
     spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false
+    showCoverageOnHover: false,
+    removeOutsideVisibleBounds: true,
+    chunkedLoading: true
   });
   const flagCluster = L.markerClusterGroup({
     iconCreateFunction: makeClusterIcon(AMBER),
-    maxClusterRadius: 42,
+    maxClusterRadius: 38,
     spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false
+    showCoverageOnHover: false,
+    removeOutsideVisibleBounds: true,
+    chunkedLoading: true
   });
-  map.addLayer(bessCluster);  // added first -> flagCluster renders on top where they overlap
+  map.addLayer(otherCluster);
+  map.addLayer(bessCluster);
   map.addLayer(flagCluster);
 
   const legend = L.control({ position: 'bottomright' });
   legend.onAdd = function(){
     const div = L.DomUtil.create('div', 'map-legend');
     div.innerHTML =
-      '<div><span class="dot" style="background:' + AMBER + ';"></span>Genuinely ambiguous large load</div>' +
-      '<div><span class="dot" style="background:' + TEAL + '; opacity:.65;"></span>Confirmed grid-scale storage (BESS)</div>' +
-      '<div id="legendCounts" style="margin-top:4px; opacity:.75;"></div>' +
-      '<div style="margin-top:4px; opacity:.55; font-size:10.5px;">Numbered circles are clusters of nearby facilities &mdash; click or zoom in to expand.</div>';
+      '<div><span class="dot" style="background:' + AMBER + ';"></span>Ambiguous / unresolved</div>' +
+      '<div><span class="dot" style="background:' + TEAL + ';"></span>Confirmed BESS</div>' +
+      '<div><span class="dot" style="background:' + NEUTRAL + ';"></span>Other registry rows</div>' +
+      '<div id="legendCounts" style="margin-top:5px;opacity:.78;"></div>';
     L.DomEvent.disableClickPropagation(div);
     return div;
   };
   legend.addTo(map);
 
   function popupHtml(r){
-    const entClass = r.flag ? 'tag-flag' : (r.tier.startsWith('Confirmed') ? 'tag-storage' : 'tag-neutral');
-    const entLabel = r.ent.length > 42 ? r.ent.slice(0, 40) + '\u2026' : r.ent;
+    const kind = r.tier === 'Confirmed Grid-Scale Storage (BESS)' ? 'BESS' : (r.flag ? 'Ambiguous' : 'Other');
+    const badge = kind === 'BESS' ? 'tag-storage' : (kind === 'Ambiguous' ? 'tag-flag' : 'tag-neutral');
+    const entLabel = r.ent.length > 44 ? r.ent.slice(0, 42) + '\u2026' : r.ent;
     return '' +
-      '<div style="min-width:228px;">' +
-        '<p style="font-weight:600; font-size:13px; line-height:1.3;">' + escapeHtml(r.proj || '(unnamed project)') + '</p>' +
-        '<p class="mono" style="font-size:11px; color:var(--ink-faint); margin-top:2px;">' + escapeHtml(r.id) + ' \u00b7 ' + escapeHtml(r.rto) + '</p>' +
-        '<p style="font-size:12px; margin-top:6px; color:var(--ink-soft);">' + escapeHtml(r.co) + ', ' + escapeHtml(r.st) + '</p>' +
-        '<table class="mono" style="font-size:12px; margin-top:8px; width:100%; border-collapse:collapse;">' +
-          '<tr><td style="color:var(--ink-faint); padding:1px 0;">Capacity</td><td style="text-align:right;">' + r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1}) + ' MW</td></tr>' +
-          '<tr><td style="color:var(--ink-faint); padding:1px 0;">Est. GPUs</td><td style="text-align:right;">' + r.gpu.toLocaleString() + '</td></tr>' +
-          '<tr><td style="color:var(--ink-faint); padding:1px 0;">90-day FLOPs (ref.)</td><td style="text-align:right;">' + fmtFlops(r.flops) + '</td></tr>' +
+      '<div style="min-width:230px;max-width:290px;">' +
+        '<p style="font-weight:650;font-size:13px;line-height:1.3;">' + escapeHtml(r.proj || '(unnamed project)') + '</p>' +
+        '<p class="mono" style="font-size:10.5px;color:var(--ink-faint);margin-top:3px;">' + escapeHtml(r.id) + ' · ' + escapeHtml(r.rto) + '</p>' +
+        '<p style="font-size:11.5px;margin-top:7px;color:var(--ink-soft);">' + escapeHtml(r.co) + ', ' + escapeHtml(r.st) + '</p>' +
+        '<div style="height:1px;background:var(--line);margin:8px 0;"></div>' +
+        '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">' +
+          '<tr><td style="color:var(--ink-faint);padding:2px 0;">Capacity</td><td style="text-align:right;">' + r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1}) + ' MW</td></tr>' +
+          '<tr><td style="color:var(--ink-faint);padding:2px 0;">Est. GPUs</td><td style="text-align:right;">' + r.gpu.toLocaleString() + '</td></tr>' +
+          '<tr><td style="color:var(--ink-faint);padding:2px 0;">90-day FLOPs</td><td style="text-align:right;">' + fmtFlops(r.flops) + '</td></tr>' +
         '</table>' +
-        '<p style="margin-top:8px;"><span class="inline-block px-2 py-0.5 rounded text-[11px] ' + entClass + '">' + escapeHtml(entLabel) + '</span></p>' +
+        '<p style="margin-top:8px;"><span class="inline-block px-2 py-0.5 rounded text-[10.5px] ' + badge + '">' + escapeHtml(kind + ' · ' + entLabel) + '</span></p>' +
       '</div>';
   }
 
-  function buildMarker(r, isAmbiguous, pts){
+  function buildMarker(r, kind, pts){
     const c = centroidFor(r);
     if (!c) return null;
     pts.push(c);
-    const radius = isAmbiguous ? Math.max(5, Math.sqrt(r.mw) * 0.35) : Math.max(3, Math.sqrt(r.mw) * 0.22);
-    const color = isAmbiguous ? AMBER : TEAL;
+    const radius = kind === 'ambiguous'
+      ? Math.min(12, Math.max(5.5, Math.sqrt(r.mw) * 0.22))
+      : kind === 'bess'
+        ? Math.min(9.5, Math.max(3.5, Math.sqrt(r.mw) * 0.16))
+        : Math.min(8, Math.max(3, Math.sqrt(r.mw) * 0.15));
+    const color = kind === 'ambiguous' ? AMBER : (kind === 'bess' ? TEAL : NEUTRAL);
+    const opacity = kind === 'ambiguous' ? 0.92 : (kind === 'bess' ? 0.8 : 0.72);
     return L.circleMarker(c, {
       radius: radius,
       color: color,
-      weight: isAmbiguous ? 1.5 : 1,
+      weight: kind === 'ambiguous' ? 2 : 1.2,
       fillColor: color,
-      fillOpacity: isAmbiguous ? 0.62 : 0.32,
-      opacity: isAmbiguous ? 0.9 : 0.55
-    }).bindPopup(popupHtml(r), { maxWidth: 280 });
+      fillOpacity: kind === 'ambiguous' ? 0.48 : 0.24,
+      opacity: opacity
+    }).bindTooltip(
+      '<span class="mono">' + escapeHtml(r.rto) + ' · ' + r.mw.toLocaleString(undefined,{maximumFractionDigits:1}) + ' MW</span>',
+      { sticky: true, direction: 'top', opacity: 0.96 }
+    ).bindPopup(popupHtml(r), { maxWidth: 300 });
+  }
+
+  function inMode(r){
+    if (mapMode === 'ambiguous') return r.flag && r.tier !== 'Confirmed Grid-Scale Storage (BESS)';
+    if (mapMode === 'bess') return r.tier === 'Confirmed Grid-Scale Storage (BESS)';
+    if (mapMode === 'other') return !r.flag && r.tier !== 'Confirmed Grid-Scale Storage (BESS)';
+    return true;
+  }
+
+  function updateModeButtons(){
+    document.querySelectorAll('[data-map-mode]').forEach(btn => {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-map-mode') === mapMode ? 'true' : 'false');
+    });
   }
 
   function updateMapMarkers(animate){
+    otherCluster.clearLayers();
     bessCluster.clearLayers();
     flagCluster.clearLayers();
 
-    const bess = [], flagged = [];
+    const pts = [];
+    let counts = { ambiguous: 0, bess: 0, other: 0, mapped: 0, eligible: 0 };
+
     filtered.forEach(r => {
-      if (r.tier === 'Confirmed Grid-Scale Storage (BESS)') bess.push(r);
-      else if (r.flag) flagged.push(r);
+      if (!inMode(r)) return;
+      counts.eligible++;
+      const kind = r.tier === 'Confirmed Grid-Scale Storage (BESS)' ? 'bess' : (r.flag ? 'ambiguous' : 'other');
+      counts[kind]++;
+      const marker = buildMarker(r, kind, pts);
+      if (!marker) return;
+      counts.mapped++;
+      if (kind === 'ambiguous') flagCluster.addLayer(marker);
+      else if (kind === 'bess') bessCluster.addLayer(marker);
+      else otherCluster.addLayer(marker);
     });
 
-    const pts = [];
-    const bessMarkers = bess.map(r => buildMarker(r, false, pts)).filter(Boolean);
-    const flagMarkers = flagged.map(r => buildMarker(r, true, pts)).filter(Boolean);
-    bessCluster.addLayers(bessMarkers);   // bulk add -- much faster than addLayer in a loop
-    flagCluster.addLayers(flagMarkers);
+    const currentRows = filtered.length.toLocaleString();
+    const skipped = counts.eligible - counts.mapped;
+    const modeLabel = mapMode === 'all' ? 'All records' : (mapMode === 'ambiguous' ? 'Ambiguous' : (mapMode === 'bess' ? 'BESS' : 'Other'));
+    const sub = document.getElementById('mapSubcaption');
+    if (sub) sub.textContent = modeLabel + ' · ' + counts.mapped.toLocaleString() + ' mapped of ' + currentRows + ' filtered · county/zone centroids';
 
-    const plotted = bessMarkers.length + flagMarkers.length;
-    const eligible = bess.length + flagged.length;
-    const skipped = eligible - plotted;
     const caption = document.getElementById('mapCaption');
     if (caption){
-      caption.textContent = plotted.toLocaleString() + ' of ' + eligible.toLocaleString() +
-        ' flagged / BESS facilities in the current filter are plotted on the map' +
-        (skipped > 0 ? ' (' + skipped.toLocaleString() + ' have no mapped county/zone centroid and are omitted)' : '') + '.';
+      caption.textContent = 'Map positions are county or transmission-zone centroids, not facility coordinates.' +
+        (skipped > 0 ? ' ' + skipped.toLocaleString() + ' filtered record' + (skipped === 1 ? '' : 's') + ' have no available centroid and are omitted.' : '');
     }
     const legendCounts = document.getElementById('legendCounts');
     if (legendCounts){
-      legendCounts.textContent = flagged.length.toLocaleString() + ' ambiguous \u00b7 ' + bess.length.toLocaleString() + ' BESS shown';
+      legendCounts.textContent = counts.ambiguous.toLocaleString() + ' ambiguous · ' + counts.bess.toLocaleString() + ' BESS' +
+        (counts.other ? ' · ' + counts.other.toLocaleString() + ' other' : '');
     }
 
-    if (pts.length > 0){
+    if (pts.length){
       const bounds = L.latLngBounds(pts);
-      if (animate) map.flyToBounds(bounds, { padding: [28, 28], maxZoom: 7, duration: 0.6 });
-      else map.fitBounds(bounds, { padding: [28, 28], maxZoom: 7 });
+      const options = { padding: [32, 32], maxZoom: mapMode === 'all' ? 7 : 8, duration: animate ? 0.45 : 0 };
+      if (animate) map.flyToBounds(bounds, options);
+      else map.fitBounds(bounds, options);
     } else if (animate){
-      map.flyTo([45, -95], 4, { duration: 0.5 });
+      map.flyTo([45, -95], 4, { duration: 0.45 });
     }
   }
 
-  function debounce(fn, wait){
-    let t;
-    return function(){
-      clearTimeout(t);
-      const args = arguments;
-      t = setTimeout(() => fn.apply(null, args), wait);
-    };
-  }
+  document.querySelectorAll('[data-map-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      mapMode = btn.getAttribute('data-map-mode');
+      updateModeButtons();
+      updateMapMarkers(true);
+    });
+  });
+  document.getElementById('mapReset').addEventListener('click', () => updateMapMarkers(true));
 
-  document.getElementById('searchBox').addEventListener('input', debounce(() => updateMapMarkers(true), 180));
-  document.getElementById('rtoFilter').addEventListener('change', () => updateMapMarkers(true));
-  document.getElementById('statusFilter').addEventListener('change', () => updateMapMarkers(true));
+  window.addEventListener('resize', () => map.invalidateSize());
 
-  updateMapMarkers(false); // initial paint, instant fit (no animation on page load)
+  updateModeButtons();
+  updateMapMarkers(false);
 })();
 </script>
 
