@@ -1284,7 +1284,7 @@ openFacilityFromHash();
     const radius=Number.isFinite(n)?Math.max(4,Math.min(11,Math.sqrt(Math.max(1,n))*0.11)):5;
     const marker=L.circleMarker([e.lat,e.lon],{radius:radius,color:EPOCH_COLOR,weight:1.6,fillColor:EPOCH_COLOR,fillOpacity:0.36,opacity:0.9});
     marker.bindTooltip('<span class="mono">EPOCH · '+escapeHtml(e.site_name||e.id)+'</span>',{sticky:true,direction:'top',opacity:0.96});
-    const qe=e.grid_evidence_url?'<a class="text-xs link-underline inline-block mt-2 mr-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(e.grid_evidence_url)+'">Open grid evidence</a>':'';
+    const qe=e.grid_evidence_url?'<a class="text-xs link-underline inline-block mt-2 mr-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(e.grid_evidence_url)+'">Open grid evidence</a>':''; const se=(Array.isArray(e.site_level_evidence)?e.site_level_evidence:[]).map(function(v){return v.source_url?'<a class="text-xs link-underline inline-block mt-2 mr-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(v.source_url)+'">'+escapeHtml(v.authority||'site evidence source')+'</a>':'';}).join('');
     const es=e.epoch_source_url?'<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(e.epoch_source_url)+'">Open Epoch source</a>':'';
     const power=Number.isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:1})+' MW':'Not retained';
     const h=Number(e.current_h100_equivalents);
@@ -1301,9 +1301,11 @@ openFacilityFromHash();
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Users</td><td style="text-align:right;">'+escapeHtml(e.users||'Not retained')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Grid jurisdiction</td><td style="text-align:right;">'+escapeHtml(e.grid_jurisdiction||'Not mapped')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Site-specific queue</td><td style="text-align:right;">'+escapeHtml(e.site_queue_id||'Not verified')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Grid evidence</td><td style="text-align:right;">'+escapeHtml((e.site_level_evidence_status||'not_assessed').replaceAll('_',' '))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Evidence records</td><td style="text-align:right;">'+escapeHtml(String(e.site_level_evidence_count||0))+'</td></tr>'+
       '</table>'+
       '<p style="margin-top:8px;font-size:10.5px;color:var(--amber);">'+escapeHtml(e.precision||'address-derived display point')+'. This map point is a display centroid, not an inferred street address.</p>'+
-      qe+es+
+      qe+se+es+
       '</div>',{maxWidth:360});
     return marker;
   }
