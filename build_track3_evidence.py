@@ -56,6 +56,14 @@ EXTERNAL_SOURCE_FILES = {
         "ai_chip_sales_organizations.csv",
         "ai_chip_sales_timelines_by_chip.csv",
     ],
+    "gpu_clusters": [
+        "gpu_clusters.csv",
+    ],
+    "chip_components": [
+        "ai_chip_components_quarterly_by_chip.csv",
+        "ai_chip_components_quarterly_by_designer.csv",
+        "ai_chip_components_supply_denominators.csv",
+    ],
     "cooling": [
         "data_center_chillers.csv",
         "data_center_cooling_towers.csv",

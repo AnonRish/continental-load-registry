@@ -17,6 +17,7 @@ on:
       - "data/track3_evidence_schema.json"
       - "data/track3_source_stack.json"
       - "build_track3_evidence.py"
+      - "sync_track3_external_sources.py"
       - "validate_track3_ledger.py"
       - ".github/workflows/sync_epoch_ai_data_centers.yml"
   workflow_dispatch:
@@ -54,6 +55,11 @@ jobs:
       - name: Build 93-site queue gap analysis
         run: python build_epoch_queue_gap_analysis.py
 
+      - name: Sync global Track 3 compute sources
+        run: |
+          python sync_track3_external_sources.py --selftest
+          python sync_track3_external_sources.py
+
       - name: Build Track 3 evidence artifacts
         run: python build_track3_evidence.py
 
@@ -71,7 +77,7 @@ jobs:
           evidence = json.loads((root/"evidence_records.json").read_text(encoding="utf-8"))
           queue = json.loads((root/"research_queue.json").read_text(encoding="utf-8"))
           external = json.loads((root/"external_source_snapshots.json").read_text(encoding="utf-8"))
-          assert len(external["records"]) == 8
+          assert len(external["records"]) == 14
           assert summary["epoch_site_count"] == 93
           assert len(status["records"]) == 93
           assert evidence["record_count"] == len(evidence["records"])
