@@ -332,6 +332,26 @@ def sync() -> None:
         for filename in {**URLS, **EXTERNAL_URLS}:
             shutil.copy2(tmp / filename, OUT / filename)
 
+        # Mark the cataloged external source snapshots as ingested only after
+        # their bytes have successfully been downloaded and copied.
+        stack_path = ROOT / "data" / "track3_source_stack.json"
+        if stack_path.exists():
+            stack = json.loads(stack_path.read_text(encoding="utf-8"))
+            snapshot_ids = {
+                "epoch-chip-sales": "ai_chip_sales_",
+                "epoch-chip-owners": "ai_chip_owners_",
+                "epoch-chip-users": "ai_chip_users_",
+                "epoch-chillers": "data_center_chillers.csv",
+                "epoch-cooling-towers": "data_center_cooling_towers.csv",
+            }
+            for source in stack.get("sources", []):
+                sid = source.get("id")
+                marker = snapshot_ids.get(sid)
+                if marker and any(name.startswith(marker) or name == marker for name in EXTERNAL_URLS):
+                    source["status"] = "INGESTED_SNAPSHOT"
+                    source["capture_on"] = today
+            stack_path.write_text(json.dumps(stack, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
         timeline_by_center: dict[str, list[dict[str, str]]] = {}
         for row in timelines:
             key = norm(pick(row, TIMELINE_ALIASES["data_center"]))
