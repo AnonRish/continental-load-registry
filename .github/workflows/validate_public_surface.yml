@@ -95,11 +95,11 @@ jobs:
           assert scope["definitions"]["additional_known_miso"]["records"] == 83
           assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
-          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 44
-          assert scope["definitions"]["project_level_extractions"]["records"] == 198
-          assert len(supplemental["records"]) == 44
+          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 47
+          assert scope["definitions"]["project_level_extractions"]["records"] == 199
+          assert len(supplemental["records"]) == 47
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
-          assert projects["record_count"] == len(projects["records"]) == 198
+          assert projects["record_count"] == len(projects["records"]) == 199
           assert len({r["id"] for r in projects["records"]}) == 185
           assert len(projects["sources"]) == 13
           source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
@@ -112,6 +112,7 @@ jobs:
           assert source_counts["ISO-NE-CELT"] == 2
           assert source_counts["COMED-NEW-PROJECTS"] == 28
           assert source_counts["DOMINION-SERVICE-PROJECTS"] == 7
+          assert source_counts["IDAHO-POWER-2025-IRP"] == 1
           for record in projects["records"]:
               assert record["id"] and record["evidence_type"] and record["source_url"].startswith("https://")
           assert sum(r["evidence_type"] == "environmental_permit_record" for r in projects["records"]) == 33
