@@ -14,6 +14,9 @@ on:
       - "build_epoch_queue_gap_analysis.py"
       - "data/external/epoch_ai/match_overrides.json"
       - "data/external/epoch_ai/queue_source_universe.json"
+      - "data/track3_evidence_schema.json"
+      - "data/track3_source_stack.json"
+      - "build_track3_evidence.py"
       - ".github/workflows/sync_epoch_ai_data_centers.yml"
   workflow_dispatch:
 
@@ -49,6 +52,30 @@ jobs:
 
       - name: Build 93-site queue gap analysis
         run: python build_epoch_queue_gap_analysis.py
+
+      - name: Build Track 3 evidence artifacts
+        run: python build_track3_evidence.py
+
+      - name: Validate Track 3 evidence artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("data/track3")
+          summary = json.loads((root/"summary.json").read_text(encoding="utf-8"))
+          status = json.loads((root/"site_status.json").read_text(encoding="utf-8"))
+          evidence = json.loads((root/"evidence_records.json").read_text(encoding="utf-8"))
+          queue = json.loads((root/"research_queue.json").read_text(encoding="utf-8"))
+          assert summary["epoch_site_count"] == 93
+          assert len(status["records"]) == 93
+          assert evidence["record_count"] == len(evidence["records"])
+          assert queue["count"] == len(queue["records"])
+          assert summary["pending_grid_connection_research_count"] == queue["count"]
+          print("verified: Track 3 artifacts")
+          print("site evidence:", summary["site_level_evidence_site_count"])
+          print("site queue IDs:", summary["site_specific_queue_id_count"])
+          print("pending grid research:", summary["pending_grid_connection_research_count"])
+          PY
 
       - name: Validate inline JavaScript syntax
         run: |
@@ -100,7 +127,7 @@ jobs:
 
       - name: Commit Epoch snapshot and crosswalk
         run: |
-          git add data/external/epoch_ai build_epoch_grid_crosswalk.py build_epoch_queue_gap_analysis.py sync_epoch_ai_data_centers.py
+          git add data/external/epoch_ai data/track3 build_epoch_grid_crosswalk.py build_epoch_queue_gap_analysis.py sync_epoch_ai_data_centers.py build_track3_evidence.py data/track3_evidence_schema.json data/track3_source_stack.json
           if git diff --cached --quiet; then
             echo "Epoch data unchanged; nothing to commit."
           else
