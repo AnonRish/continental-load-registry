@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse,datetime,json,io
 from pathlib import Path
 import pandas as pd,requests
-URL="https://opsportal.spp.org/Studies/GenerateActiveCSV"
+URL="https://opsportal.spp.org/Studies/GenerateSummaryCSV"
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--selftest",action="store_true");ap.add_argument("--output-dir",default="data");a=ap.parse_args()
     if a.selftest:
@@ -11,7 +11,7 @@ def main():
         assert float(df.iloc[0]["Capacity (MW)"])==150
         print("PASS: SPP parser self-test");return
     r=requests.get(URL,headers={"User-Agent":"Continental-Large-Load-Registry/1.0"},timeout=60);r.raise_for_status()
-    df=pd.read_csv(io.BytesIO(r.content)).dropna(how="all");df.columns=[str(c).strip() for c in df.columns];recs=[]
+    df=pd.read_csv(io.BytesIO(r.content),skiprows=1).dropna(how="all");df.columns=[str(c).strip() for c in df.columns];recs=[]
     for i,(_,row) in enumerate(df.iterrows(),1):
         raw={c:(None if pd.isna(row[c]) else row[c].item() if hasattr(row[c],"item") else row[c]) for c in df.columns}
         def g(*ks):
