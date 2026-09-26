@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-Build per-RTO facility research records from the published registry plus retained
-raw/enriched CSV artifacts.
+Build sharded per-RTO facility research records from the published registry plus
+retained raw/enriched CSV artifacts.
 
 The output is static JSON designed for GitHub Pages. Every record contains:
   * the normalized registry fields available for that row;
   * the exact retained raw CSV values when a raw artifact exists;
   * official source/capture metadata;
   * a compact provenance trail describing source -> ingest -> enrichment -> publication.
+
+Large RTO collections are written as indexed shards rather than one huge JSON
+file. This keeps browser loads small and makes independent repository inspection
+possible without changing the record schema.
 
 Missing raw captures are represented explicitly as unavailable; this script never
 reconstructs an "original raw value" from a normalized value and calls it raw.
@@ -24,10 +28,13 @@ import hashlib
 import json
 import math
 import re
+import shutil
 from pathlib import Path
 from typing import Any
 
 DATA_RE = re.compile(r"const REGISTRY_DATA = (\[.*?\]);\n", re.S)
+SHARD_SIZE = 40
+RTO_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 
 NORMALIZED_KEYS = [
     "queue_id", "rto_region", "state_province", "county_or_zone",
@@ -60,7 +67,7 @@ RAW_FIELDS = [
 def read_csv(path: Path) -> tuple[list[dict[str, str]], str]:
     data = path.read_bytes()
     sha = hashlib.sha256(data).hexdigest()
-    text = data.decode("utf-8-sig")
+    data.decode("utf-8-sig")  # fail early on non-UTF-8 input
     with path.open("r", encoding="utf-8-sig", newline="") as fh:
         rows = list(csv.DictReader(fh))
     return rows, sha
@@ -159,8 +166,6 @@ def make_record(
             if key in enriched_row and key not in {
                 "queue_id", "rto_region", "state", "county", "capacity_mw"
             }:
-                if key == "state":
-                    continue
                 normalized[key] = coerce(key, enriched_row.get(key))
         normalized["state_province"] = row["st"]
         normalized["county_or_zone"] = row["co"]
@@ -236,6 +241,58 @@ def make_record(
         "provenance": provenance,
     }
 
+def write_sharded_rto(output_dir: Path, rto: str, records: list[dict[str, Any]]) -> dict[str, Any]:
+    if not RTO_RE.fullmatch(rto):
+        raise SystemExit(f"unsafe RTO directory name: {rto!r}")
+    rto_dir = output_dir / rto
+    if rto_dir.exists():
+        shutil.rmtree(rto_dir)
+    rto_dir.mkdir(parents=True, exist_ok=True)
+
+    lookup: dict[str, str] = {}
+    shards: list[dict[str, Any]] = []
+    for start in range(0, len(records), SHARD_SIZE):
+        chunk = records[start:start + SHARD_SIZE]
+        shard_name = f"{start // SHARD_SIZE + 1:04d}.json"
+        rel_path = f"data/facility_records/{rto}/{shard_name}"
+        payload = {
+            "schema_version": 1,
+            "rto": rto,
+            "start": start,
+            "record_count": len(chunk),
+            "records": chunk,
+        }
+        (rto_dir / shard_name).write_text(
+            json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n",
+            encoding="utf-8",
+        )
+        for offset, rec in enumerate(chunk):
+            lookup[rec["record_id"]] = rel_path
+        shards.append({
+            "file": rel_path,
+            "start": start,
+            "record_count": len(chunk),
+        })
+
+    index = {
+        "schema_version": 2,
+        "rto": rto,
+        "record_count": len(records),
+        "shard_size": SHARD_SIZE,
+        "field_catalog": {
+            "normalized_fields": NORMALIZED_KEYS,
+            "raw_fields_when_retained": RAW_FIELDS,
+        },
+        "lookup": lookup,
+        "shards": shards,
+    }
+    (rto_dir / "index.json").write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
+    return {
+        "index": f"data/facility_records/{rto}/index.json",
+        "record_count": len(records),
+        "shards": len(shards),
+    }
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--html", type=Path, default=Path("index.html"))
@@ -289,7 +346,6 @@ def main() -> int:
         enriched_row = enriched_by_key.get(key)
         raw_artifact = None
         if raw_row:
-            # Prefer the first raw artifact whose keyed data supplied this row.
             for path in raw_paths:
                 rows, _ = read_csv(path)
                 if any(x.get("rto_region") == rto and x.get("queue_id") == row["id"] for x in rows):
@@ -304,32 +360,22 @@ def main() -> int:
         expected_counts[row["rto"]] = expected_counts.get(row["rto"], 0) + 1
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    for rto, records in sorted(by_rto.items()):
-        payload = {
-            "schema_version": 1,
-            "rto": rto,
-            "record_count": len(records),
-            "field_catalog": {
-                "normalized_fields": NORMALIZED_KEYS,
-                "raw_fields_when_retained": RAW_FIELDS,
-            },
-            "records": records,
-        }
-        (args.output_dir / f"{rto}.json").write_text(
-            json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n",
-            encoding="utf-8",
-        )
+    # Remove legacy monolithic files from this generated namespace.
+    for rto in by_rto:
+        legacy = args.output_dir / f"{rto}.json"
+        if legacy.exists():
+            legacy.unlink()
+        write_sharded_rto(args.output_dir, rto, by_rto[rto])
 
     index = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_from": args.html.as_posix(),
         "record_count": len(registry),
         "rto_counts": expected_counts,
-        "files": {rto: f"data/facility_records/{rto}.json" for rto in sorted(by_rto)},
+        "shard_size": SHARD_SIZE,
+        "files": {rto: f"data/facility_records/{rto}/index.json" for rto in sorted(by_rto)},
     }
-    (args.output_dir / "index.json").write_text(
-        json.dumps(index, indent=2) + "\n", encoding="utf-8"
-    )
+    (args.output_dir / "index.json").write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
 
     if args.check:
         actual_total = sum(len(v) for v in by_rto.values())
@@ -348,10 +394,26 @@ def main() -> int:
                 for key in ("queue_id", "rto_region", "state_province", "capacity_mw", "status"):
                     if n.get(key) in (None, ""):
                         raise SystemExit(f"{rto}/{rec['record_id']}: missing required normalized field {key}")
+            index_path = args.output_dir / rto / "index.json"
+            idx_payload = json.loads(index_path.read_text(encoding="utf-8"))
+            if idx_payload.get("record_count") != len(records):
+                raise SystemExit(f"{rto}: shard index record count mismatch")
+            if set(idx_payload.get("lookup", {})) != {r["record_id"] for r in records}:
+                raise SystemExit(f"{rto}: shard lookup does not cover exactly the published records")
+            for shard in idx_payload.get("shards", []):
+                shard_path = Path(shard["file"])
+                if not shard_path.exists():
+                    shard_path = Path(shard["file"].replace("data/facility_records/", str(args.output_dir).replace("/", "\\") + "\\", 1))
+                # The relative path above is repository-root-relative; resolve robustly for local checks.
+                if not shard_path.exists():
+                    shard_path = Path(shard["file"])
+                if not shard_path.exists():
+                    raise SystemExit(f"{rto}: missing shard {shard['file']}")
         print(f"CHECK OK: {actual_total} unique facility records across {len(by_rto)} RTOs")
         for rto in sorted(by_rto):
             retained = sum(1 for r in by_rto[rto] if r["raw"]["availability"] == "retained_csv_row")
-            print(f"{rto:7s} {len(by_rto[rto]):4d} records · raw retained {retained:4d}")
+            shard_count = len(json.loads((args.output_dir / rto / "index.json").read_text(encoding="utf-8"))["shards"])
+            print(f"{rto:7s} {len(by_rto[rto]):4d} records · raw retained {retained:4d} · shards {shard_count:3d}")
     return 0
 
 if __name__ == "__main__":
