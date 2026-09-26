@@ -1,6 +1,6 @@
 # Continental Large-Load Interconnection & Telemetry Registry
 
-**Version 2.1** -- adds the automated monthly refresh and the ambiguous-facility
+**Version 2.2** -- adds the automated monthly refresh and the ambiguous-facility
 investigation engine on top of the v2.0 nine-source registry.
 
 Open-source ETL pipeline and public dashboard tracking large (>=100 MW)
@@ -34,9 +34,13 @@ aimed at surfacing large requests that lack a confirmed public operator.
   directly in the file (by `embed_registry_data.py`), not fetched at
   page-load. Prose that quotes a count or a GW figure is filled in from
   that data at load time, so a re-embed cannot leave a stale number behind.
-- `.github/workflows/monthly_registry_update.yml` -- (2.1) refreshes the
-  registry from the live feeds on the 1st of every month, 06:00 UTC, or on
-  demand, and commits the result to `main`. See "Automated monthly refresh".
+- `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
+  from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
+  commits the result to `main`. See "Automated monthly refresh".
+- `data/archive/registry_snapshot_2026-09-24.csv` -- preserved 1,802-record
+  publication snapshot from September 24, 2026. It is intentionally separate
+  from the current registry so superseded queue rows remain auditable without
+  being counted as current active facilities.
 - `guard_registry_refresh.py` -- (2.1) the per-RTO sanity gate that workflow
   runs between the pipeline and `embed_registry_data.py`. Has `--selftest`.
 - `investigate_ambiguous_loads.py` -- (2.1) builds
