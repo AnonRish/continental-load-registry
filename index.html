@@ -305,7 +305,7 @@
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl">32</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
+      <div class="p-4"><p class="mono text-xl">37</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
       <div class="p-4"><p class="mono text-xl">83</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Additional quantified MISO requests</p></div>
       <div class="p-4"><p class="mono text-xl">70 GW</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Dominion aggregate large-load queue evidence</p></div>
       <div class="p-4"><p class="mono text-xl">6.9M</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Ontario CCIM data points</p></div>
@@ -337,6 +337,31 @@
       </table>
     </div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The table is intentionally not summed. These sources differ in geography, vintage, unit, stage and population definition, and several overlap the nine-market queue universe. The machine-readable artifact records the source date, granularity and overlap treatment for every evidence unit.</p>
+  </section>
+
+  <!-- ============ SUPPLEMENTAL RECORD BROWSER ============ -->
+  <section id="supplementalBrowser" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Aggregate and process evidence</p>
+        <h2 class="font-serif-display text-xl mt-1">Browse all supplemental evidence units</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">These records preserve utility queues, regulatory aggregates, forecasts, process documents and other public evidence that cannot safely be treated as unique facility rows.</p>
+      </div>
+      <a href="data/supplemental_large_load_evidence.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Raw JSON</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5">
+      <input id="suppSearch" type="search" placeholder="Search provider, jurisdiction, evidence type, capacity, date…" class="rounded-md px-3 py-2 text-sm" aria-label="Search supplemental evidence">
+      <select id="suppProviderFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter supplemental evidence by provider"><option value="">All providers</option></select>
+      <select id="suppAdditiveFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter supplemental evidence by accounting"><option value="">All accounting states</option><option value="true">Additive to expanded scope</option><option value="false">Non-additive</option></select>
+    </div>
+    <div id="suppBrowserStatus" class="text-xs mt-3" style="color:var(--ink-faint);">Loading supplemental evidence…</div>
+    <div class="scroll-x mt-3">
+      <table class="w-full text-xs min-w-[1100px]">
+        <thead><tr><th class="px-3 py-2">Provider</th><th class="px-3 py-2">Evidence type</th><th class="px-3 py-2">Jurisdiction</th><th class="px-3 py-2 text-right">Records</th><th class="px-3 py-2 text-right">Capacity / measure</th><th class="px-3 py-2">Date</th><th class="px-3 py-2">Accounting</th><th class="px-3 py-2">Source</th></tr></thead>
+        <tbody id="suppBrowserBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);"><button id="suppPrev" type="button" class="px-3 py-1.5 rounded-md border hairline">Previous</button><span id="suppPage">—</span><button id="suppNext" type="button" class="px-3 py-1.5 rounded-md border hairline">Next</button></div>
   </section>
 
   <!-- ============ EPOCH AI FRONTIER DATA-CENTER REGISTRY ============ -->
@@ -938,6 +963,47 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeFacilit
 window.addEventListener('hashchange',openFacilityFromHash);
 openFacilityFromHash();
 
+/* ======================= SUPPLEMENTAL BROWSER ======================= */
+(function(){
+  const PAGE=20; let records=[],filtered=[],page=0;
+  function measure(r){
+    const parts=[];
+    if(r.capacity_mw!=null)parts.push(String(r.capacity_mw)+' MW');
+    if(r.capacity_mva!=null)parts.push(String(r.capacity_mva)+' MVA');
+    if(r.data_points!=null)parts.push(String(r.data_points)+' data points');
+    return parts.join(' / ')||'—';
+  }
+  function source(r){return r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open</a>':'—';}
+  function render(){
+    const body=document.getElementById('suppBrowserBody'),rows=filtered.slice(page*PAGE,page*PAGE+PAGE);
+    body.innerHTML=rows.length?rows.map(function(r){
+      const type=(r.evidence_type||'unknown').replaceAll('_',' ');
+      const accounting=r.additive_to_core_row_level?'Additive to expanded scope':'Non-additive';
+      return '<tr><td class="px-3 py-2.5">'+escapeHtml(r.provider||'—')+'</td><td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px]">'+escapeHtml(type)+'</span></td><td class="px-3 py-2.5">'+escapeHtml(r.jurisdiction||'—')+'</td><td class="px-3 py-2.5 text-right mono">'+escapeHtml(r.record_count==null?'—':String(r.record_count))+'</td><td class="px-3 py-2.5 text-right mono">'+escapeHtml(measure(r))+'</td><td class="px-3 py-2.5">'+escapeHtml(r.capture_date||'—')+'</td><td class="px-3 py-2.5">'+escapeHtml(accounting)+'</td><td class="px-3 py-2.5">'+source(r)+'</td></tr>';
+    }).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No supplemental records match.</td></tr>';
+    const pages=Math.max(1,Math.ceil(filtered.length/PAGE)); document.getElementById('suppPage').textContent='Page '+(page+1)+' of '+pages+' · '+filtered.length.toLocaleString()+' of '+records.length.toLocaleString();
+    document.getElementById('suppPrev').disabled=page===0; document.getElementById('suppNext').disabled=page>=pages-1;
+    document.getElementById('suppBrowserStatus').textContent=records.length.toLocaleString()+' evidence units loaded · '+filtered.length.toLocaleString()+' match current filters';
+  }
+  function apply(){
+    const q=document.getElementById('suppSearch').value.trim().toLowerCase(),p=document.getElementById('suppProviderFilter').value,a=document.getElementById('suppAdditiveFilter').value;
+    filtered=records.filter(function(r){
+      if(p&&r.provider!==p)return false;
+      if(a&&String(Boolean(r.additive_to_core_row_level))!==a)return false;
+      if(q){const hay=[r.id,r.provider,r.jurisdiction,r.evidence_type,r.capture_date,r.capacity_mw,r.capacity_mva,r.source_url,r.notes].join(' ').toLowerCase();if(!hay.includes(q))return false;}
+      return true;
+    }); page=0;render();
+  }
+  fetch('data/supplemental_large_load_evidence.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('supplemental evidence unavailable');return res.json();}).then(function(payload){
+    records=Array.isArray(payload.records)?payload.records:[];
+    const ps=document.getElementById('suppProviderFilter');
+    Array.from(new Set(records.map(r=>r.provider).filter(Boolean))).sort().forEach(function(v){const o=document.createElement('option');o.value=v;o.textContent=v;ps.appendChild(o);});
+    document.getElementById('suppSearch').addEventListener('input',apply);ps.addEventListener('change',apply);document.getElementById('suppAdditiveFilter').addEventListener('change',apply);
+    document.getElementById('suppPrev').addEventListener('click',function(){if(page>0){page--;render();}});
+    document.getElementById('suppNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(filtered.length/PAGE));if(page<pages-1){page++;render();}});
+    apply();
+  }).catch(function(err){document.getElementById('suppBrowserStatus').textContent='Supplemental browser unavailable: '+(err.message||'unknown error');});
+})();
 /* ======================= PROJECT-LEVEL BROWSER ======================= */
 (function(){
   const PAGE=25;
