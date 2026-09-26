@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 152,
+  "record_count": 154,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -4186,6 +4186,72 @@
       "source_scope": "BPA Large Load Registry — 50 largest live requests",
       "notes": "BPA request reproduced from a public secondary registry that identifies request ID, filed MW, location, POI and status. BPA does not publish end-use; the project name is retained without classifying the load.",
       "map_point": null
+    },
+    {
+      "id": "ISO-NE-NEMA-DATACENTER-200MW-2026",
+      "evidence_type": "iso_ne_forecast_large_load_project",
+      "project_name": "NEMA Data Center — CELT 2026 Forecast",
+      "customer_or_developer": null,
+      "utility_or_provider": "ISO New England",
+      "jurisdiction": "Massachusetts, US",
+      "location": "NEMA load zone",
+      "county_or_zone": "NEMA",
+      "queue_id": null,
+      "status": "forecast included; not under construction",
+      "planned_in_service": "through 2027",
+      "capacity_claims": [
+        {
+          "value_mw": 200,
+          "unit": "MW",
+          "raw_value": "200 MW",
+          "qualifier": "reported nameplate before forecast derating",
+          "source_url": "https://www.iso-ne.com/static-assets/documents/100033/fx2026_large_loads.pdf",
+          "capture_date": "2026"
+        }
+      ],
+      "source_authority": "ISO New England primary forecast",
+      "source_url": "https://www.iso-ne.com/static-assets/documents/100033/fx2026_large_loads.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Large Loads in the CELT 2026 Forecast",
+      "notes": "ISO-NE says projects included in this forecast must exceed 20 MW and have a formal study agreement. The listed 200 MW is a nameplate value before derating; the forecast does not identify a unique customer/site address. Map uses NEMA load-zone display geometry, not an inferred facility address.",
+      "map_point": [
+        42.36,
+        -71.06
+      ],
+      "map_precision": "NEMA load-zone display point"
+    },
+    {
+      "id": "ISO-NE-CT-ELECTRIFICATION-85MW-2026",
+      "evidence_type": "iso_ne_forecast_large_load_project",
+      "project_name": "CT General Electrification — CELT 2026 Forecast",
+      "customer_or_developer": null,
+      "utility_or_provider": "ISO New England",
+      "jurisdiction": "Connecticut, US",
+      "location": "CT load zone",
+      "county_or_zone": "CT",
+      "queue_id": null,
+      "status": "forecast included; not under construction",
+      "planned_in_service": "through 2040",
+      "capacity_claims": [
+        {
+          "value_mw": 85,
+          "unit": "MW",
+          "raw_value": "85 MW",
+          "qualifier": "reported nameplate before forecast derating",
+          "source_url": "https://www.iso-ne.com/static-assets/documents/100033/fx2026_large_loads.pdf",
+          "capture_date": "2026"
+        }
+      ],
+      "source_authority": "ISO New England primary forecast",
+      "source_url": "https://www.iso-ne.com/static-assets/documents/100033/fx2026_large_loads.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Large Loads in the CELT 2026 Forecast",
+      "notes": "This is general electrification rather than a data center. It is retained because the project-universe layer covers large-load evidence, not only data centers. Forecast nameplate is before derating; no facility address is supplied.",
+      "map_point": [
+        41.6,
+        -72.7
+      ],
+      "map_precision": "CT load-zone display point"
     }
   ]
 }
