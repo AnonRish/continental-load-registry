@@ -257,6 +257,40 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The machine-readable file preserves raw claims and source dates. The interactive map overlays all 127 project-level records; their geometry is county/town/site-area display geography. Empty capacity fields mean the cited public record did not publish a usable project MW value; the registry does not infer one from unrelated generation, tariff or IRP figures.</p>
   </section>
 
+  <!-- ============ PROJECT-LEVEL RECORD BROWSER ============ -->
+  <section id="projectLevelTable" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Machine-readable project universe</p>
+        <h2 class="font-serif-display text-xl mt-1">Browse all project-level records</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">All individually extracted records are searchable here. The browser preserves record type, location, provider, status, raw capacity claims and primary/secondary source links without adding them to the core queue total.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/project_level_extractions.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Raw JSON</a>
+        <a href="data/project_level_extractions.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">CSV</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5">
+      <input id="projectSearch" type="search" placeholder="Search project, customer, provider, queue ID, county, permit…" class="rounded-md px-3 py-2 text-sm" aria-label="Search project-level records">
+      <select id="projectTypeFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter project-level record type"><option value="">All record types</option></select>
+      <select id="projectJurisdictionFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter project-level jurisdiction"><option value="">All jurisdictions</option></select>
+    </div>
+    <div id="projectBrowserStatus" class="text-xs mt-3" style="color:var(--ink-faint);">Loading project-level records…</div>
+    <div class="scroll-x mt-3">
+      <table class="w-full text-xs min-w-[1150px]">
+        <thead><tr>
+          <th class="px-3 py-2">Project / record</th><th class="px-3 py-2">Type</th><th class="px-3 py-2">Jurisdiction</th><th class="px-3 py-2">Provider / customer</th><th class="px-3 py-2">Queue / permit</th><th class="px-3 py-2 text-right">Capacity</th><th class="px-3 py-2">Status</th><th class="px-3 py-2">Source</th>
+        </tr></thead>
+        <tbody id="projectBrowserBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);">
+      <button id="projectPrev" type="button" class="px-3 py-1.5 rounded-md border hairline">Previous</button>
+      <span id="projectPage">—</span>
+      <button id="projectNext" type="button" class="px-3 py-1.5 rounded-md border hairline">Next</button>
+    </div>
+  </section>
+
   <!-- ============ SUPPLEMENTAL PUBLIC LARGE-LOAD EVIDENCE ============ -->
   <section id="supplementalLargeLoad" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -904,6 +938,77 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeFacilit
 window.addEventListener('hashchange',openFacilityFromHash);
 openFacilityFromHash();
 
+/* ======================= PROJECT-LEVEL BROWSER ======================= */
+(function(){
+  const PAGE=25;
+  let records=[];
+  let filtered=[];
+  let page=0;
+  const byType=new Map();
+
+  function projectCapacity(r){
+    const claims=Array.isArray(r.capacity_claims)?r.capacity_claims:[];
+    if(!claims.length)return 'Not published';
+    return claims.map(function(x){
+      if(x.value_mw!=null)return String(x.value_mw)+' MW'+(x.qualifier?' · '+x.qualifier:'');
+      if(x.value_mva!=null)return String(x.value_mva)+' MVA'+(x.qualifier?' · '+x.qualifier:'');
+      return x.raw_value||'Reported value';
+    }).join(' / ');
+  }
+  function projectQueuePermit(r){return [r.queue_id,r.permit_number].filter(Boolean).join(' · ')||'—';}
+  function projectSource(r){return r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open</a>':'—';}
+  function render(){
+    const body=document.getElementById('projectBrowserBody');
+    const start=page*PAGE;
+    const rows=filtered.slice(start,start+PAGE);
+    body.innerHTML=rows.length?rows.map(function(r){
+      const type=(r.evidence_type||'unknown').replaceAll('_',' ');
+      const provider=r.utility_or_provider||'—';
+      const cust=r.customer_or_developer?'<div>'+escapeHtml(r.customer_or_developer)+'</div>':'';
+      return '<tr><td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(r.project_name||'(unnamed record)')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(r.id)+'</div></td>'+
+        '<td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px]">'+escapeHtml(type)+'</span></td>'+
+        '<td class="px-3 py-2.5">'+escapeHtml(r.jurisdiction||'—')+'<div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(r.location||r.county_or_zone||'')+'</div></td>'+
+        '<td class="px-3 py-2.5">'+escapeHtml(provider)+cust+'</td>'+
+        '<td class="px-3 py-2.5 mono">'+escapeHtml(projectQueuePermit(r))+'</td>'+
+        '<td class="px-3 py-2.5 text-right">'+escapeHtml(projectCapacity(r))+'</td>'+
+        '<td class="px-3 py-2.5">'+escapeHtml(r.status||'UNKNOWN')+'</td>'+
+        '<td class="px-3 py-2.5">'+projectSource(r)+'</td></tr>';
+    }).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No project records match.</td></tr>';
+    const pages=Math.max(1,Math.ceil(filtered.length/PAGE));
+    document.getElementById('projectPage').textContent='Page '+(page+1)+' of '+pages+' · '+filtered.length.toLocaleString()+' of '+records.length.toLocaleString()+' records';
+    document.getElementById('projectPrev').disabled=page===0;
+    document.getElementById('projectNext').disabled=page>=pages-1;
+    document.getElementById('projectBrowserStatus').textContent=records.length.toLocaleString()+' records loaded · '+filtered.length.toLocaleString()+' match current filters';
+  }
+  function apply(){
+    const q=document.getElementById('projectSearch').value.trim().toLowerCase();
+    const type=document.getElementById('projectTypeFilter').value;
+    const jurisdiction=document.getElementById('projectJurisdictionFilter').value;
+    filtered=records.filter(function(r){
+      if(type && r.evidence_type!==type)return false;
+      if(jurisdiction && r.jurisdiction!==jurisdiction)return false;
+      if(q){
+        const claims=Array.isArray(r.capacity_claims)?JSON.stringify(r.capacity_claims):'';
+        const hay=[r.id,r.project_name,r.customer_or_developer,r.utility_or_provider,r.jurisdiction,r.location,r.county_or_zone,r.queue_id,r.permit_number,r.status,claims,r.source_scope].join(' ').toLowerCase();
+        if(!hay.includes(q))return false;
+      }
+      return true;
+    });
+    page=0;render();
+  }
+  fetch('data/project_level_extractions.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('project extraction unavailable');return res.json();}).then(function(payload){
+    records=Array.isArray(payload.records)?payload.records:[];
+    const typeSel=document.getElementById('projectTypeFilter'),jurSel=document.getElementById('projectJurisdictionFilter');
+    Array.from(new Set(records.map(r=>r.evidence_type).filter(Boolean))).sort().forEach(function(v){const o=document.createElement('option');o.value=v;o.textContent=v.replaceAll('_',' ');typeSel.appendChild(o);});
+    Array.from(new Set(records.map(r=>r.jurisdiction).filter(Boolean))).sort().forEach(function(v){const o=document.createElement('option');o.value=v;o.textContent=v;jurSel.appendChild(o);});
+    document.getElementById('projectSearch').addEventListener('input',apply);
+    typeSel.addEventListener('change',apply);jurSel.addEventListener('change',apply);
+    document.getElementById('projectPrev').addEventListener('click',function(){if(page>0){page--;render();}});
+    document.getElementById('projectNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(filtered.length/PAGE));if(page<pages-1){page++;render();}});
+    apply();
+  }).catch(function(err){document.getElementById('projectBrowserStatus').textContent='Project browser unavailable: '+(err.message||'unknown error');});
+})();
+ 
 /* ======================= FILINGS ======================= */
 (function(){
   const list = document.getElementById('filingsList');
