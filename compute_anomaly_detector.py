@@ -293,7 +293,7 @@ class ComputeScenario:
         racks = p_it_kw / self.kw_per_rack
         gpus = racks * self.gpus_per_rack
         run_seconds = run_days * 86400
-        flops = gpus * (self.chip_tflops_fp8 * 1e12) * run_seconds * self.mfu
+        flops = gpus * (self.chip_tflops_baseline * 1e12) * run_seconds * self.mfu
         return {"racks": racks, "gpus": gpus, "run_flops": flops}
 
 
@@ -305,8 +305,8 @@ class ComputeScenario:
 # higher PUE-efficiency) -- see module docstring for how close together
 # these land at exactly 100MW despite the spread in inputs.
 REFERENCE_SCENARIO = ComputeScenario("reference (as specified)", pue=1.25, kw_per_rack=35.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.40)
-LOW_SCENARIO = ComputeScenario("low (air-cooled, lower utilization)", pue=1.4, kw_per_rack=20.0, gpus_per_rack=8, chip_tflops_fp8=1979.0, mfu=0.25)
-HIGH_SCENARIO = ComputeScenario("high (liquid-cooled, high utilization)", pue=1.15, kw_per_rack=50.0, gpus_per_rack=8, chip_tflops_fp8=1979.0, mfu=0.50)
+LOW_SCENARIO = ComputeScenario("low (air-cooled, lower utilization)", pue=1.4, kw_per_rack=20.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.25)
+HIGH_SCENARIO = ComputeScenario("high (liquid-cooled, high utilization)", pue=1.15, kw_per_rack=50.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.50)
 
 FLOP_REPORTING_THRESHOLD = 1.0e26
 

@@ -144,10 +144,13 @@ def validate_source_invariants() -> None:
     compute = COMPUTE.read_text(encoding="utf-8")
     index = INDEX.read_text(encoding="utf-8")
 
-    reject_pos = ingest.find('reject_keywords =')
-    active_pos = ingest.find('fuzzy_map =')
-    inactive_pos = ingest.find('"INACTIVE"')
-    if reject_pos < 0 or inactive_pos < 0 or active_pos < 0 or not inactive_pos < active_pos:
+    status_start = ingest.find("def classify_status")
+    status_end = ingest.find("_OTHER_KEYWORD_RE", status_start)
+    status_block = ingest[status_start:status_end if status_end >= 0 else None]
+    reject_pos = status_block.find("reject_keywords =")
+    active_pos = status_block.find("fuzzy_map =")
+    inactive_pos = status_block.find('"INACTIVE"')
+    if reject_pos < 0 or inactive_pos < 0 or active_pos < 0 or not reject_pos < active_pos or not inactive_pos < active_pos:
         raise AssertionError("Status exclusion gate or INACTIVE guard is not placed before accept matching")
 
     if "_OTHER_KEYWORD_RE = re.compile(r\"\\bother\\b(?!\\s+than)\")" not in ingest:
@@ -204,7 +207,7 @@ def build_summary(rows: list[dict[str, Any]], epoch: dict[str, Any]) -> dict[str
             "domain_3_entity_resolution": {
                 "tier_counts": tier_counts,
                 "review_priority_count": sum(1 for r in rows if r.get("flag")),
-                "wratiow_thresholds": {"auto_confirm": 88.0, "gray_zone_floor": 70.0},
+                "wratio_thresholds": {"auto_confirm": 88.0, "gray_zone_floor": 70.0},
                 "storage_tier_isolated": True
             },
             "domain_4_interface": {
