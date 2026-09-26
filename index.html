@@ -223,6 +223,41 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The gap analysis is deliberately conservative. A jurisdiction-only record means the correct queue/connection family is known, while the physical campus has not yet been tied to a specific public queue row. Operational sites may instead be represented by service contracts, regulatory dockets or completed connection records.</p>
   </section>
 
+  <!-- ============ EPOCH CONNECTION RESEARCH TARGETS ============ -->
+  <section id="epochConnectionTargets" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">93-site Track 3 research queue</p>
+        <h2 class="font-serif-display text-xl mt-1">Epoch AI connection research targets</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Every canonical Epoch AI site has a machine-readable connection-research target: jurisdiction, current site-specific evidence state, queue ID when verified, source family to search next, and the exact next research action.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/epoch_connection_research_targets.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open target JSON</a>
+        <a href="data/epoch_connection_research_targets.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download target CSV</a>
+        <a href="data/external/epoch_ai/queue_gap_analysis.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Raw 93-site gap CSV</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Canonical Epoch sites</p></div>
+      <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Site-specific queue IDs verified</p></div>
+      <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Public service/contract matches</p></div>
+      <div class="p-4"><p class="mono text-xl">72</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Jurisdiction-only U.S. gaps</p></div>
+      <div class="p-4"><p class="mono text-xl">16</p><p class="text-xs mt-1" style="color:var(--ink-faint);">International connection targets</p></div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[1100px]">
+        <thead><tr><th class="px-3 py-2 text-left">Research state</th><th class="px-3 py-2 text-right">Sites</th><th class="px-3 py-2 text-left">Meaning</th><th class="px-3 py-2 text-left">Map treatment</th></tr></thead>
+        <tbody>
+          <tr><td class="px-3 py-2">Site-specific queue verified</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2">Public queue ID is tied to the Epoch site identity</td><td class="px-3 py-2">Verified target ring</td></tr>
+          <tr><td class="px-3 py-2">Public service / contract verified</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2">Public utility/regulatory evidence exists without a verified queue ID</td><td class="px-3 py-2">Evidence target ring</td></tr>
+          <tr><td class="px-3 py-2">Public customer planning record</td><td class="px-3 py-2 text-right">1</td><td class="px-3 py-2">Named public customer/service planning record exists</td><td class="px-3 py-2">Planning target ring</td></tr>
+          <tr><td class="px-3 py-2">Queue jurisdiction mapped — site ID not verified</td><td class="px-3 py-2 text-right">72</td><td class="px-3 py-2">Correct grid/connection system is identified, but no defensible site-specific public ID has been established</td><td class="px-3 py-2">Dashed target ring</td></tr>
+          <tr><td class="px-3 py-2">Country connection system mapped</td><td class="px-3 py-2 text-right">16</td><td class="px-3 py-2">International site has a named connection system but no site-level public queue ID</td><td class="px-3 py-2">Dashed target ring</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
