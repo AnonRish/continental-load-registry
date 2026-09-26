@@ -122,9 +122,9 @@ jobs:
           assert scope["definitions"]["additional_known_miso"]["records"] == 83
           assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
-          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 47
+          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 41
           assert scope["definitions"]["project_level_extractions"]["records"] == 213
-          assert len(supplemental["records"]) == 47
+          assert len(supplemental["records"]) == 41
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
           assert projects["record_count"] == len(projects["records"]) == 213
           assert len({r["id"] for r in projects["records"]}) == 213
@@ -206,7 +206,7 @@ jobs:
               assert len(list(_csv.DictReader(fh))) == 93
           assert len(epoch_map["records"]) == 93
           aggregate_map = json.loads(Path("data/supplemental_aggregate_map.json").read_text(encoding="utf-8"))
-          assert aggregate_map["record_count"] == 47 and aggregate_map["mapped_count"] == 47
+          assert aggregate_map["record_count"] == 55 and aggregate_map["mapped_count"] == 55
           pjm_history = json.loads(Path("data/pjm_large_load_submission_history.json").read_text(encoding="utf-8"))
           assert len(pjm_history["records"]) == 28
           project_map = json.loads(Path("data/project_level_map.json").read_text(encoding="utf-8"))
