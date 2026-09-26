@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 41,
+    "evidence_found": 44,
     "site_queue_ids": 2,
-    "pending": 52
+    "pending": 49
   },
   "records": [
     {
@@ -98,17 +98,28 @@
       "existing_queue_crosswalk": null,
       "site_level_evidence": [
         {
+          "type": "site_specific_utility_capacity_record",
+          "authority": "AEP Ohio",
+          "record_name": "Meta Prometheus public utility/facility record",
+          "source_url": "https://www.datacenter.fyi/utility/american-electric-power",
+          "source_kind": "public-record facility index",
+          "confidence": "medium",
+          "capacity_mw": 695,
+          "capacity_kind": "reported facility capacity",
+          "basis": "The AEP public-record index lists Meta Prometheus in Ohio and associates it with AEP; a reported 695 MW facility capacity is retained as source-specific facility data, not equated with queue capacity or measured load."
+        },
+        {
           "type": "site_specific_utility_relationship",
           "authority": "AEP Ohio",
-          "record_name": "Meta New Albany / Prometheus utility relationship",
+          "record_name": "Meta Prometheus grid relationship",
           "source_url": "https://registry.deploy.report/datacenters/facilities/meta-ohio-new-albany",
           "source_kind": "secondary sourced facility registry",
           "confidence": "medium",
-          "basis": "The facility record identifies AEP Ohio as the grid-interconnection utility for the Meta New Albany campus and places it within PJM. This is utility evidence, not a queue ID."
+          "basis": "The facility record identifies AEP Ohio as the grid-interconnection utility for the Meta New Albany campus. The record is retained as corroborating utility evidence."
         }
       ],
       "site_level_evidence_status": "evidence_found",
-      "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM records for the Meta Prometheus site-specific interconnection/service case."
+      "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate."
     },
     {
       "epoch_id": "EPOCH-2c2e40ddb178da3e",
@@ -166,9 +177,19 @@
       "country": "United States",
       "state_province": "OH",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "AEP Ohio",
+          "record_name": "Google Columbus utility relationship",
+          "source_url": "https://datacentersexposed.com/facilities/google-columbus",
+          "source_kind": "public-source facility registry",
+          "confidence": "medium",
+          "basis": "The facility record identifies Google Columbus at 5076 S High Street in Columbus, Ohio and associates it with AEP Ohio and PJM. This is a facility/utility relationship, not a queue ID."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search AEP Ohio, PUCO and PJM records for the site-specific service/interconnection record and reconcile multiple campus/building addresses."
     },
     {
       "epoch_id": "EPOCH-5b353d56a567a70b",
@@ -354,9 +375,21 @@
       "country": "United States",
       "state_province": "VA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_grid_facility_record",
+          "authority": "Dominion Energy Virginia",
+          "record_name": "Google Bristow public utility/facility record",
+          "source_url": "https://www.datacenter.fyi/state/va/bristow",
+          "source_kind": "public-record facility registry",
+          "confidence": "medium",
+          "capacity_mw": 167.904,
+          "capacity_kind": "facility/project capacity reported in public-record index",
+          "basis": "The public Bristow facility index associates a Google project with Dominion Energy and reports 167.904 MW; the record is treated as utility/facility evidence rather than a verified transmission queue match."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case and original capacity source."
     },
     {
       "epoch_id": "EPOCH-93a4aa4fa40d40ca",
@@ -424,9 +457,19 @@
       "country": "United States",
       "state_province": "OH",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_facility_record",
+          "authority": "Amazon Web Services",
+          "record_name": "AWS New Albany / Beech Road campus",
+          "source_url": "https://suedatacenters.org/data-centers/aws-beech-road-new-albany-oh",
+          "source_kind": "public-source facility registry",
+          "confidence": "medium",
+          "basis": "The public facility record identifies the AWS New Albany Beech/Miller Road campus in New Albany, Ohio and provides exact coordinates plus a construction status. It does not establish an electrical service or queue ID, so none is inferred."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search AEP Ohio, PUCO, PJM and New Albany/Plain Township permitting records for the electrical service and interconnection record for this campus."
     },
     {
       "epoch_id": "EPOCH-4eeccbee73808216",
