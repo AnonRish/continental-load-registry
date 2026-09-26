@@ -16,7 +16,7 @@ from typing import Any
 import pandas as pd
 import requests
 
-SOURCE_URL = "https://www.caiso.com/documents/publicqueuereport.xlsx"
+SOURCE_URL = "http://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx"
 SHEETS = {
     "Grid GenerationQueue": "active",
     "Completed Generation Projects": "completed",
@@ -129,10 +129,17 @@ def build(payload: bytes) -> dict[str, Any]:
     sheets = pd.read_excel(io.BytesIO(payload), skiprows=3, sheet_name=None)
     records: list[dict[str, Any]] = []
     sheet_counts: dict[str, int] = {}
+    # CAISO's public workbook includes a legend footer on each relevant sheet.
+    trim_rows = {"Grid GenerationQueue": 8, "Completed Generation Projects": 2, "Withdrawn Generation Projects": 2}
     for sheet_name, status in SHEETS.items():
         if sheet_name not in sheets:
             raise RuntimeError(f"Expected CAISO sheet missing: {sheet_name}")
-        rows = normalize_sheet(sheets[sheet_name], sheet_name)
+        sheet = sheets[sheet_name]
+        if len(sheet) > trim_rows.get(sheet_name, 0):
+            sheet = sheet.iloc[:-trim_rows.get(sheet_name, 0)]
+        if sheet_name == "Withdrawn Generation Projects" and "Project Name - Confidential" in sheet.columns:
+            sheet = sheet.rename(columns={"Project Name - Confidential": "Project Name"})
+        rows = normalize_sheet(sheet, sheet_name)
         records.extend(rows)
         sheet_counts[sheet_name] = len(rows)
     captured_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
