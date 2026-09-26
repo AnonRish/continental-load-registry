@@ -211,66 +211,34 @@ These measures are **not summed** into a single "total capacity" because they ha
 
 ### Project-level extraction
 
-The repository now has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **46 individually identifiable records** extracted from public source material: **33 Virginia DEQ issued air-permit records, 8 AEP named customer/project records, 2 EEI-listed utility/customer projects, and 3 named utility-service/contract/distribution projects** (Georgia Power/Georgia PSC Project Camellia, Entergy/Hut 8 River Bend, and Alectra Vaughan MTS #6).
+The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **154 individually identifiable records** extracted from public source material:
 
-This layer is deliberately **not additive** to the 1,558-row core queue table. Permit records are identity/regulatory evidence and do not acquire an invented MW value. AEP's source marks most named project loads as not public, so those capacity fields remain empty. Where primary sources disagree or measure different things, the raw observations are retained separately: Project Camellia has 3,200 MW and 3,210 MW dated primary claims; Vaughan MTS #6 has 108 MVA and 125 MVA dated primary claims; River Bend has 330 MW initial utility capacity, 245 MW critical IT load and up to 1,000 MW potential utility capacity.
+- **60 BPA large-load request records**, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed.
+- **33 Virginia DEQ issued-air permit records**, with permit number, named site/project, county and issuance date.
+- **28 AESO Data Load projects**, with project IDs, project names, planning-area/town identities and public DTS/contract-capacity values.
+- **12 NYISO Load Project records**, with queue ID, project/developer, MW, county and POI/site information where publicly exposed.
+- **6 IESO load/increase-load application records**, including applicant, project name, zone, MW and target date.
+- **8 AEP named customer/project records**, **2 EEI-listed projects**, **2 ISO-NE forecast project records**, and **3 named utility/service/contract/distribution records** (Project Camellia, River Bend AI campus, and Vaughan MTS #6).
 
-The extraction work also covers ERCOT Batch Zero at the **public-process/source layer**. ERCOT publishes the Batch Zero forms and reference material for entities at or above 75 MW, but the public page does not enumerate completed individual responses; the registry therefore does not fabricate Batch Zero facility rows from illustrative examples. The Georgia PSC contract filing's public cover letter was extracted for the 3,210 MW contract figure; the underlying ZIP attachment remains a source lead rather than an invented facility table because the attachment itself is not exposed as structured project data in the accessible source. The Ontario CCIM is retained as a grid-capacity context layer; its current public interface is an interactive capacity map rather than a downloadable customer-level facility file, so underlying points are not represented as project rows.
+The project layer is deliberately **not additive** to the 1,558-row core queue table or the 1,641-record expanded-known scope. Multiple dated capacity claims inside one project are retained separately. No MW is inferred when a utility does not publish the load.
 
-### Facility research records
+The interactive map now overlays **all 154 project-level records**. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **17 aggregate utility/regulatory footprints**, displayed as shaded areas and labeled as non-facility evidence.
 
-Every row visible in the dashboard has a corresponding JSON research record
-under `data/facility_records/`. The record schema is deliberately broader than
-the table display and includes the union of fields available from the registry
-and enrichment pipeline:
+The Epoch AI map layer contains **93 frontier-site observations** and is backed by the canonical `data/external/epoch_ai/site_level_connection_evidence.json` crosswalk. Of the 93 sites, **59 currently have site-level grid evidence records and 34 remain pending site-specific grid-record research**. The map popups expose the evidence status and available source links.
 
-`queue_id`, `rto_region`, `state_province`, `county_or_zone`,
-`poi_substation`, `capacity_mw`, `projected_date`, `status`, `project_name`,
-`developer_entity`, `raw_fuel_technology`, `entity_category`,
-`matched_public_entity`, `entity_match_score`, `load_type_tier`,
-`transmission_owner`, `in_known_high_density_zone`,
-`project_name_keyword_hits`, `reached_ia_stage`, low/reference/high GPU
-estimates, low/reference/high 90-day FLOPs estimates,
-`clears_1e26_flops_all_scenarios`, `review_priority`, and `review_reason`.
+The remaining hard limits are explicit rather than hidden. MISO's 83 additional >=100 MW requests remain outside the row-level table because the captured public response lacks the state/location fields needed to make defensible site rows. ERCOT's Batch Zero process is public, but completed RIOO responses are not exposed as a public per-project table. PJM's public Load Analysis Subcommittee materials provide a dated utility-submission history, but they do not establish a public per-load-request database. SPP's HILL process is public without a customer-level public load list. ISO-NE's forecast material names large-load projects but does not publish a complete project-specific study-stage history.
 
-The research record also contains:
+### PJM large-load submission history
 
-- **Retained source-field extract:** when the repository has a raw-field CSV
-  row, the record preserves those source columns and their values exactly as
-  represented in that retained CSV.
-- **Source and capture metadata:** publisher, official source URL, optional
-  publisher page, capture date and precision, source scope, and snapshot hash
-  where one exists.
-- **Provenance trail:** source -> retained extract -> `ingest_grid_queues.py`
-  normalization -> `compute_anomaly_detector.py` enrichment -> dashboard /
-  research-record publication.
-- **Explicit missingness:** a field that was not published or whose original
-  source bytes were not retained stays null / unavailable. The builder never
-  reconstructs a normalized value and labels it as an original publisher
-  value.
+`data/pjm_large_load_submission_history.json` and its CSV companion preserve **28 public 2025–2026 PJM Load Analysis Subcommittee material entries**, including the named utility large-load/data-center submission trail from the September 2025 and September 2026 meetings. These are document/evidence records, not unique facilities or additive MW rows.
 
-This distinction matters. **1,389 of the 1,558 records currently have a
-retained ingest-level source-field row** in the repository (PJM, ERCOT, MISO,
-CAISO, NYISO, ISO-NE, and AESO). **169 records (SPP + IESO) do not have the
-original source row retained.** The per-record source metadata still links to
-the relevant official publisher source.
+### CAISO historical queue coverage
 
-The current committed enriched CSV covers **751 records (PJM + ERCOT)**.
-Other RTO records still receive the complete normalized schema, but enrichment
-fields that were not retained for that source are left unavailable; the
-low/high compute-range fields are recomputed from normalized MW using the
-documented scenario constants and marked in the record provenance.
+`data/caiso_cluster_history.json` and its CSV companion preserve a historical generator-interconnection series covering Cluster 8-and-prior through Cluster 14: **435 projects / 121.204 GW** in the historical series. A separately published Cluster 15 energy-only subset is recorded at **48 projects / 14.421 GW**. The current full CAISO Public Queue Report is linked from the dashboard as the source for future complete row-level refreshes; historical series values are kept separate and non-additive.
 
-To verify the research-record layer independently:
+### Supplemental public large-load evidence
 
-```bash
-python build_facility_records.py --check
-```
-
-The monthly refresh runs this same check after embedding the registry, so the
-record count must continue to match the published dashboard before the commit
-step.
-
+The supplemental evidence file now contains **41 source/evidence units**. The website provides a searchable browser for all of them. These include MISO's unlocated requests, utility pipelines, regulatory aggregates, planning forecasts, connection/process sources, permit inventories, ERCOT Batch Zero source material and non-RTO utility evidence. The measures are not summed because their populations, dates, units and overlap relationships differ.
 
 ## Regulatory filings section
 
