@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 56,
+    "evidence_found": 59,
     "site_queue_ids": 2,
-    "pending": 37
+    "pending": 34
   },
   "records": [
     {
@@ -881,9 +881,20 @@
       "country": "United Kingdom",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "epoch_id": "EPOCH-a2c9f0846296fe65",
+          "type": "site_specific_energy_contract",
+          "authority": "Shell Energy Europe Limited / Google",
+          "record_name": "Google Waltham Cross 24/7 carbon-free energy management agreement",
+          "source_url": "https://www.datacenters.google/locations/waltham-cross/",
+          "source_kind": "official Google facility disclosure",
+          "confidence": "high",
+          "basis": "Google's Waltham Cross facility page says Google selected Shell Energy Europe Limited as its 24/7 Carbon-Free Energy Manager in the UK and describes the arrangement as contributing to grid stability and the energy transition. This is energy-contract evidence, not a utility interconnection record."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier."
     },
     {
       "epoch_id": "EPOCH-a286a89bd1c1b6e7",
@@ -981,9 +992,20 @@
       "country": "United States",
       "state_province": "ND",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "epoch_id": "EPOCH-768183e4de6062d2",
+          "type": "site_specific_compute_tenancy",
+          "authority": "CoreWeave / Applied Digital",
+          "record_name": "CoreWeave Ellendale Campus 250 MW datacenter leases",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1144879/000164117225013199/form8-k.htm",
+          "source_kind": "SEC-filed definitive agreement",
+          "confidence": "high",
+          "basis": "Applied Digital's May 28, 2025 SEC filing says subsidiaries entered leases with CoreWeave to deliver up to an aggregate 250 MW of infrastructure at the 400 MW Ellendale, North Dakota campus, covering Building 2 (100 MW) and Building 3 (150 MW). This establishes a site-specific compute-tenant/capacity contract, not a utility connection or measured load."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the serving utility, North Dakota regulatory records, MISO/SPP-relevant records and site permitting sources for the electrical service/interconnection record associated with the leased compute capacity."
     },
     {
       "epoch_id": "EPOCH-4b5df4f52274f2ba",
@@ -1621,9 +1643,20 @@
       "country": "United States",
       "state_province": "UT",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "epoch_id": "EPOCH-4b4d686b6c457a68",
+          "type": "site_specific_utility_relationship",
+          "authority": "Rocky Mountain Power",
+          "record_name": "QTS Eagle Mountain serving-utility relationship",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut",
+          "source_kind": "secondary sourced facility registry",
+          "confidence": "medium",
+          "basis": "DEPLOY identifies Rocky Mountain Power as the serving utility for QTS's Eagle Mountain facility in Utah. The QTS facility record independently states it is working directly with local utilities on power needs and that QTS will pay for project energy infrastructure."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record."
     }
   ],
   "record_count": 93
