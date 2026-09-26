@@ -100,8 +100,8 @@ jobs:
           assert len(supplemental["records"]) == 47
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
           assert projects["record_count"] == len(projects["records"]) == 199
-          assert len({r["id"] for r in projects["records"]}) == 185
-          assert len(projects["sources"]) == 13
+          assert len({r["id"] for r in projects["records"]}) == 199
+          assert len(projects["sources"]) == 15
           source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
           assert source_counts["VA-DEQ"] == 33
           assert source_counts["BPA-LARGE-LOAD"] == 60
