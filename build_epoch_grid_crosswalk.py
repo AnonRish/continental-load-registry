@@ -31,10 +31,10 @@ STATE_BY_SITE = {
     # Oklahoma
     "Google Pryor (North)":"OK","CoreWeave Muskogee OK":"OK",
     # Ohio
-    "Meta Prometheus":"OH","Google Columbus":"OH","Google New Albany":"OH","Google Lancaster":"OH",
+    "Meta Prometheus":"OH","Google Columbus":"OH","Google New Albany":"OH","AWS New Albany":"OH","Google Lancaster":"OH",
     "Meta Bowling Green":"OH","OpenAI Stargate Lordstown":"OH",
     # Texas
-    "OpenAI Stargate Abilene":"TX","CoreWeave Denton TX":"TX","Meta Temple":"TX","Coreweave Helios":"TX",
+    "OpenAI Stargate Abilene":"TX","CoreWeave Denton TX":"TX","Meta Temple":"TX","Coreweave Helios":"TX","Anthropic Barber Lake":"TX",
     "Google Midlothian":"TX","Google Red Oak":"TX","Microsoft SAT40":"TX","Microsoft SAT14":"TX",
     "Vantage TX1":"TX","Crusoe Abilene Expansion":"TX","Goodnight":"TX","OpenAI Stargate Shackelford":"TX",
     # Wisconsin
@@ -82,6 +82,8 @@ STATE_BY_SITE = {
     "Microsoft-Nebius New Jersey":"NJ",
     # Michigan
     "OpenAI Stargate Michigan":"MI",
+    # Oregon
+    "Google The Dalles":"OR","Meta-QTS Hillsboro 2":"OR",
 }
 
 RTO = {
