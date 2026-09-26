@@ -228,7 +228,8 @@ def main():
                 "source_type":site.get("evidence_type",source_type),
                 "source_url":site.get("evidence_url",source_url),"source_date":"2026-09-26",
                 "match_basis":site.get("basis",f"State {st} is assigned to the {queue_system} queue/connection jurisdiction; this establishes coverage, not a site-specific queue ID."),
-                "confidence":"high" if site else "jurisdiction"
+                "confidence":"high" if site else "jurisdiction",
+                "site_level_public_evidence": SITE_LEVEL_EVIDENCE.get(name)
             }
         else:
             queue_system,source_type=INTERNATIONAL.get(country,(f"{country} grid connection process","country-level connection system"))
@@ -240,7 +241,8 @@ def main():
                 "site_specific_queue_name":None,"site_specific_queue_capacity_mw":None,
                 "source_type":source_type,"source_url":None,"source_date":"2026-09-26",
                 "match_basis":"Epoch site is outside the current U.S./Canada nine-market registry geography; a national/utility connection system is recorded as the relevant external jurisdiction.",
-                "confidence":"jurisdiction"
+                "confidence":"jurisdiction",
+                "site_level_public_evidence": SITE_LEVEL_EVIDENCE.get(name)
             }
         records.append(rec)
 
@@ -267,12 +269,14 @@ def main():
             "source_date":g["source_date"],
             "match_basis":g["match_basis"],
             "confidence":g["confidence"],
+            "site_level_public_evidence":g.get("site_level_public_evidence"),
         }
     reg["grid_crosswalk_summary"]={
         "all_epoch_sites_have_jurisdiction":True,
         "sites_with_site_specific_queue_id":sum(1 for r in records if r["site_specific_queue_id"]),
         "sites_with_public_service_or_planning_record":sum(1 for r in records if r["site_record_status"] in {"public_service_contract_verified","public_customer_planning_record"}),
         "sites_with_queue_jurisdiction_only":sum(1 for r in records if r["site_record_status"]=="queue_jurisdiction_mapped_site_id_not_yet_verified"),
+        "sites_with_site_level_public_evidence":sum(1 for r in records if r.get("site_level_public_evidence")),
         "sites_outside_current_registry_geography":sum(1 for r in records if r["queue_scope_status"]=="outside_registry_geography"),
         "as_of":"2026-09-26"
     }
