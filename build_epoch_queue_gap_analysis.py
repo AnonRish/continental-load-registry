@@ -32,6 +32,10 @@ def main():
     reg=json.loads(REG.read_text(encoding="utf-8"))
     if len(cross["records"])!=93 or len(reg["records"])!=93:
         raise SystemExit("Expected 93 Epoch records in crosswalk and registry")
+    if not all(r.get("epoch_id") for r in cross["records"]):
+        raise SystemExit("Epoch crosswalk records must carry epoch_id")
+    if len({r["epoch_id"] for r in cross["records"]}) != 93:
+        raise SystemExit("Epoch crosswalk epoch_id values must be unique")
     by_name={r["normalized"]["name"]:r for r in reg["records"]}
     rows=[]
     for r in cross["records"]:
@@ -56,7 +60,7 @@ def main():
             "site_specific_queue_id":r["site_specific_queue_id"] or "",
             "site_specific_queue_name":r["site_specific_queue_name"] or "",
             "site_specific_capacity_mw":r["site_specific_queue_capacity_mw"] if r["site_specific_queue_capacity_mw"] is not None else "",
-            "primary_source_url":r["queue_source_url"] or r["source_url"] or "",
+            "primary_source_url":r.get("queue_source_url") or r.get("source_url") or "",
             "source_type":r["source_type"] or "","source_date":r["source_date"] or "",
             "next_research_sources":"; ".join(sources),
             "match_basis":r["match_basis"],"confidence":r["confidence"],"next_action":action

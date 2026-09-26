@@ -85,6 +85,7 @@ jobs:
           assert grid.get("all_sites_have_queue_or_connection_jurisdiction") is True
           gap = list(csv.DictReader((root/"queue_gap_analysis.csv").open("r", encoding="utf-8", newline="")))
           assert len(gap) == 93
+          assert all(row.get("epoch_id") for row in cw)
           ev = json.loads((root/"site_level_connection_evidence.json").read_text(encoding="utf-8"))
           assert ev["record_count"] == 93
           assert len(ev["records"]) == 93

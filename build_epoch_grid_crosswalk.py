@@ -9,7 +9,7 @@ A jurisdiction mapping is not a site-specific queue ID.
 """
 
 from __future__ import annotations
-import csv, json, re, sys
+import csv, json, re, sys, hashlib
 from pathlib import Path
 from datetime import date
 from typing import Any
@@ -241,7 +241,11 @@ def main():
             else:
                 queue_system,source_type,source_url=NON_RTO[st]
             status=site.get("record_status","queue_jurisdiction_mapped_site_id_not_yet_verified")
+            epoch_id = "EPOCH-" + hashlib.sha256(
+                (str(name) + "|" + str(address) + "|" + str(country)).encode("utf-8")
+            ).hexdigest()[:16]
             rec={
+                "epoch_id":epoch_id,
                 "epoch_name":name,"epoch_country":country,"epoch_address":address,"state_province":st,
                 "queue_or_connection_system":queue_system,"queue_scope_status":"within_registry_geography",
                 "site_record_status":status,"site_specific_queue_id":site.get("queue_id"),
@@ -255,7 +259,11 @@ def main():
         else:
             queue_system,source_type=INTERNATIONAL.get(country,(f"{country} grid connection process","country-level connection system"))
             status="outside_current_registry_geography"
+            epoch_id = "EPOCH-" + hashlib.sha256(
+                (str(name) + "|" + str(address) + "|" + str(country)).encode("utf-8")
+            ).hexdigest()[:16]
             rec={
+                "epoch_id":epoch_id,
                 "epoch_name":name,"epoch_country":country,"epoch_address":address,"state_province":"",
                 "queue_or_connection_system":queue_system,"queue_scope_status":"outside_registry_geography",
                 "site_record_status":"country_connection_system_mapped","site_specific_queue_id":None,
@@ -294,6 +302,7 @@ def main():
         }
     reg["grid_crosswalk_summary"]={
         "all_epoch_sites_have_jurisdiction":True,
+        "all_sites_have_queue_or_connection_jurisdiction":True,
         "sites_with_site_specific_queue_id":sum(1 for r in records if r["site_specific_queue_id"]),
         "sites_with_public_service_or_planning_record":sum(1 for r in records if r["site_record_status"] in {"public_service_contract_verified","public_customer_planning_record"}),
         "sites_with_queue_jurisdiction_only":sum(1 for r in records if r["site_record_status"]=="queue_jurisdiction_mapped_site_id_not_yet_verified"),
