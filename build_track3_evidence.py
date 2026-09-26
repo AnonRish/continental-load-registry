@@ -56,6 +56,10 @@ EXTERNAL_SOURCE_FILES = {
         "ai_chip_sales_organizations.csv",
         "ai_chip_sales_timelines_by_chip.csv",
     ],
+    "cooling": [
+        "data_center_chillers.csv",
+        "data_center_cooling_towers.csv",
+    ],
 }
 
 def external_snapshot_available(domain: str) -> bool:
