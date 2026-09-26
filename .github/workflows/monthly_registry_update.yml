@@ -130,6 +130,18 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Build facility research records
+        run: |
+          python build_facility_records.py \
+            --html index.html \
+            --raw data/registry_raw.csv \
+            --raw data/registry_raw_new5.csv \
+            --enriched data/computational_load_estimates.csv \
+            --source-manifest data/source_manifest.json \
+            --output-dir data/facility_records \
+            --capture-date "$SYNC_DATE" \
+            --check
+
       - name: Verify the regulatory PDF links are intact
         # index.html links both PDFs by bare filename, i.e. to the repository root.
         # The links must still be marked available; the files themselves are not
@@ -168,7 +180,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/registry_raw.csv data/computational_load_estimates.csv
+          git add index.html data/registry_raw.csv data/computational_load_estimates.csv data/source_manifest.json data/facility_records
           if git diff --cached --quiet; then
             echo "Registry unchanged; nothing to commit."
           else
