@@ -561,6 +561,48 @@
       "granularity": "utility source lead",
       "source_url": "https://substationscout.com/large-load-registry/",
       "notes": "Public secondary utility-queue cross-reference identifies Avista as receiving large-load/service requests. No uniform current aggregate is published in the cited public source, so no MW total is inferred."
+    },
+    {
+      "id": "PJM-DATA-CENTER-COMMITTED-HISTORY-2014-2025",
+      "jurisdiction": "US / PJM",
+      "provider": "PJM",
+      "evidence_type": "historical_data_center_committed_capacity_series",
+      "record_count": 47,
+      "capacity_mw": 243,
+      "threshold_mw": null,
+      "capture_date": "2025-05-09",
+      "additive_to_core_row_level": false,
+      "granularity": "historical PJM data-center participant/capacity series",
+      "source_url": "https://www.pjm.com/-/media/DotCom/committees-groups/workshops/llaw/2025/20250509/20250509-item-02---large-load-additions-workshop---presentation.pdf",
+      "notes": "PJM large-load workshop reports annual committed data-center capacity/participant counts. 2024/2025 delivery year: 47 participants and 243 MW Summer ICAP. Prior series in the same document: 2014/15 80 participants/179 MW; 2015/16 96/234; 2016/17 48/113; 2017/18 34/200; 2018/19 48/264; 2019/20 56/287; 2020/21 57/309; 2021/22 61/334; 2022/23 61/315; 2023/24 52/293. This is a historical market-participation series, not a facility queue."
+    },
+    {
+      "id": "ERCOT-LARGE-LOAD-410GW-2026-03-26",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT",
+      "evidence_type": "large_load_interconnection_pipeline",
+      "record_count": null,
+      "capacity_mw": 410618,
+      "threshold_mw": 75,
+      "capture_date": "2026-03-26",
+      "additive_to_core_row_level": false,
+      "granularity": "aggregate project-status pipeline",
+      "source_url": "https://www.ercot.com/files/docs/2026/04/01/ERCOT_LargeLoad_Update_April2026_B-C_-Hearing.pdf",
+      "notes": "ERCOT public presentation reports 410,618 MW of actual/projected large loads through 2030 as of March 26, 2026, with 355,830 MW (87.6%) shown as Data Center type. This is an aggregate status/forecast pipeline and is not added to the row-level 714-record generator-side registry."
+    },
+    {
+      "id": "MISO-EPR-HISTORY-2020-2026",
+      "jurisdiction": "MISO, US",
+      "provider": "MISO",
+      "evidence_type": "historical_large_load_epr_series",
+      "record_count": 28,
+      "capacity_mw": 13100,
+      "threshold_mw": null,
+      "capture_date": "2026-01-30",
+      "additive_to_core_row_level": false,
+      "granularity": "EPR annual aggregate series",
+      "source_url": "https://cdn.misoenergy.org/20251209%20System%20Planning%20Committee%20of%20the%20BOD%20Item%2004%20RI%20Transmission%20Evolution730301.pdf",
+      "notes": "MISO chart reports large-load additions supported by EPRs: 2020 0.1 GW / 2 projects; 2021 0.2 / 6; 2022 0.3 / 11; 2023 0.9 / 12; 2024 2.7 / 14; 2025 9.7 / 27; preliminary 2026 13.1 / 28. The 2026 preliminary figure is an aggregate planning measure, not an additional row population."
     }
   ],
   "record_count": 41
