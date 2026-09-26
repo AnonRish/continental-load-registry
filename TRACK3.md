@@ -22,11 +22,15 @@ As of 2026-09-26, the preserved 93-site Epoch universe has 59 sites with at leas
 
 The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 61 `SITE_LEVEL_EVIDENCE`, and 30 `PENDING_RESEARCH`. The 30 pending records are sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 30 current grid-connection gaps. The absence of a public record after a particular search is not treated as proof of absence.
 
+A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are retained for Google Arcola and Google Kansas City East; these are supporting infrastructure evidence, not direct thermal telemetry.
+
+The site-status model also tracks service/energy-contract evidence separately from grid-queue evidence, plus a distinct compute-tenancy domain. This prevents contracts and leases from being silently presented as queue IDs.
+
 A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are also retained for Google Arcola and Google Kansas City East; these support physical verification but are not thermal telemetry.
 
 ## Evidence domains
 
-Each Epoch site receives machine-readable status for site identity, construction history, chip inventory, grid/connection, actual power telemetry, remote sensing, cooling, transformer supply chain, chip ownership, chip users, and chip shipments.
+Each Epoch site receives machine-readable status for site identity, construction history, chip inventory, grid/connection, service/energy contracts, compute tenancy, actual power telemetry, remote sensing, cooling, transformer supply chain, chip ownership, chip users, and chip shipments.
 
 ## Build
 
