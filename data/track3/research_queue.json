@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "count": 47,
+  "count": 44,
   "records": [
     {
       "epoch_id": "EPOCH-04f65e1aee6c98ab",
@@ -121,66 +121,6 @@
       "state_province_source": "unavailable"
     },
     {
-      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
-      "site_name": "QTS Richmond 1",
-      "country": "United States",
-      "state_province": "VA",
-      "current_it_power_mw": 238,
-      "current_h100_equivalents": 242546.7407781708,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "UNKNOWN",
-          "basis": "No retained site-level chip-quantity rows."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "Cooling source snapshots may be available, but site-level cooling records are not yet joined into the site evidence graph."
-        },
-        "transformer_supply_chain": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "chip_ownership": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        },
-        "chip_users": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        },
-        "chip_shipments": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the Richmond 1 service/interconnection record; QTS's 238 MW is a facility-capacity statement, not a queue value.",
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "VA"
-    },
-    {
       "epoch_id": "EPOCH-6799460068cbed36",
       "site_name": "Google Kansas City East",
       "country": "United States",
@@ -237,6 +177,7 @@
       "next_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
+      "epoch_region_inferred_from_address": "MO",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -296,8 +237,8 @@
       "next_action": "Search OPPD, Nebraska Power Review Board and local permitting records for the Google Omaha service/interconnection record.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "NE"
+      "epoch_region_inferred_from_address": "NE",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-e06bc7faa8b1b187",
@@ -356,8 +297,8 @@
       "next_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "CT"
+      "epoch_region_inferred_from_address": "CT",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-052be5b551cd099b",
@@ -416,68 +357,8 @@
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the Richmond 2 service/interconnection record; QTS's 180 MW is a facility-capacity statement, not a queue value.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "VA"
-    },
-    {
-      "epoch_id": "EPOCH-40ccef8ef4236635",
-      "site_name": "Google The Dalles",
-      "country": "United States",
-      "state_province": "OR",
-      "current_it_power_mw": 154,
-      "current_h100_equivalents": 175341.0813542193,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records are retained."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "Cooling source snapshots may be available, but site-level cooling records are not yet joined into the site evidence graph."
-        },
-        "transformer_supply_chain": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "chip_ownership": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        },
-        "chip_users": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        },
-        "chip_shipments": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        }
-      },
-      "site_level_evidence_count": 0,
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "OR"
+      "epoch_region_inferred_from_address": "VA",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-02484a65a5dac16d",
@@ -536,8 +417,8 @@
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the Richmond 3 service/interconnection record; QTS's 240 MW is a facility-capacity statement, not a queue value.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "VA"
+      "epoch_region_inferred_from_address": "VA",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-14cecdb5956daea1",
@@ -596,8 +477,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "WY"
+      "epoch_region_inferred_from_address": "WY",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-4a87099a6d1e001f",
@@ -656,8 +537,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "MS"
+      "epoch_region_inferred_from_address": "MS",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-27e284efc1b1abc2",
@@ -716,68 +597,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "AL"
-    },
-    {
-      "epoch_id": "EPOCH-534376160415dc84",
-      "site_name": "Microsoft Project Osmium",
-      "country": "United States",
-      "state_province": "IA",
-      "current_it_power_mw": 190,
-      "current_h100_equivalents": 155634.15866599293,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records are retained."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "Cooling source snapshots may be available, but site-level cooling records are not yet joined into the site evidence graph."
-        },
-        "transformer_supply_chain": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository specifies this evidence stream but does not ingest its site-level measurements."
-        },
-        "chip_ownership": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        },
-        "chip_users": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        },
-        "chip_shipments": {
-          "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-          "basis": "A relevant external compute-accounting source is cataloged; it is not attributed to this site without a separate site-level linkage."
-        }
-      },
-      "site_level_evidence_count": 0,
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "IA"
+      "epoch_region_inferred_from_address": "AL",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-0bb0b996b7c96beb",
@@ -836,8 +657,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "UT"
+      "epoch_region_inferred_from_address": "UT",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-2b89e13933a04725",
@@ -896,6 +717,7 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
+      "epoch_region_inferred_from_address": "NV",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -955,8 +777,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "NE"
+      "epoch_region_inferred_from_address": "NE",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-a2c9f0846296fe65",
@@ -1133,8 +955,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "VA"
+      "epoch_region_inferred_from_address": "VA",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-02c050b6b554fadd",
@@ -1193,8 +1015,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "NM"
+      "epoch_region_inferred_from_address": "NM",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-768183e4de6062d2",
@@ -1253,8 +1075,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "ND"
+      "epoch_region_inferred_from_address": "ND",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-4b5df4f52274f2ba",
@@ -1313,8 +1135,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "NE"
+      "epoch_region_inferred_from_address": "NE",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-77e196fc5320fd70",
@@ -1432,8 +1254,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "VA"
+      "epoch_region_inferred_from_address": "VA",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-ea5d1ae5837aba5c",
@@ -1551,8 +1373,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "PA"
+      "epoch_region_inferred_from_address": "PA",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-7d9b5af0cce16f1c",
@@ -1611,8 +1433,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "SC"
+      "epoch_region_inferred_from_address": "SC",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-af62ae3440fe885a",
@@ -1730,8 +1552,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "NJ"
+      "epoch_region_inferred_from_address": "NJ",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-f48a533b01898dfd",
@@ -1967,6 +1789,7 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
+      "epoch_region_inferred_from_address": "AZ",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -2144,8 +1967,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "GA"
+      "epoch_region_inferred_from_address": "GA",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-f1a70be0079d215a",
@@ -2263,6 +2086,7 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
+      "epoch_region_inferred_from_address": "TX",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -2322,8 +2146,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "TX"
+      "epoch_region_inferred_from_address": "TX",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-dadec9d6ef7fca88",
@@ -2500,8 +2324,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "OH"
+      "epoch_region_inferred_from_address": "OH",
+      "state_province_source": "grid_crosswalk"
     },
     {
       "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
@@ -2560,6 +2384,7 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
+      "epoch_region_inferred_from_address": "TX",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -2619,6 +2444,7 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
+      "epoch_region_inferred_from_address": "NM",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -2737,6 +2563,7 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
+      "epoch_region_inferred_from_address": "WI",
       "state_province_source": "grid_crosswalk"
     },
     {
@@ -2796,8 +2623,8 @@
       "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records.",
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 0,
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "UT"
+      "epoch_region_inferred_from_address": "UT",
+      "state_province_source": "grid_crosswalk"
     }
   ],
   "semantics": "A pending record means the registry has not attached site-specific grid/service evidence yet; it does not mean the site lacks a connection.",
