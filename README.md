@@ -189,7 +189,17 @@ Current examples include:
 
 Additional utility layers now include APS's reported 19 GW uncommitted extra-large-customer queue, AEP's 69 GW of contracted load growth through 2030, AEP Ohio's approximately 12 GW of new contracted load through 2030, the planned 10 GW Piketon data-center campus, Ameren Missouri's up-to-2 GW demand-planning envelope, and PacifiCorp's ongoing tens-to-hundreds-of-MW large-customer request stream. These remain supplemental and are not added to the core total without project-level deduplication.
 
+The supplemental evidence file now contains **32 source/evidence units**; the additional ERCOT Batch Zero entry is a public-process source layer and does not add facilities or MW.
+
 These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
+
+### Project-level extraction
+
+The repository now has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **46 individually identifiable records** extracted from public source material: **33 Virginia DEQ issued air-permit records, 8 AEP named customer/project records, 2 EEI-listed utility/customer projects, and 3 named utility-service/contract/distribution projects** (Georgia Power/Georgia PSC Project Camellia, Entergy/Hut 8 River Bend, and Alectra Vaughan MTS #6).
+
+This layer is deliberately **not additive** to the 1,558-row core queue table. Permit records are identity/regulatory evidence and do not acquire an invented MW value. AEP's source marks most named project loads as not public, so those capacity fields remain empty. Where primary sources disagree or measure different things, the raw observations are retained separately: Project Camellia has 3,200 MW and 3,210 MW dated primary claims; Vaughan MTS #6 has 108 MVA and 125 MVA dated primary claims; River Bend has 330 MW initial utility capacity, 245 MW critical IT load and up to 1,000 MW potential utility capacity.
+
+The extraction work also covers ERCOT Batch Zero at the **public-process/source layer**. ERCOT publishes the Batch Zero forms and reference material for entities at or above 75 MW, but the public page does not enumerate completed individual responses; the registry therefore does not fabricate Batch Zero facility rows from illustrative examples. The Georgia PSC contract filing's public cover letter was extracted for the 3,210 MW contract figure; the underlying ZIP attachment remains a source lead rather than an invented facility table because the attachment itself is not exposed as structured project data in the accessible source. The Ontario CCIM is retained as a grid-capacity context layer; its current public interface is an interactive capacity map rather than a downloadable customer-level facility file, so underlying points are not represented as project rows.
 
 ### Facility research records
 
