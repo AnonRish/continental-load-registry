@@ -105,6 +105,9 @@ The project also produces:
 - `data/external/epoch_ai/queue_crosswalk.csv` -- geographic queue/connection jurisdiction for every Epoch site.
 - `data/external/epoch_ai/queue_gap_analysis.csv` -- the 93-site research worklist for closing remaining site-specific queue/connection gaps.
 - `data/external/epoch_ai/queue_gap_analysis.json` -- machine-readable version of the same worklist.
+`data/track3/` -- canonical Track 3 site-status, evidence-record, research-queue, observation-queue, and summary artifacts.
+`data/track3/power_observations.json` -- site-level annual electricity-consumption observations with source provenance; these are not interval meter telemetry.
+`data/track3/cooling_observations.json` -- selected site-level cooling-equipment observations with source provenance.
 - `build_epoch_grid_crosswalk.py` -- rebuilds the complete jurisdiction layer.
 - `build_epoch_queue_gap_analysis.py` -- rebuilds the 93-site gap analysis.
 The crosswalk is intentionally conservative. **All 93 Epoch sites now have a
