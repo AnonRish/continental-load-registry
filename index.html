@@ -189,7 +189,7 @@
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
           <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
           <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
-          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
           <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
         </div>
       </div>
@@ -1375,6 +1375,11 @@ openFacilityFromHash();
   let connectionTargets=[];
   let showConnectionTargets=true;
   map.addLayer(connectionTargetLayer);
+  const CAISO_QUEUE_COLOR='#3F6B4F';
+  const caisoQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(CAISO_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  let caisoQueueRecords=[];
+  let showCaisoQueue=true;
+  map.addLayer(caisoQueueCluster);
   const AGGREGATE_COLOR='#9A6B37';
   const HISTORICAL_COLOR='#6E7D4F';
   const aggregateLayer=L.layerGroup();
@@ -1393,7 +1398,7 @@ openFacilityFromHash();
     div.innerHTML='<div><span class="dot" style="background:'+AMBER+';"></span>Ambiguous / unresolved</div>'+
       '<div><span class="dot" style="background:'+BESS_BLUE+';"></span>Confirmed BESS</div>'+
       '<div><span class="dot" style="background:'+NEUTRAL+';"></span>Other registry rows</div>'+
-      '<div><span class="dot" style="background:'+PROJECT_COLOR+';"></span>Project evidence</div>'+
+      '<div><span class="dot" style="background:'+PROJECT_COLOR+';"></span>Project evidence</div>'+'<div><span class="dot" style="background:'+CAISO_QUEUE_COLOR+';"></span>CAISO full public queue</div>'+
       '<div><span class="dot" style="background:'+AGGREGATE_COLOR+';"></span>Aggregate evidence footprint</div>'+
       '<div><span class="dot" style="background:'+HISTORICAL_COLOR+';"></span>Historical queue footprint</div>'+
       '<div><span class="dot" style="background:'+EPOCH_COLOR+';"></span>Epoch AI site evidence</div>'+
@@ -1560,6 +1565,61 @@ openFacilityFromHash();
       '</div>',{maxWidth:340});
     return circle;
   }
+  function caisoQueueLocation(n){
+    const st=String(n.state||'').trim().toUpperCase();
+    const raw=String(n.county||'').trim();
+    const candidates=[];
+    if(raw)candidates.push(raw);
+    if(raw)candidates.push(raw.replace(/\s+(County|Parish|Borough|Census Area)$/i,''));
+    if(raw)candidates.push(raw.toLowerCase().replace(/\b[a-z]/g,function(x){return x.toUpperCase();}));
+    if(raw)candidates.push(raw.toLowerCase().replace(/\b[a-z]/g,function(x){return x.toUpperCase();}).replace(/\s+(County|Parish|Borough|Census Area)$/i,''));
+    for(const co of candidates){
+      const p=COUNTY_CENTROIDS[st+'|'+co];
+      if(p)return {point:p,precision:'county centroid'};
+    }
+    const fallback=STATE_CENTROIDS[st];
+    if(fallback)return {point:fallback,precision:'state/province centroid fallback'};
+    return null;
+  }
+  function caisoQueuePopupHtml(r){
+    const n=r.normalized||{}, raw=r.raw||{};
+    const mw=n.mw_total!=null?Number(n.mw_total):NaN;
+    const mwText=Number.isFinite(mw)?mw.toLocaleString(undefined,{maximumFractionDigits:2})+' MW':'Not parsed';
+    const rawName=n.project_name||'Unnamed / confidential project';
+    const queueId=n.queue_id||'Not published';
+    const study=n.study_process||'Not published';
+    const app=n.application_status||'Not published';
+    const ia=n.ia_status||'Not published';
+    const county=n.county||'Not published', state=n.state||'';
+    return '<div style="min-width:270px;max-width:350px;">'+
+      '<p style="font-weight:650;font-size:13px;line-height:1.3;">'+escapeHtml(String(rawName))+'</p>'+
+      '<p class="mono" style="font-size:10.5px;color:var(--ink-faint);margin-top:3px;">Queue '+escapeHtml(String(queueId))+' · CAISO public queue</p>'+
+      '<p style="font-size:11.5px;margin-top:7px;color:var(--ink-soft);">'+escapeHtml(String(county+(state?', '+state:'')))+'</p>'+
+      '<div style="height:1px;background:var(--line);margin:8px 0;"></div>'+
+      '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">MW total</td><td style="text-align:right;">'+escapeHtml(mwText)+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Sheet</td><td style="text-align:right;">'+escapeHtml(String(r.status_class||'unknown'))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Application</td><td style="text-align:right;">'+escapeHtml(String(app))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Study process</td><td style="text-align:right;">'+escapeHtml(String(study))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">IA status</td><td style="text-align:right;">'+escapeHtml(String(ia))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Utility / PTO</td><td style="text-align:right;">'+escapeHtml(String(n.utility||'Not published'))+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Station / line</td><td style="text-align:right;">'+escapeHtml(String(n.station_or_line||'Not published'))+'</td></tr>'+
+      '</table>'+
+      '<p style="margin-top:8px;font-size:10.5px;color:var(--ink-faint);">Map point: '+escapeHtml(String(arguments.length>1&&arguments[1]?arguments[1]:'public county/state geometry'))+'. Original row is preserved in the downloadable dataset.</p>'+
+      '<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="https://www.caiso.com/documents/publicqueuereport.pdf">Open official CAISO report</a>'+
+      '</div>';
+  }
+  function buildCaisoQueueMarker(r){
+    const n=r.normalized||{};
+    const loc=caisoQueueLocation(n);
+    if(!loc)return null;
+    const mw=Number(n.mw_total);
+    const radius=Number.isFinite(mw)?Math.max(3.5,Math.min(12,Math.sqrt(Math.max(1,mw))*0.12)):4.5;
+    const marker=L.circleMarker(loc.point,{radius,color:CAISO_QUEUE_COLOR,weight:1.25,fillColor:CAISO_QUEUE_COLOR,fillOpacity:0.25,opacity:0.78});
+    marker.bindTooltip('<span class="mono">CAISO · '+escapeHtml(String(n.queue_id||'queue'))+' · '+escapeHtml(Number.isFinite(mw)?mw.toLocaleString()+' MW':'MW unavailable')+'</span>',{sticky:true,direction:'top',opacity:0.96});
+    marker.bindPopup(caisoQueuePopupHtml(r,loc.precision),{maxWidth:360});
+    return marker;
+  }
   function buildProjectMarker(p){
     if(p.lat==null||p.lon==null)return null;
     const radius=p.mw==null?5:Math.max(4,Math.min(14,Math.sqrt(Math.max(1,p.mw))*0.12));
@@ -1635,6 +1695,23 @@ openFacilityFromHash();
     const sub=document.getElementById('mapSubcaption');
     if(sub)sub.innerHTML='Current filter · <strong>'+projectRecords.length.toLocaleString()+' project-evidence records overlaid</strong>';
   }).catch(function(err){console.error(err);});
+  function updateCaisoQueueLayer(){
+    caisoQueueCluster.clearLayers();
+    if(!showCaisoQueue)return;
+    caisoQueueRecords.forEach(function(r){const m=buildCaisoQueueMarker(r);if(m)caisoQueueCluster.addLayer(m);});
+  }
+  const caisoQueueToggle=document.getElementById('caisoQueueToggle');
+  if(caisoQueueToggle)caisoQueueToggle.addEventListener('click',function(){
+    showCaisoQueue=!showCaisoQueue;
+    caisoQueueToggle.setAttribute('aria-pressed',showCaisoQueue?'true':'false');
+    updateCaisoQueueLayer();
+  });
+  fetch('data/caiso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('CAISO complete queue unavailable');return res.json();}).then(function(payload){
+    caisoQueueRecords=Array.isArray(payload.records)?payload.records:[];
+    updateCaisoQueueLayer();
+    const sub=document.getElementById('mapSubcaption');
+    if(sub)sub.innerHTML='Current filter · <strong>'+projectRecords.length.toLocaleString()+' project-evidence records + '+caisoQueueRecords.length.toLocaleString()+' CAISO queue records overlaid</strong>';
+  }).catch(function(err){console.warn(err);});
   function updateMapMarkers(animate){
     otherCluster.clearLayers();bessCluster.clearLayers();flagCluster.clearLayers();
     const pts=[],counts={ambiguous:0,bess:0,other:0,mapped:0,fallback:0,eligible:0};
@@ -1647,7 +1724,7 @@ openFacilityFromHash();
     });
     const rows=filtered.length.toLocaleString(),modeLabel=mapMode==='all'?'All records':(mapMode==='ambiguous'?'Ambiguous':(mapMode==='bess'?'BESS':'Other'));
     const sub=document.getElementById('mapSubcaption');if(sub)sub.innerHTML=modeLabel+' · <strong>'+counts.mapped+' / '+rows+'</strong> plotted · '+counts.fallback+' state/province fallbacks';
-    const caption=document.getElementById('mapCaption');if(caption)caption.textContent='All '+counts.mapped+' filtered core records are plotted. Project evidence is an independent overlay: '+projectRecords.filter(function(p){return p.lat!=null&&p.lon!=null;}).length+' / '+projectRecords.length+' plotted; '+aggregateRecords.length+' aggregate footprints, '+epochMapRecords.length+' Epoch AI site observations, and '+connectionTargets.filter(function(t){return t.lat!=null&&t.lon!=null;}).length+' connection research targets are separately overlaid. Unlocated MISO requests remain off-map because no public site geography is published. Geometry uses public county/zone/town/site-area geography; no street address is inferred.';
+    const caption=document.getElementById('mapCaption');if(caption)caption.textContent='All '+counts.mapped+' filtered core records are plotted. Project evidence: '+projectRecords.filter(function(p){return p.lat!=null&&p.lon!=null;}).length+' / '+projectRecords.length+' plotted; CAISO full public queue: '+caisoQueueRecords.length+' rows; '+aggregateRecords.length+' aggregate footprints, '+epochMapRecords.length+' Epoch AI site observations, and '+connectionTargets.filter(function(t){return t.lat!=null&&t.lon!=null;}).length+' connection research targets are separately overlaid. Unlocated MISO requests remain off-map because no public site geography is published. Geometry uses public county/zone/town/site-area geography; no street address is inferred.';
     const legendCounts=document.getElementById('legendCounts');if(legendCounts)legendCounts.textContent=counts.ambiguous+' ambiguous · '+counts.bess+' BESS · '+counts.fallback+' fallback';
     if(pts.length){const bounds=L.latLngBounds(pts),options={padding:[34,34],maxZoom:mapMode==='all'?7:8,duration:animate?0.45:0};if(animate)map.flyToBounds(bounds,options);else map.fitBounds(bounds,options);}
     else if(animate)map.flyTo([45,-95],4,{duration:0.45});
