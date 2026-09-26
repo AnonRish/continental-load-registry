@@ -10,7 +10,7 @@ from urllib.request import Request, urlopen
 ROOT=Path(__file__).resolve().parent
 EPOCH=ROOT/"data"/"external"/"epoch_ai"
 SOURCE_STACK=ROOT/"data"/"track3_source_stack.json"
-MANIFEST=ROOT/"data"/"track3"/external_download_manifest.json"
+MANIFEST=ROOT/"data"/"track3"/"external_download_manifest.json"
 UA="continental-load-registry/track3-source-sync (public research)"
 
 GROUPS={
