@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 47,
+    "evidence_found": 49,
     "site_queue_ids": 2,
-    "pending": 46
+    "pending": 44
   },
   "records": [
     {
@@ -710,9 +710,19 @@
       "country": "United States",
       "state_province": "MS",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Entergy Mississippi",
+          "record_name": "Amazon Ridgeland secondary utility relationship",
+          "source_url": "https://epoch.ai/data/ai-data-centers",
+          "source_kind": "Epoch AI structured site field",
+          "confidence": "medium",
+          "basis": "The preserved Epoch AI record for Amazon Ridgeland at 1626 County Line Road, Ridgeland, Mississippi lists Entergy in its structured energy-company field. This is secondary site-level utility evidence and does not establish an interconnection queue ID or metered demand."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Entergy Mississippi, Mississippi Public Service Commission, MISO and Madison/Ridgeland public records for the underlying service or interconnection case."
     },
     {
       "epoch_id": "EPOCH-27e284efc1b1abc2",
@@ -720,9 +730,19 @@
       "country": "United States",
       "state_province": "AL",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Tennessee Valley Authority",
+          "record_name": "Meta Huntsville secondary utility relationship",
+          "source_url": "https://epoch.ai/data/ai-data-centers",
+          "source_kind": "Epoch AI structured site field",
+          "confidence": "medium",
+          "basis": "The preserved Epoch AI record for Meta Huntsville in Toney, Alabama lists Tennessee Valley Authority among its structured energy-company fields. This is secondary energy/utility evidence; the other named companies are not assumed to be serving utilities."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search TVA, Alabama Public Service Commission, local utility records and SERC-related connection filings for the underlying service or interconnection case."
     },
     {
       "epoch_id": "EPOCH-a69e48fd129d0cdb",
