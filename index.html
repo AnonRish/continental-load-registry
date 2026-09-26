@@ -1060,26 +1060,30 @@ openFacilityFromHash();
       html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">No site-level connection/service/regulatory evidence has yet been attached to this Epoch record. The applicable grid/queue jurisdiction remains documented above.</p>';
     }
     html+='</section>';
-    const canonicalTrack3=track3SiteStatusById.get(rec.epoch_id);
+    const canonicalTrack3=track3SiteStatusById.get(rec.epoch_id)||null;
     const gridStatus = canonicalTrack3?.domains?.grid_connection?.status
       || (grid.site_specific_queue_id
         ? 'VERIFIED_SITE_SPECIFIC'
         : (siteEvidence.some(function(x){return x.type==='site_specific_queue';}) ? 'VERIFIED_SITE_SPECIFIC'
         : (siteEvidence.length ? 'SITE_LEVEL_EVIDENCE' : 'PENDING_RESEARCH')));
+    const d=canonicalTrack3?.domains||{};
     const track3Rows=[
       ['Site identity','INGESTED','Epoch AI site record is present in the 93-site reference universe.'],
-      ['Construction history',(Number(rec.timeline_record_count)||0)>0?'INGESTED':'UNKNOWN','Dated Epoch timeline records are retained; this is not continuous physical telemetry.'],
-      ['Site chip inventory',(Number(rec.chip_quantity_record_count)||0)>0?'INGESTED':'UNKNOWN','Epoch site-level chip-quantity records are retained when published.'],
-      ['Grid / connection',gridStatus,gridStatus==='PENDING_RESEARCH'?'No site-level connection/service evidence is currently attached.':'See the attached site-level records above; a queue ID is only asserted when defensible.'],
-      ['Actual power telemetry','NOT_INGESTED','No interval utility-meter/load-series dataset is currently ingested.'],
-      ['TIR / SAR / optical','NOT_INGESTED','No numeric remote-sensing anomaly or change-detection dataset is currently ingested.'],
-      ['Cooling equipment','NOT_INGESTED','Epoch cooling-equipment source families are cataloged but not yet joined here as structured evidence.'],
-      ['HV transformer supply','NOT_INGESTED','Procurement, delivery and installation event records are not yet ingested.'],
-      ['Global chip ownership',(track3SourceStackById.get('epoch-chip-owners')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI Chip Owners is an aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
-      ['Global chip usage',(track3SourceStackById.get('epoch-chip-users')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI Chip Users is an aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
-      ['Global chip shipments',(track3SourceStackById.get('epoch-chip-sales')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI Chip Sales is an aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
-      ['Global GPU clusters',(track3SourceStackById.get('epoch-gpu-clusters')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI GPU-cluster data is an aggregate external source and is not automatically mapped to this site.'],
-      ['AI chip components',(track3SourceStackById.get('epoch-chip-components')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI chip-component data is an aggregate semiconductor-supply source and is not automatically mapped to this site.']
+      ['Construction history',d.physical_site||(Number(rec.timeline_record_count)||0)>0?'EPOCH_TIMELINE_AVAILABLE':'UNKNOWN','Dated Epoch timeline records are retained; this is not continuous physical telemetry.'],
+      ['Site chip inventory',d.chip_inventory||(Number(rec.chip_quantity_record_count)||0)>0?'EPOCH_CHIP_RECORDS_AVAILABLE':'UNKNOWN','Epoch site-level chip-quantity records are retained when published.'],
+      ['Grid / connection',d.electricity_connection||gridStatus,gridStatus==='PENDING_RESEARCH'?'No site-specific connection/service evidence is currently attached.':'See the attached site-level records above; a queue ID is only asserted when defensible.'],
+      ['Actual power telemetry',d.actual_electricity_metering||'NOT_INGESTED','No interval utility-meter/load-series dataset is currently ingested.'],
+      ['TIR thermal',d.tir_thermal||'NOT_INGESTED','No numeric thermal-anomaly observation dataset is currently ingested.'],
+      ['SAR / optical change detection',d.sar_optical_change_detection||'NOT_INGESTED','No numeric SAR/optical construction-change dataset is currently ingested.'],
+      ['Cooling equipment',d.cooling_equipment||'NOT_INGESTED','Cooling-equipment source families are cataloged separately; no structured site-level equipment event stream is currently ingested.'],
+      ['HV transformer supply',d.transformer_supply_chain||'NOT_INGESTED','Procurement, delivery and installation event records are not yet ingested.'],
+      ['Global chip ownership',track3SourceStackById.get('epoch-chip-owners')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
+      ['Global chip usage',track3SourceStackById.get('epoch-chip-users')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
+      ['Global chip shipments',track3SourceStackById.get('epoch-chip-sales')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
+      ['Global GPU clusters',track3SourceStackById.get('epoch-gpu-clusters')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate external source; it is not automatically mapped to this site.'],
+      ['AI chip components',track3SourceStackById.get('epoch-chip-components')?.status||'SOURCE_AVAILABLE_NOT_INGESTED','Aggregate semiconductor-supply source; it is not automatically mapped to this site.'],
+      ['Ownership accounting',d.ownership_accounting||'NOT_ASSESSED','Owner/user fields are evidence inputs, not a complete legal or beneficial-ownership graph.'],
+      ['Independent corroboration',d.independent_corroboration||'NOT_ASSESSED','No independence score is inferred from the number of records or sources.']
     ];
     html+='<section class="mt-7"><h4 class="font-serif-display text-base">Track 3 evidence matrix</h4>';
     html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Domain</th><th class="px-3 py-2">State</th><th class="px-3 py-2">What the state means</th></tr></thead><tbody>';
@@ -1087,19 +1091,28 @@ openFacilityFromHash();
       html+='<tr><td class="px-3 py-2 font-medium">'+escapeHtml(row[0])+'</td><td class="px-3 py-2"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px] mono">'+escapeHtml(row[1])+'</span></td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escapeHtml(row[2])+'</td></tr>';
     });
     html+='</tbody></table></div>';
-    html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">Attached site-level evidence count: '+siteEvidence.length+'. This count is not an independence or truth score; the provenance and source records must be reviewed individually.</p></section>';
+    html+='<p class="text-xs mt-3" style="color:var(--ink-faint);">Attached site-level evidence count: '+siteEvidence.length+'. This count is not an independence or truth score; provenance and source records must be reviewed individually.</p></section>';
 
-    const tl=n.latest_timeline;
-    if(tl){
-      html+='<section class="mt-6"><h4 class="font-serif-display text-base">Latest available Epoch timeline snapshot</h4><div class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-3">';
-      Object.entries(tl).forEach(([k,v])=>{html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(k.replace(/_/g,' '))+'</dt><dd class="text-sm mt-1 break-words">'+escapeHtml(epochText(v))+'</dd></div>';});
-      html+='</div></section>';
+    const t3Timeline=(canonicalTrack3&&Array.isArray(canonicalTrack3.timeline))?canonicalTrack3.timeline:[];
+    if(t3Timeline.length){
+      html+='<section class="mt-7"><h4 class="font-serif-display text-base">Epoch construction / power timeline</h4>';
+      html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Date</th><th class="px-3 py-2">Construction</th><th class="px-3 py-2 text-right">IT MW</th><th class="px-3 py-2 text-right">Total MW</th><th class="px-3 py-2 text-right">H100-eq</th><th class="px-3 py-2 text-right">8-bit OP/s</th><th class="px-3 py-2 text-right">Water MGD</th></tr></thead><tbody>';
+      t3Timeline.forEach(function(t){
+        html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(t.date))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(t.construction_status))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(t.it_power_mw))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(t.total_power_mw))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(t.h100_equivalents))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(t.performance_ops_s))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(t.water_mgd))+'</td></tr>';
+      });
+      html+='</tbody></table></div><p class="text-xs mt-3" style="color:var(--ink-faint);">Timeline values are Epoch AI published estimates/records. They are not utility meter readings unless explicitly identified as such.</p></section>';
     }
-    if(Array.isArray(n.latest_chip_quantities) && n.latest_chip_quantities.length){
-      html+='<section class="mt-6"><h4 class="font-serif-display text-base">Latest chip quantities by chip type</h4><div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Chip</th><th class="px-3 py-2 text-right">Units</th><th class="px-3 py-2">Date</th><th class="px-3 py-2">Owner</th><th class="px-3 py-2">User</th><th class="px-3 py-2">Sources</th></tr></thead><tbody>';
-      n.latest_chip_quantities.forEach(c=>{html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(c.chip_type||c.chip||''))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(c.number_units))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.date))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.owner))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.user))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.chip_type_source))+' / '+escapeHtml(epochText(c.number_units_source))+'</td></tr>';});
-      html+='</tbody></table></div></section>';
+
+    const t3Chips=(canonicalTrack3&&Array.isArray(canonicalTrack3.chip_quantities))?canonicalTrack3.chip_quantities:[];
+    if(t3Chips.length){
+      html+='<section class="mt-7"><h4 class="font-serif-display text-base">Epoch chip-quantity history</h4>';
+      html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Date</th><th class="px-3 py-2">Chip type</th><th class="px-3 py-2 text-right">Units</th><th class="px-3 py-2">Owner</th><th class="px-3 py-2">User</th><th class="px-3 py-2">Field sources</th></tr></thead><tbody>';
+      t3Chips.forEach(function(c){
+        html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(c.date))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.chip_type))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(c.number_units))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.owner))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.user))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.chip_type_source))+' / '+escapeHtml(epochText(c.number_units_source))+'</td></tr>';
+      });
+      html+='</tbody></table></div><p class="text-xs mt-3" style="color:var(--ink-faint);">Chip quantities are source-reported estimates. They are not automatically attributed to the site's current operator or utility demand.</p></section>';
     }
+
     html+='<section class="mt-6"><h4 class="font-serif-display text-base">Original Epoch source fields</h4><div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Original column</th><th class="px-3 py-2">Original value</th></tr></thead><tbody>';
     Object.entries(raw).forEach(([k,v])=>{html+='<tr><td class="px-3 py-2 mono">'+escapeHtml(k)+'</td><td class="px-3 py-2 whitespace-pre-wrap break-words">'+escapeHtml(epochText(v))+'</td></tr>';});
     html+='</tbody></table></div></section>';
