@@ -1,0 +1,73 @@
+name: Sync Epoch AI Data Centers
+
+# Keeps the secondary Epoch AI evidence layer current. Epoch publishes its
+# hosted CSVs daily; this workflow also runs whenever the main registry changes
+# because the crosswalk is computed against index.html's current REGISTRY_DATA.
+on:
+  schedule:
+    - cron: "30 7 * * *"
+  push:
+    paths:
+      - "index.html"
+      - "sync_epoch_ai_data_centers.py"
+      - "data/external/epoch_ai/match_overrides.json"
+      - ".github/workflows/sync_epoch_ai_data_centers.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: epoch-ai-data-center-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Self-test sync code
+        run: python sync_epoch_ai_data_centers.py --selftest
+
+      - name: Download and normalize Epoch AI datasets
+        run: python sync_epoch_ai_data_centers.py --sync
+
+      - name: Verify the complete Epoch dataset was imported
+        run: |
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          root = Path("data/external/epoch_ai")
+          reg = json.loads((root/"registry.json").read_text(encoding="utf-8"))
+          assert reg["record_count"] == 93, reg["record_count"]
+          assert len(reg["records"]) == 93
+          with (root/"data_centers.csv").open("r", encoding="utf-8-sig", newline="") as f:
+              assert sum(1 for _ in csv.DictReader(f)) == 93
+          assert (root/"data_center_timelines.csv").stat().st_size > 0
+          assert (root/"data_centers_chip_quantities.csv").stat().st_size > 0
+          cw = list(csv.DictReader((root/"crosswalk.csv").open("r", encoding="utf-8", newline="")))
+          assert len(cw) == 93
+          print("verified: 93 Epoch AI data-center records + crosswalk")
+          print("matched:", reg["source"]["raw_sha256"]["data_centers.csv"])
+          PY
+
+      - name: Commit Epoch snapshot and crosswalk
+        run: |
+          git add data/external/epoch_ai
+          if git diff --cached --quiet; then
+            echo "Epoch data unchanged; nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sync Epoch AI data-center evidence"
+            git push origin HEAD:main
+          fi
