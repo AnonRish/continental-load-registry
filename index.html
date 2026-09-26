@@ -435,6 +435,12 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Each layer is retained separately with its source row and normalized fields. Snapshot status is factual repository state; missing local snapshots are treated as unavailable rather than synthesized. See <a class="link-underline" href="data/queue_layer_status.json" target="_blank" rel="noopener noreferrer">queue layer status</a>.</p>
   </section>
 
+    <div id="supplementalFullTable" class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[980px]">
+        <thead><tr><th class="px-3 py-2 text-left">Provider</th><th class="px-3 py-2 text-left">Evidence type</th><th class="px-3 py-2 text-right">Records</th><th class="px-3 py-2 text-right">Capacity / measure</th><th class="px-3 py-2">Date</th><th class="px-3 py-2 text-left">Accounting</th></tr></thead>
+        <tbody id="supplementalEvidenceRows"><tr><td colspan="6" class="px-3 py-3" style="color:var(--ink-faint);">Loading complete evidence universe…</td></tr></tbody>
+      </table>
+    </div>
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -541,7 +547,7 @@
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
       <div class="p-4"><p class="mono text-xl">53</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
-      <div class="p-4"><p class="mono text-xl">83</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Additional quantified MISO requests</p></div>
+      <div class="p-4"><p class="mono text-xl">153</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current ≥100 MW MISO rows needing site resolution</p></div>
       <div class="p-4"><p class="mono text-xl">70 GW</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Dominion aggregate large-load queue evidence</p></div>
       <div class="p-4"><p class="mono text-xl">6.9M</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Ontario CCIM data points</p></div>
     </div>
