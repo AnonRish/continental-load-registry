@@ -347,9 +347,9 @@
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-4">
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="track3EpochSites" class="font-serif-display text-xl mt-1">—</div></div>
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site queue IDs</div><div id="track3QueueIds" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site-level evidence</div><div id="track3Evidence" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Combined site-level evidence</div><div id="track3Evidence" class="font-serif-display text-xl mt-1">—</div></div>
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">U.S. site-specific gaps</div><div id="track3USGaps" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Pending site search</div><div id="track3Pending" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Grid research gaps</div><div id="track3Pending" class="font-serif-display text-xl mt-1">—</div></div>
         </div>
         <div class="grid md:grid-cols-2 gap-3 mt-4">
           <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
@@ -376,6 +376,51 @@
         </div>
         <div id="track3SourceStack" class="mt-4">
           <div class="text-xs" style="color:var(--ink-faint);">Loading source stack…</div>
+        </div>
+      </div>
+
+      <div class="panel rounded-lg mt-5 p-5">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+          <div>
+            <h3 class="font-serif-display text-base">Track 3 research console</h3>
+            <p class="text-xs mt-1 max-w-3xl" style="color:var(--ink-soft);">The console is driven by the canonical Track 3 site-status artifact. It separates a verified site-specific queue record from site-level evidence and from sites that still need a site-specific search.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a class="text-xs link-underline" href="data/track3/site_status.json" target="_blank" rel="noopener noreferrer">Site status JSON</a>
+            <a class="text-xs link-underline" href="data/track3/evidence_records.json" target="_blank" rel="noopener noreferrer">Evidence records JSON</a>
+            <a class="text-xs link-underline" href="data/track3/research_queue.json" target="_blank" rel="noopener noreferrer">Research queue JSON</a>
+            <a class="text-xs link-underline" href="data/track3_evidence_ledger.csv" target="_blank" rel="noopener noreferrer">Flattened ledger</a>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 mt-4">
+          <input id="track3ResearchSearch" type="text" placeholder="Search site, state, address, owner, utility, or next action…" class="flex-1 rounded-md px-3 py-2 text-sm" aria-label="Search Track 3 research queue">
+          <select id="track3ResearchStatus" class="rounded-md px-3 py-2 text-sm" aria-label="Filter Track 3 research state">
+            <option value="">All Track 3 grid states</option>
+            <option value="VERIFIED_SITE_SPECIFIC">Verified site-specific</option>
+            <option value="SITE_LEVEL_EVIDENCE">Site-level evidence</option>
+            <option value="PENDING_RESEARCH">Pending site-specific research</option>
+          </select>
+        </div>
+        <div id="track3ResearchStatusText" class="text-xs mt-3" style="color:var(--ink-faint);">Loading canonical Track 3 site status…</div>
+        <div class="scroll-x mt-3">
+          <table class="w-full text-xs">
+            <thead><tr>
+              <th class="px-3 py-2">Site</th>
+              <th class="px-3 py-2">State</th>
+              <th class="px-3 py-2">Grid / utility jurisdiction</th>
+              <th class="px-3 py-2">Grid state</th>
+              <th class="px-3 py-2 text-right">Epoch IT MW</th>
+              <th class="px-3 py-2 text-right">Evidence</th>
+              <th class="px-3 py-2">Next research action</th>
+              <th class="px-3 py-2 text-right">Open</th>
+            </tr></thead>
+            <tbody id="track3ResearchBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);">
+          <button id="track3ResearchPrev" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Previous</button>
+          <span id="track3ResearchPage">—</span>
+          <button id="track3ResearchNext" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Next</button>
         </div>
       </div>
       <div class="flex flex-wrap gap-3 mt-4">
@@ -935,6 +980,10 @@ openFacilityFromHash();
   let epochRecords=[];
   let epochFiltered=[];
   let epochPage=0;
+  let track3SiteRecords=[];
+  let track3SiteStatusById=new Map();
+  let track3ResearchFiltered=[];
+  let track3ResearchPage=0;
 
   function epochText(v){
     if(v===null || v===undefined || v==='') return 'Not published / not retained';
@@ -981,7 +1030,19 @@ openFacilityFromHash();
       html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">'+escapeHtml(crossReason)+' This is a source-coverage result, not evidence that the site has no grid connection or load request.</p>';
     }
     html+='</section>';
-    const siteEvidence=Array.isArray(rec.site_level_connection_evidence)?rec.site_level_connection_evidence:[];
+    const siteEvidence=(Array.isArray(rec.site_level_connection_evidence)?rec.site_level_connection_evidence:[]).slice();
+    if(grid.site_level_public_evidence){
+      const x=grid.site_level_public_evidence;
+      siteEvidence.push({
+        type:x.status||'site_level_public_evidence',
+        authority:x.source||x.authority||x.grid_operator||'Public source',
+        record_id:x.record_id||null,
+        record_name:x.record_name||null,
+        capacity_mw:x.capacity_mw,
+        basis:x.basis||'Public site-level evidence retained in the queue crosswalk.',
+        source_url:x.url||x.source_url||null
+      });
+    }
     html+='<section class="mt-6"><h4 class="font-serif-display text-base">Site-level connection / regulatory evidence</h4>';
     if(siteEvidence.length){
       html+='<div class="mt-3 space-y-2">';
@@ -998,10 +1059,12 @@ openFacilityFromHash();
       html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">No site-level connection/service/regulatory evidence has yet been attached to this Epoch record. The applicable grid/queue jurisdiction remains documented above.</p>';
     }
     html+='</section>';
-    const gridStatus = grid.site_specific_queue_id
-      ? 'VERIFIED_SITE_SPECIFIC'
-      : (siteEvidence.some(function(x){return x.type==='site_specific_queue';}) ? 'VERIFIED_SITE_SPECIFIC'
-      : (siteEvidence.length ? 'SITE_LEVEL_EVIDENCE' : 'PENDING_RESEARCH'));
+    const canonicalTrack3=track3SiteStatusById.get(rec.epoch_id);
+    const gridStatus = canonicalTrack3?.domains?.grid_connection?.status
+      || (grid.site_specific_queue_id
+        ? 'VERIFIED_SITE_SPECIFIC'
+        : (siteEvidence.some(function(x){return x.type==='site_specific_queue';}) ? 'VERIFIED_SITE_SPECIFIC'
+        : (siteEvidence.length ? 'SITE_LEVEL_EVIDENCE' : 'PENDING_RESEARCH')));
     const track3Rows=[
       ['Site identity','INGESTED','Epoch AI site record is present in the 93-site reference universe.'],
       ['Construction history',(Number(rec.timeline_record_count)||0)>0?'INGESTED':'UNKNOWN','Dated Epoch timeline records are retained; this is not continuous physical telemetry.'],
@@ -1144,19 +1207,12 @@ openFacilityFromHash();
       document.getElementById('epochRegistryControls').classList.remove('hidden');
       const g=payload.grid_crosswalk_summary||{};
       const queueIdCount=Number(g.site_specific_queue_ids||siteQueueIds||2);
-      const usGapCount=Number(g.jurisdiction_only_us_sites||72);
-      const pendingCount=Number(evidencePayload.summary&&evidencePayload.summary.pending!==undefined?evidencePayload.summary.pending:Math.max(0,93-evidenceFound));
-      document.getElementById('track3EpochSites').textContent=epochRecords.length.toLocaleString();
-      document.getElementById('track3QueueIds').textContent=queueIdCount.toLocaleString()+' / 93';
-      document.getElementById('track3Evidence').textContent=evidenceFound.toLocaleString()+' / 93';
-      document.getElementById('track3USGaps').textContent=usGapCount.toLocaleString();
-      document.getElementById('track3Pending').textContent=pendingCount.toLocaleString();
       fetch('data/module1_radar_summary.json?v=1',{cache:'no-store'}).then(function(res){return res.ok?res.json():null;}).then(function(summary){
         const d2=summary&&summary.domains&&summary.domains.domain_2_ingestion?summary.domains.domain_2_ingestion:{};
         document.getElementById('track3RemoteStatus').textContent=d2.satellite_tir_sar_numeric_status||'NOT INGESTED';
         document.getElementById('track3TransformerStatus').textContent=d2.transformer_supply_chain_status||'NOT INGESTED';
       }).catch(function(){});
-      setEpochStatus('Imported 93 Epoch sites. All 93 have a grid/queue or external connection jurisdiction; '+evidenceFound+' have attached site-level connection/service/regulatory evidence, '+queueIdCount+' have verified site-specific queue IDs, and '+usGapCount+' U.S. sites still require site-specific queue/service research. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture.',false);
+      setEpochStatus('Imported 93 Epoch sites. Track 3 connection states and research coverage are loaded from the canonical evidence artifacts below. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture.',false);
       epochApplyFilters();
     }catch(err){
       setEpochStatus('Epoch AI registry unavailable in this deployment: '+(err.message||'unknown error'),true);
@@ -1164,6 +1220,113 @@ openFacilityFromHash();
     }
   }
   initEpochRegistry();
+
+
+  function track3StateLabel(state){
+    return state==='VERIFIED_SITE_SPECIFIC'?'Verified site-specific'
+      :state==='SITE_LEVEL_EVIDENCE'?'Site-level evidence'
+      :state==='PENDING_RESEARCH'?'Pending site-specific research'
+      :'Unknown';
+  }
+  function renderTrack3Research(){
+    const PAGE=15;
+    const start=track3ResearchPage*PAGE;
+    const rows=track3ResearchFiltered.slice(start,start+PAGE);
+    const body=document.getElementById('track3ResearchBody');
+    if(!body)return;
+    if(!rows.length){
+      body.innerHTML='<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No Track 3 records match these filters.</td></tr>';
+    }else{
+      body.innerHTML=rows.map(function(rec){
+        const grid=rec.grid||{};
+        const domains=rec.domains||{};
+        const st=domains.grid_connection&&domains.grid_connection.status||'UNKNOWN';
+        const next=rec.next_action||'Continue site-specific source search.';
+        const mw=rec.current_it_power_mw===null||rec.current_it_power_mw===undefined?'—':epochText(rec.current_it_power_mw);
+        const ev=rec.combined_site_level_evidence_count||0;
+        return '<tr>'+
+          '<td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(rec.site_name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</div></td>'+
+          '<td class="px-3 py-2.5">'+escapeHtml(rec.state_province||'—')+'</td>'+
+          '<td class="px-3 py-2.5 max-w-[260px]" title="'+escapeHtml(grid.jurisdiction||'')+'">'+escapeHtml(grid.jurisdiction||'Not mapped')+'</td>'+
+          '<td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px] mono">'+escapeHtml(track3StateLabel(st))+'</span></td>'+
+          '<td class="px-3 py-2.5 text-right">'+escapeHtml(mw)+'</td>'+
+          '<td class="px-3 py-2.5 text-right">'+escapeHtml(String(ev))+'</td>'+
+          '<td class="px-3 py-2.5 max-w-[340px]">'+escapeHtml(next)+'</td>'+
+          '<td class="px-3 py-2.5 text-right"><button type="button" class="track3-open-epoch px-2.5 py-1 rounded-md border hairline text-xs" data-epoch-id="'+escapeHtml(rec.epoch_id||'')+'">Open</button></td>'+
+        '</tr>';
+      }).join('');
+    }
+    body.querySelectorAll('.track3-open-epoch').forEach(function(b){
+      b.addEventListener('click',function(){
+        const id=b.getAttribute('data-epoch-id');
+        const rec=epochRecords.find(function(x){return x.epoch_id===id;});
+        if(rec)renderEpochDetail(rec);
+        const epochSection=document.getElementById('epochRegistry');
+        if(epochSection)epochSection.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+    const pages=Math.max(1,Math.ceil(track3ResearchFiltered.length/PAGE));
+    document.getElementById('track3ResearchPage').textContent='Page '+(track3ResearchPage+1)+' of '+pages+' · '+track3ResearchFiltered.length.toLocaleString()+' of 93 sites';
+    document.getElementById('track3ResearchPrev').disabled=track3ResearchPage===0;
+    document.getElementById('track3ResearchNext').disabled=track3ResearchPage>=pages-1;
+  }
+  function applyTrack3ResearchFilters(){
+    const q=document.getElementById('track3ResearchSearch').value.trim().toLowerCase();
+    const state=document.getElementById('track3ResearchStatus').value;
+    track3ResearchFiltered=track3SiteRecords.filter(function(rec){
+      const st=rec.domains&&rec.domains.grid_connection?rec.domains.grid_connection.status:'';
+      if(state && st!==state)return false;
+      if(q){
+        const grid=rec.grid||{};
+        const hay=[rec.site_name,rec.state_province,rec.country,grid.jurisdiction,rec.epoch_id,rec.next_action].join(' ').toLowerCase();
+        if(!hay.includes(q))return false;
+      }
+      return true;
+    }).slice().sort(function(a,b){
+      const av=Number(a.current_it_power_mw),bv=Number(b.current_it_power_mw);
+      return (Number.isFinite(bv)?bv:-1)-(Number.isFinite(av)?av:-1);
+    });
+    track3ResearchPage=0;
+    renderTrack3Research();
+    const statusText=state?track3StateLabel(state):'all grid states';
+    document.getElementById('track3ResearchStatusText').textContent=track3ResearchFiltered.length.toLocaleString()+' records · '+statusText+' · canonical Track 3 site-status data';
+  }
+  async function initTrack3Data(){
+    try{
+      const responses=await Promise.all([
+        fetch('data/track3/summary.json?v=1',{cache:'no-store'}),
+        fetch('data/track3/site_status.json?v=1',{cache:'no-store'})
+      ]);
+      if(!responses[0].ok || !responses[1].ok) throw new Error('canonical Track 3 artifact unavailable');
+      const summary=await responses[0].json();
+      const status=await responses[1].json();
+      if(!status || !Array.isArray(status.records) || status.records.length!==93) throw new Error('expected 93 Track 3 site records');
+      track3SiteRecords=status.records;
+      track3SiteStatusById=new Map(track3SiteRecords.map(function(x){return [x.epoch_id,x];}));
+      const grid=(summary.domain_status_counts&&summary.domain_status_counts.grid_connection)||{};
+      const combined=Number(summary.combined_site_level_evidence_site_count||0);
+      const usPending=track3SiteRecords.filter(function(x){return x.country==='United States' && x.domains?.grid_connection?.status==='PENDING_RESEARCH';}).length;
+      document.getElementById('track3EpochSites').textContent=Number(summary.epoch_site_count||93).toLocaleString();
+      document.getElementById('track3QueueIds').textContent=Number(summary.site_specific_queue_id_count||grid.VERIFIED_SITE_SPECIFIC||0).toLocaleString()+' / 93';
+      document.getElementById('track3Evidence').textContent=combined.toLocaleString()+' / 93';
+      document.getElementById('track3USGaps').textContent=usPending.toLocaleString();
+      document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
+      applyTrack3ResearchFilters();
+    }catch(err){
+      document.getElementById('track3ResearchStatusText').textContent='Canonical Track 3 site status unavailable: '+(err.message||'unknown error');
+      document.getElementById('track3ResearchBody').innerHTML='<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--amber);">Track 3 research console unavailable.</td></tr>';
+    }
+  }
+  document.getElementById('track3ResearchSearch').addEventListener('input',applyTrack3ResearchFilters);
+  document.getElementById('track3ResearchStatus').addEventListener('change',applyTrack3ResearchFilters);
+  document.getElementById('track3ResearchPrev').addEventListener('click',function(){
+    if(track3ResearchPage>0){track3ResearchPage--;renderTrack3Research();}
+  });
+  document.getElementById('track3ResearchNext').addEventListener('click',function(){
+    const pages=Math.max(1,Math.ceil(track3ResearchFiltered.length/15));
+    if(track3ResearchPage<pages-1){track3ResearchPage++;renderTrack3Research();}
+  });
+  initTrack3Data();
 
   fetch('data/track3_source_stack.json?v=1',{cache:'no-store'}).then(function(res){
     if(!res.ok) throw new Error('source stack unavailable');
