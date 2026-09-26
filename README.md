@@ -156,9 +156,7 @@ attribution under CC BY 4.0.
 
 ## Current data coverage -- read this before citing a number from the site
 
-The published dashboard currently contains **1,558 facilities and about
-361.9 GW** across nine organized markets. The live GitHub Pages site is the
-publication surface; the exact total is calculated from the embedded
+The published dashboard currently contains **1,558 row-level facilities / requests and 361.875 GW** across nine organized markets. A separate scope layer also records **83 additional MISO requests totaling 35.9 GW** whose public source omits required location fields; these are held outside the row-level table rather than assigned guessed geography. The resulting **expanded known scope is 1,641 requests / records and 397.775 GW**. The archived September 24 snapshot contains 1,802 rows and 420.2054 GW, but is retained separately and is not additive to current totals. The live GitHub Pages site is the publication surface; the exact row-level total is calculated from the embedded
 `REGISTRY_DATA` array at page load.
 
 | Source | Rows | GW | Origin | Read this before citing it |
