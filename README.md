@@ -96,6 +96,17 @@ The repository keeps the source-specific values separate:
 - data/external/epoch_ai/match_overrides.json -- human-reviewed queue crosswalk overrides; currently records the Lake Mariner campus/phase relationship to NYISO Q1670.
 - build_epoch_grid_crosswalk.py -- rebuilds the 93-site geographic queue/connection crosswalk and embeds it into registry.json.
 
+A complete source-universe catalog is maintained in `QUEUE_REGISTRY_UNIVERSE.md`
+and as `data/external/epoch_ai/queue_source_universe.json`. The catalog currently
+contains **26 direct queue/connection registries, 14 cross-cutting public
+sources, and 4 supporting public-record source families**.
+
+The project also produces:
+- `data/external/epoch_ai/queue_crosswalk.csv` -- geographic queue/connection jurisdiction for every Epoch site.
+- `data/external/epoch_ai/queue_gap_analysis.csv` -- the 93-site research worklist for closing remaining site-specific queue/connection gaps.
+- `data/external/epoch_ai/queue_gap_analysis.json` -- machine-readable version of the same worklist.
+- `build_epoch_grid_crosswalk.py` -- rebuilds the complete jurisdiction layer.
+- `build_epoch_queue_gap_analysis.py` -- rebuilds the 93-site gap analysis.
 The crosswalk is intentionally conservative. **All 93 Epoch sites now have a
 grid/queue or connection-system jurisdiction.** That is different from a
 site-specific queue ID. For the 77 U.S. sites, the jurisdiction points to the
