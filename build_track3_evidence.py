@@ -32,6 +32,7 @@ SITE_DOMAINS = (
     "chip_inventory",
     "grid_connection",
     "service_or_contract",
+    "regulatory",
     "compute_tenancy",
     "power_telemetry",
     "remote_sensing",
@@ -112,6 +113,17 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         if matches:
             return {"status":"INGESTED_SNAPSHOT","basis":"A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."}
         return {"status":"UNKNOWN","basis":"No site-specific compute-tenancy contract has been attached in the current evidence layer."}
+    if domain == "regulatory":
+        matches = [x for x in ev if "regulatory" in str(x.get("type") or "").lower()]
+        if matches:
+            return {
+                "status": "INGESTED",
+                "basis": "Site-level regulatory evidence is preserved in the Track 3 evidence layer."
+            }
+        return {
+            "status": "NOT_ASSESSED",
+            "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
+        }
     if domain == "grid_connection":
         connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support"}
         connection_evidence = [x for x in ev if x.get("type") in connection_types]
