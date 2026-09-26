@@ -46,6 +46,7 @@ aimed at surfacing large requests that lack a confirmed public operator.
   directly in the file (by `embed_registry_data.py`), not fetched at
   page-load. Prose that quotes a count or a GW figure is filled in from
   that data at load time, so a re-embed cannot leave a stale number behind.
+- `track3.html` -- the public Track 3 Evidence Observatory. It loads the canonical Track 3 site-status, evidence, observation, power/cooling, source-stack, queue/source-universe, Module 1 gate, and external-source status artifacts, with site search, grid-state filtering, per-site evidence inspection, domain coverage accounting, source links, and explicit missingness semantics.
 - `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
   from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
   commits the result to `main`. See "Automated monthly refresh".
