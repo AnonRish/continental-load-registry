@@ -48,6 +48,11 @@ jobs:
       - name: Self-test sync code
         run: python sync_epoch_ai_data_centers.py --selftest
 
+      - name: Python syntax check for Track 3 pipeline
+        run: |
+          python -m py_compile build_track3_evidence.py validate_track3_ledger.py sync_track3_external_sources.py module1_physical_radar.py
+
+
       - name: Download and normalize Epoch AI datasets
         run: python sync_epoch_ai_data_centers.py --sync
 
@@ -95,6 +100,9 @@ jobs:
           print("site queue IDs:", summary["site_specific_queue_id_count"])
           print("pending grid research:", summary["pending_grid_connection_research_count"])
           PY
+
+      - name: Run canonical Track 3 ledger validator
+        run: python validate_track3_ledger.py
 
       - name: Validate inline JavaScript syntax
         run: |
