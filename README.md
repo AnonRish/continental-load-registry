@@ -171,6 +171,24 @@ The published dashboard currently contains **1,558 row-level facilities / reques
 | ISO-NE | 19 | 4.9 | IRTT public queue, 2026-09-19 | study stage is not published in the retained table |
 | AESO | 47 | 24.2 | September 2026 Connection Project List | includes Data Load / Industrial Load rows |
 
+### Supplemental public large-load evidence
+
+The repository also preserves public utility, regulator, planning, connection and permit evidence that cannot safely be collapsed into the core nine-market row-level total without double-counting or inventing missing fields. See `data/supplemental_large_load_evidence.json`.
+
+Current examples include:
+- MISO: 83 additional live >=100 MW requests (35.9 GW) lacking published location fields.
+- Dominion Energy Virginia: approximately 70 GW of large-load DP Requests advancing through its connection queue at the end of 2025.
+- ComEd: 16 GW of highly probable large-load interconnection requests in its 2026 planning material.
+- Salt River Project: 80 projects above 10 MW totaling 15.308 GW, including 52 data-center projects totaling 14.140 GW.
+- BC Hydro: 15 AI/data-centre applications representing close to 800 MW.
+- Portland General Electric: five executed data-centre customer contracts totaling 430 MW.
+- Entergy Louisiana/Hut 8: River Bend initial 330 MW utility capacity for 245 MW critical IT load, with potential scaling to 1 GW utility capacity.
+- ISO New England: a 200 MW data-center project listed in the CELT 2026 large-load forecast.
+- Virginia DEQ: a data-center air-permit identity inventory alongside reports of 72 operating data centers in Loudoun County and nine more in planning.
+- Ontario: the IESO application-status universe and OEB Centralized Capacity Information Map are preserved as broader connection/grid-context layers.
+
+These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
+
 ### Facility research records
 
 Every row visible in the dashboard has a corresponding JSON research record
