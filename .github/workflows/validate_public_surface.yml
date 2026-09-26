@@ -95,7 +95,7 @@ jobs:
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
           assert scope["definitions"]["supplemental_evidence_units"]["records"] == 32
           assert scope["definitions"]["project_level_extractions"]["records"] == 154
-          assert len(supplemental["records"]) == 37
+          assert len(supplemental["records"]) == 38
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
           assert projects["record_count"] == len(projects["records"]) == 154
           assert len({r["id"] for r in projects["records"]}) == 154
