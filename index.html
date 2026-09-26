@@ -503,7 +503,7 @@ function renderResearchRecord(r, rec, warning){
     Object.entries(raw.values||{}).forEach(([k,v])=>{html+='<tr><td class="px-3 py-2 mono">'+escapeHtml(k)+'</td><td class="px-3 py-2 whitespace-pre-wrap break-words">'+escapeHtml(recordValue(v))+'</td></tr>';});
     html+='</tbody></table></div>';
   } else {
-    html+='<div class="mt-3 p-3 rounded-lg" style="background:var(--panel);border:1px solid var(--line);"><p class="text-sm" style="color:var(--ink-soft);">The publisher's original source file/row bytes were not retained for this RTO. The record shows the retained ingest-level source fields and normalized values; it does not fabricate an "original raw" value.</p></div>';
+    html+='<div class="mt-3 p-3 rounded-lg" style="background:var(--panel);border:1px solid var(--line);"><p class="text-sm" style="color:var(--ink-soft);">The publisher&#39;s original source file/row bytes were not retained for this RTO. The record shows the retained ingest-level source fields and normalized values; it does not fabricate an &quot;original raw&quot; value.</p></div>';
   }
   html+='</section>';
 
