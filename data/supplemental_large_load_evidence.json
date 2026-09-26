@@ -645,7 +645,91 @@
       "granularity": "utility load forecast",
       "source_url": "https://docs.idahopower.com/pdfs/AboutUs/PlanningForFuture/2025IRP/2025%20IRP%20Appendix%20A.pdf",
       "notes": "Idaho Power 2025 IRP Appendix A forecasts additional firm load of 257 aMW in 2026, 875 aMW in 2030, 1,065 aMW in 2035 and 1,072 aMW in 2045. These are forecast system-load increments, not a unique customer/project total and not added to project rows."
+    },
+    {
+      "id": "ERCOT-LARGE-LOAD-HISTORY-2026-03-26",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT",
+      "evidence_type": "large_load_status_history",
+      "record_count": null,
+      "capacity_mw": 410618,
+      "threshold_mw": 75,
+      "capture_date": "2026-03-26",
+      "additive_to_core_row_level": false,
+      "granularity": "systemwide forecast/status history",
+      "source_url": "https://www.ercot.com/files/docs/2026/04/09/ERCOTLargeLoadUpdate-April9HouseStateAffairsHearing.pdf",
+      "notes": "ERCOT's March 26, 2026 large-load update reports 410,618 MW total large load in the 2030 projection, with 355,830 MW classified as data center. The table separates No Studies Submitted, Under ERCOT Review, Planning Studies Approved, A2E but not operational, and Observed Energized. This is a systemwide status/forecast layer, not a unique facility population."
+    },
+    {
+      "id": "ERCOT-LARGE-LOAD-HISTORY-2026-01-20",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT",
+      "evidence_type": "large_load_status_history",
+      "record_count": null,
+      "capacity_mw": 232546,
+      "threshold_mw": 75,
+      "capture_date": "2026-01-20",
+      "additive_to_core_row_level": false,
+      "granularity": "systemwide forecast/status history",
+      "source_url": "https://www.ercot.com/files/docs/2026/02/02/9.2-Interconnection-and-Grid-Analysis-Update.pdf",
+      "notes": "ERCOT's January 20, 2026 update reports 232,546 MW total large-load projection for 2030, with 165,313 MW classified as data center. Preserved as a dated historical snapshot; not additive to the later March snapshot."
+    },
+    {
+      "id": "SPP-AQ-DATA-CENTER-HISTORY-2021-2024",
+      "jurisdiction": "SPP footprint, US",
+      "provider": "Southwest Power Pool",
+      "evidence_type": "historical_large_load_request_composition",
+      "record_count": 31,
+      "capacity_mw": 9004.45,
+      "threshold_mw": 100,
+      "capture_date": "2025-06-04",
+      "additive_to_core_row_level": false,
+      "granularity": "historical annual aggregate",
+      "source_url": "https://www.spp.org/documents/74011/20250604_submission%20of%20tariff%20revisions%20to%20add%20a%20provisional%20load%20process_er25-2430.pdf",
+      "notes": "SPP table of AQ requests ≥100 MW by load type: data-center requests were 6/1,300 MW in 2021, 11/2,918 MW in 2022, 6/2,262.61 MW in 2023, and 8/2,523.84 MW in 2024. Combined: 31 requests / 9,004.45 MW. This is historical aggregate evidence, not a unique current facility population."
+    },
+    {
+      "id": "SPP-LARGE-LOAD-TRANSMISSION-14GW-2026",
+      "jurisdiction": "New Mexico / Texas, US",
+      "provider": "Southwest Power Pool",
+      "evidence_type": "large_load_transmission_service_region",
+      "record_count": null,
+      "capacity_mw": 14000,
+      "threshold_mw": 100,
+      "capture_date": "2026-04-07",
+      "additive_to_core_row_level": false,
+      "granularity": "regional transmission-service aggregate",
+      "source_url": "https://spp.org/documents/76425/20260407_grid%20acceleration%20coalition%20complaint_el26-58-000.pdf",
+      "notes": "SPP filing material states two 765 kV projects — Crawfish Draw–Woodward and Potter–Woodward — will allow service for more than 14 GW in large-load requests in southeast New Mexico and northwest Texas. This is transmission-service enabling capacity, not a facility total."
+    },
+    {
+      "id": "PJM-DATA-CENTER-GROWTH-2025-2030",
+      "jurisdiction": "PJM footprint, US",
+      "provider": "PJM",
+      "evidence_type": "data_center_load_forecast",
+      "record_count": null,
+      "capacity_mw": 30000,
+      "threshold_mw": null,
+      "capture_date": "2026-01-08",
+      "additive_to_core_row_level": false,
+      "granularity": "regional forecast",
+      "source_url": "https://insidelines.pjm.com/2025-year-in-review-planning-prepares-for-burgeoning-electricity-demand/",
+      "notes": "PJM's 2025 year-in-review states its evaluation of large-load adjustment requests confirmed data-center electricity demand is projected to grow up to approximately 30 GW between 2025 and 2030. Forecast evidence only; not unique queue rows."
+    },
+    {
+      "id": "PJM-DATA-CENTER-TRANSFER-EVENT-2026-07-22",
+      "jurisdiction": "Virginia, US",
+      "provider": "PJM / Dominion Energy Virginia",
+      "evidence_type": "operational_large_load_transfer_event",
+      "record_count": 1,
+      "capacity_mw": 3800,
+      "threshold_mw": null,
+      "capture_date": "2026-07-22",
+      "additive_to_core_row_level": false,
+      "granularity": "operational event",
+      "source_url": "https://insidelines.pjm.com/pjm-dominion-review-large-load-transfer-event/",
+      "notes": "PJM reports approximately 3,800 MW of computational load disconnected/transferred to on-site backup generation during the July 22, 2026 northern Virginia event. This is an observed operational event, not an interconnection request or facility-capacity total."
     }
   ],
-  "record_count": 41
+  "record_count": 53
 }
