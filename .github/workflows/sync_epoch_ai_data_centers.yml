@@ -11,7 +11,9 @@ on:
       - "index.html"
       - "sync_epoch_ai_data_centers.py"
       - "build_epoch_grid_crosswalk.py"
+      - "build_epoch_queue_gap_analysis.py"
       - "data/external/epoch_ai/match_overrides.json"
+      - "data/external/epoch_ai/queue_source_universe.json"
       - ".github/workflows/sync_epoch_ai_data_centers.yml"
   workflow_dispatch:
 
@@ -44,6 +46,9 @@ jobs:
 
       - name: Build grid and queue crosswalk
         run: python build_epoch_grid_crosswalk.py
+
+      - name: Build 93-site queue gap analysis
+        run: python build_epoch_queue_gap_analysis.py
 
       - name: Validate inline JavaScript syntax
         run: |
@@ -78,13 +83,18 @@ jobs:
           assert len(cw) == 93
           grid = reg.get("grid_crosswalk_summary", {})
           assert grid.get("all_sites_have_queue_or_connection_jurisdiction") is True
-          print("verified: 93 Epoch AI data-center records + queue crosswalk")
+          gap = list(csv.DictReader((root/"queue_gap_analysis.csv").open("r", encoding="utf-8", newline="")))
+          assert len(gap) == 93
+          sources = json.loads((root/"queue_source_universe.json").read_text(encoding="utf-8"))
+          assert len(sources["direct_queue_and_connection_sources"]) >= 20
+          assert len(sources["cross_cutting_public_sources"]) >= 10
+          print("verified: 93 Epoch AI data-center records + queue crosswalk + gap analysis")
           print("matched:", reg["source"]["raw_sha256"]["data_centers.csv"])
           PY
 
       - name: Commit Epoch snapshot and crosswalk
         run: |
-          git add data/external/epoch_ai build_epoch_grid_crosswalk.py sync_epoch_ai_data_centers.py
+          git add data/external/epoch_ai build_epoch_grid_crosswalk.py build_epoch_queue_gap_analysis.py sync_epoch_ai_data_centers.py
           if git diff --cached --quiet; then
             echo "Epoch data unchanged; nothing to commit."
           else
