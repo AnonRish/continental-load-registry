@@ -820,6 +820,7 @@ openFacilityFromHash();
 /* ======================= EPOCH AI SECONDARY REGISTRY ======================= */
 (function(){
   const DATA_URL='data/external/epoch_ai/registry.json';
+  const EVIDENCE_URL='data/external/epoch_ai/site_level_connection_evidence.json';
   const PAGE_SIZE=20;
   let epochRecords=[];
   let epochFiltered=[];
@@ -868,6 +869,23 @@ openFacilityFromHash();
       const crossStatus=rec.registry_crosswalk_status||'no_direct_match';
       const crossReason=rec.registry_crosswalk_reason||'No conservative direct match was identified in the current nine-market queue registry fields.';
       html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">'+escapeHtml(crossReason)+' This is a source-coverage result, not evidence that the site has no grid connection or load request.</p>';
+    }
+    html+='</section>';
+    const siteEvidence=Array.isArray(rec.site_level_connection_evidence)?rec.site_level_connection_evidence:[];
+    html+='<section class="mt-6"><h4 class="font-serif-display text-base">Site-level connection / regulatory evidence</h4>';
+    if(siteEvidence.length){
+      html+='<div class="mt-3 space-y-2">';
+      siteEvidence.forEach(ev=>{
+        html+='<div class="panel rounded-lg p-3"><div class="flex flex-wrap items-center gap-2"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">'+escapeHtml(ev.type||'site-level evidence')+'</span><span class="mono text-xs">'+escapeHtml(ev.authority||'')+'</span>'+(ev.record_id?'<span class="mono text-xs">'+escapeHtml(ev.record_id)+'</span>':'')+'</div>';
+        if(ev.record_name) html+='<div class="text-sm mt-2">'+escapeHtml(ev.record_name)+'</div>';
+        if(ev.capacity_mw!==undefined && ev.capacity_mw!==null && ev.capacity_mw!=='') html+='<div class="text-xs mt-1" style="color:var(--ink-soft);">Referenced capacity: '+escapeHtml(epochText(ev.capacity_mw))+' MW</div>';
+        html+='<p class="text-xs mt-2" style="color:var(--ink-soft);">'+escapeHtml(ev.basis||'')+'</p>';
+        if(ev.source_url) html+='<a class="text-xs mt-2 inline-block link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(ev.source_url)+'">Open evidence source</a>';
+        html+='</div>';
+      });
+      html+='</div>';
+    } else {
+      html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">No site-level connection/service/regulatory evidence has yet been attached to this Epoch record. The applicable grid/queue jurisdiction remains documented above.</p>';
     }
     html+='</section>';
     const tl=n.latest_timeline;
@@ -932,7 +950,8 @@ openFacilityFromHash();
           : (grid.queue_scope_status==='outside_registry_geography'
               ? '<span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">'+escapeHtml(grid.queue_or_connection_system||'Outside nine-market scope')+'</span>'
               : '<span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">'+escapeHtml(grid.queue_or_connection_system||'Jurisdiction mapped')+'</span>');
-        return '<tr><td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(n.name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</div></td><td class="px-3 py-2.5">'+escapeHtml(n.country||'—')+'</td><td class="px-3 py-2.5 max-w-[260px] truncate" title="'+escapeHtml(n.address||'')+'">'+escapeHtml(n.address||'Not published / not retained')+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_power_mw))+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_h100_equivalents))+'</td><td class="px-3 py-2.5 max-w-[230px] truncate" title="'+escapeHtml(owner)+'">'+escapeHtml(owner)+'</td><td class="px-3 py-2.5">'+matchHtml+'</td><td class="px-3 py-2.5 text-right"><button type="button" class="epoch-detail-button px-2.5 py-1 rounded-md border hairline text-xs" data-epoch-id="'+escapeHtml(rec.epoch_id)+'">Open</button></td></tr>';
+        const evidenceStatus=Array.isArray(rec.site_level_connection_evidence)&&rec.site_level_connection_evidence.length ? 'Site evidence found' : 'Site evidence pending';
+        return '<tr><td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(n.name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</div></td><td class="px-3 py-2.5">'+escapeHtml(n.country||'—')+'</td><td class="px-3 py-2.5 max-w-[260px] truncate" title="'+escapeHtml(n.address||'')+'">'+escapeHtml(n.address||'Not published / not retained')+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_power_mw))+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_h100_equivalents))+'</td><td class="px-3 py-2.5 max-w-[230px] truncate" title="'+escapeHtml(owner)+'">'+escapeHtml(owner)+'</td><td class="px-3 py-2.5">'+matchHtml+'<div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(evidenceStatus)+'</div></td><td class="px-3 py-2.5 text-right"><button type="button" class="epoch-detail-button px-2.5 py-1 rounded-md border hairline text-xs" data-epoch-id="'+escapeHtml(rec.epoch_id)+'">Open</button></td></tr>';
       }).join('');
     }
     tbody.querySelectorAll('.epoch-detail-button').forEach(b=>b.addEventListener('click',()=>{
@@ -951,10 +970,21 @@ openFacilityFromHash();
   }
   async function initEpochRegistry(){
     try{
-      const response=await fetch(DATA_URL+'?v=1',{cache:'no-store'});
+      const [response,evidenceResponse]=await Promise.all([
+        fetch(DATA_URL+'?v=1',{cache:'no-store'}),
+        fetch(EVIDENCE_URL+'?v=1',{cache:'no-store'})
+      ]);
       if(!response.ok) throw new Error('Epoch registry resource unavailable ('+response.status+')');
-      const payload=await response.json();
+      if(!evidenceResponse.ok) throw new Error('Epoch site-evidence resource unavailable ('+evidenceResponse.status+')');
+      const [payload,evidencePayload]=await Promise.all([response.json(),evidenceResponse.json()]);
       if(!payload || payload.record_count!==93 || !Array.isArray(payload.records) || payload.records.length!==93) throw new Error('Epoch registry validation failed: expected 93 records');
+      if(!evidencePayload || evidencePayload.record_count!==93 || !Array.isArray(evidencePayload.records) || evidencePayload.records.length!==93) throw new Error('Epoch site-evidence validation failed: expected 93 records');
+      const evidenceById=new Map(evidencePayload.records.map(r=>[r.epoch_id,r]));
+      payload.records.forEach(rec=>{
+        const ev=evidenceById.get(rec.epoch_id);
+        rec.site_level_connection_evidence=ev?.site_level_evidence||[];
+        rec.site_level_evidence_status=ev?.site_level_evidence_status||'pending_site_specific_search';
+      });
       epochRecords=payload.records.slice().sort((a,b)=>{
         const av=epochNum(a.normalized?.current_h100_equivalents), bv=epochNum(b.normalized?.current_h100_equivalents);
         return (Number.isFinite(bv)?bv:-1)-(Number.isFinite(av)?av:-1);
@@ -962,10 +992,11 @@ openFacilityFromHash();
       const power=epochRecords.reduce((s,r)=>{const n=epochNum(r.normalized?.current_power_mw); return s+(Number.isFinite(n)?n:0);},0);
       const compute=epochRecords.reduce((s,r)=>{const n=epochNum(r.normalized?.current_h100_equivalents); return s+(Number.isFinite(n)?n:0);},0);
       const matches=epochRecords.filter(r=>Array.isArray(r.registry_crosswalk)&&r.registry_crosswalk.length).length;
+      const evidenceFound=epochRecords.filter(r=>Array.isArray(r.site_level_connection_evidence)&&r.site_level_connection_evidence.length).length;
       document.getElementById('epochStatSites').textContent=epochRecords.length.toLocaleString();
       document.getElementById('epochStatPower').textContent=power.toFixed(1)+' MW';
       document.getElementById('epochStatCompute').textContent=(compute/1e6).toFixed(2)+'M';
-      document.getElementById('epochStatMatches').textContent=matches.toLocaleString()+' / 93';
+      document.getElementById('epochStatMatches').textContent=evidenceFound.toLocaleString()+' / 93';
       const countries=Array.from(new Set(epochRecords.map(r=>r.normalized?.country).filter(Boolean))).sort();
       const sel=document.getElementById('epochCountryFilter');
       countries.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
@@ -976,7 +1007,7 @@ openFacilityFromHash();
       document.getElementById('epochNextPage').addEventListener('click',()=>{const pages=Math.max(1,Math.ceil(epochFiltered.length/PAGE_SIZE));if(epochPage<pages-1){epochPage++;renderEpochTable();}});
       document.getElementById('epochRegistryControls').classList.remove('hidden');
       const g=payload.grid_crosswalk_summary||{};
-      setEpochStatus('Imported 93 Epoch sites. All 93 have a grid/queue or external connection jurisdiction; '+(g.site_specific_queue_ids||2)+' have verified site-specific queue IDs, '+(g.public_service_or_planning_records||3)+' have public service/planning records, and '+(g.jurisdiction_only_us_sites||72)+' U.S. sites have jurisdiction-only queue coverage. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture.',false);
+      setEpochStatus('Imported 93 Epoch sites. All 93 have a grid/queue or external connection jurisdiction; '+evidenceFound+' have attached site-level connection/service/regulatory evidence, '+(g.site_specific_queue_ids||2)+' have verified site-specific queue IDs, and '+(g.jurisdiction_only_us_sites||72)+' U.S. sites still require site-specific queue/service research. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture.',false);
       epochApplyFilters();
     }catch(err){
       setEpochStatus('Epoch AI registry unavailable in this deployment: '+(err.message||'unknown error'),true);
