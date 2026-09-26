@@ -362,6 +362,12 @@
           </div>
         </div>
       </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Annual power snapshots</div><div id="track3PowerSnapshots" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Cooling snapshots</div><div id="track3CoolingSnapshots" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Service / contract evidence</div><div id="track3ServiceEvidence" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Compute-tenancy evidence</div><div id="track3TenancyEvidence" class="font-serif-display text-xl mt-1">—</div></div>
+        </div>
         <div class="mt-4 rounded-lg panel p-4">
           <div class="flex items-center justify-between gap-3">
             <div>
@@ -1088,6 +1094,8 @@ openFacilityFromHash();
       ['Site chip inventory',d.chip_inventory?.status||'UNKNOWN',d.chip_inventory?.status==='INGESTED'?'Epoch AI site-level chip-quantity records are retained when published.':'No retained site-level chip-quantity rows.'],
       ['Grid / connection',d.grid_connection?.status||gridStatus,gridStatus==='PENDING_RESEARCH'?'No site-specific connection/service evidence is currently attached.':'See the attached site-level records above; a queue ID is only asserted when defensible.'],
       ['Actual power telemetry',d.power_telemetry?.status||'NOT_INGESTED',d.power_telemetry?.status==='INGESTED_SNAPSHOT'?'A site-level annual electricity-consumption snapshot is retained; interval demand telemetry remains open.':'No site-level interval-demand telemetry dataset is currently ingested.'],
+      ['Service / contract',d.service_or_contract?.status||'NOT_INGESTED','Site-level utility/service/energy-contract evidence is tracked separately from queue-ID verification.'],
+      ['Compute tenancy',d.compute_tenancy?.status||'UNKNOWN','Site-specific compute-tenancy or capacity-contract evidence is kept separate from electricity connection and measured load.'],
       ['TIR thermal',d.remote_sensing?.status||'NOT_INGESTED','No numeric site-specific TIR thermal-anomaly dataset is currently ingested.'],
       ['SAR / optical change detection',d.remote_sensing?.status||'NOT_INGESTED','No numeric site-specific SAR/optical construction-change dataset is currently ingested.'],
       ['Cooling equipment',d.cooling?.status||'NOT_INGESTED','Cooling-equipment source families are cataloged separately; structured site-level equipment events are not yet ingested.'],
@@ -1403,6 +1411,11 @@ openFacilityFromHash();
       document.getElementById('track3Evidence').textContent=combined.toLocaleString()+' / 93';
       document.getElementById('track3USGaps').textContent=usPending.toLocaleString();
       document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
+      const domainCounts=summary.domain_status_counts||{};
+      document.getElementById('track3PowerSnapshots').textContent=Number(domainCounts.power_telemetry?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
+      document.getElementById('track3CoolingSnapshots').textContent=Number(domainCounts.cooling?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
+      document.getElementById('track3ServiceEvidence').textContent=Number(domainCounts.service_or_contract?.SITE_LEVEL_EVIDENCE||0).toLocaleString()+' / 93';
+      document.getElementById('track3TenancyEvidence').textContent=Number(domainCounts.compute_tenancy?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
       const obsCount=Number(summary.observation_task_count||0);
       document.getElementById('track3ObservationTasks').textContent=obsCount.toLocaleString();
       const breakdown=summary.observation_task_counts_by_domain||{};
