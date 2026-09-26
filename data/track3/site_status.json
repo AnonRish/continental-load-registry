@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-26T19:45:22.085Z",
+    "generated_at_utc": "2026-09-26T19:46:46.933Z",
     "epoch_site_count": 93,
     "site_level_evidence_site_count": 55,
     "site_specific_queue_id_count": 2,
@@ -316,8 +316,8 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
         },
         "remote_sensing": {
           "status": "NOT_INGESTED",
@@ -616,8 +616,8 @@
           "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
+          "status": "NOT_INGESTED",
+          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
           "status": "NOT_INGESTED",
