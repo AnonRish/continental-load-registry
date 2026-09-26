@@ -85,7 +85,7 @@ jobs:
           assert scope["definitions"]["additional_known_miso"]["records"] == 83
           assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
-          assert len(supplemental["records"]) == 17
+          assert len(supplemental["records"]) == 18
           ids = [r["id"] for r in supplemental["records"]]
           assert len(ids) == len(set(ids))
           for record in supplemental["records"]:
