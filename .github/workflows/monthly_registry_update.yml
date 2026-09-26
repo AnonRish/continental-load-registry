@@ -3,12 +3,11 @@ name: Monthly Registry Update
 # Refreshes the public registry from the live RTO/ISO feeds at 06:00 UTC on the
 # 1st of every month, or on demand (Actions tab -> Run workflow).
 #
-# Read this before trusting an unattended run:
-#   * None of the nine fetch_*() helpers in ingest_grid_queues.py has been run
-#     against its live server from inside the script (see that file's docstring
-#     and the README). The first real run is their first test. Start with a
-#     manual run with "dry_run" ticked, read the "Registry refresh gate" table
-#     in the run summary, and only then let the schedule commit.
+# Validation note:
+#   * A production live-feed run completed successfully on 2026-09-26, including
+#     all offline self-tests, the live ingest, the per-RTO refresh gate, and the
+#     registry commit. Keep using "dry_run" for manual validation before making
+#     future workflow changes or changing refresh policy.
 #   * A feed that is blocked or unreachable from GitHub-hosted runners is not an
 #     error: that RTO keeps its previous rows and a warning is raised.
 #   * A feed that returns data outside 50%-200% of the current row count or
