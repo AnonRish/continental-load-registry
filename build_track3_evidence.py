@@ -41,6 +41,27 @@ SITE_DOMAINS = (
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
+EXTERNAL_SOURCE_FILES = {
+    "chip_ownership": [
+        "ai_chip_owners_cumulative_by_designer.csv",
+        "ai_chip_owners_quarters_by_chip_type.csv",
+        "ai_chip_owners_cumulative_by_chip_type.csv",
+    ],
+    "chip_users": [
+        "ai_chip_users_year_end_by_lab.csv",
+        "ai_chip_users_intermediates_by_lab.csv",
+    ],
+    "chip_shipments": [
+        "ai_chip_sales_chip_types.csv",
+        "ai_chip_sales_organizations.csv",
+        "ai_chip_sales_timelines_by_chip.csv",
+    ],
+}
+
+def external_snapshot_available(domain: str) -> bool:
+    return all((EPOCH / name).exists() and (EPOCH / name).stat().st_size > 0
+               for name in EXTERNAL_SOURCE_FILES[domain])
+
 def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
     ev = rec.get("site_level_connection_evidence") or []
     grid = rec.get("grid_crosswalk") or {}
@@ -89,9 +110,14 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
             "basis": "The public repository currently specifies this evidence stream but does not ingest its measurements."
         }
     if domain in {"chip_ownership", "chip_users", "chip_shipments"}:
+        if external_snapshot_available(domain):
+            return {
+                "status": "INGESTED_SNAPSHOT",
+                "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+            }
         return {
-            "status": "INGESTED_SNAPSHOT",
-            "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+            "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+            "basis": "The relevant Epoch global compute-accounting source is cataloged, but its raw snapshot is not present in this build."
         }
     raise KeyError(domain)
 
@@ -227,6 +253,34 @@ def main() -> int:
         "count": len(pending),
         "records": pending,
         "semantics": "A pending record means the registry has not attached site-specific grid/service evidence yet; it does not mean the site lacks a connection.",
+    }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    external_audit = []
+    for domain, filenames in EXTERNAL_SOURCE_FILES.items():
+        for filename in filenames:
+            path = EPOCH / filename
+            row_count = 0
+            columns = []
+            if path.exists() and path.stat().st_size > 0:
+                try:
+                    with path.open("r", encoding="utf-8-sig", newline="") as f:
+                        reader = csv.reader(f)
+                        columns = next(reader, [])
+                        row_count = sum(1 for _ in reader)
+                except Exception:
+                    row_count = -1
+            external_audit.append({
+                "domain": domain,
+                "file": filename,
+                "status": "INGESTED_SNAPSHOT" if row_count >= 0 and path.exists() and path.stat().st_size > 0 else "SOURCE_AVAILABLE_NOT_INGESTED",
+                "row_count": row_count,
+                "columns": columns,
+            })
+    (OUT / "external_source_snapshots.json").write_text(json.dumps({
+        "schema_version": 1,
+        "generated_at_utc": summary["generated_at_utc"],
+        "records": external_audit,
+        "semantics": "These are source snapshots, not site-attributed compute records."
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
