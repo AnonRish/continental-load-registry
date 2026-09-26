@@ -41,7 +41,8 @@ jobs:
 
       - name: Download and normalize Epoch AI datasets
         run: python sync_epoch_ai_data_centers.py --sync
-\n      - name: Build grid and queue crosswalk
+
+      - name: Build grid and queue crosswalk
         run: python build_epoch_grid_crosswalk.py
 
       - name: Validate inline JavaScript syntax
