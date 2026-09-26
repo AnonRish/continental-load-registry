@@ -171,7 +171,17 @@ The published dashboard currently contains **1,558 row-level facilities / reques
 | ISO-NE | 19 | 4.9 | IRTT public queue, 2026-09-19 | study stage is not published in the retained table |
 | AESO | 47 | 24.2 | September 2026 Connection Project List | includes Data Load / Industrial Load rows |
 
-### Supplemental public large-load evidence
+### Data-universe completion
+
+The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
+
+The project-level layer has grown to **92 records**: 33 Virginia DEQ permit identities, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
+
+CAISO historical coverage is now represented in `data/caiso_cluster_history.json` and CSV. The series contains 49 Cluster 8-and-prior projects, 27 Cluster 9, 21 Cluster 10, 30 Cluster 11, 44 Cluster 12, 60 Cluster 13 and 204 Cluster 14 projects — 435 projects and 121.204 GW in that historical series. A separately published Cluster 15 energy-only subset is recorded at 48 projects / 14.421 GW. These generator-queue figures are a distinct history layer and are not added to the large-load total.
+
+The remaining hard limits are explicit rather than hidden: MISO's 83 additional >=100 MW requests remain unlocated in the accessible public response; ERCOT's Batch Zero process has public forms and eligibility/verification notices but not a public completed-response table; PJM's public service-request pages expose generation/merchant-transmission/long-term-firm service structures but do not establish a per-load-request dataset; SPP's HILL framework is public but its customer-level load list is not; ISO-NE publishes a small forecast table but not project-specific study stages. These are tracked as source/disclosure states, not silently converted into fake rows.
+
+
 
 The repository also preserves public utility, regulator, planning, connection and permit evidence that cannot safely be collapsed into the core nine-market row-level total without double-counting or inventing missing fields. See `data/supplemental_large_load_evidence.json`.
 
