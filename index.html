@@ -845,7 +845,7 @@ openFacilityFromHash();
   }
   function buildMarker(r,kind,pts){
     const loc=locationFor(r);if(!loc)return null;pts.push(loc.point);
-    const radius=kind==='ambiguous'?Math.max(5.0,r.mw*0.35):kind==='bess'?3.0:Math.max(3.0,Math.sqrt(r.mw)*0.15);
+    const radius=kind==='ambiguous'?Math.max(5.0,Math.sqrt(r.mw)*0.35):kind==='bess'?3.0:Math.max(3.0,Math.sqrt(r.mw)*0.15);
     const color=loc.precision==='state/province'?FALLBACK:(kind==='ambiguous'?AMBER:(kind==='bess'?BESS_BLUE:NEUTRAL));
     const marker=L.circleMarker(loc.point,{radius:radius,color:color,weight:loc.precision==='state/province'?1.6:(kind==='ambiguous'?2:1.2),fillColor:color,fillOpacity:loc.precision==='state/province'?0.18:(kind==='ambiguous'?0.48:(kind==='bess'?0.35:0.24)),opacity:loc.precision==='state/province'?0.82:(kind==='ambiguous'?0.92:(kind==='bess'?0.35:0.72))});
     marker.bindTooltip('<span class="mono">'+escapeHtml(r.rto)+' · '+r.mw.toLocaleString(undefined,{maximumFractionDigits:1})+' MW</span>',{sticky:true,direction:'top',opacity:0.96});

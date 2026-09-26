@@ -175,7 +175,7 @@
     ],
     "api_keys_required": false,
     "coordinate_policy": "Use embedded county/zone lookup where available; otherwise state/province centroid fallback. Missing coordinates are skipped without throwing.",
-    "ambiguous_radius_px": "max(5.0, capacity_mw * 0.35)",
+    "ambiguous_radius_px": "max(5.0, sqrt(capacity_mw) * 0.35)",
     "ambiguous_visual": "amber/orange with glow",
     "bess_radius_px": 3,
     "bess_opacity": 0.35,

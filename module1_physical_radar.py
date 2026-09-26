@@ -159,7 +159,7 @@ def validate_source_invariants() -> None:
     if "fuzz.WRatio" not in compute or "FUZZY_MATCH_THRESHOLD = 88.0" not in compute or "FUZZY_GRAY_ZONE_FLOOR = 70.0" not in compute:
         raise AssertionError("RapidFuzz WRatio thresholds are not enforced")
 
-    if "Math.max(5.0,r.mw*0.35)" not in index:
+    if "Math.max(5.0,Math.sqrt(r.mw)*0.35)" not in index:
         raise AssertionError("Ambiguous marker radius invariant is not implemented")
     if "radius:3.0" not in index or "fillOpacity:0.35" not in index:
         raise AssertionError("BESS visual invariants are not implemented")
@@ -213,7 +213,7 @@ def build_summary(rows: list[dict[str, Any]], epoch: dict[str, Any]) -> dict[str
             "domain_4_interface": {
                 "leaflet_map": True,
                 "table_to_map_rto_sync": True,
-                "ambiguous_radius_formula": "max(5.0, capacity_mw * 0.35)",
+                "ambiguous_radius_formula": "max(5.0, sqrt(capacity_mw) * 0.35)",
                 "bess_radius_px": 3.0,
                 "bess_opacity": 0.35,
                 "country_and_state_boundaries": True
