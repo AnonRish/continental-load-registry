@@ -42,6 +42,9 @@ jobs:
           assert o["record_count"] == len(o["records"]) > 0
           s=json.loads(Path("data/miso_public_queue_summary.json").read_text(encoding="utf-8"))
           assert s["record_count"] == o["record_count"]
+          u=json.loads(Path("data/miso_unresolved_large_loads.json").read_text(encoding="utf-8"))
+          assert u["record_count"] == s["missing_ge_100_location"] == len(u["records"])
+          assert all(r["source_url"].startswith("https://") and r["research_query"] for r in u["records"])
           assert Path("data/miso_public_queue.csv").stat().st_size > 0
           print("PASS: MISO complete public queue", o["record_count"])
           PY
@@ -49,7 +52,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/miso_public_queue.json data/miso_public_queue.csv data/miso_public_queue_summary.json
+          git add data/miso_public_queue.json data/miso_public_queue.csv data/miso_public_queue_summary.json data/miso_unresolved_large_loads.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Automated MISO complete public queue sync: $(date -u +%Y-%m-%d)"
           git fetch origin main
