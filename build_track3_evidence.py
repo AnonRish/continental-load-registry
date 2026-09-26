@@ -330,6 +330,15 @@ def main() -> int:
         "schema_version": 1,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "epoch_site_count": len(site_records),
+        "observation_task_count": len(observation_queue),
+        "observation_task_counts_by_domain": {
+            domain: sum(1 for task in observation_queue if task["domain"] == domain)
+            for domain in sorted({task["domain"] for task in observation_queue})
+        },
+        "observation_task_counts_by_priority": {
+            priority: sum(1 for task in observation_queue if task["priority"] == priority)
+            for priority in sorted({task["priority"] for task in observation_queue})
+        },
         "site_level_evidence_site_count": sum(1 for x in site_records if x["site_level_evidence_count"] > 0),
         "combined_site_level_evidence_site_count": sum(
             1 for x in site_records
