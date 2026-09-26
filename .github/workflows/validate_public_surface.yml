@@ -49,6 +49,7 @@ on:
       - "sync_spp_public_queue.py"
       - "sync_nyiso_public_queue.py"
       - "sync_pjm_cycle_public_queue.py"
+      - "data/queue_layer_status.json"
       - ".github/workflows/validate_public_surface.yml"
   pull_request:
     paths:
@@ -201,6 +202,9 @@ jobs:
           assert any(d["path"] == "data/project_level_extractions.json" and d["record_count"] == 213 for d in catalog["datasets"])
           assert any(d["path"] == "data/epoch_connection_research_targets.json" and d["record_count"] == 93 for d in catalog["datasets"])
           assert any(d["path"] == "data/epoch_site_evidence_records.json" and d["record_count"] == 68 for d in catalog["datasets"])
+          queue_status = json.loads(Path("data/queue_layer_status.json").read_text(encoding="utf-8"))
+          assert len(queue_status["feeds"]) == 5
+          assert all(f["source_url"].startswith("https://") and f["workflow"] and f["snapshot"] for f in queue_status["feeds"])
           universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
           assert len(universe["markets"]) == 10
           epoch_map = json.loads(Path("data/epoch_ai_map.json").read_text(encoding="utf-8"))
