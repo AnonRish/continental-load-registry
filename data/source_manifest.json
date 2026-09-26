@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "description": "Official publisher/source catalog for facility research records. Capture dates describe the source data used for the current registry record; they do not imply the publisher is unchanged today.",
+  "sources": {
+    "PJM": {
+      "source_name": "PJM Service Request / Interconnection Queue Status",
+      "publisher": "PJM Interconnection",
+      "official_source_url": "https://www.pjm.com/planning/service-requests",
+      "feed_url": "https://services.pjm.com/PJMPlanningApi/api/Queue/ExportToXls",
+      "capture_date": "2026-09-26",
+      "capture_precision": "day",
+      "capture_basis": "Production live-feed refresh accepted on 2026-09-26; source bytes not retained.",
+      "scope": "PJM public service-request status export used by the registry.",
+      "raw_capture_retained": false,
+      "notes": "PJM's public export does not publish a granular interconnection substation or applicant field for these rows; the registry records explicit missing-field sentinels rather than guessing."
+    },
+    "ERCOT": {
+      "source_name": "GIS Report",
+      "publisher": "Electric Reliability Council of Texas (ERCOT)",
+      "official_source_url": "https://www.ercot.com/mp/data-products/data-product-details?id=pg7-200-er",
+      "publisher_page_url": "https://www.ercot.com/gridinfo/resource",
+      "capture_date": "2026-09-26",
+      "capture_precision": "day",
+      "capture_basis": "Production live-feed refresh accepted on 2026-09-26; source bytes not retained.",
+      "scope": "ERCOT public GIS/interconnection report used by the registry.",
+      "raw_capture_retained": false,
+      "notes": "ERCOT's GIS product is generation/interconnection-oriented; the repository's inclusion logic is documented in ingest_grid_queues.py."
+    },
+    "SPP": {
+      "source_name": "GI Active Requests",
+      "publisher": "Southwest Power Pool (SPP)",
+      "official_source_url": "https://opsportal.spp.org/Studies/GIActive",
+      "capture_date": "2026-09",
+      "capture_precision": "month",
+      "capture_basis": "September 2026 registry build; exact source timestamp was not retained.",
+      "scope": "SPP public active generation interconnection request listing.",
+      "raw_capture_retained": false,
+      "notes": "The retained SPP source does not publish applicant names in the registry build."
+    },
+    "MISO": {
+      "source_name": "Generator Interconnection Queue API",
+      "publisher": "Midcontinent Independent System Operator (MISO)",
+      "official_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
+      "publisher_page_url": "https://www.misoenergy.org/planning/generator-interconnection/GI_Queue/",
+      "capture_date": "2026-09-19T11:42:50-04:00",
+      "capture_precision": "timestamp",
+      "capture_basis": "Raw publisher response captured by the 2026-09-19 source snapshot.",
+      "scope": "MISO Generator Interconnection Queue JSON API.",
+      "source_file": "miso_gi_queue.json",
+      "source_sha256": "eacd95e19bff0864fc06f3bedddbdc506f7635559b8714dad3fd0e038245f9de",
+      "raw_capture_retained": false,
+      "notes": "The parsed source bytes are identified by SHA-256 in SOURCES.md but are not bundled in the repository."
+    },
+    "CAISO": {
+      "source_name": "Cluster 15 Interconnection Requests",
+      "publisher": "California Independent System Operator (CAISO)",
+      "official_source_url": "https://www.caiso.com/documents/cluster-15-interconnection-requests.xlsx",
+      "capture_date": "2026-09-19T11:42:50-04:00",
+      "capture_precision": "timestamp",
+      "capture_basis": "Raw publisher response captured by the 2026-09-19 source snapshot.",
+      "scope": "CAISO Cluster 15 request workbook only; not the whole CAISO queue.",
+      "source_file": "caiso_cluster15_queue.xlsx",
+      "source_sha256": "015543982ac48684176f83bb05c93533aca95b99b0ce27e99d67ce6fee1428ca",
+      "raw_capture_retained": false,
+      "notes": "Earlier clusters and serial projects are outside this source file; these rows are therefore a floor for CAISO coverage."
+    },
+    "NYISO": {
+      "source_name": "NYISO Interconnection Queue Workbook",
+      "publisher": "New York Independent System Operator (NYISO)",
+      "official_source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "publisher_page_url": "https://www.nyiso.com/interconnections",
+      "capture_date": "2026-09-19T11:42:50-04:00",
+      "capture_precision": "timestamp",
+      "capture_basis": "Raw publisher response captured by the 2026-09-19 source snapshot.",
+      "scope": "NYISO Interconnection Queue workbook, including the sheets used by the registry.",
+      "source_file": "nyiso_interconnection_queue.xlsx",
+      "source_sha256": "8158c0eb16ef93ce0a4f9f0dd8316d5680edbefbaeaab3758d7eded2e53c8e9b",
+      "raw_capture_retained": false,
+      "notes": "NYISO is one of the newer sources that publishes applicant names in the retained snapshot."
+    },
+    "ISO-NE": {
+      "source_name": "IRTT External Reports / Public Queue",
+      "publisher": "ISO New England",
+      "official_source_url": "https://irtt.iso-ne.com/reports/external",
+      "capture_date": "2026-09-19T11:42:50-04:00",
+      "capture_precision": "timestamp",
+      "capture_basis": "Raw publisher response captured by the 2026-09-19 source snapshot.",
+      "scope": "ISO-NE external public queue table used by the registry.",
+      "source_file": "iso_ne_public_queue.html",
+      "source_sha256": "08131ea542e47f3550cd7418d4f9b513a47fb0a900f8dec6ba75526b5f673dfb",
+      "raw_capture_retained": false,
+      "notes": "The retained public table does not expose study stage, so the registry's status bucket is a documented normalization rather than a literal source label."
+    },
+    "IESO": {
+      "source_name": "Application Status",
+      "publisher": "Independent Electricity System Operator (IESO)",
+      "official_source_url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "capture_date": "2026-09",
+      "capture_precision": "month",
+      "capture_basis": "September 2026 registry build; exact source timestamp was not retained.",
+      "scope": "IESO public connection-application status list.",
+      "raw_capture_retained": false,
+      "notes": "The registry's county/zone column is an IESO electrical zone for IESO rows, not a municipality."
+    },
+    "AESO": {
+      "source_name": "Connection Project List",
+      "publisher": "Alberta Electric System Operator (AESO)",
+      "official_source_url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
+      "publisher_page_url": "https://www.aeso.ca/grid/transmission-projects/connection-project-reporting/",
+      "capture_date": "2026-09-19T11:42:50-04:00",
+      "capture_precision": "timestamp",
+      "capture_basis": "Raw publisher response captured by the 2026-09-19 source snapshot.",
+      "scope": "AESO September 2026 Connection Project List.",
+      "source_file": "aeso_september_2026_connection_project_list.xlsx",
+      "source_sha256": "5371af07cde3ae2afac6e92be7c094f3baad093a1b83d6c975d494b8e0e6192d",
+      "raw_capture_retained": false,
+      "notes": "The registry's county/zone column is the AESO planning area/hub field for these rows."
+    }
+  }
+}
