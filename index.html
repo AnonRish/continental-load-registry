@@ -432,7 +432,7 @@
       <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="queueWideFreshness">live</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Automated refresh</p></div>
     </div>
-    <p class="text-xs mt-4" style="color:var(--ink-faint);">Each layer is retained separately with its source row and normalized fields. Missing local snapshots are treated as unavailable rather than synthesized.</p>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">Each layer is retained separately with its source row and normalized fields. Snapshot status is factual repository state; missing local snapshots are treated as unavailable rather than synthesized. See <a class="link-underline" href="data/queue_layer_status.json" target="_blank" rel="noopener noreferrer">queue layer status</a>.</p>
   </section>
 
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
@@ -1801,6 +1801,10 @@ openFacilityFromHash();
   if(nyisoQueueToggle)nyisoQueueToggle.addEventListener('click',function(){showNyisoQueue=!showNyisoQueue;nyisoQueueToggle.setAttribute('aria-pressed',showNyisoQueue?'true':'false');updateNyisoQueueLayer();});
   const pjmQueueToggle=document.getElementById('pjmQueueToggle');
   if(pjmQueueToggle)pjmQueueToggle.addEventListener('click',function(){showPjmQueue=!showPjmQueue;pjmQueueToggle.setAttribute('aria-pressed',showPjmQueue?'true':'false');updatePjmQueueLayer();});
+  fetch('data/queue_layer_status.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('queue layer status unavailable');return res.json();}).then(function(payload){
+    const el=document.getElementById('queueWideFreshness');
+    if(el)el.textContent=payload.feeds.filter(function(f){return f.snapshot_present;}).length+'/'+payload.feeds.length+' snapshots';
+  }).catch(function(err){console.warn(err);});
   fetch('data/pjm_cycle_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('PJM cycle queue unavailable');return res.json();}).then(function(payload){pjmQueueRecords=Array.isArray(payload.records)?payload.records:[];updatePjmQueueLayer();const e=document.getElementById('pjmQueueWebCount');if(e)e.textContent=Number(payload.record_count||pjmQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
   fetch('data/miso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('MISO full queue unavailable');return res.json();}).then(function(payload){misoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateMisoQueueLayer();const e=document.getElementById('misoQueueWebCount');if(e)e.textContent=Number(payload.record_count||misoQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
   fetch('data/spp_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('SPP full queue unavailable');return res.json();}).then(function(payload){sppQueueRecords=Array.isArray(payload.records)?payload.records:[];updateSppQueueLayer();const e=document.getElementById('sppQueueWebCount');if(e)e.textContent=Number(payload.record_count||sppQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
