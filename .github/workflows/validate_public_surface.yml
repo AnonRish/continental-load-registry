@@ -123,11 +123,11 @@ jobs:
           assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
           assert scope["definitions"]["supplemental_evidence_units"]["records"] == 47
-          assert scope["definitions"]["project_level_extractions"]["records"] == 199
+          assert scope["definitions"]["project_level_extractions"]["records"] == 213
           assert len(supplemental["records"]) == 47
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
-          assert projects["record_count"] == len(projects["records"]) == 199
-          assert len({r["id"] for r in projects["records"]}) == 199
+          assert projects["record_count"] == len(projects["records"]) == 213
+          assert len({r["id"] for r in projects["records"]}) == 213
           assert len(projects["sources"]) == 15
           source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
           assert source_counts["VA-DEQ"] == 33
@@ -146,6 +146,7 @@ jobs:
           assert sum(r["evidence_type"] == "aeso_data_load_project_record" for r in projects["records"]) == 28
           assert sum(r["evidence_type"] == "ieso_load_application_record" for r in projects["records"]) == 6
           assert sum(r["evidence_type"] == "nyiso_load_project_site_record" for r in projects["records"]) == 12
+          assert sum(r["evidence_type"] == "caiso_large_load_interconnection_project" for r in projects["records"]) == 14
           camellia = next(r for r in projects["records"] if r["id"] == "GA-OPENAI-CAMELLIA-2026")
           assert sorted(x.get("value_mw") for x in camellia["capacity_claims"]) == [3200, 3210]
           alectra = next(r for r in projects["records"] if r["id"] == "ALECTRA-VAUGHAN-MTS6-2026")
