@@ -189,7 +189,7 @@
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
           <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
           <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
-          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate evidence</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button>
           <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
         </div>
       </div>
@@ -1205,6 +1205,7 @@ openFacilityFromHash();
   let showEpochEvidence=true;
   map.addLayer(epochEvidenceLayer);
   const AGGREGATE_COLOR='#9A6B37';
+  const HISTORICAL_COLOR='#6E7D4F';
   const aggregateLayer=L.layerGroup();
   let aggregateRecords=[];
   let showAggregateEvidence=true;
@@ -1312,7 +1313,9 @@ openFacilityFromHash();
   function buildAggregateOverlay(a){
     if(a.lat==null||a.lon==null)return null;
     const radius=Math.max(25000,Number(a.radius_km||140)*1000);
-    const circle=L.circle([a.lat,a.lon],{radius:radius,color:AGGREGATE_COLOR,weight:1.4,fillColor:AGGREGATE_COLOR,fillOpacity:0.12,opacity:0.72});
+    const historical=String(a.evidence_type||'').includes('historical')||String(a.label||'').toLowerCase().includes('historical');
+    const color=historical?HISTORICAL_COLOR:AGGREGATE_COLOR;
+    const circle=L.circle([a.lat,a.lon],{radius:radius,color:color,weight:1.4,fillColor:color,fillOpacity:0.12,opacity:0.72});
     circle.bindTooltip('<span class="mono">AGGREGATE · '+escapeHtml(a.provider||a.evidence_type)+'</span>',{sticky:true,direction:'top',opacity:0.96});
     circle.bindPopup('<div style="min-width:250px;max-width:330px;">'+
       '<p style="font-weight:650;font-size:13px;">'+escapeHtml(a.provider||'Aggregate evidence')+'</p>'+
