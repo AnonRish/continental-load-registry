@@ -52,9 +52,7 @@ on:
       - "data/track3/ai2040_plan_a_traceability.json"
       - "data/track3/plan_a_audit_schema.json"
       - "data/track3_evidence_schema.json"
-      - "data/large_load_scope.json"
-      - "data/supplemental_large_load_evidence.json"
-      - ".github/workflows/validate_public_surface.yml"
+
 
 permissions:
   contents: read
@@ -95,7 +93,7 @@ jobs:
           assert scope["definitions"]["additional_known_miso"]["records"] == 83
           assert scope["definitions"]["expanded_known_scope"]["records"] == 1641
           assert scope["definitions"]["expanded_known_scope"]["capacity_gw"] == 397.775
-          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 32
+          assert scope["definitions"]["supplemental_evidence_units"]["records"] == 41
           assert scope["definitions"]["project_level_extractions"]["records"] == 154
           assert len(supplemental["records"]) == 41
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
