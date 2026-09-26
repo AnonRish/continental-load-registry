@@ -1141,7 +1141,7 @@ openFacilityFromHash();
       const g=payload.grid_crosswalk_summary||{};
       const queueIdCount=Number(g.site_specific_queue_ids||siteQueueIds||2);
       const usGapCount=Number(g.jurisdiction_only_us_sites||72);
-      const pendingCount=Number(g.pending_site_specific_search||Math.max(0,93-queueIdCount));
+      const pendingCount=Number(evidencePayload.summary&&evidencePayload.summary.pending!==undefined?evidencePayload.summary.pending:Math.max(0,93-evidenceFound));
       document.getElementById('track3EpochSites').textContent=epochRecords.length.toLocaleString();
       document.getElementById('track3QueueIds').textContent=queueIdCount.toLocaleString()+' / 93';
       document.getElementById('track3Evidence').textContent=evidenceFound.toLocaleString()+' / 93';
