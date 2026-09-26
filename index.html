@@ -223,6 +223,40 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The gap analysis is deliberately conservative. A jurisdiction-only record means the correct queue/connection family is known, while the physical campus has not yet been tied to a specific public queue row. Operational sites may instead be represented by service contracts, regulatory dockets or completed connection records.</p>
   </section>
 
+  <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
+  <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">From source units to discrete records</p>
+        <h2 class="font-serif-display text-xl mt-1">Project-level extraction</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">This layer turns public source material into individually identifiable permit, utility-customer, contract and distribution-connection records where the evidence exposes a discrete project. It does not add these records to the 1,558-row core total.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/project_level_extractions.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open project JSON</a>
+        <a href="data/project_level_extractions.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download project CSV</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">46</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project-level records</p></div>
+      <div class="p-4"><p class="mono text-xl">33</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Virginia DEQ permit records</p></div>
+      <div class="p-4"><p class="mono text-xl">8</p><p class="text-xs mt-1" style="color:var(--ink-faint);">AEP named customer/project records</p></div>
+      <div class="p-4"><p class="mono text-xl">3</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Named projects with multi-source capacity claims</p></div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[980px]">
+        <thead><tr><th class="px-3 py-2 text-left">Project / record</th><th class="px-3 py-2 text-left">Provider / source</th><th class="px-3 py-2 text-left">Location</th><th class="px-3 py-2 text-left">Raw capacity evidence</th><th class="px-3 py-2 text-left">Record status</th></tr></thead>
+        <tbody>
+          <tr><td class="px-3 py-2">Project Camellia</td><td class="px-3 py-2">Georgia Power + Georgia PSC</td><td class="px-3 py-2">Effingham County, GA</td><td class="px-3 py-2">3,200 MW / 3,210 MW (separate dated primary claims)</td><td class="px-3 py-2">Contract approved / announced</td></tr>
+          <tr><td class="px-3 py-2">River Bend AI data center campus</td><td class="px-3 py-2">Entergy Louisiana</td><td class="px-3 py-2">West Feliciana Parish, LA</td><td class="px-3 py-2">330 MW utility / 245 MW critical IT / up to 1,000 MW utility scale</td><td class="px-3 py-2">Under construction</td></tr>
+          <tr><td class="px-3 py-2">Vaughan MTS #6</td><td class="px-3 py-2">Alectra Utilities</td><td class="px-3 py-2">Vaughan, ON</td><td class="px-3 py-2">108 MVA current page / 125 MVA 2025 filed plan</td><td class="px-3 py-2">Planned 2027</td></tr>
+          <tr><td class="px-3 py-2">SB Energy — Piketon data center</td><td class="px-3 py-2">AEP</td><td class="px-3 py-2">Piketon, OH</td><td class="px-3 py-2">10 GW campus at buildout</td><td class="px-3 py-2">Planned</td></tr>
+          <tr><td class="px-3 py-2">Virginia issued data-center permits</td><td class="px-3 py-2">Virginia DEQ</td><td class="px-3 py-2">Multiple Northern Virginia / statewide sites</td><td class="px-3 py-2">No uniform customer MW field in listing</td><td class="px-3 py-2">33 individual permit records extracted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">The machine-readable file preserves raw claims and source dates. Empty capacity fields mean the cited public record did not publish a usable project MW value; the registry does not infer one from unrelated generation, tariff or IRP figures.</p>
+  </section>
+
   <!-- ============ SUPPLEMENTAL PUBLIC LARGE-LOAD EVIDENCE ============ -->
   <section id="supplementalLargeLoad" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -237,7 +271,7 @@
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl">31</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
+      <div class="p-4"><p class="mono text-xl">32</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
       <div class="p-4"><p class="mono text-xl">83</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Additional quantified MISO requests</p></div>
       <div class="p-4"><p class="mono text-xl">70 GW</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Dominion aggregate large-load queue evidence</p></div>
       <div class="p-4"><p class="mono text-xl">6.9M</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Ontario CCIM data points</p></div>
@@ -246,6 +280,7 @@
       <table class="w-full text-xs min-w-[980px]">
         <thead><tr><th class="px-3 py-2 text-left">Jurisdiction / provider</th><th class="px-3 py-2 text-left">Evidence</th><th class="px-3 py-2 text-right">Records / units</th><th class="px-3 py-2 text-right">Capacity / measure</th><th class="px-3 py-2 text-left">Date</th><th class="px-3 py-2 text-left">Accounting</th></tr></thead>
         <tbody>
+          <tr><td class="px-3 py-2">ERCOT</td><td class="px-3 py-2">Batch Zero public process / source layer</td><td class="px-3 py-2 text-right">Process</td><td class="px-3 py-2 text-right">≥75 MW threshold</td><td class="px-3 py-2">2026-09-26</td><td class="px-3 py-2">Non-additive</td></tr>
           <tr><td class="px-3 py-2">MISO</td><td class="px-3 py-2">Unlocated live large-load requests</td><td class="px-3 py-2 text-right">83</td><td class="px-3 py-2 text-right">35.9 GW</td><td class="px-3 py-2">2026-09-19</td><td class="px-3 py-2">Added to expanded known scope</td></tr>
           <tr><td class="px-3 py-2">Arizona Public Service</td><td class="px-3 py-2">Uncommitted extra-large-customer queue</td><td class="px-3 py-2 text-right">Aggregate</td><td class="px-3 py-2 text-right">19 GW</td><td class="px-3 py-2">2026-08</td><td class="px-3 py-2">External aggregate; non-additive</td></tr>
           <tr><td class="px-3 py-2">American Electric Power</td><td class="px-3 py-2">Signed large-load agreements</td><td class="px-3 py-2 text-right">Aggregate</td><td class="px-3 py-2 text-right">69 GW</td><td class="px-3 py-2">2026-07-30</td><td class="px-3 py-2">Footprint aggregate; non-additive</td></tr>
