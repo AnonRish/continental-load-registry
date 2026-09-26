@@ -99,7 +99,7 @@ jobs:
           assert scope["definitions"]["project_level_extractions"]["records"] == 189
           assert len(supplemental["records"]) == 44
           projects = json.loads(Path("data/project_level_extractions.json").read_text(encoding="utf-8"))
-          assert projects["record_count"] == len(projects["records"]) == 189
+          assert projects["record_count"] == len(projects["records"]) == 198
           assert len({r["id"] for r in projects["records"]}) == 185
           assert len(projects["sources"]) == 13
           source_counts = {s["id"]: s["record_count"] for s in projects["sources"]}
@@ -107,6 +107,7 @@ jobs:
           assert source_counts["BPA-LARGE-LOAD"] == 60
           assert source_counts["AESO-DATA-LOAD"] == 28
           assert source_counts["NYISO-LOAD-PROJECTS"] == 12
+          assert source_counts["NYISO-GOLD-BOOK-2024"] == 9
           assert source_counts["IESO-LOAD"] == 6
           assert source_counts["ISO-NE-CELT"] == 2
           assert source_counts["COMED-NEW-PROJECTS"] == 28
