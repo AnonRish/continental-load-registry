@@ -65,12 +65,22 @@ def main() -> int:
         raise SystemExit("FAIL: research queue does not match pending grid research")
     cross_count = sum(1 for x in crosswalk["records"] if x.get("site_level_public_evidence"))
     base_evidence_items = sum(len(x.get("site_level_evidence") or []) for x in source_evidence["records"])
-    expected_evidence_items = base_evidence_items + cross_count
+    power_observation_count = len(load(TRACK3 / "power_observations.json").get("records", []))
+    cooling_observation_count = len(load(TRACK3 / "cooling_observations.json").get("records", []))
+    expected_evidence_items = (
+        base_evidence_items
+        + cross_count
+        + power_observation_count
+        + cooling_observation_count
+    )
     if evidence.get("record_count") != expected_evidence_items or len(evidence.get("records", [])) != expected_evidence_items:
         raise SystemExit(
             f"FAIL: evidence record count mismatch: expected {expected_evidence_items}, "
             f"got {evidence.get('record_count')}"
         )
+    evidence_ids = [x.get("evidence_id") for x in evidence.get("records", [])]
+    if len(evidence_ids) != len(set(evidence_ids)) or any(not x for x in evidence_ids):
+        raise SystemExit("FAIL: evidence IDs must be present and unique")
     if summary.get("source_stack_count") != len(source_stack.get("sources", [])):
         raise SystemExit("FAIL: summary source_stack_count does not match catalog")
     for rec in sites:
