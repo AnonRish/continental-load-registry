@@ -189,7 +189,7 @@
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
           <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
           <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
-          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="misoQueueToggle" aria-pressed="true">MISO full queue</button><button type="button" class="map-mode-btn" id="sppQueueToggle" aria-pressed="true">SPP active queue</button><button type="button" class="map-mode-btn" id="nyisoQueueToggle" aria-pressed="true">NYISO full queue</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="misoQueueToggle" aria-pressed="true">MISO full queue</button><button type="button" class="map-mode-btn" id="sppQueueToggle" aria-pressed="true">SPP active queue</button><button type="button" class="map-mode-btn" id="nyisoQueueToggle" aria-pressed="true">NYISO full queue</button><button type="button" class="map-mode-btn" id="pjmQueueToggle" aria-pressed="true">PJM cycle queue</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
           <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
         </div>
       </div>
@@ -409,6 +409,30 @@
       <div class="p-4"><p class="mono text-xl" id="caisoFullQueueCaptured">Not loaded</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Latest snapshot</p></div>
     </div>
     <p class="text-xs mt-4" id="caisoFullQueueStatus" style="color:var(--ink-faint);">Loading the daily CAISO snapshot…</p>
+  </section>
+
+  <section id="queueWideLayers" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Queue-wide overlays</p>
+        <h2 class="font-serif-display text-xl mt-1">Complete public queue layers</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">CAISO, MISO, NYISO and SPP are ingested into separate machine-readable queue universes; PJM's complete Cycle Service Request universe is separate as well. These layers are map/audit overlays and are not summed into the core large-load capacity.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/miso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">MISO JSON</a>
+        <a href="data/spp_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">SPP JSON</a>
+        <a href="data/nyiso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">NYISO JSON</a>
+        <a href="data/pjm_cycle_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">PJM JSON</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="sppQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">SPP active rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="nyisoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">NYISO queue rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="queueWideFreshness">live</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Automated refresh</p></div>
+    </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">Each layer is retained separately with its source row and normalized fields. Missing local snapshots are treated as unavailable rather than synthesized.</p>
   </section>
 
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
@@ -1402,6 +1426,7 @@ openFacilityFromHash();
   const MISO_QUEUE_COLOR='#355C7D';
   const SPP_QUEUE_COLOR='#7B4F7B';
   const NYISO_QUEUE_COLOR='#4F6B5C';
+  const PJM_QUEUE_COLOR='#7A5C38';
   const caisoQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(CAISO_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   let caisoQueueRecords=[];
   let showCaisoQueue=true;
@@ -1412,6 +1437,8 @@ openFacilityFromHash();
   let misoQueueRecords=[],sppQueueRecords=[],nyisoQueueRecords=[];
   let showMisoQueue=true,showSppQueue=true,showNyisoQueue=true;
   map.addLayer(misoQueueCluster);map.addLayer(sppQueueCluster);map.addLayer(nyisoQueueCluster);
+  const pjmQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(PJM_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  let pjmQueueRecords=[];let showPjmQueue=true;map.addLayer(pjmQueueCluster);
   const AGGREGATE_COLOR='#9A6B37';
   const HISTORICAL_COLOR='#6E7D4F';
   const aggregateLayer=L.layerGroup();
@@ -1772,9 +1799,12 @@ openFacilityFromHash();
   if(sppQueueToggle)sppQueueToggle.addEventListener('click',function(){showSppQueue=!showSppQueue;sppQueueToggle.setAttribute('aria-pressed',showSppQueue?'true':'false');updateSppQueueLayer();});
   const nyisoQueueToggle=document.getElementById('nyisoQueueToggle');
   if(nyisoQueueToggle)nyisoQueueToggle.addEventListener('click',function(){showNyisoQueue=!showNyisoQueue;nyisoQueueToggle.setAttribute('aria-pressed',showNyisoQueue?'true':'false');updateNyisoQueueLayer();});
-  fetch('data/miso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('MISO full queue unavailable');return res.json();}).then(function(payload){misoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateMisoQueueLayer();}).catch(function(err){console.warn(err);});
-  fetch('data/spp_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('SPP full queue unavailable');return res.json();}).then(function(payload){sppQueueRecords=Array.isArray(payload.records)?payload.records:[];updateSppQueueLayer();}).catch(function(err){console.warn(err);});
-  fetch('data/nyiso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('NYISO full queue unavailable');return res.json();}).then(function(payload){nyisoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateNyisoQueueLayer();}).catch(function(err){console.warn(err);});
+  const pjmQueueToggle=document.getElementById('pjmQueueToggle');
+  if(pjmQueueToggle)pjmQueueToggle.addEventListener('click',function(){showPjmQueue=!showPjmQueue;pjmQueueToggle.setAttribute('aria-pressed',showPjmQueue?'true':'false');updatePjmQueueLayer();});
+  fetch('data/pjm_cycle_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('PJM cycle queue unavailable');return res.json();}).then(function(payload){pjmQueueRecords=Array.isArray(payload.records)?payload.records:[];updatePjmQueueLayer();const e=document.getElementById('pjmQueueWebCount');if(e)e.textContent=Number(payload.record_count||pjmQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
+  fetch('data/miso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('MISO full queue unavailable');return res.json();}).then(function(payload){misoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateMisoQueueLayer();const e=document.getElementById('misoQueueWebCount');if(e)e.textContent=Number(payload.record_count||misoQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
+  fetch('data/spp_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('SPP full queue unavailable');return res.json();}).then(function(payload){sppQueueRecords=Array.isArray(payload.records)?payload.records:[];updateSppQueueLayer();const e=document.getElementById('sppQueueWebCount');if(e)e.textContent=Number(payload.record_count||sppQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
+  fetch('data/nyiso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('NYISO full queue unavailable');return res.json();}).then(function(payload){nyisoQueueRecords=Array.isArray(payload.records)?payload.records:[];updateNyisoQueueLayer();const e=document.getElementById('nyisoQueueWebCount');if(e)e.textContent=Number(payload.record_count||nyisoQueueRecords.length).toLocaleString();}).catch(function(err){console.warn(err);});
   fetch('data/caiso_public_queue.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('CAISO complete queue unavailable');return res.json();}).then(function(payload){
     caisoQueueRecords=Array.isArray(payload.records)?payload.records:[];
     updateCaisoQueueLayer();
@@ -1790,6 +1820,7 @@ openFacilityFromHash();
   function updateMisoQueueLayer(){misoQueueCluster.clearLayers();if(!showMisoQueue)return;misoQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'MISO',MISO_QUEUE_COLOR);if(m)misoQueueCluster.addLayer(m);});}
   function updateSppQueueLayer(){sppQueueCluster.clearLayers();if(!showSppQueue)return;sppQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'SPP',SPP_QUEUE_COLOR);if(m)sppQueueCluster.addLayer(m);});}
   function updateNyisoQueueLayer(){nyisoQueueCluster.clearLayers();if(!showNyisoQueue)return;nyisoQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'NYISO',NYISO_QUEUE_COLOR);if(m)nyisoQueueCluster.addLayer(m);});}
+  function updatePjmQueueLayer(){pjmQueueCluster.clearLayers();if(!showPjmQueue)return;pjmQueueRecords.forEach(function(r){const m=genericQueueMarker(r,'PJM',PJM_QUEUE_COLOR);if(m)pjmQueueCluster.addLayer(m);});}
   function updateMapMarkers(animate){
     otherCluster.clearLayers();bessCluster.clearLayers();flagCluster.clearLayers();
     const pts=[],counts={ambiguous:0,bess:0,other:0,mapped:0,fallback:0,eligible:0};
