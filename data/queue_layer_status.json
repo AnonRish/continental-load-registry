@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "title": "Queue layer runtime status",
+  "policy": "snapshot_present is factual repository state; a false value never means zero records. The map handles missing snapshots without inventing data.",
+  "feeds": [
+    {
+      "id": "CAISO",
+      "title": "CAISO complete public queue",
+      "source_url": "https://www.caiso.com/documents/publicqueuereport.xlsx",
+      "workflow": ".github/workflows/sync_caiso_public_queue.yml",
+      "snapshot": "data/caiso_public_queue.json",
+      "snapshot_present": false,
+      "map_layer": "CAISO full queue"
+    },
+    {
+      "id": "MISO",
+      "title": "MISO complete public queue",
+      "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
+      "workflow": ".github/workflows/sync_miso_public_queue.yml",
+      "snapshot": "data/miso_public_queue.json",
+      "snapshot_present": false,
+      "map_layer": "MISO full queue",
+      "unresolved_worklist": "data/miso_unresolved_large_loads.json"
+    },
+    {
+      "id": "SPP",
+      "title": "SPP active public queue",
+      "source_url": "https://opsportal.spp.org/Studies/GenerateActiveCSV",
+      "workflow": ".github/workflows/sync_spp_public_queue.yml",
+      "snapshot": "data/spp_public_queue.json",
+      "snapshot_present": false,
+      "map_layer": "SPP active queue"
+    },
+    {
+      "id": "NYISO",
+      "title": "NYISO complete public queue",
+      "source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "workflow": ".github/workflows/sync_nyiso_public_queue.yml",
+      "snapshot": "data/nyiso_public_queue.json",
+      "snapshot_present": false,
+      "map_layer": "NYISO full queue"
+    },
+    {
+      "id": "PJM",
+      "title": "PJM complete Cycle Service Request universe",
+      "source_url": "https://www.pjm.com/planning/m/cycle-service-request-status",
+      "workflow": ".github/workflows/sync_pjm_cycle_public_queue.yml",
+      "snapshot": "data/pjm_cycle_public_queue.json",
+      "snapshot_present": false,
+      "map_layer": "PJM cycle queue"
+    }
+  ]
+}
