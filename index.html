@@ -186,6 +186,29 @@
     <p class="text-xs mt-2" style="color:var(--ink-faint);" id="mapCaption"></p>
   </div>
 
+  <!-- ============ QUEUE REGISTRY SOURCE UNIVERSE ============ -->
+  <section id="queueUniverse" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Source-universe / coverage layer</p>
+        <h2 class="font-serif-display text-xl mt-1">Queue &amp; connection registry universe</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Every Epoch site is routed to the relevant grid, queue, utility or national connection system. Site-specific queue IDs are only attached after an identity match is defensible.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="QUEUE_REGISTRY_UNIVERSE.md" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Source universe</a>
+        <a href="data/external/epoch_ai/queue_source_universe.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Source JSON</a>
+        <a href="data/external/epoch_ai/queue_gap_analysis.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download 93-site gap analysis</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
+      <div class="p-4"><p class="mono text-xl">77</p><p class="text-xs mt-1" style="color:var(--ink-faint);">U.S. sites with jurisdiction</p></div>
+      <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
+      <div class="p-4"><p class="mono text-xl">72</p><p class="text-xs mt-1" style="color:var(--ink-faint);">U.S. jurisdiction-only gaps</p></div>
+    </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">The gap analysis is deliberately conservative. A jurisdiction-only record means the correct queue/connection family is known, while the physical campus has not yet been tied to a specific public queue row. Operational sites may instead be represented by service contracts, regulatory dockets or completed connection records.</p>
+  </section>
+
   <!-- ============ EPOCH AI FRONTIER DATA-CENTER REGISTRY ============ -->
   <section id="epochRegistry" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
