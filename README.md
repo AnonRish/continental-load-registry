@@ -47,6 +47,11 @@ aimed at surfacing large requests that lack a confirmed public operator.
   page-load. Prose that quotes a count or a GW figure is filled in from
   that data at load time, so a re-embed cannot leave a stale number behind.
 - `track3.html` -- the public Track 3 Evidence Observatory. It loads the canonical Track 3 site-status, evidence, observation, power/cooling, source-stack, queue/source-universe, Module 1 gate, and external-source status artifacts, with site search, grid-state filtering, per-site evidence inspection, domain coverage accounting, source links, and explicit missingness semantics.
+- `plan-a.html` -- public AI 2040 Plan A Track 3 research bridge. It maps the repository's current evidence and research tasks to the public AI 2040 Track 3 / Covert AI Projects discussion, provides direct AI 2040 reference links, and explains what is implemented, partial, or still design-only.
+- `PLAN_A.md` -- the repository-level Plan A contribution notes and scope boundary. This is an independent research contribution, not an AI Futures Project publication or certification.
+- `CONTRIBUTING.md` -- evidence-submission protocol for adding reproducible Track 3 records.
+- `CITATION.cff` -- machine-readable repository citation metadata.
+
 - `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
   from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
   commits the result to `main`. See "Automated monthly refresh".
