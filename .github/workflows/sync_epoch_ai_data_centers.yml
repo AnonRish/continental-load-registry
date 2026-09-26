@@ -162,6 +162,12 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Sync Epoch AI data-center evidence"
+            # The repository can receive a documentation/data commit while this
+            # long-running sync is executing. Rebase the generated snapshot
+            # onto the current main before pushing so a valid run does not fail
+            # merely because main advanced during the download/validation work.
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
 
