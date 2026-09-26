@@ -23,6 +23,7 @@ SOURCE_STACK = ROOT / "data" / "track3_source_stack.json"
 EVIDENCE = EPOCH / "site_level_connection_evidence.json"
 REGISTRY = EPOCH / "registry.json"
 GAP = EPOCH / "queue_gap_analysis.csv"
+POWER_OBSERVATIONS = OUT / "power_observations.json"
 
 SITE_DOMAINS = (
     "site_identity",
@@ -74,7 +75,7 @@ def external_snapshot_available(domain: str) -> bool:
     return all((EPOCH / name).exists() and (EPOCH / name).stat().st_size > 0
                for name in EXTERNAL_SOURCE_FILES[domain])
 
-def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
+def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
     ev = rec.get("site_level_connection_evidence") or []
     grid = rec.get("grid_crosswalk") or {}
     crosswalk_ev = grid.get("site_level_public_evidence") or {}
@@ -128,7 +129,18 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
             "status": "PENDING_RESEARCH",
             "basis": "No site-level connection/service evidence is currently attached."
         }
-    if domain in {"power_telemetry", "remote_sensing", "cooling", "transformer_supply_chain"}:
+    if domain == "power_telemetry":
+        observations = (power_observations_by_site or {}).get(str(rec.get("epoch_id")), [])
+        if observations:
+            return {
+                "status": "INGESTED_SNAPSHOT",
+                "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
+            }
+        return {
+            "status": "NOT_INGESTED",
+            "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
+        }
+    if domain in {"remote_sensing", "cooling", "transformer_supply_chain"}:
         return {
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest its measurements."
@@ -157,7 +169,7 @@ def evidence_domain(ev: dict[str, Any]) -> str:
         return "service_or_contract"
     return "grid_connection"
 
-def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any]) -> list[dict[str, Any]]:
+def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any], power_observations: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
     rows = []
     registry_by_id = {x["epoch_id"]: x for x in registry["records"]}
     for rec in evidence["records"]:
@@ -238,11 +250,37 @@ def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any]) -> 
             "independent_of_other_source": None,
             "review_state": "PUBLISHED_CROSSWALK_EVIDENCE",
         })
+    for obs in power_observations or []:
+        rows.append({
+            "evidence_id": "EVID-POWER-" + str(obs["observation_id"]),
+            "target_type": "epoch_site",
+            "target_id": obs["epoch_id"],
+            "target_name": obs["site_name"],
+            "domain": "power_telemetry",
+            "evidence_type": obs.get("measurement_type"),
+            "claim_scope": "site_level",
+            "status": obs.get("status", "INGESTED_SNAPSHOT"),
+            "source_kind": (obs.get("source") or {}).get("source_kind") or "company sustainability report",
+            "source_name": (obs.get("source") or {}).get("source_name") or "Meta",
+            "source_url": (obs.get("source") or {}).get("source_url"),
+            "observed_on": obs.get("observed_period"),
+            "captured_on": obs.get("source", {}).get("captured_on"),
+            "confidence": obs.get("confidence"),
+            "basis": obs.get("basis"),
+            "record_id": None,
+            "authority": (obs.get("source") or {}).get("publisher"),
+            "raw_value": obs.get("raw_value"),
+            "normalized_value": obs.get("normalized_value"),
+            "units": obs.get("units"),
+            "site_specific": bool(obs.get("site_specific")),
+            "independent_of_other_source": False,
+            "review_state": "PUBLISHED_RECORD",
+        })
     return rows
 
 def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     task_definitions = {
-        "power_telemetry": ("P0", "Acquire interval electricity-demand evidence from the serving utility, ISO/RTO telemetry publication, public filing, or meter-derived source.", ["observed_on", "measurement_interval", "demand_mw", "metering_authority", "source_url", "quality_flag"]),
+        "power_telemetry": ("P0", "Acquire interval electricity-demand evidence from the serving utility, ISO/RTO telemetry publication, public filing, or meter-derived source. An annual company-reported snapshot does not close this task.", ["observed_on", "measurement_interval", "demand_mw", "metering_authority", "source_url", "quality_flag"]),
         "remote_sensing": ("P0", "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.", ["observed_on", "sensor", "scene_id", "latitude", "longitude", "baseline_value", "observed_value", "delta", "quality_flag", "source_url"]),
         "cooling": ("P1", "Acquire site-level cooling-equipment records and link equipment capacity/type to the physical campus.", ["observed_on", "equipment_type", "manufacturer", "model", "capacity", "units", "site_assignment", "source_url"]),
         "transformer_supply_chain": ("P0", "Acquire HV-transformer procurement, delivery, installation, and site-assignment evidence.", ["observed_on", "event_type", "manufacturer", "model", "rating_mva", "primary_kv", "secondary_kv", "buyer", "destination", "source_url"]),
@@ -256,7 +294,7 @@ def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str
         gap = gap_by_id.get(str(site["epoch_id"]), {})
         for domain, (priority, action, required_fields) in task_definitions.items():
             state = (site.get("domains") or {}).get(domain, {}).get("status", "UNKNOWN")
-            if state in {"NOT_INGESTED", "SOURCE_AVAILABLE_NOT_INGESTED", "UNKNOWN", "PENDING_RESEARCH"}:
+            if state in {"NOT_INGESTED", "SOURCE_AVAILABLE_NOT_INGESTED", "UNKNOWN", "PENDING_RESEARCH"} or (domain == "power_telemetry" and state == "INGESTED_SNAPSHOT"):
                 tasks.append({
                     "task_id": f"{site['epoch_id']}::{domain}",
                     "epoch_id": site["epoch_id"],
@@ -273,6 +311,7 @@ def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str
                     "grid_source_type": gap.get("source_type") or None,
                     "grid_source_date": gap.get("source_date") or None,
                     "next_research_sources": gap.get("next_research_sources") or None,
+                    "supporting_snapshot_note": "Annual site-level electricity snapshot exists; interval telemetry acquisition remains open." if domain == "power_telemetry" and state == "INGESTED_SNAPSHOT" else None,
                 })
     return tasks
 
@@ -281,6 +320,11 @@ def main() -> int:
     reg = load_json(REGISTRY)
     evidence = load_json(EVIDENCE)
     source_stack = load_json(SOURCE_STACK)
+    power_payload = load_json(POWER_OBSERVATIONS) if POWER_OBSERVATIONS.exists() else {"records": []}
+    power_observations = power_payload.get("records", [])
+    power_by_site: dict[str, list[dict[str, Any]]] = {}
+    for obs in power_observations:
+        power_by_site.setdefault(str(obs.get("epoch_id")), []).append(obs)
     gaps = list(csv.DictReader(GAP.open("r", encoding="utf-8-sig", newline="")))
 
     epoch_ids = {str(x["epoch_id"]) for x in reg["records"]}
@@ -305,6 +349,7 @@ def main() -> int:
                     "grid_crosswalk": rec.get("grid_crosswalk") or {},
                 },
                 domain,
+                power_by_site,
             )
             domains[domain] = s
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
@@ -330,7 +375,7 @@ def main() -> int:
 
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
     observation_queue = build_observation_queue(site_records)
-    evidence_index = build_evidence_index(evidence, reg)
+    evidence_index = build_evidence_index(evidence, reg, power_observations)
 
     summary = {
         "schema_version": 1,
