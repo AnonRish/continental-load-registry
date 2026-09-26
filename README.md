@@ -70,6 +70,43 @@ aimed at surfacing large requests that lack a confirmed public operator.
   build, its SHA-256 is recorded.
 - `requirements.txt` (unchanged: the 2.1 scripts use only the standard library), `LICENSE` (Apache 2.0).
 
+## Epoch AI secondary evidence layer
+
+The repository also imports the current Epoch AI AI Data Centers dataset as a
+separate research layer. Epoch's public dataset was updated September 24,
+2026 and currently covers 93 major AI data-center sites. Epoch describes the
+dataset as independent research using satellite imagery, permits, public
+documents, company disclosures and regulatory filings. Its public
+documentation defines core site fields including current H100-equivalents,
+current IT power, owner/user confidence, country, address and selected
+sources, with separate timeline and chip-quantity records. See:
+https://epoch.ai/data/ai-data-centers
+and https://epoch.ai/data/data-centers-documentation/records.
+
+The repository keeps the source-specific values separate:
+
+- data/external/epoch_ai/data_centers.csv -- raw Epoch data-center table.
+- data/external/epoch_ai/data_center_timelines.csv -- raw dated timeline records.
+- data/external/epoch_ai/data_centers_chip_quantities.csv -- raw chip-quantity records.
+- data/external/epoch_ai/registry.json -- 93 normalized Epoch site records, latest available timeline snapshot, latest chip quantities by type, all raw data-center row values, source metadata and crosswalk.
+- data/external/epoch_ai/crosswalk.csv -- one row for every Epoch site, showing conservative matches to current queue records.
+- data/external/epoch_ai/manifest.json -- capture metadata, row counts and SHA-256 hashes.
+- data/external/epoch_ai/match_overrides.json -- human-reviewed crosswalk overrides; currently records the Lake Mariner campus/phase relationship to NYISO Q1670.
+
+The crosswalk is intentionally conservative. A No direct match result means no
+high-confidence identity was established from the current queue row fields; it
+does not mean the physical data center has no grid connection, has no load
+request, or is absent from the wider utility/regulatory record. Queue MW and
+Epoch IT-power MW are different measurements and must not be summed as though
+they were the same metric.
+
+.github/workflows/sync_epoch_ai_data_centers.yml refreshes the three Epoch CSV
+datasets daily at 07:30 UTC, on demand, and whenever index.html or the
+crosswalk tooling changes. It refuses to publish a malformed/non-93 center
+dataset and validates all inline dashboard JavaScript before committing.
+Epoch states that its data are free to use, distribute and reproduce with
+attribution under CC BY 4.0.
+
 ## Current data coverage -- read this before citing a number from the site
 
 The published dashboard currently contains **1,558 facilities and about
