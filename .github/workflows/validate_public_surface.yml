@@ -36,6 +36,8 @@ on:
       - "data/project_level_map.csv"
       - "data/epoch_connection_research_targets.json"
       - "data/epoch_connection_research_targets.csv"
+      - "data/epoch_site_evidence_records.json"
+      - "data/epoch_site_evidence_records.csv"
       - ".github/workflows/validate_public_surface.yml"
   pull_request:
     paths:
@@ -150,6 +152,16 @@ jobs:
           assert "id=\"connectionTargetsToggle\"" in Path("index.html").read_text(encoding="utf-8")
           assert "id=\"projectEvidenceToggle\"" in Path("index.html").read_text(encoding="utf-8")
           assert "id=\"dataUniverseStatus\"" in Path("index.html").read_text(encoding="utf-8")
+          evidence_inventory = json.loads(Path("data/epoch_site_evidence_records.json").read_text(encoding="utf-8"))
+          assert evidence_inventory["record_count"] == len(evidence_inventory["records"]) == 68
+          assert evidence_inventory["site_count"] == 93
+          assert evidence_inventory["sites_with_evidence"] == 59
+          assert len({r["id"] for r in evidence_inventory["records"]}) == 68
+          target_data = json.loads(Path("data/epoch_connection_research_targets.json").read_text(encoding="utf-8"))
+          assert target_data["record_count"] == len(target_data["records"]) == 93
+          assert len({r["epoch_id"] for r in target_data["records"]}) == 93
+          assert sum(int(r.get("site_level_evidence_count", 0)) for r in target_data["records"]) == 68
+          assert all(r["lat"] is not None and r["lon"] is not None for r in target_data["records"])
           universe = json.loads(Path("data/market_universe_manifest.json").read_text(encoding="utf-8"))
           assert len(universe["markets"]) == 10
           epoch_map = json.loads(Path("data/epoch_ai_map.json").read_text(encoding="utf-8"))
