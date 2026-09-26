@@ -5,9 +5,9 @@
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
   "summary": {
     "total": 93,
-    "evidence_found": 44,
+    "evidence_found": 46,
     "site_queue_ids": 2,
-    "pending": 49
+    "pending": 47
   },
   "records": [
     {
@@ -228,10 +228,21 @@
           "capacity_mw": 275.991,
           "capacity_kind": "facility power capacity",
           "basis": "The public-record facility entry identifies a Google hyperscale site at 7232 E Elliot Rd, Mesa, Arizona, with Arizona Public Service as grid operator and a reported 275.991 MW power capacity. This is a facility/grid record and is not asserted as an APS measured load series."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Arizona Public Service",
+          "record_name": "Google Mesa utility relationship",
+          "source_url": "https://www.datacenter.fyi/public-record/google-aa4275ee",
+          "source_kind": "public-record facility registry",
+          "confidence": "medium",
+          "capacity_mw": 275.991,
+          "capacity_kind": "facility power capacity",
+          "basis": "The public-record Google Mesa entry identifies Arizona Public Service as grid operator and reports 275.991 MW of facility power capacity. This is site-level utility/facility evidence, not an APS measured load series or queue ID."
         }
       ],
       "site_level_evidence_status": "evidence_found",
-      "next_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing and the original source supporting the facility capacity."
+      "next_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing."
     },
     {
       "epoch_id": "EPOCH-55d4b5e818b5bb2a",
@@ -322,10 +333,19 @@
           "capacity_mw": 238,
           "capacity_kind": "QTS campus critical capacity",
           "basis": "QTS identifies Richmond 1 at 6000 Technology Boulevard and related Portugee Road addresses in Sandston, Virginia and states 238 MW campus capacity."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Dominion Energy",
+          "record_name": "QTS Richmond 1 utility relationship",
+          "source_url": "https://epoch.ai/data/ai-data-centers",
+          "source_kind": "Epoch AI site dataset field",
+          "confidence": "medium",
+          "basis": "The current Epoch AI site record for QTS Richmond 1 lists Dominion Energy in its structured energy-company field. QTS separately identifies the Richmond 1 campus and its 238 MW facility capacity. This is secondary utility-relationship evidence, not a verified PJM queue record or metered load."
         }
       ],
       "site_level_evidence_status": "evidence_found",
-      "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the Richmond 1 service/interconnection record; QTS's 238 MW is a facility-capacity statement, not a queue value."
+      "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-8358e445402d91c2",
@@ -386,10 +406,21 @@
           "capacity_mw": 167.904,
           "capacity_kind": "facility/project capacity reported in public-record index",
           "basis": "The public Bristow facility index associates a Google project with Dominion Energy and reports 167.904 MW; the record is treated as utility/facility evidence rather than a verified transmission queue match."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Dominion Energy Virginia",
+          "record_name": "Google Bristow utility relationship",
+          "source_url": "https://www.datacenter.fyi/public-record/google-be69857b",
+          "source_kind": "public-record facility registry",
+          "confidence": "medium",
+          "capacity_mw": 167.904,
+          "capacity_kind": "facility/project capacity reported in public-record index",
+          "basis": "The public-record Google Bristow entry associates the site with Dominion Energy and reports 167.904 MW. This is utility/facility evidence and does not establish a PJM queue ID or measured load."
         }
       ],
       "site_level_evidence_status": "evidence_found",
-      "next_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case and original capacity source."
+      "next_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-93a4aa4fa40d40ca",
@@ -406,10 +437,19 @@
           "source_kind": "public-source facility registry",
           "confidence": "medium",
           "basis": "The facility record identifies Microsoft Goodyear in Maricopa County, Arizona and names Arizona Public Service as the utility; it also preserves exact site coordinates. The record reports no established public power-capacity figure for this specific facility, so none is inferred here."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Arizona Public Service",
+          "record_name": "Microsoft Goodyear utility relationship",
+          "source_url": "https://www.datacenter.fyi/public-record/microsoft-befedf4d",
+          "source_kind": "public-record facility registry",
+          "confidence": "medium",
+          "basis": "The public-record Microsoft Goodyear entry identifies Arizona Public Service as the utility for the site. Facility capacity and actual metered demand remain separate quantities."
         }
       ],
       "site_level_evidence_status": "evidence_found",
-      "next_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection record and any published capacity."
+      "next_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-1ac0959562dee191",
@@ -539,9 +579,19 @@
       "country": "United States",
       "state_province": "OR",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Northern Wasco County PUD",
+          "record_name": "Google The Dalles serving utility",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/google-the-dalles-river-road-building-wasco-or",
+          "source_kind": "sourced public facility registry",
+          "confidence": "high",
+          "basis": "DEPLOY identifies the Google The Dalles facility at 3500 River Road and lists Northern Wasco County PUD as the serving utility and grid source. The record is site-level utility evidence, not a site-specific transmission queue ID or metered load series."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search Northern Wasco County PUD, BPA and Oregon public records for a specific interconnection/service case or account."
     },
     {
       "epoch_id": "EPOCH-02484a65a5dac16d",
@@ -672,9 +722,21 @@
       "country": "United States",
       "state_province": "IA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "MidAmerican Energy",
+          "record_name": "Microsoft Project Osmium utility relationship",
+          "source_url": "https://www.cleanenergydistricts.org/data-centers-in-iowa-resource-hub",
+          "source_kind": "secondary Iowa data-center infrastructure registry",
+          "confidence": "medium",
+          "capacity_mw": 150,
+          "capacity_kind": "facility capacity reported by source",
+          "basis": "The Iowa data-center resource identifies Microsoft Project Osmium in Iowa and lists MidAmerican Energy as its utility. The 150 MW figure is source-reported facility information and is not substituted for an interconnection-queue capacity or metered demand."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Search MidAmerican Energy, MISO, Iowa Utilities Board and local records for the underlying service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-0bb0b996b7c96beb",

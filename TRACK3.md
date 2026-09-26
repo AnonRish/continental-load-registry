@@ -18,9 +18,9 @@ This layer turns the continental registry from a queue table into an auditable e
 
 ## Current site evidence
 
-As of 2026-09-26, the preserved 93-site Epoch universe has 44 sites with at least one item in the primary site-level evidence layer. The queue crosswalk contributes 27 additional public site-level evidence records; 8 of those are attached to sites that had no primary-layer evidence, so 52 of 93 sites have at least one evidence item across the combined layers. Two sites have site-specific queue IDs.
+As of 2026-09-26, the preserved 93-site Epoch universe has 46 sites with at least one attached primary site-level evidence record. The queue crosswalk contributes additional public site-level evidence records; across the combined layers, 52 of 93 sites have at least one evidence item. Two sites have site-specific queue IDs.
 
-The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 33 `SITE_LEVEL_EVIDENCE`, and 58 `PENDING_RESEARCH`. The 58 pending records include all sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist. The absence of a public record after a particular search is not treated as proof of absence.
+The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 47 `SITE_LEVEL_EVIDENCE`, and 44 `PENDING_RESEARCH`. The 58 pending records include all sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 44 current grid-connection gaps. The 28 U.S. records in that backlog are the current domestic site-specific search target. The absence of a public record after a particular search is not treated as proof of absence.
 
 ## Evidence domains
 
