@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 198,
+  "record_count": 199,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -5404,6 +5404,24 @@
       "source_scope": "2024 Load & Capacity Data Report, Table IV-7 Large Load Interconnection Requests",
       "precision": "county display point",
       "notes": "NYISO Gold Book states these values reflect the NYISO Interconnection Queue. Queue presence is not treated as evidence that the project is operating."
+    },
+    {
+      "id": "IDAHO-META-BRISBIE-2025",
+      "evidence_type": "utility_named_data_center_project",
+      "project_name": "Brisbie, LLC (Meta Platforms, Inc.)",
+      "customer_or_developer": "Brisbie, LLC (Meta Platforms, Inc.)",
+      "utility_or_provider": "Idaho Power",
+      "jurisdiction": "Idaho, US",
+      "location": "Kuna, Idaho",
+      "county_or_zone": "Ada County",
+      "status": "2025 Idaho Power IRP source reports under construction; on track for completion in 2025",
+      "capacity_claims": [],
+      "source_authority": "Idaho Power primary source",
+      "source_url": "https://docs.idahopower.com/pdfs/AboutUs/PlanningForFuture/2025IRP/2025%20IRP%20Appendix%20A.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "2025 Integrated Resource Plan — Appendix A: Sales and Load Forecast",
+      "precision": "city display point",
+      "notes": "Idaho Power names the Meta data-center project and states that its $800 million data center was under construction in the 2025 IRP and was on track for completion in 2025. No project MW is published in the cited passage, so load remains unavailable rather than inferred."
     }
   ]
 }
