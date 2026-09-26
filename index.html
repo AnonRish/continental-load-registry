@@ -336,6 +336,32 @@
         <div><strong style="color:var(--ink);">Streams B/C</strong><br>Satellite TIR/SAR numeric telemetry and transformer procurement-event records are defined by the spec but are <strong>not yet ingested</strong>. Their absence never becomes a PASS.</div>
         <div><strong style="color:var(--ink);">Epoch</strong><br>93 Epoch AI sites are retained separately. Current site-level evidence and queue IDs remain distinct from queue-origin MW.</div>
       </div>
+      <div class="panel rounded-lg mt-5 p-5">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+          <div>
+            <h3 class="font-serif-display text-base">Track 3 evidence coverage</h3>
+            <p class="text-xs mt-1 max-w-3xl" style="color:var(--ink-soft);">This board separates jurisdiction coverage from site-specific evidence. A missing queue ID, telemetry stream, or supply-chain record remains a documented gap; it is never treated as evidence of absence.</p>
+          </div>
+          <a class="text-xs link-underline" href="data/external/epoch_ai/queue_gap_analysis.csv" target="_blank" rel="noopener noreferrer">Open the 93-site research worklist</a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-4">
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="track3EpochSites" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site queue IDs</div><div id="track3QueueIds" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site-level evidence</div><div id="track3Evidence" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">U.S. site-specific gaps</div><div id="track3USGaps" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Pending site search</div><div id="track3Pending" class="font-serif-display text-xl mt-1">—</div></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-3 mt-4">
+          <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
+            <div class="flex items-center justify-between gap-3"><strong class="text-sm">Remote sensing</strong><span id="track3RemoteStatus" class="mono text-[10px] uppercase">NOT INGESTED</span></div>
+            <p class="text-xs mt-1" style="color:var(--ink-soft);">TIR/SAR numeric observations and change-detection measurements are specified but are not yet part of the evidence dataset.</p>
+          </div>
+          <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
+            <div class="flex items-center justify-between gap-3"><strong class="text-sm">Transformer supply chain</strong><span id="track3TransformerStatus" class="mono text-[10px] uppercase">NOT INGESTED</span></div>
+            <p class="text-xs mt-1" style="color:var(--ink-soft);">Large-transformer procurement, delivery, installation, and site-assignment events are specified but are not yet ingested.</p>
+          </div>
+        </div>
+      </div>
       <div class="flex flex-wrap gap-3 mt-4">
         <a class="text-xs link-underline" href="data/module1_radar_spec.json" target="_blank" rel="noopener noreferrer">Open machine-readable Module 1 spec</a>
         <a class="text-xs link-underline" href="data/module1_radar_summary.json" target="_blank" rel="noopener noreferrer">Open current Module 1 audit summary</a>
@@ -1076,7 +1102,20 @@ openFacilityFromHash();
       document.getElementById('epochNextPage').addEventListener('click',()=>{const pages=Math.max(1,Math.ceil(epochFiltered.length/PAGE_SIZE));if(epochPage<pages-1){epochPage++;renderEpochTable();}});
       document.getElementById('epochRegistryControls').classList.remove('hidden');
       const g=payload.grid_crosswalk_summary||{};
-      setEpochStatus('Imported 93 Epoch sites. All 93 have a grid/queue or external connection jurisdiction; '+evidenceFound+' have attached site-level connection/service/regulatory evidence, '+(g.site_specific_queue_ids||2)+' have verified site-specific queue IDs, and '+(g.jurisdiction_only_us_sites||72)+' U.S. sites still require site-specific queue/service research. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture.',false);
+      const queueIdCount=Number(g.site_specific_queue_ids||siteQueueIds||2);
+      const usGapCount=Number(g.jurisdiction_only_us_sites||72);
+      const pendingCount=Number(g.pending_site_specific_search||Math.max(0,93-queueIdCount));
+      document.getElementById('track3EpochSites').textContent=epochRecords.length.toLocaleString();
+      document.getElementById('track3QueueIds').textContent=queueIdCount.toLocaleString()+' / 93';
+      document.getElementById('track3Evidence').textContent=evidenceFound.toLocaleString()+' / 93';
+      document.getElementById('track3USGaps').textContent=usGapCount.toLocaleString();
+      document.getElementById('track3Pending').textContent=pendingCount.toLocaleString();
+      fetch('data/module1_radar_summary.json?v=1',{cache:'no-store'}).then(function(res){return res.ok?res.json():null;}).then(function(summary){
+        const d2=summary&&summary.domains&&summary.domains.domain_2_ingestion?summary.domains.domain_2_ingestion:{};
+        document.getElementById('track3RemoteStatus').textContent=d2.satellite_tir_sar_numeric_status||'NOT INGESTED';
+        document.getElementById('track3TransformerStatus').textContent=d2.transformer_supply_chain_status||'NOT INGESTED';
+      }).catch(function(){});
+      setEpochStatus('Imported 93 Epoch sites. All 93 have a grid/queue or external connection jurisdiction; '+evidenceFound+' have attached site-level connection/service/regulatory evidence, '+queueIdCount+' have verified site-specific queue IDs, and '+usGapCount+' U.S. sites still require site-specific queue/service research. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture.',false);
       epochApplyFilters();
     }catch(err){
       setEpochStatus('Epoch AI registry unavailable in this deployment: '+(err.message||'unknown error'),true);
