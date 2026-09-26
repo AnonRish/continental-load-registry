@@ -100,6 +100,13 @@
 
 <!-- ============ MASTHEAD ============ -->
 <header class="border-b hairline">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-4 pb-0 reveal">
+    <div class="panel rounded-lg px-4 py-3 text-xs" style="color:var(--ink-soft);">
+      <strong style="color:var(--ink);">Scope expansion:</strong> the row-level registry contains 1,558 published rows totaling 361.875 GW. A further 83 MISO requests totaling 35.9 GW are publicly identified at &ge;100 MW but omit required location fields in the source; they remain explicitly outside the row-level table. Together they define a broader known scope of 1,641 requests/records and 397.775 GW. This is a scope metric, not 83 newly geolocated facility records.
+      <a class="link-underline ml-1" href="data/large_load_scope.json" target="_blank" rel="noopener noreferrer">Open machine-readable accounting</a>
+    </div>
+  </div>
+
   <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-10 pb-8 reveal">
     <div class="flex items-start justify-between gap-4">
       <p class="text-xs mono uppercase tracking-wide" style="color:var(--ink-faint); letter-spacing:0.08em;">Public Registry &middot; Rev. <span id="revDate"></span></p>
@@ -113,11 +120,16 @@
 
 <!-- ============ STAT CARDS ============ -->
 <section class="border-b hairline reveal" style="animation-delay:.05s">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x hairline">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x hairline">
     <div class="px-5 sm:px-8 py-7">
       <p class="mono text-3xl sm:text-4xl font-medium" id="statCapacity">—</p>
-      <p class="text-sm mt-2" style="color:var(--ink-soft);">Total capacity audited</p>
-      <p class="text-xs mt-1" style="color:var(--ink-faint);" id="statCapacityNote">Large facilities &ge; 100 MW across nine RTOs/ISOs</p>
+      <p class="text-sm mt-2" style="color:var(--ink-soft);">Row-level capacity audited</p>
+      <p class="text-xs mt-1" style="color:var(--ink-faint);" id="statCapacityNote">1,558 published facility/request rows &ge; 100 MW across nine RTOs/ISOs</p>
+    </div>
+    <div class="px-5 sm:px-8 py-7">
+      <p class="mono text-3xl sm:text-4xl font-medium">397.8 GW</p>
+      <p class="text-sm mt-2" style="color:var(--ink-soft);">Expanded known capacity scope</p>
+      <p class="text-xs mt-1" style="color:var(--ink-faint);">1,641 known &ge; 100 MW requests/records, including 83 MISO requests (35.9 GW) held outside the row-level table because public location fields are incomplete</p>
     </div>
     <div class="px-5 sm:px-8 py-7">
       <p class="mono text-3xl sm:text-4xl font-medium" id="statStorage">—</p>
