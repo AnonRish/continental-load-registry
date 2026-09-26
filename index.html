@@ -388,6 +388,29 @@
     </div>
   </section>
 
+  <section id="caisoFullQueueSection" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">CAISO · complete public queue</p>
+        <h2 class="font-serif-display text-xl mt-1">Full active / completed / withdrawn queue</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">The daily CAISO sync downloads the official public XLSX and preserves all three published queue sheets. This layer is separate from the conservative large-load registry and is used directly by the map.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="https://www.caiso.com/documents/publicqueuereport.xlsx" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Official XLSX</a>
+        <a href="https://www.caiso.com/documents/publicqueuereport.pdf" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Official PDF</a>
+        <a href="data/caiso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Local JSON snapshot</a>
+        <a href="data/caiso_public_queue.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download CSV</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl" id="caisoFullQueueCount">Loading</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Queue records</p></div>
+      <div class="p-4"><p class="mono text-xl" id="caisoFullQueue100">Loading</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Records ≥100 MW</p></div>
+      <div class="p-4"><p class="mono text-xl" id="caisoFullQueueGeo">Loading</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Rows with county + state</p></div>
+      <div class="p-4"><p class="mono text-xl" id="caisoFullQueueCaptured">Not loaded</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Latest snapshot</p></div>
+    </div>
+    <p class="text-xs mt-4" id="caisoFullQueueStatus" style="color:var(--ink-faint);">Loading the daily CAISO snapshot…</p>
+  </section>
+
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -1581,7 +1604,7 @@ openFacilityFromHash();
     if(fallback)return {point:fallback,precision:'state/province centroid fallback'};
     return null;
   }
-  function caisoQueuePopupHtml(r){
+  function caisoQueuePopupHtml(r,precision){
     const n=r.normalized||{}, raw=r.raw||{};
     const mw=n.mw_total!=null?Number(n.mw_total):NaN;
     const mwText=Number.isFinite(mw)?mw.toLocaleString(undefined,{maximumFractionDigits:2})+' MW':'Not parsed';
@@ -1605,7 +1628,7 @@ openFacilityFromHash();
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Utility / PTO</td><td style="text-align:right;">'+escapeHtml(String(n.utility||'Not published'))+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Station / line</td><td style="text-align:right;">'+escapeHtml(String(n.station_or_line||'Not published'))+'</td></tr>'+
       '</table>'+
-      '<p style="margin-top:8px;font-size:10.5px;color:var(--ink-faint);">Map point: '+escapeHtml(String(arguments.length>1&&arguments[1]?arguments[1]:'public county/state geometry'))+'. Original row is preserved in the downloadable dataset.</p>'+
+      '<p style="margin-top:8px;font-size:10.5px;color:var(--ink-faint);">Map point: '+escapeHtml(String(precision||'public county/state geometry'))+'. Original row is preserved in the downloadable dataset.</p>'+
       '<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="https://www.caiso.com/documents/publicqueuereport.pdf">Open official CAISO report</a>'+
       '</div>';
   }
@@ -1711,7 +1734,13 @@ openFacilityFromHash();
     updateCaisoQueueLayer();
     const sub=document.getElementById('mapSubcaption');
     if(sub)sub.innerHTML='Current filter · <strong>'+projectRecords.length.toLocaleString()+' project-evidence records + '+caisoQueueRecords.length.toLocaleString()+' CAISO queue records overlaid</strong>';
-  }).catch(function(err){console.warn(err);});
+    const summary=payload.summary||{};
+    const countEl=document.getElementById('caisoFullQueueCount');if(countEl)countEl.textContent=Number(payload.record_count||caisoQueueRecords.length).toLocaleString();
+    const ge=document.getElementById('caisoFullQueueGeo');if(ge)ge.textContent=Number(summary.records_with_county_and_state||0).toLocaleString();
+    const ge100=document.getElementById('caisoFullQueue100');if(ge100)ge100.textContent=Number(summary.records_ge_100mw||0).toLocaleString();
+    const cap=document.getElementById('caisoFullQueueCaptured');if(cap)cap.textContent=String(payload.captured_at||'unknown').slice(0,10);
+    const st=document.getElementById('caisoFullQueueStatus');if(st)st.textContent='Snapshot loaded from the official CAISO public-queue workbook; active, completed and withdrawn sheets are preserved separately.';
+  }).catch(function(err){const st=document.getElementById('caisoFullQueueStatus');if(st)st.textContent='CAISO full-queue snapshot is not available yet; the scheduled GitHub Actions sync will populate it.';console.warn(err);});
   function updateMapMarkers(animate){
     otherCluster.clearLayers();bessCluster.clearLayers();flagCluster.clearLayers();
     const pts=[],counts={ambiguous:0,bess:0,other:0,mapped:0,fallback:0,eligible:0};
