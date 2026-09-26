@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "title": "Plan A Track 3 audit-chain data model",
+  "semantics": "Schema-only research infrastructure. Empty, unknown, and unavailable fields are not evidence of absence.",
+  "entities": {
+    "compute_batch": {
+      "purpose": "Track a quantity of AI-relevant compute through production and custody.",
+      "fields": [
+        "batch_id",
+        "chip_type",
+        "quantity",
+        "production_date",
+        "producer",
+        "source",
+        "status"
+      ]
+    },
+    "sale_event": {
+      "purpose": "Preserve a seller-to-buyer compute transaction or publisher record.",
+      "fields": [
+        "sale_id",
+        "seller",
+        "buyer",
+        "date",
+        "chip_type",
+        "quantity",
+        "destination",
+        "source_url",
+        "source_kind",
+        "raw_value",
+        "normalized_value"
+      ]
+    },
+    "transfer_event": {
+      "purpose": "Preserve resale, transfer, lease, loan, return, or other custody transition.",
+      "fields": [
+        "transfer_id",
+        "from_entity",
+        "to_entity",
+        "date",
+        "event_type",
+        "chip_type",
+        "quantity",
+        "source_url",
+        "basis"
+      ]
+    },
+    "inventory_record": {
+      "purpose": "Reconcile received, retained, transferred, and retired compute.",
+      "fields": [
+        "inventory_id",
+        "entity",
+        "observed_on",
+        "chip_type",
+        "received",
+        "on_hand",
+        "outbound",
+        "retired",
+        "source_url"
+      ]
+    },
+    "inspection_event": {
+      "purpose": "Record physical inspection of current compute holdings.",
+      "fields": [
+        "inspection_id",
+        "entity",
+        "location",
+        "observed_on",
+        "inspector",
+        "quantity_inspected",
+        "evidence_url",
+        "scope"
+      ]
+    },
+    "serial_observation": {
+      "purpose": "Record serial numbers observed during physical inspection where disclosure is lawful.",
+      "fields": [
+        "inspection_id",
+        "serial_number",
+        "chip_type",
+        "observed_on",
+        "location",
+        "status"
+      ]
+    },
+    "decommission_event": {
+      "purpose": "Record claimed or verified destruction/recycling/retirement.",
+      "fields": [
+        "decommission_id",
+        "entity",
+        "chip_type",
+        "quantity",
+        "date",
+        "event_type",
+        "recycler",
+        "witness",
+        "serial_basis",
+        "source_url",
+        "verification_status"
+      ]
+    },
+    "sample_trace": {
+      "purpose": "Record a reproducible sample of compute and each custody hop until physical verification or failure.",
+      "fields": [
+        "trace_id",
+        "sample_id",
+        "source_population",
+        "sampling_rule",
+        "random_seed",
+        "selected_quantity",
+        "hops",
+        "terminal_state",
+        "failure_reason"
+      ]
+    },
+    "untraced_pool_entry": {
+      "purpose": "Record compute that cannot be traced or whose retirement cannot be verified.",
+      "fields": [
+        "entry_id",
+        "source_event",
+        "quantity",
+        "reason",
+        "date",
+        "review_state",
+        "supporting_evidence"
+      ]
+    },
+    "disclosure_event": {
+      "purpose": "Record voluntary disclosure, amnesty, buyback, or similar location information.",
+      "fields": [
+        "disclosure_id",
+        "entity",
+        "quantity",
+        "chip_type",
+        "claimed_origin",
+        "claimed_location",
+        "date",
+        "program",
+        "verification_status",
+        "source_url"
+      ]
+    }
+  },
+  "controlled_values": {
+    "custody_events": [
+      "PURCHASE",
+      "RESALE",
+      "TRANSFER",
+      "LEASE",
+      "LOAN",
+      "INVENTORY",
+      "DEPLOYMENT",
+      "RETURN",
+      "DECOMMISSION",
+      "RECYCLE"
+    ],
+    "trace_terminal_states": [
+      "PHYSICAL_INSPECTION",
+      "TRACE_FAILURE",
+      "UNVERIFIABLE_DECOMMISSIONING",
+      "UNAUDITABLE_COUNTERPARTY"
+    ],
+    "evidence_states": [
+      "VERIFIED_SITE_SPECIFIC",
+      "SITE_LEVEL_EVIDENCE",
+      "PENDING_RESEARCH",
+      "SOURCE_AVAILABLE_NOT_INGESTED",
+      "NOT_INGESTED",
+      "UNKNOWN",
+      "INGESTED_SNAPSHOT",
+      "NOT_ASSESSED"
+    ]
+  }
+}
