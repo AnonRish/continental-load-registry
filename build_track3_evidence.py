@@ -240,6 +240,36 @@ def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any]) -> 
         })
     return rows
 
+def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    task_definitions = {
+        "power_telemetry": ("P0", "Acquire interval electricity-demand evidence from the serving utility, ISO/RTO telemetry publication, public filing, or meter-derived source.", ["observed_on", "measurement_interval", "demand_mw", "metering_authority", "source_url", "quality_flag"]),
+        "remote_sensing": ("P0", "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.", ["observed_on", "sensor", "scene_id", "latitude", "longitude", "baseline_value", "observed_value", "delta", "quality_flag", "source_url"]),
+        "cooling": ("P1", "Acquire site-level cooling-equipment records and link equipment capacity/type to the physical campus.", ["observed_on", "equipment_type", "manufacturer", "model", "capacity", "units", "site_assignment", "source_url"]),
+        "transformer_supply_chain": ("P0", "Acquire HV-transformer procurement, delivery, installation, and site-assignment evidence.", ["observed_on", "event_type", "manufacturer", "model", "rating_mva", "primary_kv", "secondary_kv", "buyer", "destination", "source_url"]),
+        "chip_ownership": ("P1", "Acquire global ownership snapshots and preserve them as aggregate evidence until a separate site linkage is defensible.", ["observed_on", "owner", "chip_type", "quantity", "source_url", "source_kind"]),
+        "chip_users": ("P1", "Acquire compute-use estimates and preserve them as organization-level evidence unless a site link is separately established.", ["observed_on", "organization", "chip_type", "quantity_or_compute", "source_url", "source_kind"]),
+        "chip_shipments": ("P1", "Acquire accelerator sales/shipment records and test organization-to-site assignment only when independently supportable.", ["observed_on", "buyer", "seller", "chip_type", "quantity", "destination", "source_url", "source_kind"]),
+    }
+    tasks = []
+    for site in site_records:
+        for domain, (priority, action, required_fields) in task_definitions.items():
+            state = (site.get("domains") or {}).get(domain, {}).get("status", "UNKNOWN")
+            if state in {"NOT_INGESTED", "SOURCE_AVAILABLE_NOT_INGESTED", "UNKNOWN", "PENDING_RESEARCH"}:
+                tasks.append({
+                    "task_id": f"{site['epoch_id']}::{domain}",
+                    "epoch_id": site["epoch_id"],
+                    "site_name": site.get("site_name"),
+                    "country": site.get("country"),
+                    "state_province": site.get("state_province"),
+                    "domain": domain,
+                    "current_state": state,
+                    "priority": priority,
+                    "action": action,
+                    "required_fields": required_fields,
+                    "next_action_from_site": site.get("next_action"),
+                })
+    return tasks
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     reg = load_json(REGISTRY)
@@ -293,6 +323,7 @@ def main() -> int:
         })
 
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
+    observation_queue = build_observation_queue(site_records)
     evidence_index = build_evidence_index(evidence, reg)
 
     summary = {
@@ -333,6 +364,21 @@ def main() -> int:
         "records": pending,
         "semantics": "A pending record means the registry has not attached site-specific grid/service evidence yet; it does not mean the site lacks a connection.",
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    (OUT / "observation_queue.json").write_text(json.dumps({
+        "schema_version": 1,
+        "generated_at_utc": summary["generated_at_utc"],
+        "task_count": len(observation_queue),
+        "tasks": observation_queue,
+        "semantics": "Observation tasks describe missing acquisition work. They do not assert that the underlying physical condition is absent.",
+    }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    with (OUT / "observation_queue.csv").open("w", encoding="utf-8", newline="") as f:
+        headers = ["task_id", "epoch_id", "site_name", "country", "state_province", "domain", "current_state", "priority", "action", "required_fields", "next_action_from_site"]
+        writer = csv.DictWriter(f, fieldnames=headers)
+        writer.writeheader()
+        for task in observation_queue:
+            writer.writerow({**task, "required_fields": "; ".join(task["required_fields"])})
+
 
     external_audit = []
     for domain, filenames in EXTERNAL_SOURCE_FILES.items():
