@@ -90,15 +90,25 @@ The repository keeps the source-specific values separate:
 - data/external/epoch_ai/data_centers_chip_quantities.csv -- raw chip-quantity records.
 - data/external/epoch_ai/registry.json -- 93 normalized Epoch site records, latest available timeline snapshot, latest chip quantities by type, all raw data-center row values, source metadata and crosswalk.
 - data/external/epoch_ai/crosswalk.csv -- one row for every Epoch site, showing conservative matches to current queue records.
+- data/external/epoch_ai/queue_crosswalk.csv -- one row for every Epoch site with its geographic grid/queue jurisdiction and any site-specific queue/service evidence found.
+- data/external/epoch_ai/queue_crosswalk.json -- the same 93-site geographic queue/connection crosswalk in machine-readable JSON.
 - data/external/epoch_ai/manifest.json -- capture metadata, row counts and SHA-256 hashes.
-- data/external/epoch_ai/match_overrides.json -- human-reviewed crosswalk overrides; currently records the Lake Mariner campus/phase relationship to NYISO Q1670.
+- data/external/epoch_ai/match_overrides.json -- human-reviewed queue crosswalk overrides; currently records the Lake Mariner campus/phase relationship to NYISO Q1670.
+- build_epoch_grid_crosswalk.py -- rebuilds the 93-site geographic queue/connection crosswalk and embeds it into registry.json.
 
-The crosswalk is intentionally conservative. A No direct match result means no
-high-confidence identity was established from the current queue row fields; it
-does not mean the physical data center has no grid connection, has no load
-request, or is absent from the wider utility/regulatory record. Queue MW and
-Epoch IT-power MW are different measurements and must not be summed as though
-they were the same metric.
+The crosswalk is intentionally conservative. **All 93 Epoch sites now have a
+grid/queue or connection-system jurisdiction.** That is different from a
+site-specific queue ID. For the 77 U.S. sites, the jurisdiction points to the
+applicable RTO/ISO or utility/transmission-provider queue family. For the 16
+international sites, the record identifies the relevant national or utility
+connection system while keeping them outside the North American queue totals.
+
+A "site-specific queue ID not yet verified" result means the repository has not
+established that the Epoch campus is a particular row in the public queue.
+Operational sites can also have a service agreement, customer planning record,
+or completed connection rather than a current queue entry. Queue MW and Epoch
+IT-power MW are different measurements and must not be summed as though they
+were the same metric.
 
 .github/workflows/sync_epoch_ai_data_centers.yml refreshes the three Epoch CSV
 datasets daily at 07:30 UTC, on demand, and whenever index.html or the
