@@ -6,16 +6,16 @@
   "markets": [
     {
       "id": "CAISO",
-      "status": "historical_cluster_scope_identified_current_binary_ingest_pending",
+      "status": "historical_cluster_and_current_large_load_project_layers_expanded",
       "core_rows": 63,
       "source_urls": [
         "https://www.caiso.com/generation-transmission/generation/generator-interconnection",
-        "https://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx",
-        "https://www.caiso.com/documents/cluster-15-interconnection-requests.xlsx"
+        "https://stakeholdercenter.caiso.com/InitiativeDocuments/Presentation-PGE-2025-2026Transmissionplanningprocess-Sep2525.pdf"
       ],
-      "scope": "PublicQueueReport covers active, complete and withdrawn generator interconnection requests for Cluster 14 and prior; Cluster 15 is a separate official workbook. Project-level large-load requests are not published by CAISO as a per-request queue.",
+      "scope": "Historical cluster series plus all 11 publicly identified LC24 data-center loads (840 MW) and all 3 publicly identified serial San Jose data-center loads (700 MW) from PG&E/CAISO public transmission-planning material.",
       "captured": "2026-09-26",
-      "notes": "Historical cluster-count/capacity series added separately. Full binary workbook replacement was not performed through the current tool surface because direct XLSX retrieval returned unsupported content type; no rows were fabricated."
+      "notes": "The 14 load-project records are now individually represented. Their coordinates are planning-area display points based on the public load-pocket geography; they are not exact facility addresses. Historical generator queue clusters remain a distinct non-additive history layer.",
+      "project_records_added": 14
     },
     {
       "id": "MISO",
