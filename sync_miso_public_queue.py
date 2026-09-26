@@ -80,7 +80,23 @@ def main():
     for r in rows:
         x=r["normalized"].copy(); x["source_row_number"]=r["source_row_number"]; x["raw_record_json"]=json.dumps(r["raw"],ensure_ascii=False,separators=(",",":")); flat.append(x)
     pd.DataFrame(flat).to_csv(root/"miso_public_queue.csv",index=False)
-    summary={"source_url":URL,"captured_at":now,"record_count":len(rows),"records_ge_100mw":sum((r["normalized"].get("capacity_mw") or 0)>=100 for r in rows),"missing_ge_100_location":sum((r["normalized"].get("capacity_mw") or 0)>=100 and (not r["normalized"].get("state") or not r["normalized"].get("county")) for r in rows)}
+    unresolved=[]
+    for r in rows:
+        n=r["normalized"]
+        if (n.get("capacity_mw") or 0)>=100 and (not n.get("state") or not n.get("county") or not n.get("poi")):
+            unresolved.append({
+                "queue_id":n.get("queue_id"),
+                "capacity_mw":n.get("capacity_mw"),
+                "status":n.get("status"),
+                "queue_date":n.get("queue_date"),
+                "study_cycle":n.get("study_cycle"),
+                "study_phase":n.get("study_phase"),
+                "research_query":"MISO " + str(n.get("queue_id") or "") + " large load data center",
+                "source_url":URL,
+                "reason":"Public queue response lacks one or more site-identity/location fields required for a site-level record."
+            })
+    (root/"miso_unresolved_large_loads.json").write_text(json.dumps({"schema_version":1,"source_url":URL,"captured_at":now,"record_count":len(unresolved),"records":unresolved},indent=2)+"\n",encoding="utf-8")
+    summary={"source_url":URL,"captured_at":now,"record_count":len(rows),"records_ge_100mw":sum((r["normalized"].get("capacity_mw") or 0)>=100 for r in rows),"missing_ge_100_location":len(unresolved),"unresolved_worklist":"data/miso_unresolved_large_loads.json"}
     (root/"miso_public_queue_summary.json").write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(summary,indent=2))
 if __name__=="__main__": main()
