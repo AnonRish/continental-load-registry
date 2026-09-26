@@ -132,6 +132,21 @@
   </div>
 </section>
 
+<div id="facilityModal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4" aria-hidden="true">
+  <div id="facilityModalBackdrop" class="absolute inset-0" style="background:rgba(12,18,28,.58);backdrop-filter:blur(3px);"></div>
+  <section role="dialog" aria-modal="true" aria-labelledby="facilityModalTitle" class="relative w-full max-w-2xl max-h-[88vh] overflow-auto panel rounded-xl p-5 sm:p-6 shadow-2xl">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Facility record</p>
+        <h2 id="facilityModalTitle" class="font-serif-display text-xl mt-1"></h2>
+        <p id="facilityModalSubtitle" class="mono text-xs mt-1" style="color:var(--ink-faint);"></p>
+      </div>
+      <button id="facilityModalClose" type="button" class="shrink-0 rounded-md border hairline px-2.5 py-1.5 text-sm">Close</button>
+    </div>
+    <div id="facilityModalBody" class="mt-5"></div>
+  </section>
+</div>
+
 <main id="main" class="max-w-6xl mx-auto px-5 sm:px-8 py-10">
 
   <!-- ============ NOTE ON THIS DATASET ============ -->
@@ -173,7 +188,7 @@
 
   <!-- ============ FILTER CONTROLS ============ -->
   <div class="flex flex-col sm:flex-row gap-3 mb-4">
-    <input id="searchBox" type="text" placeholder="Search developer, project, substation, or county&hellip;"
+    <input id="searchBox" type="text" placeholder="Search ID, developer, project, substation, county, status, or tier&hellip;"
       class="flex-1 rounded-md px-3 py-2 text-sm" aria-label="Search registry">
     <select id="rtoFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter by RTO region">
       <option value="">All RTO regions</option>
@@ -197,6 +212,7 @@
           <th class="px-3 py-3 text-right" scope="col">Est. GPUs</th>
           <th class="px-3 py-3 text-right" scope="col">90-day FLOPs (ref.)</th>
           <th class="px-3 py-3" scope="col">Entity classification</th>
+          <th class="px-3 py-3 text-right" scope="col">Details</th>
         </tr>
       </thead>
       <tbody id="tableBody" class="mono text-[13px]"></tbody>
@@ -369,7 +385,7 @@ function applyFilters(){
     if (rto && r.rto !== rto) return false;
     if (status && r.status !== status) return false;
     if (q){
-      const hay = (r.dev + ' ' + r.proj + ' ' + r.poi + ' ' + r.co).toLowerCase();
+      const hay = (r.id + ' ' + r.rto + ' ' + r.status + ' ' + r.dev + ' ' + r.proj + ' ' + r.poi + ' ' + r.co + ' ' + r.ent + ' ' + r.tier).toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
@@ -384,7 +400,7 @@ function render(){
   const tbody = document.getElementById('tableBody');
 
   if (pageRows.length === 0){
-    tbody.innerHTML = '<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint); font-family:\'IBM Plex Sans\',sans-serif;">No records match these filters. Try clearing the search or filters.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" class="px-3 py-10 text-center" style="color:var(--ink-faint); font-family:\'IBM Plex Sans\',sans-serif;">No records match these filters. Try clearing the search or filters.</td></tr>';
   } else {
     tbody.innerHTML = pageRows.map(r => `
       <tr>
@@ -398,12 +414,13 @@ function render(){
         <td class="px-3 py-2.5">
           <span class="inline-block px-2 py-0.5 rounded text-[11px] ${r.tier.startsWith('Confirmed') ? 'tag-storage' : (r.flag ? 'tag-flag' : 'tag-neutral')}">${escapeHtml(r.ent.length > 34 ? r.ent.slice(0,32)+'…' : r.ent)}</span>
         </td>
+        <td class="px-3 py-2.5 text-right"><button type="button" class="detail-button" data-facility-id="${escapeHtml(r.id)}">Open</button></td>
       </tr>`).join('');
   }
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   document.getElementById('pageIndicator').textContent = `Page ${currentPage+1} of ${totalPages} \u00b7 ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} rows`;
-  document.getElementById('resultCount').textContent = `Showing ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} facilities`;
+  document.getElementById('resultCount').textContent = `Showing ${filtered.length.toLocaleString()} of ${REGISTRY_DATA.length.toLocaleString()} facilities · every row has an Open details view`;
   document.getElementById('prevPage').disabled = currentPage === 0;
   document.getElementById('nextPage').disabled = currentPage >= totalPages - 1;
 }
@@ -415,6 +432,50 @@ document.getElementById('prevPage').addEventListener('click', () => { if(current
 document.getElementById('nextPage').addEventListener('click', () => { currentPage++; render(); });
 
 render();
+
+function openFacility(r){
+  const modal=document.getElementById('facilityModal'); if(!modal)return;
+  const kind=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'Confirmed BESS':(r.flag?'Ambiguous / unresolved':'Registry record');
+  const badge=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'tag-storage':(r.flag?'tag-flag':'tag-neutral');
+  const fields=[
+    ['Queue ID',r.id],['RTO / ISO',r.rto],['State / province',r.st],['County / zone',r.co],
+    ['Point of interconnection',r.poi],['Requested capacity',r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1})+' MW'],
+    ['Queue status',r.status],['Project name',r.proj],['Developer / applicant',r.dev],['Entity classification',r.ent],
+    ['Registry tier',r.tier],['Estimated GPUs (reference)',r.gpu.toLocaleString()],
+    ['90-day FLOPs (reference)',fmtFlops(r.flops).replace('<sup>','×10^').replace('</sup>','')]
+  ];
+  document.getElementById('facilityModalTitle').textContent=r.proj||'(unnamed project)';
+  document.getElementById('facilityModalSubtitle').textContent=r.id+' · '+r.rto;
+  let html='<div class="flex flex-wrap gap-2 mb-4"><span class="inline-block px-2.5 py-1 rounded text-[11px] '+badge+'">'+escapeHtml(kind)+'</span><span class="map-status-pill">'+escapeHtml(r.status)+'</span></div>';
+  html+='<dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3">';
+  fields.forEach(function(f){html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(f[0])+'</dt><dd class="text-sm mt-1 break-words" style="color:var(--ink);">'+escapeHtml(String(f[1]||'Not published / not available in this source'))+'</dd></div>';});
+  html+='</dl><div class="mt-5 p-3 rounded-lg" style="background:var(--amber-soft);border:1px solid var(--amber-line);"><p class="text-xs leading-relaxed" style="color:var(--ink-soft);"><strong style="color:var(--ink);">Location precision:</strong> county/zone centroid where available; otherwise state/province centroid because the public location string could not be matched. This is not a facility address.</p></div>';
+  document.getElementById('facilityModalBody').innerHTML=html;
+  modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  history.replaceState(null,'','#facility='+encodeURIComponent(r.id));
+  document.getElementById('facilityModalClose').focus();
+}
+function closeFacility(){
+  const modal=document.getElementById('facilityModal'); if(!modal)return;
+  modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';
+  if(location.hash.indexOf('#facility=')===0)history.replaceState(null,'',location.pathname+location.search);
+}
+function openFacilityFromHash(){
+  if(location.hash.indexOf('#facility=')!==0)return;
+  const id=decodeURIComponent(location.hash.slice(10));
+  const row=REGISTRY_DATA.find(function(r){return r.id===id;});
+  if(row)openFacility(row);
+}
+document.getElementById('tableBody').addEventListener('click',function(e){
+  const b=e.target.closest('[data-facility-id]'); if(!b)return;
+  const row=REGISTRY_DATA.find(function(r){return r.id===b.getAttribute('data-facility-id');});
+  if(row)openFacility(row);
+});
+document.getElementById('facilityModalClose').addEventListener('click',closeFacility);
+document.getElementById('facilityModalBackdrop').addEventListener('click',closeFacility);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeFacility();});
+window.addEventListener('hashchange',openFacilityFromHash);
+openFacilityFromHash();
 
 /* ======================= FILINGS ======================= */
 (function(){
@@ -456,218 +517,142 @@ render();
   const AMBER = '#D98A1A';
   const TEAL  = '#3F8E70';
   const NEUTRAL = '#7B8797';
+  const FALLBACK = '#8A7A63';
   const root = document.documentElement;
   let baseLayer = null;
+  let boundaryLayers = [];
   let mapMode = 'all';
 
-  const map = L.map('registryMap', {
-    preferCanvas: true,
-    worldCopyJump: false,
-    zoomControl: true,
-    minZoom: 2,
-    maxZoom: 19
-  }).setView([45, -95], 4);
+  const STATE_CENTROIDS = {
+    AL:[32.8,-86.8],AK:[64.2,-149.5],AZ:[34,-111.9],AR:[34.9,-92.4],CA:[36.8,-119.4],CO:[39,-105.5],CT:[41.6,-72.7],DE:[39,-75.5],
+    FL:[28.6,-82.5],GA:[32.7,-83.4],HI:[20.9,-157.5],ID:[44.2,-114.6],IL:[40,-89.2],IN:[39.9,-86.3],IA:[42.1,-93.5],KS:[38.5,-98],
+    KY:[37.5,-85.3],LA:[31,-92],ME:[45.1,-69],MD:[39,-76.7],MA:[42.3,-71.8],MI:[44.3,-84.6],MN:[46.3,-94.3],MS:[32.7,-89.7],
+    MO:[38.4,-92.5],MT:[47,-109.6],NE:[41.5,-99.8],NV:[39.3,-116.6],NH:[43.7,-71.6],NJ:[40.2,-74.7],NM:[34.4,-106.1],NY:[42.9,-75.5],
+    NC:[35.5,-79.4],ND:[47.5,-100.5],OH:[40.4,-82.8],OK:[35.6,-97.5],OR:[44,-120.5],PA:[40.9,-77.8],RI:[41.7,-71.6],SC:[33.8,-80.9],
+    SD:[44.4,-100.2],TN:[35.8,-86.3],TX:[31.1,-99.4],UT:[39.3,-111.7],VT:[44.1,-72.7],VA:[37.5,-78.7],WA:[47.4,-120.7],WV:[38.6,-80.6],
+    WI:[44.6,-89.8],WY:[43,-107.6],DC:[38.9,-77],AB:[54,-115],BC:[53.8,-127.6],MB:[55,-97],NB:[46.6,-66.5],NL:[53.2,-57.7],NS:[45,-63],
+    NT:[64.8,-124.8],NU:[65,-94],ON:[46.5,-84.5],PE:[46.4,-63.2],QC:[52,-72],SK:[54,-106.5],YT:[62.2,-136]
+  };
 
-  L.control.scale({ metric: true, imperial: false, position: 'bottomleft', maxWidth: 120 }).addTo(map);
+  const map = L.map('registryMap',{preferCanvas:true,worldCopyJump:false,zoomControl:true,minZoom:2,maxZoom:19}).setView([45,-95],4);
+  L.control.scale({metric:true,imperial:false,position:'bottomleft',maxWidth:120}).addTo(map);
 
-  function useDarkTiles(){
-    const theme = root.getAttribute('data-theme');
-    return theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  }
+  function cssVar(name){return getComputedStyle(root).getPropertyValue(name).trim();}
+  function useDarkTiles(){const theme=root.getAttribute('data-theme');return theme==='dark'||(!theme&&window.matchMedia('(prefers-color-scheme: dark)').matches);}
 
   function refreshBasemap(){
-    if (baseLayer) map.removeLayer(baseLayer);
-    const dark = useDarkTiles();
-    const url = dark
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-    baseLayer = L.tileLayer(url, {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
-      subdomains: 'abcd',
-      minZoom: 2,
-      maxZoom: 19,
-      updateWhenIdle: true,
-      keepBuffer: 2
-    }).addTo(map);
+    if(baseLayer)map.removeLayer(baseLayer);
+    const dark=useDarkTiles();
+    const url=dark?'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png':'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+    baseLayer=L.tileLayer(url,{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',subdomains:'abcd',minZoom:2,maxZoom:19,updateWhenIdle:true,keepBuffer:2}).addTo(map);
     baseLayer.bringToBack();
   }
   refreshBasemap();
 
-  const themeObserver = new MutationObserver(refreshBasemap);
-  themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  function clearBoundaries(){boundaryLayers.forEach(function(layer){try{map.removeLayer(layer);}catch(e){}});boundaryLayers=[];}
+  function loadBoundaryLayer(url,label){
+    return fetch(url,{mode:'cors',cache:'force-cache'}).then(function(res){if(!res.ok)throw new Error(label+' '+res.status);return res.json();}).then(function(geo){
+      const line=cssVar('--line-strong')||'#667085';
+      const layer=L.geoJSON(geo,{style:function(){return {color:line,weight:1.35,opacity:useDarkTiles()?0.95:0.9,fill:false,interactive:false};}}).addTo(map);
+      layer.bringToBack(); boundaryLayers.push(layer);
+    });
+  }
+  function loadBoundaries(){
+    clearBoundaries();
+    return Promise.allSettled([
+      loadBoundaryLayer('https://raw.githubusercontent.com/mapbox/mapboxgl-jupyter/master/examples/data/us-states.geojson','US state boundaries'),
+      loadBoundaryLayer('https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/master/canada_provinces.geojson','Canadian province boundaries')
+    ]);
+  }
+  loadBoundaries();
+  const themeObserver=new MutationObserver(function(){refreshBasemap();loadBoundaries();});
+  themeObserver.observe(root,{attributes:true,attributeFilter:['data-theme']});
 
   function makeClusterIcon(color){
     return function(cluster){
-      const count = cluster.getChildCount();
-      const size = count < 10 ? 30 : (count < 50 ? 36 : (count < 250 ? 42 : 48));
-      return L.divIcon({
-        html: '<div style="width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;' +
-              'background:' + color + ';border:2px solid rgba(255,255,255,.9);box-shadow:0 3px 12px rgba(0,0,0,.18);' +
-              'font:600 11px \'IBM Plex Sans\',ui-sans-serif,sans-serif;color:#12202d;">' + count.toLocaleString() + '</div>',
-        className: 'registry-cluster-icon',
-        iconSize: L.point(size, size)
-      });
+      const count=cluster.getChildCount(),size=count<10?30:(count<50?36:(count<250?42:48));
+      return L.divIcon({html:'<div style="width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;background:'+color+';border:2px solid rgba(255,255,255,.92);box-shadow:0 3px 12px rgba(0,0,0,.18);font:600 11px "IBM Plex Sans",sans-serif;color:#12202d;">'+count.toLocaleString()+'</div>',className:'registry-cluster-icon',iconSize:L.point(size,size)});
     };
   }
+  const otherCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(NEUTRAL),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  const bessCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(TEAL),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  const flagCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(AMBER),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  map.addLayer(otherCluster);map.addLayer(bessCluster);map.addLayer(flagCluster);
 
-  const otherCluster = L.markerClusterGroup({
-    iconCreateFunction: makeClusterIcon(NEUTRAL),
-    maxClusterRadius: 38,
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false,
-    removeOutsideVisibleBounds: true,
-    chunkedLoading: true
-  });
-  const bessCluster = L.markerClusterGroup({
-    iconCreateFunction: makeClusterIcon(TEAL),
-    maxClusterRadius: 38,
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false,
-    removeOutsideVisibleBounds: true,
-    chunkedLoading: true
-  });
-  const flagCluster = L.markerClusterGroup({
-    iconCreateFunction: makeClusterIcon(AMBER),
-    maxClusterRadius: 38,
-    spiderfyOnMaxZoom: true,
-    showCoverageOnHover: false,
-    removeOutsideVisibleBounds: true,
-    chunkedLoading: true
-  });
-  map.addLayer(otherCluster);
-  map.addLayer(bessCluster);
-  map.addLayer(flagCluster);
-
-  const legend = L.control({ position: 'bottomright' });
-  legend.onAdd = function(){
-    const div = L.DomUtil.create('div', 'map-legend');
-    div.innerHTML =
-      '<div><span class="dot" style="background:' + AMBER + ';"></span>Ambiguous / unresolved</div>' +
-      '<div><span class="dot" style="background:' + TEAL + ';"></span>Confirmed BESS</div>' +
-      '<div><span class="dot" style="background:' + NEUTRAL + ';"></span>Other registry rows</div>' +
+  const legend=L.control({position:'bottomright'});
+  legend.onAdd=function(){
+    const div=L.DomUtil.create('div','map-legend');
+    div.innerHTML='<div><span class="dot" style="background:'+AMBER+';"></span>Ambiguous / unresolved</div>'+
+      '<div><span class="dot" style="background:'+TEAL+';"></span>Confirmed BESS</div>'+
+      '<div><span class="dot" style="background:'+NEUTRAL+';"></span>Other registry rows</div>'+
+      '<div><span class="dot" style="background:'+FALLBACK+';"></span>State / province fallback</div>'+
       '<div id="legendCounts" style="margin-top:5px;opacity:.78;"></div>';
-    L.DomEvent.disableClickPropagation(div);
-    return div;
+    L.DomEvent.disableClickPropagation(div);return div;
   };
   legend.addTo(map);
 
-  function popupHtml(r){
-    const kind = r.tier === 'Confirmed Grid-Scale Storage (BESS)' ? 'BESS' : (r.flag ? 'Ambiguous' : 'Other');
-    const badge = kind === 'BESS' ? 'tag-storage' : (kind === 'Ambiguous' ? 'tag-flag' : 'tag-neutral');
-    const entLabel = r.ent.length > 44 ? r.ent.slice(0, 42) + '\u2026' : r.ent;
-    return '' +
-      '<div style="min-width:230px;max-width:290px;">' +
-        '<p style="font-weight:650;font-size:13px;line-height:1.3;">' + escapeHtml(r.proj || '(unnamed project)') + '</p>' +
-        '<p class="mono" style="font-size:10.5px;color:var(--ink-faint);margin-top:3px;">' + escapeHtml(r.id) + ' · ' + escapeHtml(r.rto) + '</p>' +
-        '<p style="font-size:11.5px;margin-top:7px;color:var(--ink-soft);">' + escapeHtml(r.co) + ', ' + escapeHtml(r.st) + '</p>' +
-        '<div style="height:1px;background:var(--line);margin:8px 0;"></div>' +
-        '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">' +
-          '<tr><td style="color:var(--ink-faint);padding:2px 0;">Capacity</td><td style="text-align:right;">' + r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1}) + ' MW</td></tr>' +
-          '<tr><td style="color:var(--ink-faint);padding:2px 0;">Est. GPUs</td><td style="text-align:right;">' + r.gpu.toLocaleString() + '</td></tr>' +
-          '<tr><td style="color:var(--ink-faint);padding:2px 0;">90-day FLOPs</td><td style="text-align:right;">' + fmtFlops(r.flops) + '</td></tr>' +
-        '</table>' +
-        '<p style="margin-top:8px;"><span class="inline-block px-2 py-0.5 rounded text-[10.5px] ' + badge + '">' + escapeHtml(kind + ' · ' + entLabel) + '</span></p>' +
+  function locationFor(r){
+    const exact=centroidFor(r); if(exact)return {point:exact,precision:'county/zone'};
+    const fallback=STATE_CENTROIDS[r.st]; if(fallback)return {point:fallback,precision:'state/province'};
+    return null;
+  }
+  function popupHtml(r,precision){
+    const kind=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'BESS':(r.flag?'Ambiguous':'Other');
+    const badge=kind==='BESS'?'tag-storage':(kind==='Ambiguous'?'tag-flag':'tag-neutral');
+    const entLabel=r.ent.length>44?r.ent.slice(0,42)+'…':r.ent;
+    return '<div style="min-width:235px;max-width:305px;">'+
+      '<p style="font-weight:650;font-size:13px;line-height:1.3;">'+escapeHtml(r.proj||'(unnamed project)')+'</p>'+
+      '<p class="mono" style="font-size:10.5px;color:var(--ink-faint);margin-top:3px;">'+escapeHtml(r.id)+' · '+escapeHtml(r.rto)+'</p>'+
+      '<p style="font-size:11.5px;margin-top:7px;color:var(--ink-soft);">'+escapeHtml(r.co)+', '+escapeHtml(r.st)+'</p>'+
+      '<div style="height:1px;background:var(--line);margin:8px 0;"></div>'+
+      '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Capacity</td><td style="text-align:right;">'+r.mw.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:1})+' MW</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Status</td><td style="text-align:right;">'+escapeHtml(r.status)+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Est. GPUs</td><td style="text-align:right;">'+r.gpu.toLocaleString()+'</td></tr>'+
+      '</table>'+
+      '<p style="margin-top:8px;"><span class="inline-block px-2 py-0.5 rounded text-[10.5px] '+badge+'">'+escapeHtml(kind+' · '+entLabel)+'</span></p>'+
+      '<p style="margin-top:8px;font-size:10.5px;color:var(--ink-faint);">'+escapeHtml(precision==='county/zone'?'County/zone centroid':'State/province centroid fallback')+'</p>'+
+      '<button type="button" class="detail-button mt-2" data-map-facility-id="'+escapeHtml(r.id)+'">Open full record</button>'+
       '</div>';
   }
-
-  function buildMarker(r, kind, pts){
-    const c = centroidFor(r);
-    if (!c) return null;
-    pts.push(c);
-    const radius = kind === 'ambiguous'
-      ? Math.min(12, Math.max(5.5, Math.sqrt(r.mw) * 0.22))
-      : kind === 'bess'
-        ? Math.min(9.5, Math.max(3.5, Math.sqrt(r.mw) * 0.16))
-        : Math.min(8, Math.max(3, Math.sqrt(r.mw) * 0.15));
-    const color = kind === 'ambiguous' ? AMBER : (kind === 'bess' ? TEAL : NEUTRAL);
-    const opacity = kind === 'ambiguous' ? 0.92 : (kind === 'bess' ? 0.8 : 0.72);
-    return L.circleMarker(c, {
-      radius: radius,
-      color: color,
-      weight: kind === 'ambiguous' ? 2 : 1.2,
-      fillColor: color,
-      fillOpacity: kind === 'ambiguous' ? 0.48 : 0.24,
-      opacity: opacity
-    }).bindTooltip(
-      '<span class="mono">' + escapeHtml(r.rto) + ' · ' + r.mw.toLocaleString(undefined,{maximumFractionDigits:1}) + ' MW</span>',
-      { sticky: true, direction: 'top', opacity: 0.96 }
-    ).bindPopup(popupHtml(r), { maxWidth: 300 });
+  function buildMarker(r,kind,pts){
+    const loc=locationFor(r);if(!loc)return null;pts.push(loc.point);
+    const radius=kind==='ambiguous'?Math.min(12,Math.max(5.5,Math.sqrt(r.mw)*0.22)):kind==='bess'?Math.min(9.5,Math.max(3.5,Math.sqrt(r.mw)*0.16)):Math.min(8,Math.max(3,Math.sqrt(r.mw)*0.15));
+    const color=loc.precision==='state/province'?FALLBACK:(kind==='ambiguous'?AMBER:(kind==='bess'?TEAL:NEUTRAL));
+    const marker=L.circleMarker(loc.point,{radius:radius,color:color,weight:loc.precision==='state/province'?1.6:(kind==='ambiguous'?2:1.2),fillColor:color,fillOpacity:loc.precision==='state/province'?0.18:(kind==='ambiguous'?0.48:0.24),opacity:loc.precision==='state/province'?0.82:(kind==='ambiguous'?0.92:(kind==='bess'?0.8:0.72))});
+    marker.bindTooltip('<span class="mono">'+escapeHtml(r.rto)+' · '+r.mw.toLocaleString(undefined,{maximumFractionDigits:1})+' MW</span>',{sticky:true,direction:'top',opacity:0.96});
+    marker.bindPopup(popupHtml(r,loc.precision),{maxWidth:315});
+    marker.on('popupopen',function(){const b=document.querySelector('[data-map-facility-id="'+CSS.escape(String(r.id))+'"]');if(b)b.addEventListener('click',function(){openFacility(r);},{once:true});});
+    return marker;
   }
-
   function inMode(r){
-    if (mapMode === 'ambiguous') return r.flag && r.tier !== 'Confirmed Grid-Scale Storage (BESS)';
-    if (mapMode === 'bess') return r.tier === 'Confirmed Grid-Scale Storage (BESS)';
-    if (mapMode === 'other') return !r.flag && r.tier !== 'Confirmed Grid-Scale Storage (BESS)';
+    if(mapMode==='ambiguous')return r.flag&&r.tier!=='Confirmed Grid-Scale Storage (BESS)';
+    if(mapMode==='bess')return r.tier==='Confirmed Grid-Scale Storage (BESS)';
+    if(mapMode==='other')return !r.flag&&r.tier!=='Confirmed Grid-Scale Storage (BESS)';
     return true;
   }
-
-  function updateModeButtons(){
-    document.querySelectorAll('[data-map-mode]').forEach(btn => {
-      btn.setAttribute('aria-pressed', btn.getAttribute('data-map-mode') === mapMode ? 'true' : 'false');
-    });
-  }
-
+  function updateModeButtons(){document.querySelectorAll('[data-map-mode]').forEach(function(btn){btn.setAttribute('aria-pressed',btn.getAttribute('data-map-mode')===mapMode?'true':'false');});}
   function updateMapMarkers(animate){
-    otherCluster.clearLayers();
-    bessCluster.clearLayers();
-    flagCluster.clearLayers();
-
-    const pts = [];
-    let counts = { ambiguous: 0, bess: 0, other: 0, mapped: 0, eligible: 0 };
-
-    filtered.forEach(r => {
-      if (!inMode(r)) return;
-      counts.eligible++;
-      const kind = r.tier === 'Confirmed Grid-Scale Storage (BESS)' ? 'bess' : (r.flag ? 'ambiguous' : 'other');
-      counts[kind]++;
-      const marker = buildMarker(r, kind, pts);
-      if (!marker) return;
-      counts.mapped++;
-      if (kind === 'ambiguous') flagCluster.addLayer(marker);
-      else if (kind === 'bess') bessCluster.addLayer(marker);
-      else otherCluster.addLayer(marker);
+    otherCluster.clearLayers();bessCluster.clearLayers();flagCluster.clearLayers();
+    const pts=[],counts={ambiguous:0,bess:0,other:0,mapped:0,fallback:0,eligible:0};
+    filtered.forEach(function(r){
+      if(!inMode(r))return;counts.eligible++;
+      const kind=r.tier==='Confirmed Grid-Scale Storage (BESS)'?'bess':(r.flag?'ambiguous':'other');counts[kind]++;
+      const marker=buildMarker(r,kind,pts);if(!marker)return;counts.mapped++;
+      if(locationFor(r).precision==='state/province')counts.fallback++;
+      if(kind==='ambiguous')flagCluster.addLayer(marker);else if(kind==='bess')bessCluster.addLayer(marker);else otherCluster.addLayer(marker);
     });
-
-    const currentRows = filtered.length.toLocaleString();
-    const skipped = counts.eligible - counts.mapped;
-    const modeLabel = mapMode === 'all' ? 'All records' : (mapMode === 'ambiguous' ? 'Ambiguous' : (mapMode === 'bess' ? 'BESS' : 'Other'));
-    const sub = document.getElementById('mapSubcaption');
-    if (sub) sub.textContent = modeLabel + ' · ' + counts.mapped.toLocaleString() + ' mapped of ' + currentRows + ' filtered · county/zone centroids';
-
-    const caption = document.getElementById('mapCaption');
-    if (caption){
-      caption.textContent = 'Map positions are county or transmission-zone centroids, not facility coordinates.' +
-        (skipped > 0 ? ' ' + skipped.toLocaleString() + ' filtered record' + (skipped === 1 ? '' : 's') + ' have no available centroid and are omitted.' : '');
-    }
-    const legendCounts = document.getElementById('legendCounts');
-    if (legendCounts){
-      legendCounts.textContent = counts.ambiguous.toLocaleString() + ' ambiguous · ' + counts.bess.toLocaleString() + ' BESS' +
-        (counts.other ? ' · ' + counts.other.toLocaleString() + ' other' : '');
-    }
-
-    if (pts.length){
-      const bounds = L.latLngBounds(pts);
-      const options = { padding: [32, 32], maxZoom: mapMode === 'all' ? 7 : 8, duration: animate ? 0.45 : 0 };
-      if (animate) map.flyToBounds(bounds, options);
-      else map.fitBounds(bounds, options);
-    } else if (animate){
-      map.flyTo([45, -95], 4, { duration: 0.45 });
-    }
+    const rows=filtered.length.toLocaleString(),modeLabel=mapMode==='all'?'All records':(mapMode==='ambiguous'?'Ambiguous':(mapMode==='bess'?'BESS':'Other'));
+    const sub=document.getElementById('mapSubcaption');if(sub)sub.innerHTML=modeLabel+' · <strong>'+counts.mapped+' / '+rows+'</strong> plotted · '+counts.fallback+' state/province fallbacks';
+    const caption=document.getElementById('mapCaption');if(caption)caption.textContent='All '+counts.mapped+' currently filtered records are plotted. '+counts.fallback+' use a state/province centroid because their public county/zone text did not match the map index. No exact facility addresses are inferred.';
+    const legendCounts=document.getElementById('legendCounts');if(legendCounts)legendCounts.textContent=counts.ambiguous+' ambiguous · '+counts.bess+' BESS · '+counts.fallback+' fallback';
+    if(pts.length){const bounds=L.latLngBounds(pts),options={padding:[34,34],maxZoom:mapMode==='all'?7:8,duration:animate?0.45:0};if(animate)map.flyToBounds(bounds,options);else map.fitBounds(bounds,options);}
+    else if(animate)map.flyTo([45,-95],4,{duration:0.45});
   }
-
-  document.querySelectorAll('[data-map-mode]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      mapMode = btn.getAttribute('data-map-mode');
-      updateModeButtons();
-      updateMapMarkers(true);
-    });
-  });
-  document.getElementById('mapReset').addEventListener('click', () => updateMapMarkers(true));
-
-  window.addEventListener('resize', () => map.invalidateSize());
-
-  updateModeButtons();
-  updateMapMarkers(false);
+  document.querySelectorAll('[data-map-mode]').forEach(function(btn){btn.addEventListener('click',function(){mapMode=btn.getAttribute('data-map-mode');updateModeButtons();updateMapMarkers(true);});});
+  document.getElementById('mapReset').addEventListener('click',function(){updateMapMarkers(true);});
+  window.addEventListener('resize',function(){map.invalidateSize();});
+  updateModeButtons();updateMapMarkers(false);
 })();
 </script>
 
