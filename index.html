@@ -364,6 +364,30 @@
     </div>
   </section>
 
+  <!-- ============ COMPLETE SITE EVIDENCE LEDGER ============ -->
+  <section id="completeSiteEvidenceLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">68 discrete evidence assertions</p>
+        <h2 class="font-serif-display text-xl mt-1">Complete site-evidence ledger</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Browse every preserved Track 3 site-level utility, facility, contract or planning assertion underlying the Epoch connection-target layer. Multiple assertions can refer to the same physical campus.</p>
+      </div>
+      <input id="siteEvidenceSearch" type="search" placeholder="Search 68 evidence assertions" class="text-sm px-3 py-2 rounded-md w-[270px]" />
+    </div>
+    <div id="siteEvidenceLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading site evidence…</div>
+    <div class="scroll-x mt-4">
+      <table class="w-full text-xs min-w-[1120px]">
+        <thead><tr><th class="px-3 py-2">Site</th><th class="px-3 py-2">Evidence type</th><th class="px-3 py-2">Authority</th><th class="px-3 py-2">Record / assertion</th><th class="px-3 py-2">Capacity</th><th class="px-3 py-2">Confidence</th><th class="px-3 py-2">Source</th><th class="px-3 py-2">Next action</th></tr></thead>
+        <tbody id="siteEvidenceLedgerBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="flex items-center justify-between gap-3 mt-4 text-xs">
+      <button id="siteEvidencePrev" type="button" class="map-reset-btn">Previous</button>
+      <span id="siteEvidencePage" class="mono" style="color:var(--ink-faint);">Page 1</span>
+      <button id="siteEvidenceNext" type="button" class="map-reset-btn">Next</button>
+    </div>
+  </section>
+
   <!-- ============ PROJECT-LEVEL EXTRACTION ============ -->
   <section id="projectLevelExtraction" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -2159,6 +2183,25 @@ openFacilityFromHash();
   document.getElementById('targetLedgerPrev').addEventListener('click',function(){if(targetPage>0){targetPage--;renderTargets();}});
   document.getElementById('targetLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(targetFiltered.length/TP));if(targetPage<pages-1){targetPage++;renderTargets();}});
   fetch('data/epoch_connection_research_targets.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('connection targets unavailable');return res.json();}).then(function(p){targets=Array.isArray(p.records)?p.records:[];filterTargets();}).catch(function(err){document.getElementById('targetLedgerStatus').textContent='Connection targets unavailable: '+err.message;});
+})();
+</script>
+
+<script id="completeSiteEvidenceLedger-js">
+(function(){
+  function escEvidence(v){const s=v==null?'':String(v);return s.replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+  let rows=[],filtered=[],page=0;const PP=20;
+  function cap(r){if(r.capacity_mw!=null)return String(r.capacity_mw)+' MW'+(r.capacity_kind?' · '+r.capacity_kind:'');return '—';}
+  function render(){const body=document.getElementById('siteEvidenceLedgerBody'),pages=Math.max(1,Math.ceil(filtered.length/PP));page=Math.min(page,pages-1);const rs=filtered.slice(page*PP,(page+1)*PP);
+    body.innerHTML=rs.length?rs.map(function(r){const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escEvidence(r.source_url)+'">Open</a>':'—';return '<tr><td class="px-3 py-2"><div class="font-medium">'+escEvidence(r.epoch_name||'—')+'</div><div class="mono text-[10px] mt-1">'+escEvidence(r.epoch_id)+'</div></td><td class="px-3 py-2">'+escEvidence(r.evidence_type||'—')+'</td><td class="px-3 py-2">'+escEvidence(r.authority||'—')+'</td><td class="px-3 py-2">'+escEvidence(r.record_name||'—')+'</td><td class="px-3 py-2">'+escEvidence(cap(r))+'</td><td class="px-3 py-2">'+escEvidence(r.confidence||'—')+'</td><td class="px-3 py-2">'+src+'</td><td class="px-3 py-2 max-w-[380px]">'+escEvidence(r.next_action||'—')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No evidence assertions match.</td></tr>';
+    document.getElementById('siteEvidencePage').textContent='Page '+(page+1)+' of '+pages;
+    document.getElementById('siteEvidencePrev').disabled=page===0;document.getElementById('siteEvidenceNext').disabled=page>=pages-1;
+    document.getElementById('siteEvidenceLedgerStatus').textContent=filtered.length+' of '+rows.length+' evidence assertions';
+  }
+  function filter(){const q=document.getElementById('siteEvidenceSearch').value.trim().toLowerCase();filtered=rows.filter(function(r){return !q||[r.epoch_id,r.epoch_name,r.evidence_type,r.authority,r.record_name,r.confidence,r.basis,r.next_action].join(' ').toLowerCase().includes(q);});page=0;render();}
+  document.getElementById('siteEvidenceSearch').addEventListener('input',filter);
+  document.getElementById('siteEvidencePrev').addEventListener('click',function(){if(page>0){page--;render();}});
+  document.getElementById('siteEvidenceNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(filtered.length/PP));if(page<pages-1){page++;render();}});
+  fetch('data/epoch_site_evidence_records.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('site evidence unavailable');return res.json();}).then(function(p){rows=Array.isArray(p.records)?p.records:[];filter();}).catch(function(err){document.getElementById('siteEvidenceLedgerStatus').textContent='Site evidence unavailable: '+err.message;});
 })();
 </script>
 
