@@ -389,7 +389,7 @@
             <a class="text-xs link-underline" href="data/track3/site_status.json" target="_blank" rel="noopener noreferrer">Site status JSON</a>
             <a class="text-xs link-underline" href="data/track3/evidence_records.json" target="_blank" rel="noopener noreferrer">Evidence records JSON</a>
             <a class="text-xs link-underline" href="data/track3/research_queue.json" target="_blank" rel="noopener noreferrer">Research queue JSON</a>
-            <a class="text-xs link-underline" href="data/track3_evidence_ledger.csv" target="_blank" rel="noopener noreferrer">Flattened ledger</a>
+            <a class="text-xs link-underline" href="data/track3/evidence_records.json" target="_blank" rel="noopener noreferrer">Evidence item JSON</a>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 mt-4">
@@ -984,6 +984,7 @@ openFacilityFromHash();
   let track3SiteStatusById=new Map();
   let track3ResearchFiltered=[];
   let track3ResearchPage=0;
+  let track3SourceStackById=new Map();
 
   function epochText(v){
     if(v===null || v===undefined || v==='') return 'Not published / not retained';
@@ -1074,9 +1075,11 @@ openFacilityFromHash();
       ['TIR / SAR / optical','NOT_INGESTED','No numeric remote-sensing anomaly or change-detection dataset is currently ingested.'],
       ['Cooling equipment','NOT_INGESTED','Epoch cooling-equipment source families are cataloged but not yet joined here as structured evidence.'],
       ['HV transformer supply','NOT_INGESTED','Procurement, delivery and installation event records are not yet ingested.'],
-      ['Global chip ownership','SOURCE_AVAILABLE_NOT_INGESTED','Epoch AI Chip Owners is cataloged as an available external source family.'],
-      ['Global chip usage','SOURCE_AVAILABLE_NOT_INGESTED','Epoch AI Chip Users is cataloged as an available external source family.'],
-      ['Global chip shipments','SOURCE_AVAILABLE_NOT_INGESTED','Epoch AI Chip Sales is cataloged as an available external source family.']
+      ['Global chip ownership',(track3SourceStackById.get('epoch-chip-owners')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI Chip Owners is an aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
+      ['Global chip usage',(track3SourceStackById.get('epoch-chip-users')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI Chip Users is an aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
+      ['Global chip shipments',(track3SourceStackById.get('epoch-chip-sales')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI Chip Sales is an aggregate global source; ingestion does not automatically attribute its estimates to this site.'],
+      ['Global GPU clusters',(track3SourceStackById.get('epoch-gpu-clusters')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI GPU-cluster data is an aggregate external source and is not automatically mapped to this site.'],
+      ['AI chip components',(track3SourceStackById.get('epoch-chip-components')?.status||'SOURCE_AVAILABLE_NOT_INGESTED'),'Epoch AI chip-component data is an aggregate semiconductor-supply source and is not automatically mapped to this site.']
     ];
     html+='<section class="mt-7"><h4 class="font-serif-display text-base">Track 3 evidence matrix</h4>';
     html+='<div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Domain</th><th class="px-3 py-2">State</th><th class="px-3 py-2">What the state means</th></tr></thead><tbody>';
@@ -1334,6 +1337,7 @@ openFacilityFromHash();
   }).then(function(payload){
     const el=document.getElementById('track3SourceStack');
     const rows=Array.isArray(payload.sources)?payload.sources:[];
+    track3SourceStackById=new Map(rows.map(function(s){return [s.id,s];}));
     if(!rows.length){el.innerHTML='<div class="text-xs" style="color:var(--ink-faint);">No source catalog records available.</div>';return;}
     el.innerHTML='<div class="scroll-x"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Source</th><th class="px-3 py-2">State</th><th class="px-3 py-2">Updated</th><th class="px-3 py-2">Role</th><th class="px-3 py-2">Link</th></tr></thead><tbody>'+
       rows.map(function(s){
