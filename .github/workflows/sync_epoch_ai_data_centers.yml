@@ -40,6 +40,21 @@ jobs:
 
       - name: Download and normalize Epoch AI datasets
         run: python sync_epoch_ai_data_centers.py --sync
+\n      - name: Validate inline JavaScript syntax
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+          for i, script in enumerate(scripts, 1):
+              Path(f"/tmp/index-script-{i}.js").write_text(script, encoding="utf-8")
+          print(f"extracted {len(scripts)} inline script blocks")
+          PY
+          for f in /tmp/index-script-*.js; do
+            node --check "$f"
+          done
+
 
       - name: Verify the complete Epoch dataset was imported
         run: |
