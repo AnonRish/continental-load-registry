@@ -17,6 +17,7 @@ on:
       - "data/track3_evidence_schema.json"
       - "data/track3_source_stack.json"
       - "build_track3_evidence.py"
+      - "validate_track3_ledger.py"
       - ".github/workflows/sync_epoch_ai_data_centers.yml"
   workflow_dispatch:
 
@@ -132,7 +133,7 @@ jobs:
 
       - name: Commit Epoch snapshot and crosswalk
         run: |
-          git add data/external/epoch_ai data/track3 build_epoch_grid_crosswalk.py build_epoch_queue_gap_analysis.py sync_epoch_ai_data_centers.py build_track3_evidence.py data/track3_evidence_schema.json data/track3_source_stack.json
+          git add data/external/epoch_ai data/track3 build_epoch_grid_crosswalk.py build_epoch_queue_gap_analysis.py sync_epoch_ai_data_centers.py build_track3_evidence.py validate_track3_ledger.py data/track3_evidence_schema.json data/track3_source_stack.json
           if git diff --cached --quiet; then
             echo "Epoch data unchanged; nothing to commit."
           else
