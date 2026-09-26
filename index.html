@@ -189,7 +189,7 @@
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
           <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
           <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
-          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate evidence</button>
           <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
         </div>
       </div>
@@ -1199,6 +1199,11 @@ openFacilityFromHash();
   const bessCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(BESS_BLUE),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   const flagCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(AMBER),maxClusterRadius:38,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   map.addLayer(otherCluster);map.addLayer(bessCluster);map.addLayer(flagCluster);
+  const AGGREGATE_COLOR='#9A6B37';
+  const aggregateLayer=L.layerGroup();
+  let aggregateRecords=[];
+  let showAggregateEvidence=true;
+  map.addLayer(aggregateLayer);
   const PROJECT_COLOR='#6B4F8A';
   const projectCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(PROJECT_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   let projectRecords=[];
@@ -1211,7 +1216,7 @@ openFacilityFromHash();
     div.innerHTML='<div><span class="dot" style="background:'+AMBER+';"></span>Ambiguous / unresolved</div>'+
       '<div><span class="dot" style="background:'+BESS_BLUE+';"></span>Confirmed BESS</div>'+
       '<div><span class="dot" style="background:'+NEUTRAL+';"></span>Other registry rows</div>'+
-      '<div><span class="dot" style="background:'+PROJECT_COLOR+';"></span>Project evidence</div>'+      '<div><span class="dot" style="background:'+FALLBACK+';"></span>State / province fallback</div>'+
+      '<div><span class="dot" style="background:'+PROJECT_COLOR+';"></span>Project evidence</div>'+      '<div><span class="dot" style="background:'+AGGREGATE_COLOR+';"></span>Aggregate evidence footprint</div>'+\n      '<div><span class="dot" style="background:'+FALLBACK+';"></span>State / province fallback</div>'+
       '<div id="legendCounts" style="margin-top:5px;opacity:.78;"></div>';
     L.DomEvent.disableClickPropagation(div);return div;
   };
@@ -1266,7 +1271,21 @@ openFacilityFromHash();
       (p.source_url?'<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(p.source_url)+'">Open source record</a>':'')+
       '</div>';
   }
-    function buildProjectMarker(p){
+    function buildAggregateOverlay(a){
+    if(a.lat==null||a.lon==null)return null;
+    const radius=Math.max(25000,Number(a.radius_km||140)*1000);
+    const circle=L.circle([a.lat,a.lon],{radius:radius,color:AGGREGATE_COLOR,weight:1.4,fillColor:AGGREGATE_COLOR,fillOpacity:0.12,opacity:0.72});
+    circle.bindTooltip('<span class="mono">AGGREGATE · '+escapeHtml(a.provider||a.evidence_type)+'</span>',{sticky:true,direction:'top',opacity:0.96});
+    circle.bindPopup('<div style="min-width:250px;max-width:330px;">'+
+      '<p style="font-weight:650;font-size:13px;">'+escapeHtml(a.provider||'Aggregate evidence')+'</p>'+
+      '<p class="mono" style="font-size:10px;color:var(--ink-faint);margin-top:3px;">'+escapeHtml(a.id)+' · aggregate evidence</p>'+
+      '<p class="text-xs" style="margin-top:7px;">'+escapeHtml(a.jurisdiction||'')+'</p>'+
+      '<p class="text-xs" style="margin-top:7px;color:var(--amber);">Geographic footprint only — not a facility location.</p>'+
+      (a.source_url?'<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(a.source_url)+'">Open source</a>':'')+
+      '</div>',{maxWidth:340});
+    return circle;
+  }
+  function buildProjectMarker(p){
     if(p.lat==null||p.lon==null)return null;
     const radius=p.mw==null?5:Math.max(4,Math.min(14,Math.sqrt(Math.max(1,p.mw))*0.12));
     const marker=L.circleMarker([p.lat,p.lon],{radius:radius,color:PROJECT_COLOR,weight:1.8,fillColor:PROJECT_COLOR,fillOpacity:0.42,opacity:0.94});
@@ -1292,6 +1311,24 @@ openFacilityFromHash();
     return true;
   }
   function updateModeButtons(){document.querySelectorAll('[data-map-mode]').forEach(function(btn){btn.setAttribute('aria-pressed',btn.getAttribute('data-map-mode')===mapMode?'true':'false');});}
+  function updateAggregateLayer(){
+    aggregateLayer.clearLayers();
+    if(!showAggregateEvidence)return;
+    aggregateRecords.forEach(function(a){const layer=buildAggregateOverlay(a);if(layer)aggregateLayer.addLayer(layer);});
+  }
+  const aggregateToggle=document.getElementById('aggregateEvidenceToggle');
+  if(aggregateToggle)aggregateToggle.addEventListener('click',function(){
+    showAggregateEvidence=!showAggregateEvidence;
+    aggregateToggle.setAttribute('aria-pressed',showAggregateEvidence?'true':'false');
+    updateAggregateLayer();
+  });
+  fetch('data/supplemental_aggregate_map.json?v=1',{cache:'no-store'}).then(function(res){
+    if(!res.ok)throw new Error('aggregate map unavailable');
+    return res.json();
+  }).then(function(payload){
+    aggregateRecords=Array.isArray(payload.records)?payload.records:[];
+    updateAggregateLayer();
+  }).catch(function(err){console.error(err);});
   function updateProjectLayer(){
     projectCluster.clearLayers();
     if(!showProjectEvidence)return;
