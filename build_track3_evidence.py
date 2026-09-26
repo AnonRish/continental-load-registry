@@ -202,9 +202,7 @@ def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any]) -> 
             "url": ev.get("url"),
             "status": ev.get("status"),
         }
-        eid = "EVID-XW-" + hashlib.sha256(
-            json.dumps(raw, sort_keys=True, ensure_ascii=False).encode("utf-8")
-        ).hexdigest()[:20]
+        eid = "EVID-XW-" + rec["epoch_id"]
         status = str(ev.get("status") or "").lower()
         domain = "grid_connection" if any(
             token in status for token in ("grid_record", "utility_record", "service_record", "regulatory_record", "power_request", "load_request")
@@ -267,6 +265,8 @@ def main() -> int:
             domains[domain] = s
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
 
+        base_evidence_count = len(ev.get("site_level_evidence") or [])
+        crosswalk_evidence_count = 1 if (rec.get("grid_crosswalk") or {}).get("site_level_public_evidence") else 0
         site_records.append({
             "epoch_id": rec["epoch_id"],
             "site_name": rec.get("normalized", {}).get("name"),
@@ -275,7 +275,9 @@ def main() -> int:
             "current_it_power_mw": rec.get("normalized", {}).get("current_power_mw"),
             "current_h100_equivalents": rec.get("normalized", {}).get("current_h100_equivalents"),
             "domains": domains,
-            "site_level_evidence_count": len(ev.get("site_level_evidence") or []),
+            "site_level_evidence_count": base_evidence_count,
+            "crosswalk_public_evidence_count": crosswalk_evidence_count,
+            "combined_site_level_evidence_count": base_evidence_count + crosswalk_evidence_count,
             "next_action": ev.get("next_action"),
         })
 
@@ -289,8 +291,7 @@ def main() -> int:
         "site_level_evidence_site_count": sum(1 for x in site_records if x["site_level_evidence_count"] > 0),
         "combined_site_level_evidence_site_count": sum(
             1 for x in site_records
-            if x["domains"]["grid_connection"]["status"] in {"SITE_LEVEL_EVIDENCE", "VERIFIED_SITE_SPECIFIC"}
-            or x["site_level_evidence_count"] > 0
+            if x["combined_site_level_evidence_count"] > 0
         ),
         "site_specific_queue_id_count": sum(1 for x in site_records if x["domains"]["grid_connection"]["status"] == "VERIFIED_SITE_SPECIFIC"),
         "pending_grid_connection_research_count": len(pending),
