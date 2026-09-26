@@ -37,3 +37,19 @@ Use the repository commit SHA, artifact path, and source capture date when a rep
 ## Persistent archival
 
 A future release should be tagged and archived with a service such as Zenodo so a versioned DOI can be cited alongside the GitHub repository. No DOI is claimed by this repository unless and until one is actually issued.
+
+
+## Large-load / Track 3 artifact citations
+
+For the expanded large-load universe, cite the narrowest artifact used:
+- `data/large_load_scope.json` — core versus expanded-known accounting.
+- `data/market_universe_manifest.json` — market-by-market coverage and public-disclosure limits.
+- `data/project_level_extractions.json` — individually identifiable utility, permit, connection and queue-related project records.
+- `data/project_level_map.json` — mapped project geometry.
+- `data/epoch_connection_research_targets.json` — all 93 Epoch-site connection research targets.
+- `data/epoch_site_evidence_records.json` — discrete site-level evidence assertions.
+- `data/supplemental_large_load_evidence.json` — non-additive utility/regulator/planning evidence units.
+- `data/supplemental_aggregate_map.json` — mapped aggregate and historical footprints.
+- `data/caiso_cluster_history.json` — historical CAISO cluster-population series.
+
+These artifacts do not make an upstream utility or regulator's unpublished information public. Cite the upstream publisher for facts derived from that source.
