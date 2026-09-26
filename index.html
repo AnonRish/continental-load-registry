@@ -365,6 +365,21 @@
       <div class="panel rounded-lg mt-5 p-5">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
+            <h3 class="font-serif-display text-base">Site-specific research queue</h3>
+            <p class="text-xs mt-1 max-w-3xl" style="color:var(--ink-soft);">These are the Epoch sites for which the current evidence layer has not yet attached a site-specific connection/service record. Ranking is only for research order; it is not a risk or suspicion score.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a class="text-xs link-underline" href="data/track3/research_queue.json" target="_blank" rel="noopener noreferrer">Open full queue</a>
+            <a class="text-xs link-underline" href="data/external/epoch_ai/queue_gap_analysis.csv" target="_blank" rel="noopener noreferrer">Open gap analysis</a>
+          </div>
+        </div>
+        <div id="track3ResearchQueue" class="mt-4">
+          <div class="text-xs" style="color:var(--ink-faint);">Loading research queue…</div>
+        </div>
+      </div>
+      <div class="panel rounded-lg mt-5 p-5">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+          <div>
             <h3 class="font-serif-display text-base">Track 3 source stack</h3>
             <p class="text-xs mt-1 max-w-3xl" style="color:var(--ink-soft);">Source families are shown separately from ingested evidence. “Source available” means the public dataset exists and is cataloged; it does not mean the registry has imported or validated it yet.</p>
           </div>
@@ -1164,6 +1179,43 @@ openFacilityFromHash();
     }
   }
   initEpochRegistry();
+
+  fetch('data/track3/research_queue.json?v=1',{cache:'no-store'}).then(function(res){
+    if(!res.ok) throw new Error('research queue unavailable');
+    return res.json();
+  }).then(function(payload){
+    const el=document.getElementById('track3ResearchQueue');
+    const rows=Array.isArray(payload.records)?payload.records.slice():[];
+    rows.sort(function(a,b){
+      const av=Number(a.current_h100_equivalents);
+      const bv=Number(b.current_h100_equivalents);
+      if(Number.isFinite(bv)&&Number.isFinite(av)) return bv-av;
+      if(Number.isFinite(bv)) return 1;
+      if(Number.isFinite(av)) return -1;
+      return String(a.site_name||'').localeCompare(String(b.site_name||''));
+    });
+    if(!rows.length){
+      el.innerHTML='<div class="text-sm" style="color:var(--ink-soft);">No pending site-specific grid/connection research records are currently published.</div>';
+      return;
+    }
+    const shown=rows.slice(0,20);
+    el.innerHTML='<div class="flex flex-wrap items-center justify-between gap-3 mb-3 text-xs" style="color:var(--ink-faint);"><span>'+rows.length.toLocaleString()+' pending records</span><span>Showing largest 20 by current Epoch H100-equivalent estimate</span></div>'+
+      '<div class="scroll-x"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2 text-left">Site</th><th class="px-3 py-2">State</th><th class="px-3 py-2 text-right">IT MW</th><th class="px-3 py-2 text-right">H100-eq</th><th class="px-3 py-2">Next action</th><th class="px-3 py-2"></th></tr></thead><tbody>'+
+      shown.map(function(row,idx){
+        const action=String(row.next_action||'Continue site-specific queue/service research.').replace(/^Search /,'Search ');
+        return '<tr><td class="px-3 py-2"><div class="font-medium">'+escapeHtml(row.site_name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(row.epoch_id||'')+'</div></td><td class="px-3 py-2">'+escapeHtml(row.state_province||'—')+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(row.current_it_power_mw))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(row.current_h100_equivalents))+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escapeHtml(action)+'</td><td class="px-3 py-2 text-right"><button type="button" class="track3-queue-open px-2.5 py-1 rounded-md border hairline text-xs" data-epoch-id="'+escapeHtml(row.epoch_id)+'">Open</button></td></tr>';
+      }).join('')+
+      '</tbody></table></div>';
+    el.querySelectorAll('.track3-queue-open').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        const rec=epochRecords.find(function(x){return x.epoch_id===btn.getAttribute('data-epoch-id');});
+        if(rec) renderEpochDetail(rec);
+      });
+    });
+  }).catch(function(err){
+    const el=document.getElementById('track3ResearchQueue');
+    if(el) el.innerHTML='<div class="text-xs" style="color:var(--amber);">Research queue unavailable: '+escapeHtml(err.message||'unknown error')+'</div>';
+  });
 
   fetch('data/track3_source_stack.json?v=1',{cache:'no-store'}).then(function(res){
     if(!res.ok) throw new Error('source stack unavailable');
