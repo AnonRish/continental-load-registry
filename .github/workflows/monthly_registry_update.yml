@@ -89,6 +89,7 @@ jobs:
         run: |
           python ingest_grid_queues.py --include-raw-fields \
             --pjm-audit-output "$WORK/pjm_raw_audit.csv" \
+            --source-health-output "$WORK/source_health.json" \
             --output "$WORK/registry_raw.csv" 2>&1 | tee "$WORK/ingest.log"
 
       - name: Pipeline 2/5 - require at least one row
@@ -118,6 +119,7 @@ jobs:
             --enriched "$WORK/computational_load_estimates.csv" \
             --out-raw data/registry_raw.csv \
             --out-enriched data/computational_load_estimates.csv \
+            --source-health "$WORK/source_health.json" \
             --summary-md "$GITHUB_STEP_SUMMARY" \
             --github-output "$GITHUB_OUTPUT"
 
