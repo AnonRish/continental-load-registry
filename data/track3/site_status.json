@@ -2,11 +2,11 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-26T19:09:40.855Z",
+    "generated_at_utc": "2026-09-26T19:18:57.700Z",
     "epoch_site_count": 93,
     "site_level_evidence_site_count": 44,
     "site_specific_queue_id_count": 2,
-    "pending_grid_connection_research_count": 58,
+    "pending_grid_connection_research_count": 47,
     "domain_status_counts": {
       "site_identity": {
         "INGESTED": 93
@@ -20,8 +20,8 @@
       },
       "grid_connection": {
         "VERIFIED_SITE_SPECIFIC": 2,
-        "SITE_LEVEL_EVIDENCE": 33,
-        "PENDING_RESEARCH": 58
+        "SITE_LEVEL_EVIDENCE": 44,
+        "PENDING_RESEARCH": 47
       },
       "power_telemetry": {
         "NOT_INGESTED": 93
@@ -46,7 +46,7 @@
       }
     },
     "source_stack_count": 13,
-    "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. Crosswalk public evidence is retained as a separate provenance layer from the primary site-level evidence file.",
+    "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. Grid-facility, utility-service, utility-planning, and relevant electricity regulatory evidence types are included only where the source record itself describes electricity service or connection.",
     "combined_site_level_evidence_site_count": 52
   },
   "records": [
@@ -72,7 +72,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -130,7 +130,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -188,7 +188,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -246,7 +246,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -304,7 +304,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -362,7 +362,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -420,7 +420,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -536,7 +536,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -594,7 +594,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -651,8 +651,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "At least one site-level utility, service, power-request, or load/facility record is attached; no queue ID is asserted."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -768,7 +768,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -826,7 +826,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -884,7 +884,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1000,7 +1000,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1057,8 +1057,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "At least one site-level utility, service, power-request, or load/facility record is attached; no queue ID is asserted."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1115,8 +1115,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "At least one site-level utility, service, power-request, or load/facility record is attached; no queue ID is asserted."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1173,8 +1173,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "At least one site-level utility, service, power-request, or load/facility record is attached; no queue ID is asserted."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1232,7 +1232,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1348,7 +1348,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1695,8 +1695,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1754,7 +1754,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1812,7 +1812,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -2044,7 +2044,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -2218,7 +2218,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -2334,7 +2334,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -2624,7 +2624,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -2681,8 +2681,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -2740,7 +2740,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -3203,8 +3203,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -3436,7 +3436,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -3493,8 +3493,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -3900,7 +3900,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -3958,7 +3958,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4016,7 +4016,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4363,8 +4363,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4422,7 +4422,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4596,7 +4596,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4654,7 +4654,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4712,7 +4712,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4770,7 +4770,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4827,8 +4827,8 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -5001,8 +5001,8 @@
           "basis": "No retained site-level chip-quantity rows."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -5176,7 +5176,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -5350,7 +5350,7 @@
         },
         "grid_connection": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached across the Track 3 evidence layers; no queue ID is asserted unless separately verified."
+          "basis": "The preserved site evidence explicitly describes a utility, service, power request, load request, grid-facility relationship, relevant planning record, or electricity regulatory/service proceeding; no queue ID is asserted unless separately verified."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
