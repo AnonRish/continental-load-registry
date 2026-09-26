@@ -52,6 +52,21 @@ aimed at surfacing large requests that lack a confirmed public operator.
 - `CONTRIBUTING.md` -- evidence-submission protocol for adding reproducible Track 3 records.
 - `CITATION.cff` -- machine-readable repository citation metadata.
 
+## AI 2040 Plan A / Track 3 reference surface
+
+For researchers using this repository specifically in the context of AI 2040 Plan A Track 3, start with the public [Plan A / Track 3 research bridge](https://anonrish.github.io/continental-load-registry/plan-a.html), then use the [Track 3 Evidence Observatory](https://anonrish.github.io/continental-load-registry/track3.html) for the underlying site/evidence layer.
+
+The repository separates three things that should not be conflated:
+
+- AI 2040's public proposal and terminology, which should be cited directly from AI 2040.
+- Repository-derived observations and generated artifacts, which should be cited by artifact path and commit/version.
+- Upstream datasets and source records, which should be cited alongside the repository when they support a factual claim.
+
+Machine-readable Plan A mapping is in `data/track3/ai2040_plan_a_mapping.json`; Recommendation / Appendix B traceability is in `data/track3/ai2040_plan_a_traceability.json`; the audit-chain schema is in `data/track3/plan_a_audit_schema.json`; and the complete commit-level CI audit is in `data/ci/commit_audit.json` with a human-readable companion at `CI_AUDIT_2026-09-26.md`.
+
+The repository is an independent research contribution. It is not an AI Futures Project publication, does not speak for AI 2040, and does not certify a verification regime.
+
+
 - `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
   from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
   commits the result to `main`. See "Automated monthly refresh".
