@@ -58,11 +58,28 @@ jobs:
           print("sheets:", q["sheet_counts"])
           print(">=100MW:", summary["records_ge_100mw"])
           PY
+      - name: Update queue layer status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          now=json.loads(Path("data/caiso_public_queue_summary.json").read_text(encoding="utf-8"))
+          status_path=Path("data/queue_layer_status.json")
+          obj=json.loads(status_path.read_text(encoding="utf-8"))
+          feed=next(f for f in obj["feeds"] if f["id"]=="CAISO")
+          feed["snapshot_present"]=True
+          feed["last_capture"]=now["captured_at"]
+          feed["record_count"]=now["record_count"]
+          if "records_ge_100mw" in now: feed["records_ge_100mw"]=now["records_ge_100mw"]
+          if "missing_ge_100_location" in now: feed["unresolved_ge_100_location"]=now["missing_ge_100_location"]
+          status_path.write_text(json.dumps(obj,indent=2)+"\n",encoding="utf-8")
+          PY
       - name: Commit refreshed CAISO queue
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/caiso_public_queue.json data/caiso_public_queue.csv data/caiso_public_queue_summary.json
+          git add data/queue_layer_status.json
           if git diff --cached --quiet; then
             echo "No CAISO queue changes to commit."
             exit 0
