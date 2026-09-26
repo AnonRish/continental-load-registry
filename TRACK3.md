@@ -46,3 +46,11 @@ The Epoch sync workflow rebuilds and validates these artifacts after refresh.
 ## Measurement separation
 
 Epoch IT power, projected IT power, utility service capacity, queue/interconnection capacity, transmission capacity, generation capacity, contracted demand, chip TDP, and actual measured site load are different measurements and must remain separate.
+
+## Observation acquisition queue
+
+`data/track3/observation_queue.json` contains 651 acquisition tasks for the 93 Epoch sites. It covers seven missing evidence domains: interval power telemetry, remote sensing, cooling equipment, HV transformer supply, chip ownership, chip users, and chip shipments.
+
+Each task carries its current state, priority, required fields, site-specific next action, and—where available—the primary grid source URL/type/date plus the existing public source families to search. `data/track3/observation_queue.csv` is the flattened review version.
+
+Completing a task requires attaching the resulting observation or record with source provenance. A task's `NOT_INGESTED`, `SOURCE_AVAILABLE_NOT_INGESTED`, `UNKNOWN`, or `PENDING_RESEARCH` state is not evidence that the underlying facility condition is absent.
