@@ -1382,9 +1382,11 @@ openFacilityFromHash();
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Site queue name</td><td style="text-align:right;">'+escapeHtml(t.site_specific_queue_name||'Not verified')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Queue capacity (MW)</td><td style="text-align:right;">'+escapeHtml(t.site_specific_capacity_mw!=null?String(t.site_specific_capacity_mw):'Not verified')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Confidence</td><td style="text-align:right;">'+escapeHtml(t.confidence||'UNKNOWN')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Site evidence</td><td style="text-align:right;">'+escapeHtml(String(t.site_level_evidence_count||0))+' item(s)</td></tr>'+
       '</table>'+
       '<p style="margin-top:8px;font-size:10.5px;color:var(--amber);">'+escapeHtml(t.precision||'display geometry')+'. The point is a research target, not proof of a queue record.</p>'+
       '<p style="margin-top:6px;font-size:10.5px;color:var(--ink-soft);line-height:1.4;">Next: '+escapeHtml(t.next_action||'No next action retained.')+'</p>'+
+      ((t.site_level_evidence||[]).slice(0,4).map(function(e){return e.source_url?'<a class="text-xs link-underline inline-block mt-2 mr-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(e.source_url)+'">'+escapeHtml(e.authority||'evidence source')+'</a>':'';}).join(''))+
       (t.primary_source_url?'<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(t.primary_source_url)+'">Open current source</a>':'')+
       '</div>',{maxWidth:360});
     return marker;
