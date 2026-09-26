@@ -177,6 +177,16 @@ def main() -> int:
     data = build(payload)
     root = Path(args.output_dir)
     root.mkdir(parents=True, exist_ok=True)
+    # Build the JSON snapshot first; summary is included in the same object so the browser
+    # can render counts without a second request.
+    summary = {
+        "record_count": data["record_count"],
+        "sheet_counts": data["sheet_counts"],
+        "mw_rows": sum(r["normalized"].get("mw_total") is not None for r in data["records"]),
+        "records_ge_100mw": sum((r["normalized"].get("mw_total") or 0) >= 100 for r in data["records"]),
+        "records_with_county_and_state": sum(bool(r["normalized"].get("county")) and bool(r["normalized"].get("state")) for r in data["records"]),
+    }
+    data["summary"] = summary
     (root / "caiso_public_queue.json").write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     rows = []
     for rec in data["records"]:
