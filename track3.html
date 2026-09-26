@@ -41,7 +41,8 @@
 </section>
 
 <section class="section panel" style="padding:16px">
-<div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap">
+<div id="gate" class="small soft" style="padding:11px;border:1px solid var(--amber-line);background:var(--amber-soft);border-radius:9px">Loading Module 1 gate…</div>
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap;margin-top:14px">
 <div><h2>Site explorer</h2><p id="siteCount" class="soft small">Loading…</p></div>
 <div class="tools" style="min-width:min(700px,100%)">
 <input id="search" placeholder="Search site, ID, country, state, utility, substation, action…">
@@ -111,7 +112,9 @@ const URLS={
  power:'data/track3/power_observations.json',
  cooling:'data/track3/cooling_observations.json',
  sources:'data/track3_source_stack.json',
- universe:'data/external/epoch_ai/queue_source_universe.json'
+ universe:'data/external/epoch_ai/queue_source_universe.json',
+ module1:'data/module1_radar_summary.json',
+ external:'data/track3/external_source_snapshots.json'
 };
 let DATA={summary:null,sites:[],evidence:[],obs:[],power:[],cooling:[],sources:[],universe:null}, filtered=[];
 const domains=['site_identity','construction','chip_inventory','grid_connection','service_or_contract','compute_tenancy','power_telemetry','remote_sensing','cooling','transformer_supply_chain','chip_ownership','chip_users','chip_shipments','independent_corroboration'];
@@ -122,6 +125,8 @@ function domainCounts(d){const arr=d.records||[]; return domains.map(domain=>{co
 function pct(v,total){return total?Math.round(v/total*100):0}
 function renderCards(){
  const s=DATA.summary||{}, grid=s.domain_status_counts?.grid_connection||{};
+ const m=DATA.module1||{};
+ const gate=document.getElementById('gate'); if(gate)gate.innerHTML='<strong>Five-domain gate:</strong> '+esc(m.five_domain_gate||'UNVERIFIED')+' · Remote sensing: '+esc(m.domains?.domain_2_ingestion?.satellite_tir_sar_numeric_status||'—')+' · Transformer supply chain: '+esc(m.domains?.domain_2_ingestion?.transformer_supply_chain_status||'—');
  const cards=[
   ['Epoch sites',s.epoch_site_count||93,'reference universe'],
   ['Site-level evidence',s.combined_site_level_evidence_site_count||0,'combined layers'],
@@ -173,8 +178,11 @@ function renderCooling(){
 function renderSources(){
  const u=DATA.universe||{}, direct=u.direct_queue_and_connection_sources||[], cross=u.cross_cutting_public_sources||[];
  const all=direct.concat(cross);
- document.getElementById('sourceMeta').textContent=all.length+' cataloged queue/connection + cross-cutting sources in the machine-readable universe.';
- document.getElementById('sources').innerHTML=all.map(s=>'<tr><td><strong>'+esc(s.name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(s.id)+'</div></td><td>'+esc(s.type)+'</td><td>'+esc(s.geography)+'</td><td>'+esc(s.authority||'—')+'</td><td class="small">'+esc(s.use||'—')+'</td><td><a class="btn" target="_blank" rel="noopener" href="'+esc(s.url||'#')+'">Open</a></td></tr>').join('');
+ const external=DATA.external?.records||[];
+ document.getElementById('sourceMeta').textContent=all.length+' cataloged queue/connection + cross-cutting sources in the machine-readable universe · '+external.length+' global compute-source snapshot records tracked.';
+ document.getElementById('sources').innerHTML=all.map(s=>'<tr><td><strong>'+esc(s.name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(s.id)+'</div></td><td>'+esc(s.type)+'</td><td>'+esc(s.geography)+'</td><td>'+esc(s.authority||'—')+'</td><td class="small">'+esc(s.use||'—')+'</td><td><a class="btn" target="_blank" rel="noopener" href="'+esc(s.url||'#')+'">Open</a></td></tr>').join('')+
+ '<tr><td colspan="6" style="padding-top:16px"><strong>Global compute-source ingestion status</strong><div class="small faint" style="margin-top:4px">These records document source availability separately from site attribution.</div></td></tr>'+
+ external.map(x=>'<tr><td colspan="2"><strong>'+esc(x.file)+'</strong></td><td>Track 3 external</td><td>Epoch AI</td><td><span class="status '+stateClass(x.status)+'">'+esc(x.status)+'</span></td><td class="mono">'+esc(x.row_count??'not captured')+'</td></tr>').join('');
 }
 function openSite(id){
  const r=DATA.sites.find(x=>x.epoch_id===id); if(!r)return;
@@ -193,8 +201,8 @@ function openSite(id){
  document.getElementById('detail').classList.add('open'); document.body.style.overflow='hidden';
 }
 async function load(){
- const [summary,sites,evidence,obs,power,cooling,sources,universe]=await Promise.all(Object.values(URLS).map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(u+' '+r.status);return r.json()})));
- DATA={summary,sites:sites.records||[],evidence:evidence.records||[],obs:obs.tasks||[],power:power.records||[],cooling:cooling.records||[],sources:sources.sources||[],universe};
+ const [summary,sites,evidence,obs,power,cooling,sources,universe,module1,external]=await Promise.all(Object.values(URLS).map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(u+' '+r.status);return r.json()})));
+ DATA={summary,sites:sites.records||[],evidence:evidence.records||[],obs:obs.tasks||[],power:power.records||[],cooling:cooling.records||[],sources:sources.sources||[],universe,module1,external};
  renderCards();renderDomains();renderSites();renderEvidence();renderObs();renderPower();renderCooling();renderSources();
 }
 document.getElementById('search').addEventListener('input',renderSites);document.getElementById('filter').addEventListener('change',renderSites);document.getElementById('sort').addEventListener('change',renderSites);
