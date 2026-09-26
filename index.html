@@ -419,14 +419,14 @@
         <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">CAISO, MISO, NYISO and SPP are ingested into separate machine-readable queue universes; PJM's complete Cycle Service Request universe is separate as well. These layers are map/audit overlays and are not summed into the core large-load capacity.</p>
       </div>
       <div class="flex flex-wrap gap-2">
-        <a href="data/miso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">MISO JSON</a>
+        <a href="data/miso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">MISO JSON</a><a href="data/miso_unresolved_large_loads.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">MISO unresolved worklist</a>
         <a href="data/spp_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">SPP JSON</a>
         <a href="data/nyiso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">NYISO JSON</a>
         <a href="data/pjm_cycle_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">PJM JSON</a>
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p><p class="mono text-[10px] mt-1" id="misoUnresolvedCount" style="color:var(--ink-faint);"></p></div>
       <div class="p-4"><p class="mono text-xl" id="sppQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">SPP active rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="nyisoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">NYISO queue rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
@@ -1807,6 +1807,7 @@ openFacilityFromHash();
   if(nyisoQueueToggle)nyisoQueueToggle.addEventListener('click',function(){showNyisoQueue=!showNyisoQueue;nyisoQueueToggle.setAttribute('aria-pressed',showNyisoQueue?'true':'false');updateNyisoQueueLayer();});
   const pjmQueueToggle=document.getElementById('pjmQueueToggle');
   if(pjmQueueToggle)pjmQueueToggle.addEventListener('click',function(){showPjmQueue=!showPjmQueue;pjmQueueToggle.setAttribute('aria-pressed',showPjmQueue?'true':'false');updatePjmQueueLayer();});
+  fetch('data/miso_unresolved_large_loads.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('MISO unresolved worklist unavailable');return res.json();}).then(function(payload){const e=document.getElementById('misoUnresolvedCount');if(e)e.textContent=Number(payload.record_count||0).toLocaleString()+' ≥100 MW site-resolution gaps';}).catch(function(err){console.warn(err);});
   fetch('data/queue_layer_status.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('queue layer status unavailable');return res.json();}).then(function(payload){
     const el=document.getElementById('queueWideFreshness');
     if(el)el.textContent=payload.feeds.filter(function(f){return f.snapshot_present;}).length+'/'+payload.feeds.length+' snapshots';
