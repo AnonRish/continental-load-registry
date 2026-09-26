@@ -902,9 +902,8 @@ openFacilityFromHash();
       const grid=rec.grid_crosswalk||{};
       if(country && n.country!==country) return false;
       const hasMatch=Array.isArray(rec.registry_crosswalk)&&rec.registry_crosswalk.length>0;
-      if(match==='matched' && !hasMatch) return false;
-      if(match==='unmatched' && grid.queue_scope_status==='within_registry_geography' && !grid.site_specific_queue_id) return true;
-      if(match==='unmatched' && grid.queue_scope_status!=='within_registry_geography') return false;
+      if(match==='matched' && !grid.site_specific_queue_id) return false;
+      if(match==='unmatched' && (grid.queue_scope_status!=='within_registry_geography' || grid.site_specific_queue_id)) return false;
       if(match==='outside' && grid.queue_scope_status!=='outside_registry_geography') return false;
       if(q){
         const hay=[n.name,n.country,n.address,n.owner,n.users,n.project,(n.selected_sources||''),...(rec.registry_crosswalk||[]).map(x=>x.queue_id)].join(' ').toLowerCase();
