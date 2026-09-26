@@ -186,6 +186,36 @@
     <p class="text-xs mt-2" style="color:var(--ink-faint);" id="mapCaption"></p>
   </div>
 
+  <!-- ============ EPOCH AI FRONTIER DATA-CENTER REGISTRY ============ -->
+  <section id="epochRegistry" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Independent secondary evidence layer</p>
+        <h2 class="font-serif-display text-xl mt-1">Epoch AI frontier data-center registry</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">The current Epoch AI dataset is preserved separately from queue-origin facts. It covers major AI data-center campuses using satellite imagery, permits, public documents, disclosures and regulatory filings. Epoch values are not substituted for interconnection capacity.</p>
+      </div>
+      <a href="https://epoch.ai/data/ai-data-centers" target="_blank" rel="noopener noreferrer" class="shrink-0 text-sm px-3 py-2 rounded-md border hairline link-underline">Open Epoch AI dataset</a>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl" id="epochStatSites">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites imported</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatPower">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current IT power</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatCompute">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current H100-equivalents</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatMatches">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Registry crosswalk matches</p></div>
+    </div>
+    <div id="epochRegistryStatus" class="mt-4 text-xs" style="color:var(--ink-faint);">Loading the imported Epoch AI registry…</div>
+    <div id="epochRegistryControls" class="hidden flex flex-col sm:flex-row gap-3 mt-4">
+      <input id="epochSearchBox" type="text" placeholder="Search Epoch site, owner, user, address, country, project, or queue ID…" class="flex-1 rounded-md px-3 py-2 text-sm" aria-label="Search Epoch AI data-center registry">
+      <select id="epochCountryFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter Epoch registry by country"><option value="">All countries</option></select>
+      <select id="epochMatchFilter" class="rounded-md px-3 py-2 text-sm" aria-label="Filter Epoch registry by registry crosswalk"><option value="">All crosswalk states</option><option value="matched">Has registry match</option><option value="unmatched">No direct registry match</option></select>
+    </div>
+    <div id="epochRegistryCount" class="text-xs mt-3" style="color:var(--ink-faint);"></div>
+    <div class="scroll-x mt-3"><table class="w-full text-sm min-w-[1050px]"><thead><tr class="text-xs uppercase" style="letter-spacing:0.04em;">
+      <th class="px-3 py-3">Epoch site</th><th class="px-3 py-3">Country</th><th class="px-3 py-3">Address</th><th class="px-3 py-3 text-right">Current IT MW</th><th class="px-3 py-3 text-right">H100-eq</th><th class="px-3 py-3">Owner / user</th><th class="px-3 py-3">Queue registry</th><th class="px-3 py-3 text-right">Details</th>
+    </tr></thead><tbody id="epochTableBody"></tbody></table></div>
+    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);"><button id="epochPrevPage" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Previous</button><span id="epochPageIndicator">—</span><button id="epochNextPage" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Next</button></div>
+    <div id="epochDetail" class="hidden mt-5 panel rounded-lg p-4 sm:p-5"></div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">Epoch AI states that its data are free to use, distribute and reproduce with attribution under Creative Commons Attribution 4.0. The repository stores the raw CSVs, joined timeline/chip records and generated crosswalk. A blank crosswalk is not evidence that a site is absent from the grid; it means no conservative direct match was identified in the current nine-market registry.</p>
+  </section>
   <!-- ============ FILTER CONTROLS ============ -->
   <div class="flex flex-col sm:flex-row gap-3 mb-4">
     <input id="searchBox" type="text" placeholder="Search ID, developer, project, substation, county, status, or tier&hellip;"
@@ -760,6 +790,161 @@ openFacilityFromHash();
   window.addEventListener('resize',function(){map.invalidateSize();});
   updateModeButtons();updateMapMarkers(false);
 })();
+
+/* ======================= EPOCH AI SECONDARY REGISTRY ======================= */
+(function(){
+  const DATA_URL='data/external/epoch_ai/registry.json';
+  const PAGE_SIZE=20;
+  let epochRecords=[];
+  let epochFiltered=[];
+  let epochPage=0;
+
+  function epochText(v){
+    if(v===null || v===undefined || v==='') return 'Not published / not retained';
+    if(typeof v==='number'){
+      if(!Number.isFinite(v)) return String(v);
+      return v.toLocaleString(undefined,{maximumFractionDigits:6});
+    }
+    return String(v);
+  }
+  function epochNum(v){ return (typeof v==='number' && Number.isFinite(v)) ? v : Number(v); }
+  function epochSourceUrl(name){
+    const slug=String(name||'').toLowerCase().normalize('NFKD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    return 'https://epoch.ai/data/ai-data-centers/directory/'+slug;
+  }
+  function setEpochStatus(msg,bad){
+    const el=document.getElementById('epochRegistryStatus');
+    el.textContent=msg;
+    el.style.color=bad?'var(--amber)':'var(--ink-faint)';
+  }
+  function renderEpochDetail(rec){
+    const n=rec.normalized||{};
+    const raw=rec.raw||{};
+    const matches=Array.isArray(rec.registry_crosswalk)?rec.registry_crosswalk:[];
+    let html='<div class="flex items-start justify-between gap-4"><div><p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Epoch research record</p><h3 class="font-serif-display text-lg mt-1">'+escapeHtml(n.name||'Unnamed site')+'</h3><p class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</p></div><button id="epochDetailClose" type="button" class="px-2.5 py-1.5 rounded-md border hairline text-sm">Close</button></div>';
+    html+='<div class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-5">';
+    [['Country',n.country],['Address',n.address],['Owner',n.owner],['Users',n.users],['Project',n.project],['Current H100 equivalents',n.current_h100_equivalents],['Current power (MW)',n.current_power_mw],['Current capital cost (2025 USD bn)',n.current_total_capital_cost_b_2025],['Inferred region',n.region_inferred_from_address],['Timeline records',rec.timeline_record_count],['Chip-quantity records',rec.chip_quantity_record_count]].forEach(([k,v])=>{
+      html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(k)+'</dt><dd class="text-sm mt-1 break-words">'+escapeHtml(epochText(v))+'</dd></div>';
+    });
+    html+='</div>';
+    html+='<section class="mt-6"><h4 class="font-serif-display text-base">Registry crosswalk</h4>';
+    if(matches.length){
+      html+='<div class="mt-3 space-y-2">';
+      matches.forEach(m=>{
+        html+='<div class="panel rounded-lg p-3"><div class="flex flex-wrap items-center gap-2"><button type="button" class="link-underline mono text-xs epoch-open-registry" data-queue-id="'+escapeHtml(m.queue_id)+'">'+escapeHtml(m.queue_id)+'</button><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">'+escapeHtml(m.relationship||'match')+'</span><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">'+escapeHtml(m.match_confidence||'')+'</span></div><p class="text-xs mt-2" style="color:var(--ink-soft);">'+escapeHtml(m.match_basis||'')+'</p></div>';
+      });
+      html+='</div>';
+    } else {
+      html+='<p class="text-sm mt-3" style="color:var(--ink-soft);">No direct registry match was identified by the conservative current crosswalk. This is a source-coverage result, not evidence that the site has no grid connection or load request.</p>';
+    }
+    html+='</section>';
+    const tl=n.latest_timeline;
+    if(tl){
+      html+='<section class="mt-6"><h4 class="font-serif-display text-base">Latest available Epoch timeline snapshot</h4><div class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mt-3">';
+      Object.entries(tl).forEach(([k,v])=>{html+='<div class="border-b hairline pb-2"><dt class="text-[10px] mono uppercase tracking-wide" style="color:var(--ink-faint);">'+escapeHtml(k.replace(/_/g,' '))+'</dt><dd class="text-sm mt-1 break-words">'+escapeHtml(epochText(v))+'</dd></div>';});
+      html+='</div></section>';
+    }
+    if(Array.isArray(n.latest_chip_quantities) && n.latest_chip_quantities.length){
+      html+='<section class="mt-6"><h4 class="font-serif-display text-base">Latest chip quantities by chip type</h4><div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Chip</th><th class="px-3 py-2 text-right">Units</th><th class="px-3 py-2">Date</th><th class="px-3 py-2">Owner</th><th class="px-3 py-2">User</th><th class="px-3 py-2">Sources</th></tr></thead><tbody>';
+      n.latest_chip_quantities.forEach(c=>{html+='<tr><td class="px-3 py-2">'+escapeHtml(epochText(c.chip_type||c.chip||''))+'</td><td class="px-3 py-2 text-right">'+escapeHtml(epochText(c.number_units))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.date))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.owner))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.user))+'</td><td class="px-3 py-2">'+escapeHtml(epochText(c.chip_type_source))+' / '+escapeHtml(epochText(c.number_units_source))+'</td></tr>';});
+      html+='</tbody></table></div></section>';
+    }
+    html+='<section class="mt-6"><h4 class="font-serif-display text-base">Original Epoch source fields</h4><div class="scroll-x mt-3"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Original column</th><th class="px-3 py-2">Original value</th></tr></thead><tbody>';
+    Object.entries(raw).forEach(([k,v])=>{html+='<tr><td class="px-3 py-2 mono">'+escapeHtml(k)+'</td><td class="px-3 py-2 whitespace-pre-wrap break-words">'+escapeHtml(epochText(v))+'</td></tr>';});
+    html+='</tbody></table></div></section>';
+    html+='<div class="flex flex-wrap gap-2 mt-5"><a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(epochSourceUrl(n.name))+'">Open Epoch site page</a><a class="text-sm px-3 py-2 rounded-md border hairline link-underline" target="_blank" rel="noopener noreferrer" href="https://epoch.ai/data/data-centers-documentation/records">Epoch field documentation</a></div>';
+    document.getElementById('epochDetail').innerHTML=html;
+    document.getElementById('epochDetail').classList.remove('hidden');
+    document.getElementById('epochDetailClose').addEventListener('click',()=>document.getElementById('epochDetail').classList.add('hidden'));
+    document.querySelectorAll('.epoch-open-registry').forEach(b=>b.addEventListener('click',()=>{
+      const row=REGISTRY_DATA.find(r=>String(r.id)===String(b.getAttribute('data-queue-id')));
+      if(row) openFacility(row);
+    }));
+  }
+  function epochApplyFilters(){
+    const q=document.getElementById('epochSearchBox').value.trim().toLowerCase();
+    const country=document.getElementById('epochCountryFilter').value;
+    const match=document.getElementById('epochMatchFilter').value;
+    epochFiltered=epochRecords.filter(rec=>{
+      const n=rec.normalized||{};
+      if(country && n.country!==country) return false;
+      const hasMatch=Array.isArray(rec.registry_crosswalk)&&rec.registry_crosswalk.length>0;
+      if(match==='matched' && !hasMatch) return false;
+      if(match==='unmatched' && hasMatch) return false;
+      if(q){
+        const hay=[n.name,n.country,n.address,n.owner,n.users,n.project,(n.selected_sources||''),...(rec.registry_crosswalk||[]).map(x=>x.queue_id)].join(' ').toLowerCase();
+        if(!hay.includes(q)) return false;
+      }
+      return true;
+    });
+    epochPage=0;
+    renderEpochTable();
+  }
+  function renderEpochTable(){
+    const start=epochPage*PAGE_SIZE;
+    const rows=epochFiltered.slice(start,start+PAGE_SIZE);
+    const tbody=document.getElementById('epochTableBody');
+    if(!rows.length){
+      tbody.innerHTML='<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No Epoch records match these filters.</td></tr>';
+    } else {
+      tbody.innerHTML=rows.map(rec=>{
+        const n=rec.normalized||{};
+        const matches=Array.isArray(rec.registry_crosswalk)?rec.registry_crosswalk:[];
+        const owner=(n.owner&&n.users)?String(n.owner)+' / '+String(n.users):(n.owner||n.users||'Not published / not retained');
+        const matchHtml=matches.length ? matches.map(m=>'<button type="button" class="link-underline mono text-xs epoch-row-registry" data-queue-id="'+escapeHtml(m.queue_id)+'">'+escapeHtml(m.queue_id)+'</button>').join('<span style="color:var(--ink-faint);">, </span>') : '<span class="tag-neutral inline-block px-2 py-0.5 rounded text-[11px]">No direct match</span>';
+        return '<tr><td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(n.name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</div></td><td class="px-3 py-2.5">'+escapeHtml(n.country||'—')+'</td><td class="px-3 py-2.5 max-w-[260px] truncate" title="'+escapeHtml(n.address||'')+'">'+escapeHtml(n.address||'Not published / not retained')+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_power_mw))+'</td><td class="px-3 py-2.5 text-right">'+escapeHtml(epochText(n.current_h100_equivalents))+'</td><td class="px-3 py-2.5 max-w-[230px] truncate" title="'+escapeHtml(owner)+'">'+escapeHtml(owner)+'</td><td class="px-3 py-2.5">'+matchHtml+'</td><td class="px-3 py-2.5 text-right"><button type="button" class="epoch-detail-button px-2.5 py-1 rounded-md border hairline text-xs" data-epoch-id="'+escapeHtml(rec.epoch_id)+'">Open</button></td></tr>';
+      }).join('');
+    }
+    tbody.querySelectorAll('.epoch-detail-button').forEach(b=>b.addEventListener('click',()=>{
+      const rec=epochRecords.find(x=>x.epoch_id===b.getAttribute('data-epoch-id'));
+      if(rec) renderEpochDetail(rec);
+    }));
+    tbody.querySelectorAll('.epoch-row-registry').forEach(b=>b.addEventListener('click',()=>{
+      const row=REGISTRY_DATA.find(r=>String(r.id)===String(b.getAttribute('data-queue-id')));
+      if(row) openFacility(row);
+    }));
+    const pages=Math.max(1,Math.ceil(epochFiltered.length/PAGE_SIZE));
+    document.getElementById('epochPageIndicator').textContent='Page '+(epochPage+1)+' of '+pages+' · '+epochFiltered.length.toLocaleString()+' of '+epochRecords.length.toLocaleString()+' sites';
+    document.getElementById('epochRegistryCount').textContent='Showing '+epochFiltered.length.toLocaleString()+' of '+epochRecords.length.toLocaleString()+' Epoch AI sites';
+    document.getElementById('epochPrevPage').disabled=epochPage===0;
+    document.getElementById('epochNextPage').disabled=epochPage>=pages-1;
+  }
+  async function initEpochRegistry(){
+    try{
+      const response=await fetch(DATA_URL+'?v=1',{cache:'no-store'});
+      if(!response.ok) throw new Error('Epoch registry resource unavailable ('+response.status+')');
+      const payload=await response.json();
+      if(!payload || payload.record_count!==93 || !Array.isArray(payload.records) || payload.records.length!==93) throw new Error('Epoch registry validation failed: expected 93 records');
+      epochRecords=payload.records.slice().sort((a,b)=>{
+        const av=epochNum(a.normalized?.current_h100_equivalents), bv=epochNum(b.normalized?.current_h100_equivalents);
+        return (Number.isFinite(bv)?bv:-1)-(Number.isFinite(av)?av:-1);
+      });
+      const power=epochRecords.reduce((s,r)=>{const n=epochNum(r.normalized?.current_power_mw); return s+(Number.isFinite(n)?n:0);},0);
+      const compute=epochRecords.reduce((s,r)=>{const n=epochNum(r.normalized?.current_h100_equivalents); return s+(Number.isFinite(n)?n:0);},0);
+      const matches=epochRecords.filter(r=>Array.isArray(r.registry_crosswalk)&&r.registry_crosswalk.length).length;
+      document.getElementById('epochStatSites').textContent=epochRecords.length.toLocaleString();
+      document.getElementById('epochStatPower').textContent=power.toFixed(1)+' MW';
+      document.getElementById('epochStatCompute').textContent=(compute/1e6).toFixed(2)+'M';
+      document.getElementById('epochStatMatches').textContent=matches.toLocaleString()+' / 93';
+      const countries=Array.from(new Set(epochRecords.map(r=>r.normalized?.country).filter(Boolean))).sort();
+      const sel=document.getElementById('epochCountryFilter');
+      countries.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+      document.getElementById('epochSearchBox').addEventListener('input',epochApplyFilters);
+      sel.addEventListener('change',epochApplyFilters);
+      document.getElementById('epochMatchFilter').addEventListener('change',epochApplyFilters);
+      document.getElementById('epochPrevPage').addEventListener('click',()=>{if(epochPage>0){epochPage--;renderEpochTable();}});
+      document.getElementById('epochNextPage').addEventListener('click',()=>{const pages=Math.max(1,Math.ceil(epochFiltered.length/PAGE_SIZE));if(epochPage<pages-1){epochPage++;renderEpochTable();}});
+      document.getElementById('epochRegistryControls').classList.remove('hidden');
+      setEpochStatus('Imported from the repository snapshot. Epoch dataset update: 2026-09-24 · '+payload.source.accessed_on+' capture. Raw CSVs and the generated crosswalk are retained in data/external/epoch_ai/.',false);
+      epochApplyFilters();
+    }catch(err){
+      setEpochStatus('Epoch AI registry unavailable in this deployment: '+(err.message||'unknown error'),true);
+      document.getElementById('epochRegistryControls').classList.add('hidden');
+    }
+  }
+  initEpochRegistry();
+})();
+
 </script>
 
 </body>
