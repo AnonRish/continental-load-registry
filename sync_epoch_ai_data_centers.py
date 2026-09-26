@@ -234,6 +234,47 @@ def conservative_matches(epoch: dict[str, Any], registry: list[dict[str, Any]], 
     return candidates[:5]
 
 
+
+def validate_site_evidence(expected_epoch_ids: set[str]) -> dict[str, int]:
+    """Validate the preserved secondary evidence layer against the freshly
+    downloaded Epoch site IDs. The dashboard depends on this artifact having
+    the same 1:1 site universe as data_centers.csv."""
+    evidence_path = OUT / "site_level_connection_evidence.json"
+    if not evidence_path.exists():
+        raise RuntimeError(f"Missing Epoch site-evidence artifact: {evidence_path}")
+    payload = json.loads(evidence_path.read_text(encoding="utf-8"))
+    records = payload.get("records")
+    if not isinstance(records, list):
+        raise RuntimeError("Epoch site-evidence artifact has no records array")
+    expected_count = len(expected_epoch_ids)
+    if payload.get("record_count") != expected_count:
+        raise RuntimeError(
+            f"Epoch site-evidence record_count mismatch: {payload.get('record_count')!r} (expected {expected_count})"
+        )
+    if len(records) != expected_count:
+        raise RuntimeError(
+            f"Epoch site-evidence row count mismatch: {len(records)} (expected {expected_count})"
+        )
+    evidence_ids = {str(r.get("epoch_id") or "") for r in records}
+    if evidence_ids != expected_epoch_ids:
+        missing = sorted(expected_epoch_ids - evidence_ids)
+        extra = sorted(evidence_ids - expected_epoch_ids)
+        raise RuntimeError(
+            f"Epoch site-evidence IDs do not match fresh Epoch dataset (missing={missing[:5]}, extra={extra[:5]})"
+        )
+    summary = payload.get("summary") or {}
+    if summary.get("total") != expected_count:
+        raise RuntimeError(
+            f"Epoch site-evidence summary.total mismatch: {summary.get('total')!r} (expected {expected_count})"
+        )
+    return {
+        "record_count": expected_count,
+        "evidence_found": int(summary.get("evidence_found", 0) or 0),
+        "site_queue_ids": int(summary.get("site_queue_ids", 0) or 0),
+        "pending": int(summary.get("pending", 0) or 0),
+    }
+
+
 def selftest() -> None:
     assert norm("OpenAI Stargate Abilene, TX") == "openai stargate abilene tx"
     assert tokens("OpenAI Stargate Abilene") >= {"openai", "stargate", "abilene"}
@@ -242,7 +283,11 @@ def selftest() -> None:
     ep = {"name":"Anthropic Lake Mariner","owner":"Anthropic","users":"Anthropic","address":"Barker, NY","country":"United States"}
     assert conservative_matches(ep, rows, {"anthropic lake mariner":{"registry_ids":["1670"],"relationship":"same_phase","match_confidence":"high","match_basis":"Known NYISO Lake Mariner cross-check."}})[0]["queue_id"] == "1670"
     assert not conservative_matches({"name":"Google Columbus","owner":"Google","users":"Google","address":"Columbus, OH","country":"United States"}, rows, {})
-    print("selftest: 5 checks passed")
+    # The committed evidence artifact must remain a 1:1, 93-site layer.
+    payload = json.loads((OUT / "site_level_connection_evidence.json").read_text(encoding="utf-8"))
+    expected_ids = {str(r.get("epoch_id") or "") for r in payload.get("records", [])}
+    validate_site_evidence(expected_ids)
+    print("selftest: 6 checks passed")
 
 
 def download(url: str, dest: Path) -> None:
@@ -283,6 +328,14 @@ def sync() -> None:
 
         registry = parse_registry()
         overrides = load_overrides()
+        expected_epoch_ids = {
+            "EPOCH-" + hashlib.sha256(
+                (str(pick(row, ALIASES["name"]) or "") + "|" +
+                 str(pick(row, ALIASES["address"]) or "") + "|" +
+                 str(pick(row, ALIASES["country"]) or "")).encode("utf-8")
+            ).hexdigest()[:16]
+            for row in centers
+        }
         records = []
         crosswalk_rows = []
 
@@ -376,6 +429,11 @@ def sync() -> None:
                 "match_basis": " | ".join(m["match_basis"] for m in matches),
             })
 
+        # Validate the independent evidence artifact before publishing the refreshed
+        # Epoch registry/crosswalk. A mismatch is a hard error rather than a
+        # dashboard-visible partial import.
+        evidence_summary = validate_site_evidence(expected_epoch_ids)
+
         (OUT / "registry.json").write_text(json.dumps({
             "schema_version": 1,
             "record_count": len(records),
@@ -403,6 +461,7 @@ def sync() -> None:
             "no_direct_match_epoch_records": sum(1 for r in records if r["registry_crosswalk_status"] == "no_direct_match"),
             "outside_registry_geographic_scope_epoch_records": sum(1 for r in records if r["registry_crosswalk_status"] == "outside_registry_geographic_scope"),
             "manual_override_count": len(overrides),
+            "site_evidence": evidence_summary,
             "raw_files": {name: {"url": URLS[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in URLS},
             "method": "Raw Epoch rows preserved; normalized fields joined to latest available timeline and chip records; registry matching is conservative and does not overwrite queue facts."
         }

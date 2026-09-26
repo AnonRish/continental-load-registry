@@ -594,8 +594,8 @@ def run_selftest() -> bool:
     # --- entity classification ---
     checks.append(("Amazon fuzzy match via 'Vadata Inc.'",
                     classify_entity("Vadata Inc.")[:2] == ("Confirmed Hyperscaler", "Amazon")))
-    checks.append(("Compass fuzzy match via 'Compass Datacenters TX LLC'",
-                    classify_entity("Compass Datacenters TX LLC")[:2] == ("Wholesale Colocation Developer", "Compass Datacenters")))
+    checks.append(("Generic 'Compass' token stays in human-audit state",
+                    classify_entity("Compass Datacenters TX LLC")[:2] == ("Possible Match (Needs Verification)", "Compass Datacenters")))
     checks.append(("Unmatched real name stays unmatched, not mislabeled",
                     classify_entity("GridStore LLC")[0] == "Developer Not Matched To Known List"))
     checks.append(("PJM 'NOT PUBLISHED...' sentinel -> Developer Not Disclosed, not a false name match",
@@ -675,9 +675,8 @@ def run_selftest() -> bool:
                     by_id["Q6"]["reached_ia_stage"] == False))
 
     # --- storage/ambiguous tier split ---
-    checks.append(("Q2 (confirmed colo, but project name says 'Battery Storage') gets BOTH "
-                    "dimensions independently: confirmed entity AND confirmed storage tier",
-                    by_id["Q2"]["entity_category"] == "Wholesale Colocation Developer"
+    checks.append(("Q2 gets independent entity-review and storage dimensions",
+                    by_id["Q2"]["entity_category"] == "Possible Match (Needs Verification)"
                     and by_id["Q2"]["load_type_tier"] == CONFIRMED_STORAGE_LABEL))
     checks.append(("Q2 not in review list despite unresolved-looking name, because entity IS confirmed",
                     by_id["Q2"]["review_priority"] == False))
