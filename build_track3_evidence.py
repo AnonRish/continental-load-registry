@@ -97,7 +97,7 @@ def site_status(rec: dict[str, Any], domain: str) -> dict[str, Any]:
             if rec.get("chip_quantity_record_count", 0) > 0 else "No retained site-level chip-quantity rows."
         }
     if domain == "grid_connection":
-        connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request"}
+        connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support"}
         connection_evidence = [x for x in ev if x.get("type") in connection_types]
         crosswalk_connection_evidence = bool(
             crosswalk_ev and (
