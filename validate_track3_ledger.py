@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent
 TRACK3 = ROOT / "data" / "track3"
 EPOCH = ROOT / "data" / "external" / "epoch_ai"
 ALLOWED = {"VERIFIED_SITE_SPECIFIC", "SITE_LEVEL_EVIDENCE", "PENDING_RESEARCH"}
+EXPECTED_OBSERVATION_STATES = {"NOT_INGESTED", "SOURCE_AVAILABLE_NOT_INGESTED", "UNKNOWN", "PENDING_RESEARCH", "INGESTED_SNAPSHOT"}
 
 def load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -25,10 +26,22 @@ def main() -> int:
     source_evidence = load(EPOCH / "site_level_connection_evidence.json")
     crosswalk = load(EPOCH / "queue_crosswalk.json")
     source_stack = load(ROOT / "data" / "track3_source_stack.json")
+    schema = load(ROOT / "data" / "track3_evidence_schema.json")
+    observation = load(TRACK3 / "observation_queue.json")
     sites = site_status.get("records", [])
     ids = [x.get("epoch_id") for x in sites]
     if len(sites) != 93 or len(set(ids)) != 93 or any(not x for x in ids):
         raise SystemExit("FAIL: Track 3 site_status must contain 93 unique Epoch IDs")
+    expected_domains = set(schema.get("domains", []))
+    if not expected_domains:
+        raise SystemExit("FAIL: Track 3 evidence schema has no domains")
+    for rec in sites:
+        actual_domains = set((rec.get("domains") or {}).keys())
+        if actual_domains != expected_domains:
+            raise SystemExit(
+                f"FAIL: {rec.get('epoch_id')} domain set mismatch: "
+                f"expected {sorted(expected_domains)}, got {sorted(actual_domains)}"
+            )
     for payload, name in ((registry, "registry"), (source_evidence, "site evidence"), (crosswalk, "crosswalk")):
         if len(payload.get("records", [])) != 93:
             raise SystemExit(f"FAIL: {name} must contain 93 records")
@@ -54,20 +67,50 @@ def main() -> int:
     base_evidence_items = sum(len(x.get("site_level_evidence") or []) for x in source_evidence["records"])
     expected_evidence_items = base_evidence_items + cross_count
     if evidence.get("record_count") != expected_evidence_items or len(evidence.get("records", [])) != expected_evidence_items:
-        raise SystemExit(f"FAIL: evidence record count mismatch: expected {expected_evidence_items}, got {evidence.get("record_count")}")
+        raise SystemExit(
+            f"FAIL: evidence record count mismatch: expected {expected_evidence_items}, "
+            f"got {evidence.get('record_count')}"
+        )
     if summary.get("source_stack_count") != len(source_stack.get("sources", [])):
         raise SystemExit("FAIL: summary source_stack_count does not match catalog")
     for rec in sites:
         grid_state = (next((x.get("state_province") for x in crosswalk["records"] if x.get("epoch_id") == rec.get("epoch_id")), "") or "").strip()
         if grid_state and rec.get("state_province") != grid_state:
-            raise SystemExit(f"FAIL: {rec.get("epoch_id")} state_province does not match curated crosswalk state")
+            raise SystemExit(
+                f"FAIL: {rec.get('epoch_id')} state_province does not match curated crosswalk state"
+            )
+
+    if observation.get("task_count") != len(observation.get("tasks", [])):
+        raise SystemExit("FAIL: observation queue task_count does not match task list length")
+    observed_domain_counts = {}
+    observed_priority_counts = {}
+    for task in observation.get("tasks", []):
+        state = task.get("current_state")
+        if state not in EXPECTED_OBSERVATION_STATES:
+            raise SystemExit(f"FAIL: invalid observation task state: {state}")
+        observed_domain_counts[task.get("domain")] = observed_domain_counts.get(task.get("domain"), 0) + 1
+        observed_priority_counts[task.get("priority")] = observed_priority_counts.get(task.get("priority"), 0) + 1
+    if observation.get("task_counts_by_domain", {}) != observed_domain_counts:
+        raise SystemExit("FAIL: observation queue domain counts do not match task list")
+    if observation.get("task_counts_by_priority", {}) != observed_priority_counts:
+        raise SystemExit("FAIL: observation queue priority counts do not match task list")
+    if summary.get("observation_task_count") != observation.get("task_count"):
+        raise SystemExit("FAIL: summary observation task count does not match observation queue")
+    if summary.get("observation_task_counts_by_domain") != observed_domain_counts:
+        raise SystemExit("FAIL: summary observation domain counts do not match observation queue")
+    if summary.get("observation_task_counts_by_priority") != observed_priority_counts:
+        raise SystemExit("FAIL: summary observation priority counts do not match observation queue")
 
     for rec in sites:
         state = rec.get("domains", {}).get("grid_connection", {}).get("status")
         if state not in ALLOWED:
-            raise SystemExit(f"FAIL: invalid grid_connection state on {rec.get("epoch_id")}: {state}")
+            raise SystemExit(
+                f"FAIL: invalid grid_connection state on {rec.get('epoch_id')}: {state}"
+            )
         if rec.get("grid", {}).get("site_specific_queue_id") and state != "VERIFIED_SITE_SPECIFIC":
-            raise SystemExit(f"FAIL: queue ID present without VERIFIED_SITE_SPECIFIC on {rec.get("epoch_id")}")
+            raise SystemExit(
+                f"FAIL: queue ID present without VERIFIED_SITE_SPECIFIC on {rec.get('epoch_id')}"
+            )
     print("PASS: canonical Track 3 integrity checks passed")
     print(f"93 Epoch IDs aligned; grid states={grid_counts}; combined site evidence={combined}; evidence items={expected_evidence_items}; pending grid research={len(pending)}.")
     return 0
