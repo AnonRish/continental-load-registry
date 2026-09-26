@@ -84,6 +84,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import io
+import json
 import logging
 import math
 import os
@@ -514,7 +515,7 @@ def classify_status(raw: Any) -> Optional[str]:
 
     # Fuzzy fallback across common real-world phrasings for the same states.
     fuzzy_map = [
-        (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY"), "Active"),
+        (("ACTIVE", "IN QUEUE", "IN SERVICE STUDY", "ACTIVE - IN SERVICE PARTIALLY", "CONFIRMED"), "Active"),
         (("UNDER STUDY", "SCREENING", "FEASIBILITY", "SYSTEM IMPACT"), "Under Study"),
         (("FACILITIES STUDY", "FACILITY STUDY", "FIS "), "Facilities Study"),
         (("ENGINEERING REVIEW", "ENGINEERING & PROCUREMENT", "ENGINEERING AND PROCUREMENT", "E&P"),
@@ -1451,6 +1452,31 @@ def run_pipeline(
     return PipelineResult(records=deduped, stats=stats, elapsed_seconds=elapsed)
 
 
+def write_source_health(result: PipelineResult, path: Path) -> None:
+    """Write source-level health evidence used by the registry refresh guard."""
+    payload = {
+        "version": 1,
+        "generated_utc": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "sources": {
+            name: {
+                "rows_fetched": s.rows_fetched,
+                "excluded_by_status": s.excluded_by_status,
+                "excluded_by_capacity": s.excluded_by_capacity,
+                "excluded_by_load_type": s.excluded_by_load_type,
+                "passed_filters": s.passed_filters,
+                "rows_valid": s.rows_valid,
+                "rows_rejected_validation": s.rows_rejected_validation,
+                "aggregate_mw": round(s.aggregate_mw, 3),
+                "fetch_errors": list(s.fetch_errors),
+                "excluded_status_values": dict(s.excluded_status_values),
+            }
+            for name, s in result.stats.items()
+        },
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+
+
 def log_run_summary(result: PipelineResult, output_path: Path) -> None:
     logger.info("=" * 72)
     logger.info("PIPELINE RUN SUMMARY")
@@ -1631,6 +1657,14 @@ def run_selftest() -> bool:
         classify_status("UC") == "IA in Progress",
     ))
     checks.append((
+        "PJM live status 'Confirmed' maps to Active",
+        classify_status("Confirmed") == "Active",
+    ))
+    checks.append((
+        "PJM live status 'Active - In Service Partially' maps to Active",
+        classify_status("Active - In Service Partially") == "Active",
+    ))
+    checks.append((
         "PJM live status 'Engineering and Procurement' maps to Engineering Review",
         classify_status("Engineering and Procurement") == "Engineering Review",
     ))
@@ -1804,6 +1838,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
                          help="Path to a local ERCOT GIS Report workbook (.xlsx) to parse "
                               "instead of fetching it live -- same parser either way, just "
                               "skips the HTTP call.")
+    parser.add_argument("--source-health-output", type=Path, default=None,
+                         help="Optional JSON source-health manifest for guard reconciliation; "
+                              "not part of the public registry schema.")
     parser.add_argument("--log-level", type=str, default="INFO",
                          choices=["DEBUG", "INFO", "WARNING", "ERROR"])
     parser.add_argument("--selftest", action="store_true",
@@ -1851,6 +1888,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
 
     write_output_csv(result.records, args.output, include_extra_fields=args.include_raw_fields)
+    if args.source_health_output:
+        write_source_health(result, args.source_health_output)
     log_run_summary(result, args.output)
 
     any_source_succeeded = any(s.rows_fetched > 0 for s in result.stats.values())
