@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-26",
+  "objective": "Identify the most specific public electricity queue, interconnection, connection, service, regulatory or planning record for every Epoch AI frontier/data-center site.",
+  "important_rule": "A jurisdiction-level queue is not a site-specific queue match. Site-specific queue IDs are only recorded when the site identity is defensible.",
+  "direct_queue_and_connection_sources": [
+    {
+      "id": "ercot_large_load",
+      "name": "ERCOT Large Load Integration / Batch Zero",
+      "type": "primary_queue",
+      "geography": "Texas",
+      "authority": "ERCOT",
+      "url": "https://www.ercot.com/services/rq/large-load-integration",
+      "use": "Large-load interconnection requests and study process",
+      "limitation": "ERCOT market jurisdiction; local transmission/distribution utility records may still be required."
+    },
+    {
+      "id": "pjm_service_requests",
+      "name": "PJM Service Requests / Interconnection",
+      "type": "primary_queue",
+      "geography": "PJM",
+      "authority": "PJM Interconnection",
+      "url": "https://www.pjm.com/planning/service-requests",
+      "use": "PJM service-request and interconnection records",
+      "limitation": "Applicant/site fields vary by public export."
+    },
+    {
+      "id": "spp_gi_active",
+      "name": "SPP GI Active Requests / Study Listing",
+      "type": "primary_queue",
+      "geography": "SPP",
+      "authority": "Southwest Power Pool",
+      "url": "https://opsportal.spp.org/Studies/GIActive",
+      "use": "Active interconnection study records",
+      "limitation": "SPP generation-interconnection materials are not automatically load records."
+    },
+    {
+      "id": "spp_hill",
+      "name": "SPP High Impact Large Load (HILL)",
+      "type": "primary_large_load",
+      "geography": "SPP",
+      "authority": "Southwest Power Pool",
+      "url": "https://www.spp.org/largeload/",
+      "use": "Large-load integration / HILL process",
+      "limitation": "Process materials and filings must be tied to the physical campus."
+    },
+    {
+      "id": "miso_gi_api",
+      "name": "MISO Generator Interconnection Queue",
+      "type": "primary_queue",
+      "geography": "MISO",
+      "authority": "MISO",
+      "url": "https://www.misoenergy.org/api/giqueue/getprojects",
+      "use": "Public project queue feed",
+      "limitation": "Generator queue is not synonymous with MISO new-load announcements."
+    },
+    {
+      "id": "miso_gi_queue",
+      "name": "MISO Generator Interconnection Queue page",
+      "type": "primary_queue",
+      "geography": "MISO",
+      "authority": "MISO",
+      "url": "https://www.misoenergy.org/planning/generator-interconnection/GI_Queue/",
+      "use": "Queue documentation and public materials",
+      "limitation": "Use separate MISO new-load/customer records for large-load evidence."
+    },
+    {
+      "id": "nyiso_queue",
+      "name": "NYISO Interconnection Queue",
+      "type": "primary_queue",
+      "geography": "New York",
+      "authority": "NYISO",
+      "url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "use": "Generation and Load Projects queue workbook",
+      "limitation": "Queue MW and Epoch IT MW remain different measurements."
+    },
+    {
+      "id": "caiso_interconnection",
+      "name": "CAISO Interconnection / Cluster materials",
+      "type": "primary_queue",
+      "geography": "California",
+      "authority": "CAISO",
+      "url": "https://www.caiso.com/",
+      "use": "Generator interconnection and related cluster documents",
+      "limitation": "The current registry capture is Cluster 15 only; whole-queue coverage requires additional CAISO clusters/materials."
+    },
+    {
+      "id": "iso_ne_irtt",
+      "name": "ISO-NE IRTT External Reports",
+      "type": "primary_queue",
+      "geography": "New England",
+      "authority": "ISO New England",
+      "url": "https://irtt.iso-ne.com/reports/external",
+      "use": "Public interconnection records",
+      "limitation": "Public table used by the registry does not publish study stage."
+    },
+    {
+      "id": "ieso_application_status",
+      "name": "IESO Connection Application Status",
+      "type": "primary_queue",
+      "geography": "Ontario",
+      "authority": "IESO",
+      "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "use": "Ontario connection application records",
+      "limitation": "Zone/location fields may be electrical zones rather than municipalities."
+    },
+    {
+      "id": "aeso_connection_projects",
+      "name": "AESO Connection Project Reporting",
+      "type": "primary_queue",
+      "geography": "Alberta",
+      "authority": "AESO",
+      "url": "https://www.aeso.ca/grid/transmission-projects/connection-project-reporting/",
+      "use": "Connection project list and related reporting",
+      "limitation": "Applicant/developer fields can be unpublished."
+    },
+    {
+      "id": "bpa_interconnection",
+      "name": "Bonneville Power Administration Interconnection",
+      "type": "primary_queue",
+      "geography": "Pacific Northwest",
+      "authority": "BPA",
+      "url": "https://www.bpa.gov/energy-and-services/transmission/interconnection",
+      "use": "Federal transmission interconnection",
+      "limitation": "Only applies to BPA-served transmission/connection contexts."
+    },
+    {
+      "id": "neso_connections_360",
+      "name": "NESO Connections 360",
+      "type": "primary_connection_registry",
+      "geography": "Great Britain",
+      "authority": "NESO",
+      "url": "https://www.neso.energy/industry-information/connections/connections-360",
+      "use": "Public connection-site and contracted-project search",
+      "limitation": "Connection data are not equivalent to a North American RTO queue ID."
+    },
+    {
+      "id": "neso_registers",
+      "name": "NESO Connections Registers / TEC Register",
+      "type": "primary_connection_registry",
+      "geography": "Great Britain",
+      "authority": "NESO",
+      "url": "https://www.neso.energy/industry-information/connections/reports-and-registers",
+      "use": "Machine-readable connection/contract registers",
+      "limitation": "Requires project-to-campus identity matching."
+    },
+    {
+      "id": "aemo_registration",
+      "name": "AEMO NEM Registration List",
+      "type": "primary_registry",
+      "geography": "Australia NEM",
+      "authority": "AEMO",
+      "url": "https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/participating-entities-and-registers",
+      "use": "Registered market participants and scheduled loads",
+      "limitation": "Registration is not necessarily the same as a physical connection approval."
+    },
+    {
+      "id": "aemo_connections",
+      "name": "AEMO Connection Process / Connection Scorecard",
+      "type": "primary_connection_registry",
+      "geography": "Australia",
+      "authority": "AEMO",
+      "url": "https://www.aemo.com.au/initiatives/major-programs/connection-process",
+      "use": "Connection applications and process evidence",
+      "limitation": "Network Service Provider records may be required."
+    },
+    {
+      "id": "fingrid_connections",
+      "name": "Fingrid Main Grid Connection / Open Data",
+      "type": "primary_connection_registry",
+      "geography": "Finland",
+      "authority": "Fingrid",
+      "url": "https://www.fingrid.fi/en/grid/connecting-to-the-main-grid/",
+      "use": "Main-grid connection process and public data",
+      "limitation": "Distribution-connected campuses require DSO records."
+    },
+    {
+      "id": "svk_connections",
+      "name": "Svenska kraftnät Connection Process / Queue",
+      "type": "primary_connection_registry",
+      "geography": "Sweden",
+      "authority": "Svenska kraftnät",
+      "url": "https://www.svk.se/en/grid-development/the-transmission-grid/connecting-to-the-transmission-grid/",
+      "use": "Transmission connection applications/queue",
+      "limitation": "Local network connections may be outside the transmission queue."
+    },
+    {
+      "id": "statnett_connections",
+      "name": "Statnett Connection Process",
+      "type": "primary_connection_registry",
+      "geography": "Norway",
+      "authority": "Statnett",
+      "url": "https://www.statnett.no/en/for-stakeholders-in-the-power-industry/grid-development-and-connection/",
+      "use": "Transmission connection process",
+      "limitation": "Local DSO connection may be the relevant record."
+    },
+    {
+      "id": "tnb_connection",
+      "name": "Tenaga Nasional Berhad Connection / Supply",
+      "type": "primary_connection_registry",
+      "geography": "Malaysia",
+      "authority": "TNB",
+      "url": "https://www.tnb.com.my/",
+      "use": "Electricity supply and large-customer connection evidence",
+      "limitation": "Public site-level queue identifiers are not consistently exposed."
+    },
+    {
+      "id": "ren_connections",
+      "name": "REN Grid Connection",
+      "type": "primary_connection_registry",
+      "geography": "Portugal",
+      "authority": "REN",
+      "url": "https://www.ren.pt/en-gb/activity/electricity/transmission",
+      "use": "Transmission connection records",
+      "limitation": "Distribution connections may be under E-REDES."
+    },
+    {
+      "id": "eredes_connections",
+      "name": "E-REDES Connection",
+      "type": "primary_connection_registry",
+      "geography": "Portugal",
+      "authority": "E-REDES",
+      "url": "https://www.e-redes.pt/en/",
+      "use": "Distribution connection evidence",
+      "limitation": "Site-level public queue data may be limited."
+    },
+    {
+      "id": "landsnet_connections",
+      "name": "Landsnet Connection",
+      "type": "primary_connection_registry",
+      "geography": "Iceland",
+      "authority": "Landsnet",
+      "url": "https://www.landsnet.is/",
+      "use": "Transmission connection evidence",
+      "limitation": "Local distribution records may also be required."
+    },
+    {
+      "id": "pln_connections",
+      "name": "PLN Grid Connection",
+      "type": "primary_connection_registry",
+      "geography": "Indonesia",
+      "authority": "PLN",
+      "url": "https://web.pln.co.id/",
+      "use": "National utility connection evidence",
+      "limitation": "Public queue identifiers are not consistently exposed."
+    },
+    {
+      "id": "state_grid_china",
+      "name": "State Grid / Provincial Grid Connection",
+      "type": "primary_connection_registry",
+      "geography": "China",
+      "authority": "State Grid + provincial subsidiaries",
+      "url": "https://www.sgcc.com.cn/",
+      "use": "Grid connection and utility/regulatory evidence",
+      "limitation": "Public site-level queue visibility varies by province."
+    },
+    {
+      "id": "ewec_connections",
+      "name": "EWEC / Abu Dhabi power-system connection evidence",
+      "type": "primary_connection_registry",
+      "geography": "United Arab Emirates",
+      "authority": "EWEC + local network operators",
+      "url": "https://www.ewec.ae/",
+      "use": "Power-system/customer connection evidence",
+      "limitation": "Site-level public queue identifiers may not be exposed."
+    }
+  ],
+  "cross_cutting_public_sources": [
+    {
+      "id": "ferc_elibrary",
+      "name": "FERC eLibrary",
+      "geography": "United States",
+      "type": "primary_regulatory_corpus",
+      "url": "https://www.ferc.gov/ferc-online/elibrary",
+      "use": "Transmission, utility and large-load regulatory filings",
+      "limitation": "Search is docket/document based rather than a single queue table."
+    },
+    {
+      "id": "ferc_rm26_4",
+      "name": "FERC RM26-4 Large Load Interconnection",
+      "geography": "United States",
+      "type": "primary_regulatory_rulemaking",
+      "url": "https://ferc.gov/rm26-4",
+      "use": "Federal large-load interconnection policy/tariff proceedings",
+      "limitation": "Rulemaking docket is not itself a site registry."
+    },
+    {
+      "id": "gridtracker",
+      "name": "GridTracker",
+      "geography": "United States",
+      "type": "secondary_queue_registry",
+      "url": "https://www.gridtracker.io/",
+      "use": "Daily queue snapshots, data-center facilities and regulatory-document discovery",
+      "limitation": "Secondary source; primary utility/RTO/commission record should be retained for site-level claims."
+    },
+    {
+      "id": "gridtracker_mcp",
+      "name": "GridTracker MCP",
+      "geography": "United States",
+      "type": "secondary_research_database",
+      "url": "https://www.gridtracker.io/mcp",
+      "use": "Search across queue requests, PUC/FERC filings and data-center permits",
+      "limitation": "Access may require a subscription."
+    },
+    {
+      "id": "interconnection_fyi",
+      "name": "Interconnection.fyi",
+      "geography": "United States",
+      "type": "secondary_queue_facility_registry",
+      "url": "https://www.interconnection.fyi/",
+      "use": "Facility tracker plus interconnection-queue/project evidence",
+      "limitation": "Secondary; verify against the underlying utility/RTO/regulator."
+    },
+    {
+      "id": "wattstreet",
+      "name": "Watt Street state interconnection queues",
+      "geography": "United States",
+      "type": "secondary_queue_aggregator",
+      "url": "https://wattstreet.net/",
+      "use": "State-by-state queue aggregation and data-center campus index",
+      "limitation": "Aggregation/discovery layer; not the authoritative queue."
+    },
+    {
+      "id": "lbnl_queued_up",
+      "name": "LBNL Queued Up",
+      "geography": "United States",
+      "type": "secondary_historical_queue_dataset",
+      "url": "https://emp.lbl.gov/queues",
+      "use": "Historical generator/storage queue coverage across ISOs/RTOs and non-ISO utilities",
+      "limitation": "Generator interconnection dataset; does not include load interconnection requests."
+    },
+    {
+      "id": "texas_ai_docket",
+      "name": "Texas AI Docket",
+      "geography": "Texas",
+      "type": "secondary_facility_regulatory_registry",
+      "url": "https://texasaidocket.com/",
+      "use": "Facility dossiers combining queue, PUCT docket, permit and service evidence",
+      "limitation": "Secondary research product."
+    },
+    {
+      "id": "suedatacenters",
+      "name": "SueDataCenters / Compute Atlas",
+      "geography": "United States",
+      "type": "secondary_facility_registry",
+      "url": "https://suedatacenters.org/data-centers",
+      "use": "Facility identities, locations and cited public records",
+      "limitation": "Facility registry, not a utility queue."
+    },
+    {
+      "id": "datacenter_fyi",
+      "name": "DataCenter.fyi",
+      "geography": "United States",
+      "type": "secondary_facility_registry",
+      "url": "https://www.datacenter.fyi/",
+      "use": "Facility and grid/operator discovery",
+      "limitation": "Secondary data source."
+    },
+    {
+      "id": "deploy_datacenters",
+      "name": "DEPLOY Data Centers Registry",
+      "geography": "United States / global",
+      "type": "secondary_facility_registry",
+      "url": "https://registry.deploy.report/datacenters",
+      "use": "Facility/utility/operator discovery",
+      "limitation": "Secondary source."
+    },
+    {
+      "id": "datacenter_index",
+      "name": "Data Center Index",
+      "geography": "United States / global",
+      "type": "secondary_facility_registry",
+      "url": "https://datacenterindex.ai/buildout-map",
+      "use": "Facility/buildout and supplier discovery",
+      "limitation": "Not an interconnection queue."
+    },
+    {
+      "id": "gridcensus",
+      "name": "GridCensus",
+      "geography": "United States",
+      "type": "secondary_grid_registry",
+      "url": "https://gridcensus.com/",
+      "use": "Grid/parcel/site screening and queue detail",
+      "limitation": "Secondary and may place detailed queue data behind paid tiers."
+    },
+    {
+      "id": "interconnectionqueue_org",
+      "name": "Grid Interconnection Tracker",
+      "geography": "United States",
+      "type": "secondary_queue_screen",
+      "url": "https://interconnectionqueue.org/",
+      "use": "ISO/RTO queue and large-load market screening",
+      "limitation": "Directional/secondary; underlying records should be verified."
+    }
+  ],
+  "supporting_public_record_families": [
+    {
+      "id": "state_puc",
+      "name": "State PUC/PSC docket systems",
+      "geography": "United States",
+      "type": "primary_regulatory",
+      "use": "Large-load tariffs, service agreements, utility contracts, transmission approvals and site-specific proceedings",
+      "examples": "Georgia PSC, PUCT, Michigan PSC, North Carolina Utilities Commission, Arizona Corporation Commission, Nevada PUC, Utah PSC, New Mexico PRC, Wyoming PSC"
+    },
+    {
+      "id": "utility_service_records",
+      "name": "Investor-owned utility / municipal / cooperative large-load records",
+      "geography": "United States",
+      "type": "primary_service",
+      "use": "Service agreements, tariffs, customer contracts, connection studies, system impact studies and customer-planning records",
+      "examples": "TNB/OG&E/OPPD/Alliant/MidAmerican/Coleman County EC/Duke/AEP/Georgia Power/TVA/NV Energy/APS/PNM and others"
+    },
+    {
+      "id": "local_permits",
+      "name": "Local government land-use / permit records",
+      "geography": "Global",
+      "type": "primary_supporting",
+      "use": "Parcel identity, site plans, electrical service clues, generator permits, zoning and development approvals",
+      "examples": "County/city planning portals, building permits, environmental permits, economic-development agreements"
+    },
+    {
+      "id": "environmental_records",
+      "name": "Environmental regulator records",
+      "geography": "Global",
+      "type": "primary_supporting",
+      "use": "Air permits, water permits, emergency-generator permits, environmental assessments and facility identifiers",
+      "examples": "State/provincial environmental agencies, EPA and equivalent national agencies"
+    }
+  ]
+}
