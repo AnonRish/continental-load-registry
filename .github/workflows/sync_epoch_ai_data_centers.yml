@@ -46,7 +46,7 @@ jobs:
           import re
           from pathlib import Path
           html = Path("index.html").read_text(encoding="utf-8")
-          scripts = re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+          scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
           for i, script in enumerate(scripts, 1):
               Path(f"/tmp/index-script-{i}.js").write_text(script, encoding="utf-8")
           print(f"extracted {len(scripts)} inline script blocks")
@@ -87,4 +87,3 @@ jobs:
             git push origin HEAD:main
           fi
 
-# Force a clean post-schema refresh after the Epoch evidence-layer hardening.
