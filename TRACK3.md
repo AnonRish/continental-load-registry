@@ -18,11 +18,11 @@ This layer turns the continental registry from a queue table into an auditable e
 
 ## Current site evidence
 
-As of 2026-09-26, the preserved 93-site Epoch universe has 55 sites with at least one attached site-level evidence record. The queue crosswalk contributes additional public site-level evidence records; across the combined layers, 63 of 93 sites have at least one evidence item. Two sites have site-specific queue IDs.
+As of 2026-09-26, the preserved 93-site Epoch universe has 59 sites with at least one attached site-level evidence record. The queue crosswalk contributes additional public site-level evidence records; across the combined layers, 67 of 93 sites have at least one evidence item. Two sites have site-specific queue IDs.
 
-The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 59 `SITE_LEVEL_EVIDENCE`, and 32 `PENDING_RESEARCH`. The 32 pending records are sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 32 current grid-connection gaps. The absence of a public record after a particular search is not treated as proof of absence.
+The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 61 `SITE_LEVEL_EVIDENCE`, and 30 `PENDING_RESEARCH`. The 30 pending records are sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 30 current grid-connection gaps. The absence of a public record after a particular search is not treated as proof of absence.
 
-A separate power-observation layer now contains four company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, and Sarpy). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open.
+A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are also retained for Google Arcola and Google Kansas City East; these support physical verification but are not thermal telemetry.
 
 ## Evidence domains
 
