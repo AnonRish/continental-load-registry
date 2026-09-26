@@ -209,6 +209,14 @@ The supplemental evidence file now contains **47 source/evidence units**, includ
 
 These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
 
+### Epoch connection research targets
+
+Every one of the **93 canonical Epoch AI sites** now has a connection-research target record in `data/epoch_connection_research_targets.json` with grid jurisdiction, site-specific queue state, current site IT-power context, evidence count, source trail, coordinates and next research action. The companion `data/epoch_connection_research_targets.csv` is a flat export. The target layer is intentionally separate from verified queue membership: a dashed map target can mean only that the relevant queue/utility system is known.
+
+The underlying Track 3 evidence inventory is preserved independently in `data/epoch_site_evidence_records.json` and CSV. It contains **68 discrete site-level evidence assertions across 59 of the 93 sites**. These assertions can identify utilities, public contracts, facility records or other site-specific evidence without establishing a formal queue ID. They are not additive capacity records.
+
+On the map, the **Connection targets** toggle overlays all 93 research targets on the same site geometry as the Epoch layer. Target popups show the current grid jurisdiction, research state, queue ID/name where verified, site-specific capacity when known, evidence-item count, source links, and the next action. Geometry precision is carried through from the canonical Epoch map record.
+
 ### Project-level extraction
 
 The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **199 individually identifiable records** extracted from public source material:
@@ -222,7 +230,7 @@ The repository has a dedicated project-level evidence layer at `data/project_lev
 
 The project layer is deliberately **not additive** to the 1,558-row core queue table or the 1,641-record expanded-known scope. Multiple dated capacity claims inside one project are retained separately. No MW is inferred when a utility does not publish the load.
 
-The interactive map now overlays **all 198 project-level records**. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **47 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
+The interactive map now overlays **all 199 project-level records**. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **47 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
 
 The Epoch AI map layer contains **93 frontier-site observations** and is backed by the canonical `data/external/epoch_ai/site_level_connection_evidence.json` crosswalk. Of the 93 sites, **59 currently have site-level grid evidence records and 34 remain pending site-specific grid-record research**. The map popups expose the evidence status and available source links.
 
