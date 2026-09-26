@@ -1538,6 +1538,9 @@ openFacilityFromHash();
   }).then(function(payload){
     connectionTargets=Array.isArray(payload.records)?payload.records:[];
     updateConnectionTargetLayer();
+    const cap=document.getElementById('mapCaption');
+    if(cap)cap.textContent=cap.textContent.replace(/and \d+ connection research targets are separately overlaid\./,'and '+connectionTargets.filter(function(t){return t.lat!=null&&t.lon!=null;}).length+' connection research targets are separately overlaid.');
+
   }).catch(function(err){console.error(err);});
 
   function buildAggregateOverlay(a){
