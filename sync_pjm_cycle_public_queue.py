@@ -90,7 +90,10 @@ def main():
         try: df=pd.read_excel(bio)
         except Exception:
             bio.seek(0);df=pd.read_xml(bio)
-    rows=normalize_df(df);now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
+    rows=normalize_df(df)
+    if len(rows) < 1000:
+        raise RuntimeError(f"PJM source returned only {len(rows)} rows; refusing to publish a likely paginated subset as the complete queue")
+    now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
     root=Path(a.output_dir);root.mkdir(parents=True,exist_ok=True)
     obj={"schema_version":1,"title":"PJM complete public Cycle Service Request universe","page_url":PAGE,"export_source":source,"captured_at":now,"accounting":"Separate PJM service-request history layer; not added to the conservative large-load core.","record_count":len(rows),"records":rows}
     (root/"pjm_cycle_public_queue.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
