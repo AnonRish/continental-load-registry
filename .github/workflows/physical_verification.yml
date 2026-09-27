@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   acquire:
-    if: github.actor != 'github-actions[bot]'
+    if: github.event_name != 'push' || !startsWith(github.event.head_commit.message, 'Refresh physical verification')
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
