@@ -4,7 +4,7 @@ Updated: 2026-09-27
 
 ## Why this audit exists
 
-The 141-row Genuinely Ambiguous / Unclassified Large Load set is a broad research pool, not 141 confirmed large-load discovery targets. Before a case is promoted into the closed-case pilot, its source record must independently establish that the underlying project is a load request rather than generation, surplus, transmission, replacement, upgrade, or another project type.
+The 142-row Genuinely Ambiguous / Unclassified Large Load set is a broad research pool, not 142 confirmed large-load discovery targets. Before a case is promoted into the closed-case pilot, its source record must independently establish that the underlying project is a load request rather than generation, surplus, transmission, replacement, upgrade, or another project type.
 
 ## Concrete false-positive found
 
@@ -24,14 +24,16 @@ A strict discovery candidate must satisfy all of the following before physical o
 
 ## Current strict pilot candidates
 
-The current candidate set is intentionally small:
+The current candidate set is intentionally small and contains five strict admitted-load cases:
+
 
 - **AESO P3066 — Leedale Data Load, 1,864 MW.** Public queue-derived evidence identifies the project as Project Type Load in Clearwater County and provides POI 38-Caroline, while the public developer field remains unavailable. This is a valid identity/location closure target, not evidence of covert compute.
 - **AESO P3198 — Lynx Data Load, 1,800 MW.** Public queue-derived evidence identifies Project Type Load in Strathcona County and POI 33-Fort Saskatchewan; the developer field is not publicly exposed in the retained source surface. This is suitable for a separate identity/location closure case.
 - **NYISO 1743 — St. Lawrence Infrastructure 2, 1,935 MW.** The public queue record explicitly identifies Project Type Load, NYPA, and the Moses Massena 1/2 POIs. Public secondary trackers already label it as a data-center/AI-type project, so its research value is primarily site/entity/infrastructure resolution rather than first discovery.
+- **AESO P3108 — Wild Rose Power Hub Load, 1,300 MW.** The retained AESO source labels it `Data Load` while the developer is not published in the source row and the title does not itself identify a data-center operator. This makes it a useful entity/end-use/physical-target closure case.
 - **NYISO 1742 — St. Lawrence Infrastructure 1, 860 MW.** The public queue and current public trackers identify it as an active large-load project; public secondary sources also classify it as data-center related. Its remaining research value is resolving the physical project and infrastructure evidence chain rather than claiming that the existence of a data-center project is itself unknown.
 
-These four are not presented as a representative sample. They are the next reproducible closure targets after the admission gate is applied.
+These five are not presented as a representative sample. They are the next reproducible closure targets after the admission gate is applied.
 
 ## Rule for the website
 
