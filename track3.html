@@ -94,7 +94,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <select id="siteState"><option value="">All grid states</option><option value="VERIFIED_SITE_SPECIFIC">VERIFIED_SITE_SPECIFIC</option><option value="SITE_LEVEL_EVIDENCE">SITE_LEVEL_EVIDENCE</option><option value="RESEARCHED_NO_PUBLIC_RECORD">RESEARCHED_NO_PUBLIC_RECORD</option><option value="PENDING_RESEARCH">PENDING_RESEARCH</option></select>
 <select id="siteSort"><option value="power">IT power, descending</option><option value="evidence">evidence count, descending</option><option value="name">site name, A–Z</option></select>
 </div></div>
-<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Location</th><th>Grid / utility</th><th>Grid state</th><th class="right">Epoch IT MW</th><th class="right">Evidence</th><th>Open</th></tr></thead><tbody id="siteRows"></tbody></table></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Location</th><th>Grid / utility</th><th>Public owner / energy / EPC</th><th>Grid state</th><th class="right">Epoch IT MW</th><th class="right">Evidence</th><th>Open</th></tr></thead><tbody id="siteRows"></tbody></table></div>
 </section>
 
 <section class="section panel" style="padding:16px">
@@ -291,6 +291,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <script>
 const U={
  summary:'data/track3/summary.json',
+ enrichment:'data/external/intel_accelerator_enrichment.json',
  sites:'data/track3/site_status.json',
  evidence:'data/track3/evidence_records.json',
  obs:'data/track3/observation_queue.json',
@@ -431,7 +432,9 @@ function renderSites(){
  document.getElementById('siteMeta').textContent=filteredSites.length+' of '+(D.sites||[]).length+' sites';
  document.getElementById('siteRows').innerHTML=filteredSites.map(r=>{
   const g=r.grid||{}, st=siteGrid(r);
-  return '<tr><td><strong>'+esc(r.site_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.epoch_id)+'</div></td><td>'+esc([r.state_province,r.country].filter(Boolean).join(' · ')||'—')+'</td><td>'+esc(g.jurisdiction||'—')+'</td><td><span class="status '+stClass(st)+'">'+esc(st)+'</span></td><td class="right mono">'+esc(fmt(r.current_it_power_mw))+'</td><td class="right mono">'+siteEvidence(r)+'</td><td><a class="btn" href="facility.html?facility='+encodeURIComponent(r.epoch_id)+'">Page</a> <button class="btn" data-open-site="'+esc(r.epoch_id)+'">Open</button></td></tr>';
+  const e=(D.enrichment?.records||[]).find(x=>x.epoch_id===r.epoch_id)||{};
+  const publicParts=[e.public_owner,e.energy_partners?.length?'Energy: '+e.energy_partners.join(', '):'',e.construction_epc?.length?'EPC: '+e.construction_epc.join(', '):''].filter(Boolean);
+  return '<tr><td><strong>'+esc(r.site_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.epoch_id)+'</div></td><td>'+esc([r.state_province,r.country].filter(Boolean).join(' · ')||'—')+'</td><td>'+esc(g.jurisdiction||'—')+'</td><td class="small">'+esc(publicParts.join(' · ')||'No additional public field captured')+'</td><td><span class="status '+stClass(st)+'">'+esc(st)+'</span></td><td class="right mono">'+esc(fmt(r.current_it_power_mw))+'</td><td class="right mono">'+siteEvidence(r)+'</td><td><a class="btn" href="facility.html?facility='+encodeURIComponent(r.epoch_id)+'">Page</a> <button class="btn" data-open-site="'+esc(r.epoch_id)+'">Open</button></td></tr>';
  }).join('')||'<tr><td colspan="7" class="faint">No matching sites.</td></tr>';
  document.querySelectorAll('[data-open-site]').forEach(b=>b.addEventListener('click',()=>openSite(b.getAttribute('data-open-site'))));
 }
