@@ -42,7 +42,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          for p in ["api/v1/facilities.json","api/v1/openapi.json","data/bulk_download_manifest.json","data/epoch_ai_map.json","data/external/epoch_ai/crosswalk.json"]:
+          for p in ["api/v1/facilities.json","api/v1/openapi.json","data/bulk_download_manifest.json","data/epoch_ai_map.json","data/external/epoch_ai/crosswalk.csv"]:
               json.loads(Path(p).read_text(encoding="utf-8"))
           api=json.loads(Path("api/v1/facilities.json").read_text())
           assert api["record_count"] == len(api["records"]) == 93
