@@ -10,7 +10,9 @@
     "sites_with_verified_queue_id": 2,
     "sites_with_open_grid_research": 72,
     "sites_with_missing_publisher_fields": 92,
-    "total_missing_publisher_fields": 378
+    "total_missing_publisher_fields": 378,
+    "sites_with_manual_public_enrichment": 24,
+    "total_enrichment_source_links": 33
   },
   "records": [
     {
@@ -635,6 +637,23 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "campus_total_service_mw": 390,
+        "johor_operational_capacity_statement_mw": 478,
+        "rfp_year": 2023,
+        "location": "Kempas Tech Park, Johor",
+        "facts": [
+          "DayOne's official Johor page says its Nusajaya and Kempas campuses together have 390 MW in service and more capacity coming.",
+          "The company describes Johor as a high-density workload region with direct connectivity to Singapore."
+        ],
+        "sources": [
+          [
+            "DayOne Johor",
+            "https://dayonedc.com/market/johor"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -1007,6 +1026,27 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "TNB / Johor utility context",
+        "site_it_power_mw": 240,
+        "site_h100_eq": 282000,
+        "status": "Operational",
+        "facts": [
+          "Samaritan reports about 240 MW IT power for the Epoch DayOne Nusajaya observation in January 2026 and six operational buildings in the referenced phase.",
+          "DayOne's official Johor page identifies Nusajaya Tech Park as an operational campus."
+        ],
+        "sources": [
+          [
+            "Samaritan Research",
+            "https://samaritan-research.org/data/ai-data-centers/directory/dayone-nusajaya"
+          ],
+          [
+            "DayOne Johor",
+            "https://dayonedc.com/market/johor"
+          ]
+        ],
+        "source_count": 2
       }
     },
     {
@@ -1352,6 +1392,19 @@
           "construction_companies",
           "chip_quantities"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Dominion Energy Virginia",
+        "planned_power_mw": 238,
+        "land_acres": 207,
+        "planned_buildings": 6,
+        "sources": [
+          [
+            "QTS Richmond 1",
+            "https://q.com/data-centers/richmond-1/"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -1501,6 +1554,27 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Canton Municipal Utilities",
+        "public_power_mw": 341,
+        "status": "Operational",
+        "operational_date": "2025-06-23",
+        "facts": [
+          "A public facility record reports 341 MW and Canton Municipal Utilities as grid operator.",
+          "Mississippi DEQ lists an active air-construction permit for Amazon Data Services at the Madison Mega Site."
+        ],
+        "sources": [
+          [
+            "datacenter.fyi",
+            "https://www.datacenter.fyi/public-record/amazon-madison-mega-site-4fb34373"
+          ],
+          [
+            "Mississippi DEQ",
+            "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+          ]
+        ],
+        "source_count": 2
       }
     },
     {
@@ -1707,6 +1781,27 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Arizona Public Service",
+        "public_power_records_mw": [
+          75.785,
+          391.125
+        ],
+        "facts": [
+          "Public facility records identify APS as the utility and report separate 75.785 MW and 391.125 MW site records; these are kept separate from the Epoch campus estimate."
+        ],
+        "sources": [
+          [
+            "datacenter.fyi record 1",
+            "https://www.datacenter.fyi/public-record/microsoft-befedf4d"
+          ],
+          [
+            "datacenter.fyi record 2",
+            "https://www.datacenter.fyi/public-record/microsoft-1a4b3153"
+          ]
+        ],
+        "source_count": 2
       }
     },
     {
@@ -2144,6 +2239,29 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Lincoln Electric System",
+        "facts": [
+          "LES authorized an extension and interconnection agreement with Agate LLC for the Google data-center project near U.S. 77/I-80.",
+          "LES reports low-voltage construction service began in April 2024 and the North Bluff substation now delivers power to the city's first large data center.",
+          "LES and Google have a capacity arrangement tied to 423 MW of wind capacity."
+        ],
+        "sources": [
+          [
+            "LES December 2023 board minutes",
+            "https://www.les.com/sites/default/files/bd-min-dec-2023.pdf"
+          ],
+          [
+            "LES October 2024 board minutes",
+            "https://www.les.com/sites/default/files/bd-min-october-2024.pdf"
+          ],
+          [
+            "LES 2025 Annual Report",
+            "https://annualreport.les.com/"
+          ]
+        ],
+        "source_count": 3
       }
     },
     {
@@ -2323,6 +2441,28 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Northern Wasco County PUD",
+        "regional_grid": "BPA",
+        "water_use_mgd": 1.51,
+        "cooling": "Evaporative",
+        "clean_energy_contract_mw": 100,
+        "facts": [
+          "DEPLOY identifies Northern Wasco County PUD as the local utility and BPA hydro as a major power source.",
+          "DEPLOY/Compute Atlas material describes a 100+ MW Avangrid wind PPA and approximately 1.51 MGD water use."
+        ],
+        "sources": [
+          [
+            "DEPLOY",
+            "https://registry.deploy.report/datacenters/facilities/google-the-dalles-or"
+          ],
+          [
+            "Compute Atlas",
+            "https://www.compute-atlas.com/facilities/google-the-dalles-or"
+          ]
+        ],
+        "source_count": 2
       }
     },
     {
@@ -2400,6 +2540,19 @@
           "construction_companies",
           "chip_quantities"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Dominion Energy Virginia",
+        "planned_power_mw": 240,
+        "land_acres": 221,
+        "buildings": 5,
+        "sources": [
+          [
+            "QTS Richmond 3",
+            "https://q.com/data-centers/richmond-3/"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -2474,6 +2627,24 @@
           "investors",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Alabama Power Company",
+        "investment_usd_b": 1.5,
+        "jobs_permanent": 100,
+        "construction_jobs_peak": 1000,
+        "supported_renewable_additions_mw": 227,
+        "facts": [
+          "Meta says the Montgomery project is a $1.5B+ investment and works with Alabama Power on clean/renewable electricity.",
+          "Meta reports more than 1,000 peak construction jobs and 100+ operational jobs."
+        ],
+        "sources": [
+          [
+            "Meta Montgomery information sheet",
+            "https://datacenters.atmeta.com/asset/montgomery-data-center-info-sheet/"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -2547,6 +2718,24 @@
           "investors",
           "construction_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Idaho Power",
+        "status": "Operational",
+        "operations_date": "2026-09-03",
+        "investment_usd_b": 1.2,
+        "renewable_additions_mw": 645,
+        "facts": [
+          "Meta announced the Kuna data center online on September 3, 2026 and says it worked with Idaho Power years in advance on energy planning.",
+          "Meta reports three supported renewable projects adding 645 MW in Ada County."
+        ],
+        "sources": [
+          [
+            "Meta Kuna",
+            "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -3023,6 +3212,20 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "named_miso_load_mw": 150,
+        "utility_status": "MISO named large-load record; serving utility not separately resolved",
+        "facts": [
+          "MISO's New Load Announcements list Microsoft Project Osmium in West Des Moines at 150 MW."
+        ],
+        "sources": [
+          [
+            "MISO New Load Announcements",
+            "https://cdn.misoenergy.org/NEW%20LOAD%20ANNOUNCEMENTS%20IN%20MISO%20REGIONS%2012062024684954.pdf"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -3095,6 +3298,20 @@
           "project",
           "investors"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Rocky Mountain Power",
+        "facts": [
+          "DEPLOY identifies Rocky Mountain Power as the serving utility and the Mercer substation as part of the power infrastructure context.",
+          "The Utah program includes more than 800 MW of new solar additions associated with Meta; Faraday Solar is reported at 685.3 MWdc."
+        ],
+        "sources": [
+          [
+            "DEPLOY",
+            "https://registry.deploy.report/datacenters/meta-eagle-mountain-utah"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -3288,6 +3505,25 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "NV Energy",
+        "renewable_energy": "enhanced geothermal",
+        "facts": [
+          "A Nevada utility filing identifies Google as customer and NV Energy as electric-service provider for the Storey County data-center facilities.",
+          "Google reports geothermal electricity began supporting the campus in 2023."
+        ],
+        "sources": [
+          [
+            "Nevada utility filing",
+            "https://edocs.puc.state.or.us/efdocs/HTB/um2377htb339000027.pdf"
+          ],
+          [
+            "Google Storey County",
+            "https://datacenters.google/locations/storey-county-nevada/"
+          ]
+        ],
+        "source_count": 2
       }
     },
     {
@@ -3452,6 +3688,23 @@
           "investors",
           "construction_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Portland General Electric",
+        "energy_partners": [
+          "Portland General Electric",
+          "Avangrid"
+        ],
+        "facts": [
+          "Public facility research identifies PGE and Avangrid as energy partners for the campus and associates a 120 MWac Avangrid solar installation with its electricity supply."
+        ],
+        "sources": [
+          [
+            "Intel Accelerator",
+            "https://intelaccelerator.com/projects"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -4309,6 +4562,20 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility_status": "not explicitly resolved in the retained public record",
+        "lease_term_years": 12,
+        "facts": [
+          "DEPLOY identifies the 1401 Meadowville Technology Parkway facility as an operating CoreWeave campus under a reported 12-year license agreement."
+        ],
+        "sources": [
+          [
+            "DEPLOY facility record",
+            "https://registry.deploy.report/datacenters/facilities/coreweave-chester-va"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -4484,6 +4751,23 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "PPL Electric Utilities",
+        "generation_supplier": "Talen Energy",
+        "contracted_power_path_mw": 1920,
+        "contract_end_year": 2042,
+        "facts": [
+          "Talen's filing identifies Talen generation supply to AWS and PPL Electric transmission/delivery.",
+          "The revised AWS power purchase agreement provides a path to 1,920 MW through 2042."
+        ],
+        "sources": [
+          [
+            "Talen SEC filing",
+            "https://www.sec.gov/Archives/edgar/data/1622536/000162828025038626/tln-20250630.htm"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -5419,6 +5703,19 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Arizona Public Service",
+        "critical_it_mw": 280,
+        "substation_capacity_mw": 480,
+        "building_sqft": 2000000,
+        "sources": [
+          [
+            "DEPLOY",
+            "https://registry.deploy.report/datacenters/facilities/stream-phxa-goodyear"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -5658,6 +5955,21 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "Dalton Utilities",
+        "aggregate_access_mw": 270,
+        "possible_total_with_additional_capacity_mw": 450,
+        "facts": [
+          "Core Scientific's SEC filing says the Dalton campuses have 270 MW aggregate access and Dalton Utilities is working toward additional capacity up to 450 MW, with about 270 MW allocated to the campus pair."
+        ],
+        "sources": [
+          [
+            "Core Scientific SEC",
+            "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -5809,6 +6121,34 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "REN (Portuguese transmission system operator)",
+        "secured_it_capacity_mw": 1200,
+        "live_first_facility_mw": 37.5,
+        "planned_next_facility_mw": 200,
+        "cooling": "Seawater",
+        "renewable_power_percent": 100,
+        "facts": [
+          "Start Campus says REN awarded additional power bringing secured SINES DC IT capacity to 1.2 GW.",
+          "SIN01 began operations in Q4 2024; Start Campus later described it as a 26 MW facility.",
+          "The campus uses seawater cooling and states its electricity supply is 100% renewable."
+        ],
+        "sources": [
+          [
+            "Start Campus 1.2 GW announcement",
+            "https://www.startcampus.pt/press_release_august_2024_1gw"
+          ],
+          [
+            "Start Campus SIN01 inauguration",
+            "https://www.startcampus.pt/start-campus-inaugurates-sin01-data-center"
+          ],
+          [
+            "Start Campus current site",
+            "https://www.startcampus.pt/"
+          ]
+        ],
+        "source_count": 3
       }
     },
     {
@@ -6270,6 +6610,23 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "onsite_power_mw": 900,
+        "cooling": "Closed-loop non-evaporative",
+        "status": "Under development",
+        "customer": "Microsoft AI infrastructure",
+        "facts": [
+          "Crusoe announced a new 900 MW dedicated AI factory campus adjacent to its existing Abilene infrastructure.",
+          "The new campus includes an onsite power plant and two buildings; first building was expected to be energized in mid-2027 at announcement."
+        ],
+        "sources": [
+          [
+            "Crusoe March 27, 2026",
+            "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -6345,6 +6702,24 @@
           "construction_companies",
           "energy_companies"
         ]
+      },
+      "public_research_enrichment": {
+        "total_available_power_mw": 600,
+        "land_sqm": 200000,
+        "construction_start": 2025,
+        "renewable_power_percent": 100,
+        "permits": "All environmental permits approved",
+        "facts": [
+          "EcoDataCenter says the Dalarna site can scale to 600 MW, spans more than 200,000 square metres, and began construction in 2025.",
+          "The site uses renewable electricity sourced from regional hydropower and wind."
+        ],
+        "sources": [
+          [
+            "EcoDataCenter 2",
+            "https://ecodatacenter.tech/data-center/ecodatacenter2"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -7006,6 +7381,22 @@
           "energy_companies",
           "chip_quantities"
         ]
+      },
+      "public_research_enrichment": {
+        "developer": "SB Energy",
+        "planned_campus_power_mw": 1200,
+        "energy_strategy": "new generation plus storage, with most power planned from onsite generation",
+        "facts": [
+          "OpenAI selected SB Energy to build and operate the 1.2 GW Milam County data-center site.",
+          "OpenAI and SB Energy describe new generation and storage as part of the site's power strategy."
+        ],
+        "sources": [
+          [
+            "OpenAI / SB Energy",
+            "https://openai.com/index/stargate-sb-energy-partnership/"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -7077,6 +7468,23 @@
           "construction_companies",
           "chip_quantities"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "El Paso Electric",
+        "developer": "STACK Infrastructure",
+        "planned_capacity_mw": 2200,
+        "cooling": "Closed-loop",
+        "facts": [
+          "DEPLOY's Project Jupiter dossier identifies El Paso Electric as the regional utility and STACK Infrastructure as developer.",
+          "Public sources describe closed-loop cooling and on-site generation in the project's power design."
+        ],
+        "sources": [
+          [
+            "DEPLOY Project Jupiter",
+            "https://registry.deploy.report/datacenters/stargate-dona-ana-county-new-mexico"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
@@ -7319,6 +7727,20 @@
           "energy_companies",
           "chip_quantities"
         ]
+      },
+      "public_research_enrichment": {
+        "utility": "WEC Energy Group",
+        "facts": [
+          "OpenAI says Oracle and Vantage are working with WEC Energy Group on generation and storage for the Wisconsin Stargate infrastructure.",
+          "OpenAI describes a dedicated electricity rate supporting the power buildout."
+        ],
+        "sources": [
+          [
+            "OpenAI Stargate Community",
+            "https://openai.com/index/stargate-community/"
+          ]
+        ],
+        "source_count": 1
       }
     },
     {
