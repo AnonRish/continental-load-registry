@@ -154,6 +154,20 @@ dataset and validates all inline dashboard JavaScript before committing.
 Epoch states that its data are free to use, distribute and reproduce with
 attribution under CC BY 4.0.
 
+## Track 3 physical verification layers
+
+The physical-verification layer is now an active acquisition surface rather than a checklist only. The repository retains compact Sentinel-2 optical, Landsat Collection 2 surface-temperature, and Sentinel-1 GRD derived observations with scene provenance when the public source scene is available. Full source rasters remain external.
+
+Current building-footprint geometry is acquired from the Overture Maps building dataset and retained as per-site GeoJSON. Overture documents that building geometry represents a two-dimensional building footprint or roofprint, and its Python client supports bounding-box downloads; this repository uses the underlying public GeoParquet through DuckDB for batch acquisition.
+
+Transformer supply-chain evidence is preserved separately in:
+- `data/track3/transformer_supply_chain_events.json` and `.csv` -- source-backed procurement, delivery, planning/specification, or installation events only.
+- `data/track3/transformer_event_targets.csv` -- 93-site research queue with required event fields and source families.
+- `data/track3/TRANSFORMER_SUPPLY_CHAIN.md` -- provenance and missingness rules.
+
+These layers do not treat missing imagery, missing transformer records, building geometry, or queue absence as evidence that AI compute is absent.
+
+
 ## Current data coverage -- read this before citing a number from the site
 
 The published dashboard currently contains **1,558 row-level facilities / requests and 361.875 GW** across nine organized markets. A separate scope layer also records **83 additional MISO requests totaling 35.9 GW** whose public source omits required location fields; these are held outside the row-level table rather than assigned guessed geography. The resulting **expanded known scope is 1,641 requests / records and 397.775 GW**. The archived September 24 snapshot contains 1,802 rows and 420.2054 GW, but is retained separately and is not additive to current totals. The live GitHub Pages site is the publication surface; the exact row-level total is calculated from the embedded
