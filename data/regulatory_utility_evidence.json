@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "title": "Regulatory / utility evidence checklist",
+  "scope": "93-site Epoch AI Track 3 universe plus the registry's named large-load/project evidence universe",
+  "semantics": "FOUND means a public source family or discrete record is ingested and linked; PARTIAL means public evidence exists but it is not site-complete; NOT_PUBLIC means the requested detail is not exposed in the cited public source; a source-family record is not itself a site match.",
+  "checklist": [
+    {
+      "id": "PUC_DOCKETS_EVERY_MAJOR_SITE",
+      "item": "PUC/commission dockets for every major suspected site",
+      "status": "PARTIAL",
+      "coverage": "Virginia and Georgia have substantial docket/project coverage; exact site-level dockets remain incomplete across the full 93-site Epoch universe.",
+      "source_ids": [
+        "VA-PUR-2025-00058",
+        "VA-PUR-2024-00179",
+        "VA-PUR-2024-00170",
+        "VA-PUR-2024-00144",
+        "GA-DKT-44280"
+      ]
+    },
+    {
+      "id": "TRANSMISSION_SERVICE_AGREEMENTS",
+      "item": "Transmission-service agreements",
+      "status": "PARTIAL",
+      "coverage": "Public transmission/service records are retained where disclosed; many customer-specific agreements are confidential or not published.",
+      "source_ids": [
+        "VA-PUR-2024-00179",
+        "VA-PUR-2024-00170",
+        "ERCOT-LL-2026"
+      ]
+    },
+    {
+      "id": "INTERCONNECTION_SERVICE_AGREEMENTS",
+      "item": "Interconnection/service agreements",
+      "status": "PARTIAL",
+      "coverage": "ERCOT Batch Zero materials, IESO connection-status records, AESO load contracts, Georgia large-load contracts and named utility service projects provide public evidence; not every site publishes the underlying agreement.",
+      "source_ids": [
+        "ERCOT-LLI-2026",
+        "ERCOT-BATCHZERO-RFI-2026",
+        "IESO-APPLICATION-STATUS-2026",
+        "AESO-LARGE-LOAD-2026",
+        "GA-DKT-44280"
+      ]
+    },
+    {
+      "id": "LOAD_INTERCONNECTION_STUDIES",
+      "item": "Generator/load interconnection studies",
+      "status": "PARTIAL",
+      "coverage": "CAISO, ERCOT, IESO and AESO study/process records are represented; technical studies can be confidential and therefore cannot be treated as universally obtainable.",
+      "source_ids": [
+        "ERCOT-PROTOCOLS-2026",
+        "IESO-APPLICATION-STATUS-2026",
+        "IESO-TECH-FEAS-2026",
+        "AESO-CONNECTION-REPORTING-2026"
+      ]
+    },
+    {
+      "id": "CERTIFICATE_PERMIT_RECORDS",
+      "item": "Certificate / permit records",
+      "status": "FOUND_PARTIAL",
+      "coverage": "Virginia DEQ permit identities and other state/local permit records are already in the project ledger; certification coverage varies by state and facility.",
+      "source_ids": [
+        "VA-DEQ-DATA-CENTERS-2026",
+        "VA-SCC-TRANSMISSION-CASES-2026"
+      ]
+    },
+    {
+      "id": "UTILITY_BOARD_FILINGS",
+      "item": "Utility board filings",
+      "status": "FOUND_PARTIAL",
+      "coverage": "Georgia PSC, Virginia SCC, Ontario OEB/IESO, Alberta AUC/AESO and utility filings are represented; no claim that every utility/customer filing is public.",
+      "source_ids": [
+        "GA-DKT-44280",
+        "VA-PUR-2025-00058",
+        "OEB-Vaughan-MTS6-2026",
+        "IESO-APPLICATION-STATUS-2026",
+        "AESO-CONNECTION-REPORTING-2026"
+      ]
+    },
+    {
+      "id": "RATE_CASE_HYPERSCALE",
+      "item": "Rate-case filings mentioning hyperscale/large-load customers",
+      "status": "FOUND",
+      "coverage": "Virginia SCC PUR-2025-00058 and Georgia PSC large-load proceedings provide explicit large-load/data-center rate and cost-allocation evidence.",
+      "source_ids": [
+        "VA-PUR-2025-00058",
+        "GA-DKT-44280"
+      ]
+    },
+    {
+      "id": "SUBSTATION_TRANSMISSION_UPGRADES",
+      "item": "Substation/transmission upgrade filings",
+      "status": "FOUND_PARTIAL",
+      "coverage": "Virginia SCC transmission cases and Georgia Power transmission project records expose project-level substations/lines and their large-load service rationale.",
+      "source_ids": [
+        "VA-PUR-2024-00179",
+        "VA-PUR-2024-00170",
+        "VA-TRANSMISSION-CASES-2026",
+        "GA-HILLS-BRIDGE-2026",
+        "EPCOR-CETR-2026"
+      ]
+    },
+    {
+      "id": "PPA_SUPPLY_AGREEMENTS",
+      "item": "Power-purchase / supply agreements where public",
+      "status": "FOUND_PARTIAL",
+      "coverage": "Public supply/contract evidence exists for named projects such as Georgia Power large-load contracts and several utility/service projects; confidentiality is retained where applicable.",
+      "source_ids": [
+        "GA-DKT-44280",
+        "GA-LARGE-LOAD-REV-2026",
+        "ERCOT-LLI-2026"
+      ]
+    },
+    {
+      "id": "GEORGIA_POWER_LARGE_LOAD",
+      "item": "Georgia Power large-load/customer records",
+      "status": "FOUND",
+      "coverage": "Georgia PSC Docket 44280 contains recurring large-load contract filings, executed contracts and a September 2026 contract summary; Georgia PSC also identifies the Commission's data-center contract reporting framework.",
+      "source_ids": [
+        "GA-DKT-44280",
+        "GA-CONTRACT-SEP2026",
+        "GA-DATACENTER-FACTS-2026",
+        "GA-HILLS-BRIDGE-2026"
+      ]
+    },
+    {
+      "id": "VIRGINIA_SCC_UTILITY",
+      "item": "Virginia utility + SCC records",
+      "status": "FOUND",
+      "coverage": "Virginia SCC has public large-load rate-case materials and numerous data-center transmission certification cases; Virginia DEQ permit identities are also ingested.",
+      "source_ids": [
+        "VA-PUR-2025-00058",
+        "VA-PUR-2024-00179",
+        "VA-PUR-2024-00170",
+        "VA-PUR-2024-00144",
+        "VA-DEQ-DATA-CENTERS-2026"
+      ]
+    },
+    {
+      "id": "TEXAS_ERCOT_UTILITY",
+      "item": "Texas/ERCOT utility-level records",
+      "status": "FOUND_PARTIAL",
+      "coverage": "ERCOT publishes a Large Load interconnection process and monthly status reporting at aggregate dimensions; the September 2026 verification/audit process creates an additional authoritative evidence layer, but customer-specific RFI contents are not generally public.",
+      "source_ids": [
+        "ERCOT-PROTOCOLS-2026",
+        "ERCOT-LLI-2026",
+        "ERCOT-BATCHZERO-RFI-2026",
+        "ERCOT-IMPACT-RFI-2026"
+      ]
+    },
+    {
+      "id": "ONTARIO_OEB_CAPACITY_CUSTOMER",
+      "item": "Ontario OEB capacity/customer evidence",
+      "status": "FOUND_PARTIAL",
+      "coverage": "Alectra Vaughan MTS #6 has named data-centre customer capacity evidence, and OEB-filed planning material includes additional data-centre connection capacity. IESO provides the broader 2,074-record connection application universe.",
+      "source_ids": [
+        "OEB-Vaughan-MTS6-2026",
+        "OEB-RICHMOND-HILL-2026",
+        "IESO-APPLICATION-STATUS-2026"
+      ]
+    },
+    {
+      "id": "ALBERTA_UTILITY_SERVICE",
+      "item": "Alberta utility/service records",
+      "status": "FOUND",
+      "coverage": "AESO publishes current connection project reporting and large-load contracts; EPCOR and AUC materials provide utility connection/tariff/regulatory evidence.",
+      "source_ids": [
+        "AESO-CONNECTION-REPORTING-2026",
+        "AESO-LARGE-LOAD-2026",
+        "AESO-CLUSTER2-2025",
+        "EPCOR-CETR-2026",
+        "EPCOR-DCS-2026"
+      ]
+    }
+  ],
+  "site_completion_rule": "For a specific Epoch site, mark a regulatory category COMPLETE only when a discrete docket/case/agreement/permit/study/service record can be tied to the physical site using public identifiers. Otherwise retain PARTIAL, NOT_PUBLIC, or NO_MATCH_FOUND.",
+  "current_epoch_rule": "All 93 Epoch sites already have a connection-match disposition. This regulatory checklist is a separate evidence layer and does not replace the 93-site connection audit.",
+  "sources": [
+    {
+      "id": "GA-DKT-44280",
+      "category": "PUC/commission docket",
+      "jurisdiction": "Georgia, US",
+      "provider": "Georgia Public Service Commission / Georgia Power",
+      "record": "Docket 44280 — recurring Large Load Contract filings",
+      "date": "2026-09-08",
+      "url": "https://psc.ga.gov/search/facts-document/?documentId=228337",
+      "description": "PSC filing 228337 is the September 8, 2026 Large Load Contract Summary filing in Docket 44280. The docket also contains multiple earlier 2026 executed-contract and filing records.",
+      "source_kind": "primary commission record"
+    },
+    {
+      "id": "GA-CONTRACT-SEP2026",
+      "category": "large-load contract",
+      "jurisdiction": "Georgia, US",
+      "provider": "Georgia Power",
+      "record": "Large Load Contract Summary — 9.8.26",
+      "date": "2026-09-08",
+      "url": "https://psc.ga.gov/search/facts-document/?documentId=228337",
+      "description": "Current public contract-summary filing for Georgia Power large-load customers.",
+      "source_kind": "primary commission record"
+    },
+    {
+      "id": "GA-DATACENTER-FACTS-2026",
+      "category": "rate/utility board filing framework",
+      "jurisdiction": "Georgia, US",
+      "provider": "Georgia Public Service Commission",
+      "record": "Data Center Facts and Figures",
+      "date": "2026-03",
+      "url": "https://psc.ga.gov/site/downloads/datacenterfactsheet.pdf",
+      "description": "PSC document describing large-load contract reporting, data-center rate treatment and generation planning related to large-load growth.",
+      "source_kind": "primary commission publication"
+    },
+    {
+      "id": "GA-LARGE-LOAD-REV-2026",
+      "category": "utility board filing",
+      "jurisdiction": "Georgia, US",
+      "provider": "Georgia Power / Georgia PSC",
+      "record": "Large Load Incremental Revenue Filing",
+      "date": "2026-08-27",
+      "url": "https://psc.ga.gov/search/facts-document/?documentId=228178",
+      "description": "PSC docket 44280 filing associated with Georgia Power's large-load incremental revenue filing and executed-contract record.",
+      "source_kind": "primary commission record"
+    },
+    {
+      "id": "GA-HILLS-BRIDGE-2026",
+      "category": "transmission upgrade",
+      "jurisdiction": "Georgia, US",
+      "provider": "Georgia Power",
+      "record": "Hills Bridge–Speedway 500 kV Transmission Project",
+      "date": "2026-09-26",
+      "url": "https://www.georgiapower.com/about/grid-reliability/grid-projects/transmission-projects/hills-bridge-speedway.html",
+      "description": "Georgia Power project page states the transmission project is being developed to serve a specific large-load customer; no project MW is inferred.",
+      "source_kind": "utility primary source"
+    },
+    {
+      "id": "VA-PUR-2025-00058",
+      "category": "rate case / large load",
+      "jurisdiction": "Virginia, US",
+      "provider": "Virginia SCC / Dominion Energy Virginia",
+      "record": "Case PUR-2025-00058 — 2025 Biennial Review",
+      "date": "2026-02-24",
+      "url": "https://www.scc.virginia.gov/about-the-scc/scc-facts/",
+      "description": "SCC identifies the case as the source of large-load customer safeguards, including the GS-5 class and minimum-charge treatment for large-load customers such as hyperscale data centers.",
+      "source_kind": "primary commission publication"
+    },
+    {
+      "id": "VA-PUR-2024-00179",
+      "category": "transmission-service project",
+      "jurisdiction": "Virginia, US",
+      "provider": "Virginia SCC / Dominion Energy Virginia",
+      "record": "Meadowville 230 kV Electric Transmission Project",
+      "date": "2024-11-06",
+      "url": "https://www.scc.virginia.gov/docketsearch/DOCS/82fk01%21.PDF",
+      "description": "Dominion filing states the project is to serve two data-center customers in Chesterfield County and identifies the Bermuda Hundred Switching Station and related transmission facilities.",
+      "source_kind": "primary commission filing",
+      "candidate_epoch_sites": [
+        "CoreWeave Chester VA"
+      ]
+    },
+    {
+      "id": "VA-PUR-2024-00170",
+      "category": "transmission-service project",
+      "jurisdiction": "Virginia, US",
+      "provider": "Virginia SCC / Dominion Energy Virginia",
+      "record": "Centreport Substation / transmission project",
+      "date": "2024-09-19",
+      "url": "https://www.scc.virginia.gov/docketsearch/DOCS/82d401%21.PDF",
+      "description": "Dominion application proposes new 230 kV facilities in Stafford County to serve a data-center customer; customer name is not public in the cited filing.",
+      "source_kind": "primary commission filing"
+    },
+    {
+      "id": "VA-PUR-2024-00144",
+      "category": "large-load planning docket",
+      "jurisdiction": "Virginia, US",
+      "provider": "Virginia SCC / Dominion Energy Virginia",
+      "record": "Ex Parte: Electric Utilities and Load Growth",
+      "date": "2024-12-10",
+      "url": "https://www.scc.virginia.gov/docketsearch/DOCS/82fk01%21.PDF",
+      "description": "Commission technical-conference docket addressing forecasting and providing service to large-load requests; Dominion submitted a data-center practice statement.",
+      "source_kind": "primary commission docket"
+    },
+    {
+      "id": "VA-TRANSMISSION-CASES-2026",
+      "category": "transmission project index",
+      "jurisdiction": "Virginia, US",
+      "provider": "Virginia SCC",
+      "record": "Recent transmission line cases",
+      "date": "2026-09-26",
+      "url": "https://www.scc.virginia.gov/consumers/public-utility/electricity-faqs/transmission-line-projects/",
+      "description": "SCC public index lists current data-center-related transmission cases including Doubs-Goose Creek, Firehouse, Golden-Mars and the Meadowville project.",
+      "source_kind": "primary commission index"
+    },
+    {
+      "id": "VA-DEQ-DATA-CENTERS-2026",
+      "category": "permit records",
+      "jurisdiction": "Virginia, US",
+      "provider": "Virginia DEQ",
+      "record": "Issued Air Permits for Data Centers",
+      "date": "2026-09-26",
+      "url": "https://www.deq.virginia.gov/news-info/shortcuts/permits/air/issued-air-permits-for-data-centers",
+      "description": "State regulator inventory of individual data-center permit identities, including operator/site names and permit numbers.",
+      "source_kind": "primary regulator inventory"
+    },
+    {
+      "id": "ERCOT-PROTOCOLS-2026",
+      "category": "load interconnection framework",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT",
+      "record": "Nodal Protocols — Large Load interconnection status reporting",
+      "date": "2026-02-01",
+      "url": "https://www.ercot.com/files/docs/2026/01/29/February-1-2026-Nodal-Protocols.pdf",
+      "description": "ERCOT protocol requires monthly Large Load interconnection status reporting with load zone, TSP, load type, submission date, requested energization, size range, status and co-location fields, subject to confidentiality.",
+      "source_kind": "primary RTO protocol"
+    },
+    {
+      "id": "ERCOT-LLI-2026",
+      "category": "interconnection/service agreement framework",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT",
+      "record": "Large Load Integration / Batch Zero",
+      "date": "2026-09-18",
+      "url": "https://www.ercot.com/services/rq/large-load-integration",
+      "description": "ERCOT's current Large Load Integration page provides Batch Zero eligibility, verification RFI and interconnection-study process documents.",
+      "source_kind": "primary RTO source"
+    },
+    {
+      "id": "ERCOT-BATCHZERO-RFI-2026",
+      "category": "verification / interconnection",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT",
+      "record": "Batch Zero Verification Requests for Information",
+      "date": "2026-09-09",
+      "url": "https://www.ercot.com/services/comm/mkt_notices/M-A090926-01",
+      "description": "ERCOT announced the issuance of Batch Zero verification RFIs to interconnecting large-load entities conditionally included in the process.",
+      "source_kind": "primary RTO notice"
+    },
+    {
+      "id": "ERCOT-IMPACT-RFI-2026",
+      "category": "state/community impact evidence",
+      "jurisdiction": "Texas, US",
+      "provider": "ERCOT / PUCT",
+      "record": "State and Community Impact RFI",
+      "date": "2026-09-14",
+      "url": "https://www.ercot.com/services/comm/mkt_notices/M-B091426-01",
+      "description": "ERCOT describes a joint ERCOT/PUCT data-center information request covering grid dependency, water, cooling, ownership and other site/community impacts.",
+      "source_kind": "primary RTO notice"
+    },
+    {
+      "id": "OEB-Vaughan-MTS6-2026",
+      "category": "distribution connection",
+      "jurisdiction": "Ontario, Canada",
+      "provider": "Alectra Utilities / OEB",
+      "record": "Vaughan MTS #6 — data-centre customer",
+      "date": "2026-09-26",
+      "url": "https://alectrautilities.com/VaughanMTS6",
+      "description": "Alectra public project page reports a data-centre customer maximum demand of 108 MVA for Vaughan MTS #6; the registry keeps MVA as reported rather than converting it to MW.",
+      "source_kind": "utility primary source"
+    },
+    {
+      "id": "OEB-RICHMOND-HILL-2026",
+      "category": "distribution planning / capacity",
+      "jurisdiction": "Ontario, Canada",
+      "provider": "OEB / Alectra Utilities",
+      "record": "Richmond Hill data-centre compound",
+      "date": "2026-01-22",
+      "url": "https://www.rds.oeb.ca/CMWebDrawer/Record/930773/File/document",
+      "description": "OEB-filed material identifies a Richmond Hill data-centre compound and states that 176 MW of total capacity was requested in the area; this is area-level requested capacity, not a single facility identifier.",
+      "source_kind": "primary regulatory filing"
+    },
+    {
+      "id": "IESO-APPLICATION-STATUS-2026",
+      "category": "connection application universe",
+      "jurisdiction": "Ontario, Canada",
+      "provider": "IESO",
+      "record": "Application Status — all connection proposals with executed agreements",
+      "date": "2026-09-10",
+      "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "description": "IESO publishes the application-status universe and says it covers all connection proposals with an application package and executed required agreement; 2,074 records are listed.",
+      "source_kind": "primary system operator registry"
+    },
+    {
+      "id": "IESO-TECH-FEAS-2026",
+      "category": "interconnection study",
+      "jurisdiction": "Ontario, Canada",
+      "provider": "IESO",
+      "record": "Technical Feasibility Study process",
+      "date": "2026-09-26",
+      "url": "https://www.ieso.ca/Sector-Participants/Connection-Process/Technical-Feasibility-Study",
+      "description": "IESO explains that technical feasibility studies are confidential and require an executed study agreement; public final technical-feasibility reports are not posted.",
+      "source_kind": "primary system operator process"
+    },
+    {
+      "id": "AESO-CONNECTION-REPORTING-2026",
+      "category": "connection project list",
+      "jurisdiction": "Alberta, Canada",
+      "provider": "AESO",
+      "record": "Connection Project Reporting / Project List",
+      "date": "2026-09-01",
+      "url": "https://www.aeso.ca/grid/transmission-projects/connection-project-reporting/",
+      "description": "AESO publishes monthly information for all projects following the Connection Process, including in-progress projects with accepted System Access Service Requests, recently energized and cancelled projects.",
+      "source_kind": "primary system operator registry"
+    },
+    {
+      "id": "AESO-LARGE-LOAD-2026",
+      "category": "large-load connection/service",
+      "jurisdiction": "Alberta, Canada",
+      "provider": "AESO",
+      "record": "Large Load Projects / executed load contracts",
+      "date": "2026-09-26",
+      "url": "https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/",
+      "description": "AESO states Phase 1 allocated 1,200 MW via executed load contracts and identifies P2936 GLDC Load (970 MW) and P3083 Keephills Data Centre Phase I (230 MW).",
+      "source_kind": "primary system operator source"
+    },
+    {
+      "id": "AESO-CLUSTER2-2025",
+      "category": "load study / transmission planning",
+      "jurisdiction": "Alberta, Canada",
+      "provider": "AESO",
+      "record": "Cluster 2 Stage 2 Congestion Assessment",
+      "date": "2025-12-15",
+      "url": "https://www.aeso.ca/assets/CTRL-Cluster-2-Stage-2-Congestion-Assessment.pdf",
+      "description": "AESO modelling explicitly includes the two Phase 1 large-data-center loads totaling 1,200 MW.",
+      "source_kind": "primary system operator study"
+    },
+    {
+      "id": "EPCOR-CETR-2026",
+      "category": "substation/transmission upgrade",
+      "jurisdiction": "Alberta, Canada",
+      "provider": "EPCOR / Alberta Utilities Commission",
+      "record": "City of Edmonton Transmission Reinforcement",
+      "date": "2026-03-27",
+      "url": "https://www.epcor.com/ca/en/ab/edmonton/operations/construction/projects/coe-transmission-reinforcement.html",
+      "description": "EPCOR states the AUC approved the project on March 27, 2026 and describes a new substation, 240 kV and 72 kV transmission facilities and the regulatory approval path.",
+      "source_kind": "utility primary source"
+    },
+    {
+      "id": "EPCOR-DCS-2026",
+      "category": "distribution service agreement / tariff",
+      "jurisdiction": "Alberta, Canada",
+      "provider": "EPCOR Distribution & Transmission Inc.",
+      "record": "Distribution Connection Service Terms and Conditions",
+      "date": "2026-01-01",
+      "url": "https://www.epcor.com/content/dam/epcor/documents/supporting-documents/2026-01-distribution-connection-services-terms-and-conditions.pdf",
+      "description": "EPCOR's current service terms define load customers, points of service and interconnection facilities in Alberta's distribution system.",
+      "source_kind": "utility tariff/terms"
+    }
+  ],
+  "site_targeting": {
+    "total_epoch_sites": 93,
+    "source_family_assignment": "Every Epoch site should be queried against its applicable national/RTO/utility/commission source family before a site is marked NO_MATCH_FOUND.",
+    "current_site_specific_regulatory_evidence_sites": 65,
+    "method": "Counted Epoch site records with at least one retained utility/regulatory/interconnection-style assertion in the current site evidence layer. This is evidence coverage, not proof of a formal docket for every site."
+  }
+}
