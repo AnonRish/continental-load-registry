@@ -51,6 +51,15 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/track3/research_work_queue.json data/track3/research_work_queue.csv data/track3/research_backlog_summary.json
           git diff --cached --quiet || git commit -m "Refresh Track 3 research backlog"
-          git fetch origin main
-          git rebase --autostash origin/main
-          git push origin HEAD:main
+          if git diff --quiet HEAD^ HEAD 2>/dev/null; then
+            echo "No research backlog commit created."
+            exit 0
+          fi
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git merge -X ours origin/main --no-edit
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" -eq 3 ]; then exit 1; fi
+          done
