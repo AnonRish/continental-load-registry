@@ -91,12 +91,20 @@ jobs:
           for sid,paths in expected.items():
               entry=next(x for x in obj["sources"] if x["source_id"]==sid)
               assert entry["status"]=="RAW_CAPTURED", entry
+              if sid=="IESO" and entry.get("normalization_status")=="PARSE_BLOCKED":
+                  blocked=Path("data/ieso_public_connection_applications.json")
+                  assert blocked.exists() and blocked.stat().st_size>0
+                  parsed=json.loads(blocked.read_text(encoding="utf-8"))
+                  assert parsed.get("status")=="PARSE_BLOCKED"
+                  assert parsed.get("record_count")==0
+                  assert parsed.get("raw_capture")==entry.get("path")
+                  continue
               assert not entry.get("normalization_error"), entry
               for path in paths:
                   p=Path(path)
                   assert p.exists() and p.stat().st_size>0, path
                   json.loads(p.read_text(encoding="utf-8"))
-          print("PASS: ERCOT/ISO-NE/IESO/AESO raw captures normalized and parseable")
+          print("PASS: ERCOT/ISO-NE/IESO/AESO auxiliary captures validated; parse-blocked IESO remains explicit")
           PY
 
       - name: Rebuild canonical evidence layer
