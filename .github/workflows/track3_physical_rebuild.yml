@@ -1,15 +1,8 @@
-name: Track 3 Physical Evidence Rebuild
-
-
 on:
   workflow_dispatch:
 
 permissions:
   contents: write
-
-concurrency:
-  group: track3-physical-rebuild-main
-  cancel-in-progress: true
 
 concurrency:
   group: track3-physical-rebuild-main
@@ -66,17 +59,26 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/physical_verification_layer.json             data/track3/physical_site_coordinates.json             data/track3/remote_sensing_observations.json             data/track3/remote_sensing_observations.csv             data/track3/transformer_supply_chain_events.json             data/track3/transformer_supply_chain_events.csv             data/track3/transformer_event_targets.csv             data/track3_source_stack.json             data/track3_evidence_schema.json             data/track3/site_status.json             data/track3/evidence_records.json             data/track3/summary.json
+          git add -A data/physical_verification_layer.json data/track3_evidence_schema.json \
+            data/track3/physical_site_coordinates.json data/track3/remote_sensing_observations.json \
+            data/track3/remote_sensing_observations.csv data/track3/transformer_supply_chain_events.json \
+            data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
+            data/track3/site_status.json data/track3/evidence_records.json data/track3/summary.json
           if git diff --cached --quiet; then
             echo "No physical artifact changes."
             exit 0
           fi
           git commit -m "Publish Track 3 physical verification observations"
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git merge -X ours origin/main --no-edit
-            if git push origin HEAD:main; then
-              break
+            if git rebase -X theirs origin/main; then
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+            else
+              git rebase --abort || true
             fi
-            if [ "$attempt" -eq 3 ]; then exit 1; fi
+            sleep 3
           done
+          echo "Unable to publish physical artifacts after retries."
+          exit 1
