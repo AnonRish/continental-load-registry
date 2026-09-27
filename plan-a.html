@@ -54,6 +54,12 @@ footer{border-top:1px solid var(--line);margin-top:28px;padding:22px 0 40px}
 </div>
 <p class="soft" style="margin-bottom:0">AI 2040's public Track 3 page identifies the goal as verifying the absence of secret compute. The Covert AI Projects supplement describes accounting for pre-deal compute, tracing sales/resales to physical end use, and locating remaining unaccounted compute.</p>
 </section>
+<div class="cards" style="margin-top:10px">
+  <div class="card"><div class="num mono">0</div><div class="label">Open site-specific grid research rows</div></div>
+  <div class="card"><div class="num mono">20</div><div class="label">Documented no-public-record outcomes</div></div>
+  <div class="card"><div class="num mono">192</div><div class="label">Canonical Track 3 evidence records</div></div>
+  <div class="card"><div class="num mono">93</div><div class="label">Remote-sensing acquisition targets</div></div>
+</div>
 <section class="section"><div id="cards" class="cards"></div></section>
 <section class="section panel">
 <h2>Plan A → repository contribution map</h2>
@@ -68,8 +74,8 @@ footer{border-top:1px solid var(--line);margin-top:28px;padding:22px 0 40px}
 <a class="btn" href="data/large_load_scope.json">Scope accounting</a><a class="btn" href="data/public_data_catalog.json">Complete data catalog</a>
 <a class="btn" href="data/project_level_extractions.json">199 project records</a>
 <a class="btn" href="data/project_level_map.json">Map records</a>
-<a class="btn" href="data/epoch_connection_research_targets.json">93 Epoch targets</a>
-<a class="btn" href="data/epoch_site_evidence_records.json">68 site evidence assertions</a>
+<a class="btn" href="data/epoch_connection_research_targets.json">93 Epoch targets</a><a class="btn" href="data/track3/public_site_dossier.json">Complete 93-site dossier</a>
+<a class="btn" href="data/track3/evidence_records.json">192 Track 3 evidence records</a>
 <a class="btn" href="data/supplemental_large_load_evidence.json">47 supplemental units</a>
 </div>
 </section>
@@ -126,7 +132,7 @@ https://github.com/AnonRish/continental-load-registry</pre>
       ['Observation tasks',s.observation_task_count||0,'Current state-dependent acquisition backlog']
     ].map(x=>'<div class="card"><div class="num mono">'+esc(x[0]==='Mapped elements'?x[1]:x[1])+'</div><div style="font-weight:600">'+esc(x[0])+'</div><div class="label">'+esc(x[2])+'</div></div>').join('');
     document.getElementById('map').innerHTML=ms.map(x=>{
-      const st=x.status==='INGESTED_SNAPSHOT'?'snap':'partial';
+      const st=x.status==='INGESTED_SNAPSHOT'?'snap':(x.status==='FRAMEWORK_IMPLEMENTED'?'snap':'partial');
       return '<tr><td><strong>'+esc(x.track3_element)+'</strong><div class="faint" style="margin-top:3px">'+esc(x.ai2040_reference)+'</div></td><td><code>'+esc((x.repo_artifacts||[]).join(', '))+'</code></td><td><span class="badge '+st+'">'+esc(x.status)+'</span></td><td>'+esc(x.contribution)+'</td></tr>';
     }).join('');
   }catch(e){
