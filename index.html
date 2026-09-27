@@ -3230,7 +3230,7 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
   sections.forEach(s=>{
     const id=s.id||'';
     let v=viewForId[id];
-    if(!v) v=s.querySelector('.observatory-visuals')?'overview':(s.textContent.includes('Nine-market core')?'overview':(s.textContent.trim().startsWith('Regulatory filings')?'method':'overview'));
+    if(!v) v=s.querySelector('.observatory-visuals')?'overview':(s.textContent.includes('Nine-market core')?'coverage':(s.textContent.trim().startsWith('Regulatory filings')?'method':'reference'));
     s.dataset.registryView=v;
   });
   const mapHost=document.getElementById('registryMap');
@@ -3240,7 +3240,7 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
   // First top-level block is the scope note; the historical snapshot is coverage;
   // the third top-level block is the map. Keep them in the same focused-view model
   // as the section-level research modules.
-  if(divs[0]) divs[0].dataset.registryView='overview';
+  if(divs[0]) divs[0].dataset.registryView='coverage';
   if(divs[1]) divs[1].dataset.registryView='coverage';
   if(divs[2] && !divs[2].dataset.registryView) divs[2].dataset.registryView='map';
   const tabs=[...document.querySelectorAll('.registry-tab')];
