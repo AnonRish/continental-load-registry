@@ -490,6 +490,57 @@ def build_observation_queue(site_records: list[dict[str, Any]]) -> list[dict[str
                 })
     return tasks
 
+def refresh_website_completeness_audit(summary: dict[str, Any], evidence_count: int) -> None:
+    """Keep the public audit synchronized with generated Track 3 artifacts."""
+    path = ROOT / "data" / "website_completeness_audit.json"
+    if not path.exists():
+        return
+    audit = load_json(path)
+    large_scope_path = ROOT / "data" / "large_load_scope.json"
+    if large_scope_path.exists():
+        scope = load_json(large_scope_path)
+        core = scope.get("current_core_scope", scope.get("current_core_registry", {}))
+        broad = scope.get("expanded_known_scope", {})
+        audit.setdefault("summary", {}).update({
+            "current_core_registry_rows": core.get("records"),
+            "current_core_capacity_gw": core.get("capacity_gw"),
+            "broader_known_scope_rows": broad.get("records"),
+            "broader_known_scope_capacity_gw": broad.get("capacity_gw"),
+            "project_records": scope.get("project_level_extractions", {}).get("records"),
+            "current_epoch_sites": len(summary.get("epoch_site_count", []) if isinstance(summary.get("epoch_site_count"), list) else summary.get("epoch_site_count", 0) and [0]),
+        })
+    s = audit.setdefault("summary", {})
+    s["current_epoch_sites"] = summary.get("epoch_site_count")
+    s["track3_evidence_records"] = evidence_count
+    s["remote_sensing_processed"] = summary.get("remote_sensing_derived_observation_count", 0)
+    s["transformer_events"] = summary.get("transformer_event_count", 0)
+    s["public_web_enrichment_records"] = summary.get("public_web_evidence_record_count", 0)
+    s["public_web_enrichment_sites"] = summary.get("public_web_evidence_site_count", 0)
+    s["researched_no_public_record"] = summary.get("research_completed_no_public_record_count", 0)
+    physical_path = ROOT / "data" / "physical_verification_layer.json"
+    if physical_path.exists():
+        physical = load_json(physical_path)
+        ps = physical.get("summary", {})
+        for key in ("optical_sites", "tir_sites", "sar_sites", "raw_optical_scenes_ingested",
+                    "raw_tir_numeric_observations", "raw_sar_numeric_observations",
+                    "building_footprint_polygon_site_count", "building_footprint_polygon_count",
+                    "substation_evidence_count", "transmission_evidence_count"):
+            if key in ps:
+                s["physical_" + key] = ps[key]
+    p = next((x for x in audit.get("sections", []) if x.get("section") == "Physical verification layer"), None)
+    if p is not None:
+        p["status"] = "POPULATED"
+        p["artifact"] = "data/physical_verification_layer.json + data/track3/remote_sensing_observations.json + data/track3/building_footprints_index.json"
+        p["detail"] = (
+            f"{summary.get('epoch_site_count')} Epoch sites targeted; "
+            f"{summary.get('remote_sensing_derived_observation_count', 0)} retained derived remote-sensing observations; "
+            f"{summary.get('transformer_event_count', 0)} transformer events; "
+            "unresolved geocoding and unavailable public records remain explicit."
+        )
+    audit["generated_on"] = datetime.now(timezone.utc).date().isoformat()
+    path.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     reg = load_json(REGISTRY)
@@ -759,6 +810,7 @@ def main() -> int:
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    refresh_website_completeness_audit(summary, len(evidence_index))
 
     print(json.dumps(summary, indent=2))
     return 0
