@@ -425,29 +425,32 @@
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
       <div><p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Track 3 · physical verification</p>
         <h2 class="font-serif-display text-xl mt-1">Physical verification layer</h2>
-        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Raw remote-sensing measurements are kept separate from public-source physical evidence. Optical/TIR/SAR sources are cataloged as acquisition targets; raw scenes and derived deltas remain explicitly un-ingested. Construction chronology, construction-to-power timelines, permits and selected cooling observations are represented.</p></div>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Remote-sensing and footprint acquisition are now first-class Track 3 evidence streams. The repository retains compact derived measurements, scene provenance and current building polygons while keeping full source rasters external. Construction chronology, construction-to-power timelines, permits, cooling observations and transformer events remain separate evidence classes.</p></div>
       <div class="flex flex-wrap gap-2">
         <a href="data/physical_verification_layer.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open physical layer JSON</a>
         <a href="data/physical_verification_layer.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download site CSV</a>
         <a href="data/track3/remote_sensing_observations.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open satellite observation ledger</a>
         <a href="data/track3/remote_sensing_observations.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download satellite CSV</a>
         <a href="data/track3/transformer_supply_chain_events.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open transformer event ledger</a>
+        <a href="data/track3/transformer_event_targets.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download 93 transformer targets</a>
+        <a href="data/track3/building_footprints_index.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open building footprint index</a>
         <a href="https://dataspace.copernicus.eu/explore-data" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open Copernicus Browser</a>
       </div>
     </div>
-    <div class="grid grid-cols-2 lg:grid-cols-6 gap-px mt-5 panel rounded-lg overflow-hidden">
+    <div class="grid grid-cols-2 lg:grid-cols-7 gap-px mt-5 panel rounded-lg overflow-hidden">
       <div class="p-4"><p id="physicalEpochSites" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
       <div class="p-4"><p id="physicalConstructionTimelines" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction timelines</p></div>
       <div class="p-4"><p id="physicalPowerTimelines" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction → power timelines</p></div>
       <div class="p-4"><p id="physicalCoolingSites" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Cooling snapshot sites</p></div>
       <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
       <div class="p-4"><p id="physicalTransformerEvents" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Transformer events</p></div>
+      <div class="p-4"><p id="physicalFootprintPolygons" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Building polygons</p></div>
     </div>
     <div class="scroll-x mt-5"><table class="w-full text-xs min-w-[1250px]"><thead><tr><th class="px-3 py-2">Physical-verification item</th><th class="px-3 py-2">Status</th><th class="px-3 py-2">Current coverage</th><th class="px-3 py-2">Sources</th></tr></thead>
       <tbody id="physicalVerificationBody"><tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading physical verification layer…</td></tr></tbody></table></div>
     <div class="panel rounded-lg p-4 mt-5"><h3 class="font-serif-display text-base">Physical acquisition boundary</h3>
       <p class="text-xs mt-2" style="color:var(--ink-soft);">The acquisition workflow now reads public raw COG windows from Sentinel-2, Sentinel-1 and Landsat Collection 2 ST scenes and stores compact, site-specific derived metrics plus scene provenance. Full rasters are deliberately not committed to Git. Optical non-vegetated/NDVI values are coarse campus-change proxies; Landsat thermal values are surface-temperature/local-background metrics; Sentinel-1 values are VV/VH backscatter metrics. None is treated as proof of compute activity by itself.</p>
-      <p class="text-xs mt-3" style="color:var(--ink-faint);">Transformer procurement/delivery/installation evidence remains a separate source-backed event ledger. The 93-site transformer research queue is active; an empty event count is not evidence that transformers are absent.</p></div>
+      <p class="text-xs mt-3" style="color:var(--ink-faint);">Transformer procurement/delivery/installation evidence remains a separate source-backed event ledger. Current source-backed records are retained without filling unknown manufacturer, model, rating or date fields. The 93-site transformer research queue remains active; missing events are not evidence that transformers are absent. Current building polygons are geometry evidence only and do not establish AI tenancy.</p></div>
   </section>
 
   <!-- ============ COMPLETE PROJECT LEDGER ============ -->
@@ -2637,6 +2640,7 @@ fetch('data/physical_verification_layer.json?v=2',{cache:'no-store'}).then(funct
     Number(s.raw_optical_scenes_ingested||0)+Number(s.raw_tir_numeric_observations||0)+Number(s.raw_sar_numeric_observations||0)
   );
   set('physicalTransformerEvents', s.transformer_event_records);
+  set('physicalFootprintPolygons', s.building_footprint_polygon_count);
 }).catch(function(err){const body=document.getElementById('physicalVerificationBody');if(body)body.innerHTML='<tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Physical verification layer unavailable: '+escPV(err.message)+'</td></tr>';});})();</script>
 </body>
 </html>
