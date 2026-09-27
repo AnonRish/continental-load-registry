@@ -1,3 +1,4 @@
+# Live refresh trigger from full-registry completion pass.
 #!/usr/bin/env python3
 from __future__ import annotations
 import argparse,datetime,io,json,re
