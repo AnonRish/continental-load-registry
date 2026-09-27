@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "record_count": 414,
+  "record_count": 416,
   "records": [
     {
       "evidence_id": "EVID-965d5929a63b58845c8a",
@@ -11103,6 +11103,64 @@
       "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
       "public_field": "service_or_contract",
       "relationship": "site-specific power service contract"
+    },
+    {
+      "evidence_id": "EVID-PWEB-batch3-google-storey-county-cool-0",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-2b89e13933a04725",
+      "target_name": "Google Storey County",
+      "domain": "cooling",
+      "evidence_type": "public_web_enrichment",
+      "claim_scope": "site_level",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "source_kind": "public web enrichment",
+      "source_name": "Google",
+      "source_url": "https://economicimpact.google/state/nv/",
+      "source_urls": [
+        "https://economicimpact.google/state/nv/"
+      ],
+      "observed_on": "2026-09-27",
+      "captured_on": "2026-09-27",
+      "confidence": "public_source_capture",
+      "basis": "Google's Nevada page says the Storey County campus is primarily air-cooled.",
+      "record_id": "cooling",
+      "authority": "Google",
+      "raw_value": "Primarily air-cooled",
+      "normalized_value": "Primarily air-cooled",
+      "site_specific": true,
+      "independent_of_other_source": null,
+      "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+      "public_field": "cooling",
+      "relationship": "publicly identified cooling architecture"
+    },
+    {
+      "evidence_id": "EVID-PWEB-batch3-meta-gallatin-cool-1",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-d29894d37388a96a",
+      "target_name": "Meta Gallatin",
+      "domain": "cooling",
+      "evidence_type": "public_web_enrichment",
+      "claim_scope": "site_level",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "source_kind": "public web enrichment",
+      "source_name": "DPR Construction",
+      "source_url": "https://www.dpr.com/projects/facebook-gallatin-data-center",
+      "source_urls": [
+        "https://www.dpr.com/projects/facebook-gallatin-data-center"
+      ],
+      "observed_on": null,
+      "captured_on": "2026-09-27",
+      "confidence": "public_source_capture",
+      "basis": "DPR's project page describes the Gallatin site as using direct air cooling with outside air and fan technology.",
+      "record_id": "cooling",
+      "authority": "DPR Construction",
+      "raw_value": "Direct-air cooling using outside air and fans",
+      "normalized_value": "Direct-air cooling using outside air and fans",
+      "site_specific": true,
+      "independent_of_other_source": null,
+      "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+      "public_field": "cooling",
+      "relationship": "site cooling architecture"
     }
   ]
 }
