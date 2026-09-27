@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T16:40:00Z",
+  "generated_at_utc": "2026-09-27T16:45:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
@@ -4145,7 +4145,104 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Epoch AI's dated satellite observations record land clearing in 2024, foundations for Buildings 1-4, generator/cooling installation, and Building 1 operational in August 2026.",
       "evidence_id": "EVID-PWEB-7882ba53"
+    },
+    {
+      "site_name": "Amazon Ridgeland",
+      "epoch_id": "EPOCH-4a87099a6d1e001f",
+      "field": "project",
+      "value": "Project Atlas - Infrastructure and Utility Improvements",
+      "relationship": "named site/infrastructure project in Mississippi permit filing",
+      "source": "Mississippi Department of Environmental Quality (LCNOI)",
+      "source_urls": [
+        "https://opc.deq.state.ms.us/get_doc.aspx?dt=pdf&id=1781710"
+      ],
+      "publication_date": "2025-04-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The filing identifies Amazon Data Services as owner and names the facility site as Project Atlas - Infrastructure and Utility Improvements at W County Line Road, Ridgeland, MS. This is an associated infrastructure/utility project record, not a claim about the entire data-center campus.",
+      "evidence_id": "EVID-PWEB-5f8337fa"
+    },
+    {
+      "site_name": "Amazon Ridgeland",
+      "epoch_id": "EPOCH-4a87099a6d1e001f",
+      "field": "construction_companies",
+      "value": "Hemphill Construction Co. Inc.",
+      "relationship": "prime contractor for Project Atlas infrastructure and utility improvements",
+      "source": "Mississippi Department of Environmental Quality (LCNOI)",
+      "source_urls": [
+        "https://opc.deq.state.ms.us/get_doc.aspx?dt=pdf&id=1781710"
+      ],
+      "publication_date": "2025-04-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The Mississippi filing names Hemphill Construction Co. Inc. as prime contractor and Amazon Data Services as owner for the stated site project at W County Line Road.",
+      "evidence_id": "EVID-PWEB-3ca9f8d6"
+    },
+    {
+      "site_name": "Meta Jeffersonville",
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "field": "construction_companies",
+      "value": "Turner Construction",
+      "relationship": "general contractor / construction management",
+      "source": "HOCHTIEF / Turner Construction",
+      "source_urls": [
+        "https://www.hochtief.com/news-media/press-releases/press-release/hochtief-subsidiary-to-build-hyperscale-data-center-for-meta-in-the-us"
+      ],
+      "publication_date": "2024-01-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "HOCHTIEF states Turner was awarded the contract to manage construction of Meta's Jeffersonville data center campus and reports more than 1,250 construction workers at peak.",
+      "evidence_id": "EVID-PWEB-2b19b137"
+    },
+    {
+      "site_name": "Meta Jeffersonville",
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "field": "cooling",
+      "value": "68 air-cooled chillers; modeled 229.8 MW cooling capacity",
+      "relationship": "cooling equipment / Epoch AI model",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/meta-jeffersonville"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch AI reports 68 air-cooled chillers with modeled 229.8 MW total cooling capacity. This is model-derived equipment information, not direct electrical telemetry.",
+      "evidence_id": "EVID-PWEB-bf7f3217"
+    },
+    {
+      "site_name": "Meta Rosemount",
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "field": "cooling",
+      "value": "Water-efficient cooling technology; Meta states the design is significantly more water efficient than industry standard",
+      "relationship": "official facility cooling disclosure",
+      "source": "Meta",
+      "source_urls": [
+        "https://datacenters.atmeta.com/wp-content/uploads/2024/10/Minnesota-Rosemount.pdf"
+      ],
+      "publication_date": "2024-10-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's Rosemount fact sheet describes the campus cooling design qualitatively and does not supply a numeric cooling capacity in the cited passage.",
+      "evidence_id": "EVID-PWEB-b2354bf9"
+    },
+    {
+      "site_name": "Google Pryor (North)",
+      "epoch_id": "EPOCH-ea699c935d46e066",
+      "field": "project",
+      "value": "Google Pryor Data Center Campus (Mayes County Expansion)",
+      "relationship": "named campus/project identity",
+      "source": "SUE Data Centers / Google",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/google-pryor-ok",
+        "https://www.datacenters.google/locations/oklahoma/"
+      ],
+      "publication_date": "2026-09-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Public records identify Google's Pryor site as the Mayes County expansion/data center campus. This is retained as a campus identity and should not be used to collapse distinct Epoch sub-sites.",
+      "evidence_id": "EVID-PWEB-6be6931b"
     }
   ],
-  "record_count": 253
+  "record_count": 259
 }
