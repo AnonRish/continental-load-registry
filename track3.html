@@ -248,6 +248,16 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </section>
 
 <section class="section panel" style="padding:16px">
+<h2>Fresh public-web enrichment capture</h2>
+<p id="webEnrichmentMeta" class="soft small">Loading newly captured site-level public facts…</p>
+<div class="tools" style="margin-top:10px">
+<a class="btn" href="data/track3/public_web_enrichment_2026-09-27.json" target="_blank" rel="noopener">Open public-web ledger</a>
+</div>
+<div id="webEnrichmentCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Field</th><th>Captured public value</th><th>Relationship / scope</th><th>Source</th><th>Date</th></tr></thead><tbody id="webEnrichmentRows"></tbody></table></div>
+</section>
+
+<section class="section panel" style="padding:16px">
 <h2>Automated pipeline</h2>
 <p id="autoMeta" class="soft small">Loading…</p>
 <div class="tools" style="margin-top:10px"><a class="btn" href="data/automation/data_quality_report.json">Data-quality report</a><a class="btn" href="data/automation/source_health.json">Source health</a><a class="btn" href="data/automation/adapter_run_report.json">Adapter runs</a><a class="btn" href="data/automation/queue_release_diff.json">Queue release diff</a><a class="btn" href="data/automation/duplicate_report.json">Duplicate report</a><a class="btn" href="data/automation/geographic_match_report.json">Geographic report</a><a class="btn" href="TRACK3_AUTOMATION.md">Automation procedure</a></div>
@@ -391,7 +401,8 @@ const U={
  module1:'data/module1_radar_spec.json',
  audit:'data/module1_radar_summary.json',
  epoch:'data/external/epoch_ai/registry.json',
- dossier:'data/track3/public_site_dossier.json'
+ dossier:'data/track3/public_site_dossier.json',
+ web_enrichment:'data/track3/public_web_enrichment_2026-09-27.json'
 };
 let D={},filteredSites=[];
 const domains=['site_identity','grid_connection','service_or_contract','regulatory','construction','power_telemetry','remote_sensing','cooling','transformer_supply_chain','chip_inventory','chip_ownership','chip_users','chip_shipments','independent_corroboration','compute_tenancy'];
@@ -660,7 +671,23 @@ function renderPhysical(){
  (D.cooling||[]).forEach(o=>rows.push({site:o.site_name,type:'Cooling',date:o.observed_on,value:fmt(o.capacity)+' '+(o.capacity_units||''),detail:(o.equipment_type||'')+' · '+(o.manufacturer||'')+' · '+(o.model||'')+' · '+fmt(o.units)+' units',source:o.source?.source_name,link:o.source?.source_url}));
  const ps=D.physical?.summary||{};document.getElementById('observationsSummary').innerHTML='<div class="domain-card"><h3>'+esc((D.power||[]).length)+'</h3><p>site-level annual power observations</p></div><div class="domain-card"><h3>'+esc((D.cooling||[]).length)+'</h3><p>site-level cooling observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_tir_numeric_observations||0)+'</h3><p>Landsat TIR numeric observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_sar_numeric_observations||0)+'</h3><p>Sentinel-1 SAR observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_optical_scenes_ingested||0)+'</h3><p>Sentinel-2 optical scene windows</p></div><div class="domain-card"><h3>'+esc(ps.transformer_event_records||0)+'</h3><p>source-backed transformer events</p></div>';
  document.getElementById('physicalRows').innerHTML=rows.map(x=>'<tr><td>'+esc(x.site)+'</td><td>'+esc(x.type)+'</td><td>'+esc(x.date||'—')+'</td><td class="mono">'+esc(x.value)+'</td><td>'+esc(x.detail||'—')+'</td><td>'+(x.link?'<a target="_blank" rel="noopener" href="'+esc(x.link)+'">'+esc(x.source||'source')+'</a>':'—')+'</td></tr>').join('');
-}function renderAutomation(){
+}function renderWebEnrichment(){
+ const q=D.web_enrichment||{}, rows=q.records||[], acc=q.accounting||{};
+ const sites=new Set(rows.map(x=>x.epoch_id).filter(Boolean)).size;
+ document.getElementById('webEnrichmentMeta').textContent=(acc.record_count||rows.length)+' newly captured public facts across '+sites+' canonical sites; raw Epoch values are not overwritten.';
+ const fieldCounts=Object.entries(acc.field_counts||{}).sort((a,b)=>b[1]-a[1]);
+ document.getElementById('webEnrichmentCards').innerHTML=[
+   [rows.length,'captured facts','additive public-web ledger'],
+   [sites,'canonical sites touched','93-site universe'],
+   [fieldCounts.length,'fields enriched','publisher + operational fields'],
+   [(acc.disposition_counts||{}).PUBLIC_SOURCE_CAPTURED||0,'source-captured records','site-level public evidence']
+ ].map(x=>'<div class="domain-card"><h3>'+esc(fmt(x[0]))+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
+ document.getElementById('webEnrichmentRows').innerHTML=rows.map(x=>{
+   const val=Array.isArray(x.value)?x.value.join('; '):String(x.value??'');
+   return '<tr><td><strong>'+esc(x.site_name||'—')+'</strong><div class="mono faint">'+esc(x.epoch_id||'aggregate')+'</div></td><td>'+esc(x.field||'—')+'</td><td class="small">'+esc(val)+'</td><td class="small">'+esc(x.relationship||'—')+'<br><span class="faint">'+esc(x.scope_note||'')+'</span></td><td><strong>'+esc(x.source||'—')+'</strong><div class="small mono">'+esc((x.source_urls||[]).join(' · '))+'</div></td><td class="mono">'+esc(x.publication_date||x.capture_date||'—')+'</td></tr>';
+ }).join('') || '<tr><td colspan="6" class="faint">No additive public-web records loaded.</td></tr>';
+}
+function renderAutomation(){
  const q=D.automation||{},s=q.summary||{};
  document.getElementById('autoMeta').textContent=(s.source_count||0)+' cataloged sources · '+(s.automated_adapter_sources||0)+' automated adapters · '+(s.healthcheck_or_snapshot_only_sources||0)+' healthcheck/snapshot-only sources · '+(s.remote_source_failures||0)+' remote failures.';
  document.getElementById('autoCards').innerHTML=[[(s.source_count||0),'cataloged sources','unified source control plane'],[(s.automated_adapter_sources||0),'automated adapters','live parser/sync workflows'],[(s.healthcheck_or_snapshot_only_sources||0),'non-ingest sources','explicitly not called ingested'],[(s.queue_added||0),'queue additions','last release diff'],[(s.queue_removed||0),'queue removals','last release diff'],[(s.duplicate_id_groups||0),'duplicate ID groups','data-quality findings'],[(s.remote_source_failures||0),'source failures','automated alert threshold']].map(x=>'<div class="domain-card"><h3>'+esc(fmt(x[0]))+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
@@ -827,8 +854,9 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  try { D.coords=await fetch('data/track3/remote_sensing_observation_targets.json',{cache:'no-store'}).then(res=>res.ok?res.json():{records:[]}); } catch(_err) { D.coords={records:[]}; }
+ try { D.web_enrichment=await fetch(U.web_enrichment,{cache:'no-store'}).then(res=>res.ok?res.json():{records:[]}); } catch(_err) { D.web_enrichment={records:[]}; }
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];try{D.automation=await fetch('data/automation/data_quality_report.json',{cache:'no-store'}).then(res=>res.ok?res.json():{summary:{}});}catch(_err){D.automation={summary:{}};}
- renderProgressCharts();renderCards();renderSweep();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderStateBar();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();renderDossier();
+ renderProgressCharts();renderCards();renderSweep();renderWebEnrichment();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderStateBar();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();renderDossier();
 }
 document.getElementById('sweepSearch').addEventListener('input',renderSweep);document.getElementById('sweepView').addEventListener('change',renderSweep);document.getElementById('search').addEventListener('input',renderSites);['siteSort','siteCountry','siteProvince','siteUtility','siteOwner'].forEach(id=>document.getElementById(id).addEventListener('change',renderSites));document.getElementById('siteState').addEventListener('change',()=>{renderStateBar();renderSites();});
 document.querySelectorAll('[data-download-facility]').forEach(b=>b.addEventListener('click',async()=>{const fid=b.getAttribute('data-download-facility');const rec={facility_id:fid,site:(D.sites||[]).find(x=>x.epoch_id===fid),epoch:(D.epoch?.records||[]).find(x=>x.epoch_id===fid),evidence:(D.evidence||[]).filter(x=>x.target_id===fid),provenance:(D.provenance?.facilities||[]).find(x=>x.facility_id===fid),verification:(D.verification_results?.results||[]).filter(x=>x.facility_id===fid)};const url=URL.createObjectURL(new Blob([JSON.stringify(rec,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=fid+'.track3.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}));document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
