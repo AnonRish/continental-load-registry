@@ -1,0 +1,3719 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Epoch AI public enrichment bridge",
+  "purpose": "Make every one of the 93 Epoch site records explicit about what additional public project facts have been captured from independent/public sources, while preserving a field-by-field disclosure boundary.",
+  "record_count": 93,
+  "source_catalog": [
+    {
+      "name": "Intel Accelerator · Verified AI Data Center Registry",
+      "url": "https://intelaccelerator.com/projects",
+      "accessed_on": "2026-09-27",
+      "notes": "Separate public enrichment layer. It may expose program/EPC/energy-partner facts not present in Epoch's publisher CSV. It is never used to overwrite Epoch IT-power accounting or invent queue IDs."
+    }
+  ],
+  "summary": {
+    "site_count": 93,
+    "enriched_site_count": 93,
+    "field_source_capture_counts": {
+      "public_owner": 92,
+      "public_users": 68,
+      "public_address": 80,
+      "grid_operator": 66,
+      "public_program": 18,
+      "energy_partners": 50,
+      "construction_epc": 6
+    },
+    "blank_values_policy": "Blank means the retained source set did not expose a defensible value. The accompanying field_status makes the distinction explicit; blanks are never interpreted as zero or absence."
+  },
+  "records": [
+    {
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "site_name": "Colossus 2",
+      "country": "United States",
+      "epoch_address": "5420 Tulane Rd, Memphis, TN 38109",
+      "epoch_owner": "SpaceXAI #confident",
+      "epoch_users": "Anthropic #confident, Cursor #confident, SpaceXAI #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "SpaceXAI #confident",
+      "public_users": "Anthropic #confident, Cursor #confident, SpaceXAI #confident",
+      "public_address": "5420 Tulane Rd, Memphis, TN 38109",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Tennessee Valley Authority",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/xai-colossus-2-ff09d693",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "site_name": "Microsoft Fairwater Atlanta",
+      "country": "United States",
+      "epoch_address": "1435 Hwy 54 W, Fayetteville, GA 30214",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "OpenAI #likely, Microsoft #likely",
+      "epoch_project": "Microsoft AI WAN #confident",
+      "public_program": "Microsoft AI WAN",
+      "public_owner": "Microsoft #confident",
+      "public_users": "OpenAI #likely, Microsoft #likely",
+      "public_address": "1435 Hwy 54 W, Fayetteville, GA 30214",
+      "construction_epc": [],
+      "energy_partners": [
+        "Georgia Power"
+      ],
+      "public_grid_operator": "Southern Company",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Microsoft AI WAN and Georgia Power.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/microsoft-fairwater-atlanta-9f8f329f",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "country": "United States",
+      "epoch_address": "55001 Larrison Blvd, New Carlisle, IN 46552",
+      "epoch_owner": "Amazon #confident",
+      "epoch_users": "Anthropic #confident",
+      "epoch_project": "Project Rainier #confident",
+      "public_program": "Project Rainier",
+      "public_owner": "Amazon",
+      "public_users": "Anthropic #confident",
+      "public_address": "55001 Larrison Blvd, New Carlisle, IN 46552",
+      "construction_epc": [],
+      "energy_partners": [
+        "Indiana Michigan Power (AEP)"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Project Rainier is the program name used by the public project registry; I&M is the retained site-level utility relationship.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-ea699c935d46e066",
+      "site_name": "Google Pryor (North)",
+      "country": "United States",
+      "epoch_address": "4581 Webb St, Pryor, OK 74361",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "4581 Webb St, Pryor, OK 74361",
+      "construction_epc": [],
+      "energy_partners": [
+        "Grand River Dam Authority"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained public utility evidence identifies GRDA; project program field is not exposed in the retained source.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/google-pryor-north-be7b42dd",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "site_name": "Meta Prometheus",
+      "country": "United States",
+      "epoch_address": "1 Community Cir, New Albany, OH 43054",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "Prometheus #confident",
+      "public_program": "Prometheus",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "1 Community Cir, New Albany, OH 43054",
+      "construction_epc": [],
+      "energy_partners": [
+        "Williams",
+        "American Electric Power"
+      ],
+      "public_grid_operator": "American Electric Power",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Prometheus and the two energy partners.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/meta-prometheus-c979ce44",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-2c2e40ddb178da3e",
+      "site_name": "OpenAI Stargate Abilene",
+      "country": "United States",
+      "epoch_address": "5502 Spinks Rd, Abilene, TX 79601",
+      "epoch_owner": "Oracle #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "Oracle",
+      "public_users": "OpenAI #confident",
+      "public_address": "5502 Spinks Rd, Abilene, TX 79601",
+      "construction_epc": [
+        "Mortenson"
+      ],
+      "energy_partners": [
+        "American Electric Power"
+      ],
+      "public_grid_operator": "Coleman County Electric Cooperative",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "SOURCE_CAPTURED",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies the Stargate program, Mortenson construction/EPC, and AEP energy relationship.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/openai-stargate-abilene-82570d68",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "site_name": "Microsoft Fairwater Wisconsin",
+      "country": "United States",
+      "epoch_address": "4800 90th St, Mount Pleasant, WI 53403",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "OpenAI #likely, Microsoft #likely",
+      "epoch_project": "Microsoft AI WAN #confident",
+      "public_program": "Microsoft AI WAN",
+      "public_owner": "Microsoft #confident",
+      "public_users": "OpenAI #likely, Microsoft #likely",
+      "public_address": "4800 90th St, Mount Pleasant, WI 53403",
+      "construction_epc": [],
+      "energy_partners": [
+        "WE Energies"
+      ],
+      "public_grid_operator": "Wisconsin Electric Power Company",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Microsoft AI WAN and WE Energies.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/microsoft-fairwater-wisconsin-45d98f47",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-04f65e1aee6c98ab",
+      "site_name": "DayOne Kempas",
+      "country": "Malaysia",
+      "epoch_address": "HP79+MP, 81300 Johor Bahru, Johor, Malaysia",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "DayOne",
+      "public_users": "",
+      "public_address": "HP79+MP, 81300 Johor Bahru, Johor, Malaysia",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies DayOne.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-d8b28fdbc55817f9",
+      "site_name": "Google Columbus",
+      "country": "United States",
+      "epoch_address": "5076 S High St, Columbus, OH 43207",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "5076 S High St, Columbus, OH 43207",
+      "construction_epc": [],
+      "energy_partners": [
+        "AEP Ohio"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level utility evidence identifies AEP Ohio.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "site_name": "Google New Albany",
+      "country": "United States",
+      "epoch_address": "1101 Beech Rd SW, New Albany, OH 43054",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "1101 Beech Rd SW, New Albany, OH 43054",
+      "construction_epc": [],
+      "energy_partners": [
+        "AEP Ohio"
+      ],
+      "public_grid_operator": "AEP Ohio / PJM",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies AEP Ohio / PJM.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DataCentersExposed",
+          "url": "https://datacentersexposed.com/facilities/google-new-albany",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "site_name": "Google Mesa",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Arizona Public Service",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "datacenter.fyi",
+          "url": "https://www.datacenter.fyi/public-record/google-aa4275ee",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "site_name": "DayOne Nusajaya",
+      "country": "Malaysia",
+      "epoch_address": "",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "DayOne",
+      "public_users": "",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public source set identifies the facility as a DayOne campus; no separate program/EPC/energy partner is promoted without a retained source.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-2dadeb4b013bef05",
+      "site_name": "Colossus 1",
+      "country": "United States",
+      "epoch_address": "3231 Riverport Rd, Memphis, TN 38109",
+      "epoch_owner": "SpaceXAI #confident",
+      "epoch_users": "Anthropic #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "SpaceXAI #confident",
+      "public_users": "Anthropic #confident",
+      "public_address": "3231 Riverport Rd, Memphis, TN 38109",
+      "construction_epc": [],
+      "energy_partners": [
+        "Memphis Light, Gas and Water (MLGW)"
+      ],
+      "public_grid_operator": "Tennessee Valley Authority",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies MLGW.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/xai-colossus-1-ce962f82",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-1c8ee8b0305c6313",
+      "site_name": "Google Council Bluffs (East)",
+      "country": "United States",
+      "epoch_address": "10410 Bunge Ave, Council Bluffs, IA 51503",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "10410 Bunge Ave, Council Bluffs, IA 51503",
+      "construction_epc": [],
+      "energy_partners": [
+        "MidAmerican Energy"
+      ],
+      "public_grid_operator": "MidAmerican Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-specific utility evidence identifies MidAmerican Energy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/google-council-bluffs-east-d8c434a9",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "site_name": "CoreWeave Denton TX",
+      "country": "United States",
+      "epoch_address": "8171 Jim Christal Rd, Denton, TX 76207",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave #confident",
+      "public_users": "OpenAI #likely",
+      "public_address": "8171 Jim Christal Rd, Denton, TX 76207",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Denton Municipal Electric",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/core-scientific-coreweave-denton-texas",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "site_name": "QTS Richmond 1",
+      "country": "United States",
+      "epoch_address": "6000 Technology Blvd, Sandston, VA 23150",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "QTS Data Centers",
+      "public_users": "",
+      "public_address": "6000 Technology Blvd, Sandston, VA 23150",
+      "construction_epc": [],
+      "energy_partners": [
+        "Dominion Energy Virginia"
+      ],
+      "public_grid_operator": "Dominion Energy Virginia",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public facility sources identify QTS and Dominion.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "SueDataCenters",
+          "url": "https://suedatacenters.org/data-centers/qts-richmond-1-sandston",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "site_name": "Meta Rosemount",
+      "country": "United States",
+      "epoch_address": "1772-2396 145th St, Rosemount, MN 55068, USA",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "1772-2396 145th St, Rosemount, MN 55068, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Xcel Energy"
+      ],
+      "public_grid_operator": "Xcel Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Xcel Energy's public announcement identifies the Meta Rosemount data-center power relationship.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Xcel Energy",
+          "url": "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-0d287943c30fe239",
+      "site_name": "Amazon Madison Mega Site",
+      "country": "United States",
+      "epoch_address": "Amazon Data Services Inc, Madison Mega Site Nissan Parkway and Highway 22 Canton, Mississippi Madison County",
+      "epoch_owner": "Amazon #confident",
+      "epoch_users": "Anthropic #speculative",
+      "epoch_project": "Project Rainier #speculative",
+      "public_program": "Project Rainier",
+      "public_owner": "Amazon #confident",
+      "public_users": "Anthropic #speculative",
+      "public_address": "Amazon Data Services Inc, Madison Mega Site Nissan Parkway and Highway 22 Canton, Mississippi Madison County",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Canton Municipal Utilities",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Project Rainier is used in the public project registry for Amazon's related hyperscale campus program; no additional site-specific utility claim added here.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "datacenter.fyi",
+          "url": "https://www.datacenter.fyi/public-record/amazon-madison-mega-site-4fb34373",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-6db3bc2c79843ffd",
+      "site_name": "Google Bristow",
+      "country": "United States",
+      "epoch_address": "13001 Rollins Ford Road, Bristow, VA 20136",
+      "epoch_owner": "Google",
+      "epoch_users": "Google DeepMind",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google",
+      "public_users": "Google DeepMind",
+      "public_address": "13001 Rollins Ford Road, Bristow, VA 20136",
+      "construction_epc": [],
+      "energy_partners": [
+        "Dominion Energy"
+      ],
+      "public_grid_operator": "Dominion Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-specific grid evidence identifies Dominion Energy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "datacenter.fyi",
+          "url": "https://www.datacenter.fyi/public-record/google-be69857b",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-93a4aa4fa40d40ca",
+      "site_name": "Microsoft Goodyear",
+      "country": "United States",
+      "epoch_address": "14250 W Broadway Rd, Goodyear, AZ 85338",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "OpenAI #likely, Microsoft #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Microsoft #confident",
+      "public_users": "OpenAI #likely, Microsoft #confident",
+      "public_address": "14250 W Broadway Rd, Goodyear, AZ 85338",
+      "construction_epc": [],
+      "energy_partners": [
+        "Arizona Public Service"
+      ],
+      "public_grid_operator": "Arizona Public Service",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Source set identifies APS as the Arizona serving utility family; retained crosswalk does not expose a site-specific queue ID.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "datacenter.fyi",
+          "url": "https://www.datacenter.fyi/public-record/microsoft-befedf4d",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "site_name": "Meta Jeffersonville",
+      "country": "United States",
+      "epoch_address": "500 8th St, Jeffersonville, IN 47130, USA",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "500 8th St, Jeffersonville, IN 47130, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Duke Energy"
+      ],
+      "public_grid_operator": "Duke Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies Duke Energy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/meta-jeffersonville-646ed5d7",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "site_name": "Google Kansas City East",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google",
+      "public_users": "",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Evergy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Google; program/energy fields are not separately exposed in the retained source.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Missouri Public Service Commission",
+          "url": "https://efis.psc.mo.gov/Document/Display/795136",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-bdc85fadae79b6b2",
+      "site_name": "AWS New Albany",
+      "country": "United States",
+      "epoch_address": "13360 Miller Rd NW",
+      "epoch_owner": "Amazon #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Amazon #confident",
+      "public_users": "",
+      "public_address": "13360 Miller Rd NW",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "AEP Ohio / PJM",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DataCentersExposed",
+          "url": "https://datacentersexposed.com/facilities/amazon-new-albany-2",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-4eeccbee73808216",
+      "site_name": "Google Omaha",
+      "country": "United States",
+      "epoch_address": "11110 State St, Omaha, NE 68142",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "11110 State St, Omaha, NE 68142",
+      "construction_epc": [],
+      "energy_partners": [
+        "Omaha Public Power District"
+      ],
+      "public_grid_operator": "Omaha Public Power District",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-specific utility evidence identifies OPPD.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "datacenter.fyi",
+          "url": "https://www.datacenter.fyi/public-record/google-omaha-3d03711e",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-e06bc7faa8b1b187",
+      "site_name": "Google Lincoln",
+      "country": "United States",
+      "epoch_address": "5475 Cloud Ct, Lincoln, NE 68514",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google",
+      "public_users": "",
+      "public_address": "5475 Cloud Ct, Lincoln, NE 68514",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Lincoln Electric System",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Google's public Nebraska material identifies the Lincoln data-center campus.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Lincoln Electric System",
+          "url": "https://www.les.com/sites/default/files/bd-min-dec-2023.pdf",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-052be5b551cd099b",
+      "site_name": "QTS Richmond 2",
+      "country": "United States",
+      "epoch_address": "6030–6070 Technology Blvd, Sandston, VA 23150",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "QTS Data Centers",
+      "public_users": "",
+      "public_address": "6030–6070 Technology Blvd, Sandston, VA 23150",
+      "construction_epc": [],
+      "energy_partners": [
+        "Dominion Energy"
+      ],
+      "public_grid_operator": "Dominion Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Dominion Energy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Intel Accelerator",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-40ccef8ef4236635",
+      "site_name": "Google The Dalles",
+      "country": "United States",
+      "epoch_address": "3500 River Rd, The Dalles, OR",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "",
+      "public_address": "3500 River Rd, The Dalles, OR",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Northern Wasco County PUD / BPA",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/google-the-dalles-or",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "site_name": "QTS Richmond 3",
+      "country": "United States",
+      "epoch_address": "3525–3543 Portugee Rd, Sandston, VA 23150",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "QTS Data Centers",
+      "public_users": "",
+      "public_address": "3525–3543 Portugee Rd, Sandston, VA 23150",
+      "construction_epc": [],
+      "energy_partners": [
+        "Dominion Energy Virginia"
+      ],
+      "public_grid_operator": "Dominion Energy Virginia",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public campus and utility evidence identify QTS/Dominion.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "QTS Data Centers",
+          "url": "https://q.com/data-centers/richmond-3/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-0788d9aeb3114553",
+      "site_name": "Meta Montgomery",
+      "country": "United States",
+      "epoch_address": "Co Rd 42, Montgomery, AL 36105, USA",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "Co Rd 42, Montgomery, AL 36105, USA",
+      "construction_epc": [
+        "Hensel Phelps"
+      ],
+      "energy_partners": [],
+      "public_grid_operator": "Alabama Power Company",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "SOURCE_CAPTURED",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Hensel Phelps as construction/EPC.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Meta Data Centers",
+          "url": "https://datacenters.atmeta.com/asset/montgomery-data-center-info-sheet/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-5de9a1c70a3e2275",
+      "site_name": "Meta Kuna",
+      "country": "United States",
+      "epoch_address": "601 Kuna Mora Rd,  Kuna ID 83634",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "601 Kuna Mora Rd,  Kuna ID 83634",
+      "construction_epc": [],
+      "energy_partners": [
+        "Idaho Power Company"
+      ],
+      "public_grid_operator": "Idaho Power",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Meta's public operational announcement and project registry identify Idaho Power.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Meta Data Centers",
+          "url": "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "site_name": "Meta Temple",
+      "country": "United States",
+      "epoch_address": "2310 Eberhardt Rd, Temple, TX 76504",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "2310 Eberhardt Rd, Temple, TX 76504",
+      "construction_epc": [
+        "JE Dunn"
+      ],
+      "energy_partners": [],
+      "public_grid_operator": "Heart of Texas Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "SOURCE_CAPTURED",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies JE Dunn as construction/EPC.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-14cecdb5956daea1",
+      "site_name": "Meta Cheyenne",
+      "country": "United States",
+      "epoch_address": "Cheyenne, WY 82007, USA",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "Cheyenne, WY 82007, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Black Hills Energy"
+      ],
+      "public_grid_operator": "Black Hills Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level utility evidence identifies Black Hills Energy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/meta-wyoming-cheyenne",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-4a87099a6d1e001f",
+      "site_name": "Amazon Ridgeland",
+      "country": "United States",
+      "epoch_address": "1626 County Line Road Ridgeland, Mississippi",
+      "epoch_owner": "Amazon #confident",
+      "epoch_users": "Anthropic #speculative",
+      "epoch_project": "Project Rainier #speculative",
+      "public_program": "Project Rainier",
+      "public_owner": "Amazon #confident",
+      "public_users": "Anthropic #speculative",
+      "public_address": "1626 County Line Road Ridgeland, Mississippi",
+      "construction_epc": [],
+      "energy_partners": [
+        "Entergy Mississippi"
+      ],
+      "public_grid_operator": "Entergy Mississippi",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Project Rainier and the retained utility evidence identifies Entergy Mississippi.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Mississippi Today",
+          "url": "https://mississippitoday.org/2026/06/09/amazon-data-centers-electric-bills/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-27e284efc1b1abc2",
+      "site_name": "Meta Huntsville",
+      "country": "United States",
+      "epoch_address": "5400 Prosperity Dr NW, Toney, AL",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "5400 Prosperity Dr NW, Toney, AL",
+      "construction_epc": [],
+      "energy_partners": [
+        "Tennessee Valley Authority",
+        "NextEra Energy Resources",
+        "First Solar"
+      ],
+      "public_grid_operator": "Tennessee Valley Authority",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies these energy partners.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "SueDataCenters",
+          "url": "https://suedatacenters.org/data-centers/meta-huntsville-al",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "site_name": "Coreweave Helios",
+      "country": "United States",
+      "epoch_address": "984 County Road 112, Afton, TX 79220",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave #confident",
+      "public_users": "OpenAI #speculative",
+      "public_address": "984 County Road 112, Afton, TX 79220",
+      "construction_epc": [],
+      "energy_partners": [
+        "South Plains Electric Cooperative"
+      ],
+      "public_grid_operator": "South Plains Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies the cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/coreweave-helios-581fb155",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-534376160415dc84",
+      "site_name": "Microsoft Project Osmium",
+      "country": "United States",
+      "epoch_address": "5855 SW Kerry St, Cumming, IA 50061",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "Microsoft AI WAN",
+      "public_owner": "Microsoft #confident",
+      "public_users": "OpenAI #speculative",
+      "public_address": "5855 SW Kerry St, Cumming, IA 50061",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "MISO",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Program label is retained from the public project registry where exposed; no new site-specific grid ID is asserted.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "MISO",
+          "url": "https://cdn.misoenergy.org/NEW%20LOAD%20ANNOUNCEMENTS%20IN%20MISO%20REGIONS%2012062024684954.pdf",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-0bb0b996b7c96beb",
+      "site_name": "Meta Eagle Mountain",
+      "country": "United States",
+      "epoch_address": "1275 N Community Cir, Eagle Mountain, UT 84005",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "1275 N Community Cir, Eagle Mountain, UT 84005",
+      "construction_epc": [
+        "Mortenson"
+      ],
+      "energy_partners": [
+        "Williams"
+      ],
+      "public_grid_operator": "Rocky Mountain Power",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "SOURCE_CAPTURED",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Mortenson and Williams.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/meta-eagle-mountain-utah",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-85492d2b8df586a1",
+      "site_name": "Google Midlothian",
+      "country": "United States",
+      "epoch_address": "3250 Railport Parkway, Midlothian, TX 76065",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "",
+      "public_address": "3250 Railport Parkway, Midlothian, TX 76065",
+      "construction_epc": [],
+      "energy_partners": [
+        "Hilco Electric Cooperative"
+      ],
+      "public_grid_operator": "Hilco Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies Hilco Electric Cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/google-87bef61e",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-2b89e13933a04725",
+      "site_name": "Google Storey County",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "NV Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Google's official Nevada location material confirms the Storey County data-center presence; exact parcel/address is not asserted here.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Nevada Public Utilities Commission / NV Energy",
+          "url": "https://edocs.puc.state.or.us/efdocs/HTB/um2377htb339000027.pdf",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-f92e98f4b76a9bcd",
+      "site_name": "Google Lancaster",
+      "country": "United States",
+      "epoch_address": "105 Whiley Rd, Lancaster, OH 43130",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "",
+      "public_address": "105 Whiley Rd, Lancaster, OH 43130",
+      "construction_epc": [],
+      "energy_partners": [
+        "American Electric Power"
+      ],
+      "public_grid_operator": "American Electric Power",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies AEP.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/google-b095581c",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-78f8285078416a9e",
+      "site_name": "Meta-QTS Hillsboro 2",
+      "country": "United States",
+      "epoch_address": "4755 NE Huffman St, Hillsboro, OR 97124",
+      "epoch_owner": "Meta #likely",
+      "epoch_users": "Meta #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #likely",
+      "public_users": "Meta #likely",
+      "public_address": "4755 NE Huffman St, Hillsboro, OR 97124",
+      "construction_epc": [],
+      "energy_partners": [
+        "Portland General Electric",
+        "Avangrid"
+      ],
+      "public_grid_operator": "Portland General Electric",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies both energy partners.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Intel Accelerator",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-a2c9f0846296fe65",
+      "site_name": "Google Waltham Cross",
+      "country": "United Kingdom",
+      "epoch_address": "Land at Maxwell's Farm West, Great Cambridge Road, Cheshunt, EN8 8XH",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "Land at Maxwell's Farm West, Great Cambridge Road, Cheshunt, EN8 8XH",
+      "construction_epc": [],
+      "energy_partners": [
+        "Shell Energy Europe",
+        "Engie"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies these energy partners.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-a286a89bd1c1b6e7",
+      "site_name": "VNET Bayin Ulanqab",
+      "country": "China",
+      "epoch_address": "Bayin, Ulanqab, China",
+      "epoch_owner": "VNET #confident",
+      "epoch_users": "ByteDance #speculative",
+      "epoch_project": "10 GW Hyperscale 2.0 #confident",
+      "public_program": "10 GW Hyperscale 2.0",
+      "public_owner": "VNET",
+      "public_users": "ByteDance #speculative",
+      "public_address": "Bayin, Ulanqab, China",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry exposes the VNET operator and 10 GW Hyperscale 2.0 program label.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-785d6e4c34607dd4",
+      "site_name": "Google Arcola",
+      "country": "United States",
+      "epoch_address": "42575 Arcola Blvd, Sterling, VA 20166",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "",
+      "public_address": "42575 Arcola Blvd, Sterling, VA 20166",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Dominion Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "SueDataCenters",
+          "url": "https://suedatacenters.org/data-centers/google-arcola-loudoun-va",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-f1a2bcdd78478bc2",
+      "site_name": "Google Red Oak",
+      "country": "United States",
+      "epoch_address": "330 Austin Blvd, Red Oak, TX 75154",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "",
+      "public_address": "330 Austin Blvd, Red Oak, TX 75154",
+      "construction_epc": [],
+      "energy_partners": [
+        "Oncor Electric Delivery"
+      ],
+      "public_grid_operator": "Oncor Electric Delivery",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained PUCT evidence identifies Oncor service territory/customer relationship.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "PUCT interchange",
+          "url": "https://interchange.puc.texas.gov/Documents/58306_402_1549178.PDF",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-4525348d114e3e8e",
+      "site_name": "Google Papillion",
+      "country": "United States",
+      "epoch_address": "14651-15249 Gold Coast Rd 68138 Papillion Nebraska, USA",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "14651-15249 Gold Coast Rd 68138 Papillion Nebraska, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Omaha Public Power District"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "OPPD planning evidence is retained; no site-specific queue ID is asserted.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "site_name": "Meta Gallatin",
+      "country": "United States",
+      "epoch_address": "1 Meta Lp, Gallatin, TN 37066",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "1 Meta Lp, Gallatin, TN 37066",
+      "construction_epc": [],
+      "energy_partners": [
+        "Tennessee Valley Authority"
+      ],
+      "public_grid_operator": "TVA",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained facility evidence identifies TVA.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "SueDataCenters",
+          "url": "https://suedatacenters.org/data-centers/meta-gallatin-tn",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-02c050b6b554fadd",
+      "site_name": "Meta Los Lunas",
+      "country": "United States",
+      "epoch_address": "4250 Messenger Lp, Los Lunas, NM 87031",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "4250 Messenger Lp, Los Lunas, NM 87031",
+      "construction_epc": [],
+      "energy_partners": [
+        "Public Service Company of New Mexico (PNM)"
+      ],
+      "public_grid_operator": "Public Service Company of New Mexico (PNM)",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained facility evidence identifies PNM.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/meta-new-mexico-los-lunas",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-768183e4de6062d2",
+      "site_name": "CoreWeave Ellendale ND",
+      "country": "United States",
+      "epoch_address": "9685 87th Ave SE, Ellendale, ND 58436",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave",
+      "public_users": "OpenAI #speculative",
+      "public_address": "9685 87th Ave SE, Ellendale, ND 58436",
+      "construction_epc": [],
+      "energy_partners": [
+        "Otter Tail Power"
+      ],
+      "public_grid_operator": "Otter Tail Power",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained facility evidence identifies Otter Tail Power and CoreWeave offtake.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/applied-digital-ellendale-eln01-hosting-nd",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-4b5df4f52274f2ba",
+      "site_name": "Meta Sarpy",
+      "country": "United States",
+      "epoch_address": "14436-14998 Fairview Rd, Springfield, NE 68059, USA",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "14436-14998 Fairview Rd, Springfield, NE 68059, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Omaha Public Power District"
+      ],
+      "public_grid_operator": "Omaha Public Power District",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained facility evidence identifies OPPD.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/meta-nebraska-sarpy",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "site_name": "Huawei Horinger",
+      "country": "China",
+      "epoch_address": "Huawei, Horinger, China",
+      "epoch_owner": "Huawei #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Huawei",
+      "public_users": "",
+      "public_address": "Huawei, Horinger, China",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Huawei.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-2d362a1adb09fddd",
+      "site_name": "CoreWeave Chester VA",
+      "country": "United States",
+      "epoch_address": "1401 Meadowville Technology Parkway, Chester, VA",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave",
+      "public_users": "OpenAI #speculative",
+      "public_address": "1401 Meadowville Technology Parkway, Chester, VA",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Owner is already corroborated by the public project registry; other blank enrichment fields remain undisclosed.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-ea5d1ae5837aba5c",
+      "site_name": "Oracle Batam",
+      "country": "Indonesia",
+      "epoch_address": "",
+      "epoch_owner": "Oracle #likely",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Oracle",
+      "public_users": "",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Oracle as the developer/operator context.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-03aad260b30bfbe1",
+      "site_name": "AWS Berwick",
+      "country": "United States",
+      "epoch_address": "1125 Electron Ave, Berwick, PA 18603",
+      "epoch_owner": "Amazon #confident",
+      "epoch_users": "Anthropic #speculative",
+      "epoch_project": "Project Rainier #speculative",
+      "public_program": "Project Rainier",
+      "public_owner": "Amazon #confident",
+      "public_users": "Anthropic #speculative",
+      "public_address": "1125 Electron Ave, Berwick, PA 18603",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "PPL Electric Utilities / Talen Energy",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Project Rainier is used in the public project registry; no site-specific utility/EPC claim added here.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Talen Energy SEC filing",
+          "url": "https://www.sec.gov/Archives/edgar/data/1622536/000162828025038626/tln-20250630.htm",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-eb87487504bda8ed",
+      "site_name": "CoreWeave Marble NC",
+      "country": "United States",
+      "epoch_address": "155 Palmer Ln, Marble, NC 28905",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave",
+      "public_users": "OpenAI #speculative",
+      "public_address": "155 Palmer Ln, Marble, NC 28905",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Duke Energy",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Owner is corroborated by the public project registry; no new utility/EPC claim added.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Jain Analysis",
+          "url": "https://www.jain.com/analysis/projects/core-scientific-marble/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-7d9b5af0cce16f1c",
+      "site_name": "Meta Aiken",
+      "country": "United States",
+      "epoch_address": "7601 State Hwy 105, Trenton, SC 29847, USA",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "7601 State Hwy 105, Trenton, SC 29847, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Aiken Electric Cooperative"
+      ],
+      "public_grid_operator": "Aiken Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level utility evidence identifies Aiken Electric Cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "SueDataCenters",
+          "url": "https://suedatacenters.org/data-centers/meta-aiken-county-sc",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "site_name": "Huawei Wuhu",
+      "country": "China",
+      "epoch_address": "Wuhu, China",
+      "epoch_owner": "Huawei #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Huawei",
+      "public_users": "",
+      "public_address": "Wuhu, China",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Huawei.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "site_name": "Core42 Lake Mariner",
+      "country": "United States",
+      "epoch_address": "7725 Lake Rd, Barker, NY 14012",
+      "epoch_owner": "Core42 #confident",
+      "epoch_users": "G42 #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Core Scientific / Core42 relationship",
+      "public_users": "G42 #likely",
+      "public_address": "7725 Lake Rd, Barker, NY 14012",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "NYISO Q1670 is retained separately; the queue row is not treated as identical to Epoch IT-power.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "site_name": "Microsoft SAT40",
+      "country": "United States",
+      "epoch_address": "15000 Lambda Drive, San Antonio, TX 78245",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Microsoft #confident",
+      "public_users": "",
+      "public_address": "15000 Lambda Drive, San Antonio, TX 78245",
+      "construction_epc": [],
+      "energy_partners": [
+        "Karnes Electric Cooperative"
+      ],
+      "public_grid_operator": "Karnes Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies the cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/sat40-data-center-c8935e71",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-c89a3269719f868a",
+      "site_name": "STACK Infrastructure NVA02",
+      "country": "United States",
+      "epoch_address": "9590 Hornbaker Rd, Manassas, VA 20109",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "STACK Infrastructure",
+      "public_users": "",
+      "public_address": "9590 Hornbaker Rd, Manassas, VA 20109",
+      "construction_epc": [],
+      "energy_partners": [
+        "Northern Virginia Electric Cooperative (NOVEC)"
+      ],
+      "public_grid_operator": "Northern Virginia Electric Cooperative (NOVEC)",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "STACK's public facility page identifies the campus and NOVEC-backed dedicated substations.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "STACK Infrastructure",
+          "url": "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-29fb769630142638",
+      "site_name": "Anthropic Lake Mariner",
+      "country": "United States",
+      "epoch_address": "7725 Lake Rd, Barker, NY 14012",
+      "epoch_owner": "AI XPV Platform #confident",
+      "epoch_users": "Anthropic #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "AI XPV Platform #confident",
+      "public_users": "Anthropic #likely",
+      "public_address": "7725 Lake Rd, Barker, NY 14012",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "NYISO Q1670 is retained separately; the queue row is not treated as identical to Epoch IT-power.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-781cbfae186209ad",
+      "site_name": "Microsoft-Nebius New Jersey",
+      "country": "United States",
+      "epoch_address": "3963 S Lincoln Ave, Vineland, New Jersey",
+      "epoch_owner": "Nebius #confident",
+      "epoch_users": "Microsoft #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Nebius",
+      "public_users": "Microsoft #likely",
+      "public_address": "3963 S Lincoln Ave, Vineland, New Jersey",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Nebius ownership and Microsoft use relationship.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "site_name": "CoreWeave Norway",
+      "country": "Norway",
+      "epoch_address": "Stølevegen 39, 4715 Øvrebø, Norway",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave",
+      "public_users": "OpenAI #speculative",
+      "public_address": "Stølevegen 39, 4715 Øvrebø, Norway",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies CoreWeave; national connection is retained separately.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-41dea3fb46d2e6a8",
+      "site_name": "Nebius Mantsala",
+      "country": "Finland",
+      "epoch_address": "",
+      "epoch_owner": "Nebius #confident",
+      "epoch_users": "Microsoft #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Nebius",
+      "public_users": "Microsoft #speculative",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Finnish national data-center registry identifies the Mäntsälä site; ownership is also exposed by the public project registry.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-827d7832237170bd",
+      "site_name": "Southgate Melbourne",
+      "country": "Australia",
+      "epoch_address": "",
+      "epoch_owner": "Firmus #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Southgate",
+      "public_users": "",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Southgate.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-ee5c7acdbc729ef8",
+      "site_name": "Stream Phoenix",
+      "country": "United States",
+      "epoch_address": "2950 S. Litchfield Road",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Stream Data Centers",
+      "public_users": "",
+      "public_address": "2950 S. Litchfield Road",
+      "construction_epc": [],
+      "energy_partners": [
+        "Arizona Public Service"
+      ],
+      "public_grid_operator": "Arizona Public Service (APS)",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Stream; Arizona serving utility family is APS.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/stream-phxa-goodyear",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "site_name": "Microsoft SAT14",
+      "country": "United States",
+      "epoch_address": "3545 Wiseman Boulevard, San Antonio, TX 78251",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Microsoft #confident",
+      "public_users": "",
+      "public_address": "3545 Wiseman Boulevard, San Antonio, TX 78251",
+      "construction_epc": [],
+      "energy_partners": [
+        "Karnes Electric Cooperative"
+      ],
+      "public_grid_operator": "Karnes Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies the cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/sat14-data-center-2db58790",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-96d37578ca36f86c",
+      "site_name": "Vantage TX1",
+      "country": "United States",
+      "epoch_address": "14720 Omicron Dr, San Antonio, TX 78245",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "",
+      "public_users": "",
+      "public_address": "14720 Omicron Dr, San Antonio, TX 78245",
+      "construction_epc": [],
+      "energy_partners": [
+        "Karnes Electric Cooperative"
+      ],
+      "public_grid_operator": "Karnes Electric Cooperative",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Retained site-level grid evidence identifies the cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/tx11-187661c6",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-8696ef81d91560a9",
+      "site_name": "CoreWeave Dalton 1 & 2",
+      "country": "United States",
+      "epoch_address": "2205 Industrial South Rd, Dalton, GA, 30721",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave",
+      "public_users": "OpenAI #speculative",
+      "public_address": "2205 Industrial South Rd, Dalton, GA, 30721",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies CoreWeave.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "site_name": "Alibaba Zhangbei",
+      "country": "China",
+      "epoch_address": "Alibaba Zhangbei Yun Calculation Data Center, Zhangbei County, Zhangjiakou, Hebei, China, 076471",
+      "epoch_owner": "Alibaba #confident",
+      "epoch_users": "Alibaba #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Alibaba",
+      "public_users": "Alibaba #likely",
+      "public_address": "Alibaba Zhangbei Yun Calculation Data Center, Zhangbei County, Zhangjiakou, Hebei, China, 076471",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Alibaba ownership.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "site_name": "Start Campus Sines Data Campus",
+      "country": "Portugal",
+      "epoch_address": "Start Campus - Sustainable Data Center Services, Sines, Portugal",
+      "epoch_owner": "Nscale #confident",
+      "epoch_users": "Microsoft #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Start Campus",
+      "public_users": "Microsoft #confident",
+      "public_address": "Start Campus - Sustainable Data Center Services, Sines, Portugal",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Start Campus.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-495a9afde5e4b96c",
+      "site_name": "xAI QTS Atlanta",
+      "country": "United States",
+      "epoch_address": "1025 Jefferson Street NW, Atlanta, GA 30318",
+      "epoch_owner": "SpaceXAI #confident",
+      "epoch_users": "SpaceXAI #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "SpaceXAI #confident",
+      "public_users": "SpaceXAI #confident",
+      "public_address": "1025 Jefferson Street NW, Atlanta, GA 30318",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-f1a70be0079d215a",
+      "site_name": "Nscale Keflavik",
+      "country": "Iceland",
+      "epoch_address": "Valhallarbraut 868, 262 Reykjanesbær, Iceland",
+      "epoch_owner": "Nscale #confident",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Nscale",
+      "public_users": "",
+      "public_address": "Valhallarbraut 868, 262 Reykjanesbær, Iceland",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Nscale.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "site_name": "Anthropic Barber Lake",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Cipher Mining #confident",
+      "epoch_users": "Anthropic #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Cipher Mining",
+      "public_users": "Anthropic #confident",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Cipher Mining as site owner; Anthropic user relationship is retained separately.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-7648e1438308fdae",
+      "site_name": "CoreWeave Lancaster Greenfield site",
+      "country": "United States",
+      "epoch_address": "216 Greenfield Rd, Lancaster, PA \n",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave",
+      "public_users": "OpenAI #speculative",
+      "public_address": "216 Greenfield Rd, Lancaster, PA \n",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies CoreWeave.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-65e758d676dc06d6",
+      "site_name": "CoreWeave Muskogee OK",
+      "country": "United States",
+      "epoch_address": "1525 W 43rd St S, Muskogee, OK 74401, USA",
+      "epoch_owner": "CoreWeave #confident",
+      "epoch_users": "OpenAI #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "CoreWeave #confident",
+      "public_users": "OpenAI #speculative",
+      "public_address": "1525 W 43rd St S, Muskogee, OK 74401, USA",
+      "construction_epc": [],
+      "energy_partners": [
+        "Oklahoma Gas and Electric Company"
+      ],
+      "public_grid_operator": "Oklahoma Gas and Electric Company",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "SEC-filed service agreement identifies OG&E and 100 MW estimated maximum demand.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Core Scientific SEC filing",
+          "url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-4569f5444951b2fd",
+      "site_name": "Crusoe Abilene Expansion",
+      "country": "United States",
+      "epoch_address": "5502 Spinks Rd, Abilene, TX 79601",
+      "epoch_owner": "Microsoft #confident",
+      "epoch_users": "Microsoft #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Crusoe",
+      "public_users": "Microsoft #likely",
+      "public_address": "5502 Spinks Rd, Abilene, TX 79601",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Crusoe.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-dadec9d6ef7fca88",
+      "site_name": "EcoDataCenter 2",
+      "country": "Sweden",
+      "epoch_address": "Kvarnsvedsvägen 420, 784 66 Borlänge, Sweden",
+      "epoch_owner": "Mistral AI #confident",
+      "epoch_users": "Mistral AI #confident",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "EcoDataCenter",
+      "public_users": "Mistral AI #confident",
+      "public_address": "Kvarnsvedsvägen 420, 784 66 Borlänge, Sweden",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies EcoDataCenter.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-bbf05f2d8903eccc",
+      "site_name": "Goodnight",
+      "country": "United States",
+      "epoch_address": "10001 Lima Rd, Claude, TX 79019",
+      "epoch_owner": "Google #speculative",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #speculative",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "10001 Lima Rd, Claude, TX 79019",
+      "construction_epc": [
+        "Crusoe",
+        "Hoffman"
+      ],
+      "energy_partners": [
+        "Serena"
+      ],
+      "public_grid_operator": "Greenbelt Electric Cooperative / ERCOT",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "SOURCE_CAPTURED",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry exposes these construction and energy partners; the owner identity remains separately qualified in the Epoch record.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "GridTracker",
+          "url": "https://www.gridtracker.io/example-report",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-2d6a8403fde79650",
+      "site_name": "Google Cedar Rapids",
+      "country": "United States",
+      "epoch_address": "5800 EDGEWOOD RD SW CEDAR RAPIDS, IA 52404",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "5800 EDGEWOOD RD SW CEDAR RAPIDS, IA 52404",
+      "construction_epc": [],
+      "energy_partners": [
+        "Alliant Energy"
+      ],
+      "public_grid_operator": "Interstate Power and Light Company",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Alliant Energy as energy partner.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/google-cedar-rapids-fa5365cb",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-f340a33a5ef18d4f",
+      "site_name": "Google Fort Wayne",
+      "country": "United States",
+      "epoch_address": "6015 Adams Center Road, Fort Wayne, IN 46806",
+      "epoch_owner": "Google #confident",
+      "epoch_users": "Google DeepMind #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Google #confident",
+      "public_users": "Google DeepMind #speculative",
+      "public_address": "6015 Adams Center Road, Fort Wayne, IN 46806",
+      "construction_epc": [],
+      "energy_partners": [
+        "Indiana Michigan Power"
+      ],
+      "public_grid_operator": "Indiana Michigan Power",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Indiana Michigan Power publicly identifies Google as a large-load customer and partner at the Fort Wayne data center.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Indiana Michigan Power",
+          "url": "https://www.indianamichiganpower.com/company/news/view?releaseID=10359",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-177c53f92d72ec4a",
+      "site_name": "Meta Bowling Green",
+      "country": "United States",
+      "epoch_address": "12356 Middleton Pike, Bowling Green, OH 43402",
+      "epoch_owner": "Meta",
+      "epoch_users": "Meta",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Meta",
+      "public_users": "Meta",
+      "public_address": "12356 Middleton Pike, Bowling Green, OH 43402",
+      "construction_epc": [],
+      "energy_partners": [
+        "Williams"
+      ],
+      "public_grid_operator": "Toledo Edison",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Williams as an energy partner.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/meta-ohio-bowling-green",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-bbcf0efa8bcebd41",
+      "site_name": "Meta Hyperion",
+      "country": "United States",
+      "epoch_address": "Holly Ridge, LA 71269",
+      "epoch_owner": "Meta #confident",
+      "epoch_users": "Meta #confident",
+      "epoch_project": "Hyperion #confident",
+      "public_program": "Hyperion",
+      "public_owner": "Meta #confident",
+      "public_users": "Meta #confident",
+      "public_address": "Holly Ridge, LA 71269",
+      "construction_epc": [
+        "Mortenson"
+      ],
+      "energy_partners": [
+        "Entergy"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "SOURCE_CAPTURED",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Hyperion, Mortenson and Entergy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "site_name": "Microsoft Narvik Norway",
+      "country": "Norway",
+      "epoch_address": "",
+      "epoch_owner": "Nscale #likely",
+      "epoch_users": "Microsoft #likely",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "Nscale",
+      "public_users": "Microsoft #likely",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies Nscale ownership and Microsoft use relationship.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-dc6199921ba82b85",
+      "site_name": "OpenAI Stargate Lordstown",
+      "country": "United States",
+      "epoch_address": "2300 Hallock Young Rd, Warren, OH 44481",
+      "epoch_owner": "Softbank #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "Softbank #confident",
+      "public_users": "OpenAI #confident",
+      "public_address": "2300 Hallock Young Rd, Warren, OH 44481",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "FirstEnergy / Ohio Edison",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Program label is exposed in the public project registry; no site-specific utility/EPC field is asserted here.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "SueDataCenters",
+          "url": "https://suedatacenters.org/data-centers/stargate-lordstown-oh",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "site_name": "OpenAI Stargate Michigan",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Oracle #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "Oracle #confident",
+      "public_users": "OpenAI #confident",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [
+        "DTE Electric"
+      ],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Michigan's official data-center page documents the DTE special-contract approval; no queue ID is asserted.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "site_name": "OpenAI Stargate Milam",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Softbank #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "SB Energy",
+      "public_users": "OpenAI #confident",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "SB Energy powered infrastructure",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "OpenAI/SB Energy public announcement identifies SB Energy as the developer/operator for the 1.2 GW Milam County site.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "OpenAI / SB Energy",
+          "url": "https://openai.com/index/stargate-sb-energy-partnership/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "site_name": "OpenAI Stargate New Mexico",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Oracle #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "Oracle",
+      "public_users": "OpenAI #confident",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [
+        "Bloom Energy"
+      ],
+      "public_grid_operator": "El Paso Electric",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies the Stargate program, Oracle ownership/development context and Bloom Energy; exact load/service accounting remains separate.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/stargate-dona-ana-county-new-mexico",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-b427a75f62d61aae",
+      "site_name": "OpenAI Stargate Shackelford",
+      "country": "United States",
+      "epoch_address": "175 Private Road 1604, Abilene, TX 79601, Shackelford County",
+      "epoch_owner": "Oracle #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "Oracle #confident",
+      "public_users": "OpenAI #confident",
+      "public_address": "175 Private Road 1604, Abilene, TX 79601, Shackelford County",
+      "construction_epc": [],
+      "energy_partners": [
+        "Fort Belknap Electric Cooperative"
+      ],
+      "public_grid_operator": "Fort Belknap Electric Cooperative",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies the Stargate program and retained site-level evidence identifies Fort Belknap Electric Cooperative.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/openai-stargate-shackelford-4a71e560",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-661288625d17662a",
+      "site_name": "OpenAI Stargate UAE",
+      "country": "United Arab Emirates",
+      "epoch_address": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
+      "epoch_owner": "G42 #likely",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "G42 #likely",
+      "public_users": "OpenAI #confident",
+      "public_address": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "NOT_FOUND_IN_RETAINED_SOURCE_SET"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Program label is exposed; national/local grid connection is kept in the separate international connection framework.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "site_name": "OpenAI Stargate Wisconsin",
+      "country": "United States",
+      "epoch_address": "",
+      "epoch_owner": "Oracle #confident",
+      "epoch_users": "OpenAI #confident",
+      "epoch_project": "Stargate #confident",
+      "public_program": "Stargate",
+      "public_owner": "Oracle #confident",
+      "public_users": "OpenAI #confident",
+      "public_address": "",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "WEC Energy Group",
+      "field_status": {
+        "epoch_project": "PUBLISHED_IN_EPOCH",
+        "public_program": "SOURCE_CAPTURED",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Program label is exposed in the public project registry; no site-specific utility/EPC field is asserted here.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/index/stargate-community/",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-d2da66ea035880ce",
+      "site_name": "QTS Cedar Rapids",
+      "country": "United States",
+      "epoch_address": "6200 76th Ave SW, Fairfax, IA 52228",
+      "epoch_owner": "",
+      "epoch_users": "",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "QTS Data Centers",
+      "public_users": "",
+      "public_address": "6200 76th Ave SW, Fairfax, IA 52228",
+      "construction_epc": [],
+      "energy_partners": [
+        "Alliant Energy"
+      ],
+      "public_grid_operator": "Interstate Power and Light Company",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "SOURCE_CAPTURED",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies QTS and Alliant Energy.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/data-center/project/qts-cedar-rapids-1855c841",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    },
+    {
+      "epoch_id": "EPOCH-4b4d686b6c457a68",
+      "site_name": "QTS Eagle Mountain",
+      "country": "United States",
+      "epoch_address": "652 E Hyperscale Way, Eagle Mountain, UT 84013",
+      "epoch_owner": "",
+      "epoch_users": "Meta #speculative",
+      "epoch_project": "",
+      "public_program": "",
+      "public_owner": "QTS Data Centers",
+      "public_users": "Meta #speculative",
+      "public_address": "652 E Hyperscale Way, Eagle Mountain, UT 84013",
+      "construction_epc": [],
+      "energy_partners": [],
+      "public_grid_operator": "Rocky Mountain Power",
+      "field_status": {
+        "epoch_project": "NOT_PRESENT_IN_EPOCH",
+        "public_program": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "public_owner": "SOURCE_CAPTURED",
+        "public_users": "SOURCE_CAPTURED",
+        "public_address": "SOURCE_CAPTURED",
+        "energy_partners": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "construction_epc": "NOT_FOUND_IN_RETAINED_SOURCE_SET",
+        "grid_operator": "SOURCE_CAPTURED"
+      },
+      "research_status": "ENRICHED_PUBLIC_FIELDS",
+      "note": "Public project registry identifies the QTS campus.",
+      "sources": [
+        {
+          "name": "Intel Accelerator · Verified AI Data Center Registry",
+          "url": "https://intelaccelerator.com/projects",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "name": "DEPLOY",
+          "url": "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut",
+          "accessed_on": "2026-09-27"
+        }
+      ]
+    }
+  ]
+}
