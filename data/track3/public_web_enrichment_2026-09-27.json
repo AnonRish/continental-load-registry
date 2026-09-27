@@ -4,10 +4,10 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 222,
+    "record_count": 224,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 196,
+      "PUBLIC_SOURCE_CAPTURED": 198,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
@@ -17,7 +17,7 @@
       "owner": 10,
       "investors": 4,
       "construction_companies": 22,
-      "cooling": 8,
+      "cooling": 10,
       "chip_quantities": 5,
       "operational_status": 7,
       "address": 6,
@@ -3626,7 +3626,39 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "An SEC filing states that power for the Denton Campus is supplied by the City of Denton through DME under a power purchase agreement for total potential campus load of approximately 394 MW; retained as contract/service evidence, separate from Epoch's IT-power figure.",
       "evidence_id": "EVID-PWEB-batch2-coreweave-denton-tx-serv-9"
+    },
+    {
+      "site_name": "Google Storey County",
+      "epoch_id": "EPOCH-2b89e13933a04725",
+      "field": "cooling",
+      "value": "Primarily air-cooled",
+      "relationship": "publicly identified cooling architecture",
+      "source": "Google",
+      "source_urls": [
+        "https://economicimpact.google/state/nv/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Google's Nevada page says the Storey County campus is primarily air-cooled.",
+      "evidence_id": "EVID-PWEB-batch3-google-storey-county-cool-0"
+    },
+    {
+      "site_name": "Meta Gallatin",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "field": "cooling",
+      "value": "Direct-air cooling using outside air and fans",
+      "relationship": "site cooling architecture",
+      "source": "DPR Construction",
+      "source_urls": [
+        "https://www.dpr.com/projects/facebook-gallatin-data-center"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DPR's project page describes the Gallatin site as using direct air cooling with outside air and fan technology.",
+      "evidence_id": "EVID-PWEB-batch3-meta-gallatin-cool-1"
     }
   ],
-  "record_count": 222
+  "record_count": 224
 }
