@@ -7,12 +7,11 @@
   const navItems=[
     {key:'overview',label:'Overview',href:'index.html#main',anchor:'main',page:'index'},
     {key:'map',label:'Map',href:'index.html#registryMap',anchor:'registryMap',page:'index'},
-    {key:'queues',label:'Queues',href:'index.html#queueUniverse',anchor:'queueUniverse',page:'index'},
-    {key:'targets',label:'Connection Targets',href:'index.html#completeConnectionTargetLedger',anchor:'completeConnectionTargetLedger',page:'index'},
-    {key:'evidence',label:'Evidence',href:'index.html#completeSiteEvidenceLedger',anchor:'completeSiteEvidenceLedger',page:'index'},
+    {key:'evidence',label:'Evidence',href:'index.html#queueUniverse',anchor:'queueUniverse',page:'index'},
+    {key:'data',label:'Data',href:'index.html#completeProjectLedger',anchor:'completeProjectLedger',page:'index'},
     {key:'track3',label:'Track 3',href:'track3.html',page:'track3'},
-    {key:'research',label:'Research Ops',href:'research.html',page:'research'},
-    {key:'methodology',label:'Methodology',href:'index.html#methodology',anchor:'methodology',page:'index'}
+    {key:'research',label:'Research',href:'research.html',page:'research'},
+    {key:'methods',label:'Methods',href:'index.html#methodology',anchor:'methodology',page:'index'}
   ];
   function activeClass(item){
     if(isTrack3&&item.page==='track3')return 'page';
