@@ -9,6 +9,7 @@ silently discarded.
 from __future__ import annotations
 
 import argparse, io, json, re, sys
+from html.parser import HTMLParser
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -16,7 +17,8 @@ from typing import Any
 import pandas as pd
 import requests
 
-SOURCE_URL = "https://www.caiso.com/documents/publicqueuereport.xlsx"
+LIBRARY_URL = "https://www.caiso.com/library/public-queue-report"
+FALLBACK_SOURCE_URL = "https://www.caiso.com/documents/publicqueuereport.xlsx"
 SHEETS = {
     "Grid GenerationQueue": "active",
     "Completed Generation Projects": "completed",
@@ -118,14 +120,77 @@ def normalize_sheet(frame: pd.DataFrame, sheet: str) -> list[dict[str, Any]]:
         })
     return out
 
-def download() -> bytes:
-    response = requests.get(SOURCE_URL, headers={"User-Agent": USER_AGENT}, timeout=60)
-    response.raise_for_status()
-    if not response.content[:2] == b"PK":
-        raise RuntimeError("CAISO response did not look like an XLSX/ZIP workbook")
-    return response.content
+class LinkParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.links: list[tuple[str, str]] = []
+        self.href: str | None = None
+        self.text_parts: list[str] = []
 
-def build(payload: bytes) -> dict[str, Any]:
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "a":
+            return
+        href = dict(attrs).get("href")
+        if href:
+            self.href = href
+            self.text_parts = []
+
+    def handle_data(self, data: str) -> None:
+        if self.href is not None:
+            self.text_parts.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "a" and self.href is not None:
+            self.links.append((self.href, " ".join(self.text_parts).strip()))
+            self.href = None
+            self.text_parts = []
+
+def discover_source_url(session: requests.Session) -> str:
+    page = session.get(LIBRARY_URL, timeout=60)
+    page.raise_for_status()
+    parser = LinkParser()
+    parser.feed(page.text)
+    candidates: list[str] = []
+    for href, text in parser.links:
+        label = f"{text} {href}".lower()
+        if "public queue report" not in label and "publicqueuereport" not in label and "public-queue-report" not in label:
+            continue
+        if href.startswith("/"):
+            href = "https://www.caiso.com" + href
+        elif href.startswith("www."):
+            href = "https://" + href
+        elif not href.startswith("http"):
+            href = "https://www.caiso.com/" + href.lstrip("/")
+        if href not in candidates:
+            candidates.append(href)
+    for url in candidates:
+        try:
+            r = session.get(url, timeout=90, allow_redirects=True)
+            if r.ok and r.content[:2] == b"PK":
+                return r.url
+        except requests.RequestException:
+            continue
+    return FALLBACK_SOURCE_URL
+
+def download() -> tuple[bytes, str]:
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": USER_AGENT,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    })
+    source_url = discover_source_url(session)
+    response = session.get(
+        source_url,
+        headers={"Accept": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream;q=0.9,*/*;q=0.8"},
+        timeout=90,
+        allow_redirects=True,
+    )
+    response.raise_for_status()
+    if response.content[:2] != b"PK":
+        raise RuntimeError(f"CAISO source did not return an XLSX/ZIP workbook: {source_url}")
+    return response.content, response.url
+
+def build(payload: bytes, source_url: str) -> dict[str, Any]:
     sheets = pd.read_excel(io.BytesIO(payload), skiprows=3, sheet_name=None)
     records: list[dict[str, Any]] = []
     sheet_counts: dict[str, int] = {}
@@ -146,7 +211,7 @@ def build(payload: bytes) -> dict[str, Any]:
     return {
         "schema_version": 1,
         "title": "CAISO complete public interconnection queue",
-        "source_url": SOURCE_URL,
+        "source_url": source_url,
         "captured_at": captured_at,
         "source_note": "Official CAISO Public Queue Report workbook (current HTTPS endpoint). The source contains current active, completed and withdrawn interconnection-request sheets. Rows are preserved with original source fields and a normalized subset.",
         "accounting": "Separate generator-interconnection universe; not added to the conservative large-load core total. Coordinates are derived only in the browser from the published county/state fields.",
@@ -180,8 +245,8 @@ def main() -> int:
     if args.selftest:
         selftest()
         return 0
-    payload = download()
-    data = build(payload)
+    payload, source_url = download()
+    data = build(payload, source_url)
     root = Path(args.output_dir)
     root.mkdir(parents=True, exist_ok=True)
     # Build the JSON snapshot first; summary is included in the same object so the browser
