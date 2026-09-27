@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Public global compute-accounting source observations",
+  "semantics": "These are source-specific observations and source capabilities. They are not a globally closed compute inventory.",
+  "observations": [
+    {
+      "observation_id": "GCA-001",
+      "source_id": "NVIDIA-SEC-FY2026",
+      "publisher": "NVIDIA Corporation",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "observed_period": "FY2026",
+      "claim_scope": "vendor_sales_and_customer_structure",
+      "value_summary": "NVIDIA reported that its direct customers include AIBs, distributors, ODMs, OEMs, CSPs, AI model makers and system integrators; indirect customers can include neocloud builders, AI model makers, enterprises and public-sector entities. FY2026 sales to one direct customer represented 22% of total revenue and another 14%, primarily in Compute & Networking.",
+      "track3_use": "Maps the observable customer-chain structure and concentration risk for vendor-side accounting.",
+      "limitation": "The filing is revenue/customer-concentration disclosure, not a transaction-level accelerator serial ledger."
+    },
+    {
+      "observation_id": "GCA-002",
+      "source_id": "NVIDIA-SEC-Q2-FY2027",
+      "publisher": "NVIDIA Corporation",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "observed_period": "quarter ended 2026-07-26",
+      "claim_scope": "current_vendor_customer_structure",
+      "value_summary": "For Q2 FY2027, NVIDIA reported one direct customer at 16% of total revenue; for the first half, three direct customers represented 16%, 15% and 13%. It distinguishes direct customers from indirect customers and states indirect-customer revenue is estimated from multiple factors.",
+      "track3_use": "Current public evidence for tracing vendor sales into direct and indirect channels.",
+      "limitation": "Still not transaction-level unit/serial information."
+    },
+    {
+      "observation_id": "GCA-003",
+      "source_id": "TSMC-2025-ANNUAL",
+      "publisher": "Taiwan Semiconductor Manufacturing Company",
+      "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
+      "observed_period": "2025",
+      "claim_scope": "upstream_production_context",
+      "value_summary": "TSMC reported 15.0 million 12-inch-equivalent wafer shipments, 305 distinct process technologies, 12,682 products, 534 customers, and more than 17 million 12-inch-equivalent annual manufacturing capacity in 2025.",
+      "track3_use": "Provides an upstream manufacturing-capacity and product/customer denominator relevant to production reconciliation.",
+      "limitation": "The figures are not an AI-accelerator-only production ledger."
+    },
+    {
+      "observation_id": "GCA-004",
+      "source_id": "GLEIF-2026-09-25",
+      "publisher": "GLEIF",
+      "source_url": "https://www.gleif.org/en/lei-data/gleif-concatenated-file/download-the-concatenated-file",
+      "observed_period": "2026-09-25",
+      "claim_scope": "legal_entity_and_parent_relationships",
+      "value_summary": "GLEIF's 2026-09-25 files list 3,442,730 Level-1 LEI records, 670,835 Level-2 relationship records and 6,212,750 reporting exceptions.",
+      "track3_use": "A global legal-entity identity/parent graph can support company-to-subsidiary resolution before ownership or transfer accounting.",
+      "limitation": "LEI relationships do not themselves establish accelerator ownership, physical site, or transaction history."
+    },
+    {
+      "observation_id": "GCA-005",
+      "source_id": "US-CENSUS-INTERNATIONAL-TRADE",
+      "publisher": "U.S. Census Bureau",
+      "source_url": "https://www.census.gov/data/developers/data-sets/international-trade.html",
+      "observed_period": "2010-present monthly series; current 2026 interface",
+      "claim_scope": "trade_and_shipping_signal",
+      "value_summary": "The Census international-trade datasets provide monthly U.S. import/export statistics by HS and other classifications; the HS import endpoints provide quantity, value, shipping weight and transportation information at district level. Current API access requires a key.",
+      "track3_use": "Potential public commodity-flow signal for accelerator and component supply-chain research.",
+      "limitation": "HS classifications are broader than individual accelerator models and do not provide a global serial-level inventory."
+    },
+    {
+      "observation_id": "GCA-006",
+      "source_id": "EU-WEEE",
+      "publisher": "European Commission",
+      "source_url": "https://environment.ec.europa.eu/topics/waste-and-recycling/waste-electrical-and-electronic-equipment-weee/implementation-weee-directive_en",
+      "observed_period": "current framework",
+      "claim_scope": "end_of_life_reporting",
+      "value_summary": "EU countries report annually to the Commission on WEEE collection, preparation for reuse, recycling and recovery; historical data are available through Eurostat.",
+      "track3_use": "Official reporting framework that can provide end-of-life and recycling context for attrition/decommissioning models.",
+      "limitation": "It is not a compute-accelerator-specific serial destruction ledger."
+    }
+  ],
+  "reconciliation_requirements": [
+    "Vendor production must be reconciled to finished-accelerator output rather than treating upstream wafer capacity as accelerator output.",
+    "Sales-channel disclosures must be linked to recipients and transfers before physical location can be asserted.",
+    "Entity graphs establish legal identity relationships, not physical inventory.",
+    "Commodity trade data are corroborating supply-chain signals, not unit-level accelerator identities.",
+    "End-of-life statistics can constrain attrition models but cannot replace serial-verified destruction or recycling records."
+  ],
+  "current_global_closure": "UNKNOWN"
+}
