@@ -105,9 +105,9 @@ Completing a task requires attaching the resulting observation or record with so
 
 The dated missing-information sweep is converted into a one-task research queue at `data/track3/research_work_queue.json` and `data/track3/research_work_queue.csv`. The Research Operations Console is published at `research.html` and is driven by the queue. The backlog generator asserts that every effective unresolved publisher field and every open Track 3 domain cell becomes exactly one research task before outputs are written.
 
-- Effective unresolved publisher fields: 333
-- Open Track 3 domain cells: 745
-- Total open research tasks: 1,078
+- Effective unresolved publisher fields: 273
+- Open Track 3 domain cells: 711
+- Total open research tasks: 984
 - Canonical sites represented: 93
 
 The operational playbooks are in `data/track3/research_workflows.json` and `RESEARCH_WORKFLOWS.md`. They specify source ladders, site-specific search query templates, evidence-capture fields, acceptance/rejection rules, result dispositions, and the canonical handoff schema. A public lead or NO_PUBLIC_RECORD outcome is never silently converted into a positive canonical fact.
