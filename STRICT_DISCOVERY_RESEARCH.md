@@ -44,41 +44,38 @@ Sources:
 
 Do not infer: a planning-area association is not a parcel match; a similarly named GLDC project is not automatically P3198; 1,800 MW is not measured demand.
 
-## P2970 — Beacon Langdon A.I. Hub 2 Load
+## P3108 — Wild Rose Power Hub Load
 
-Queue: AESO P2970 · 1,400 MW · Load · Calgary/Langdon planning context.
+Queue: AESO P3108 · 1,300 MW · Load · Calgary planning area.
 
-This is an explicit AI/data-load candidate whose retained queue record does not expose a developer/owner. The research question is entity and physical resolution, not whether AI language appears in the project title.
-
-Search sequence: AESO connection records → Alberta municipal planning/development records → land/property records → utility/regulator filings → independent facility registries.
-
-Do not infer: AI wording does not establish operator, user, hardware, or measured consumption; planning area does not establish a physical parcel.
-
-## NYISO 1743 — St. Lawrence Infrastructure 2
-
-Queue: NYISO 1743 · 1,935 MW · Load · St. Lawrence County · POI NYPA Moses Massena 1/2.
-
-Public records explicitly identify this as a load request. Independent public trackers already associate it with data-center/AI development, so the closure objective is physical/entity/infrastructure resolution rather than first discovery of a data-center project.
+The retained AESO source labels P3108 as Data Load while the developer is not published in the source row and the project title does not itself identify a data-center operator. This is the primary generic-name ambiguity target.
 
 Sources:
-- https://www.interconnection.fyi/project/nyiso-1743
-- https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf
-- https://www.stlawco.gov/sites/default/files/Planning/Trainings/LGC%202025%20Planning%20%26%20Zoning%20Presentation%20-%20Final.pdf
+- https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx
+- Public queue mirror / project record retained by the registry
+- Municipal planning, land/property, permitting, utility and regulator records are the next source families
 
-Do not infer: county or POI equals physical site; secondary classification establishes operator or compute; queue MW equals actual electricity or compute.
+Do not infer: the Calgary planning area is not a facility coordinate; Data Load does not establish operator, users, hardware, or measured consumption; 1,300 MW is not measured electricity use or IT power.
 
-## NYISO 1742 — St. Lawrence Infrastructure 1
+## P2958 — Hydrogen Canada MPC Load (control)
 
-Queue: NYISO 1742 · 860 MW · Load · St. Lawrence County · POI NYPA HA-2 345 kV.
+Queue: AESO P2958 · 320 MW · Industrial Load · Fort Saskatchewan.
 
-Use the same closure sequence as 1743, with particular attention to utility/transmission-owner records and physical parcel resolution.
+This is an explicit industrial-load control. It is included to test whether the workflow can resolve a non-data-center large load without forcing a compute interpretation.
 
-Sources:
-- NYSRC large-load report
-- Current public NYISO queue mirror
-- https://www.stlawco.gov/sites/default/files/Planning/Trainings/LGC%202025%20Planning%20%26%20Zoning%20Presentation%20-%20Final.pdf
+Search sequence: AESO source → corporate/project records → municipal planning/land/permitting → utility/regulator evidence → physical target → transformer/service evidence.
 
-Do not infer: county/POI equals physical site; aggregator labels establish legal ownership; queue capacity equals operating load.
+Do not infer: industrial-load status does not establish compute relevance; missing developer information is not evidence of concealment.
+
+## P2614 — Dow Fort Sask. Load (control)
+
+Queue: AESO P2614 · 231 MW · Industrial Load · Fort Saskatchewan.
+
+This is a second explicit industrial-load control for entity and physical resolution.
+
+Search sequence: AESO source → Dow/project records → municipal planning/land/permitting → utility/regulator evidence → physical target → transformer/service evidence.
+
+Do not infer: project identity from the company name alone; queue MW is not operating consumption.
 
 ## Closure output
 
