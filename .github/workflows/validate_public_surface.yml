@@ -6,6 +6,14 @@ on:
       - "index.html"
       - "track3.html"
       - "plan-a.html"
+      - "research.html"
+      - "api.html"
+      - "bulk-download.html"
+      - "observatory-nav.css"
+      - "observatory-nav.js"
+      - "*.py"
+      - ".github/workflows/**"
+      - "data/**"
       - "PLAN_A.md"
       - "CONTRIBUTING.md"
       - "CITATION.cff"
@@ -42,6 +50,14 @@ on:
       - "index.html"
       - "track3.html"
       - "plan-a.html"
+      - "research.html"
+      - "api.html"
+      - "bulk-download.html"
+      - "observatory-nav.css"
+      - "observatory-nav.js"
+      - "*.py"
+      - ".github/workflows/**"
+      - "data/**"
       - "PLAN_A.md"
       - "CONTRIBUTING.md"
       - "CITATION.cff"
@@ -283,6 +299,47 @@ jobs:
           for f in /tmp/index.html-*.js /tmp/track3.html-*.js /tmp/plan-a.html-*.js; do
             node --check "$f"
           done
+
+      - name: Validate critical public artifacts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          critical = [
+              "data/queue_layer_status.json",
+              "data/miso_public_queue.json",
+              "data/spp_public_queue.json",
+              "data/caiso_public_queue.json",
+              "data/pjm_cycle_public_queue.json",
+              "data/miso_unresolved_large_loads.json",
+              "data/physical_verification_layer.json",
+              "data/track3/remote_sensing_observation_targets.json",
+              "data/track3/time_series_verification.json",
+              "data/track3/evidence_records.json",
+              "data/track3/site_status.json",
+              "data/track3/observation_queue.json",
+              "data/track3/research_queue.json",
+              "data/track3/facility_provenance.json",
+              "data/track3/entity_resolution.json",
+              "data/project_level_extractions.json",
+              "data/project_level_map.json",
+              "data/supplemental_large_load_evidence.json",
+              "data/supplemental_aggregate_map.json",
+              "data/website_completeness_audit.json",
+          ]
+          for path in critical:
+              p=Path(path)
+              assert p.exists(), f"missing public artifact: {path}"
+              assert p.stat().st_size > 0, f"empty public artifact: {path}"
+              if p.suffix == ".json":
+                  json.loads(p.read_text(encoding="utf-8"))
+          status=json.loads(Path("data/queue_layer_status.json").read_text(encoding="utf-8"))
+          for feed in status["feeds"]:
+              if feed["snapshot_present"]:
+                  p=Path(feed["snapshot"])
+                  assert p.exists() and p.stat().st_size > 0, f"queue snapshot missing/empty: {feed['id']}"
+          print("PASS: critical public artifacts exist, are non-empty, and parse as JSON")
+          PY
 
       - name: Validate discovery files
         run: |
