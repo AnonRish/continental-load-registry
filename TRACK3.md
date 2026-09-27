@@ -14,6 +14,10 @@ This layer turns the continental registry from a queue table into an auditable e
 | PENDING_RESEARCH | The site-specific search has not yet produced a retained connection/service record. |
 | SOURCE_AVAILABLE_NOT_INGESTED | A relevant public external dataset exists and is cataloged, but has not yet been joined to the evidence graph. |
 | NOT_INGESTED | The evidence stream is specified by the verification design but numeric observations are not yet ingested. |
+| INGESTED_DERIVED | Numeric/derived observations have been computed from a public source scene and retained with provenance; this is not a positive finding about AI compute by itself. |
+| INGESTED_POLYGONIZED | Current building-footprint polygons have been ingested with source provenance; geometry alone does not establish AI tenancy. |
+| INGESTED_PARTIAL | Source-backed records are ingested for part of the site universe; uncovered sites remain explicit gaps. |
+| RESEARCH_QUEUE | A structured, site-specific acquisition/research target exists, but the requested evidence has not yet been retained for that site. |
 | UNKNOWN | The evidence needed to classify the field is not currently available. |
 
 ## Current site evidence
@@ -25,6 +29,10 @@ The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 61 `SITE
 A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are retained for Google Arcola and Google Kansas City East; these are supporting infrastructure evidence, not direct thermal telemetry.
 
 The site-status model also tracks service/energy-contract evidence separately from grid-queue evidence, plus a distinct compute-tenancy domain. This prevents contracts and leases from being silently presented as queue IDs.
+
+The physical-verification acquisition pipeline now runs Sentinel-2 optical, Landsat Collection 2 surface-temperature, and Sentinel-1 GRD searches against public STAC catalogs. Successful scene windows produce compact derived measurements with scene provenance; full rasters remain external. A separate current building-footprint pipeline ingests Overture Maps building polygons, while dated construction chronology remains separate.
+
+The transformer layer now retains source-backed events rather than a zero-record placeholder. Two records are currently attached to Meta Hyperion: a planned MISO transformer specification and an Entergy-reported transformer transport event. The layer also publishes a 93-site transformer research target queue. Planned specifications are not installation/energization evidence, and missing transformer events are not evidence of absence.
 
 A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are also retained for Google Arcola and Google Kansas City East; these support physical verification but are not thermal telemetry.
 
