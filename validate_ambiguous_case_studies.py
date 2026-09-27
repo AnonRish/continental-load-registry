@@ -19,7 +19,7 @@ ALLOWED={
 REQUIRED={"case_id","rto","queue_id","project_name","capacity_mw","pilot_role","initial_registry_classification",
           "queue","entity_resolution","location","public_evidence","physical_observations",
           "transformer_check","adjudication","closure_state","unresolved_items","methods_note","last_verified_on"}
-REQUIRED_QUEUE={"status","source_url","details"}
+REQUIRED_QUEUE={"status","source_url","details","project_type","classification_basis"}
 REQUIRED_ENTITY={"status"}
 REQUIRED_LOCATION={"status","precision"}
 REQUIRED_TRANSFORMER={"status","summary"}
@@ -44,6 +44,9 @@ def main()->int:
         if missing: errors.append(f"{cid}: missing {missing}")
         if c.get("adjudication") not in ALLOWED:
             errors.append(f"{cid}: invalid adjudication {c.get('adjudication')!r}")
+        project_type=str((c.get("queue") or {}).get("project_type") or "").strip().lower()
+        if project_type not in {"load","new load facility","increase load"}:
+            errors.append(f"{cid}: strict load-admission gate failed for project_type={project_type!r}")
         for group,key in ((REQUIRED_QUEUE,"queue"),(REQUIRED_ENTITY,"entity_resolution"),(REQUIRED_LOCATION,"location"),(REQUIRED_TRANSFORMER,"transformer_check")):
             obj=c.get(key) or {}
             miss=sorted(group-set(obj))
