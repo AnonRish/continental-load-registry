@@ -22,9 +22,9 @@ This layer turns the continental registry from a queue table into an auditable e
 
 ## Current site evidence
 
-As of 2026-09-26, the preserved 93-site Epoch universe has 59 sites with at least one attached site-level evidence record. The queue crosswalk contributes additional public site-level evidence records; across the combined layers, 67 of 93 sites have at least one evidence item. Two sites have site-specific queue IDs.
+As of 2026-09-26, the preserved 93-site Epoch universe has site-level research coverage for all 93 sites. The canonical site-status layer distinguishes 2 verified site-specific queue IDs, 71 sites with site-level grid/connection evidence without a verified queue ID, and 20 sites where a documented site-specific public-record search produced no retained public queue/service identifier. The 20 no-public-record outcomes are not evidence that grid service is absent.
 
-The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 61 `SITE_LEVEL_EVIDENCE`, and 30 `PENDING_RESEARCH`. The 30 pending records are sites for which the current pipeline has not attached a site-specific grid/service record; this is a research backlog, not a finding about whether a connection exists. The pending research queue is deliberately retained as a worklist of 30 current grid-connection gaps. The absence of a public record after a particular search is not treated as proof of absence.
+The canonical grid-connection status is now 2 `VERIFIED_SITE_SPECIFIC`, 71 `SITE_LEVEL_EVIDENCE`, 20 `RESEARCHED_NO_PUBLIC_RECORD`, and 0 `PENDING_RESEARCH`. The zero-pending state means every site's current site-specific search has a documented outcome. `RESEARCHED_NO_PUBLIC_RECORD` means the public search did not produce a retained queue/service identifier; it does not mean the site lacks an electrical connection.
 
 A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are retained for Google Arcola and Google Kansas City East; these are supporting infrastructure evidence, not direct thermal telemetry.
 
