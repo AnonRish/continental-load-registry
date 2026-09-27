@@ -8,12 +8,12 @@
     "generated_on": "2026-09-27",
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
-    "publisher_tasks": 274,
-    "domain_tasks": 712,
-    "total_tasks": 986,
+    "publisher_tasks": 273,
+    "domain_tasks": 711,
+    "total_tasks": 984,
     "publisher_by_field": {
       "project": 54,
-      "investors": 80,
+      "investors": 79,
       "construction_companies": 76,
       "energy_companies": 18,
       "owner": 1,
@@ -22,7 +22,7 @@
       "chip_quantities": 10
     },
     "domain_by_domain": {
-      "service_or_contract": 82,
+      "service_or_contract": 81,
       "regulatory": 83,
       "compute_tenancy": 89,
       "power_telemetry": 87,
@@ -49,59 +49,6 @@
     "INGEST"
   ],
   "tasks": [
-    {
-      "task_id": "PUB-EPOCH-c20399471d1c5e4a-investors",
-      "kind": "publisher",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-c20399471d1c5e4a",
-      "site_name": "Colossus 2",
-      "country": "United States",
-      "state_province": "TN",
-      "current_it_power_mw": 946,
-      "field": "investors",
-      "workflow_label": "Investors / financing parties",
-      "objective": "Identify disclosed project-specific financing or investment parties; do not infer them from ownership, tenancy, or ordinary shareholders.",
-      "search_sequence": [
-        "SEC 10-K/10-Q/8-K and exhibits",
-        "bond and development-agreement records",
-        "project financing announcements",
-        "municipal incentive records",
-        "official company releases"
-      ],
-      "queries": [
-        "\"Colossus 2\" financing investor",
-        "\"Colossus 2\" development agreement financing",
-        "\"Colossus 2\" investor data center"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Colossus+2%22+financing+investor",
-        "https://www.google.com/search?q=%22Colossus+2%22+development+agreement+financing",
-        "https://www.google.com/search?q=%22Colossus+2%22+investor+data+center"
-      ],
-      "evidence_to_capture": [
-        "party name",
-        "relationship type",
-        "document/filing",
-        "site/project linkage",
-        "date",
-        "URL/locator"
-      ],
-      "acceptance_rule": "Source explicitly connects the party to financing/investment in the project.",
-      "reject_rule": "Market shareholders or unrelated financing with no site/project linkage.",
-      "existing_next_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number.",
-      "public_leads": [
-        {
-          "field": "energy_companies",
-          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
-          "finding": "A dated local report describes a site-specific SpaceXAI request to TVA for direct electricity supply to Colossus II; utility/site evidence, not a queue ID.",
-          "source": "Daily Memphian",
-          "source_url": "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva"
-        }
-      ],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
     {
       "task_id": "PUB-EPOCH-c20399471d1c5e4a-construction-companies",
       "kind": "publisher",
@@ -13403,59 +13350,6 @@
       "reject_rule": "Generic contractor work elsewhere for the same owner.",
       "existing_next_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record.",
       "public_leads": [],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-c20399471d1c5e4a-service-or-contract",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-c20399471d1c5e4a",
-      "site_name": "Colossus 2",
-      "country": "United States",
-      "state_province": "TN",
-      "current_it_power_mw": 946,
-      "domain": "service_or_contract",
-      "workflow_label": "Service / energy contract",
-      "objective": "Find site-specific utility service, capacity reservation, power purchase, direct supply, or contractual energy evidence.",
-      "search_sequence": [
-        "Serving utility tariff/service filings",
-        "regulator dockets",
-        "utility large-load proceedings",
-        "municipal/development agreements",
-        "company disclosures"
-      ],
-      "queries": [
-        "\"Colossus 2\" service agreement utility",
-        "\"Colossus 2\" power contract",
-        "\"Colossus 2\" load service agreement TN"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Colossus+2%22+service+agreement+utility",
-        "https://www.google.com/search?q=%22Colossus+2%22+power+contract",
-        "https://www.google.com/search?q=%22Colossus+2%22+load+service+agreement+TN"
-      ],
-      "evidence_to_capture": [
-        "counterparties",
-        "contract/service type",
-        "capacity if stated",
-        "case/docket/document ID",
-        "date",
-        "URL/locator"
-      ],
-      "acceptance_rule": "Document identifies the site and contractual/service relationship.",
-      "reject_rule": "Generic tariff availability or regional service.",
-      "existing_next_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number.",
-      "public_leads": [
-        {
-          "field": "energy_companies",
-          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
-          "finding": "A dated local report describes a site-specific SpaceXAI request to TVA for direct electricity supply to Colossus II; utility/site evidence, not a queue ID.",
-          "source": "Daily Memphian",
-          "source_url": "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva"
-        }
-      ],
       "canonical_ingest_path": "data/track3/evidence_records.json",
       "submission_schema": "data/track3/research_submission_schema.json"
     },
