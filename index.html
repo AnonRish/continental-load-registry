@@ -136,6 +136,49 @@
   .registry-cluster-icon{filter:drop-shadow(0 2px 5px rgba(0,0,0,.16));}
   .map-legend{border:1px solid var(--line); border-radius:10px; padding:9px 11px; font-size:11px; color:var(--ink-soft); line-height:1.65; box-shadow:0 4px 14px rgba(0,0,0,.12); backdrop-filter:blur(8px);}
   .map-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle;}
+<style id="connection-target-ledger-v2">
+#completeConnectionTargetLedger .ctl-hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.6fr);gap:16px;align-items:stretch}
+#completeConnectionTargetLedger .ctl-kicker{font:500 10px/1 ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-faint)}
+#completeConnectionTargetLedger .ctl-title{font-size:clamp(22px,3vw,32px);line-height:1.03;letter-spacing:-.035em;font-weight:700;margin-top:6px}
+#completeConnectionTargetLedger .ctl-sub{font-size:12px;line-height:1.65;color:var(--ink-soft);max-width:780px;margin-top:8px}
+#completeConnectionTargetLedger .ctl-radar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#completeConnectionTargetLedger .ctl-stat{border:1px solid var(--line);border-radius:12px;padding:11px;background:var(--paper);min-height:74px}
+#completeConnectionTargetLedger .ctl-stat b{display:block;font:600 22px/1 'IBM Plex Mono',monospace}
+#completeConnectionTargetLedger .ctl-stat span{display:block;margin-top:5px;font-size:10px;color:var(--ink-faint)}
+#completeConnectionTargetLedger .ctl-toolbar{display:grid;grid-template-columns:minmax(250px,2fr) repeat(3,minmax(145px,1fr));gap:8px;margin-top:14px}
+#completeConnectionTargetLedger .ctl-toolbar input,#completeConnectionTargetLedger .ctl-toolbar select{width:100%;padding:9px 10px;border:1px solid var(--line-strong);border-radius:9px;background:var(--panel);color:var(--ink)}
+#completeConnectionTargetLedger .ctl-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:14px}
+#completeConnectionTargetLedger .ctl-field-card{border:1px solid var(--line);border-radius:10px;padding:9px;background:var(--panel)}
+#completeConnectionTargetLedger .ctl-field-card b{font:600 17px/1 'IBM Plex Mono',monospace}
+#completeConnectionTargetLedger .ctl-field-card span{display:block;margin-top:5px;color:var(--ink-soft);font-size:9.5px;line-height:1.3}
+#completeConnectionTargetLedger .ctl-field-card .ctl-bar{height:4px;background:var(--paper);border-radius:999px;margin-top:8px;overflow:hidden}
+#completeConnectionTargetLedger .ctl-field-card .ctl-bar i{display:block;height:100%;background:var(--teal);border-radius:inherit}
+#completeConnectionTargetLedger .ctl-table{width:100%;border-collapse:collapse}
+#completeConnectionTargetLedger .ctl-table th,#completeConnectionTargetLedger .ctl-table td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+#completeConnectionTargetLedger .ctl-table th{font:500 9px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint)}
+#completeConnectionTargetLedger .ctl-site{min-width:240px}
+#completeConnectionTargetLedger .ctl-site-name{font-weight:650;font-size:12px;line-height:1.3}
+#completeConnectionTargetLedger .ctl-site-meta{margin-top:3px;font:9px 'IBM Plex Mono',monospace;color:var(--ink-faint)}
+#completeConnectionTargetLedger .ctl-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 7px;border-radius:999px;font:600 8.5px 'IBM Plex Mono',monospace;border:1px solid var(--line-strong);white-space:nowrap}
+#completeConnectionTargetLedger .ctl-badge.good{background:var(--teal-soft);color:var(--teal);border-color:color-mix(in srgb,var(--teal) 38%,transparent)}
+#completeConnectionTargetLedger .ctl-badge.warn{background:var(--amber-soft);color:var(--amber);border-color:color-mix(in srgb,var(--amber) 42%,transparent)}
+#completeConnectionTargetLedger .ctl-value{font-size:11px;line-height:1.4}
+#completeConnectionTargetLedger .ctl-muted{font-size:10px;color:var(--ink-faint)}
+#completeConnectionTargetLedger .ctl-source-links{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+#completeConnectionTargetLedger .ctl-source-links a{font-size:9px}
+#completeConnectionTargetLedger details.ctl-details{margin-top:8px;border-top:1px dashed var(--line);padding-top:7px}
+#completeConnectionTargetLedger details.ctl-details summary{cursor:pointer;font-size:9.5px;color:var(--ink-soft)}
+#completeConnectionTargetLedger .ctl-detail-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:8px}
+#completeConnectionTargetLedger .ctl-detail{border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--paper)}
+#completeConnectionTargetLedger .ctl-detail dt{font:500 8.5px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint)}
+#completeConnectionTargetLedger .ctl-detail dd{margin:4px 0 0;font-size:10.5px;line-height:1.35}
+#completeConnectionTargetLedger .ctl-empty{color:var(--amber);font:500 9px 'IBM Plex Mono',monospace}
+#completeConnectionTargetLedger .ctl-pager{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+#completeConnectionTargetLedger .ctl-pager button{padding:8px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--panel);color:var(--ink)}
+#completeConnectionTargetLedger .ctl-pager button:disabled{opacity:.45}
+@media(max-width:1050px){#completeConnectionTargetLedger .ctl-hero{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-fields{grid-template-columns:repeat(2,minmax(0,1fr))}#completeConnectionTargetLedger .ctl-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#completeConnectionTargetLedger .ctl-toolbar{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){#completeConnectionTargetLedger .ctl-radar{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-fields{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-detail-grid{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-toolbar{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-site{min-width:200px}}
+</style>
 </style>
 </head>
 <body class="min-h-screen">
@@ -657,30 +700,72 @@
   </section>
 
   <!-- ============ COMPLETE CONNECTION TARGET LEDGER ============ -->
-  <section id="completeConnectionTargetLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
-      <div>
-        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Full 93-site Track 3 target layer</p>
-        <h2 class="font-serif-display text-xl mt-1">Complete connection-target ledger</h2>
-        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Every canonical Epoch site is searchable here alongside its grid jurisdiction, site-specific queue state, site-evidence count and next research action.</p>
+<section id="completeConnectionTargetLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
+  <div class="ctl-hero">
+    <div>
+      <p class="ctl-kicker">Full 93-site Track 3 target layer · every connection field accounted for</p>
+      <div class="ctl-title">Complete connection-target ledger</div>
+      <p class="ctl-sub">A compact research observatory for every canonical Epoch site. Published values stay visible; unavailable public fields are explicitly marked <span class="mono" style="color:var(--amber);">NOT PUBLICLY RETAINED</span> rather than appearing as unexplained blanks. Open a row to see the full connection record, source evidence and research trail.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <a href="data/epoch_connection_research_targets.json" class="text-xs px-3 py-2 rounded-md border hairline link-underline">Raw 93-site JSON</a>
+        <a href="data/epoch_connection_research_targets.csv" class="text-xs px-3 py-2 rounded-md border hairline link-underline">CSV export</a>
+        <a href="data/epoch_connection_match_audit.json" class="text-xs px-3 py-2 rounded-md border hairline link-underline">Match audit</a>
+        <a href="research.html" class="text-xs px-3 py-2 rounded-md border hairline link-underline">Research Operations</a>
       </div>
-      <input id="targetLedgerSearch" type="search" placeholder="Search 93 connection targets" class="text-sm px-3 py-2 rounded-md w-[260px]" />
     </div>
-    <div id="targetLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading connection targets…</div>
-    <div class="scroll-x mt-4">
-      <table class="w-full text-xs min-w-[1500px]">
-        <thead><tr><th class="px-3 py-2">Epoch ID</th><th class="px-3 py-2">Site</th><th class="px-3 py-2">State / country</th><th class="px-3 py-2">Grid jurisdiction</th><th class="px-3 py-2">Match status</th><th class="px-3 py-2">Utility / provider</th><th class="px-3 py-2">Substation / POI</th><th class="px-3 py-2">Queue ID</th><th class="px-3 py-2">Service / approved MW</th><th class="px-3 py-2">Evidence items</th><th class="px-3 py-2">Next action</th></tr></thead>
-        <tbody id="targetLedgerBody"><tr><td colspan="11" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
-      </table>
+    <div class="ctl-radar">
+      <div class="ctl-stat"><b id="ctlSites">—</b><span>canonical sites</span></div>
+      <div class="ctl-stat"><b id="ctlQueueIds">—</b><span>site-specific queue IDs</span></div>
+      <div class="ctl-stat"><b id="ctlEvidenceSites">—</b><span>sites with retained site evidence</span></div>
+      <div class="ctl-stat"><b id="ctlProviders">—</b><span>named utility / service providers</span></div>
     </div>
-    <div class="flex items-center justify-between gap-3 mt-4 text-xs">
-      <button id="targetLedgerPrev" type="button" class="map-reset-btn">Previous</button>
-      <span id="targetLedgerPage" class="mono" style="color:var(--ink-faint);">Page 1</span>
-      <button id="targetLedgerNext" type="button" class="map-reset-btn">Next</button>
-    </div>
-  </section>
+  </div>
 
-  <!-- ============ COMPLETE SITE EVIDENCE LEDGER ============ -->
+  <div id="targetLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading connection targets…</div>
+
+  <div class="ctl-toolbar">
+    <input id="targetLedgerSearch" type="search" placeholder="Search site, Epoch ID, utility, queue ID, evidence or next action…" />
+    <select id="targetLedgerStatusFilter">
+      <option value="">All connection states</option>
+      <option value="VERIFIED">Verified site-specific</option>
+      <option value="SITE_LEVEL">Site-level evidence</option>
+      <option value="NO_PUBLIC">No public match retained</option>
+      <option value="JURISDICTION">Jurisdiction mapped</option>
+    </select>
+    <select id="targetLedgerJurisdictionFilter"><option value="">All grid jurisdictions</option></select>
+    <select id="targetLedgerCompletenessFilter">
+      <option value="">All record completeness</option>
+      <option value="10+">10+ detailed fields</option>
+      <option value="5+">5+ detailed fields</option>
+      <option value="1+">1+ detailed fields</option>
+    </select>
+  </div>
+
+  <div id="ctlFieldCards" class="ctl-fields"></div>
+
+  <div class="scroll-x mt-4">
+    <table class="ctl-table min-w-[1120px]">
+      <thead><tr>
+        <th class="ctl-site">Site</th>
+        <th>Connection state</th>
+        <th>Grid / jurisdiction</th>
+        <th>Provider</th>
+        <th>Queue / capacity</th>
+        <th>Evidence</th>
+        <th>Research trail</th>
+      </tr></thead>
+      <tbody id="targetLedgerBody"><tr><td colspan="7" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="ctl-pager">
+    <button id="targetLedgerPrev" type="button">Previous</button>
+    <span id="targetLedgerPage" class="mono text-xs" style="color:var(--ink-faint);">Page 1</span>
+    <button id="targetLedgerNext" type="button">Next</button>
+  </div>
+</section>
+
+<!-- ============ COMPLETE SITE EVIDENCE LEDGER ============ -->
   <section id="completeSiteEvidenceLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
       <div>
@@ -2808,21 +2893,120 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
   document.getElementById('projectLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(projectFiltered.length/PP));if(projectPage<pages-1){projectPage++;renderProjects();}});
   fetch('data/project_level_extractions.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('project ledger unavailable');return res.json();}).then(function(p){projects=Array.isArray(p.records)?p.records:[];const types=[...new Set(projects.map(x=>x.evidence_type).filter(Boolean))].sort();const sel=document.getElementById('projectLedgerType');types.forEach(function(t){const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});filterProjects();}).catch(function(err){document.getElementById('projectLedgerStatus').textContent='Project ledger unavailable: '+err.message;});
   let targets=[],targetFiltered=[],targetPage=0;
-  const TP=20;
+  const TP=12;
+  const DETAIL_FIELDS=[
+    ['utility_or_service_provider','Utility / service provider'],
+    ['utility_type','Utility type'],
+    ['transmission_interconnection_provider','Transmission interconnection provider'],
+    ['substation','Substation / POI'],
+    ['transmission_line','Transmission line'],
+    ['site_specific_queue_id','Site-specific queue ID'],
+    ['site_specific_queue_name','Queue / project name'],
+    ['site_specific_queue_capacity_mw','Queue capacity (MW)'],
+    ['service_capacity_mw','Service capacity (MW)'],
+    ['approved_capacity_mw','Approved capacity (MW)'],
+    ['contract_ceiling_mw','Contract ceiling (MW)'],
+    ['site_planned_mw','Site planned MW'],
+    ['request_or_study_date','Request / study date'],
+    ['service_or_approval_date','Service / approval date'],
+    ['target_in_service_date','Target in-service date'],
+    ['connection_research_notes','Connection research notes']
+  ];
+  function hasVal(v){return v!==null&&v!==undefined&&v!==''&&!(Array.isArray(v)&&!v.length);}
+  function displayVal(v){if(!hasVal(v))return '<span class="ctl-empty">NOT PUBLICLY RETAINED</span>';return escLedger(v);}
+  function stateKind(r){
+    const s=String(r.connection_match_status||r.status||'').toUpperCase();
+    if(s.includes('VERIFIED'))return ['VERIFIED','good'];
+    if(s.includes('SITE_LEVEL'))return ['SITE LEVEL','good'];
+    if(s.includes('NO_MATCH')||s.includes('NO_PUBLIC'))return ['NO PUBLIC MATCH','warn'];
+    return ['JURISDICTION','warn'];
+  }
+  function knownDetailCount(r){return DETAIL_FIELDS.filter(function(x){return hasVal(r[x[0]]);}).length;}
+  function sourceLinks(r){
+    const links=[];
+    if(r.primary_source_url)links.push('<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escLedger(r.primary_source_url)+'">Primary</a>');
+    (Array.isArray(r.site_level_evidence)?r.site_level_evidence:[]).slice(0,3).forEach(function(e,i){
+      if(e&&e.source_url)links.push('<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escLedger(e.source_url)+'">Evidence '+(i+1)+'</a>');
+    });
+    return links.length?links.join(' · '):'<span class="ctl-muted">No source URL retained</span>';
+  }
+  function renderFieldCards(){
+    const el=document.getElementById('ctlFieldCards'); if(!el)return;
+    const total=targets.length||1;
+    el.innerHTML=DETAIL_FIELDS.map(function(pair){
+      const n=targets.filter(function(r){return hasVal(r[pair[0]]);}).length;
+      const pct=n/total*100;
+      return '<div class="ctl-field-card"><b>'+n+'/'+targets.length+'</b><span>'+escLedger(pair[1])+'</span><div class="ctl-bar"><i style="width:'+pct.toFixed(1)+'%"></i></div></div>';
+    }).join('');
+  }
+  function renderTargetRow(r){
+    const kind=stateKind(r), known=knownDetailCount(r), cap=hasVal(r.service_capacity_mw)?r.service_capacity_mw+' MW':hasVal(r.approved_capacity_mw)?r.approved_capacity_mw+' MW':hasVal(r.site_specific_queue_capacity_mw)?r.site_specific_queue_capacity_mw+' MW':'Not publicly retained';
+    const queue=hasVal(r.site_specific_queue_id)?r.site_specific_queue_id:'No verified queue ID';
+    const siteEvidence=Number(r.site_level_evidence_count||0);
+    const stateTxt=[r.state_province,r.country].filter(Boolean).join(' · ')||'Not published';
+    const researchLink='research.html?q='+encodeURIComponent(r.epoch_name||r.epoch_id);
+    return '<tr>'+
+      '<td class="ctl-site"><div class="ctl-site-name">'+escLedger(r.epoch_name||'Not published')+'</div><div class="ctl-site-meta">'+escLedger(r.epoch_id)+' · '+escLedger(stateTxt)+'</div>'+
+        '<details class="ctl-details"><summary>Open full 16-field connection record · '+known+'/'+DETAIL_FIELDS.length+' fields published</summary><dl class="ctl-detail-grid">'+
+        DETAIL_FIELDS.map(function(pair){return '<div class="ctl-detail"><dt>'+escLedger(pair[1])+'</dt><dd>'+displayVal(r[pair[0]])+'</dd></div>';}).join('')+
+        '</dl></details></td>'+
+      '<td><span class="ctl-badge '+kind[1]+'">'+escLedger(kind[0])+'</span><div class="ctl-muted" style="margin-top:5px;">'+escLedger(r.status||'UNKNOWN')+'</div></td>'+
+      '<td><div class="ctl-value">'+escLedger(r.grid_or_queue_jurisdiction||'NOT MAPPED')+'</div><div class="ctl-muted" style="margin-top:3px;">'+escLedger(r.precision||'display geometry')+'</div></td>'+
+      '<td><div class="ctl-value">'+displayVal(r.utility_or_service_provider)+'</div><div class="ctl-muted" style="margin-top:4px;">'+escLedger(r.utility_type||'Utility type not separately retained')+'</div></td>'+
+      '<td><div class="ctl-value mono">'+escLedger(queue)+'</div><div class="ctl-muted" style="margin-top:3px;">'+escLedger(cap)+'</div></td>'+
+      '<td><div class="ctl-value"><span class="ctl-badge '+(siteEvidence?'good':'warn')+'">'+siteEvidence+' item'+(siteEvidence===1?'':'s')+'</span></div><div class="ctl-source-links">'+sourceLinks(r)+'</div></td>'+
+      '<td><div class="ctl-source-links"><a class="link-underline" href="'+researchLink+'">Research this site →</a></div><div class="ctl-muted" style="margin-top:4px;">'+escLedger((r.next_action||'No next action retained.').slice(0,190))+'</div></td>'+
+    '</tr>';
+  }
   function renderTargets(){
     const body=document.getElementById('targetLedgerBody'),pages=Math.max(1,Math.ceil(targetFiltered.length/TP));targetPage=Math.min(targetPage,pages-1);
     const rows=targetFiltered.slice(targetPage*TP,(targetPage+1)*TP);
-    body.innerHTML=rows.length?rows.map(function(r){return '<tr><td class="px-3 py-2 mono">'+escLedger(r.epoch_id)+'</td><td class="px-3 py-2">'+escLedger(r.epoch_name||'Not published')+'</td><td class="px-3 py-2">'+escLedger([r.state_province,r.country].filter(Boolean).join(' · ')||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.grid_or_queue_jurisdiction||'Not mapped')+'</td><td class="px-3 py-2">'+escLedger(r.connection_match_status||r.status||'UNKNOWN')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_service_provider||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.substation||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.site_specific_queue_id||'Not verified')+'</td><td class="px-3 py-2">'+escLedger(r.service_capacity_mw!=null?r.service_capacity_mw+' MW':r.approved_capacity_mw!=null?r.approved_capacity_mw+' MW':'Not published')+'</td><td class="px-3 py-2 text-right">'+escLedger(r.site_level_evidence_count||0)+'</td><td class="px-3 py-2 max-w-[360px]">'+escLedger(r.next_action||'Not specified')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No target records match.</td></tr>';
+    body.innerHTML=rows.length?rows.map(renderTargetRow).join(''):'<tr><td colspan="7" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No target records match the current filters.</td></tr>';
     document.getElementById('targetLedgerPage').textContent='Page '+(targetPage+1)+' of '+pages;
     document.getElementById('targetLedgerPrev').disabled=targetPage===0;
     document.getElementById('targetLedgerNext').disabled=targetPage>=pages-1;
-    document.getElementById('targetLedgerStatus').textContent=targetFiltered.length+' of '+targets.length+' connection targets';
+    document.getElementById('targetLedgerStatus').textContent=targetFiltered.length+' of '+targets.length+' connection targets · every '+DETAIL_FIELDS.length+' detailed connection fields accounted for';
   }
-  function filterTargets(){const q=document.getElementById('targetLedgerSearch').value.trim().toLowerCase();targetFiltered=targets.filter(function(r){return !q||[r.epoch_id,r.epoch_name,r.state_province,r.country,r.grid_or_queue_jurisdiction,r.status,r.site_specific_queue_id,r.next_action].join(' ').toLowerCase().includes(q);});targetPage=0;renderTargets();}
-  document.getElementById('targetLedgerSearch').addEventListener('input',filterTargets);
-  document.getElementById('targetLedgerPrev').addEventListener('click',function(){if(targetPage>0){targetPage--;renderTargets();}});
-  document.getElementById('targetLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(targetFiltered.length/TP));if(targetPage<pages-1){targetPage++;renderTargets();}});
-  fetch('data/epoch_connection_research_targets.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('connection targets unavailable');return res.json();}).then(function(p){targets=Array.isArray(p.records)?p.records:[];filterTargets();}).catch(function(err){document.getElementById('targetLedgerStatus').textContent='Connection targets unavailable: '+err.message;});
+  function filterTargets(){
+    const q=document.getElementById('targetLedgerSearch').value.trim().toLowerCase();
+    const sk=document.getElementById('targetLedgerStatusFilter').value;
+    const jur=document.getElementById('targetLedgerJurisdictionFilter').value;
+    const ck=document.getElementById('targetLedgerCompletenessFilter').value;
+    targetFiltered=targets.filter(function(r){
+      const state=stateKind(r)[0],known=knownDetailCount(r);
+      if(sk==='VERIFIED'&&state!=='VERIFIED')return false;
+      if(sk==='SITE_LEVEL'&&state!=='SITE LEVEL')return false;
+      if(sk==='NO_PUBLIC'&&state!=='NO PUBLIC MATCH')return false;
+      if(sk==='JURISDICTION'&&state!=='JURISDICTION')return false;
+      if(jur&&r.grid_or_queue_jurisdiction!==jur)return false;
+      if(ck==='10+'&&known<10)return false;
+      if(ck==='5+'&&known<5)return false;
+      if(ck==='1+'&&known<1)return false;
+      if(!q)return true;
+      return [r.epoch_id,r.epoch_name,r.state_province,r.country,r.grid_or_queue_jurisdiction,r.status,r.site_specific_queue_id,r.site_specific_queue_name,r.utility_or_service_provider,r.substation,r.transmission_interconnection_provider,r.next_action,(r.site_level_evidence||[]).map(function(e){return [e.authority,e.record_name,e.basis].join(' ')}).join(' ')].join(' ').toLowerCase().includes(q);
+    });
+    targetPage=0;renderTargets();
+  }
+  function initTargetLedger(){
+    document.getElementById('targetLedgerSearch').addEventListener('input',filterTargets);
+    document.getElementById('targetLedgerStatusFilter').addEventListener('change',filterTargets);
+    document.getElementById('targetLedgerJurisdictionFilter').addEventListener('change',filterTargets);
+    document.getElementById('targetLedgerCompletenessFilter').addEventListener('change',filterTargets);
+    document.getElementById('targetLedgerPrev').addEventListener('click',function(){if(targetPage>0){targetPage--;renderTargets();}});
+    document.getElementById('targetLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(targetFiltered.length/TP));if(targetPage<pages-1){targetPage++;renderTargets();}});
+    fetch('data/epoch_connection_research_targets.json?v=2',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('connection targets unavailable');return res.json();}).then(function(p){
+      targets=Array.isArray(p.records)?p.records:[];
+      const jurisdictions=[...new Set(targets.map(function(x){return x.grid_or_queue_jurisdiction}).filter(Boolean))].sort();
+      const sel=document.getElementById('targetLedgerJurisdictionFilter');
+      jurisdictions.forEach(function(j){const o=document.createElement('option');o.value=j;o.textContent=j;sel.appendChild(o);});
+      document.getElementById('ctlSites').textContent=targets.length;
+      document.getElementById('ctlQueueIds').textContent=targets.filter(function(x){return hasVal(x.site_specific_queue_id);}).length;
+      document.getElementById('ctlEvidenceSites').textContent=targets.filter(function(x){return Number(x.site_level_evidence_count||0)>0;}).length;
+      document.getElementById('ctlProviders').textContent=targets.filter(function(x){return hasVal(x.utility_or_service_provider);}).length;
+      renderFieldCards();filterTargets();
+    }).catch(function(err){document.getElementById('targetLedgerStatus').textContent='Connection targets unavailable: '+err.message;});
+  }
+  initTargetLedger();
 })();
 </script>
 
