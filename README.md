@@ -449,3 +449,6 @@ Map-layer accounting is published in `data/map_layer_manifest.json` and `data/ma
 
 
 Live Track 3 rebuild revision: 2026-09-27T02:03Z.
+
+
+<!-- Physical rebuild trigger: 2026-09-27 -->
