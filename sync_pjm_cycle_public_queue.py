@@ -7,7 +7,7 @@ import pandas as pd,requests
 
 PAGE="https://www.pjm.com/planning/m/cycle-service-request-status"
 BASE="https://www.pjm.com"
-UA="Continental-Large-Load-Registry/1.0"
+UA="Mozilla/5.0 (compatible; Continental-Large-Load-Registry/1.0; +https://github.com/AnonRish/continental-load-registry)"
 
 def fetch():
     s=requests.Session(); s.headers.update({"User-Agent":UA})
