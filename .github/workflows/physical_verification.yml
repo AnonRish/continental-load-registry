@@ -90,7 +90,7 @@ jobs:
           git add data/physical_verification_layer.json data/physical_verification_layer.csv \
             data/track3/physical_site_coordinates.json \
             data/track3/remote_sensing_observations.json data/track3/remote_sensing_observations.csv \
-            data/track3/transformer_supply_chain_events.json data/track3/transformer_event_targets.csv \
+            data/track3/transformer_supply_chain_events.json data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
             data/track3_source_stack.json data/track3_evidence_schema.json
           if git diff --cached --quiet; then
             echo "No physical-verification data changes."
