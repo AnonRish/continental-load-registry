@@ -1,6 +1,20 @@
 name: Validate Track 3 Evidence Layer
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "validate_physical_provenance.py"
+      - "data/track3/physical_source_manifest.json"
+      - "data/track3/remote_sensing_observations.json"
+      - "data/track3/remote_sensing_observations.csv"
+      - "data/track3/building_footprints_index.json"
+      - "data/physical_verification_layer.json"
+      - "data/track3/building_footprints/**"
+      - "track3.html"
+      - "TRACK3.md"
+      - "PHYSICAL_SOURCES.md"
+      - ".github/workflows/track3_validation.yml"
   pull_request:
     paths:
       - "index.html"
