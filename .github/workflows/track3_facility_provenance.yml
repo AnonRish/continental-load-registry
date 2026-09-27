@@ -45,7 +45,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin main
-          git rebase origin/main
+          git rebase --autostash origin/main
           git add data/track3/facility_provenance.json data/track3/facility_provenance_records.csv data/track3/provenance_snapshots/
           if git diff --cached --quiet; then
             echo "No facility provenance changes."
