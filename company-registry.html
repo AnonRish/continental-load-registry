@@ -1,159 +1,341 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Company Data-Center Registry · Continental Load Registry</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Company Data-Center Portfolio Explorer · Continental Load Registry</title>
+<meta name="description" content="Epoch-style global AI data-center portfolio explorer with company identities, facility inventory, capacity, status, timeline, satellite map, Google Earth handoff, sources and custom views.">
 <link rel="stylesheet" href="observatory-nav.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxNx2Nx5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
-:root{--ink:#16233A;--soft:#566579;--faint:#7D8B9D;--paper:#EEF2ED;--panel:#FBFCFA;--line:#D7DEDA;--strong:#B7C2BC;--amber:#A85E0A;--amber-soft:#F3E3C9;--teal:#33604F;--teal-soft:#DBE9E2}
-:root[data-theme=dark]{--ink:#E9EEF3;--soft:#AEBBCB;--faint:#7C8AA0;--paper:#0F1620;--panel:#161F2B;--line:#293445;--strong:#3A4759;--amber:#E3A458;--amber-soft:#3A2E1B;--teal:#7FB69E;--teal-soft:#17332A}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 'IBM Plex Sans',system-ui,sans-serif}a{color:inherit}.mono{font-family:'IBM Plex Mono',monospace}.wrap{max-width:1500px;margin:auto;padding:0 18px}
-.nav{position:sticky;top:0;z-index:50;padding:8px 0;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(16px)}.navin{display:flex;gap:7px;flex-wrap:wrap}.nav a,.nav button{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 10px;text-decoration:none;font-size:11px;cursor:pointer}
-.hero{padding:34px 0 22px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:var(--faint);font:500 10px 'IBM Plex Mono',monospace}h1{font-size:clamp(2.3rem,5vw,4.3rem);line-height:.96;letter-spacing:-.05em;margin:8px 0 12px}.hero p{max-width:1000px;color:var(--soft);line-height:1.65}
-.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.card,.panel{border:1px solid var(--line);border-radius:13px;background:var(--panel)}.card{padding:13px}.metric{font:600 24px/1 'IBM Plex Mono',monospace}.card p{margin:5px 0 0;font-size:10px;color:var(--faint)}.panel{padding:16px;margin-top:14px}
-.notice{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:11px;line-height:1.55;color:var(--soft)}.source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.src{padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}.src b{font-size:12px}.src .n{font:600 19px 'IBM Plex Mono',monospace;margin-top:4px}.src p{font-size:10px;color:var(--soft);line-height:1.4;margin:4px 0 0}
-.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin-top:10px}.filters input,.filters select{width:100%;padding:9px;border:1px solid var(--strong);border-radius:8px;background:var(--panel);color:var(--ink);font-size:11px}
-.split{display:grid;grid-template-columns:330px minmax(0,1fr);gap:12px;margin-top:10px}.list{border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:650px}.item{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);padding:10px 11px;background:var(--panel);color:var(--ink);cursor:pointer}.item:hover{background:var(--amber-soft)}.item.active{background:var(--ink);color:var(--panel)}.item b{display:block;font-size:11px}.item span{display:block;margin-top:3px;font:500 8px 'IBM Plex Mono',monospace;opacity:.7}
-.portfolio{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px}.porthead{display:flex;justify-content:space-between;gap:10px;align-items:start}.btn{display:inline-flex;align-items:center;border:1px solid var(--strong);border-radius:8px;background:var(--panel);color:var(--ink);padding:8px 10px;text-decoration:none;font-size:11px}.btn.primary{background:var(--ink);color:var(--panel)}.mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:10px}.mini{padding:9px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}.mini b{display:block;font:600 16px 'IBM Plex Mono',monospace}.mini span{display:block;margin-top:4px;font-size:9px;color:var(--faint)}
-.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:9px;margin-top:10px}.table{width:100%;min-width:940px;border-collapse:collapse}.table th,.table td{padding:8px 7px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}.table th{font:500 9px 'IBM Plex Mono',monospace;text-transform:uppercase;color:var(--soft);background:var(--panel)}.table td{font-size:10px}
-.badge{display:inline-block;border:1px solid var(--strong);border-radius:999px;padding:2px 6px;font:600 8px 'IBM Plex Mono',monospace}.good{background:var(--teal-soft);color:var(--teal)}.warn{background:var(--amber-soft);color:var(--amber)}
-.footer{border-top:1px solid var(--line);margin-top:28px;padding:24px 0 42px;color:var(--faint);font-size:10px;line-height:1.6}
-@media(max-width:1050px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.split{grid-template-columns:1fr}.list{max-height:330px}.source-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.cards{grid-template-columns:1fr 1fr}.filters{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr 1fr}.wrap{padding-inline:10px}}
+:root{--ink:#16233A;--soft:#566579;--faint:#7D8B9D;--paper:#EEF2ED;--panel:#FBFCFA;--line:#D7DEDA;--strong:#B7C2BC;--amber:#A85E0A;--amber-soft:#F3E3C9;--teal:#33604F;--teal-soft:#DBE9E2;--blue:#2F5E91}
+:root[data-theme=dark]{--ink:#E9EEF3;--soft:#AEBBCB;--faint:#7C8AA0;--paper:#0F1620;--panel:#161F2B;--line:#293445;--strong:#3A4759;--amber:#E3A458;--amber-soft:#3A2E1B;--teal:#7FB69E;--teal-soft:#17332A;--blue:#78A8D6}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 'IBM Plex Sans',system-ui,sans-serif}a{color:inherit}button,input,select{font:inherit}
+.wrap{max-width:1500px;margin:auto;padding:0 18px}.mono{font-family:'IBM Plex Mono',monospace}.faint{color:var(--faint)}.soft{color:var(--soft)}
+.nav{position:sticky;top:0;z-index:80;padding:8px 0;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(16px)}.navin{display:flex;gap:7px;flex-wrap:wrap}.nav a,.nav button{padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);text-decoration:none;font-size:11px;cursor:pointer}
+.hero{padding:30px 0 18px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font:500 10px 'IBM Plex Mono',monospace;color:var(--faint)}h1{font-size:clamp(2.1rem,5vw,4.2rem);line-height:.95;letter-spacing:-.055em;margin:8px 0 10px}.hero p{max-width:1050px;color:var(--soft);font-size:14px;line-height:1.65}
+.company-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.logo{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);overflow:hidden}.logo img{width:38px;height:38px;object-fit:contain}.logo span{font:700 18px 'IBM Plex Mono',monospace}.company-title{font-size:25px;font-weight:700;letter-spacing:-.03em}.company-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}.chip{border:1px solid var(--strong);border-radius:999px;padding:3px 7px;font:600 8px 'IBM Plex Mono',monospace}.chip.good{background:var(--teal-soft);color:var(--teal)}.chip.warn{background:var(--amber-soft);color:var(--amber)}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 10px;border:1px solid var(--strong);background:var(--panel);color:var(--ink);border-radius:8px;font-size:11px;cursor:pointer;text-decoration:none}.btn:hover{background:var(--amber-soft)}.btn.primary{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:10px}.kpi{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:11px}.kpi b{display:block;font:600 19px 'IBM Plex Mono',monospace}.kpi span{display:block;color:var(--faint);font-size:9px;margin-top:4px;line-height:1.3}
+.tabs{display:flex;gap:5px;overflow:auto;margin:12px 0 0;padding-bottom:2px}.tab{border:1px solid transparent;background:transparent;color:var(--soft);padding:8px 11px;border-radius:8px;font-size:10px;font-weight:650;cursor:pointer;white-space:nowrap}.tab.active{background:var(--ink);color:var(--panel);border-color:var(--ink)}.tab:hover{background:var(--amber-soft);color:var(--ink)}
+.panel{border:1px solid var(--line);border-radius:13px;background:var(--panel);padding:15px;margin-top:10px}.view{display:none}.view.active{display:block}.sectionhead{display:flex;justify-content:space-between;gap:10px;align-items:start;flex-wrap:wrap}.sectionhead h2{margin:0;font-size:18px}.sectionhead p{margin:3px 0 0;font-size:10px;color:var(--soft)}
+.dashboard{display:grid;grid-template-columns:1.1fr .9fr;gap:10px}.chartbox{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:12px}.chartbox h3{margin:0 0 8px;font-size:12px}.barrow{display:grid;grid-template-columns:150px 1fr 58px;gap:7px;align-items:center;margin:7px 0;font-size:10px}.bar{height:9px;background:var(--line);border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);border-radius:999px}.bar i.warn{background:var(--amber)}
+.timeline{margin-top:10px}.timeline-row{display:grid;grid-template-columns:160px 1fr 70px;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);font-size:10px}.timeline-row:last-child{border-bottom:0}.yearbar{height:10px;border-radius:999px;background:var(--line);overflow:hidden}.yearbar i{display:block;height:100%;background:var(--blue)}
+.controls{display:grid;grid-template-columns:2fr repeat(4,minmax(130px,1fr));gap:8px}.controls input,.controls select{width:100%;padding:9px 10px;border:1px solid var(--strong);border-radius:8px;background:var(--panel);color:var(--ink);font-size:11px}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:9px}table{border-collapse:collapse;width:100%;min-width:1200px}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{position:sticky;top:0;background:var(--panel);z-index:2;font:500 9px 'IBM Plex Mono',monospace;text-transform:uppercase;color:var(--soft)}td{font-size:10px}tbody tr:hover{background:var(--amber-soft)}
+.facility-name{font-weight:650;font-size:11px}.facility-meta{margin-top:3px;color:var(--faint);font-size:9px}.badge{display:inline-block;border:1px solid var(--strong);border-radius:999px;padding:2px 6px;font:600 8px 'IBM Plex Mono',monospace}.badge.good{background:var(--teal-soft);color:var(--teal)}.badge.warn{background:var(--amber-soft);color:var(--amber)}
+.mapwrap{position:relative}.map{height:590px;border:1px solid var(--line);border-radius:10px;overflow:hidden}.mapcontrols{position:absolute;top:10px;right:10px;z-index:500;display:flex;gap:5px}.leaflet-control{font-family:'IBM Plex Sans',system-ui,sans-serif!important}.leaflet-popup-content{font-size:11px;line-height:1.45}
+.source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.source{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--paper)}.source b{font-size:10px}.source a{display:block;margin-top:3px;font-size:9px;word-break:break-all}.source span{display:block;margin-top:4px;color:var(--faint);font-size:9px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}.compare-card{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:12px}.compare-card h3{margin:0 0 8px}
+.custom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.custom label{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:9px;padding:8px;background:var(--paper);font-size:10px}.custom input{accent-color:var(--amber)}
+.footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0 40px;font-size:10px;color:var(--faint);line-height:1.6}
+.empty{padding:22px;text-align:center;color:var(--faint);font-size:11px}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.dashboard,.compare{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.company-head{grid-template-columns:auto minmax(0,1fr)}}@media(max-width:650px){.wrap{padding-inline:10px}.kpis{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr}.company-head{grid-template-columns:auto 1fr}.company-head .toolbar{grid-column:1/-1}.custom{grid-template-columns:1fr}.timeline-row{grid-template-columns:100px 1fr 50px}.barrow{grid-template-columns:105px 1fr 50px}}
 </style>
 </head>
 <body>
-<div class="nav"><div class="navin wrap"><a href="index.html">← Main registry</a><a href="global-compute-universe.html">Global DB</a><a href="company-registry.html">Company DB</a><a href="track3.html">Track 3</a><a href="research.html">Research ops</a><a href="api.html">API</a><button id="theme">Toggle theme</button></div></div>
+<div class="nav"><div class="navin wrap"><a href="index.html">← Main registry</a><a href="global-compute-universe.html">Global DB</a><a href="company-registry.html">Company DB</a><a href="track3.html">Track 3</a><a href="research.html">Research ops</a><a href="api.html">API</a><a href="bulk-download.html">Downloads</a><button id="theme">Toggle theme</button></div></div>
+
 <main class="wrap">
 <section class="hero">
-<div class="eyebrow">Company universe · global infrastructure</div>
-<h1>One company. Every disclosed facility relationship.</h1>
-<p>This is the company layer of the registry. It combines the current public AI operator universe with a facility-level drill-down, while keeping ownership, operation, tenancy, development and partnership roles separate. Public cloud regions and availability zones are treated as abstractions unless a physical facility record is identified.</p>
+<div class="eyebrow">Company portfolio explorer · frontier + infrastructure</div>
+<h1>Company portfolios, at facility resolution.</h1>
+<p>Designed around the same interaction model as the current Epoch explorer—ranked portfolio views, time-aware buildout, facility drill-down, hardware/power fields, source provenance and satellite exploration—while adding company identity, side-by-side comparison, custom filters, source-aware relationship labels and Google Earth handoff. Epoch's current directory is updated September 24, 2026 and has 93 facilities; this layer uses a broader operator universe instead of stopping there. citeturn433726search1turn433726search10</p>
 </section>
-<section class="cards">
-<div class="card"><div class="metric" id="ops">225</div><p>operators tracked by current public AI index</p></div>
-<div class="card"><div class="metric">346</div><p>AI facilities in current public AI directory</p></div>
-<div class="card"><div class="metric">500+</div><p>Microsoft datacenters stated on official site</p></div>
-<div class="card"><div class="metric">124</div><p>AWS availability zones across 39 regions</p></div>
-<div class="card"><div class="metric" id="health">loading</div><p>company-source API status</p></div>
-</section>
-<section class="panel"><h2>Source architecture</h2>
-<div class="source-grid">
-<div class="src"><b>AI Data Center Index</b><div class="n">225 operators</div><p>Current operator API and per-operator structured facility pages. Public directory lists 346 facilities across 64 countries.</p></div>
-<div class="src"><b>Epoch AI</b><div class="n">93 sites</div><p>Canonical frontier-AI site universe already retained locally by this registry.</p></div>
-<div class="src"><b>Corporate disclosures</b><div class="n">continuous</div><p>Official company infrastructure pages can establish broader footprints than AI-only taxonomies.</p></div>
-</div></section>
-<section class="panel">
-<h2>Company directory</h2>
-<div class="notice">This directory intentionally does not call the public AI taxonomy a complete corporate census. A company can have hundreds of ordinary cloud data centers while only some appear in an AI-focused facility index.</div>
-<div class="filters">
-<input id="q" placeholder="Search company / operator">
-<select id="min"><option value="">Any facility count</option><option value="1">1+ facilities</option><option value="3">3+ facilities</option><option value="10">10+ facilities</option><option value="25">25+ facilities</option></select>
-<select id="countries"><option value="">Any country reach</option><option value="5">5+ countries</option><option value="10">10+ countries</option><option value="20">20+ countries</option></select>
+
+<div id="companyHead" class="company-head">
+<div class="logo"><span id="logoFallback">?</span><img id="logoImg" alt="" hidden></div>
+<div><div class="eyebrow">Selected company</div><div class="company-title" id="companyName">Loading operator universe…</div><div class="company-meta" id="companyMeta"></div></div>
+<div class="toolbar"><button class="btn" id="shareBtn">Share portfolio</button><button class="btn" id="downloadBtn">Download CSV</button><button class="btn primary" id="sourceBtn">Open source profile ↗</button></div>
 </div>
-<div class="split">
-<div class="list" id="list"><div class="notice">Loading operators…</div></div>
-<div class="portfolio" id="portfolio"><div class="notice">Select a company to load its current source-backed facility portfolio.</div></div>
-</div>
+
+<section class="kpis">
+<div class="kpi"><b id="kFacility">—</b><span>tracked facilities</span></div>
+<div class="kpi"><b id="kMW">—</b><span>selected tracked capacity</span></div>
+<div class="kpi"><b id="kOp">—</b><span>operational facilities</span></div>
+<div class="kpi"><b id="kCountries">—</b><span>countries</span></div>
+<div class="kpi"><b id="kGeo">—</b><span>geolocated</span></div>
+<div class="kpi"><b id="kCited">—</b><span>cited facilities</span></div>
 </section>
-<section class="panel"><h2>Priority corporate coverage</h2><div class="tablewrap"><table class="table"><thead><tr><th>Company</th><th>Infrastructure layer</th><th>Primary source</th><th>Role caution</th></tr></thead><tbody id="priority"></tbody></table></div></section>
+
+<div class="tabs" role="tablist">
+<button class="tab active" data-view="overview">Overview</button><button class="tab" data-view="facilities">Facilities</button><button class="tab" data-view="map">Map / Satellite</button><button class="tab" data-view="timeline">Buildout</button><button class="tab" data-view="hardware">Hardware &amp; power</button><button class="tab" data-view="sources">Sources</button><button class="tab" data-view="compare">Compare</button><button class="tab" data-view="custom">Customize</button>
+</div>
+
+<section class="panel view active" id="view-overview">
+<div class="sectionhead"><div><h2>Portfolio overview</h2><p>Ranked and filterable snapshot of the selected company.</p></div><div class="toolbar"><select id="overviewMetric" class="btn"><option value="capacity">Rank by capacity</option><option value="facilities">Rank by facilities</option><option value="year">Rank by start year</option></select></div></div>
+<div class="dashboard" style="margin-top:10px">
+<div class="chartbox"><h3>Status distribution</h3><div id="statusChart"></div></div>
+<div class="chartbox"><h3>Capacity by country</h3><div id="countryChart"></div></div>
+</div>
+<div class="panel" style="margin-top:10px;background:var(--paper)"><div class="sectionhead"><div><h2 style="font-size:14px">Largest facilities</h2><p>Top disclosed records in the current portfolio source.</p></div><button class="btn" id="goFacilities">Open full facility inventory →</button></div><div class="tablewrap"><table><thead><tr><th>Facility</th><th>Location</th><th>MW</th><th>Status</th><th>AI workload</th><th>Sources</th></tr></thead><tbody id="topRows"></tbody></table></div></div>
+</section>
+
+<section class="panel view" id="view-facilities">
+<div class="sectionhead"><div><h2>Facility inventory</h2><p>Search, filter and sort the selected company's facilities.</p></div><div class="toolbar"><button class="btn" id="resetFacilities">Reset</button></div></div>
+<div class="controls">
+<input id="facilitySearch" placeholder="Search facility, city, region, country or company">
+<select id="statusFilter"><option value="">All statuses</option><option value="operational">Operational</option><option value="under construction">Under construction</option><option value="planned">Planned</option><option value="announced">Announced</option></select>
+<select id="workloadFilter"><option value="">All workloads</option></select>
+<select id="minMW"><option value="">Any MW</option><option value="100">100+ MW</option><option value="250">250+ MW</option><option value="500">500+ MW</option><option value="1000">1,000+ MW</option></select>
+<select id="sortFilter"><option value="capacity">Capacity ↓</option><option value="name">Name A–Z</option><option value="year">Start year ↓</option><option value="status">Status</option></select>
+</div>
+<div class="tablewrap"><table><thead><tr><th class="col-name">Facility</th><th class="col-location">Location</th><th class="col-capacity">Capacity</th><th class="col-status">Status</th><th class="col-energy">Energy</th><th class="col-workload">Workload</th><th class="col-year">Start</th><th>Readiness / sources</th><th>Explore</th></tr></thead><tbody id="facilityRows"></tbody></table></div>
+<div class="empty" id="facilityEmpty" hidden>No facilities match these filters.</div>
+</section>
+
+<section class="panel view" id="view-map">
+<div class="sectionhead"><div><h2>Map / satellite explorer</h2><p>Street and high-resolution satellite basemap modes, clustered portfolio markers and direct Google Earth handoff.</p></div><div class="toolbar"><button class="btn" id="fitMap">Fit portfolio</button><button class="btn" id="earthAll">Open map in Google Earth ↗</button></div></div>
+<div class="mapwrap" style="margin-top:10px"><div class="mapcontrols"><button class="btn primary" id="streetMode">Street</button><button class="btn" id="satMode">Satellite</button></div><div id="map" class="map"></div></div>
+<div class="notice" style="margin-top:8px">Satellite imagery is an exploration layer, not evidence itself. Google Earth links open the geospatial viewer at the facility coordinates; the registry retains the source record separately.</div>
+</section>
+
+<section class="panel view" id="view-timeline">
+<div class="sectionhead"><div><h2>Buildout timeline</h2><p>Facility-level start-year distribution and source-reported construction status.</p></div></div>
+<div class="timeline" id="timelineRows"></div>
+<div class="panel" style="margin-top:10px;background:var(--paper)"><h3 style="margin:0 0 5px">Time controls</h3><div class="toolbar"><select id="yearCut" class="btn"><option value="">Show all years</option><option value="2026">2026 and earlier</option><option value="2027">2027 and earlier</option><option value="2028">2028 and earlier</option><option value="2030">2030 and earlier</option></select><button class="btn" id="downloadTimeline">Download timeline CSV</button></div></div>
+</section>
+
+<section class="panel view" id="view-hardware">
+<div class="sectionhead"><div><h2>Hardware, power and workload</h2><p>Fields are shown when the public company/facility source actually publishes them.</p></div></div>
+<div class="dashboard">
+<div class="chartbox"><h3>Energy mix</h3><div id="energyChart"></div></div>
+<div class="chartbox"><h3>AI workload mix</h3><div id="workloadChart"></div></div>
+</div>
+<div class="tablewrap" style="margin-top:10px"><table><thead><tr><th>Facility</th><th>MW</th><th>Energy</th><th>AI workload</th><th>Readiness</th><th>Hardware</th></tr></thead><tbody id="hardwareRows"></tbody></table></div>
+</section>
+
+<section class="panel view" id="view-sources">
+<div class="sectionhead"><div><h2>Source ledger</h2><p>Every loaded facility retains its original source URL list; missing source fields are never fabricated.</p></div><div class="toolbar"><button class="btn" id="copySources">Copy source list</button></div></div>
+<div class="source-grid" id="sourceGrid" style="margin-top:10px"></div>
+</section>
+
+<section class="panel view" id="view-compare">
+<div class="sectionhead"><div><h2>Compare companies</h2><p>Side-by-side counts, capacity and status composition without collapsing distinct source universes.</p></div></div>
+<div class="controls" style="margin-top:10px"><select id="compareCompany"></select><div></div><div></div><div></div><div></div></div>
+<div class="compare" style="margin-top:10px" id="compareView"></div>
+</section>
+
+<section class="panel view" id="view-custom">
+<div class="sectionhead"><div><h2>Customize the portfolio</h2><p>Change presentation density and which facility columns are visible.</p></div></div>
+<div class="custom" style="margin-top:10px">
+<label><input type="checkbox" data-col="capacity" checked> Capacity</label><label><input type="checkbox" data-col="energy" checked> Energy</label><label><input type="checkbox" data-col="workload" checked> AI workload</label><label><input type="checkbox" data-col="year" checked> Start year</label><label><input type="checkbox" data-col="location" checked> Location</label><label><input type="checkbox" data-col="status" checked> Status</label>
+</div>
+<div class="notice" style="margin-top:10px">These controls affect the facility-table presentation only. The underlying source data and raw provenance are preserved.</div>
+</section>
 </main>
-<footer class="wrap footer">The AI Data Center Index currently reports 225 tracked operators and 346 AI facilities across 64 countries. Microsoft's official datacenter site states 500+ datacenters worldwide. AWS states that its cloud currently spans 124 Availability Zones within 39 geographic regions, and that each AZ consists of one or more discrete data centers. These are different measurement units and are never added together.</footer>
+<footer class="wrap footer">The portfolio UX is inspired by the publicly described functionality of Epoch AI's current AI Data Centers explorer: directory/list views, map controls, historical buildout, hardware/cooling/power fields and satellite exploration. citeturn433726search0turn433726search2 This implementation is independently coded for the Continental Load Registry. Company logos are loaded from Simple Icons for identification; source datasets remain separately attributed.</footer>
+
 <script>
-const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",\\"":"&quot;"}[m]));
-const slug=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-const priority=[
-["Microsoft","hyperscaler / Azure / AI","https://datacenters.microsoft.com/","Official footprint is broader than AI-only taxonomy; keep physical sites separate from Azure-region abstractions."],
-["Amazon Web Services","hyperscaler / cloud / AI","https://aws.amazon.com/about-aws/global-infrastructure/","A region contains multiple AZs; an AZ contains one or more physical data centers."],
-["Google","hyperscaler / Cloud / TPU","https://cloud.google.com/about/locations","Cloud regions are abstractions over physical infrastructure."],
-["Meta","AI training / inference","https://aidatacenterindex.com/operators/meta/","Owned/operated sites and partner capacity must remain separate relationships."],
-["Oracle","cloud / AI infrastructure","https://aidatacenterindex.com/operators/oracle/","Do not infer ownership from tenant or partner status."],
-["NVIDIA","AI factory / hardware ecosystem","https://aidatacenterindex.com/operators/nvidia/","NVIDIA often appears as a hardware partner rather than facility owner."],
-["OpenAI","AI tenant / infrastructure programs","https://aidatacenterindex.com/operators/openai/","Programs such as Stargate can span several physical facilities."],
-["CoreWeave","specialist AI cloud","https://aidatacenterindex.com/operators/coreweave/","Hosted capacity may be operated by another company."],
-["xAI","frontier training","https://aidatacenterindex.com/operators/xai/","Training-campus identity is a priority resolution target."],
-["Alibaba Cloud","China/global cloud","https://aidatacenterindex.com/operators/alibaba-cloud/","China site discovery should use primary-source corroboration where possible."],
-["ByteDance / TikTok","AI/cloud infrastructure","https://aidatacenterindex.com/operators/bytedance-tiktok/","Normalize corporate names without merging distinct legal relationships."],
-["Tencent","China cloud / AI","https://aidatacenterindex.com/operators/tencent/","China disclosure coverage is explicitly tracked as a research limitation."],
-["Baidu","China AI/cloud","https://aidatacenterindex.com/operators/baidu/","Prefer primary corporate or government records for facility identity."],
-["Huawei / Huawei Cloud","China AI infrastructure","https://aidatacenterindex.com/operators/huawei/","Separate hardware, cloud, operator and site roles."],
-["NTT / NTT DATA","global data centers","https://aidatacenterindex.com/operators/ntt-data/","Developer, owner and operator roles can differ by campus."],
-["Equinix","global colocation","https://aidatacenterindex.com/operators/equinix/","AI tenancy is not the same as AI-focused facility classification."],
-["Digital Realty","global colocation","https://aidatacenterindex.com/operators/digital-realty/","Track customer AI workloads separately from campus identity."],
-["Vantage Data Centers","hyperscale developer/operator","https://aidatacenterindex.com/operators/vantage-data-centers/","Tenant and owner relationships may coexist."],
-["DataVolt","AI-focused developer","https://aidatacenterindex.com/operators/datavolt/","Project-stage records need explicit status and source dates."],
-["G42","AI infrastructure group","https://aidatacenterindex.com/operators/g42/","Joint ventures and strategic partners should remain explicit."]
-];
-document.getElementById("priority").innerHTML=priority.map(x=>"<tr><td><b>"+esc(x[0])+"</b></td><td>"+esc(x[1])+"</td><td><a href='"+esc(x[2])+"' target='_blank' rel='noopener'>source</a></td><td>"+esc(x[3])+"</td></tr>").join("");
-let OPS=[],filtered=[],selected=null,SNAPSHOT=null;
-function name(o){return o.name||o.operator||o.title||o.company||""}
-function count(o){return Number(o.facility_count??o.facilities??o.count??0)||0}
-function countries(o){return Number(o.country_count??o.countries??o.country_reach??0)||0}
-function oslug(o){return o.slug||o.id||slug(name(o))}
-async function loadOps(){
- const h=document.getElementById("health");
+const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;"}[m]));
+const norm=s=>String(s??"").toLowerCase();
+const slugify=s=>String(s??"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const logoMap={
+ microsoft:"microsoft", "amazon-web-services":"amazonaws", amazon:"amazon", google:"google", meta:"meta", nvidia:"nvidia", oracle:"oracle",
+ openai:"openai", coreweave:"coreweave", xai:"x", "alibaba-cloud":"alibabacloud", alibaba:"alibabacloud", tencent:"tencent", baidu:"baidu", huawei:"huawei",
+ "ntt-data":"ntt", ntt:"ntt", equinix:"equinix", "digital-realty":"digitalrealty", "vantage-data-centers":"vantage", datavolt:"datavolt", g42:"g42"
+};
+const priority=["Microsoft","Amazon Web Services","Google","Meta","NVIDIA","Oracle","OpenAI","CoreWeave","xAI","Alibaba Cloud","ByteDance / TikTok","Tencent","Baidu","Huawei / Huawei Cloud","NTT / NTT DATA","Equinix","Digital Realty","Vantage Data Centers","DataVolt","G42"];
+let OPS=[], ALL=[], SELECTED=null, MAP=null, STREET=null, SAT=null, CLUSTER=null;
+
+function opName(o){return o.name||o.operator||o.title||o.company||""}
+function opSlug(o){return o.slug||o.id||slugify(opName(o))}
+function opCount(o){return Number(o.facility_count??o.count??o.facilities??o.ai_facilities??0)||0}
+function opCountries(o){return Number(o.country_count??o.countries??0)||0}
+function facilityItems(o){return o._portfolio||o.items||o.records||o.facilities||[]}
+function capacity(x){const n=Number(x?.megawatts);return Number.isFinite(n)?n:null}
+function hasCoords(x){return Number.isFinite(Number(x?.lat))&&Number.isFinite(Number(x?.lng))}
+function normStatus(s){const v=norm(s);if(v.includes("operational"))return "operational";if(v.includes("under construction"))return "under construction";if(v.includes("planned"))return "planned";if(v.includes("announced"))return "announced";return "other"}
+function statusLabel(s){return String(s||"").replace(/\\s+/g," ").trim()||"Unknown"}
+function sourceCount(x){return Array.isArray(x?.sources)?x.sources.length:0}
+function companyLogo(s){
+ const k=opSlug({slug:s}); const icon=logoMap[k]||logoMap[slugify(String(s).split("/")[0])]||"datadog";
+ return "https://cdn.simpleicons.org/"+icon;
+}
+async function getJson(url){
+ const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error(String(r.status));return r.json();
+}
+async function loadUniverse(){
  try{
-   const local=await fetch("data/company_operator_universe_2026-09-27.json",{cache:"no-store"});
-   if(local.ok){
-     SNAPSHOT=await local.json();
-     OPS=(SNAPSHOT.operators||[]).map(o=>Object.assign({},o.summary||{},{
-       name:o.name,slug:o.slug,_portfolio:o.items||[],
-       facility_count:Number((o.summary||{}).facility_count??o.facility_count_loaded??0)||0,
-       country_count:Number((o.summary||{}).country_count??0)||0
-     }));
-     document.getElementById("ops").textContent=String(SNAPSHOT.operator_count||OPS.length);
-     h.textContent="snapshot"; h.style.color="var(--teal)";
-     renderList(); return;
+   const local=await getJson("data/company_operator_universe_2026-09-27.json");
+   if(local?.operators?.length){
+     OPS=local.operators.map(o=>Object.assign({},o.summary||{},{name:o.name,slug:o.slug,_portfolio:o.items||[]}));
+     return "snapshot";
    }
  }catch(e){}
+ const j=await getJson("https://aidatacenterindex.com/api/operators.json");
+ OPS=Array.isArray(j)?j:(j.operators||j.items||j.data||[]);
+ return "live";
+}
+async function loadPortfolio(o){
+ const local=facilityItems(o);
+ if(Array.isArray(local)&&local.length) return local;
  try{
-   const r=await fetch("https://aidatacenterindex.com/api/operators.json",{cache:"no-store"});
-   if(!r.ok) throw Error(r.status);
-   const j=await r.json();
-   OPS=Array.isArray(j)?j:(j.operators||j.items||j.data||[]);
-   document.getElementById("ops").textContent=String(j.total_operators||OPS.length);
-   h.textContent="live"; h.style.color="var(--teal)";
- }catch(e){
-   OPS=priority.map(x=>({name:x[0],slug:slug(x[0]),facility_count:0,country_count:0,fallback:true}));
-   h.textContent="fallback"; h.style.color="var(--amber)";
+   const j=await getJson("https://aidatacenterindex.com/operators/"+encodeURIComponent(opSlug(o))+"/index.json");
+   return j.items||j.records||j.facilities||j.data||[];
+ }catch(e){return []}
+}
+function selectDefault(){
+ const params=new URLSearchParams(location.search), want=params.get("company");
+ if(want){const hit=OPS.find(o=>opSlug(o)===want||opName(o).toLowerCase()===want.toLowerCase());if(hit)return hit}
+ return OPS.find(o=>opName(o).toLowerCase()==="microsoft")||OPS[0];
+}
+async function selectCompany(o,replace=false){
+ SELECTED=o;
+ const items=await loadPortfolio(o);
+ ALL=Array.isArray(items)?items:[];
+ o._portfolio=ALL;
+ if(replace) history.replaceState(null,"","?company="+encodeURIComponent(opSlug(o)));
+ renderHeader();renderOverview();renderFacilities();renderTimeline();renderHardware();renderSources();renderCompare();renderMap();
+}
+function renderHeader(){
+ const n=opName(SELECTED), slug=opSlug(SELECTED), geo=ALL.filter(hasCoords).length, cited=ALL.filter(x=>sourceCount(x)>0).length;
+ document.getElementById("companyName").textContent=n;
+ const img=document.getElementById("logoImg"), fb=document.getElementById("logoFallback");
+ img.hidden=true; fb.hidden=false; fb.textContent=(n||"?").slice(0,2).toUpperCase();
+ img.onload=()=>{img.hidden=false;fb.hidden=true};img.onerror=()=>{img.hidden=true;fb.hidden=false};img.src=companyLogo(slug);img.alt=n+" logo";
+ document.getElementById("companyMeta").innerHTML="<span class='chip good'>"+opCount(SELECTED).toLocaleString()+" facilities</span><span class='chip'>"+opCountries(SELECTED).toLocaleString()+" countries</span><span class='chip'>"+(SELECTED.fallback?"fallback":"source-linked")+"</span>";
+ document.getElementById("sourceBtn").onclick=()=>window.open("https://aidatacenterindex.com/operators/"+encodeURIComponent(slug)+"/","_blank","noopener");
+ document.getElementById("kFacility").textContent=ALL.length.toLocaleString();
+ document.getElementById("kMW").textContent=ALL.reduce((a,x)=>a+(capacity(x)||0),0).toLocaleString(undefined,{maximumFractionDigits:0})+" MW";
+ document.getElementById("kOp").textContent=ALL.filter(x=>normStatus(x.status)==="operational").length.toLocaleString();
+ document.getElementById("kCountries").textContent=new Set(ALL.map(x=>x.country).filter(Boolean)).size.toLocaleString()||String(opCountries(SELECTED));
+ document.getElementById("kGeo").textContent=geo.toLocaleString();
+ document.getElementById("kCited").textContent=cited.toLocaleString();
+}
+function countsBy(arr,fn){
+ const out={};for(const x of arr){const k=fn(x)||"Unknown";out[k]=(out[k]||0)+1}return out;
+}
+function capacityBy(arr,fn){
+ const out={};for(const x of arr){const k=fn(x)||"Unknown";out[k]=(out[k]||0)+(capacity(x)||0)}return out;
+}
+function barHtml(map,capacityMode=false){
+ const entries=Object.entries(map).sort((a,b)=>b[1]-a[1]), max=Math.max(1,...entries.map(x=>x[1]));
+ return entries.slice(0,12).map(([k,v])=>"<div class='barrow'><div>"+esc(k)+"</div><div class='bar'><i class='"+(capacityMode?"":"warn")+"' style='width:"+((v/max)*100).toFixed(1)+"%'></i></div><div class='mono' style='text-align:right'>"+(capacityMode?v.toLocaleString(undefined,{maximumFractionDigits:0})+" MW":v.toLocaleString())+"</div></div>").join("")||"<div class='empty'>No data.</div>";
+}
+function renderOverview(){
+ document.getElementById("statusChart").innerHTML=barHtml(countsBy(ALL,x=>normStatus(x.status)));
+ document.getElementById("countryChart").innerHTML=barHtml(capacityBy(ALL,x=>x.country),true);
+ const top=ALL.slice().sort((a,b)=>(capacity(b)||-1)-(capacity(a)||-1)).slice(0,10);
+ document.getElementById("topRows").innerHTML=top.map(x=>"<tr><td><div class='facility-name'>"+esc(x.title||x.name||x.id||"Unnamed facility")+"</div><div class='facility-meta'>"+esc((x.id||""))+"</div></td><td>"+esc([x.city,x.region,x.country].filter(Boolean).join(", ")||"—")+"</td><td>"+(capacity(x)==null?"—":capacity(x).toLocaleString()+" MW")+"</td><td><span class='badge "+(normStatus(x.status)==="operational"?"good":"warn")+"'>"+esc(statusLabel(x.status))+"</span></td><td>"+esc(x.ai_focus||"—")+"</td><td>"+(sourceCount(x)?sourceCount(x):"—")+"</td></tr>").join("")||"<tr><td colspan='6'><div class='empty'>No facility records loaded.</div></td></tr>";
+}
+function filteredFacilities(){
+ const q=norm(document.getElementById("facilitySearch").value).trim(), st=document.getElementById("statusFilter").value, wl=norm(document.getElementById("workloadFilter").value), min=Number(document.getElementById("minMW").value||0), sort=document.getElementById("sortFilter").value;
+ let arr=ALL.filter(x=>{
+   const txt=norm([x.title,x.name,x.id,x.city,x.region,x.country,(x.companies||[]).join(" ")].join(" "));
+   if(q&&!txt.includes(q))return false;
+   if(st&&normStatus(x.status)!==st)return false;
+   if(wl&&norm(x.ai_focus)!==wl)return false;
+   if(min&&(capacity(x)||0)<min)return false;
+   return true;
+ });
+ arr.sort((a,b)=>sort==="name"?String(a.title||a.name||"").localeCompare(String(b.title||b.name||"")):sort==="year"?(Number(b.start_year||0)-Number(a.start_year||0)):sort==="status"?normStatus(a.status).localeCompare(normStatus(b.status)):(capacity(b)||-1)-(capacity(a)||-1));
+ return arr;
+}
+function renderFacilities(){
+ const wl=[...new Set(ALL.map(x=>x.ai_focus).filter(Boolean))].sort();
+ const sel=document.getElementById("workloadFilter"), current=sel.value;
+ sel.innerHTML="<option value=''>All workloads</option>"+wl.map(x=>"<option>"+esc(x)+"</option>").join("");
+ sel.value=wl.includes(current)?current:"";
+ const rows=filteredFacilities();
+ document.getElementById("facilityRows").innerHTML=rows.map((x,i)=>{
+   const earth=hasCoords(x)?"<a class='btn' href='https://earth.google.com/web/search/"+Number(x.lat)+","+Number(x.lng)+"' target='_blank' rel='noopener'>Earth</a>":"—";
+   const src=x.sources?.length?"<span class='badge good'>"+x.sources.length+" cited</span>":"<span class='badge warn'>No source list</span>";
+   return "<tr><td class='col-name'><div class='facility-name'>"+esc(x.title||x.name||x.id||"Unnamed")+"</div><div class='facility-meta'>"+esc((x.companies||[]).join(", "))+"</div></td><td class='col-location'>"+esc([x.city,x.region,x.country].filter(Boolean).join(", ")||"—")+"</td><td class='col-capacity'>"+(capacity(x)==null?"—":capacity(x).toLocaleString()+" MW")+"</td><td class='col-status'><span class='badge "+(normStatus(x.status)==="operational"?"good":"warn")+"'>"+esc(statusLabel(x.status))+"</span></td><td class='col-energy'>"+esc(x.energy_type||"—")+"</td><td class='col-workload'>"+esc(x.ai_focus||"—")+"</td><td class='col-year'>"+esc(x.start_year||"—")+"</td><td>"+esc(x.readiness||"—")+" · "+src+"</td><td>"+earth+"</td></tr>";
+ }).join("");
+ document.getElementById("facilityEmpty").hidden=rows.length>0;
+}
+function renderTimeline(){
+ const years=countsBy(ALL,x=>x.start_year||"Unknown"), max=Math.max(1,...Object.values(years));
+ document.getElementById("timelineRows").innerHTML=Object.entries(years).sort((a,b)=>String(a[0]).localeCompare(String(b[0]))).map(([y,n])=>"<div class='timeline-row'><div class='mono'>"+esc(y)+"</div><div class='yearbar'><i style='width:"+((n/max)*100).toFixed(1)+"%'></i></div><div class='mono' style='text-align:right'>"+n+" sites</div></div>").join("")||"<div class='empty'>No start-year fields published.</div>";
+}
+function renderHardware(){
+ document.getElementById("energyChart").innerHTML=barHtml(countsBy(ALL,x=>x.energy_type));
+ document.getElementById("workloadChart").innerHTML=barHtml(countsBy(ALL,x=>x.ai_focus));
+ document.getElementById("hardwareRows").innerHTML=ALL.slice().sort((a,b)=>(capacity(b)||-1)-(capacity(a)||-1)).map(x=>"<tr><td>"+esc(x.title||x.name||x.id||"Unnamed")+"</td><td>"+(capacity(x)==null?"—":capacity(x)+" MW")+"</td><td>"+esc(x.energy_type||"—")+"</td><td>"+esc(x.ai_focus||"—")+"</td><td>"+esc(x.readiness||"—")+"</td><td>"+esc(Array.isArray(x.hardware)?x.hardware.join(", "):(x.hardware||"—"))+"</td></tr>").join("")||"<tr><td colspan='6'><div class='empty'>No rows.</div></td></tr>";
+}
+function renderSources(){
+ const all=[];for(const x of ALL){for(const u of (Array.isArray(x.sources)?x.sources:[]))all.push({url:u,facility:x.title||x.name||x.id||"Unnamed"})}
+ const by=new Map();for(const s of all){if(!by.has(s.url))by.set(s.url,new Set());by.get(s.url).add(s.facility)}
+ document.getElementById("sourceGrid").innerHTML=[...by.entries()].sort((a,b)=>b[1].size-a[1].size).slice(0,80).map(([u,set])=>"<div class='source'><b>"+set.size+" facility"+(set.size===1?"":"ies")+"</b><a href='"+esc(u)+"' target='_blank' rel='noopener'>"+esc(u)+"</a><span>"+esc([...set].slice(0,3).join(" · ")+(set.size>3?" · …":""))+"</span></div>").join("")||"<div class='empty'>No source URLs were loaded.</div>";
+}
+function renderCompare(){
+ const sel=document.getElementById("compareCompany");
+ sel.innerHTML=OPS.filter(o=>opSlug(o)!==opSlug(SELECTED)).map(o=>"<option value='"+esc(opSlug(o))+"'>"+esc(opName(o))+"</option>").join("");
+ updateCompare();
+}
+async function updateCompare(){
+ const slug=document.getElementById("compareCompany").value;if(!slug)return;
+ const o=OPS.find(x=>opSlug(x)===slug);if(!o)return;
+ const items=await loadPortfolio(o);
+ const stats=[
+   ["Facilities",items.length,ALL.length],
+   ["Capacity MW",items.reduce((a,x)=>a+(capacity(x)||0),0),ALL.reduce((a,x)=>a+(capacity(x)||0),0)],
+   ["Operational",items.filter(x=>normStatus(x.status)==="operational").length,ALL.filter(x=>normStatus(x.status)==="operational").length],
+   ["Countries",new Set(items.map(x=>x.country).filter(Boolean)).size,new Set(ALL.map(x=>x.country).filter(Boolean)).size]
+ ];
+ document.getElementById("compareView").innerHTML=[{name:opName(SELECTED),data:stats.map(x=>x[2])},{name:opName(o),data:stats.map(x=>x[1])}].map(c=>"<div class='compare-card'><div class='eyebrow'>Portfolio</div><h3>"+esc(c.name)+"</h3>"+stats.map((s,i)=>"<div style='display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:10px'><span>"+esc(s[0])+"</span><b class='mono'>"+Number(c.data[i]).toLocaleString(undefined,{maximumFractionDigits:0})+"</b></div>").join("")+"</div>").join("");
+}
+function initMap(){
+ if(MAP)return;
+ MAP=L.map("map",{worldCopyJump:true});STREET=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"© OpenStreetMap contributors"}).addTo(MAP);
+ SAT=L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:19,attribution:"Tiles © Esri"});CLUSTER=L.markerClusterGroup({chunkedLoading:true});MAP.addLayer(CLUSTER);MAP.setView([20,0],2);
+}
+function renderMap(){
+ initMap();CLUSTER.clearLayers();const pts=ALL.filter(hasCoords);
+ for(const x of pts){
+   const color=normStatus(x.status)==="operational"?"var(--teal)":"var(--amber)";
+   const m=L.circleMarker([Number(x.lat),Number(x.lng)],{radius:Math.max(5,Math.min(16,5+Math.sqrt(capacity(x)||0)/15)),weight:2,fillOpacity:.72});
+   m.bindPopup("<b>"+esc(x.title||x.name||x.id||"Unnamed")+"</b><br>"+esc([x.city,x.region,x.country].filter(Boolean).join(", "))+"<br>"+(capacity(x)==null?"":"<span class='mono'>"+capacity(x)+" MW</span><br>")+esc(statusLabel(x.status))+"<br><a href='https://earth.google.com/web/search/"+Number(x.lat)+","+Number(x.lng)+"' target='_blank' rel='noopener'>Open in Google Earth ↗</a>");
+   CLUSTER.addLayer(m);
  }
- renderList();
+ if(pts.length){const group=L.featureGroup(pts.map(x=>L.marker([Number(x.lat),Number(x.lng)])));MAP.fitBounds(group.getBounds().pad(.15));}else MAP.setView([20,0],2);
 }
-function renderList(){
- const q=document.getElementById("q").value.toLowerCase().trim(), min=Number(document.getElementById("min").value||0), cs=Number(document.getElementById("countries").value||0);
- filtered=OPS.filter(o=>{const n=name(o).toLowerCase();return (!q||n.includes(q)||oslug(o).includes(q))&&count(o)>=min&&countries(o)>=cs})
- .sort((a,b)=>count(b)-count(a)||name(a).localeCompare(name(b)));
- document.getElementById("list").innerHTML=filtered.map((o,i)=>"<button class='item "+(selected&&oslug(selected)===oslug(o)?"active":"")+"' data-i='"+i+"'><b>"+esc(name(o))+"</b><span>"+count(o).toLocaleString()+" facilities · "+countries(o).toLocaleString()+" countries</span></button>").join("")||"<div class='notice'>No matching operators.</div>";
- document.querySelectorAll(".item").forEach(b=>b.addEventListener("click",()=>openCompany(filtered[Number(b.dataset.i)])));
+function exportCSV(rows=filteredFacilities()){
+ const h=["facility","city","region","country","megawatts","status","energy_type","ai_focus","start_year","readiness","lat","lng","sources"];
+ const body=rows.map(x=>[x.title||x.name||x.id,x.city,x.region,x.country,capacity(x),x.status,x.energy_type,x.ai_focus,x.start_year,x.readiness,x.lat,x.lng,(x.sources||[]).join(" | ")]);
+ const csv=[h,...body].map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download=slugify(opName(SELECTED))+"-facility-portfolio.csv";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
-async function openCompany(o){
- selected=o; renderList();
- const n=name(o), s=oslug(o), p=document.getElementById("portfolio");
- const source="https://aidatacenterindex.com/operators/"+encodeURIComponent(s)+"/";
- p.innerHTML="<div class='eyebrow'>Company portfolio</div><div class='porthead'><div><h2>"+esc(n)+"</h2><div class='soft' style='font-size:10px'>Loading public structured facility records…</div></div><a class='btn primary' href='"+source+"' target='_blank' rel='noopener'>Source profile →</a></div>";
- try{
-   let items=Array.isArray(o._portfolio)?o._portfolio:null;
-   if(!items){
-     const r=await fetch("https://aidatacenterindex.com/operators/"+encodeURIComponent(s)+"/index.json",{cache:"no-store"});
-     if(!r.ok) throw Error(r.status);
-     const j=await r.json(); items=j.items||j.records||j.facilities||[];
-   }
-   const mw=items.reduce((a,x)=>a+(Number(x.megawatts)||0),0);
-   p.innerHTML="<div class='eyebrow'>Public company portfolio</div><div class='porthead'><div><h2>"+esc(n)+"</h2><div class='soft' style='font-size:10px'>Source-linked AI facility slice · not a complete corporate-building census.</div></div><a class='btn' href='"+source+"' target='_blank' rel='noopener'>Open source profile →</a></div>"+
-   "<div class='mini-grid'><div class='mini'><b>"+items.length.toLocaleString()+"</b><span>loaded facility records</span></div><div class='mini'><b>"+count(o).toLocaleString()+"</b><span>source facility count</span></div><div class='mini'><b>"+countries(o).toLocaleString()+"</b><span>source country reach</span></div><div class='mini'><b>"+mw.toLocaleString()+"</b><span>MW visible in loaded rows</span></div></div>"+
-   "<div class='tablewrap'><table class='table'><thead><tr><th>Facility</th><th>Location</th><th>MW</th><th>Status</th><th>AI focus</th><th>Companies</th><th>Sources</th></tr></thead><tbody>"+
-   items.map(x=>"<tr><td><b>"+esc(x.title||x.name||x.id)+"</b></td><td>"+esc([x.city,x.region,x.country].filter(Boolean).join(", "))+"</td><td>"+(x.megawatts==null?"—":esc(x.megawatts))+"</td><td>"+esc(x.status||"—")+"</td><td>"+esc(x.ai_focus||"—")+"</td><td>"+esc((x.companies||[]).join(", "))+"</td><td><span class='badge "+((x.sources||[]).length?"good":"warn")+"'>"+((x.sources||[]).length?x.sources.length+" cited":"not exposed")+"</span></td></tr>").join("")+
-   "</tbody></table></div>";
- }catch(e){
-   p.innerHTML="<div class='eyebrow'>Company portfolio</div><div class='porthead'><div><h2>"+esc(n)+"</h2><div class='soft' style='font-size:10px'>The structured facility endpoint was not available to this browser session.</div></div><a class='btn primary' href='"+source+"' target='_blank' rel='noopener'>Open operator profile →</a></div><div class='notice' style='margin-top:10px'>No facility rows are fabricated when the structured source is unavailable.</div>";
- }
+function setView(id){
+ document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===id));
+ document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+id));
+ if(id==="map")setTimeout(()=>{renderMap();MAP.invalidateSize()},0);
 }
-["q","min","countries"].forEach(id=>document.getElementById(id).addEventListener(id==="q"?"input":"change",renderList));
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setView(t.dataset.view)));
+document.getElementById("goFacilities").onclick=()=>setView("facilities");
+document.getElementById("downloadBtn").onclick=()=>exportCSV();
+document.getElementById("shareBtn").onclick=async()=>{const u=location.href;if(navigator.clipboard)await navigator.clipboard.writeText(u);document.getElementById("shareBtn").textContent="Link copied";setTimeout(()=>document.getElementById("shareBtn").textContent="Share portfolio",1200)};
+document.getElementById("fitMap").onclick=()=>renderMap();
+document.getElementById("streetMode").onclick=()=>{initMap();if(MAP.hasLayer(SAT))MAP.removeLayer(SAT);if(!MAP.hasLayer(STREET))STREET.addTo(MAP)};
+document.getElementById("satMode").onclick=()=>{initMap();if(MAP.hasLayer(STREET))MAP.removeLayer(STREET);if(!MAP.hasLayer(SAT))SAT.addTo(MAP)};
+document.getElementById("earthAll").onclick=()=>{const pts=ALL.filter(hasCoords);if(!pts.length)return;window.open("https://earth.google.com/web/@"+Number(pts[0].lat)+","+Number(pts[0].lng)+",5000a,35y,0h,0t,0r","_blank","noopener")};
+document.getElementById("copySources").onclick=async()=>{const urls=[...new Set(ALL.flatMap(x=>Array.isArray(x.sources)?x.sources:[]))].join("\\n");if(navigator.clipboard)await navigator.clipboard.writeText(urls);document.getElementById("copySources").textContent="Copied";setTimeout(()=>document.getElementById("copySources").textContent="Copy source list",1200)};
+document.getElementById("compareCompany").onchange=updateCompare;
+document.getElementById("overviewMetric").onchange=()=>renderOverview();
+document.getElementById("yearCut").onchange=()=>{const y=Number(document.getElementById("yearCut").value||0);document.querySelectorAll("#timelineRows .timeline-row").forEach(row=>{const n=Number(row.firstElementChild.textContent);row.style.display=(!y||Number.isNaN(n)||n<=y)?"grid":"none"})};
+document.getElementById("downloadTimeline").onclick=()=>exportCSV(ALL.slice().sort((a,b)=>Number(a.start_year||9999)-Number(b.start_year||9999)));
+["facilitySearch","statusFilter","workloadFilter","minMW","sortFilter"].forEach(id=>document.getElementById(id).addEventListener(id==="facilitySearch"?"input":"change",renderFacilities));
+document.getElementById("resetFacilities").onclick=()=>{document.getElementById("facilitySearch").value="";document.getElementById("statusFilter").value="";document.getElementById("workloadFilter").value="";document.getElementById("minMW").value="";document.getElementById("sortFilter").value="capacity";renderFacilities()};
+document.querySelectorAll("#view-custom input[data-col]").forEach(cb=>cb.addEventListener("change",()=>{
+ const col=cb.dataset.col;document.querySelectorAll(".col-"+col).forEach(el=>el.style.display=cb.checked?"":"none");
+}));
 document.getElementById("theme").addEventListener("click",()=>{const d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;localStorage.setItem("clr-theme",n)});
 const saved=localStorage.getItem("clr-theme");if(saved)document.documentElement.dataset.theme=saved;
-loadOps();
+
+(async()=>{
+ try{
+   const mode=await loadUniverse();
+   document.getElementById("sourceBtn").textContent=(mode==="snapshot"?"Open source profile ↗":"Open source profile ↗");
+   if(OPS.length){document.getElementById("sourceHealth").textContent=mode;SELECTED=selectDefault();await selectCompany(SELECTED,true);}
+ }catch(e){
+   document.getElementById("companyName").textContent="Operator universe unavailable";
+   document.getElementById("companyMeta").innerHTML="<span class='chip warn'>No structured operator feed loaded</span>";
+ }
+})();
 </script>
 </body>
 </html>
