@@ -59,9 +59,10 @@
       "what_is_published": "21 named/crosswalked Load Project site records plus 31 Gold Book large-load records and retained official-workbook source references. A separately published complete queue snapshot is not currently present in the repository.",
       "public_layers": [
         "data/project_level_extractions.json",
-        "data/nyiso_public_queue.json"
+        "data/nyiso_public_queue_status.json",
+        "data/supplemental_large_load_evidence.json"
       ],
-      "next_blocker": "Restore a successful current official workbook capture and then crosswalk all public Load Projects using queue ID, county/POI and applicant fields."
+      "next_blocker": "Official NYISO workbook capture is currently source-limited at the automated endpoint; named public project/Gold Book evidence remains retained while the adapter retries."
     },
     {
       "id": "ISO-NE",
