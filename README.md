@@ -177,7 +177,7 @@ The project-level dataset now includes **60 BPA large-load request records** wit
 
 The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
 
-The project-level layer has grown to **271 records**, with **271 mapped project records**. The only intentionally unlocated project-level record is the **Woostor LLC Alabama Power contract**, because the public contract evidence reviewed does not identify a site. A separate `data/supplemental_aggregate_map.json` adds **63 geographic evidence footprints**; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
+The project-level layer has grown to **271 records**, with **271 mapped project records**. The only intentionally unlocated project-level record is the **Woostor LLC Alabama Power contract**, because the public contract evidence reviewed does not identify a site. A separate `data/supplemental_aggregate_map.json` adds **66 geographic evidence footprints**; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
 
 The 271 project records have one canonical `evidence_type` each. Current counts are:
 
