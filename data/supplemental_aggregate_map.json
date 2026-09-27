@@ -4,8 +4,8 @@
   "title": "Supplemental aggregate evidence map",
   "purpose": "Display non-facility utility, regulatory and planning evidence as geographic footprints where jurisdiction is public.",
   "accounting": "These are aggregate/source-level overlays. They are never treated as facilities and are not added to the core row count.",
-  "record_count": 63,
-  "mapped_count": 63,
+  "record_count": 66,
+  "mapped_count": 66,
   "records": [
     {
       "id": "BCHYDRO-EMERGING-INDUSTRIES-2026",
@@ -1068,6 +1068,57 @@
       "label": "MISO current 153-record site-resolution gap",
       "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
       "notes": "The current MISO public snapshot has 153 ≥100 MW records in the site-resolution worklist because one or more location fields are absent. This circle is a disclosure-gap visualization, not 153 facility locations."
+    },
+    {
+      "id": "EVERGY-SIGNED-DATA-CENTER-ESAS-2026",
+      "evidence_type": "large_load_evidence_footprint",
+      "provider": "Evergy",
+      "jurisdiction": "Kansas / Missouri, US",
+      "records": 5,
+      "capacity_mw": 2500,
+      "capture_date": "2026-08-11",
+      "accounting": "Non-additive customer-portfolio evidence",
+      "geometry_type": "service-area footprint",
+      "radius_km": 350,
+      "lat": 38.5,
+      "lon": -96.5,
+      "label": "Evergy five signed large-load ESA relationships",
+      "source_url": "https://investors.evergy.com/static-files/73352465-a5e0-4dbf-ac4b-98692902443f",
+      "notes": "Evergy identifies five signed customer/project relationships and reports approximately 2.5 GW aggregate steady-state peak load for ESAs under LLPS. Utility/service-area evidence, not five facility coordinates."
+    },
+    {
+      "id": "BLACK-HILLS-CHEYENNE-1.8GW-2026",
+      "evidence_type": "named_prospective_large_load_footprint",
+      "provider": "Wyoming Electric / Black Hills Energy",
+      "jurisdiction": "Wyoming, US",
+      "records": 1,
+      "capacity_mw": 1800,
+      "capture_date": "2026-08-05",
+      "accounting": "Non-additive prospective project",
+      "geometry_type": "city display point",
+      "radius_km": 35,
+      "lat": 41.14,
+      "lon": -104.8202,
+      "label": "Prospective 1.8 GW Cheyenne data center",
+      "source_url": "https://ir.blackhillscorp.com/news-releases/news-release-details/black-hills-corp-reports-2026-second-quarter-results-and",
+      "notes": "City display geometry for a prospective project reported by Black Hills; not asserted to be the exact site boundary."
+    },
+    {
+      "id": "NV-ENERGY-LARGE-LOAD-ESAS-2026",
+      "evidence_type": "large_load_esa_docket_footprint",
+      "provider": "NV Energy / Nevada PUC",
+      "jurisdiction": "Nevada, US",
+      "records": 8,
+      "capacity_mw": null,
+      "capture_date": "2026-09-26",
+      "accounting": "Non-additive contract-docket evidence",
+      "geometry_type": "state/service-area footprint",
+      "radius_km": 300,
+      "lat": 38.8,
+      "lon": -116.9,
+      "label": "NV Energy large-load ESA docket portfolio",
+      "source_url": "https://pucweb1.state.nv.us/puc2/DktInfo.aspx",
+      "notes": "Eight publicly identified contract parties across large-load ESA dockets 26-05026 through 26-05030. State/service-area display geometry; individual site locations and MW are not inferred."
     }
   ]
 }
