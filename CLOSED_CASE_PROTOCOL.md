@@ -14,6 +14,12 @@ The pilot focuses on the registry's Genuinely Ambiguous / Unclassified Large Loa
 
 Epoch remains valuable as an independent public reference and cross-check. It is not the primary discovery universe for the pilot because those facilities are already publicly identified.
 
+## Candidate admission gate
+
+Before a case enters the closure workflow, independently establish that the underlying queue/application object is a **load-side request**. A missing developer name or an unclassified technology field is not sufficient. Generation, surplus, transmission, replacement, and upgrade records are not load-discovery cases unless a separate retained source establishes the specific load component under investigation.
+
+This gate exists because an earlier broad ambiguity pool contained records whose missing site-identity fields were mistaken for evidence of unresolved large-load status. For example, current public MISO-derived records classify some such records as Generation or Surplus. Those records belong in a separate source-completeness worklist, not in the strict discovery set.
+
 ## Closure gates
 
 1. Queue record — identify the most specific public load/interconnection record; retain the source URL, record identifier, project name and capacity; do not manufacture a site-specific match from jurisdiction alone.
