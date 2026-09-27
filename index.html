@@ -313,8 +313,8 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
     <div class="registry-kpi"><b id="deckSites">93</b><span>frontier sites</span></div>
     <div class="registry-kpi"><b id="deckRecords">1,623</b><span>known records</span></div>
     <div class="registry-kpi"><b id="deckGW">394.6</b><span>GW broad scope</span></div>
-    <div class="registry-kpi"><b id="deckEvidence">759</b><span>Track 3 evidence</span></div>
-    <div class="registry-kpi"><b id="deckPhysical">359</b><span>physical observations</span></div>
+    <div class="registry-kpi"><b id="deckEvidence">876</b><span>Track 3 evidence</span></div>
+    <div class="registry-kpi"><b id="deckPhysical">408</b><span>physical observations</span></div>
   </div>
 </div>
 <div class="registry-view-hint" id="registryViewHint">Overview is the visual entry point. Use the tabs above to open the dense research layers.</div>
@@ -322,9 +322,9 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
 <div id="registrySignalRail" class="registry-signal-rail" aria-label="Evidence signal rail">
   <div class="registry-signal" data-signal="sites" style="--signal-pct:100%"><div class="registry-signal-k">Sites</div><div class="registry-signal-v">93 / 93</div><div class="registry-signal-s">site identity ingested</div></div>
   <div class="registry-signal" data-signal="queue" style="--signal-pct:100%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">93 terminal</div><div class="registry-signal-s">2 site-specific IDs</div></div>
-  <div class="registry-signal" data-signal="physical" style="--signal-pct:100%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">359 obs.</div><div class="registry-signal-s">120 optical · 120 TIR · 119 SAR</div></div>
+  <div class="registry-signal" data-signal="physical" style="--signal-pct:100%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">408 obs.</div><div class="registry-signal-s">136 optical · 136 TIR · 136 SAR</div></div>
   <div class="registry-signal" data-signal="transformer" style="--signal-pct:1%"><div class="registry-signal-k">Transformers</div><div class="registry-signal-v">3 events</div><div class="registry-signal-s">supply-chain evidence</div></div>
-  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">263 records</div><div class="registry-signal-s">71 sites enriched</div></div>
+  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">276 records</div><div class="registry-signal-s">71 sites enriched</div></div>
 </div>
 
 
@@ -3350,8 +3350,8 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
       const e=await fetch('data/track3/evidence_records.json').then(r=>r.json());
       const n=Array.isArray(e)?e.length:(e.records?.length??e.evidence?.length??0);
       if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=n.toLocaleString();
-      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 222).toLocaleString()+' records';
-      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 70).toLocaleString()+' sites enriched';
+      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 276).toLocaleString()+' records';
+      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 71).toLocaleString()+' sites enriched';
     }catch{}
   }).catch(()=>{});
   fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
