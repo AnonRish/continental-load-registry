@@ -1,11 +1,53 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:33:30Z",
+  "generated_on": "2026-09-27",
   "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
-  "workflow_spec": "data/track3/research_workflows.json",
-  "count": 1025,
-  "publisher_tasks": 293,
-  "domain_tasks": 732,
+  "scope": "93 canonical Epoch AI frontier-AI reference sites",
+  "summary": {
+    "schema_version": 1,
+    "generated_on": "2026-09-27",
+    "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
+    "sites": 93,
+    "publisher_tasks": 293,
+    "domain_tasks": 732,
+    "total_tasks": 1025,
+    "publisher_by_field": {
+      "project": 58,
+      "investors": 83,
+      "construction_companies": 78,
+      "users": 24,
+      "address": 11,
+      "energy_companies": 28,
+      "chip_quantities": 10,
+      "owner": 1
+    },
+    "domain_by_domain": {
+      "service_or_contract": 82,
+      "regulatory": 85,
+      "compute_tenancy": 89,
+      "power_telemetry": 87,
+      "remote_sensing": 93,
+      "cooling": 83,
+      "transformer_supply_chain": 92,
+      "independent_corroboration": 93,
+      "grid_connection": 18,
+      "chip_inventory": 10
+    },
+    "coverage_assertions": {
+      "publisher_tasks_equal_effective_unresolved": true,
+      "domain_tasks_equal_open_cells": true,
+      "all_93_sites_represented": true
+    },
+    "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence."
+  },
+  "workflow_order": [
+    "DISCOVER",
+    "VERIFY_SCOPE",
+    "CAPTURE",
+    "CORROBORATE",
+    "CLASSIFY",
+    "INGEST"
+  ],
   "tasks": [
     {
       "task_id": "PUB-EPOCH-c20399471d1c5e4a-project",
@@ -50278,6 +50320,5 @@
       "canonical_ingest_path": "data/track3/evidence_records.json",
       "submission_schema": "data/track3/research_submission_schema.json"
     }
-  ],
-  "semantics": "OPEN means research remains outstanding; discovery leads are not canonical evidence; no-match outcomes never imply absence."
+  ]
 }
