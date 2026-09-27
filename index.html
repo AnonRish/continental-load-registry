@@ -183,7 +183,7 @@
       <div class="map-toolbar">
         <div class="map-toolbar-copy">
           <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Geographic overview</p>
-          <p class="text-xs mt-1" style="color:var(--ink-soft);" id="mapSubcaption">Current filter · county/zone centroids</p>
+          <p class="text-xs mt-1" style="color:var(--ink-soft);" id="mapSubcaption">North America · country, U.S. state, Canadian province, and Mexican state boundaries · registry and queue layers</p>
         </div>
         <div class="map-toolbar-actions" role="group" aria-label="Map display filters">
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
@@ -1547,7 +1547,8 @@ openFacilityFromHash();
     return Promise.allSettled([
       loadBoundaryLayer('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json','Country boundaries',0.9,0.6),
       loadBoundaryLayer('https://raw.githubusercontent.com/mapbox/mapboxgl-jupyter/master/examples/data/us-states.geojson','US state boundaries',1.5,1.0),
-      loadBoundaryLayer('https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/master/canada_provinces.geojson','Canadian province boundaries',1.5,1.0)
+      loadBoundaryLayer('https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/master/canada_provinces.geojson','Canadian province boundaries',1.5,1.0),
+      loadBoundaryLayer('https://raw.githubusercontent.com/open-mexico/mexico-geojson/main/mexicoHigh.json','Mexican state boundaries',1.5,1.0)
     ]);
   }
   loadBoundaries();
