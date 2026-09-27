@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T05:41:41.280555+00:00",
+  "generated_at_utc": "2026-09-27T05:59:54.413147+00:00",
   "title": "Track 3 Entity Resolution Layer",
   "semantics": "Confidence is evidence strength, not probability. Name normalization is a reconciliation key, not proof of legal identity. Missing ownership, landowner, colocation and shell-company findings remain unresolved rather than inferred.",
   "stats": {
@@ -9,20 +9,20 @@
     "distinct_core_project_names": 997,
     "project_level_records": 271,
     "site_evidence_records": 102,
-    "entity_count": 2147,
-    "relationship_edge_count": 1743,
+    "entity_count": 2114,
+    "relationship_edge_count": 1710,
     "parent_subsidiary_edges": 31,
     "variant_groups": 213,
     "legal_entity_research_targets": 712,
-    "building_geometry_sites": 66,
-    "building_polygons": 115625
+    "building_geometry_sites": 33,
+    "building_polygons": 51620
   },
   "checklist": [
     {
       "id": "DEVELOPER_OPERATOR_DATABASE",
       "item": "Much larger developer/operator database",
       "status": "INGESTED",
-      "coverage": "2147 entity records including 735 distinct developer strings from 1558 core queue rows."
+      "coverage": "2114 entity records including 735 distinct developer strings from 1558 core queue rows."
     },
     {
       "id": "PARENT_SUBSIDIARY_GRAPH",
@@ -34,7 +34,7 @@
       "id": "CAMPUS_BUILDING_MAPPING",
       "item": "Data-center campus ↔ individual buildings mapping",
       "status": "INGESTED_PARTIAL",
-      "coverage": "66 Epoch sites have 115625 published building polygons joined to site IDs; individual legal-entity building ownership is not inferred."
+      "coverage": "33 Epoch sites have 51620 published building polygons joined to site IDs; individual legal-entity building ownership is not inferred."
     },
     {
       "id": "CLOUD_COLO_LANDOWNER_UTILITY",
@@ -64,7 +64,7 @@
       "id": "CONFIDENCE_EVIDENCE",
       "item": "Confidence score + evidence for every identity match",
       "status": "INGESTED",
-      "coverage": "1743 relationship edges carry evidence IDs, source URLs where available, temporal state and numeric evidence-strength scores."
+      "coverage": "1710 relationship edges carry evidence IDs, source URLs where available, temporal state and numeric evidence-strength scores."
     }
   ],
   "source_catalog": [
@@ -20845,270 +20845,6 @@
     {
       "entity_id": "BLDGSET-EPOCH-cc12c3e42b3eaf08",
       "canonical_name": "Building footprint set — QTS Richmond 1",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-8358e445402d91c2",
-      "canonical_name": "Building footprint set — Meta Rosemount",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-6db3bc2c79843ffd",
-      "canonical_name": "Building footprint set — Google Bristow",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-93a4aa4fa40d40ca",
-      "canonical_name": "Building footprint set — Microsoft Goodyear",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-1ac0959562dee191",
-      "canonical_name": "Building footprint set — Meta Jeffersonville",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
-      "canonical_name": "Building footprint set — AWS New Albany",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-4eeccbee73808216",
-      "canonical_name": "Building footprint set — Google Omaha",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-e06bc7faa8b1b187",
-      "canonical_name": "Building footprint set — Google Lincoln",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-052be5b551cd099b",
-      "canonical_name": "Building footprint set — QTS Richmond 2",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-40ccef8ef4236635",
-      "canonical_name": "Building footprint set — Google The Dalles",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-02484a65a5dac16d",
-      "canonical_name": "Building footprint set — QTS Richmond 3",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-0788d9aeb3114553",
-      "canonical_name": "Building footprint set — Meta Montgomery",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
-      "canonical_name": "Building footprint set — Meta Kuna",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
-      "canonical_name": "Building footprint set — Meta Temple",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-14cecdb5956daea1",
-      "canonical_name": "Building footprint set — Meta Cheyenne",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-4a87099a6d1e001f",
-      "canonical_name": "Building footprint set — Amazon Ridgeland",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-27e284efc1b1abc2",
-      "canonical_name": "Building footprint set — Meta Huntsville",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-0bb0b996b7c96beb",
-      "canonical_name": "Building footprint set — Meta Eagle Mountain",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-85492d2b8df586a1",
-      "canonical_name": "Building footprint set — Google Midlothian",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-f92e98f4b76a9bcd",
-      "canonical_name": "Building footprint set — Google Lancaster",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-78f8285078416a9e",
-      "canonical_name": "Building footprint set — Meta-QTS Hillsboro 2",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-a2c9f0846296fe65",
-      "canonical_name": "Building footprint set — Google Waltham Cross",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-a286a89bd1c1b6e7",
-      "canonical_name": "Building footprint set — VNET Bayin Ulanqab",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-785d6e4c34607dd4",
-      "canonical_name": "Building footprint set — Google Arcola",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-f1a2bcdd78478bc2",
-      "canonical_name": "Building footprint set — Google Red Oak",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-4525348d114e3e8e",
-      "canonical_name": "Building footprint set — Google Papillion",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-d29894d37388a96a",
-      "canonical_name": "Building footprint set — Meta Gallatin",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-02c050b6b554fadd",
-      "canonical_name": "Building footprint set — Meta Los Lunas",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-768183e4de6062d2",
-      "canonical_name": "Building footprint set — CoreWeave Ellendale ND",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-4b5df4f52274f2ba",
-      "canonical_name": "Building footprint set — Meta Sarpy",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-03aad260b30bfbe1",
-      "canonical_name": "Building footprint set — AWS Berwick",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-eb87487504bda8ed",
-      "canonical_name": "Building footprint set — CoreWeave Marble NC",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-7d9b5af0cce16f1c",
-      "canonical_name": "Building footprint set — Meta Aiken",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-af62ae3440fe885a",
-      "canonical_name": "Building footprint set — Huawei Wuhu",
       "entity_type": "campus_building_geometry_set",
       "name_variants": [],
       "source_evidence_count": 1,
@@ -43065,7 +42801,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1116 polygons; release 2026-09-23.1."
+      "notes": "1139 polygons; release 2026-09-23.1."
     },
     {
       "relationship_id": "REL-1649",
@@ -43143,7 +42879,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3672 polygons; release 2026-09-23.1."
+      "notes": "3711 polygons; release 2026-09-23.1."
     },
     {
       "relationship_id": "REL-1655",
@@ -43186,435 +42922,6 @@
     },
     {
       "relationship_id": "REL-1658",
-      "from_entity_id": "EPOCH-8358e445402d91c2",
-      "to_entity_id": "BLDGSET-EPOCH-8358e445402d91c2",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-8358e445402d91c2",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "832 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1659",
-      "from_entity_id": "EPOCH-6db3bc2c79843ffd",
-      "to_entity_id": "BLDGSET-EPOCH-6db3bc2c79843ffd",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-6db3bc2c79843ffd",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2873 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1660",
-      "from_entity_id": "EPOCH-93a4aa4fa40d40ca",
-      "to_entity_id": "BLDGSET-EPOCH-93a4aa4fa40d40ca",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-93a4aa4fa40d40ca",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1191 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1661",
-      "from_entity_id": "EPOCH-1ac0959562dee191",
-      "to_entity_id": "BLDGSET-EPOCH-1ac0959562dee191",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-1ac0959562dee191",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "6116 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1662",
-      "from_entity_id": "EPOCH-bdc85fadae79b6b2",
-      "to_entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-bdc85fadae79b6b2",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "525 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1663",
-      "from_entity_id": "EPOCH-4eeccbee73808216",
-      "to_entity_id": "BLDGSET-EPOCH-4eeccbee73808216",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-4eeccbee73808216",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4140 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1664",
-      "from_entity_id": "EPOCH-e06bc7faa8b1b187",
-      "to_entity_id": "BLDGSET-EPOCH-e06bc7faa8b1b187",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-e06bc7faa8b1b187",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "101 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1665",
-      "from_entity_id": "EPOCH-052be5b551cd099b",
-      "to_entity_id": "BLDGSET-EPOCH-052be5b551cd099b",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-052be5b551cd099b",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "946 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1666",
-      "from_entity_id": "EPOCH-40ccef8ef4236635",
-      "to_entity_id": "BLDGSET-EPOCH-40ccef8ef4236635",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-40ccef8ef4236635",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2317 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1667",
-      "from_entity_id": "EPOCH-02484a65a5dac16d",
-      "to_entity_id": "BLDGSET-EPOCH-02484a65a5dac16d",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-02484a65a5dac16d",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "946 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1668",
-      "from_entity_id": "EPOCH-0788d9aeb3114553",
-      "to_entity_id": "BLDGSET-EPOCH-0788d9aeb3114553",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-0788d9aeb3114553",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "159 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1669",
-      "from_entity_id": "EPOCH-5de9a1c70a3e2275",
-      "to_entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-5de9a1c70a3e2275",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "667 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1670",
-      "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "to_entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-6ff5e1aeb6f0c7e3",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2534 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1671",
-      "from_entity_id": "EPOCH-14cecdb5956daea1",
-      "to_entity_id": "BLDGSET-EPOCH-14cecdb5956daea1",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-14cecdb5956daea1",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "7675 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1672",
-      "from_entity_id": "EPOCH-4a87099a6d1e001f",
-      "to_entity_id": "BLDGSET-EPOCH-4a87099a6d1e001f",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-4a87099a6d1e001f",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1209 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1673",
-      "from_entity_id": "EPOCH-27e284efc1b1abc2",
-      "to_entity_id": "BLDGSET-EPOCH-27e284efc1b1abc2",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-27e284efc1b1abc2",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "520 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1674",
-      "from_entity_id": "EPOCH-0bb0b996b7c96beb",
-      "to_entity_id": "BLDGSET-EPOCH-0bb0b996b7c96beb",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-0bb0b996b7c96beb",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "275 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1675",
-      "from_entity_id": "EPOCH-85492d2b8df586a1",
-      "to_entity_id": "BLDGSET-EPOCH-85492d2b8df586a1",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-85492d2b8df586a1",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "355 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1676",
-      "from_entity_id": "EPOCH-f92e98f4b76a9bcd",
-      "to_entity_id": "BLDGSET-EPOCH-f92e98f4b76a9bcd",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-f92e98f4b76a9bcd",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "375 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1677",
-      "from_entity_id": "EPOCH-78f8285078416a9e",
-      "to_entity_id": "BLDGSET-EPOCH-78f8285078416a9e",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-78f8285078416a9e",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1125 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1678",
-      "from_entity_id": "EPOCH-a2c9f0846296fe65",
-      "to_entity_id": "BLDGSET-EPOCH-a2c9f0846296fe65",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-a2c9f0846296fe65",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "18241 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1679",
-      "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
-      "to_entity_id": "BLDGSET-EPOCH-a286a89bd1c1b6e7",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-a286a89bd1c1b6e7",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "0 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1680",
-      "from_entity_id": "EPOCH-785d6e4c34607dd4",
-      "to_entity_id": "BLDGSET-EPOCH-785d6e4c34607dd4",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-785d6e4c34607dd4",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1860 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1681",
-      "from_entity_id": "EPOCH-f1a2bcdd78478bc2",
-      "to_entity_id": "BLDGSET-EPOCH-f1a2bcdd78478bc2",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-f1a2bcdd78478bc2",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3715 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1682",
-      "from_entity_id": "EPOCH-4525348d114e3e8e",
-      "to_entity_id": "BLDGSET-EPOCH-4525348d114e3e8e",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-4525348d114e3e8e",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "769 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1683",
-      "from_entity_id": "EPOCH-d29894d37388a96a",
-      "to_entity_id": "BLDGSET-EPOCH-d29894d37388a96a",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-d29894d37388a96a",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "333 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1684",
-      "from_entity_id": "EPOCH-02c050b6b554fadd",
-      "to_entity_id": "BLDGSET-EPOCH-02c050b6b554fadd",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-02c050b6b554fadd",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1899 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1685",
-      "from_entity_id": "EPOCH-768183e4de6062d2",
-      "to_entity_id": "BLDGSET-EPOCH-768183e4de6062d2",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-768183e4de6062d2",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "53 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1686",
-      "from_entity_id": "EPOCH-4b5df4f52274f2ba",
-      "to_entity_id": "BLDGSET-EPOCH-4b5df4f52274f2ba",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-4b5df4f52274f2ba",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "318 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1687",
-      "from_entity_id": "EPOCH-03aad260b30bfbe1",
-      "to_entity_id": "BLDGSET-EPOCH-03aad260b30bfbe1",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-03aad260b30bfbe1",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "424 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1688",
-      "from_entity_id": "EPOCH-eb87487504bda8ed",
-      "to_entity_id": "BLDGSET-EPOCH-eb87487504bda8ed",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-eb87487504bda8ed",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "676 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1689",
-      "from_entity_id": "EPOCH-7d9b5af0cce16f1c",
-      "to_entity_id": "BLDGSET-EPOCH-7d9b5af0cce16f1c",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-7d9b5af0cce16f1c",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "217 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1690",
-      "from_entity_id": "EPOCH-af62ae3440fe885a",
-      "to_entity_id": "BLDGSET-EPOCH-af62ae3440fe885a",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-af62ae3440fe885a",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "845 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1691",
       "from_entity_id": "EPOCH-d1b62579c6be3fe8",
       "to_entity_id": "BLDGSET-EPOCH-d1b62579c6be3fe8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43627,7 +42934,7 @@
       "notes": "97 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1692",
+      "relationship_id": "REL-1659",
       "from_entity_id": "EPOCH-c89a3269719f868a",
       "to_entity_id": "BLDGSET-EPOCH-c89a3269719f868a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43640,7 +42947,7 @@
       "notes": "2207 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1693",
+      "relationship_id": "REL-1660",
       "from_entity_id": "EPOCH-29fb769630142638",
       "to_entity_id": "BLDGSET-EPOCH-29fb769630142638",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43653,7 +42960,7 @@
       "notes": "97 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1694",
+      "relationship_id": "REL-1661",
       "from_entity_id": "EPOCH-781cbfae186209ad",
       "to_entity_id": "BLDGSET-EPOCH-781cbfae186209ad",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43666,7 +42973,7 @@
       "notes": "1902 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1695",
+      "relationship_id": "REL-1662",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "BLDGSET-EPOCH-f48a533b01898dfd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43679,7 +42986,7 @@
       "notes": "113 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1696",
+      "relationship_id": "REL-1663",
       "from_entity_id": "EPOCH-ee5c7acdbc729ef8",
       "to_entity_id": "BLDGSET-EPOCH-ee5c7acdbc729ef8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43692,7 +42999,7 @@
       "notes": "3035 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1697",
+      "relationship_id": "REL-1664",
       "from_entity_id": "EPOCH-0355f445ca6cbed4",
       "to_entity_id": "BLDGSET-EPOCH-0355f445ca6cbed4",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43705,7 +43012,7 @@
       "notes": "4712 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1698",
+      "relationship_id": "REL-1665",
       "from_entity_id": "EPOCH-96d37578ca36f86c",
       "to_entity_id": "BLDGSET-EPOCH-96d37578ca36f86c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43718,7 +43025,7 @@
       "notes": "4561 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1699",
+      "relationship_id": "REL-1666",
       "from_entity_id": "EPOCH-8696ef81d91560a9",
       "to_entity_id": "BLDGSET-EPOCH-8696ef81d91560a9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43731,7 +43038,7 @@
       "notes": "1285 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1700",
+      "relationship_id": "REL-1667",
       "from_entity_id": "EPOCH-495a9afde5e4b96c",
       "to_entity_id": "BLDGSET-EPOCH-495a9afde5e4b96c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43744,7 +43051,7 @@
       "notes": "7179 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1701",
+      "relationship_id": "REL-1668",
       "from_entity_id": "EPOCH-f1a70be0079d215a",
       "to_entity_id": "BLDGSET-EPOCH-f1a70be0079d215a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43757,7 +43064,7 @@
       "notes": "1231 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1702",
+      "relationship_id": "REL-1669",
       "from_entity_id": "EPOCH-7648e1438308fdae",
       "to_entity_id": "BLDGSET-EPOCH-7648e1438308fdae",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43767,10 +43074,10 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3317 polygons; release 2026-09-23.1."
+      "notes": "3384 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1703",
+      "relationship_id": "REL-1670",
       "from_entity_id": "EPOCH-65e758d676dc06d6",
       "to_entity_id": "BLDGSET-EPOCH-65e758d676dc06d6",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43783,7 +43090,7 @@
       "notes": "100 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1704",
+      "relationship_id": "REL-1671",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "BLDGSET-EPOCH-4569f5444951b2fd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43796,7 +43103,7 @@
       "notes": "289 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1705",
+      "relationship_id": "REL-1672",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "BLDGSET-EPOCH-dadec9d6ef7fca88",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43809,7 +43116,7 @@
       "notes": "2967 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1706",
+      "relationship_id": "REL-1673",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "BLDGSET-EPOCH-bbf05f2d8903eccc",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43819,10 +43126,10 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "55 polygons; release 2026-09-23.1."
+      "notes": "152 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1707",
+      "relationship_id": "REL-1674",
       "from_entity_id": "EPOCH-2d6a8403fde79650",
       "to_entity_id": "BLDGSET-EPOCH-2d6a8403fde79650",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43835,7 +43142,7 @@
       "notes": "452 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1708",
+      "relationship_id": "REL-1675",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "BLDGSET-EPOCH-f340a33a5ef18d4f",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43848,7 +43155,7 @@
       "notes": "542 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1709",
+      "relationship_id": "REL-1676",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "BLDGSET-EPOCH-177c53f92d72ec4a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43861,7 +43168,7 @@
       "notes": "218 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1710",
+      "relationship_id": "REL-1677",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "BLDGSET-EPOCH-bbcf0efa8bcebd41",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43874,7 +43181,7 @@
       "notes": "108 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1711",
+      "relationship_id": "REL-1678",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "BLDGSET-EPOCH-d2da66ea035880ce",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43887,7 +43194,7 @@
       "notes": "61 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1712",
+      "relationship_id": "REL-1679",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "BLDGSET-EPOCH-4b4d686b6c457a68",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -43900,7 +43207,7 @@
       "notes": "250 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1713",
+      "relationship_id": "REL-1680",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-ii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43913,7 +43220,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1714",
+      "relationship_id": "REL-1681",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-iii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43926,7 +43233,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1715",
+      "relationship_id": "REL-1682",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-iv",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43939,7 +43246,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1716",
+      "relationship_id": "REL-1683",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-v",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43952,7 +43259,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1717",
+      "relationship_id": "REL-1684",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-vi",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43965,7 +43272,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1718",
+      "relationship_id": "REL-1685",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-uk",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43978,7 +43285,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1719",
+      "relationship_id": "REL-1686",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-norway-as",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -43991,7 +43298,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1720",
+      "relationship_id": "REL-1687",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-sweden-ab",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44004,7 +43311,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1721",
+      "relationship_id": "REL-1688",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-canada-enterprises",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44017,7 +43324,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1722",
+      "relationship_id": "REL-1689",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-canada-services",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44030,7 +43337,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1723",
+      "relationship_id": "REL-1690",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-chi-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44043,7 +43350,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1724",
+      "relationship_id": "REL-1691",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-chi-3-procurement",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44056,7 +43363,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1725",
+      "relationship_id": "REL-1692",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-db1",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44069,7 +43376,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1726",
+      "relationship_id": "REL-1693",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-france-sas",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44082,7 +43389,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1727",
+      "relationship_id": "REL-1694",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44095,7 +43402,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1728",
+      "relationship_id": "REL-1695",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-u-s",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44108,7 +43415,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1729",
+      "relationship_id": "REL-1696",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-arizona-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44121,7 +43428,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1730",
+      "relationship_id": "REL-1697",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-virginia-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44134,7 +43441,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1731",
+      "relationship_id": "REL-1698",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-uk-data-centre",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44147,7 +43454,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1732",
+      "relationship_id": "REL-1699",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-canada-operations-ulc",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44160,7 +43467,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1733",
+      "relationship_id": "REL-1700",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-management-services",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44173,7 +43480,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1734",
+      "relationship_id": "REL-1701",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-property-manager",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44186,7 +43493,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1735",
+      "relationship_id": "REL-1702",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-sweden-ab",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44199,7 +43506,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1736",
+      "relationship_id": "REL-1703",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-nova-dc-fee-owner",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44212,7 +43519,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1737",
+      "relationship_id": "REL-1704",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-nova-dc",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44225,7 +43532,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1738",
+      "relationship_id": "REL-1705",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qts-critical-facilities-management",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44238,7 +43545,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1739",
+      "relationship_id": "REL-1706",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qts-finance",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44251,7 +43558,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1740",
+      "relationship_id": "REL-1707",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-investment-properties-irving",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44264,7 +43571,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1741",
+      "relationship_id": "REL-1708",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-technology-services-lenexa",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44277,7 +43584,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1742",
+      "relationship_id": "REL-1709",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-technology-services-richmond-ii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -44290,7 +43597,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1743",
+      "relationship_id": "REL-1710",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qae-acquisition",
       "relationship_type": "PARENT_SUBSIDIARY",
