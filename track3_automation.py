@@ -112,10 +112,16 @@ def queue_release_diff():
     existing=sorted(snap_dir.glob("*.json"))
     previous=json.loads(existing[-1].read_text(encoding="utf-8")) if existing else None
     cur_by={str(x.get("id")):x for x in current}
-    added=removed=changed=[]
-    added=[cur_by[k] for k in sorted(set(cur_by)-set(previous["records"]) if previous else set(cur_by))]
+    added=[]; removed=[]; changed=[]
     if previous:
         prev_by={str(x.get("id")):x for x in previous["records"]}
+        added=[cur_by[k] for k in sorted(set(cur_by)-set(prev_by))]
+        removed=[prev_by[k] for k in sorted(set(prev_by)-set(cur_by))]
+        changed=[{"id":k,"before":prev_by[k],"after":cur_by[k]} for k in sorted(set(cur_by)&set(prev_by)) if cur_by[k]!=prev_by[k]]
+    else:
+        prev_by={}
+        added=list(current)
+    if previous:
         removed=[prev_by[k] for k in sorted(set(prev_by)-set(cur_by))]
         changed=[{"id":k,"before":prev_by[k],"after":cur_by[k]} for k in sorted(set(cur_by)&set(prev_by)) if cur_by[k]!=prev_by[k]]
     snapshot={"schema_version":1,"captured_at_utc":NOW_ISO,"record_count":len(current),"registry_sha256":hashlib.sha256(json.dumps(current,sort_keys=True).encode()).hexdigest(),"records":current}
