@@ -1,33 +1,69 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import argparse,datetime,io,json,time
+from html.parser import HTMLParser
+from urllib.parse import urljoin
 from pathlib import Path
 import pandas as pd,requests
-URL="https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"
+PAGE_URL="https://www.nyiso.com/interconnections"
+FALLBACK_URL="https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"
 SHEETS={"Interconnection Queue":"active"," Cluster Projects":"cluster_active","Withdrawn":"withdrawn","Cluster Projects-Withdrawn":"cluster_withdrawn","In Service":"in_service"}
+class LinkParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.links: list[tuple[str, str]] = []
+        self.href: str | None = None
+        self.text_parts: list[str] = []
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() != "a":
+            return
+        href=dict(attrs).get("href")
+        if href:
+            self.href=href
+            self.text_parts=[]
+    def handle_data(self, data):
+        if self.href is not None:
+            self.text_parts.append(data)
+    def handle_endtag(self, tag):
+        if tag.lower()=="a" and self.href is not None:
+            self.links.append((self.href," ".join(self.text_parts).strip()))
+            self.href=None
+            self.text_parts=[]
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--selftest",action="store_true");ap.add_argument("--output-dir",default="data");a=ap.parse_args()
     if a.selftest:
         assert len(SHEETS)==5
         print("PASS: NYISO parser self-test");return
-    s=requests.Session();s.headers.update({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153 Safari/537.36","Accept":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream;q=0.9,*/*;q=0.8","Referer":"https://www.nyiso.com/interconnections","Origin":"https://www.nyiso.com"})
-    try:s.get("https://www.nyiso.com/interconnections",timeout=30)
-    except Exception:pass
+    s=requests.Session();s.headers.update({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153 Safari/537.36","Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Referer":PAGE_URL,"Origin":"https://www.nyiso.com"})
+    page=s.get(PAGE_URL,timeout=60);page.raise_for_status()
+    parser=LinkParser();parser.feed(page.text)
+    candidates=[]
+    for href,text_value in parser.links:
+        label=(text_value+" "+href).lower()
+        if ("queue" not in label and "interconnection" not in label) or not href:
+            continue
+        u=urljoin(PAGE_URL,href)
+        if u not in candidates:candidates.append(u)
+    candidates.append(FALLBACK_URL)
     r=None
-    for attempt in range(3):
-        try:
-            rr=s.get(URL,timeout=90,allow_redirects=True)
-            rr.raise_for_status()
-            if rr.content[:2]==b"PK":
-                r=rr
-                break
-            time.sleep(2*(attempt+1))
-        except Exception:
-            if attempt==2:
-                raise
-            time.sleep(2*(attempt+1))
+    for url in candidates:
+        for attempt in range(3):
+            try:
+                rr=s.get(url,timeout=90,allow_redirects=True)
+                rr.raise_for_status()
+                if rr.content[:2]==b"PK":
+                    r=rr
+                    break
+                time.sleep(2*(attempt+1))
+            except Exception:
+                if attempt==2: break
+                time.sleep(2*(attempt+1))
+        if r is not None:
+            break
     if r is None:
-        raise RuntimeError("NYISO workbook did not return an XLSX payload")
+        raise RuntimeError("NYISO interconnection source did not return an XLSX payload")
+    source_url=r.url
     book=pd.ExcelFile(io.BytesIO(r.content));recs=[]
     for sheet,status in SHEETS.items():
         if sheet not in book.sheet_names:raise RuntimeError(f"missing sheet: {sheet}")
@@ -48,12 +84,12 @@ def main():
                 except Exception:pass
             recs.append({"source_sheet":sheet,"status_class":status,"source_row_number":i,"normalized":{"queue_id":q,"project_name":name,"developer_name":g("Developer Name","Owner/Developer"),"date_of_ir":g("Date of IR"),"summer_mw":g("SP (MW)"),"winter_mw":g("WP (MW)"),"capacity_mw":max(vals) if vals else None,"type_fuel":g("Type/ Fuel","Type/Fuel"),"county":g("County"),"state":g("State"),"interconnection_point":g("Interconnection Point","Points of Interconnection"),"utility":g("Utility"),"status":status,"last_updated":g("Last Updated Date","Last Update"),"proposed_in_service":g("Proposed In-Service Date","Proposed  In-Service"),"proposed_cod":g("Proposed COD"),"availability_of_studies":g("Availability of Studies"),"ia_status":g("S")},"raw":raw})
     root=Path(a.output_dir);root.mkdir(parents=True,exist_ok=True);now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
-    obj={"schema_version":1,"title":"NYISO complete public interconnection queue","source_url":URL,"captured_at":now,"accounting":"Complete public NYISO interconnection queue layer; not added to conservative large-load core.","record_count":len(recs),"records":recs}
+    obj={"schema_version":1,"title":"NYISO complete public interconnection queue","source_url":source_url,"captured_at":now,"accounting":"Complete public NYISO interconnection queue layer; not added to conservative large-load core.","record_count":len(recs),"records":recs}
     (root/"nyiso_public_queue.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     flat=[]
     for z in recs:
         q=z["normalized"].copy();q.update({"source_sheet":z["source_sheet"],"status_class":z["status_class"],"source_row_number":z["source_row_number"],"raw_record_json":json.dumps(z["raw"],ensure_ascii=False,separators=(",",":"))});flat.append(q)
     pd.DataFrame(flat).to_csv(root/"nyiso_public_queue.csv",index=False)
-    s={"source_url":URL,"captured_at":now,"record_count":len(recs),"records_ge_100mw":sum((z["normalized"].get("capacity_mw") or 0)>=100 for z in recs)}
+    s={"source_url":source_url,"captured_at":now,"record_count":len(recs),"records_ge_100mw":sum((z["normalized"].get("capacity_mw") or 0)>=100 for z in recs)}
     (root/"nyiso_public_queue_summary.json").write_text(json.dumps(s,indent=2)+"\n",encoding="utf-8");print(json.dumps(s,indent=2))
 if __name__=="__main__":main()
