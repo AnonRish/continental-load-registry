@@ -136,7 +136,7 @@ jobs:
           report={
             "schema_version":1,
             "generated_at_utc":quality.get("generated_at_utc"),
-            "pipeline_commit":"\${{ github.sha }}",
+            "pipeline_commit":"${{ github.sha }}",
             "adapter_run":adapter,
             "quality_summary":quality.get("summary",{}),
             "automation_contract":{
