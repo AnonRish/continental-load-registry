@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_on": "2026-09-27",
-  "record_count": 2,
+  "record_count": 3,
   "target_count": 93,
   "status": "INGESTED_SOURCE_BACKED_EVENTS",
   "records": [
@@ -59,6 +59,34 @@
       "evidence_quote": "Entergy reports a large power transformer moving from Garden City, Kansas to Richland Parish to provide power for the Meta data center.",
       "confidence": "high",
       "semantics": "The transport is source-backed; transformer rating, manufacturer and exact event date are not asserted because the public post does not provide them."
+    },
+    {
+      "event_id": "TX-EVENT-EPOCH-bbcf0efa8bcebd41-JCL-RAYVILLE-Q4-2025",
+      "epoch_id": "EPOCH-bbcf0efa8bcebd41",
+      "site_name": "Meta Hyperion",
+      "event_type": "TRANSFORMER_DELIVERED",
+      "event_status": "DELIVERED",
+      "observed_on": "2025-Q4",
+      "date_precision": "quarter",
+      "quantity_count": 1,
+      "quantity_unit": "transformer",
+      "manufacturer": null,
+      "model": null,
+      "rating_mva": "15/20/25",
+      "primary_kv": 34.5,
+      "secondary_kv": 13.8,
+      "transformer_class": "campus substation unit",
+      "buyer": null,
+      "destination": "Meta data-center campus, Rayville, Louisiana",
+      "linked_load": "Meta data center campus / Hyperion",
+      "source_url": "https://www.jcl.energy/projects",
+      "source_title": "JCL Energy transformer project highlights",
+      "source_publisher": "JCL Energy",
+      "source_tier": "Transformer supplier project record",
+      "evidence_quote": "Hyperscale data center — Rayville, LA · Q4 2025; Campus substation unit delivered to the utility interconnect schedule.",
+      "confidence": "medium",
+      "linkage_basis": "Supplier project page identifies a hyperscale data-center campus in Rayville, Louisiana; the Epoch Meta Hyperion record is the corresponding Richland Parish site. The public supplier page does not expose a parcel-level identifier.",
+      "semantics": "Source-backed delivery record. The public source gives a three-stage 15/20/25 MVA rating and 34.5/13.8 kV voltage classes; it does not identify a manufacturer or exact parcel."
     }
   ],
   "targets": [
