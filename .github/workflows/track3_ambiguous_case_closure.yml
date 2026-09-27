@@ -39,7 +39,7 @@ jobs:
           import json
           from pathlib import Path
           d=json.loads(Path("data/track3/ambiguous_case_physical_observations.json").read_text(encoding="utf-8"))
-          assert d["case_count"] == 3
+          assert d["case_count"] == 4
           assert d["observation_count"] > 0
           assert d["derived_observation_count"] > 0
           print("case_count=",d["case_count"])
