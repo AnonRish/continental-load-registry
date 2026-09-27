@@ -499,8 +499,13 @@ def refresh_website_completeness_audit(summary: dict[str, Any], evidence_count: 
     large_scope_path = ROOT / "data" / "large_load_scope.json"
     if large_scope_path.exists():
         scope = load_json(large_scope_path)
-        core = scope.get("current_core_scope") or scope.get("current_core_registry") or scope.get("current_row_level", {})
-        broad = scope.get("expanded_known_scope", {})
+        definitions = scope.get("definitions") or {}
+        core = (
+            scope.get("current_core_scope")
+            or scope.get("current_core_registry")
+            or definitions.get("current_row_level", {})
+        )
+        broad = scope.get("expanded_known_scope") or definitions.get("expanded_known_scope", {})
         audit.setdefault("summary", {}).update({
             "current_core_registry_rows": core.get("records"),
             "current_core_capacity_gw": core.get("capacity_gw"),
