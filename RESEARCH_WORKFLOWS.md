@@ -12,7 +12,7 @@ The pilot population is the Genuinely Ambiguous / Unclassified Large Load tier. 
 
 Do not begin a load-discovery case merely because a record is large, unnamed, or missing a developer. First retain source evidence that the project type is Load, New load facility, Increase load, or an equivalent load-side category. Generation, Surplus, Transmission, Replacement, and Upgrade records remain outside the strict discovery candidate set unless their specific load component is separately established.
 
-The 142-row Genuinely Ambiguous / Unclassified Large Load universe is therefore a **broad research pool**, not a count of 142 confirmed discoveries.
+The 141-row Genuinely Ambiguous / Unclassified Large Load universe is therefore a **broad research pool**, not a count of 141 confirmed discoveries.
 
 ## Closed-case workflow
 
