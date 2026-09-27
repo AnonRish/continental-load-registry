@@ -28,11 +28,12 @@ The central rule is that queue/interconnection capacity, utility service capacit
 
 The highest-leverage validation unit is now a small set of cases from the registry's Genuinely Ambiguous / Unclassified Large Load tier.
 
-The current pilot contains three cases, deliberately selected for methodological coverage rather than representativeness:
+The current pilot contains four cases, deliberately selected for methodological coverage rather than representativeness:
 
 - AMB-NYISO-1745 — data-center identity outcome;
 - AMB-NYISO-1765 — manufacturing/industrial outcome with a bounded applicant mismatch;
 - AMB-IESO-2026-903 — deliberately inconclusive after the physical-targeting gate failed.
+- AMB-AESO-P3108 — proposed data-centre identity and physical-site outcome with processed multi-modal observations.
 
 Each case is taken through the same closure gates: queue record, entity resolution, location, public evidence, physical observation, electrical/transformer search, adjudication, and a documented stopping rule.
 
