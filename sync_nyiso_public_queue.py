@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,datetime,io,json
+import argparse,datetime,io,json,time
 from pathlib import Path
 import pandas as pd,requests
 URL="https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"
@@ -10,7 +10,25 @@ def main():
     if a.selftest:
         assert len(SHEETS)==5
         print("PASS: NYISO parser self-test");return
-    r=requests.get(URL,headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36","Accept":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream;q=0.9,*/*;q=0.8","Referer":"https://www.nyiso.com/interconnections"},timeout=90);r.raise_for_status();book=pd.ExcelFile(io.BytesIO(r.content));recs=[]
+    s=requests.Session();s.headers.update({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153 Safari/537.36","Accept":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream;q=0.9,*/*;q=0.8","Referer":"https://www.nyiso.com/interconnections","Origin":"https://www.nyiso.com"})
+    try:s.get("https://www.nyiso.com/interconnections",timeout=30)
+    except Exception:pass
+    r=None
+    for attempt in range(3):
+        try:
+            rr=s.get(URL,timeout=90,allow_redirects=True)
+            rr.raise_for_status()
+            if rr.content[:2]==b"PK":
+                r=rr
+                break
+            time.sleep(2*(attempt+1))
+        except Exception:
+            if attempt==2:
+                raise
+            time.sleep(2*(attempt+1))
+    if r is None:
+        raise RuntimeError("NYISO workbook did not return an XLSX payload")
+    book=pd.ExcelFile(io.BytesIO(r.content));recs=[]
     for sheet,status in SHEETS.items():
         if sheet not in book.sheet_names:raise RuntimeError(f"missing sheet: {sheet}")
         df=pd.read_excel(book,sheet_name=sheet,header=[0,1] if sheet=="In Service" else 0).dropna(how="all")
