@@ -18,7 +18,7 @@ permissions:
 
 # Physical verification: full 93-site acquisition after smoke-test validation.
 concurrency:
-  group: track3-writers-main
+  group: physical-writers-main
   cancel-in-progress: false
 
 jobs:
@@ -44,9 +44,6 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
         run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 3
-
-      - name: Rebuild Track 3 evidence graph
-        run: python build_track3_evidence.py
 
       - name: Validate generated physical artifacts
         run: |
@@ -74,9 +71,6 @@ jobs:
               for modality in ("optical", "tir", "sar")
           }
           assert all(count > 0 for count in derived_by_modality.values()), derived_by_modality
-          track3 = json.loads((root / "track3" / "site_status.json").read_text(encoding="utf-8"))
-          assert len(track3["records"]) == 93
-          assert track3["summary"]["remote_sensing_derived_observation_count"] == obs["derived_observation_count"]
           print("PASS: physical verification artifact contracts")
           print("derived observations:", obs["derived_observation_count"])
           print("transformer events:", tx["record_count"])
@@ -95,8 +89,7 @@ jobs:
             data/track3/physical_site_coordinates.json data/track3/remote_sensing_observations.json \
             data/track3/remote_sensing_observations.csv data/track3/transformer_supply_chain_events.json \
             data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
-            data/track3_source_stack.json data/track3_evidence_schema.json data/track3/site_status.json \
-            data/track3/evidence_records.json data/track3/summary.json data/website_completeness_audit.json
+            data/track3_source_stack.json
           if git diff --cached --quiet; then
             echo "No physical-verification data changes."
             exit 0
