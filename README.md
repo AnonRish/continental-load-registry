@@ -471,3 +471,10 @@ The public site now includes [Global Compute Universe](https://anonrish.github.i
 These source populations are **not added together as a single census number**. The interface performs conservative name-plus-place linkage, preserves source provenance, and marks the source/type of every record. Compute Atlas and Data Center Index are reused under their stated CC BY 4.0 terms with attribution; the full source manifest is `data/global_compute_universe_sources_2026-09-27.json`.
 
 The broader database also has a scheduled GitHub Actions refresh workflow at `.github/workflows/sync_global_compute_universe.yml`, which stores reproducible source snapshots when the publishers' public endpoints change.
+
+
+## Company-by-company global facility layer
+
+The public [Company Data-Center Registry](https://anonrish.github.io/continental-load-registry/company-registry.html) adds a company/entity layer on top of the facility database. It uses the current AI Data Center Index operator universe (225 operators) as the live discovery backbone and loads company-specific facility slices from the publisher's structured operator endpoints. It keeps operator, owner, developer, tenant, hardware partner and power-provider roles distinct. Company-region or availability-zone counts are not treated as physical-building counts.
+
+The registry also preserves the 93-site Epoch frontier-AI universe and the broader Compute Atlas / Data Center Index discovery layers separately. Different populations are intentionally non-additive.
