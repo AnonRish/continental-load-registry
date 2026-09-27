@@ -67,8 +67,8 @@ def main() -> int:
         missing_p = sorted(REQUIRED_PACKET - set(p))
         if missing_p:
             errors.append(f"{cid}: missing packet fields {missing_p}")
-        if p.get("public_load_classification") != "Load":
-            errors.append(f"{cid}: packet does not state public load classification")
+        if str(p.get("public_load_classification") or "").strip().lower() not in {"load", "industrial load", "new load facility", "increase load"}:
+            errors.append(f"{cid}: packet does not state an allowed public load classification")
         if not p.get("source_ladder"):
             errors.append(f"{cid}: empty source ladder")
         if not p.get("next_gates"):
