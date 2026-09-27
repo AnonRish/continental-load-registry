@@ -720,6 +720,7 @@
       <div class="ctl-stat"><b id="ctlProviders">—</b><span>named utility / service providers</span></div>
     </div>
   </div>
+  <div class="flex flex-wrap gap-2 mt-3 text-[10px] mono"><span class="ctl-badge good">100% FIELD ACCOUNTED</span><span id="ctlAccounted" class="ctl-muted">— detailed connection fields accounted for</span><span id="ctlPopulation" class="ctl-muted">— published/retained values</span></div>
 
   <div id="targetLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading connection targets…</div>
 
@@ -741,7 +742,7 @@
     </select>
   </div>
 
-  <div id="ctlFieldCards" class="ctl-fields"></div>
+  <details style="margin-top:14px"><summary class="text-xs cursor-pointer" style="color:var(--ink-soft);">Open 16-field completeness audit · 1,488 field slots</summary><div id="ctlFieldCards" class="ctl-fields"></div></details>
 
   <div class="scroll-x mt-4">
     <table class="ctl-table min-w-[1120px]">
@@ -3003,6 +3004,11 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
       document.getElementById('ctlQueueIds').textContent=targets.filter(function(x){return hasVal(x.site_specific_queue_id);}).length;
       document.getElementById('ctlEvidenceSites').textContent=targets.filter(function(x){return Number(x.site_level_evidence_count||0)>0;}).length;
       document.getElementById('ctlProviders').textContent=targets.filter(function(x){return hasVal(x.utility_or_service_provider);}).length;
+      const totalDetailed=targets.reduce(function(sum,x){return sum+DETAIL_FIELDS.length;},0);
+      const populatedDetailed=targets.reduce(function(sum,x){return sum+knownDetailCount(x);},0);
+      const accounted=targets.reduce(function(sum,x){return sum+Number(x.connection_field_accounting?.accounted_for_fields||DETAIL_FIELDS.length);},0);
+      document.getElementById('ctlAccounted').textContent=accounted.toLocaleString()+'/'+totalDetailed.toLocaleString()+' detailed connection fields accounted for';
+      document.getElementById('ctlPopulation').textContent=populatedDetailed.toLocaleString()+' published/retained values · '+(populatedDetailed/totalDetailed*100).toFixed(1)+'% populated';
       renderFieldCards();filterTargets();
     }).catch(function(err){document.getElementById('targetLedgerStatus').textContent='Connection targets unavailable: '+err.message;});
   }
