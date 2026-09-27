@@ -29,6 +29,11 @@ def uniq(xs): return sorted({x for x in xs if x})
 def main():
     data={k:rows(v) for k,v in FILES.items()}
     sales_timeline=data["sales_timeline"]
+    existing={}
+    out_path=ROOT/"data/track3/global_compute_supply_chain.json"
+    if out_path.exists():
+        try: existing=json.loads(out_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError: existing={}
     out={
       "schema_version":1,
       "generated_on":"2026-09-27",
@@ -49,6 +54,17 @@ def main():
         "global_transaction_level_closure":"UNKNOWN",
         "current_untraced_pool":"UNKNOWN"
       },
+      "source_layers": existing.get("source_layers", [
+        {"id":"EPOCH_OWNER_CUMULATIVE","status":"INGESTED_SNAPSHOT","repository_paths":["data/external/epoch_ai/ai_chip_owners_cumulative_by_designer.csv","data/external/epoch_ai/ai_chip_owners_cumulative_by_chip_type.csv"],"role":"Aggregate organization/owner snapshots; cumulative rows overlap in time and must not be summed across dates."},
+        {"id":"EPOCH_SALES_TIMELINE","status":"INGESTED_SNAPSHOT","repository_path":"data/external/epoch_ai/ai_chip_sales_timelines_by_chip.csv","role":"Estimated chip-sales timeline; not serial/invoice accounting."},
+        {"id":"EPOCH_COMPONENTS","status":"INGESTED_SNAPSHOT","repository_paths":["data/external/epoch_ai/ai_chip_components_quarterly_by_chip.csv","data/external/epoch_ai/ai_chip_components_quarterly_by_designer.csv","data/external/epoch_ai/ai_chip_components_supply_denominators.csv"],"role":"Upstream component/supply constraints."},
+        {"id":"NVIDIA_SEC_FY2026","status":"PUBLIC_OFFICIAL_SOURCE","url":"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm","role":"Vendor customer-channel and concentration disclosure."},
+        {"id":"NVIDIA_SEC_Q2_FY2027","status":"PUBLIC_OFFICIAL_SOURCE","url":"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm","role":"Current direct/indirect customer structure disclosure."},
+        {"id":"TSMC_2025","status":"PUBLIC_OFFICIAL_SOURCE","url":"https://investor.tsmc.com/static/annualReports/2025/english/index.html","role":"Manufacturing and production-capacity context."},
+        {"id":"GLEIF_2026-09-25","status":"PUBLIC_OFFICIAL_SOURCE","url":"https://www.gleif.org/en/lei-data/gleif-concatenated-file/download-the-concatenated-file","role":"Global legal-entity and parent-relationship data."},
+        {"id":"US_CENSUS_TRADE","status":"PUBLIC_OFFICIAL_SOURCE","url":"https://www.census.gov/data/developers/data-sets/international-trade.html","role":"Commodity-flow and shipping statistics."},
+        {"id":"EU_WEEE","status":"PUBLIC_OFFICIAL_SOURCE","url":"https://environment.ec.europa.eu/topics/waste-and-recycling/waste-electrical-and-electronic-equipment-weee/implementation-weee-directive_en","role":"End-of-life reporting context."}
+      ]),
       "source_files":{
         "owners":"data/external/epoch_ai/ai_chip_owners_cumulative_by_designer.csv",
         "users":"data/external/epoch_ai/ai_chip_users_year_end_by_lab.csv",
