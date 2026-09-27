@@ -6,16 +6,17 @@
   "markets": [
     {
       "id": "CAISO",
-      "status": "historical_cluster_and_current_large_load_project_layers_expanded",
-      "core_rows": 63,
+      "status": "complete_public_queue_snapshot_ingested",
+      "core_rows": 2278,
       "source_urls": [
         "https://www.caiso.com/generation-transmission/generation/generator-interconnection",
         "https://stakeholdercenter.caiso.com/InitiativeDocuments/Presentation-PGE-2025-2026Transmissionplanningprocess-Sep2525.pdf"
       ],
-      "scope": "Historical cluster series plus all 11 publicly identified LC24 data-center loads (840 MW) and all 3 publicly identified serial San Jose data-center loads (700 MW) from PG&E/CAISO public transmission-planning material.",
-      "captured": "2026-09-26",
-      "notes": "The 14 load-project records are now individually represented. Their coordinates are planning-area display points based on the public load-pocket geography; they are not exact facility addresses. Historical generator queue clusters remain a distinct non-additive history layer.",
-      "project_records_added": 14
+      "scope": "Current complete CAISO Public Queue Report snapshot plus separately retained historical cluster series and CAISO large-load project evidence.",
+      "captured": "2026-09-27",
+      "notes": "The complete current public queue workbook is preserved row-by-row in data/caiso_public_queue.json and CSV. Generator-interconnection rows remain a distinct non-additive layer; CAISO large-load project records remain separately scoped.",
+      "project_records_added": 14,
+      "row_level_snapshot": "data/caiso_public_queue.json"
     },
     {
       "id": "MISO",
