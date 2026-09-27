@@ -175,6 +175,7 @@ def main():
             prev={x.get("url"):x.get("fingerprint",{}) for x in load("data/automation/source_health.json").get("sources",[]) if x.get("url")}
         except Exception: prev={}
     sources,failed=source_health(prev)
+    (AUTO/"source_registry.json").write_text(json.dumps({"schema_version":1,"generated_at_utc":NOW_ISO,"sources":sources},indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     (AUTO/"source_health.json").write_text(json.dumps({"schema_version":1,"generated_at_utc":NOW_ISO,"source_count":len(sources),"failed_count":len(failed),"sources":sources},indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     diff=queue_release_diff(); (AUTO/"queue_release_diff.json").write_text(json.dumps(diff,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     dup=duplicate_report(parse_registry()); (AUTO/"duplicate_report.json").write_text(json.dumps(dup,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
