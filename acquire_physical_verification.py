@@ -290,11 +290,10 @@ def scene_metrics_tir(item: dict[str, Any], lat: float, lon: float) -> dict[str,
     }
 
 def db_values(arr: np.ndarray) -> np.ndarray:
-    med = robust_median(arr)
-    if med is not None and med < 0:
-        return arr
+    # Planetary Computer Sentinel-1 GRD exposes detected amplitude values.
+    # Convert amplitude to dB with 20*log10(A), not the power conversion 10*log10(P).
     safe = np.where(arr > 0, arr, np.nan)
-    return 10.0 * np.log10(safe)
+    return 20.0 * np.log10(safe)
 
 def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str, Any]:
     assets = item.get("assets", {})
@@ -311,7 +310,7 @@ def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str,
         "valid_pixel_count": int(np.isfinite(vv).sum()),
         "source_resolution_m": float(vv_meta["resolution"][0]),
         "source_asset_keys": [vv_key, vh_key],
-        "backscatter_note": "Sentinel-1 backscatter is converted from linear power to dB where needed.",
+        "backscatter_note": "Sentinel-1 GRD detected amplitude is converted to dB with 20*log10(amplitude).",
     }
     if vh_href:
         vh, _ = read_window(vh_href, lon, lat, 512)
