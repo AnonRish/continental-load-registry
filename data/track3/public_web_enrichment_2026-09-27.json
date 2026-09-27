@@ -4,28 +4,33 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 244,
-    "sites_with_findings": 69,
+    "record_count": 307,
+    "sites_with_findings": 84,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 218,
+      "PUBLIC_SOURCE_CAPTURED": 306,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "energy_companies": 59,
-      "project": 34,
+      "energy_companies": 82,
+      "project": 58,
       "investment": 24,
       "owner": 10,
-      "investors": 4,
-      "construction_companies": 25,
-      "cooling": 11,
+      "investors": 5,
+      "construction_companies": 41,
+      "cooling": 15,
       "chip_quantities": 5,
       "operational_status": 9,
-      "address": 6,
-      "service_or_contract": 7,
-      "users": 3,
-      "regulatory": 6,
+      "address": 8,
+      "service_or_contract": 12,
+      "users": 6,
+      "regulatory": 10,
       "capacity_record": 11,
-      "operational_efficiency": 5
+      "operational_efficiency": 5,
+      "backup_generation": 1,
+      "construction_status": 1,
+      "project_status": 2,
+      "capex_record": 1,
+      "construction_workforce_record": 1
     }
   },
   "semantics": {
@@ -4522,7 +4527,511 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "DPR's project page identifies its QTS Richmond 1 Data Center 3 project in Sandston and describes the retrofit/buildout scope.",
       "evidence_id": "EVID-PWEB-1c2efeb8"
+    },
+    {
+      "site_name": "Colossus 1",
+      "epoch_id": "EPOCH-2dadeb4b013bef05",
+      "field": "project",
+      "value": "Colossus 1",
+      "relationship": "public project identity",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/colossus-1"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch AI identifies the Memphis facility as Colossus 1.",
+      "evidence_id": "EVID-PWEB-colossus1-project-20260927"
+    },
+    {
+      "site_name": "Colossus 1",
+      "epoch_id": "EPOCH-2dadeb4b013bef05",
+      "field": "regulatory",
+      "value": "Shelby County Air Permit 01156-01PC; permit issued July 2, 2025 and appeal history retained in public record.",
+      "relationship": "air-permit / regulatory record",
+      "source": "Compute Atlas",
+      "source_urls": [
+        "https://www.compute-atlas.com/facilities/xai-colossus-1-turbines-memphis-tn"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Site-specific regulatory permit and appeal history; not a measurement of current emissions or load.",
+      "evidence_id": "EVID-PWEB-colossus1-reg-20260927"
+    },
+    {
+      "site_name": "Coreweave Helios",
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "field": "project",
+      "value": "Helios",
+      "relationship": "public project identity",
+      "source": "Galaxy Digital",
+      "source_urls": [
+        "https://www.galaxy.com/newsroom/galaxy-completes-phase-i-of-its-helios-data-center-campus"
+      ],
+      "publication_date": "2026-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Galaxy identifies the Texas campus as Helios.",
+      "evidence_id": "EVID-PWEB-helios-project-20260927"
+    },
+    {
+      "site_name": "Coreweave Helios",
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "field": "construction_companies",
+      "value": "HITT Contracting",
+      "relationship": "general contractor for Phase II",
+      "source": "Galaxy Digital",
+      "source_urls": [
+        "https://investor.galaxy.com/news-releases/news-release-details/galaxy-announces-second-quarter-2026-financial-results"
+      ],
+      "publication_date": "2026-08-05",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Galaxy states HITT Contracting is the general contractor for the 260 MW critical-IT Phase II build.",
+      "evidence_id": "EVID-PWEB-helios-hitt-20260927"
+    },
+    {
+      "site_name": "Coreweave Helios",
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "field": "service_or_contract",
+      "value": "CoreWeave 15-year lease; Phase I delivered 133 MW critical IT load; additional Phase II capacity under lease.",
+      "relationship": "site-specific data-center lease",
+      "source": "Galaxy Digital",
+      "source_urls": [
+        "https://www.galaxy.com/newsroom/galaxy-completes-phase-i-of-its-helios-data-center-campus",
+        "https://www.galaxy.com/newsroom/galaxy-announces-commitment-with-coreweave"
+      ],
+      "publication_date": "2026-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Site-specific commercial relationship, kept separate from utility queue verification.",
+      "evidence_id": "EVID-PWEB-helios-lease-20260927"
+    },
+    {
+      "site_name": "Google Lancaster",
+      "epoch_id": "EPOCH-f92e98f4b76a9bcd",
+      "field": "project",
+      "value": "Lancaster",
+      "relationship": "public project identity",
+      "source": "Google",
+      "source_urls": [
+        "https://economicimpact.google/state/oh/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Google identifies Lancaster as one of its Ohio data-center projects.",
+      "evidence_id": "EVID-PWEB-google-lancaster-project-20260927"
+    },
+    {
+      "site_name": "Google Lancaster",
+      "epoch_id": "EPOCH-f92e98f4b76a9bcd",
+      "field": "users",
+      "value": "Google",
+      "relationship": "owner/operator public identity",
+      "source": "Google",
+      "source_urls": [
+        "https://economicimpact.google/state/oh/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Google identifies Lancaster as a Google data center; this is not a claim about third-party tenants.",
+      "evidence_id": "EVID-PWEB-google-lancaster-user-20260927"
+    },
+    {
+      "site_name": "CoreWeave Ellendale ND",
+      "epoch_id": "EPOCH-768183e4de6062d2",
+      "field": "project",
+      "value": "Polaris Forge 1",
+      "relationship": "campus/project identity",
+      "source": "Applied Digital",
+      "source_urls": [
+        "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000048/apld-20260531.htm"
+      ],
+      "publication_date": "2026-05-31",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Applied Digital identifies Polaris Forge 1 as its flagship Ellendale HPC campus.",
+      "evidence_id": "EVID-PWEB-ellendale-project-20260927"
+    },
+    {
+      "site_name": "CoreWeave Ellendale ND",
+      "epoch_id": "EPOCH-768183e4de6062d2",
+      "field": "energy_companies",
+      "value": "Otter Tail Power",
+      "relationship": "serving utility",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/applied-digital-ellendale-eln01-hosting-nd"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DEPLOY identifies Otter Tail Power as the utility for the Ellendale facility; this is a public utility relationship, not a formal queue-ID match.",
+      "evidence_id": "EVID-PWEB-ellendale-utility-20260927"
+    },
+    {
+      "site_name": "CoreWeave Ellendale ND",
+      "epoch_id": "EPOCH-768183e4de6062d2",
+      "field": "service_or_contract",
+      "value": "CoreWeave leases for up to 250 MW across Buildings 2 and 3 at the 400 MW Ellendale campus.",
+      "relationship": "site-specific data-center lease",
+      "source": "U.S. SEC / Applied Digital",
+      "source_urls": [
+        "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001641172-25-013199/form8-k.htm"
+      ],
+      "publication_date": "2025-05-28",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The SEC filing documents the site-specific leases; lease capacity is distinct from total campus capacity statements.",
+      "evidence_id": "EVID-PWEB-ellendale-lease-20260927"
+    },
+    {
+      "site_name": "Microsoft SAT40",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "field": "project",
+      "value": "SAT40",
+      "relationship": "registered construction project",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "publication_date": "2023-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "TDLR project TABS2023013247 is named SAT40 / SAT40 Data Center.",
+      "evidence_id": "EVID-PWEB-sat40-project-20260927"
+    },
+    {
+      "site_name": "Microsoft SAT40",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "field": "address",
+      "value": "15000 Lambda Drive, San Antonio, TX 78245",
+      "relationship": "registered project address",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "publication_date": "2023-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "TDLR gives the SAT40 project address.",
+      "evidence_id": "EVID-PWEB-sat40-address-20260927"
+    },
+    {
+      "site_name": "Microsoft SAT40",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "field": "regulatory",
+      "value": "TDLR TABS2023013247; new construction; review complete; estimated cost $175.9M; 153,227 ft².",
+      "relationship": "construction / regulatory record",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "publication_date": "2023-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Texas state construction filing retained as site-specific regulatory evidence.",
+      "evidence_id": "EVID-PWEB-sat40-reg-20260927"
+    },
+    {
+      "site_name": "STACK Infrastructure NVA02",
+      "epoch_id": "EPOCH-c89a3269719f868a",
+      "field": "project",
+      "value": "NVA02",
+      "relationship": "campus/project identity",
+      "source": "STACK Infrastructure",
+      "source_urls": [
+        "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "STACK identifies the Manassas campus as NVA02.",
+      "evidence_id": "EVID-PWEB-nva02-project-20260927"
+    },
+    {
+      "site_name": "STACK Infrastructure NVA02",
+      "epoch_id": "EPOCH-c89a3269719f868a",
+      "field": "energy_companies",
+      "value": "Northern Virginia Electric Cooperative (NOVEC)",
+      "relationship": "onsite substation infrastructure provider",
+      "source": "STACK Infrastructure",
+      "source_urls": [
+        "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "STACK states NVA02 has two dedicated 300 MW onsite substations from NOVEC; this is infrastructure evidence, not a formal queue-ID match.",
+      "evidence_id": "EVID-PWEB-nva02-novec-20260927"
+    },
+    {
+      "site_name": "Anthropic Lake Mariner",
+      "epoch_id": "EPOCH-29fb769630142638",
+      "field": "project",
+      "value": "Lake Mariner",
+      "relationship": "public site/project identity",
+      "source": "Core42",
+      "source_urls": [
+        "https://www.core42.ai/resources/news/core42-advances-u.s.-ai-infrastructure-strategy-with-expanded-new-york-deployment"
+      ],
+      "publication_date": "2026-06-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Core42 identifies Lake Mariner as its New York AI infrastructure site and describes expansion to 60 MW.",
+      "evidence_id": "EVID-PWEB-anthropic-lakemariner-project-20260927"
+    },
+    {
+      "site_name": "Anthropic Lake Mariner",
+      "epoch_id": "EPOCH-29fb769630142638",
+      "field": "service_or_contract",
+      "value": "Core42 announced a 42 MW expansion of AI production infrastructure at Lake Mariner, increasing Core42 capacity from 18 MW to 60 MW.",
+      "relationship": "site-specific AI infrastructure deployment",
+      "source": "Core42",
+      "source_urls": [
+        "https://www.core42.ai/resources/news/core42-advances-u.s.-ai-infrastructure-strategy-with-expanded-new-york-deployment"
+      ],
+      "publication_date": "2026-06-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Site-specific capacity/deployment evidence; does not establish a utility queue ID.",
+      "evidence_id": "EVID-PWEB-anthropic-lakemariner-service-20260927"
+    },
+    {
+      "site_name": "Microsoft-Nebius New Jersey",
+      "epoch_id": "EPOCH-781cbfae186209ad",
+      "field": "project",
+      "value": "Nebius AI Data Center (Vineland)",
+      "relationship": "public project identity",
+      "source": "Nebius / public project record",
+      "source_urls": [
+        "https://nebius.com/newsroom/nebius-announces-multi-billion-dollar-agreement-with-microsoft-for-ai-infrastructure",
+        "https://datacenterrecord.org/projects/nebius-ai-data-center-vineland-nj"
+      ],
+      "publication_date": "2026-09-12",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Nebius identifies a new data center in Vineland, New Jersey; a September 2026 public record identifies the project as the Nebius AI Data Center (Vineland).",
+      "evidence_id": "EVID-PWEB-nebius-vineland-project-20260927"
+    },
+    {
+      "site_name": "Microsoft-Nebius New Jersey",
+      "epoch_id": "EPOCH-781cbfae186209ad",
+      "field": "users",
+      "value": "Microsoft",
+      "relationship": "dedicated capacity customer",
+      "source": "Nebius / U.S. SEC",
+      "source_urls": [
+        "https://nebius.com/newsroom/nebius-announces-multi-billion-dollar-agreement-with-microsoft-for-ai-infrastructure",
+        "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm"
+      ],
+      "publication_date": "2025-09-08",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Nebius states dedicated GPU capacity from the new Vineland data center is being delivered to Microsoft.",
+      "evidence_id": "EVID-PWEB-nebius-vineland-user-20260927"
+    },
+    {
+      "site_name": "Microsoft-Nebius New Jersey",
+      "epoch_id": "EPOCH-781cbfae186209ad",
+      "field": "construction_companies",
+      "value": "Northeast Precast",
+      "relationship": "construction partner",
+      "source": "Northwise Research",
+      "source_urls": [
+        "https://northwiseproject.com/research/nbis-stock-vineland-nj-data-center"
+      ],
+      "publication_date": "2026-09-17",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Northwise identifies Northeast Precast as a construction partner; source class remains secondary.",
+      "evidence_id": "EVID-PWEB-nebius-vineland-construction-20260927"
+    },
+    {
+      "site_name": "Microsoft-Nebius New Jersey",
+      "epoch_id": "EPOCH-781cbfae186209ad",
+      "field": "service_or_contract",
+      "value": "Microsoft Agreement for dedicated GPU cloud computing capacity at Nebius's new Vineland data center, deployed in tranches during 2025-2026 under a five-year term.",
+      "relationship": "site-specific compute contract",
+      "source": "Nebius / U.S. SEC",
+      "source_urls": [
+        "https://nebius.com/newsroom/nebius-announces-multi-billion-dollar-agreement-with-microsoft-for-ai-infrastructure",
+        "https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm"
+      ],
+      "publication_date": "2025-09-08",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The SEC filing states that the Microsoft Agreement provides dedicated GPU cloud capacity in clusters at the new Vineland data center over a five-year term.",
+      "evidence_id": "EVID-PWEB-nebius-vineland-contract-20260927"
+    },
+    {
+      "site_name": "Vantage TX1",
+      "epoch_id": "EPOCH-96d37578ca36f86c",
+      "field": "project",
+      "value": "TX1 / Vantage Data Centers TX1",
+      "relationship": "campus identity in Texas construction filings",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2026001234",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2026012091"
+      ],
+      "publication_date": "2026-02-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "TDLR filings identify Vantage Data Centers TX1 LLC and facilities TX11/TX12 at the San Antonio TX1 campus.",
+      "evidence_id": "EVID-PWEB-vantagetx1-project-20260927"
+    },
+    {
+      "site_name": "Vantage TX1",
+      "epoch_id": "EPOCH-96d37578ca36f86c",
+      "field": "regulatory",
+      "value": "TDLR filings TABS2026001234 (TX12) and TABS2026012091 (TX12 tenant fit-up) identify Vantage Data Centers TX1 LLC as owner; the latter registers a 96 MW data-module fit-up.",
+      "relationship": "construction / regulatory record",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2026001234",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2026012091"
+      ],
+      "publication_date": "2026-02-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Site/campus-specific regulatory records for Vantage TX1 in San Antonio.",
+      "evidence_id": "EVID-PWEB-vantagetx1-reg-20260927"
+    },
+    {
+      "site_name": "xAI QTS Atlanta",
+      "epoch_id": "EPOCH-495a9afde5e4b96c",
+      "field": "project",
+      "value": "Atlanta 1 DC2",
+      "relationship": "building/project identity",
+      "source": "QTS Data Centers",
+      "source_urls": [
+        "https://q.com/data-centers/atlanta-1/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "QTS identifies DC2 at 1025 Jefferson St NW as part of the Atlanta 1 campus.",
+      "evidence_id": "EVID-PWEB-xai-qts-project-20260927"
+    },
+    {
+      "site_name": "xAI QTS Atlanta",
+      "epoch_id": "EPOCH-495a9afde5e4b96c",
+      "field": "address",
+      "value": "1025 Jefferson St NW, Atlanta, GA 30318",
+      "relationship": "building address",
+      "source": "QTS Data Centers",
+      "source_urls": [
+        "https://q.com/data-centers/atlanta-1/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "QTS lists DC2 at 1025 Jefferson St NW; facility tracking ties the same address to xAI's Atlanta cluster.",
+      "evidence_id": "EVID-PWEB-xai-qts-address-20260927"
+    },
+    {
+      "site_name": "xAI QTS Atlanta",
+      "epoch_id": "EPOCH-495a9afde5e4b96c",
+      "field": "users",
+      "value": "SpaceXAI",
+      "relationship": "AI compute user",
+      "source": "Epoch AI / facility tracking",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/xai-qts-atlanta",
+        "https://gpuquant.com/facilities/qts-atlanta-1-dc2"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch AI identifies SpaceXAI as the owner and user; GPUQuant identifies xAI compute at the same 1025 Jefferson building.",
+      "evidence_id": "EVID-PWEB-xai-qts-user-20260927"
+    },
+    {
+      "site_name": "xAI QTS Atlanta",
+      "epoch_id": "EPOCH-495a9afde5e4b96c",
+      "field": "energy_companies",
+      "value": "Georgia Power",
+      "relationship": "campus substation infrastructure provider",
+      "source": "QTS Data Centers",
+      "source_urls": [
+        "https://q.com/data-centers/atlanta-1/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "QTS says Atlanta 1 has dedicated onsite, expandable Georgia Power substations; this is campus-level infrastructure evidence, not a metered xAI supply allocation.",
+      "evidence_id": "EVID-PWEB-xai-qts-georgiapower-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate New Mexico",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "field": "project",
+      "value": "Project Jupiter",
+      "relationship": "public project identity",
+      "source": "Oracle",
+      "source_urls": [
+        "https://www.oracle.com/news/announcement/oracle-borderplex-and-bloom-energy-to-power-project-jupiter-with-fuel-cell-technology-2026-04-27/"
+      ],
+      "publication_date": "2026-04-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Oracle identifies Project Jupiter as its AI data center campus in Doña Ana County, New Mexico.",
+      "evidence_id": "EVID-PWEB-jupiter-project-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate New Mexico",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "field": "energy_companies",
+      "value": "Bloom Energy",
+      "relationship": "onsite fuel-cell power provider",
+      "source": "Oracle",
+      "source_urls": [
+        "https://www.oracle.com/news/announcement/oracle-borderplex-and-bloom-energy-to-power-project-jupiter-with-fuel-cell-technology-2026-04-27/"
+      ],
+      "publication_date": "2026-04-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Oracle states Project Jupiter will use Bloom Energy fuel cells with up to 2.45 GW of installed fuel-cell capacity; this is an onsite power relationship, not a transmission queue ID.",
+      "evidence_id": "EVID-PWEB-jupiter-bloom-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate New Mexico",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "field": "regulatory",
+      "value": "Updated Project Jupiter air-quality permit application entered public review in 2026.",
+      "relationship": "air-quality permitting",
+      "source": "Oracle / New Mexico environmental review",
+      "source_urls": [
+        "https://www.oracle.com/news/announcement/public-review-opens-for-updated-project-jupiter-power-plan-2026-06-03/"
+      ],
+      "publication_date": "2026-06-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Oracle reports the New Mexico Environment Department deemed the updated permit application complete and moved it into public review; retained as process evidence, not an outcome judgment.",
+      "evidence_id": "EVID-PWEB-jupiter-reg-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate Shackelford",
+      "epoch_id": "EPOCH-b427a75f62d61aae",
+      "field": "project",
+      "value": "Stargate / Frontier",
+      "relationship": "public project identity",
+      "source": "Samaritan Research / Vantage",
+      "source_urls": [
+        "https://samaritan-research.org/data/data-centers/satellite-explorer/OpenAIStargateShackelford"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The public site dossier identifies the Shackelford development as OpenAI Stargate and says Vantage developed it under the name Frontier.",
+      "evidence_id": "EVID-PWEB-shackelford-project-20260927"
     }
   ],
-  "record_count": 276
+  "record_count": 307,
+  "generated_on": "2026-09-27"
 }
