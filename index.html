@@ -179,6 +179,21 @@
 @media(max-width:1050px){#completeConnectionTargetLedger .ctl-hero{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-fields{grid-template-columns:repeat(2,minmax(0,1fr))}#completeConnectionTargetLedger .ctl-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#completeConnectionTargetLedger .ctl-toolbar{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){#completeConnectionTargetLedger .ctl-radar{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-fields{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-detail-grid{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-toolbar{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-site{min-width:200px}}
 </style>
+
+/* COMPACT-OBSERVATORY-V1 */
+.compact-explorer{margin:0 0 2rem;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,var(--panel),color-mix(in srgb,var(--teal-soft) 34%,var(--panel)));box-shadow:0 10px 30px rgba(22,35,58,.06)}
+.compact-explorer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.compact-explorer-kicker{font:600 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.compact-explorer-title{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-top:4px}
+.compact-explorer-copy{font-size:11px;line-height:1.5;color:var(--ink-soft);max-width:760px;margin-top:4px}
+.compact-explorer-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.compact-mode{border:1px solid var(--line-strong);background:var(--panel);color:var(--ink-soft);border-radius:999px;padding:7px 11px;font:600 10px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,color .16s ease}
+.compact-mode:hover{transform:translateY(-1px);background:var(--amber-soft);color:var(--ink)}
+.compact-mode[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.compact-status{margin-top:9px;font:500 9px/1.4 'IBM Plex Mono',monospace;color:var(--ink-faint)}
+.registry-deep-hidden{display:none!important}
+body.registry-everything .compact-explorer{background:var(--panel)}
+@media(max-width:700px){.compact-explorer-top{display:block}.compact-explorer-actions{gap:6px}.compact-mode{padding:7px 9px}}
 </style>
 <link rel="stylesheet" href="observatory-nav.css">
 
@@ -490,6 +505,22 @@ section.mb-8{scroll-margin-top:118px}
       <div class="market-mark"><div class="market-logo">IES</div><div class="market-name">IESO · Ontario</div></div>
       <div class="market-mark"><div class="market-logo">AES</div><div class="market-name">AESO · Alberta</div></div>
     </div>
+  </section>
+
+
+  <!-- ============ COMPACT EXPLORER ============ -->
+  <section id="compactExplorer" class="compact-explorer" aria-label="Registry view controls">
+    <div class="compact-explorer-top">
+      <div><div class="compact-explorer-kicker">Public observatory</div><div class="compact-explorer-title">Start with the signal. Open the research stack only when needed.</div><div class="compact-explorer-copy">The complete registry, evidence ledgers, queue tables and research machinery remain on this page. These views keep the landing experience focused without removing any underlying data.</div></div>
+    </div>
+    <div class="compact-explorer-actions" role="toolbar" aria-label="Registry detail level">
+      <button type="button" class="compact-mode" data-registry-mode="essentials" aria-pressed="true">Essentials</button>
+      <button type="button" class="compact-mode" data-registry-mode="evidence" aria-pressed="false">Evidence</button>
+      <button type="button" class="compact-mode" data-registry-mode="data" aria-pressed="false">Data tables</button>
+      <button type="button" class="compact-mode" data-registry-mode="track3" aria-pressed="false">Track 3</button>
+      <button type="button" class="compact-mode" data-registry-mode="everything" aria-pressed="false">Everything</button>
+    </div>
+    <div id="compactExplorerStatus" class="compact-status">Essentials view: overview, map, market picture and physical verification.</div>
   </section>
 
   <!-- ============ DATA UNIVERSE CHECKLIST ============ -->
@@ -3323,5 +3354,47 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
 })();
 </script>
 
+
+<script>
+(function(){
+  const deepIds=['dataUniverseChecklist','misoUnlocatedWorklist','mapLayerInventory','queueUniverse','epochConnectionTargets','dataUniverseStatus','epochSiteEvidenceInventory','regulatoryUtilityEvidence','websiteCompletenessAudit','currentPublicSourceContext','completeProjectLedger','completeConnectionTargetLedger','completeSiteEvidenceLedger','caisoFullQueueSection','freshPublicEnrichment','auxiliarySourceLayer','queueWideLayers','projectLevelExtraction','projectLevelTable','pjmSubmissionHistory','supplementalLargeLoad','supplementalBrowser','epochRegistry','module1-radar','methodology'];
+  const modeMap={
+    essentials:new Set(['physicalVerificationLayer']),
+    evidence:new Set(['queueUniverse','epochConnectionTargets','epochSiteEvidenceInventory','regulatoryUtilityEvidence','websiteCompletenessAudit','currentPublicSourceContext','physicalVerificationLayer']),
+    data:new Set(['dataUniverseChecklist','misoUnlocatedWorklist','mapLayerInventory','queueUniverse','epochConnectionTargets','dataUniverseStatus','epochSiteEvidenceInventory','regulatoryUtilityEvidence','websiteCompletenessAudit','currentPublicSourceContext','completeProjectLedger','completeConnectionTargetLedger','completeSiteEvidenceLedger','caisoFullQueueSection','freshPublicEnrichment','auxiliarySourceLayer','queueWideLayers','projectLevelExtraction','projectLevelTable','pjmSubmissionHistory','supplementalLargeLoad','supplementalBrowser','epochRegistry']),
+    track3:new Set(['queueUniverse','epochConnectionTargets','epochSiteEvidenceInventory','currentPublicSourceContext','physicalVerificationLayer','module1-radar']),
+    everything:new Set(deepIds)
+  };
+  const labels={essentials:'Essentials view: overview, map, market picture and physical verification.',evidence:'Evidence view: connection, corroboration and physical evidence layers.',data:'Data tables: full queues, project ledgers and source-level registries.',track3:'Track 3 view: physical radar, evidence graph and source controls.',everything:'Everything view: all public sections are expanded.'};
+  function setMode(mode,save){
+    mode=modeMap[mode]?mode:'essentials';
+    const allowed=modeMap[mode];
+    deepIds.forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('registry-deep-hidden',!allowed.has(id));});
+    document.querySelectorAll('.compact-mode').forEach(b=>{const active=b.dataset.registryMode===mode;b.setAttribute('aria-pressed',active?'true':'false');});
+    const st=document.getElementById('compactExplorerStatus');if(st)st.textContent=labels[mode];
+    document.body.classList.toggle('registry-everything',mode==='everything');
+    if(save)try{localStorage.setItem('registryViewMode',mode)}catch(_){ }
+  }
+  function targetSection(target){if(!target)return null;return target.closest('section')||target;}
+  function revealTarget(id){
+    const el=document.getElementById(id);if(!el)return;
+    if(el.classList.contains('registry-deep-hidden')) setMode('everything',true);
+    requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
+  }
+  function init(){
+    document.querySelectorAll('.compact-mode').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.registryMode,true)));
+    document.addEventListener('click',e=>{
+      const a=e.target.closest('a[href*="#"]');if(!a||a.target==='_blank')return;
+      const raw=a.getAttribute('href')||'';const hash=raw.split('#')[1];if(!hash)return;
+      const id=decodeURIComponent(hash);const el=document.getElementById(id);if(el&&el.classList.contains('registry-deep-hidden')){
+        e.preventDefault();revealTarget(id);history.replaceState(null,'','#'+id);
+      }
+    });
+    let mode='essentials';try{mode=localStorage.getItem('registryViewMode')||mode}catch(_){ }
+    setMode(mode,false);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body>
 </html>
