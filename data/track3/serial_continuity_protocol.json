@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "title": "Compute-equipment serial continuity protocol",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "lifecycle": [
+    "ACQUIRED",
+    "IN_SERVICE",
+    "TRANSFERRED",
+    "STAGED",
+    "DECOMMISSIONED",
+    "RECYCLED",
+    "DESTROYED",
+    "UNKNOWN"
+  ],
+  "required_links": [
+    "asset_or_serial_id",
+    "event_type",
+    "event_datetime",
+    "from_entity",
+    "to_entity",
+    "facility_id",
+    "source_evidence_id",
+    "verification_state"
+  ],
+  "integrity_rules": [
+    "No serial may have overlapping active locations unless explicitly marked shared/ambiguous.",
+    "Transfers require both source and destination evidence when public.",
+    "Decommissioning does not equal destruction without supporting evidence.",
+    "Unknown disposition remains UNKNOWN."
+  ]
+}
