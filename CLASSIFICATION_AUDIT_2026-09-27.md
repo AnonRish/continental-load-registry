@@ -24,17 +24,15 @@ A strict discovery candidate must satisfy all of the following before physical o
 
 ## Current strict pilot candidates
 
-The current candidate set is intentionally small and contains five strict admitted-load cases:
+The current set contains five strict admitted-load cases: three primary ambiguity targets plus two explicit industrial controls.
 
+- **AESO P3066 — Leedale Data Load, 1,864 MW.** Public queue-derived evidence identifies a load request while the developer is not published. The physical parcel is not retained. This is a primary identity/location closure target.
+- **AESO P3198 — Lynx Data Load, 1,800 MW.** Public queue-derived evidence identifies a load request while the developer is not published. The physical parcel is not retained. This is a primary identity/location closure target.
+- **AESO P3108 — Wild Rose Power Hub Load, 1,300 MW.** The retained AESO source labels the project `Data Load`, the developer is not published, and the title does not itself name a data-center operator. This is the primary generic-name ambiguity target.
+- **AESO P2958 — Hydrogen Canada MPC Load, 320 MW.** The retained AESO source labels this `Industrial Load` and the developer is not published. It is a non-data-center control to test correct reclassification rather than compute over-interpretation.
+- **AESO P2614 — Dow Fort Sask. Load, 231 MW.** The retained AESO source labels this `Industrial Load` and the developer is not published. It is a second non-data-center control for entity and physical resolution.
 
-- **AESO P3066 — Leedale Data Load, 1,864 MW.** Public queue-derived evidence identifies the project as Project Type Load in Clearwater County and provides POI 38-Caroline, while the public developer field remains unavailable. This is a valid identity/location closure target, not evidence of covert compute.
-- **AESO P3198 — Lynx Data Load, 1,800 MW.** Public queue-derived evidence identifies Project Type Load in Strathcona County and POI 33-Fort Saskatchewan; the developer field is not publicly exposed in the retained source surface. This is suitable for a separate identity/location closure case.
-- **NYISO 1743 — St. Lawrence Infrastructure 2, 1,935 MW.** The public queue record explicitly identifies Project Type Load, NYPA, and the Moses Massena 1/2 POIs. Public secondary trackers already label it as a data-center/AI-type project, so its research value is primarily site/entity/infrastructure resolution rather than first discovery.
-- **AESO P3108 — Wild Rose Power Hub Load, 1,300 MW.** The retained AESO source labels it `Data Load` while the developer is not published in the source row and the title does not itself identify a data-center operator. This makes it a useful entity/end-use/physical-target closure case.
-- **NYISO 1742 — St. Lawrence Infrastructure 1, 860 MW.** The public queue and current public trackers identify it as an active large-load project; public secondary sources also classify it as data-center related. Its remaining research value is resolving the physical project and infrastructure evidence chain rather than claiming that the existence of a data-center project is itself unknown.
-
-These five are not presented as a representative sample. They are the next reproducible closure targets after the admission gate is applied.
-
+These five are not presented as a representative sample or as a ranking of hiddenness. The primary targets test discovery/identity resolution; the controls test whether the workflow can correctly terminate on non-data-center large loads.
 ## Rule for the website
 
 The UI should call the 141 records a **broad ambiguous research pool**. The strict candidate page should use **admitted load candidates**. A broad-pool row never becomes a discovery finding merely because it lacks an identified developer.
