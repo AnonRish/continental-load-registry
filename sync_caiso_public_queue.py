@@ -269,7 +269,7 @@ def main() -> int:
         rows.append(n)
     pd.DataFrame(rows).to_csv(root / "caiso_public_queue.csv", index=False)
     summary = {
-        "source_url": SOURCE_URL,
+        "source_url": source_url,
         "captured_at": data["captured_at"],
         "record_count": data["record_count"],
         "sheet_counts": data["sheet_counts"],
