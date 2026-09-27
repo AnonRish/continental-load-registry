@@ -878,11 +878,11 @@
     </div>
 
     <div id="module1DomainGrid" class="grid md:grid-cols-2 xl:grid-cols-5 gap-3 mt-4">
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 1 · Physics</div><div class="text-sm mt-2">Computing…</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 2 · Ingestion</div><div class="text-sm mt-2">Computing…</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 3 · Taxonomy</div><div class="text-sm mt-2">Computing…</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 4 · Interface</div><div class="text-sm mt-2">Computing…</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 5 · Governance</div><div class="text-sm mt-2">Computing…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 1 · Physics</div><div class="text-sm mt-2">Loading current audit summary…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 2 · Ingestion</div><div class="text-sm mt-2">Loading current audit summary…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 3 · Taxonomy</div><div class="text-sm mt-2">Loading current audit summary…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 4 · Interface</div><div class="text-sm mt-2">Loading current audit summary…</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Domain 5 · Governance</div><div class="text-sm mt-2">Loading current audit summary…</div></div>
     </div>
 
     <div class="panel rounded-lg mt-4 p-5">
@@ -1006,6 +1006,7 @@
             <option value="VERIFIED_SITE_SPECIFIC">Verified site-specific</option>
             <option value="SITE_LEVEL_EVIDENCE">Site-level evidence</option>
             <option value="PENDING_RESEARCH">Pending site-specific research</option>
+            <option value="RESEARCHED_NO_PUBLIC_RECORD">Researched — no public record</option>
           </select>
         </div>
         <div id="track3ResearchStatusText" class="text-xs mt-3" style="color:var(--ink-faint);">Loading canonical Track 3 site status…</div>
@@ -1036,7 +1037,7 @@
         <a class="text-xs link-underline" href="https://www.ferc.gov/rm26-4" target="_blank" rel="noopener noreferrer">FERC RM26-4-000</a>
         <a class="text-xs link-underline" href="https://www.ferc.gov/sites/default/files/2026-07/RD26-7-000.pdf" target="_blank" rel="noopener noreferrer">FERC RD26-7-000</a>
       </div>
-      <p id="module1Gate" class="text-xs mt-4" style="color:var(--amber);">Module-1 five-domain gate: evaluating…</p>
+      <p id="module1Gate" class="text-xs mt-4" style="color:var(--amber);">Module-1 five-domain gate: loading current audit summary…</p>
     </div>
   </section>
 
@@ -1406,15 +1407,15 @@ openFacilityFromHash();
     if(r.capacity_mw!=null)parts.push(String(r.capacity_mw)+' MW');
     if(r.capacity_mva!=null)parts.push(String(r.capacity_mva)+' MVA');
     if(r.data_points!=null)parts.push(String(r.data_points)+' data points');
-    return parts.join(' / ')||'—';
+    return parts.join(' / ')||'Not published';
   }
-  function source(r){return r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open</a>':'—';}
+  function source(r){return r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open</a>':'No direct source URL';}
   function render(){
     const body=document.getElementById('suppBrowserBody'),rows=filtered.slice(page*PAGE,page*PAGE+PAGE);
     body.innerHTML=rows.length?rows.map(function(r){
       const type=(r.evidence_type||'unknown').replaceAll('_',' ');
       const accounting=r.additive_to_core_row_level?'Additive to expanded scope':'Non-additive';
-      return '<tr><td class="px-3 py-2.5">'+escapeHtml(r.provider||'—')+'</td><td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px]">'+escapeHtml(type)+'</span></td><td class="px-3 py-2.5">'+escapeHtml(r.jurisdiction||'—')+'</td><td class="px-3 py-2.5 text-right mono">'+escapeHtml(r.record_count==null?'—':String(r.record_count))+'</td><td class="px-3 py-2.5 text-right mono">'+escapeHtml(measure(r))+'</td><td class="px-3 py-2.5">'+escapeHtml(r.capture_date||'—')+'</td><td class="px-3 py-2.5">'+escapeHtml(accounting)+'</td><td class="px-3 py-2.5">'+source(r)+'</td></tr>';
+      return '<tr><td class="px-3 py-2.5">'+escapeHtml(r.provider||'Not published')+'</td><td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px]">'+escapeHtml(type)+'</span></td><td class="px-3 py-2.5">'+escapeHtml(r.jurisdiction||'Not published')+'</td><td class="px-3 py-2.5 text-right mono">'+escapeHtml(r.record_count==null?'Not stated':String(r.record_count))+'</td><td class="px-3 py-2.5 text-right mono">'+escapeHtml(measure(r))+'</td><td class="px-3 py-2.5">'+escapeHtml(r.capture_date||'Not dated')+'</td><td class="px-3 py-2.5">'+escapeHtml(accounting)+'</td><td class="px-3 py-2.5">'+source(r)+'</td></tr>';
     }).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No supplemental records match.</td></tr>';
     const pages=Math.max(1,Math.ceil(filtered.length/PAGE)); document.getElementById('suppPage').textContent='Page '+(page+1)+' of '+pages+' · '+filtered.length.toLocaleString()+' of '+records.length.toLocaleString();
     document.getElementById('suppPrev').disabled=page===0; document.getElementById('suppNext').disabled=page>=pages-1;
@@ -1456,15 +1457,15 @@ openFacilityFromHash();
       return x.raw_value||'Reported value';
     }).join(' / ');
   }
-  function projectQueuePermit(r){return [r.queue_id,r.permit_number].filter(Boolean).join(' · ')||'—';}
-  function projectSource(r){return r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open</a>':'—';}
+  function projectQueuePermit(r){return [r.queue_id,r.permit_number].filter(Boolean).join(' · ')||'Not published';}
+  function projectSource(r){return r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open</a>':'No source URL retained';}
   function render(){
     const body=document.getElementById('projectBrowserBody');
     const start=page*PAGE;
     const rows=filtered.slice(start,start+PAGE);
     body.innerHTML=rows.length?rows.map(function(r){
       const type=(r.evidence_type||'unknown').replaceAll('_',' ');
-      const provider=r.utility_or_provider||'—';
+      const provider=r.utility_or_provider||'Not published';
       const cust=r.customer_or_developer?'<div>'+escapeHtml(r.customer_or_developer)+'</div>':'';
       return '<tr><td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(r.project_name||'(unnamed record)')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(r.id)+'</div></td>'+
         '<td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px]">'+escapeHtml(type)+'</span></td>'+
@@ -2419,6 +2420,7 @@ openFacilityFromHash();
     return state==='VERIFIED_SITE_SPECIFIC'?'Verified site-specific'
       :state==='SITE_LEVEL_EVIDENCE'?'Site-level evidence'
       :state==='PENDING_RESEARCH'?'Pending site-specific research'
+       :state==='RESEARCHED_NO_PUBLIC_RECORD'?'Researched — no public record'
       :'Unknown';
   }
   function renderTrack3Research(){
@@ -2435,12 +2437,12 @@ openFacilityFromHash();
         const domains=rec.domains||{};
         const st=domains.grid_connection&&domains.grid_connection.status||'UNKNOWN';
         const next=rec.next_action||'Continue site-specific source search.';
-        const mw=rec.current_it_power_mw===null||rec.current_it_power_mw===undefined?'—':epochText(rec.current_it_power_mw);
+        const mw=rec.current_it_power_mw===null||rec.current_it_power_mw===undefined?'Not published / not retained':epochText(rec.current_it_power_mw);
         const ev=rec.combined_site_level_evidence_count||0;
         return '<tr>'+
           '<td class="px-3 py-2.5"><div class="font-medium">'+escapeHtml(rec.site_name||'Unnamed site')+'</div><div class="mono text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(rec.epoch_id||'')+'</div></td>'+
-          '<td class="px-3 py-2.5">'+escapeHtml(rec.state_province||'—')+'</td>'+
-          '<td class="px-3 py-2.5 max-w-[260px]" title="'+escapeHtml(grid.jurisdiction||'')+'">'+escapeHtml(grid.jurisdiction||'Not mapped')+'</td>'+
+          '<td class="px-3 py-2.5">'+escapeHtml(rec.state_province||'Not published / not retained')+'</td>'+
+          '<td class="px-3 py-2.5 max-w-[260px]" title="'+escapeHtml(grid.jurisdiction||'')+'">'+escapeHtml(grid.jurisdiction||'Not mapped / not retained')+'</td>'+
           '<td class="px-3 py-2.5"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px] mono">'+escapeHtml(track3StateLabel(st))+'</span></td>'+
           '<td class="px-3 py-2.5 text-right">'+escapeHtml(mw)+'</td>'+
           '<td class="px-3 py-2.5 text-right">'+escapeHtml(String(ev))+'</td>'+
@@ -2500,7 +2502,7 @@ openFacilityFromHash();
       const powerPayload=await responses[3].json();
       const coolingPayload=await responses[4].json();
       if(!status || !Array.isArray(status.records) || status.records.length!==93) throw new Error('expected 93 Track 3 site records');
-      if(!observation || !Array.isArray(observation.tasks) || observation.tasks.length!==651) throw new Error('expected 651 Track 3 observation tasks');
+      if(!observation || !Array.isArray(observation.tasks) || observation.tasks.length!==Number(summary.observation_task_count||0)) throw new Error('expected '+Number(summary.observation_task_count||0)+' Track 3 observation tasks');
       if(!powerPayload || !Array.isArray(powerPayload.records)) throw new Error('invalid Track 3 power observation artifact');
       if(!coolingPayload || !Array.isArray(coolingPayload.records)) throw new Error('invalid Track 3 cooling observation artifact');
       track3SiteRecords=status.records;
@@ -2572,6 +2574,35 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
   });
   initTrack3Data();
 
+  /* ======================= MODULE 1 RADAR ======================= */
+  (function(){
+    const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+    const clean=v=>String(v||'').replaceAll('_',' ');
+    fetch('data/module1_radar_summary.json?v=1',{cache:'no-store'}).then(function(res){
+      if(!res.ok)throw new Error('Module 1 audit summary unavailable ('+res.status+')');
+      return res.json();
+    }).then(function(p){
+      const d=p.domains||{},d1=d.domain_1_physics||{},d2=d.domain_2_ingestion||{},d3=d.domain_3_entity_resolution||{},d4=d.domain_4_interface||{},d5=d.domain_5_governance||{};
+      const rows=Number(p.registry_record_count||0),cap=Number(p.registry_capacity_mw||0);
+      set('module1Rows',rows.toLocaleString());
+      set('module1MW',(cap/1000).toFixed(1)+' GW');
+      set('module1HV',Number(d1.voltage_explicit_count||0).toLocaleString()+' explicit · '+Number(d1.voltage_pass_count||0).toLocaleString()+' pass');
+      set('module1Flops',Number(d1.all_scenarios_1e26_pass_count||0).toLocaleString()+' / '+rows.toLocaleString());
+      set('module1Epoch',Number(d2.epoch&&d2.epoch.record_count||0).toLocaleString());
+      const t=d3.tier_counts||{};
+      const cards=[
+        ['Domain 1 · Physics',Number(d1.capacity_floor_pass_count||0).toLocaleString()+'/'+rows.toLocaleString()+' capacity-floor pass; '+Number(d1.all_scenarios_1e26_pass_count||0).toLocaleString()+'/'+rows.toLocaleString()+' FLOP-bound pass; '+Number(d1.voltage_fail_count||0).toLocaleString()+' voltage fail; '+Number(d1.voltage_unknown_count||0).toLocaleString()+' voltage unknown.'],
+        ['Domain 2 · Ingestion',Number(d2.present_market_count||0).toLocaleString()+'/'+Number(d2.required_market_count||0).toLocaleString()+' required markets; '+Number(d2.epoch&&d2.epoch.record_count||0).toLocaleString()+'/93 Epoch sites; '+Number(d2.epoch&&d2.epoch.site_specific_queue_ids||0).toLocaleString()+' exact queue IDs; remote sensing '+clean(d2.satellite_tir_sar_numeric_status||'NOT_REPORTED')+'.'],
+        ['Domain 3 · Taxonomy',Number(t['Tier 4: Genuinely Ambiguous / Unclassified Large Load']||0).toLocaleString()+' ambiguous; '+Number(t['Tier 3: Confirmed Grid-Scale Storage (BESS)']||0).toLocaleString()+' BESS; '+Number(t['Tier 2: Wholesale Colocation Developer']||0).toLocaleString()+' wholesale colocation; '+Number(d3.review_priority_count||0).toLocaleString()+' review-priority rows.'],
+        ['Domain 4 · Interface',(d4.leaflet_map?'Leaflet map live':'Leaflet map not verified')+'; '+(d4.table_to_map_rto_sync?'table↔map sync live':'table↔map sync not verified')+'; '+(d4.country_and_state_boundaries?'country/state/province boundaries live':'boundaries not verified')+'.'],
+        ['Domain 5 · Governance',(d5.references_documented?'References documented':'Reference documentation not verified')+'; rebuttable-presumption status: '+clean(d5.rebuttable_presumption_status||'not reported')+'; CEII→BIS: '+clean(d5.ceii_to_bis_transfer_status||'not reported')+'.']
+      ];
+      const grid=document.getElementById('module1DomainGrid');
+      if(grid)grid.innerHTML=cards.map(x=>'<div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">'+escapeHtml(x[0])+'</div><div class="text-sm mt-2 leading-relaxed" style="color:var(--ink-soft);">'+escapeHtml(x[1])+'</div></div>').join('');
+      set('module1Gate','Module-1 five-domain gate: '+clean(p.five_domain_gate||'NOT_REPORTED')+' · missing remote-sensing and transformer evidence remain explicit gates.');
+    }).catch(function(err){set('module1Gate','Module-1 audit summary unavailable: '+(err.message||'unknown error'));});
+  })();
+
   fetch('data/track3_source_stack.json?v=1',{cache:'no-store'}).then(function(res){
     if(!res.ok) throw new Error('source stack unavailable');
     return res.json();
@@ -2584,7 +2615,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
       rows.map(function(s){
         const label=s.status||'UNKNOWN';
         const link=s.url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(s.url)+'">Open</a>':'—';
-        return '<tr><td class="px-3 py-2 font-medium">'+escapeHtml(s.name||'Unnamed source')+'</td><td class="px-3 py-2"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px] mono">'+escapeHtml(label)+'</span></td><td class="px-3 py-2">'+escapeHtml(s.updated||'—')+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escapeHtml(s.role||'')+'</td><td class="px-3 py-2">'+link+'</td></tr>';
+        return '<tr><td class="px-3 py-2 font-medium">'+escapeHtml(s.name||'Unnamed source')+'</td><td class="px-3 py-2"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px] mono">'+escapeHtml(label)+'</span></td><td class="px-3 py-2">'+escapeHtml(s.updated||'Not dated')+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escapeHtml(s.role||'Not stated in source catalog')+'</td><td class="px-3 py-2">'+link+'</td></tr>';
       }).join('')+
       '</tbody></table></div>';
   }).catch(function(err){
@@ -2603,7 +2634,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
     if(!a)return '—';
     if(a.value_mw!=null)return String(a.value_mw)+' MW'+(a.qualifier?' · '+a.qualifier:'');
     if(a.value_mva!=null)return String(a.value_mva)+' MVA'+(a.qualifier?' · '+a.qualifier:'');
-    return a.raw_value||'—';
+    return a.raw_value||'Not published';
   }
   let projects=[],projectFiltered=[],projectPage=0;
   const PP=25;
@@ -2613,7 +2644,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
     const rows=projectFiltered.slice(projectPage*PP,(projectPage+1)*PP);
     body.innerHTML=rows.length?rows.map(function(r){
       const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escLedger(r.source_url)+'">Open</a>':'—';
-      return '<tr><td class="px-3 py-2 mono">'+escLedger(r.id)+'</td><td class="px-3 py-2"><div class="font-medium">'+escLedger(r.project_name||'—')+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escLedger(r.evidence_type||'')+'</div></td><td class="px-3 py-2">'+escLedger(r.customer_or_developer||'—')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_provider||'—')+'</td><td class="px-3 py-2">'+escLedger(r.jurisdiction||'—')+'</td><td class="px-3 py-2">'+escLedger(firstCapacity(r))+'</td><td class="px-3 py-2">'+escLedger(r.status||'—')+'</td><td class="px-3 py-2">'+src+'</td></tr>';
+      return '<tr><td class="px-3 py-2 mono">'+escLedger(r.id)+'</td><td class="px-3 py-2"><div class="font-medium">'+escLedger(r.project_name||'Not published')+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escLedger(r.evidence_type||'')+'</div></td><td class="px-3 py-2">'+escLedger(r.customer_or_developer||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_provider||'—')+'</td><td class="px-3 py-2">'+escLedger(r.jurisdiction||'—')+'</td><td class="px-3 py-2">'+escLedger(firstCapacity(r))+'</td><td class="px-3 py-2">'+escLedger(r.status||'Not stated')+'</td><td class="px-3 py-2">'+src+'</td></tr>';
     }).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No project records match.</td></tr>';
     document.getElementById('projectLedgerPage').textContent='Page '+(projectPage+1)+' of '+pages;
     document.getElementById('projectLedgerPrev').disabled=projectPage===0;
@@ -2639,7 +2670,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
   function renderTargets(){
     const body=document.getElementById('targetLedgerBody'),pages=Math.max(1,Math.ceil(targetFiltered.length/TP));targetPage=Math.min(targetPage,pages-1);
     const rows=targetFiltered.slice(targetPage*TP,(targetPage+1)*TP);
-    body.innerHTML=rows.length?rows.map(function(r){return '<tr><td class="px-3 py-2 mono">'+escLedger(r.epoch_id)+'</td><td class="px-3 py-2">'+escLedger(r.epoch_name||'—')+'</td><td class="px-3 py-2">'+escLedger([r.state_province,r.country].filter(Boolean).join(' · ')||'—')+'</td><td class="px-3 py-2">'+escLedger(r.grid_or_queue_jurisdiction||'—')+'</td><td class="px-3 py-2">'+escLedger(r.connection_match_status||r.status||'UNKNOWN')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_service_provider||'—')+'</td><td class="px-3 py-2">'+escLedger(r.substation||'—')+'</td><td class="px-3 py-2">'+escLedger(r.site_specific_queue_id||'Not verified')+'</td><td class="px-3 py-2">'+escLedger(r.service_capacity_mw!=null?r.service_capacity_mw+' MW':r.approved_capacity_mw!=null?r.approved_capacity_mw+' MW':'—')+'</td><td class="px-3 py-2 text-right">'+escLedger(r.site_level_evidence_count||0)+'</td><td class="px-3 py-2 max-w-[360px]">'+escLedger(r.next_action||'—')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No target records match.</td></tr>';
+    body.innerHTML=rows.length?rows.map(function(r){return '<tr><td class="px-3 py-2 mono">'+escLedger(r.epoch_id)+'</td><td class="px-3 py-2">'+escLedger(r.epoch_name||'Not published')+'</td><td class="px-3 py-2">'+escLedger([r.state_province,r.country].filter(Boolean).join(' · ')||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.grid_or_queue_jurisdiction||'Not mapped')+'</td><td class="px-3 py-2">'+escLedger(r.connection_match_status||r.status||'UNKNOWN')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_service_provider||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.substation||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.site_specific_queue_id||'Not verified')+'</td><td class="px-3 py-2">'+escLedger(r.service_capacity_mw!=null?r.service_capacity_mw+' MW':r.approved_capacity_mw!=null?r.approved_capacity_mw+' MW':'Not published')+'</td><td class="px-3 py-2 text-right">'+escLedger(r.site_level_evidence_count||0)+'</td><td class="px-3 py-2 max-w-[360px]">'+escLedger(r.next_action||'Not specified')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No target records match.</td></tr>';
     document.getElementById('targetLedgerPage').textContent='Page '+(targetPage+1)+' of '+pages;
     document.getElementById('targetLedgerPrev').disabled=targetPage===0;
     document.getElementById('targetLedgerNext').disabled=targetPage>=pages-1;
@@ -2659,7 +2690,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
   let rows=[],filtered=[],page=0;const PP=20;
   function cap(r){if(r.capacity_mw!=null)return String(r.capacity_mw)+' MW'+(r.capacity_kind?' · '+r.capacity_kind:'');return '—';}
   function render(){const body=document.getElementById('siteEvidenceLedgerBody'),pages=Math.max(1,Math.ceil(filtered.length/PP));page=Math.min(page,pages-1);const rs=filtered.slice(page*PP,(page+1)*PP);
-    body.innerHTML=rs.length?rs.map(function(r){const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escEvidence(r.source_url)+'">Open</a>':'—';return '<tr><td class="px-3 py-2"><div class="font-medium">'+escEvidence(r.epoch_name||'—')+'</div><div class="mono text-[10px] mt-1">'+escEvidence(r.epoch_id)+'</div></td><td class="px-3 py-2">'+escEvidence(r.evidence_type||'—')+'</td><td class="px-3 py-2">'+escEvidence(r.authority||'—')+'</td><td class="px-3 py-2">'+escEvidence(r.record_name||'—')+'</td><td class="px-3 py-2">'+escEvidence(cap(r))+'</td><td class="px-3 py-2">'+escEvidence(r.confidence||'—')+'</td><td class="px-3 py-2">'+src+'</td><td class="px-3 py-2 max-w-[380px]">'+escEvidence(r.next_action||'—')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No evidence assertions match.</td></tr>';
+    body.innerHTML=rs.length?rs.map(function(r){const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escEvidence(r.source_url)+'">Open</a>':'—';return '<tr><td class="px-3 py-2"><div class="font-medium">'+escEvidence(r.epoch_name||'—')+'</div><div class="mono text-[10px] mt-1">'+escEvidence(r.epoch_id)+'</div></td><td class="px-3 py-2">'+escEvidence(r.evidence_type||'Not stated')+'</td><td class="px-3 py-2">'+escEvidence(r.authority||'Not published')+'</td><td class="px-3 py-2">'+escEvidence(r.record_name||'Not published')+'</td><td class="px-3 py-2">'+escEvidence(cap(r))+'</td><td class="px-3 py-2">'+escEvidence(r.confidence||'Not stated')+'</td><td class="px-3 py-2">'+src+'</td><td class="px-3 py-2 max-w-[380px]">'+escEvidence(r.next_action||'—')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No evidence assertions match.</td></tr>';
     document.getElementById('siteEvidencePage').textContent='Page '+(page+1)+' of '+pages;
     document.getElementById('siteEvidencePrev').disabled=page===0;document.getElementById('siteEvidenceNext').disabled=page>=pages-1;
     document.getElementById('siteEvidenceLedgerStatus').textContent=filtered.length+' of '+rows.length+' evidence assertions';
@@ -2694,7 +2725,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
 fetch('data/physical_verification_layer.json?v=2',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('physical verification unavailable');return res.json();}).then(function(p){
   const body=document.getElementById('physicalVerificationBody');
   const items=Array.isArray(p.checklist)?p.checklist:[];
-  if(body)body.innerHTML=items.map(function(x){return '<tr><td class="px-3 py-2 font-medium">'+escPV(x.item)+'</td><td class="px-3 py-2 mono">'+escPV(x.status)+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escPV(x.coverage)+'</td><td class="px-3 py-2 mono">'+escPV((x.primary_sources||[]).join(', ')||'—')+'</td></tr>';}).join('');
+  if(body)body.innerHTML=items.map(function(x){return '<tr><td class="px-3 py-2 font-medium">'+escPV(x.item)+'</td><td class="px-3 py-2 mono">'+escPV(x.status)+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escPV(x.coverage)+'</td><td class="px-3 py-2 mono">'+escPV((x.primary_sources||[]).join(', ')||'Not cataloged')+'</td></tr>';}).join('');
   const s=p.summary||{};
   function set(id,v){const el=document.getElementById(id);if(el)el.textContent=(v==null?'—':String(v));}
   set('physicalEpochSites', p.site_records ? p.site_records.length : null);
