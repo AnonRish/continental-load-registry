@@ -562,6 +562,7 @@ def main() -> int:
         })
 
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
+    researched_no_public_record = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "RESEARCHED_NO_PUBLIC_RECORD"]
     observation_queue = build_observation_queue(site_records)
     evidence_index = build_evidence_index(
         evidence, reg, power_observations, cooling_observations, remote_observations, transformer_events
@@ -587,6 +588,7 @@ def main() -> int:
         ),
         "site_specific_queue_id_count": sum(1 for x in site_records if x["domains"]["grid_connection"]["status"] == "VERIFIED_SITE_SPECIFIC"),
         "pending_grid_connection_research_count": len(pending),
+        "research_completed_no_public_record_count": len(researched_no_public_record),
         "domain_status_counts": status_counts,
         "source_stack_count": len(source_stack.get("sources", [])),
         "remote_sensing_derived_observation_count": sum(
@@ -597,7 +599,7 @@ def main() -> int:
             status: sum(1 for source in source_stack.get("sources", []) if source.get("status") == status)
             for status in sorted({source.get("status") for source in source_stack.get("sources", []) if source.get("status")})
         },
-        "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence.",
+        "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. RESEARCHED_NO_PUBLIC_RECORD means a site-specific search was performed and no public queue/service record was retained; it is not evidence that service is absent.",
     }
 
     (OUT / "site_status.json").write_text(json.dumps({
