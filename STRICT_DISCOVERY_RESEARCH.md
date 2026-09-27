@@ -4,7 +4,7 @@ Updated: 2026-09-27
 
 ## Purpose
 
-This is the operational queue for the next ambiguous-load closure cases. It sits downstream of the broad 141-record ambiguity pool and upstream of final adjudication.
+This is the operational queue for the next ambiguous-load closure cases. It sits downstream of the broad 142-record ambiguity pool and upstream of final adjudication.
 
 A candidate is admitted only when a retained public source identifies the underlying request as a load-side project. Developer non-disclosure, large MW, or proximity to a known data-center cluster are not sufficient.
 
