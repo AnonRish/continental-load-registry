@@ -263,7 +263,7 @@ section.mb-8{scroll-margin-top:118px}
   </div>
   <div class="registry-kpis" aria-label="Registry at a glance">
     <div class="registry-kpi"><b id="deckSites">93</b><span>frontier sites</span></div>
-    <div class="registry-kpi"><b id="deckRecords">1,641</b><span>known records</span></div>
+    <div class="registry-kpi"><b id="deckRecords">1,623</b><span>known records</span></div>
     <div class="registry-kpi"><b id="deckGW">397.8</b><span>GW broad scope</span></div>
     <div class="registry-kpi"><b id="deckEvidence">396</b><span>Track 3 evidence</span></div>
     <div class="registry-kpi"><b id="deckPhysical">0</b><span>physical observations</span></div>
@@ -278,7 +278,7 @@ section.mb-8{scroll-margin-top:118px}
 <header class="border-b hairline">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-4 pb-0 reveal">
     <div class="panel rounded-lg px-4 py-3 text-xs" style="color:var(--ink-soft);">
-      <strong style="color:var(--ink);">Scope expansion:</strong> the row-level registry contains 1,558 published rows totaling 361.875 GW. A further 83 MISO requests totaling 35.9 GW are publicly identified at &ge;100 MW but omit required location fields in the source; they remain explicitly outside the row-level table. Together they define a broader known scope of 1,641 requests/records and 397.775 GW. This is a scope metric, not 83 newly geolocated facility records.
+      <strong style="color:var(--ink);">Scope expansion:</strong> the row-level registry contains 1,540 published rows totaling 358.718 GW. A further 83 MISO requests totaling 35.9 GW are publicly identified at &ge;100 MW but omit required location fields in the source; they remain explicitly outside the row-level table. Together they define a broader known scope of 1,623 requests/records and 394.618 GW. This is a scope metric, not 83 newly geolocated facility records.
       <a class="link-underline ml-1" href="data/large_load_scope.json" target="_blank" rel="noopener noreferrer">Open machine-readable accounting</a>
     </div>
   </div>
@@ -312,8 +312,8 @@ section.mb-8{scroll-margin-top:118px}
       </div>
       <div class="visual-scanline mt-4"></div>
       <div class="visual-metric-grid">
-        <div class="visual-metric"><b>1,558</b><span>row-level records</span></div>
-        <div class="visual-metric"><b>397.8 GW</b><span>known scope</span></div>
+        <div class="visual-metric"><b>1,540</b><span>row-level records</span></div>
+        <div class="visual-metric"><b>394.6 GW</b><span>known scope</span></div>
         <div class="visual-metric"><b>93</b><span>Epoch sites</span></div>
         <div class="visual-metric"><b>279</b><span>Track 3 observation tasks</span></div>
       </div>
@@ -329,12 +329,12 @@ section.mb-8{scroll-margin-top:118px}
     <div class="px-5 sm:px-8 py-7">
       <p class="mono text-3xl sm:text-4xl font-medium" id="statCapacity">361.9 GW</p>
       <p class="text-sm mt-2" style="color:var(--ink-soft);">Row-level capacity audited</p>
-      <p class="text-xs mt-1" style="color:var(--ink-faint);" id="statCapacityNote">1,558 published facility/request rows &ge; 100 MW across nine RTOs/ISOs</p>
+      <p class="text-xs mt-1" style="color:var(--ink-faint);" id="statCapacityNote">1,540 published facility/request rows &ge; 100 MW across nine RTOs/ISOs</p>
     </div>
     <div class="px-5 sm:px-8 py-7">
-      <p class="mono text-3xl sm:text-4xl font-medium">397.8 GW</p>
+      <p class="mono text-3xl sm:text-4xl font-medium">394.6 GW</p>
       <p class="text-sm mt-2" style="color:var(--ink-soft);">Expanded known capacity scope</p>
-      <p class="text-xs mt-1" style="color:var(--ink-faint);">1,641 known &ge; 100 MW requests/records, including 83 MISO requests (35.9 GW) held outside the row-level table because public location fields are incomplete</p>
+      <p class="text-xs mt-1" style="color:var(--ink-faint);">1,623 known &ge; 100 MW requests/records, including 83 MISO requests (35.9 GW) held outside the row-level table because public location fields are incomplete</p>
     </div>
     <div class="px-5 sm:px-8 py-7">
       <p class="mono text-3xl sm:text-4xl font-medium" id="statStorage">85.0%</p>
@@ -942,7 +942,7 @@ section.mb-8{scroll-margin-top:118px}
       <div>
         <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">From source units to discrete records</p>
         <h2 class="font-serif-display text-xl mt-1">Project-level extraction</h2>
-        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">This layer turns public source material into individually identifiable permit, utility-customer, contract and distribution-connection records where the evidence exposes a discrete project. It does not add these records to the 1,558-row core total.</p>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">This layer turns public source material into individually identifiable permit, utility-customer, contract and distribution-connection records where the evidence exposes a discrete project. It does not add these records to the 1,540-row core total.</p>
       </div>
       <div class="flex flex-wrap gap-2">
         <a href="data/project_level_extractions.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open project JSON</a>
@@ -1190,10 +1190,10 @@ section.mb-8{scroll-margin-top:118px}
     </div>
 
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-6">
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Registry rows</div><div id="module1Rows" class="font-serif-display text-xl mt-1">1,558</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Registry rows</div><div id="module1Rows" class="font-serif-display text-xl mt-1">1,540</div></div>
       <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Capacity</div><div id="module1MW" class="font-serif-display text-xl mt-1">361.9 GW</div></div>
       <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">≥115 kV explicit</div><div id="module1HV" class="font-serif-display text-xl mt-1">1,205 explicit · 1,186 pass</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">All scenarios ≥10<sup>26</sup></div><div id="module1Flops" class="font-serif-display text-xl mt-1">1,558 / 1,558</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">All scenarios ≥10<sup>26</sup></div><div id="module1Flops" class="font-serif-display text-xl mt-1">1,540 / 1,540</div></div>
       <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="module1Epoch" class="font-serif-display text-xl mt-1">93</div></div>
     </div>
 
@@ -3284,7 +3284,7 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
   fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
     const broad=s.expanded_known_scope ?? {};
     document.getElementById('deckRecords').textContent=Number(broad.records ?? 1641).toLocaleString();
-    document.getElementById('deckGW').textContent=Number(broad.capacity_gw ?? 397.775).toFixed(1);
+    document.getElementById('deckGW').textContent=Number(broad.capacity_gw ?? 394.618).toFixed(1);
   }).catch(()=>{});
 })();
 </script>
