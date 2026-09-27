@@ -8,6 +8,10 @@ from pathlib import Path
 import pandas as pd,requests
 PAGE_URL="https://www.nyiso.com/interconnections"
 FALLBACK_URL="https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"
+ALTERNATE_FALLBACK_URLS=[
+    "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+    "https://www.nyiso.com/documents/20142/2226333/NYISO-Interconnection-Queue.xlsx",
+]
 SHEETS={"Interconnection Queue":"active"," Cluster Projects":"cluster_active","Withdrawn":"withdrawn","Cluster Projects-Withdrawn":"cluster_withdrawn","In Service":"in_service"}
 class LinkParser(HTMLParser):
     def __init__(self) -> None:
@@ -42,11 +46,14 @@ def main():
     candidates=[]
     for href,text_value in parser.links:
         label=(text_value+" "+href).lower()
-        if ("queue" not in label and "interconnection" not in label) or not href:
+        downloadable=any(token in label for token in (".xlsx", ".xls", ".zip", "download"))
+        if (("queue" not in label and "interconnection" not in label) and not downloadable) or not href:
             continue
         u=urljoin(PAGE_URL,href)
         if u not in candidates:candidates.append(u)
-    candidates.append(FALLBACK_URL)
+    for fallback in ALTERNATE_FALLBACK_URLS:
+        if fallback not in candidates:
+            candidates.append(fallback)
     r=None
     for url in candidates:
         for attempt in range(3):
