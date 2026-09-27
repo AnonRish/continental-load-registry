@@ -74,6 +74,13 @@ a{color:inherit}.tools{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-f
 </section>
 
 <section class="panel">
+<h2>Strict admitted load-discovery queue</h2>
+<p class="soft">Five candidates have passed the source-level load-admission gate. These are research cases, not claims of hidden facilities; a candidate remains open until entity, physical, electrical, and adjudication gates close.</p>
+<div id="strictQueue" class="cards" style="margin-top:10px"></div>
+<div class="tools" style="margin-top:10px"><a class="btn" href="closed-cases.html">Open closed-case laboratory</a><a class="btn" href="STRICT_DISCOVERY_RESEARCH.md">Open research packet</a><a class="btn" href="data/track3/strict_discovery_research_packets.json">Open JSON</a></div>
+</section>
+
+<section class="panel">
 <h2>One-task research workflow</h2>
 <div class="steps" id="steps"></div>
 <div class="notice" style="margin-top:10px"><strong>Evidence boundary:</strong> search results and public leads are discovery inputs. A lead is not canonical evidence until the source is reviewed and the claim is ingested with provenance. A NO_PUBLIC_RECORD disposition is a research outcome, not evidence of absence.</div>
@@ -156,6 +163,20 @@ function render(){
  document.getElementById("next").disabled=document.getElementById("next2").disabled=page>=pages-1;
 }
 function move(delta){page=Math.max(0,page+delta);render();window.scrollTo({top:document.querySelector(".tablewrap").getBoundingClientRect().top+window.scrollY-20,behavior:"smooth"})}
+async function loadStrictQueue(){
+ try{
+  const d=await fetch("data/track3/strict_discovery_research_packets.json?v=1",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("strict queue unavailable");return r.json()});
+  const el=document.getElementById("strictQueue");
+  if(!el)return;
+  el.innerHTML=(d.candidates||[]).map((x,i)=>{
+   const sources=(x.source_ladder||[]).filter(s=>s.url).slice(0,2).map(s=>'<a class="btn tiny" target="_blank" rel="noopener" href="'+esc(s.url)+'">'+esc(s.kind||"source")+' ↗</a>').join("");
+   const gates=(x.next_gates||[]).slice(0,3).map(g=>'<span class="pill p1">'+esc(g.replace(/_/g," "))+'</span>').join(" ");
+   return '<div class="card"><div class="metric" style="font-size:13px">'+String(i+1).padStart(2,"0")+'</div><h3>'+esc(x.project_name)+'</h3><p class="tiny mono">'+esc(x.rto)+' · '+esc(x.queue_id)+' · '+esc(x.capacity_mw)+' MW</p><p class="tiny soft">'+esc(x.current_identity_gap)+'</p><p class="tiny soft">'+esc(x.current_physical_gap)+'</p><div class="tools" style="margin-top:8px">'+sources+'</div><div style="margin-top:8px">'+gates+'</div></div>';
+  }).join("");
+ }catch(e){
+  const el=document.getElementById("strictQueue");if(el)el.innerHTML='<div class="notice">Strict queue failed to load: '+esc(e.message)+'</div>';
+ }
+}
 async function load(){
  const params=new URLSearchParams(window.location.search);
  const initialQuery=params.get("q")||"";
@@ -179,6 +200,7 @@ async function load(){
 ["prev","prev2"].forEach(id=>document.getElementById(id).onclick=()=>move(-1));
 ["next","next2"].forEach(id=>document.getElementById(id).onclick=()=>move(1));
 load().catch(e=>{document.getElementById("meta").textContent="Research queue failed to load: "+e.message});
+loadStrictQueue();
 </script>
 <script src="observatory-nav.js" defer></script>
 
@@ -188,7 +210,7 @@ load().catch(e=>{document.getElementById("meta").textContent="Research queue fai
   const sections=[...document.querySelectorAll('.wrap > section')];
   sections.forEach((s,i)=>{
     const h=s.querySelector('h1,h2,h3')?.textContent||'';
-    const view=i===0||i===1||/One-task research workflow/i.test(h)?'overview'
+    const view=i===0||i===1||/One-task research workflow|Strict admitted load-discovery queue/i.test(h)?'overview'
       :/backlog by field/i.test(h)?'backlog'
       :/All one-by-one tasks/i.test(h)?'tasks'
       :'handoff';
