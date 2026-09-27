@@ -180,6 +180,7 @@
 @media(max-width:650px){#completeConnectionTargetLedger .ctl-radar{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-fields{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-detail-grid{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-toolbar{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-site{min-width:200px}}
 </style>
 </style>
+<link rel="stylesheet" href="observatory-nav.css">
 </head>
 <body class="min-h-screen">
 
@@ -1270,7 +1271,7 @@
   </section>
 
   <!-- ============ METHODOLOGY ============ -->
-  <section class="mt-16 pt-10 border-t hairline">
+  <section id="methodology" class="mt-16 pt-10 border-t hairline">
     <h2 class="font-serif-display text-xl mb-6">Methodology</h2>
 
     <details class="panel rounded-lg px-5 py-4 mb-3" open>
@@ -3110,5 +3111,6 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
  var re=document.getElementById('websiteCompletenessRows'); if(re)re.innerHTML=(p.sections||[]).map(function(x){return '<tr><td><strong>'+escapeHtml(x.section)+'</strong></td><td><span class="status '+(x.status==='POPULATED'?'good':'warn')+'">'+escapeHtml(x.status)+'</span></td><td class="mono small">'+escapeHtml(x.artifact)+'</td><td class="small">'+escapeHtml(x.detail)+'</td></tr>';}).join('');
 }).catch(function(e){var m=document.getElementById('websiteCompletenessMeta');if(m)m.textContent='Completeness audit unavailable: '+e.message;});
 </script>
+<script src="observatory-nav.js" defer></script>
 </body>
 </html>
