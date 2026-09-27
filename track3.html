@@ -495,7 +495,7 @@ function renderEntityResolution(){
   marker.bindPopup('<div style="min-width:220px"><strong>'+esc(r.site_name)+'</strong><div class="mono faint">'+esc(r.id)+'</div><p class="small soft" style="margin:6px 0">'+esc(r.address||'—')+'</p><p class="small">IT power: <span class="mono">'+esc(fmt(r.current_power_mw))+' MW</span><br>Grid: '+esc(r.grid_jurisdiction||'—')+'<br>Status: '+esc(r.grid_status||'—')+'</p><a class="btn" href="facility.html?facility='+encodeURIComponent(r.id)+'">Open facility page</a></div>');
   marker.addTo(map);
  });
- document.getElementById('facilityMapMeta').textContent=rows.length+' facility coordinates; coordinate precision is source-derived and displayed with the site's recorded precision.';
+ document.getElementById('facilityMapMeta').textContent=rows.length+' facility coordinates; coordinate precision is source-derived and displayed with the site\'s recorded precision.';
 }
 
 function renderEpoch(){
