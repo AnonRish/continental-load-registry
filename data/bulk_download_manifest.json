@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "title": "Continental Registry bulk-download manifest",
+  "generated_on": "2026-09-27",
+  "bulk_repository_zip": "https://github.com/AnonRish/continental-load-registry/archive/refs/heads/main.zip",
+  "key_datasets": [
+    "data/facility_records/index.json",
+    "data/track3/evidence_records.json",
+    "data/track3/facility_provenance.json",
+    "data/track3/verification_results.json",
+    "data/track3/time_series_verification.json",
+    "data/track3/detection_universe.json",
+    "data/epoch_ai_map.json",
+    "data/map_layer_manifest.json",
+    "data/external/epoch_ai/crosswalk.json",
+    "data/external/epoch_ai/queue_crosswalk.json",
+    "data/external/epoch_ai/site_level_connection_evidence.json"
+  ],
+  "historical_snapshots": [
+    "data/archive/",
+    "data/track3/provenance_snapshots/",
+    "data/automation/queue_snapshots/"
+  ],
+  "queue_shards": "data/facility_records/{RTO}/",
+  "note": "The repository ZIP is the complete source/data tree at the current main branch. Individual dataset links provide smaller machine-readable downloads."
+}
