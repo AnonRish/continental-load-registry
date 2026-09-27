@@ -181,31 +181,32 @@ The project-level layer has grown to **253 records**, with **252 mapped project 
 
 The 253 project records have one canonical `evidence_type` each. Current counts are:
 
+- `secondary_large_load_request_record`: 60
 - `environmental_permit_record`: 33
+- `nyiso_gold_book_large_load_record`: 31
+- `aeso_data_load_project_record`: 28
+- `utility_data_center_forecast_project_record`: 28
+- `caiso_large_load_interconnection_project`: 14
+- `nyiso_load_project_site_record`: 12
+- `utility_data_center_service_project`: 9
 - `named_utility_load_project`: 8
+- `ieso_load_application_record`: 6
+- `utility_named_data_center_service_project`: 5
+- `utility_service_project_secondary_capacity`: 3
+- `utility_large_load_contract_record`: 3
+- `secondary_data_center_interconnection_project`: 3
 - `named_large_load_project_from_industry_list`: 2
+- `iso_ne_forecast_large_load_project`: 2
 - `named_utility_contract_project`: 1
 - `named_utility_service_project`: 1
 - `named_distribution_connection_project`: 1
-- `aeso_data_load_project_record`: 28
-- `ieso_load_application_record`: 6
-- `nyiso_load_project_site_record`: 12
-- `secondary_large_load_request_record`: 60
-- `iso_ne_forecast_large_load_project`: 2
-- `utility_data_center_forecast_project_record`: 28
-- `utility_data_center_service_project`: 9
-- `nyiso_gold_book_large_load_record`: 31
 - `utility_named_data_center_project`: 1
-- `caiso_large_load_interconnection_project`: 14
-- `utility_named_data_center_service_project`: 5
-- `utility_service_project_secondary_capacity`: 3
 - `utility_data_center_service_area_record`: 1
 - `utility_named_large_load_transmission_project`: 1
-- `utility_large_load_contract_record`: 3
 
-Those counts are generated from the canonical JSON and currently sum to exactly 253. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
+Those counts are generated from the canonical JSON and sum to exactly 253. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
 
-The interactive map overlays **249 mapped project-level records** and separately represents the unlocated Woostor contract through a labeled Alabama regional evidence footprint. `data/map_layer_manifest.json` is the machine-readable inventory of every map overlay and its geometry/accounting treatment.
+The interactive map overlays **252 mapped project-level records** and separately represents the unlocated Woostor contract through a labeled Alabama regional evidence footprint. `data/map_layer_manifest.json` is the machine-readable inventory of every map overlay and its geometry/accounting treatment.
 
 PJM large-load history is cataloged in `data/pjm_large_load_submission_history.json` with **28 public 2025–2026 LAS material entries**, preserving the utility submission/document trail without treating documents as facility rows.
 
