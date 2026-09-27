@@ -61,6 +61,9 @@ def main() -> int:
     if summary.get("combined_site_level_evidence_site_count") != combined:
         raise SystemExit("FAIL: combined site-evidence count does not match site_status")
     pending = [x for x in sites if x.get("domains", {}).get("grid_connection", {}).get("status") == "PENDING_RESEARCH"]
+    researched_no_public = [x for x in sites if x.get("domains", {}).get("grid_connection", {}).get("status") == "RESEARCHED_NO_PUBLIC_RECORD"]
+    if summary.get("research_completed_no_public_record_count") != len(researched_no_public):
+        raise SystemExit("FAIL: researched-no-public-record count does not match site_status")
     if queue.get("count") != len(pending) or len(queue.get("records", [])) != len(pending):
         raise SystemExit("FAIL: research queue does not match pending grid research")
     # evidence_records.json is a canonical generated ledger. Its own record_count
