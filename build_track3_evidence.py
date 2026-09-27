@@ -580,6 +580,9 @@ def main() -> int:
             "next_action": ev.get("next_action"),
         })
 
+    evidence_index = build_evidence_index(
+        evidence, reg, power_observations, cooling_observations, remote_observations, transformer_events
+    )
     existing_evidence_ids = {str(x.get("evidence_id")) for x in evidence_index if x.get("evidence_id")}
     manual_domain_map = {
         "project": "site_identity",
@@ -637,10 +640,6 @@ def main() -> int:
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
     researched_no_public_record = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "RESEARCHED_NO_PUBLIC_RECORD"]
     observation_queue = build_observation_queue(site_records)
-    evidence_index = build_evidence_index(
-        evidence, reg, power_observations, cooling_observations, remote_observations, transformer_events
-    )
-
     summary = {
         "schema_version": 1,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
