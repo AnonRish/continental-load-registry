@@ -3,15 +3,15 @@
   "generated_on": "2026-09-27",
   "title": "Broad ambiguity pool classification summary",
   "broad_pool": {
-    "records": 142,
-    "capacity_gw": 54.3012,
+    "records": 141,
+    "capacity_gw": 53.8512,
     "definition": "Records meeting the dashboard's broad ambiguity filter: >=100 MW, Genuinely Ambiguous / Unclassified Large Load tier, and unresolved/disclosed-to-unknown developer category."
   },
   "retained_field_pass": {
     "explicit_load_records": 68,
-    "explicit_load_capacity_gw": 33.927,
-    "blank_or_unknown_load_technology_records": 74,
-    "blank_or_unknown_load_technology_capacity_gw": 20.3742,
+    "explicit_load_capacity_gw": 33.9266,
+    "blank_or_unknown_load_technology_records": 73,
+    "blank_or_unknown_load_technology_capacity_gw": 19.9246,
     "note": "This is a retained-field classification pass, not independent external adjudication of every project. Blank technology fields require source-level project-type review before load-discovery admission."
   },
   "explicit_load_breakdown": [
@@ -31,14 +31,14 @@
       "capacity_gw": 0.25
     }
   ],
-  "strict_admission_rule": "Only records with explicit public evidence that the underlying request is Load, New Load Facility, Increase Load, or equivalent load-side type can enter the strict load-discovery queue. Generation, Surplus, Transmission, Replacement and Upgrade records are excluded unless a separate load component is established.",
+  "strict_admission_rule": "Only records with explicit public evidence that the underlying request is Load, New Load Facility, Increase Load, or equivalent load-side type can enter the strict load-discovery queue. Generation, Surplus, Transmission, Replacement, Upgrade, storage-only, and other non-load records are excluded unless a separate retained source establishes the specific load component under investigation.",
   "current_strict_candidate_count": 5,
   "current_strict_candidate_ids": [
     "P3066",
     "P3198",
-    "P3108",
     "1743",
-    "1742"
+    "1742",
+    "P3108"
   ],
-  "interpretation": "The 141-record pool is a research universe, not a discovery count. The 74 blank/unknown technology records are source-classification work before they can be treated as load candidates."
+  "interpretation": "The broad ambiguity pool is a research universe, not a discovery count. Blank/unknown technology records require source-classification work before load-discovery admission."
 }
