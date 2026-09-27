@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "title": "Small-owner-tail sampling protocol",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "purpose": "Reproducible sampling of a defined residual owner population using a fixed seed and published frame.",
+  "required_inputs": [
+    "closed_population_snapshot",
+    "owner_definition",
+    "tail_definition",
+    "sample_size",
+    "random_seed",
+    "stratification_fields"
+  ],
+  "current_frame": {
+    "source": "data/computational_load_estimates.csv",
+    "snapshot_status": "available",
+    "owner_field": "developer_entity_raw"
+  },
+  "selection_method": "Sort canonical target IDs, apply declared eligibility filter, stratify only on declared fields, then use a deterministic PRNG seed to select the requested sample.",
+  "outputs": [
+    "sampling_frame_hash",
+    "eligibility_count",
+    "sample_ids",
+    "seed",
+    "selection_log",
+    "follow_up_outcomes"
+  ],
+  "semantics": "No Plan A sampling claim is made until the population definition and threshold are fixed."
+}
