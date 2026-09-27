@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "source_id": "NYISO-secondary-load-context",
+  "status": "PUBLIC_SECONDARY_CONTEXT_ONLY",
+  "purpose": "Retain current independently published context about NYISO large-load requests while the official NYISO workbook remains unavailable to the automated repository adapter. These figures are not promoted into the canonical row-level queue.",
+  "captured_at_utc": "2026-09-27T06:05:00Z",
+  "sources": [
+    {
+      "publisher": "Watt Street",
+      "source_url": "https://www.wattstreet.net/load-ledger/",
+      "source_data_as_of": "2026-09-22",
+      "requests": 74,
+      "requested_gw": 17.7,
+      "note": "Watt Street states its NYISO load ledger is a normalized presentation of the NYISO interconnection queue. This repository retains only the aggregate context here, not the third-party row-level dataset."
+    },
+    {
+      "publisher": "Low Voltage New York",
+      "source_url": "https://lowvoltagenewyork.com/resources/ny-data-center-pipeline/",
+      "source_data_as_of": "2026-09-11",
+      "requests": 70,
+      "requested_gw": 16.3,
+      "note": "Independent presentation of NYISO Load Projects; retained as a second public cross-check. It is not treated as canonical queue ingestion."
+    }
+  ],
+  "limitations": [
+    "The current official NYISO workbook could not be retrieved by the automated adapter on 2026-09-27; no canonical rows are fabricated from third-party presentations.",
+    "The two secondary sources have different cutoff dates and scopes and therefore should not be merged arithmetically."
+  ]
+}
