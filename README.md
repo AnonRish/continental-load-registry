@@ -177,9 +177,9 @@ The project-level dataset now includes **60 BPA large-load request records** wit
 
 The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
 
-The project-level layer has grown to **241 records** and all 241 are mapped in `data/project_level_map.json`. A separate `data/supplemental_aggregate_map.json` adds **61 geographic footprints** for utility/regulatory aggregates; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
+The project-level layer has grown to **250 records** and 249 of the 250 project-level records have map geometry in `data/project_level_map.json`. A separate `data/supplemental_aggregate_map.json` adds **62 geographic footprints** for utility/regulatory aggregates; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
 
-The project-level layer has grown to **241 records**: 33 Virginia DEQ permit identities, 60 BPA large-load request records, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, two ISO-NE forecast project records, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
+The project-level layer has grown to **250 records**: 33 Virginia DEQ permit identities, 60 BPA large-load request records, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, two ISO-NE forecast project records, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
 
 PJM large-load history is cataloged in `data/pjm_large_load_submission_history.json` with **28 public 2025–2026 LAS material entries**, preserving the utility submission/document trail without treating documents as facility rows.
 
@@ -230,7 +230,7 @@ The repository has a dedicated project-level evidence layer at `data/project_lev
 
 The project layer is deliberately **not additive** to the 1,558-row core queue table or the 1,641-record expanded-known scope. Multiple dated capacity claims inside one project are retained separately. No MW is inferred when a utility does not publish the load.
 
-The interactive map now overlays **all 235 project-level records**. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **61 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
+The interactive map now overlays **249 mapped project-level records** and separately represents the one unlocated Woostor contract as a labeled aggregate footprint. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **61 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
 
 The Epoch AI map layer contains **93 frontier-site observations** and is backed by the canonical `data/external/epoch_ai/site_level_connection_evidence.json` crosswalk. Of the 93 sites, **59 currently have site-level grid evidence records and 34 remain pending site-specific grid-record research**. The map popups expose the evidence status and available source links.
 
