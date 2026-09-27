@@ -3234,10 +3234,14 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
   });
   const mapHost=document.getElementById('registryMap');
   const mapWrap=mapHost?.closest('main > div');
-  if(mapWrap){mapWrap.dataset.registryView='map';}
+  if(mapWrap) mapWrap.dataset.registryView='map';
   const divs=[...document.querySelectorAll('main > div')];
+  // First top-level block is the scope note; the historical snapshot is coverage;
+  // the third top-level block is the map. Keep them in the same focused-view model
+  // as the section-level research modules.
   if(divs[0]) divs[0].dataset.registryView='overview';
   if(divs[1]) divs[1].dataset.registryView='coverage';
+  if(divs[2] && !divs[2].dataset.registryView) divs[2].dataset.registryView='map';
   const tabs=[...document.querySelectorAll('.registry-tab')];
   const introTitle=document.getElementById('registryViewTitle');
   const introCopy=document.getElementById('registryViewCopy');
