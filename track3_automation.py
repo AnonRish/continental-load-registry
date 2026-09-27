@@ -157,22 +157,40 @@ def source_health(prev):
         if s.get("url") and s["url"] in seen_urls:
             continue
         if s.get("url"): seen_urls.add(s["url"])
-        old=prev.get(s["url"],{}) if s.get("url") else {}
-        fp=http_fingerprint(s.get("url"))
+        url=str(s.get("url") or "").strip()
+        old=prev.get(url,{}) if url else {}
+        local_file=s.get("local_file")
+        local_candidates=[]
+        if local_file:
+            local_candidates += [ROOT/"data"/local_file, ROOT/"data"/"external"/"epoch_ai"/local_file, ROOT/local_file]
+        if url and not re.match(r"^[A-Za-z][A-Za-z0-9+.-]*://", url):
+            local_candidates += [ROOT/url, ROOT/"data"/url]
+        local_path=next((p for p in local_candidates if p.exists()),None)
+
+        # Relative repository references are local artifacts, not HTTP endpoints.
+        if url and not re.match(r"^[A-Za-z][A-Za-z0-9+.-]*://", url):
+            fp={
+                "status":"LOCAL_ARTIFACT" if local_path else "LOCAL_ARTIFACT_MISSING",
+                "path":str(local_path.relative_to(ROOT)).replace("\\","/") if local_path else url,
+            }
+        else:
+            fp=http_fingerprint(url)
         changed=None
         if fp.get("status")=="HEALTHY" and old:
             old_tuple=(old.get("etag"),old.get("last_modified"),old.get("content_length"),old.get("sample_sha256"))
             new_tuple=(fp.get("etag"),fp.get("last_modified"),fp.get("content_length"),fp.get("sample_sha256"))
             changed=old_tuple!=new_tuple
-        local_file=s.get("local_file")
-        local_candidates=[]
-        if local_file:
-            local_candidates += [ROOT/"data"/local_file, ROOT/"data"/"external"/"epoch_ai"/local_file, ROOT/local_file]
-        local_path=next((p for p in local_candidates if p.exists()),None)
-        item={**s,"checked_at_utc":NOW_ISO,"fingerprint":fp,"changed_since_previous_check":changed,"local_artifact_present":local_path is not None,"local_artifact_path":str(local_path.relative_to(ROOT)).replace("\\","/") if local_path else None,"declared_sha256":None}
+
+        item={**s,"checked_at_utc":NOW_ISO,"fingerprint":fp,
+              "changed_since_previous_check":changed,
+              "local_artifact_present":local_path is not None,
+              "local_artifact_path":str(local_path.relative_to(ROOT)).replace("\\","/") if local_path else None,
+              "declared_sha256":None}
         if fp.get("status")=="FAILED":
             item["failure_class"]="REMOTE_SOURCE_UNAVAILABLE"
             failed.append(item)
+        elif fp.get("status")=="LOCAL_ARTIFACT_MISSING":
+            item["failure_class"]="LOCAL_ARTIFACT_MISSING"
         results.append(item)
     return results,failed
 
