@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "title": "Track 3 facility-level evidence/provenance ledger",
-  "generated_at_utc": "2026-09-27T17:17:45.007149+00:00",
+  "generated_at_utc": "2026-09-27T23:34:28.634758+00:00",
   "snapshot": {
-    "source_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253"
+    "source_commit": "e92429c018c897df531460494e21f77be052c233"
   },
   "semantics": {
     "missing_data": "Null/UNKNOWN means not captured; never evidence of absence.",
@@ -91,32 +91,32 @@
   ],
   "summary": {
     "facility_count": 93,
-    "evidence_record_count": 844,
+    "evidence_record_count": 868,
     "field_provenance_items": 1488,
     "facilities_with_selected_external_sources": 93,
-    "facilities_with_corrob": 86,
+    "facilities_with_corrob": 89,
     "facilities_with_structured_conflicts": 0
   },
   "source_artifacts": [
     {
       "path": "data/external/epoch_ai/registry.json",
-      "sha256": "9ae0c8cffec57865db9bd61ea4c2c7b5e13f6fbe867f0c4b1b57490010dc5854"
+      "sha256": "3ccf461b278655c89214daf19c3dde8cdedc756cb51e8eaa4938c395371c63f5"
     },
     {
       "path": "data/track3/evidence_records.json",
-      "sha256": "7b95509300383e9440195d3f2a5227e411e3fd73582ee611aedb885c0bdd7bb8"
+      "sha256": "2aa4d6e2a56606f96ef3816430f5bed14b85e0c36d70571ec1264059aebc0898"
     },
     {
       "path": "data/track3/site_status.json",
-      "sha256": "1a8234425e3915509d7c42b52f470a5f2669eae287dc33fa292cfb7a71d67d2c"
+      "sha256": "f29455a64778a4157ae45636a527ef06dd7d1ff2dcbe237e84dcb31e06589a24"
     },
     {
       "path": "data/track3/building_footprints_index.json",
-      "sha256": "d1203dee4c576be8e84883124b70e89529fa0d52a741d2396d989525e746e275"
+      "sha256": "87e73b43ab132e8e54cb5b1ad80816d84be811d536a777abf195bc70cca50c5d"
     },
     {
       "path": "data/track3/time_series_verification.json",
-      "sha256": "98ce337635854484d22002c101983cccdabee729ad83ae1a7a0d4b10db0c5f81"
+      "sha256": "0bfbaecf23cb7161969dc4e9c143da0be828b84cba03c66220349c25fdfdbe17"
     }
   ],
   "facilities": [
@@ -518,7 +518,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-300e3db10dfae8b862b2",
+          "evidence_id": "EVID-REMOTE-54a4157e796884b12a4a",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260603T163841_R126_T16SBD_20260603T213615"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_MSIL2A_20260603T163841_R126_T16SBD_20260603T213615"
+          },
+          "capture_date": "2026-06-03",
+          "observed_on": "2026-06-03",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-b8f4110c57730c84ab9e",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -973,7 +1001,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 17,
+        "distinct_source_url_count": 18,
         "distinct_source_name_count": 13,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -990,14 +1018,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -1706,14 +1734,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -2227,14 +2255,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -2907,14 +2935,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -3503,14 +3531,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -4070,14 +4098,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -4469,7 +4497,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-97ea57015036b405e8ae",
+          "evidence_id": "EVID-REMOTE-b097123e5838e13f5051",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260114T164641_R126_T16TDN_20260114T202710"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_MSIL2A_20260114T164641_R126_T16TDN_20260114T202710"
+          },
+          "capture_date": "2026-01-14",
+          "observed_on": "2026-01-14",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-4bb1ff29aee0b48db791",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -4780,7 +4836,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 10,
+        "distinct_source_url_count": 11,
         "distinct_source_name_count": 6,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -4797,14 +4853,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -5291,14 +5347,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -5932,14 +5988,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -6714,14 +6770,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -7357,14 +7413,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -7823,14 +7879,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -8222,7 +8278,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-9c0ad85e2ded859454aa",
+          "evidence_id": "EVID-REMOTE-c0c3ceeb89054b806e7f",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260603T163841_R126_T16SBD_20260603T213615"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_MSIL2A_20260603T163841_R126_T16SBD_20260603T213615"
+          },
+          "capture_date": "2026-06-03",
+          "observed_on": "2026-06-03",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-9475233e1c7aef7a6e14",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -8420,7 +8504,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 9,
+        "distinct_source_url_count": 10,
         "distinct_source_name_count": 6,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -8437,14 +8521,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -8993,14 +9077,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -9738,14 +9822,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -10520,14 +10604,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -10889,7 +10973,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-3a730e54f72ce7e653e4",
+          "evidence_id": "EVID-REMOTE-6cc386ca21ec06eaf14e",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T15TVK_20260525T204939"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260525T165839_R069_T15TVK_20260525T204939"
+          },
+          "capture_date": "2026-05-25",
+          "observed_on": "2026-05-25",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-2d5ef33bd4a1456ba3db",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -11228,7 +11340,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 12,
+        "distinct_source_url_count": 13,
         "distinct_source_name_count": 10,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -11245,14 +11357,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -11766,14 +11878,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -12424,14 +12536,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -13103,14 +13215,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -13482,6 +13594,62 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
+          "evidence_id": "EVID-REMOTE-7aa5e0f88234a32af3ed",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260531T162831_R083_T16SFH_20260531T214512"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_MSIL2A_20260531T162831_R083_T16SFH_20260531T214512"
+          },
+          "capture_date": "2026-05-31",
+          "observed_on": "2026-05-31",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-8b636fd6beb50cc201ec",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260923T162919_R083_T16SEH_20260923T202234"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260923T162919_R083_T16SEH_20260923T202234"
+          },
+          "capture_date": "2026-09-23",
+          "observed_on": "2026-09-23",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
           "evidence_id": "EVID-REMOTE-10d473768743e7c9592d",
           "domain": "remote_sensing",
           "evidence_type": "optical",
@@ -13793,7 +13961,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 11,
+        "distinct_source_url_count": 13,
         "distinct_source_name_count": 9,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -13810,14 +13978,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -14283,14 +14451,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -14946,14 +15114,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -15558,14 +15726,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -16237,14 +16405,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -16934,14 +17102,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -17519,14 +17687,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -18216,14 +18384,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -18953,14 +19121,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -19878,14 +20046,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -20257,7 +20425,91 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-8403f525cf4d3efb1b74",
+          "evidence_id": "EVID-REMOTE-89a4a3ac971ad27d0b7c",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T14RPV_20260525T205549"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260525T165839_R069_T14RPV_20260525T205549"
+          },
+          "capture_date": "2026-05-25",
+          "observed_on": "2026-05-25",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-2530f0c24994075a376d",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2C_14RPV_20260530_1_L2A"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_14RPV_20260530_1_L2A"
+          },
+          "capture_date": "2026-05-30",
+          "observed_on": "2026-05-30",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-94ccc2ca040cf862ebc5",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2B_14RPV_20260925_0_L2A"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_14RPV_20260925_0_L2A"
+          },
+          "capture_date": "2026-09-25",
+          "observed_on": "2026-09-25",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-65c93a86fb32ce465810",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -20681,7 +20933,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 9,
+        "distinct_source_url_count": 12,
         "distinct_source_name_count": 7,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -20698,14 +20950,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -21461,14 +21713,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -21850,7 +22102,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-99941bd219da1812f902",
+          "evidence_id": "EVID-REMOTE-a5a78c786f79af8d5906",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260802T163841_R126_T16SBB_20260802T213913"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_MSIL2A_20260802T163841_R126_T16SBB_20260802T213913"
+          },
+          "capture_date": "2026-08-02",
+          "observed_on": "2026-08-02",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-78c999bebd75569d7f0d",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -22048,7 +22328,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 8,
+        "distinct_source_url_count": 9,
         "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -22065,14 +22345,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -22706,14 +22986,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -23171,14 +23451,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -23748,14 +24028,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -24389,14 +24669,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -24973,14 +25253,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -25456,14 +25736,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -26030,14 +26310,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -26586,14 +26866,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -27218,14 +27498,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -27607,7 +27887,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-e6e2d4443712a204fcee",
+          "evidence_id": "EVID-REMOTE-08478fd29b72b3502fb9",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260601T032529_R018_T49TFG_20260601T054159"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260601T032529_R018_T49TFG_20260601T054159"
+          },
+          "capture_date": "2026-06-01",
+          "observed_on": "2026-06-01",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-326a05c506a521390027",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -27777,7 +28085,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 7,
+        "distinct_source_url_count": 8,
         "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -27794,14 +28102,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -28369,14 +28677,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -28925,14 +29233,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -29538,14 +29846,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -30264,14 +30572,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -30858,14 +31166,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -31480,14 +31788,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -32083,14 +32391,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -32443,14 +32751,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -33037,14 +33345,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -33417,14 +33725,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -34022,14 +34330,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -34627,14 +34935,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -35183,14 +35491,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -35562,7 +35870,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-fd6ee4058a9d11b2a7fe",
+          "evidence_id": "EVID-REMOTE-bbdba3c42aad670366bb",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260110T025009_R132_T50RPV_20260110T062727"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260110T025009_R132_T50RPV_20260110T062727"
+          },
+          "capture_date": "2026-01-10",
+          "observed_on": "2026-01-10",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-52ec16abda510a9fe83a",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -35704,7 +36040,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 7,
+        "distinct_source_url_count": 8,
         "distinct_source_name_count": 4,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -35721,14 +36057,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -36269,14 +36605,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -36713,14 +37049,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -37307,14 +37643,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -37901,14 +38237,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -38640,14 +38976,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -39290,14 +39626,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -39460,7 +39796,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-27",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "Mäntsälä AI data center",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -39629,12 +39965,40 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": false,
           "review_state": "PUBLISHED_RECORD"
+        },
+        {
+          "evidence_id": "EVID-PWEB-mantsala-project-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Nebius",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://nebius.com/newsroom/nebius-to-construct-310-mw-ai-factory-in-finland"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "project"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-03-31",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Nebius says its first Finnish data center in Mäntsälä was expanded to 75 MW, completed earlier in 2026.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
-        "status": "SINGLE_SOURCE",
-        "distinct_source_url_count": 1,
-        "distinct_source_name_count": 1,
+        "status": "CORROBORATION_PRESENT",
+        "distinct_source_url_count": 2,
+        "distinct_source_name_count": 2,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -39650,14 +40014,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -39820,7 +40184,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-27",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "Project Southgate — Melbourne",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -39999,12 +40363,70 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": false,
           "review_state": "PUBLISHED_RECORD"
+        },
+        {
+          "evidence_id": "EVID-PWEB-southgate-project-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Firmus",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://firmus.co/newsroom/southgate-expansion",
+              "https://firmus.co/newsroom/firmus-signs-multi-year-agreement-with-global-hyperscale-customer-at-project-southgate"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "project"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-03-02",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Firmus identifies Southgate Melbourne as the first Australian deployment of its multi-site Project Southgate program.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-southgate-gpu-20260927",
+          "domain": "chip_inventory",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Firmus",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://firmus.co/newsroom/firmus-signs-multi-year-agreement-with-global-hyperscale-customer-at-project-southgate",
+              "https://firmus.co/newsroom/southgate-expansion"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "chip_quantities"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-03-02",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Firmus's site-specific contract calls for approximately 18,400 GB300 GPUs at the Melbourne facility; the broader 18,500 figure is a first-stage program statement.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
-        "status": "SINGLE_SOURCE",
-        "distinct_source_url_count": 1,
-        "distinct_source_name_count": 1,
+        "status": "CORROBORATION_PRESENT",
+        "distinct_source_url_count": 3,
+        "distinct_source_name_count": 2,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -40020,14 +40442,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -40190,7 +40612,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-27",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "PHXA — Stream Phoenix",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -40527,12 +40949,40 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-PWEB-stream-phoenix-project-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Stream Data Centers",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.streamdatacenters.com/locations/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "project"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Stream identifies PHXA as its Phoenix campus and reports 280 MW at full build.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 7,
-        "distinct_source_name_count": 4,
+        "distinct_source_url_count": 8,
+        "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -40548,14 +40998,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -41251,14 +41701,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -41847,14 +42297,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -42451,14 +42901,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -42831,14 +43281,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -43343,14 +43793,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -44022,14 +44472,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -44626,14 +45076,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -44796,7 +45246,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-27",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "Barber Lake Facility",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -45015,12 +45465,69 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": false,
           "review_state": "PUBLISHED_RECORD"
+        },
+        {
+          "evidence_id": "EVID-PWEB-barberlake-project-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Cipher Digital / U.S. SEC",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "project"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-25",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Cipher's September 2026 SEC filing identifies the Barber Lake Facility in Colorado City, Texas and describes an amended lease and updated delivery schedule.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-barberlake-contract-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Cipher Digital / U.S. SEC",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm",
+              "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/barberlakeleaseamendmentpr.htm"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-25",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "The filing identifies Fluidstack and a subsequent leading-AI-lab commitment but does not name the latter in the public filing; no tenant identity is inferred here.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
-        "status": "SINGLE_SOURCE",
-        "distinct_source_url_count": 1,
-        "distinct_source_name_count": 1,
+        "status": "CORROBORATION_PRESENT",
+        "distinct_source_url_count": 3,
+        "distinct_source_name_count": 2,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -45036,14 +45543,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -45206,7 +45713,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-27",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "CoreWeave Lancaster AI data center",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -45543,12 +46050,96 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-PWEB-lancaster-project-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "CoreWeave",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.coreweave.com/blog/building-pennsylvania-into-the-mid-atlantic-ai-hub"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "project"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-07-15",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "CoreWeave announced a new Lancaster, Pennsylvania data center, initially 100 MW with potential expansion to 300 MW.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-lancaster-address-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "DEPLOY",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://registry.deploy.report/datacenters/facilities/coreweave-lancaster-pa"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "address"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "DEPLOY identifies 216 Greenfield Road, Lancaster, Pennsylvania as the CoreWeave facility address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-lancaster-commitment-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "CoreWeave",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Announces-Multi-Billion-Dollar-Commitment-to-AI-Infrastructure-in-Pennsylvania/default.aspx"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-07-15",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "The commitment is a site-specific infrastructure statement; it does not establish a utility queue ID or measured load.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 7,
-        "distinct_source_name_count": 4,
+        "distinct_source_url_count": 9,
+        "distinct_source_name_count": 6,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -45564,14 +46155,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -46130,14 +46721,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -46846,14 +47437,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -47319,6 +47910,34 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
+          "evidence_id": "EVID-REMOTE-015fa50ba522a16a52db",
+          "domain": "remote_sensing",
+          "evidence_type": "sar",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-1 GRD",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260717T163736_20260717T163801_003716_006A72"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S1D_IW_GRDH_1SDV_20260717T163736_20260717T163801_003716_006A72"
+          },
+          "capture_date": "2026-07-17",
+          "observed_on": "2026-07-17",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
           "evidence_id": "EVID-REMOTE-ce1ce4d73d9d64fcd222",
           "domain": "remote_sensing",
           "evidence_type": "sar",
@@ -47332,6 +47951,34 @@
             "publication_date": null,
             "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
             "record_locator": "S1D_IW_GRDH_1SDV_20260927T052236_20260927T052301_004759_008EA2"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-a9fd032971e0027dd4d3",
+          "domain": "remote_sensing",
+          "evidence_type": "sar",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-1 GRD",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260927T163738_20260927T163803_004766_008EDD"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S1D_IW_GRDH_1SDV_20260927T163738_20260927T163803_004766_008EDD"
           },
           "capture_date": "2026-09-27",
           "observed_on": "2026-09-27",
@@ -47517,7 +48164,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 8,
+        "distinct_source_url_count": 10,
         "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -47534,14 +48181,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -48121,14 +48768,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -48705,14 +49352,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -49393,14 +50040,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -50081,14 +50728,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -50470,7 +51117,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-ae4cbe7894ede8d33c13",
+          "evidence_id": "EVID-REMOTE-558601e1bbcf3d007bf9",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260728T163839_R126_T15SXS_20260729T102208"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260728T163839_R126_T15SXS_20260729T102208"
+          },
+          "capture_date": "2026-07-28",
+          "observed_on": "2026-07-28",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-04f218092fb90cd468b5",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -50615,8 +51290,8 @@
           "evidence_type": "PLANNED_TRANSFORMER_SPECIFICATION",
           "status": "INGESTED",
           "source": {
-            "name": null,
-            "kind": null,
+            "name": "Midcontinent Independent System Operator",
+            "kind": "RTO official planning document",
             "urls": [
               "https://cdn.misoenergy.org/MTEP25%20Report731648.pdf"
             ],
@@ -50624,16 +51299,16 @@
             "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
             "record_locator": null
           },
-          "capture_date": null,
+          "capture_date": "2026-09-27",
           "observed_on": "2025",
           "exact_source_field": null,
           "exact_source_value": null,
-          "retained_basis": null,
+          "retained_basis": "The Smalling 230 kV station ... [includes] four 1,500 MVA 500/230 kV autotransformers.",
           "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
           "confidence": "high",
           "confidence_semantics": "Published evidence confidence label, not probability.",
-          "evidence_origin": "unclassified",
-          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "evidence_origin": "primary",
+          "origin_basis": "Source metadata explicitly indicates an official/company/regulatory/filing/permit origin.",
           "site_specific": true,
           "review_state": "PUBLISHED_RECORD"
         },
@@ -50643,8 +51318,8 @@
           "evidence_type": "TRANSFORMER_DELIVERY_IN_TRANSIT",
           "status": "INGESTED",
           "source": {
-            "name": null,
-            "kind": null,
+            "name": "Entergy",
+            "kind": "Utility company public post",
             "urls": [
               "https://www.linkedin.com/posts/entergy_a-major-milestone-is-underway-in-north-louisiana-activity-7419831153806811137-V9bY"
             ],
@@ -50652,11 +51327,11 @@
             "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
             "record_locator": null
           },
-          "capture_date": null,
+          "capture_date": "2026-09-27",
           "observed_on": null,
           "exact_source_field": null,
           "exact_source_value": null,
-          "retained_basis": null,
+          "retained_basis": "Entergy reports a large power transformer moving from Garden City, Kansas to Richland Parish to provide power for the Meta data center.",
           "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
           "confidence": "high",
           "confidence_semantics": "Published evidence confidence label, not probability.",
@@ -50671,8 +51346,8 @@
           "evidence_type": "TRANSFORMER_DELIVERED",
           "status": "INGESTED",
           "source": {
-            "name": null,
-            "kind": null,
+            "name": "JCL Energy",
+            "kind": "Transformer supplier project record",
             "urls": [
               "https://www.jcl.energy/projects"
             ],
@@ -50680,11 +51355,11 @@
             "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
             "record_locator": null
           },
-          "capture_date": null,
+          "capture_date": "2026-09-27",
           "observed_on": "2025-Q4",
           "exact_source_field": null,
           "exact_source_value": null,
-          "retained_basis": null,
+          "retained_basis": "Supplier project page identifies a hyperscale data-center campus in Rayville, Louisiana; the Epoch Meta Hyperion record is the corresponding Richland Parish site. The public supplier page does not expose a parcel-level identifier.",
           "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
           "confidence": "medium",
           "confidence_semantics": "Published evidence confidence label, not probability.",
@@ -50753,8 +51428,8 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 13,
-        "distinct_source_name_count": 6,
+        "distinct_source_url_count": 14,
+        "distinct_source_name_count": 9,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -50770,14 +51445,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -51228,14 +51903,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -51627,14 +52302,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -52130,14 +52805,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -52642,14 +53317,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -53096,14 +53771,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -53504,14 +54179,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -53958,14 +54633,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -54403,14 +55078,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -55121,14 +55796,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -55791,14 +56466,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+            "repository_commit": "e92429c018c897df531460494e21f77be052c233",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "00ba4ec0b8b49cd4501503a1437d6c0045b6e253",
+        "snapshot_commit": "e92429c018c897df531460494e21f77be052c233",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     }
