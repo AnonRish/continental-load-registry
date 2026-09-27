@@ -531,7 +531,7 @@ def main() -> int:
                 {
                     **rec,
                     "site_level_connection_evidence": ev.get("site_level_evidence") or [],
-                    "grid_crosswalk": rec.get("grid_crosswalk") or {},
+                    "grid_crosswalk": crosswalk_by_id.get(str(rec["epoch_id"])) or rec.get("grid_crosswalk") or {},
                 },
                 domain,
                 power_by_site,
@@ -543,14 +543,15 @@ def main() -> int:
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
 
         base_evidence_count = len(ev.get("site_level_evidence") or [])
-        crosswalk_evidence_count = 1 if (rec.get("grid_crosswalk") or {}).get("site_level_public_evidence") else 0
+        crosswalk = crosswalk_by_id.get(str(rec["epoch_id"])) or rec.get("grid_crosswalk") or {}
+        crosswalk_evidence_count = 1 if crosswalk.get("site_level_public_evidence") else 0
         site_records.append({
             "epoch_id": rec["epoch_id"],
             "site_name": rec.get("normalized", {}).get("name"),
             "country": rec.get("normalized", {}).get("country"),
-            "state_province": (rec.get("grid_crosswalk") or {}).get("state_province")
+            "state_province": crosswalk.get("state_province")
             or rec.get("normalized", {}).get("region_inferred_from_address"),
-            "state_province_source": "grid_crosswalk" if (rec.get("grid_crosswalk") or {}).get("state_province") else "epoch_address_inference",
+            "state_province_source": "grid_crosswalk" if crosswalk.get("state_province") else "epoch_address_inference",
             "epoch_region_inferred_from_address": rec.get("normalized", {}).get("region_inferred_from_address"),
             "current_it_power_mw": rec.get("normalized", {}).get("current_power_mw"),
             "current_h100_equivalents": rec.get("normalized", {}).get("current_h100_equivalents"),
