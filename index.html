@@ -260,7 +260,7 @@
       <div class="p-4"><p class="mono text-xl" id="mapInventoryProjectCount">253</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project records</p></div>
       <div class="p-4"><p class="mono text-xl" id="mapInventoryMappedCount">253</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project records mapped</p></div>
       <div class="p-4"><p class="mono text-xl" id="mapInventoryAggregateCount">66</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Aggregate/historical footprints</p></div>
-      <div class="p-4"><p class="mono text-xl" id="mapInventoryEpochCount">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch AI site observations</p></div><div class="p-4"><p class="mono text-xl" id="mapInventorySupplementalCount">58</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
+      <div class="p-4"><p class="mono text-xl" id="mapInventoryEpochCount">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch AI site observations</p></div><div class="p-4"><p class="mono text-xl" id="mapInventorySupplementalCount">61</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
     </div>
     <div class="scroll-x mt-5">
       <table class="w-full text-xs min-w-[920px]">
@@ -268,7 +268,7 @@
         <tbody id="mapLayerInventoryBody">
           <tr><td class="px-3 py-2">Project-level evidence</td><td class="px-3 py-2 text-right">271</td><td class="px-3 py-2 text-right">271</td><td class="px-3 py-2">Project/city/county/site-area/service-area display geography</td><td class="px-3 py-2">All project records display-mapped; service-area points are not facility coordinates</td></tr>
           <tr><td class="px-3 py-2">Aggregate / historical evidence</td><td class="px-3 py-2 text-right">66</td><td class="px-3 py-2 text-right">66</td><td class="px-3 py-2">Regional/county/state footprints</td><td class="px-3 py-2">Non-facility evidence; includes MISO 153-record gap footprint</td></tr>
-          <tr><td class="px-3 py-2">Supplemental evidence universe</td><td class="px-3 py-2 text-right">58</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Source/evidence records, not all geographic</td><td class="px-3 py-2">Searchable evidence layer</td></tr>
+          <tr><td class="px-3 py-2">Supplemental evidence universe</td><td class="px-3 py-2 text-right">61</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Source/evidence records, not all geographic</td><td class="px-3 py-2">Searchable evidence layer</td></tr>
           <tr><td class="px-3 py-2">Epoch AI sites</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2">Public-address-derived site display points</td><td class="px-3 py-2">Separate secondary evidence layer</td></tr>
           <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right">3,873</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
           <tr><td class="px-3 py-2">SPP active queue</td><td class="px-3 py-2 text-right">3,076</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geography</td><td class="px-3 py-2">Current snapshot present</td></tr>
@@ -397,10 +397,10 @@
       <div>
         <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Full machine-readable project layer</p>
         <h2 class="font-serif-display text-xl mt-1">Complete project ledger</h2>
-        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Browse all 253 extracted project-level records in the page itself. Search matches project name, customer, provider, jurisdiction, queue ID, permit number and status. Capacity cells show the first source-specific claim only; open the JSON/CSV for every retained raw claim. **252 of 253 project records have map geometry; the Woostor contract is intentionally unpinned because its public site is not identified.**</p>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Browse all 271 extracted project-level records in the page itself. Search matches project name, customer, provider, jurisdiction, queue ID, permit number and status. Capacity cells show the first source-specific claim only; open the JSON/CSV for every retained raw claim. **All 271 project records have display geometry; service-area and jurisdiction points are explicitly labeled where an exact site is not public.**</p>
       </div>
       <div class="flex flex-wrap gap-2 items-center">
-        <input id="projectLedgerSearch" type="search" placeholder="Search 253 project records" class="text-sm px-3 py-2 rounded-md w-[260px]" />
+        <input id="projectLedgerSearch" type="search" placeholder="Search 271 project records" class="text-sm px-3 py-2 rounded-md w-[260px]" />
         <select id="projectLedgerType" class="text-sm px-3 py-2 rounded-md">
           <option value="">All evidence types</option>
         </select>
