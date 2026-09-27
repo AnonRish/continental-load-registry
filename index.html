@@ -297,8 +297,8 @@
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
       <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
       <div class="p-4"><p class="mono text-xl">77</p><p class="text-xs mt-1" style="color:var(--ink-faint);">U.S. sites with jurisdiction</p></div>
-      <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
-      <div class="p-4"><p class="mono text-xl">72</p><p class="text-xs mt-1" style="color:var(--ink-faint);">U.S. jurisdiction-only gaps</p></div>
+      <div class="p-4"><p id="queueUniverseVerifiedIds" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
+      <div class="p-4"><p id="queueUniverseCurrentGaps" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current open U.S. site-specific gaps</p></div>
     </div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The original 72-site U.S. jurisdiction-only gap is preserved as a starting benchmark. The current audit closes the research worklist by assigning all 93 Epoch sites a site-level disposition: exact queue match, site-level public evidence, or explicit NO MATCH FOUND. A no-match is not a claim that the site lacks grid service.</p>
   </section>
@@ -2481,6 +2481,8 @@ openFacilityFromHash();
       document.getElementById('track3Evidence').textContent=combined.toLocaleString()+' / 93';
       document.getElementById('track3USGaps').textContent=usPending.toLocaleString();
       document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
+document.getElementById('queueUniverseVerifiedIds').textContent=Number(summary.site_specific_queue_id_count||grid.VERIFIED_SITE_SPECIFIC||0).toLocaleString();
+      document.getElementById('queueUniverseCurrentGaps').textContent=usPending.toLocaleString();
       const domainCounts=summary.domain_status_counts||{};
       document.getElementById('track3PowerSnapshots').textContent=Number(domainCounts.power_telemetry?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
       document.getElementById('track3CoolingSnapshots').textContent=Number(domainCounts.cooling?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
