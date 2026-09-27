@@ -145,7 +145,7 @@ def asset_href(assets: dict[str, Any], candidates: list[str]) -> tuple[str | Non
 def read_window(href: str, lon: float, lat: float, pixels: int) -> tuple[np.ndarray, dict[str, Any]]:
     env = {
         "GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
-        "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif,.TIF,.tiff,.TIFF",
+        "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif,.TIF,.tiff,.TIFF,.jp2,.JP2",
         "GDAL_HTTP_MAX_RETRY": "2",
         "GDAL_HTTP_RETRY_DELAY": "1",
         "GDAL_CACHEMAX": "64",
