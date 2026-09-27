@@ -4,19 +4,19 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 206,
+    "record_count": 212,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 180,
+      "PUBLIC_SOURCE_CAPTURED": 186,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "energy_companies": 50,
+      "energy_companies": 53,
       "project": 31,
       "investment": 19,
       "owner": 10,
       "investors": 4,
-      "construction_companies": 15,
+      "construction_companies": 18,
       "cooling": 8,
       "chip_quantities": 5,
       "operational_status": 7,
@@ -3370,7 +3370,103 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "MeasuredAI reports HITT Contracting on Fairwater and other Fayetteville buildings, Clayco on Fairwater DC-9, and Brasfield & Gorrie on Fairwater/DC-3/DC-4 and site preparation. Source role is retained as secondary public evidence; it is not treated as an independently verified general-contractor roster.",
       "evidence_id": "EVID-PWEB-fairwaterbuilders20260927"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "construction_companies",
+      "value": "JE Dunn",
+      "relationship": "publicly identified construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Temple announcement names JE Dunn among the project partners; the announcement does not characterize JE Dunn's full contractual role, so this is retained as a named construction/project partner.",
+      "evidence_id": "EVID-PWEB-meta-6ff5e1ae-cons-0"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "energy_companies",
+      "value": "Oncor Electric",
+      "relationship": "publicly identified energy/grid infrastructure partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Temple announcement says it worked closely with Oncor Electric to plan for and meet the data center's energy needs.",
+      "evidence_id": "EVID-PWEB-meta-6ff5e1ae-ener-1"
+    },
+    {
+      "site_name": "Meta Kuna",
+      "epoch_id": "EPOCH-5de9a1c70a3e2275",
+      "field": "construction_companies",
+      "value": "Hensel Phelps",
+      "relationship": "publicly identified construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
+      "publication_date": "2026-09-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Kuna announcement names Hensel Phelps among the local and project partners; no broader contractor roster is inferred.",
+      "evidence_id": "EVID-PWEB-meta-5de9a1c7-cons-2"
+    },
+    {
+      "site_name": "Meta Kuna",
+      "epoch_id": "EPOCH-5de9a1c70a3e2275",
+      "field": "energy_companies",
+      "value": "Idaho Power",
+      "relationship": "publicly identified energy/grid infrastructure partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
+      "publication_date": "2026-09-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Kuna announcement says it worked closely with Idaho Power to plan for its energy needs and identifies Idaho Power as a project partner.",
+      "evidence_id": "EVID-PWEB-meta-5de9a1c7-ener-3"
+    },
+    {
+      "site_name": "Meta Cheyenne",
+      "epoch_id": "EPOCH-14cecdb5956daea1",
+      "field": "construction_companies",
+      "value": "Fortis Construction",
+      "relationship": "publicly identified construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/07/hello-cheyenne/"
+      ],
+      "publication_date": "2024-07-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Cheyenne announcement directs construction information to Fortis Construction and names Fortis Construction among the project partners.",
+      "evidence_id": "EVID-PWEB-meta-14cecdb5-cons-4"
+    },
+    {
+      "site_name": "Meta Cheyenne",
+      "epoch_id": "EPOCH-14cecdb5956daea1",
+      "field": "energy_companies",
+      "value": "Black Hills Energy",
+      "relationship": "publicly identified energy/grid infrastructure partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/07/hello-cheyenne/"
+      ],
+      "publication_date": "2024-07-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Cheyenne announcement says Meta will work with Black Hills Energy to add new resources to the grid, including renewables.",
+      "evidence_id": "EVID-PWEB-meta-14cecdb5-ener-5"
     }
   ],
-  "record_count": 206
+  "record_count": 212
 }
