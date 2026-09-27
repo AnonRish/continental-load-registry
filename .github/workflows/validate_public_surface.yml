@@ -27,6 +27,8 @@ on:
       - "data/project_level_extractions.csv"
       - "data/project_level_map.json"
       - "data/miso_unresolved_large_loads.csv"
+      - "data/data_universe_checklist.csv"
+      - "data/data_universe_checklist.json"
       - "data/supplemental_aggregate_map.json"
       - "data/market_universe_manifest.json"
       - "data/market_universe_manifest.csv"
@@ -179,6 +181,11 @@ jobs:
           assert g["supplemental_aggregate_map"]["records"] == 62
           assert g["supplemental_aggregate_map"]["mapped_records"] == 62
 
+          checklist = json.loads((root / "data_universe_checklist.json").read_text(encoding="utf-8"))
+          assert len(checklist["records"]) == 10
+          assert {x["id"] for x in checklist["records"]} == {"CAISO","MISO","PJM","ERCOT","SPP","NYISO","ISO-NE","AESO","IESO_ON","UTILITIES_OUTSIDE_MARKETS"}
+          checklist_csv = list(csv.DictReader((root / "data_universe_checklist.csv").open("r", encoding="utf-8", newline="")))
+          assert len(checklist_csv) == 10
           map_manifest = json.loads((root / "map_layer_manifest.json").read_text(encoding="utf-8"))
           assert len(map_manifest["layers"]) == 11
           layer_by_id = {x["id"]: x for x in map_manifest["layers"]}
