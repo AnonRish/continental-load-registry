@@ -181,8 +181,96 @@
 </style>
 </style>
 <link rel="stylesheet" href="observatory-nav.css">
-</head>
-<body class="min-h-screen">
+
+/* REGISTRY-UI-V3 */
+:root{--ui-navy:#0b1628;--ui-blue:#4b8cff;--ui-mint:#8ee0bf;--ui-glass:rgba(251,252,250,.86)}
+#registryCommandDeck{position:sticky;top:0;z-index:120;border-bottom:1px solid color-mix(in srgb,var(--line) 80%,transparent);background:color-mix(in srgb,var(--panel) 88%,transparent);backdrop-filter:blur(18px) saturate(135%);box-shadow:0 8px 30px rgba(8,18,32,.08)}
+.registry-deck-inner{max-width:1180px;margin:0 auto;padding:9px 16px 8px}
+.registry-deck-top{display:flex;align-items:center;gap:10px;min-width:0}
+.registry-brand{display:flex;align-items:center;gap:9px;text-decoration:none;min-width:190px}
+.registry-brand-mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--ui-navy);color:#fff;font:700 11px 'IBM Plex Mono',monospace;letter-spacing:-.04em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.registry-brand-copy strong{display:block;font-size:12px;line-height:1.1;letter-spacing:-.01em}
+.registry-brand-copy span{display:block;margin-top:2px;font:500 8.5px 'IBM Plex Mono',monospace;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em}
+.registry-live{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--line);border-radius:999px;font:500 8.5px 'IBM Plex Mono',monospace;color:var(--ink-soft);white-space:nowrap}
+.registry-live i{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+.registry-deck-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.registry-mini-link{font-size:10px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;text-decoration:none;color:var(--ink-soft);white-space:nowrap}
+.registry-mini-link:hover{background:var(--amber-soft);color:var(--ink)}
+.registry-view-tabs{display:flex;gap:5px;overflow-x:auto;padding:7px 0 1px;scrollbar-width:none}
+.registry-view-tabs::-webkit-scrollbar{display:none}
+.registry-tab{appearance:none;border:1px solid transparent;background:transparent;color:var(--ink-soft);border-radius:8px;padding:7px 10px;font:600 10px 'IBM Plex Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.registry-tab:hover{background:var(--amber-soft);color:var(--ink)}
+.registry-tab.active{background:var(--ink);color:var(--panel);border-color:var(--ink);box-shadow:0 2px 7px rgba(0,0,0,.1)}
+#registryViewIntro{max-width:1180px;margin:0 auto;padding:14px 16px 4px;display:flex;align-items:end;gap:20px;justify-content:space-between}
+.registry-intro-kicker{font:600 8.5px 'IBM Plex Mono',monospace;color:var(--teal);text-transform:uppercase;letter-spacing:.12em}
+.registry-intro-title{margin-top:3px;font-size:20px;line-height:1.04;letter-spacing:-.035em;font-weight:700}
+.registry-intro-copy{max-width:680px;margin-top:5px;font-size:11px;line-height:1.5;color:var(--ink-soft)}
+.registry-kpis{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.registry-kpi{min-width:94px;padding:8px 9px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.registry-kpi b{display:block;font:600 15px/1 'IBM Plex Mono',monospace}
+.registry-kpi span{display:block;margin-top:4px;font-size:8.5px;color:var(--ink-faint)}
+.registry-view-hint{max-width:1180px;margin:0 auto 2px;padding:0 16px;font:500 8.5px/1.4 'IBM Plex Mono',monospace;color:var(--ink-faint);letter-spacing:.02em}
+.registry-view-hidden{display:none!important}
+main > section[data-registry-view="map"]{scroll-margin-top:112px}
+.registry-focus-section{box-shadow:0 0 0 2px color-mix(in srgb,var(--ui-blue) 22%,transparent),0 14px 50px rgba(17,46,91,.08)!important}
+@media(max-width:720px){
+  #registryCommandDeck{position:sticky}
+  .registry-deck-inner{padding-inline:10px}
+  .registry-brand{min-width:auto}
+  .registry-brand-copy{display:none}
+  .registry-mini-link{display:none}
+  #registryViewIntro{padding-inline:10px;display:block}
+  .registry-kpis{justify-content:flex-start;margin-top:9px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .registry-kpi{min-width:88px}
+}
+/* tighter hero / less vertical chrome */
+.visual-hero{min-height:350px}
+.visual-title{max-width:700px}
+.visual-hero-grid{padding-top:2.6rem;padding-bottom:2.25rem}
+section.mb-8{scroll-margin-top:118px}
+\n</head>
+<body class="min-h-screen">\n
+<!-- REGISTRY-UI-V3 -->
+<div id="registryCommandDeck" aria-label="Registry navigation">
+  <div class="registry-deck-inner">
+    <div class="registry-deck-top">
+      <a class="registry-brand" href="#main" aria-label="Continental Load Registry home">
+        <span class="registry-brand-mark">CLR</span>
+        <span class="registry-brand-copy"><strong>Continental Load Registry</strong><span>North America · public research surface</span></span>
+      </a>
+      <span class="registry-live"><i aria-hidden="true"></i>PUBLIC RESEARCH</span>
+      <div class="registry-deck-actions">
+        <a class="registry-mini-link" href="research.html">Research ops</a>
+        <a class="registry-mini-link" href="api.html">API</a>
+        <a class="registry-mini-link" href="bulk-download.html">Downloads</a>
+      </div>
+    </div>
+    <nav class="registry-view-tabs" role="tablist" aria-label="Registry views">
+      <button class="registry-tab active" type="button" role="tab" data-registry-view="overview" aria-selected="true">Overview</button>
+      <button class="registry-tab" type="button" role="tab" data-registry-view="map" aria-selected="false">Map</button>
+      <button class="registry-tab" type="button" role="tab" data-registry-view="sites" aria-selected="false">Sites</button>
+      <button class="registry-tab" type="button" role="tab" data-registry-view="evidence" aria-selected="false">Evidence</button>
+      <button class="registry-tab" type="button" role="tab" data-registry-view="coverage" aria-selected="false">Coverage</button>
+      <button class="registry-tab" type="button" role="tab" data-registry-view="method" aria-selected="false">Method</button>
+    </nav>
+  </div>
+</div>
+<div id="registryViewIntro">
+  <div>
+    <div class="registry-intro-kicker" id="registryViewKicker">CONTROL ROOM</div>
+    <div class="registry-intro-title" id="registryViewTitle">See the system, then drill down.</div>
+    <div class="registry-intro-copy" id="registryViewCopy">The full research record remains intact. The homepage now presents it as focused views instead of one continuous wall of tables.</div>
+  </div>
+  <div class="registry-kpis" aria-label="Registry at a glance">
+    <div class="registry-kpi"><b id="deckSites">93</b><span>frontier sites</span></div>
+    <div class="registry-kpi"><b id="deckRecords">1,641</b><span>known records</span></div>
+    <div class="registry-kpi"><b id="deckGW">397.8</b><span>GW broad scope</span></div>
+    <div class="registry-kpi"><b id="deckEvidence">396</b><span>Track 3 evidence</span></div>
+    <div class="registry-kpi"><b id="deckPhysical">0</b><span>physical observations</span></div>
+  </div>
+</div>
+<div class="registry-view-hint" id="registryViewHint">Overview is the visual entry point. Use the tabs above to open the dense research layers.</div>
+
 
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-[var(--panel)] focus:border focus:hairline focus:px-3 focus:py-2 focus:text-sm">Skip to registry data</a>
 
@@ -3115,5 +3203,87 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
 }).catch(function(e){var m=document.getElementById('websiteCompletenessMeta');if(m)m.textContent='Completeness audit unavailable: '+e.message;});
 </script>
 <script src="observatory-nav.js" defer></script>
-</body>
+
+<script>
+/* REGISTRY-UI-V3 controller */
+(()=> {
+  const META = {
+    overview:{k:'CONTROL ROOM',t:'See the system, then drill down.',c:'A compact visual entry point to the registry. The full evidence and queue universe stays intact behind the views.',hint:'Overview keeps the homepage calm: visual context + market coverage. Dense tables live in the other views.'},
+    map:{k:'GEOGRAPHY',t:'Map the load universe.',c:'Interactive map, layer accounting, site registry and queue geography. Map display points are not automatically facility coordinates.',hint:'Use the map toggles for different evidence classes; open Sites for the 93-site frontier-AI registry.'},
+    sites:{k:'FRONTIER AI SITES',t:'Browse the 93-site reference universe.',c:'Site identity, connection research, evidence coverage and the complete site-level ledger. Unknown stays unknown.',hint:'Site-level evidence and queue rows are deliberately kept separate so the same MW is not counted twice.'},
+    evidence:{k:'EVIDENCE',t:'Follow the proof chain.',c:'Physical verification, utility/regulatory records, project relationships, enrichment and supplemental evidence — each with its own source class.',hint:'A missing stream is a gap, not a negative finding.'},
+    coverage:{k:'DATA COVERAGE',t:'See what is published — and what is not.',c:'Market completeness, unresolved MISO geography, source context, full queue layers, project records and historical snapshots.',hint:'Coverage status distinguishes captured data from public-source limitations and research still outstanding.'},
+    method:{k:'METHOD',t:'Read the rules behind the registry.',c:'Module 1 radar, methodology, boundary conditions and evidence semantics. This is where assumptions are documented.',hint:'The research surface is designed to expose uncertainty instead of hiding it.'}
+  };
+  const viewForId = {
+    dataUniverseChecklist:'coverage',misoUnlocatedWorklist:'coverage',mapLayerInventory:'map',queueUniverse:'sites',
+    epochConnectionTargets:'sites',dataUniverseStatus:'coverage',epochSiteEvidenceInventory:'sites',
+    regulatoryUtilityEvidence:'evidence',websiteCompletenessAudit:'coverage',currentPublicSourceContext:'coverage',
+    physicalVerificationLayer:'evidence',completeProjectLedger:'evidence',completeConnectionTargetLedger:'sites',
+    completeSiteEvidenceLedger:'evidence',caisoFullQueueSection:'coverage',freshPublicEnrichment:'evidence',
+    auxiliarySourceLayer:'evidence',queueWideLayers:'coverage',projectLevelExtraction:'coverage',
+    projectLevelTable:'coverage',pjmSubmissionHistory:'coverage',supplementalLargeLoad:'evidence',
+    supplementalBrowser:'evidence',epochRegistry:'sites','module1-radar':'method',methodology:'method'
+  };
+  const sections=[...document.querySelectorAll('main > section')];
+  sections.forEach(s=>{
+    const id=s.id||'';
+    let v=viewForId[id];
+    if(!v) v=s.querySelector('.observatory-visuals')?'overview':(s.textContent.includes('Nine-market core')?'overview':(s.textContent.trim().startsWith('Regulatory filings')?'method':'overview'));
+    s.dataset.registryView=v;
+  });
+  const mapHost=document.getElementById('registryMap');
+  const mapWrap=mapHost?.closest('main > div');
+  if(mapWrap){mapWrap.dataset.registryView='map';}
+  const divs=[...document.querySelectorAll('main > div')];
+  if(divs[0]) divs[0].dataset.registryView='overview';
+  if(divs[1]) divs[1].dataset.registryView='coverage';
+  const tabs=[...document.querySelectorAll('.registry-tab')];
+  const introTitle=document.getElementById('registryViewTitle');
+  const introCopy=document.getElementById('registryViewCopy');
+  const kicker=document.getElementById('registryViewKicker');
+  const hint=document.getElementById('registryViewHint');
+  function setDisplay(v){
+    document.querySelectorAll('main > [data-registry-view]').forEach(el=>{
+      const show=el.dataset.registryView===v;
+      el.classList.toggle('registry-view-hidden',!show);
+      if(show) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden','true');
+    });
+    tabs.forEach(b=>{
+      const on=b.dataset.registryView===v;
+      b.classList.toggle('active',on); b.setAttribute('aria-selected',String(on));
+    });
+    const m=META[v]||META.overview;
+    kicker.textContent=m.k; introTitle.textContent=m.t; introCopy.textContent=m.c; hint.textContent=m.hint;
+    document.documentElement.dataset.registryView=v;
+    localStorage.setItem('clr-active-view',v);
+    requestAnimationFrame(()=>{
+      if(v==='map' && window.registryMap?.invalidateSize) setTimeout(()=>window.registryMap.invalidateSize(),80);
+    });
+    if(location.hash && document.getElementById(location.hash.slice(1)) && document.getElementById(location.hash.slice(1)).dataset.registryView!==v) {
+      history.replaceState(null,'',location.pathname+location.search);
+    }
+    window.dispatchEvent(new CustomEvent('registry:viewchange',{detail:{view:v}}));
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>{setDisplay(b.dataset.registryView);window.scrollTo({top:0,behavior:'smooth'});}));
+  const valid=new Set(tabs.map(x=>x.dataset.registryView));
+  const stored=localStorage.getItem('clr-active-view');
+  setDisplay(valid.has(stored)?stored:'overview');
+  const nums={
+    deckSites:'data/track3/summary.json',deckEvidence:'data/track3/summary.json',deckPhysical:'data/track3/summary.json'
+  };
+  fetch('data/track3/summary.json').then(r=>r.json()).then(s=>{
+    if(document.getElementById('deckSites')) document.getElementById('deckSites').textContent=s.epoch_site_count ?? 93;
+    if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=
+      s.track3_evidence_record_count ?? s.evidence_record_count ?? 396;
+    if(document.getElementById('deckPhysical')) document.getElementById('deckPhysical').textContent=s.remote_sensing_derived_observation_count ?? 0;
+  }).catch(()=>{});
+  fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
+    const broad=s.broader_known_total_gw ?? s.broader_scope_total_gw ?? 397.775;
+    document.getElementById('deckRecords').textContent=(s.broader_known_record_count ?? 1641).toLocaleString();
+    document.getElementById('deckGW').textContent=Number(broad).toFixed(1);
+  }).catch(()=>{});
+})();
+</script>
+\n</body>
 </html>
