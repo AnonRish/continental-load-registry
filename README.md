@@ -458,3 +458,16 @@ Live Track 3 rebuild revision: 2026-09-27T02:03Z.
 The repository now preserves **100% of the current Epoch AI AI-data-centers explorer: 93 of 93 records**, accessed 2026-09-27. This is a complete mirror of the current Epoch explorer, not a claim that every AI data center on Earth is publicly known. Epoch's September 2026 research update reported 44% estimated global AI-compute coverage at the time its explorer contained 86 sites, with lower estimated coverage for China.
 
 A separate discovery ledger in `data/global_ai_datacenter_coverage_2026-09-27.json` tracks external candidate facilities/programs from AI Data Center Index, Data Center Index and Compute Atlas. Candidates remain outside the canonical 93-site layer until entity resolution, source verification, capacity-scope checks and overlap testing are complete.
+
+
+## Broader global compute database
+
+The public site now includes [Global Compute Universe](https://anonrish.github.io/continental-load-registry/global-compute-universe.html), a federated discovery surface that is intentionally broader than the 93-site Epoch frontier-AI layer. It joins three separately labeled source universes:
+
+- **Epoch AI:** 93 current frontier-AI explorer records.
+- **Compute Atlas:** 2,228 U.S. compute records in its September 2026 dataset, including data centers, crypto-mining sites, and dedicated generation records.
+- **Data Center Index:** 901 global tracked rows, including 702 counted campuses and additional non-campus rows.
+
+These source populations are **not added together as a single census number**. The interface performs conservative name-plus-place linkage, preserves source provenance, and marks the source/type of every record. Compute Atlas and Data Center Index are reused under their stated CC BY 4.0 terms with attribution; the full source manifest is `data/global_compute_universe_sources_2026-09-27.json`.
+
+The broader database also has a scheduled GitHub Actions refresh workflow at `.github/workflows/sync_global_compute_universe.yml`, which stores reproducible source snapshots when the publishers' public endpoints change.
