@@ -11,30 +11,83 @@ BASE="https://www.pjm.com"
 UA="Mozilla/5.0 (compatible; Continental-Large-Load-Registry/1.0; +https://github.com/AnonRish/continental-load-registry)"
 
 def fetch():
-    s=requests.Session(); s.headers.update({"User-Agent":UA})
-    h=s.get(PAGE,timeout=60); h.raise_for_status()
+    s=requests.Session()
+    s.headers.update({"User-Agent":UA,"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"})
+    h=s.get(PAGE,timeout=60)
+    h.raise_for_status()
     html=h.text
+
+    # PJM serves the current queue through a public browser-export endpoint.
+    # Discover the browser's public subscription key from the page's own JS
+    # bundle instead of hard-coding a credential-like value in this repository.
+    script_srcs=re.findall(r'<script[^>]+src=["\\\']([^"\\\']+)["\\\']',html,re.I)
+    key=None
+    for src in script_srcs:
+        u=urljoin(BASE,src)
+        try:
+            js=s.get(u,timeout=60)
+            if js.status_code!=200:
+                continue
+            m=re.search(r'api-subscription-key[^A-Fa-f0-9]{0,200}([0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12})',js.text,re.I|re.S)
+            if m:
+                key=m.group(1)
+                break
+        except requests.RequestException:
+            continue
+
+    if key:
+        headers={
+            "api-subscription-key":key,
+            "Origin":"https://www.pjm.com",
+            "Referer":PAGE,
+            "Accept":"application/vnd.ms-excel,application/octet-stream,*/*"
+        }
+        try:
+            r=s.post(
+                "https://services.pjm.com/PJMPlanningApi/api/Queue/ExportToXls",
+                headers=headers,
+                timeout=120
+            )
+            if r.status_code==200 and len(r.content)>5000:
+                return r.content,"https://services.pjm.com/PJMPlanningApi/api/Queue/ExportToXls"
+        except requests.RequestException:
+            pass
+
+    # Fallback: look for a directly exposed XLS/XLSX/XML export link.
     candidates=[]
     patterns=[
-        r'https?://[^"\']+\.(?:xls|xlsx|xml)(?:\?[^"\']*)?',
-        r'(?:href|data-url|data-download-url)=["\']([^"\']+\.(?:xls|xlsx|xml)(?:\?[^"\']*)?)["\']',
+        r'https?://[^"\\\']+\\.(?:xls|xlsx|xml)(?:\\?[^"\\\']*)?',
+        r'(?:href|data-url|data-download-url)=["\\\']([^"\\\']+\\.(?:xls|xlsx|xml)(?:\\?[^"\\\']*)?)["\\\']',
     ]
     for p in patterns:
         for m in re.findall(p,html,re.I):
             u=m if m.startswith("http") else urljoin(BASE,m)
-            if u not in candidates:candidates.append(u)
+            if u not in candidates:
+                candidates.append(u)
     for u in candidates:
         try:
-            r=s.get(u,timeout=90); r.raise_for_status()
-            if len(r.content)>5000:return r.content,u
-        except Exception:continue
-    # Some PJM releases render the full table server-side; use it if available.
+            r=s.get(u,timeout=90)
+            r.raise_for_status()
+            if len(r.content)>5000:
+                return r.content,u
+        except requests.RequestException:
+            continue
+
+    # Last fallback: inspect server-rendered HTML tables, but only accept a
+    # queue-shaped table rather than a filter/options table.
     tables=pd.read_html(io.StringIO(html))
     for df in tables:
         cols={str(c).strip().lower() for c in df.columns}
-        if ("state" in cols and "status" in cols and ("name" in cols or "project name" in cols or "project" in cols)):
+        has_id=any(x in cols for x in ("project id","request id","queue id","queue number","id"))
+        has_name=any(x in cols for x in ("name","project name","project"))
+        has_mw=any(x in cols for x in ("mw capacity","mw energy","mw in service"))
+        if "state" in cols and "status" in cols and has_name and (has_id or has_mw):
             return df.to_csv(index=False).encode(),PAGE
-    raise RuntimeError("PJM cycle export could not be located; page has changed or export is JS-only")
+
+    raise RuntimeError(
+        "PJM current queue export could not be retrieved; "
+        "the public page/API contract may have changed."
+    )
 
 def normalize_df(df):
     df=df.dropna(how="all").copy();df.columns=[str(c).strip() for c in df.columns]
