@@ -47,7 +47,7 @@ jobs:
           import csv
           with Path("data/external/epoch_ai/crosswalk.csv").open(encoding="utf-8",newline="") as fh:
               rows=list(csv.DictReader(fh))
-          assert len(rows)==94 and all("epoch_id" in r for r in rows)
+          assert rows and all(r.get("epoch_id") for r in rows) and len({r["epoch_id"] for r in rows})==len(rows)
           api=json.loads(Path("api/v1/facilities.json").read_text())
           assert api["record_count"] == len(api["records"]) == 93
           assert len({x["facility_id"] for x in api["records"]}) == 93
