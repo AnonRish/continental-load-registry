@@ -278,12 +278,15 @@ def scene_metrics_optical(item: dict[str, Any], lat: float, lon: float) -> dict[
     valid = np.isfinite(red) & np.isfinite(nir)
     if scl_href:
         scl, _ = read_window(scl_href, lon, lat, 512)
-        scl_data = np.isfinite(scl) & (scl != 0)
-        if np.any(scl_data):
-            # Apply the scene-classification mask only where the SCL asset
-            # actually contains classified pixels. An all-zero SCL window
-            # is a no-data window and should not erase otherwise valid bands.
-            valid &= ~np.isin(scl.astype("int16"), [0, 1, 3, 8, 9, 10, 11])
+        classified = np.isfinite(scl) & (scl > 0)
+        if np.any(classified):
+            candidate = valid & ~np.isin(scl.astype("int16"), [0, 1, 3, 8, 9, 10, 11])
+            # Some public SCL tiles are effectively unclassified at the
+            # point/window even when the spectral bands are readable.
+            # Only replace the band-valid mask when the SCL actually leaves
+            # usable pixels; otherwise retain band-valid pixels.
+            if np.any(candidate):
+                valid = candidate
     ndvi = np.full(red.shape, np.nan, dtype="float32")
     denom = nir + red
     good = valid & (np.abs(denom) > 1e-6)
@@ -340,6 +343,13 @@ def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str,
     projection = item.get("properties", {}).get("proj:epsg")
     if projection is not None and isinstance(projection, int):
         projection = f"EPSG:{projection}"
+    # Sentinel-1 GRD assets in the public STAC can omit both an embedded CRS
+    # and proj:epsg. The GRD raster is normally in a UTM CRS; derive the
+    # standard UTM zone from the geodetic site coordinate as a file-access
+    # fallback, while retaining the STAC CRS whenever it is available.
+    if projection is None:
+        zone = int((lon + 180.0) // 6.0) + 1
+        projection = f"EPSG:{32600 + zone if lat >= 0 else 32700 + zone}"
     vv, vv_meta = read_window(vv_href, lon, lat, 512, crs_hint=projection)
     vv = db_values(vv)
     metrics = {
