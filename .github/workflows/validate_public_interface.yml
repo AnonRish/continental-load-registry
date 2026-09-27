@@ -11,6 +11,14 @@ on:
       - "api/v1/facilities.json"
       - "api/v1/openapi.json"
       - "bulk-download.html"
+      - "research.html"
+      - "plan-a.html"
+      - "observatory-nav.js"
+      - "observatory-nav.css"
+      - "research.html"
+      - "plan-a.html"
+      - "observatory-nav.js"
+      - "observatory-nav.css"
       - "data/bulk_download_manifest.json"
       - "data/website_completeness_audit.json"
       - "data/track3/summary.json"
@@ -108,13 +116,14 @@ jobs:
           import re
           from pathlib import Path
           out=Path("/tmp/interface-js");out.mkdir(exist_ok=True)
-          for name in ["index.html","track3.html","facility.html","api.html","bulk-download.html"]:
+          for name in ["index.html","track3.html","facility.html","api.html","bulk-download.html","research.html","plan-a.html"]:
               c=Path(name).read_text(encoding="utf-8")
               for i,s in enumerate(re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>",c,re.S|re.I),1):
                   if s.strip():
                       (out/f"{name.replace('.','-')}-{i}.js").write_text(s,encoding="utf-8")
           PY
           for f in /tmp/interface-js/*.js; do node --check "$f"; done
+          node --check observatory-nav.js
       - name: Validate facility record shards
         run: |
           python - <<'PY'
