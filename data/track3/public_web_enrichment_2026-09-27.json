@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:27:30Z",
+  "generated_at_utc": "2026-09-27T06:36:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 137,
-    "sites_with_findings": 57,
+    "record_count": 157,
+    "sites_with_findings": 58,
     "disposition_counts": {
       "PUBLIC_SOURCE_CAPTURED": 1,
       "NO_PUBLIC_VALUE_CAPTURED": 1
@@ -2232,6 +2232,319 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Third-party modeled/compiled campus figure; not treated as official utility-deliverable capacity or measured IT load.",
       "evidence_id": "EVID-PWEB-68efb31e5ccccfd2dceb"
+    },
+    {
+      "site_name": "Meta Prometheus",
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "field": "project",
+      "value": "Prometheus Supercluster",
+      "relationship": "official project identity",
+      "source": "Meta / Meta Data Centers",
+      "source_urls": [
+        "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/",
+        "https://samaritan-research.org/data/ai-data-centers/directory/meta-prometheus"
+      ],
+      "publication_date": "2026-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-0cfcd11b850bbc1f99bf"
+    },
+    {
+      "site_name": "Meta Prometheus",
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "field": "capacity_record",
+      "value": "Samaritan estimate: 496 MW IT power and ~600k H100-equivalent compute; projected Q3 2028 1,022 MW / 1.235M H100-eq",
+      "relationship": "third-party modeled current and projected scale",
+      "source": "Samaritan Research",
+      "source_urls": [
+        "https://samaritan-research.org/data/ai-data-centers/directory/meta-prometheus"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Modeled estimate based on imagery/cooling/regulatory/chip/land data; not an official utility capacity or measured demand.",
+      "evidence_id": "EVID-PWEB-85c73a84861cdc88a1c5"
+    },
+    {
+      "site_name": "Meta Prometheus",
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "field": "operational_status",
+      "value": "Operational; latest satellite-observation entry dated 2026-08-31",
+      "relationship": "physical/operational observation",
+      "source": "Samaritan Research",
+      "source_urls": [
+        "https://samaritan-research.org/data/ai-data-centers/directory/meta-prometheus"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Operational classification is the source's assessment; retained as third-party evidence rather than independent certification.",
+      "evidence_id": "EVID-PWEB-1f45adbb9eab49f4676b"
+    },
+    {
+      "site_name": "Meta Prometheus",
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "field": "capacity_record",
+      "value": "Meta says the Perry, Davis-Besse and Beaver Valley nuclear projects will support the grids serving its operations, including Prometheus",
+      "relationship": "firm-power / grid-support program",
+      "source": "Meta",
+      "source_urls": [
+        "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+      ],
+      "publication_date": "2026-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid-support program context; not a Prometheus-specific contracted MW allocation.",
+      "evidence_id": "EVID-PWEB-4b892bea2ebf1398dad6"
+    },
+    {
+      "site_name": "CoreWeave Denton TX",
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "field": "energy_companies",
+      "value": "Denton Municipal Electric (DME)",
+      "relationship": "municipal electric supplier under power purchase agreement",
+      "source": "Core Scientific SEC filing",
+      "source_urls": [
+        "https://content-archive.fast-edgar.com/20260421/AS22R22DZZ2R72ZK22TI2CYLG66BEZ22Z282/d149019dex992.htm"
+      ],
+      "publication_date": "2026-04-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-a44176cbee2c5003f2b7"
+    },
+    {
+      "site_name": "CoreWeave Denton TX",
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "field": "service_or_contract",
+      "value": "DME Contract: approximately 394 MW total potential campus load; 14-year term with two optional seven-year extensions",
+      "relationship": "power purchase agreement",
+      "source": "Core Scientific SEC filing",
+      "source_urls": [
+        "https://content-archive.fast-edgar.com/20260421/AS22R22DZZ2R72ZK22TI2CYLG66BEZ22Z282/d149019dex992.htm"
+      ],
+      "publication_date": "2026-04-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-bce9733be5c9602b526a"
+    },
+    {
+      "site_name": "CoreWeave Denton TX",
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "field": "project",
+      "value": "Denton Campus",
+      "relationship": "official campus/project name",
+      "source": "Core Scientific SEC filing",
+      "source_urls": [
+        "https://content-archive.fast-edgar.com/20260421/AS22R22DZZ2R72ZK22TI2CYLG66BEZ22Z282/d149019dex992.htm"
+      ],
+      "publication_date": "2026-04-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-59943ead47a75823b85d"
+    },
+    {
+      "site_name": "Google Pryor (North)",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Mayes County Data Center / Google Pryor (MidAmerica) Data Center Campus",
+      "relationship": "campus/project identity",
+      "source": "DEPLOY; Compute Atlas",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok",
+        "https://www.compute-atlas.com/facilities/leeward-mayes-solar-mayes-county-ok"
+      ],
+      "publication_date": "2026-09-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-ea02e76171e1547b3284"
+    },
+    {
+      "site_name": "Google Pryor (North)",
+      "epoch_id": "EPOCH-unknown",
+      "field": "owner",
+      "value": "MidAmerica Industrial Park",
+      "relationship": "host land owner / industrial park",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-f38c0d9e84d57e4b3c21"
+    },
+    {
+      "site_name": "Google Pryor (North)",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Grand River Dam Authority (GRDA)",
+      "relationship": "serving utility",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-e8fec2acd441e5519de9"
+    },
+    {
+      "site_name": "Google Pryor (North)",
+      "epoch_id": "EPOCH-unknown",
+      "field": "investment",
+      "value": "$9B announced capex; 400 permanent reported jobs",
+      "relationship": "campus investment / employment disclosure",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Campus-level disclosed/compiled figures; not allocated across individual buildings.",
+      "evidence_id": "EVID-PWEB-d7a17f00528d94680d2a"
+    },
+    {
+      "site_name": "Google Columbus",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Google Columbus data center",
+      "relationship": "official/public project identity",
+      "source": "Intel Accelerator / Google",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.datacenters.google/locations/ohio/"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-2ce6a4636dcef7eeebfa"
+    },
+    {
+      "site_name": "Google Columbus",
+      "epoch_id": "EPOCH-unknown",
+      "field": "capacity_record",
+      "value": "303 MW IT power; 332k H100-equivalent compute; $11.5B modeled capex",
+      "relationship": "third-party site-scale estimate",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Third-party modeled values, not direct utility measurements or Google-disclosed capex.",
+      "evidence_id": "EVID-PWEB-5fc6912ddcea57bd29b3"
+    },
+    {
+      "site_name": "Google Columbus",
+      "epoch_id": "EPOCH-unknown",
+      "field": "chip_quantities",
+      "value": "TPU v5e, v5p, v6e, v7",
+      "relationship": "site accelerator types",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Types are listed; exact unit counts are not established by this source.",
+      "evidence_id": "EVID-PWEB-c1b77486ab7d2862e687"
+    },
+    {
+      "site_name": "Google Columbus",
+      "epoch_id": "EPOCH-unknown",
+      "field": "operational_status",
+      "value": "Source projects Building 5 operational on 2027-07-01; five-building campus shown in deployment estimate",
+      "relationship": "projected deployment milestone",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "This is a third-party projected milestone, not a verified future completion date.",
+      "evidence_id": "EVID-PWEB-c157e8e6e2b057338ed9"
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "operational_status",
+      "value": "Building 2 operational; Buildings 3-4 classified operational; Building 5 construction nearing completion as of 2026-05-18",
+      "relationship": "building-level physical observation",
+      "source": "Samaritan Research",
+      "source_urls": [
+        "https://samaritan-research.org/data/ai-data-centers/directory/google-new-albany"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Third-party satellite/cooling observation; this is not independent physical certification.",
+      "evidence_id": "EVID-PWEB-54d78b4b736808dfb57c"
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "capacity_record",
+      "value": "Third-party observed series reached 333 MW IT power and ~324k H100-eq by Jan-May 2026",
+      "relationship": "site-scale modeled physical estimate",
+      "source": "Samaritan Research",
+      "source_urls": [
+        "https://samaritan-research.org/data/ai-data-centers/directory/google-new-albany"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Modeled from imagery/cooling/chip and land-use evidence; not a measured interval load.",
+      "evidence_id": "EVID-PWEB-3e934e57c3657e06c062"
+    },
+    {
+      "site_name": "Microsoft Fairwater Wisconsin",
+      "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "field": "investment",
+      "value": "Initial $3.3B investment plus additional $4B commitment; more than $7B total Wisconsin investment",
+      "relationship": "owner investment",
+      "source": "Microsoft",
+      "source_urls": [
+        "https://blogs.microsoft.com/on-the-issues/2025/09/18/made-in-wisconsin-the-worlds-most-powerful-ai-datacenter/"
+      ],
+      "publication_date": "2025-09-18",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-d10cd62130a3d313b0d5"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "regulatory",
+      "value": "xAI states permits were obtained for Colossus and all Memphis infrastructure, including the first MLGW substation and planned water-recycling plant",
+      "relationship": "construction permitting",
+      "source": "SpaceXAI Memphis",
+      "source_urls": [
+        "https://x.ai/memphis/info"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-cebecd5b9d8b717df82a"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "energy_companies",
+      "value": "MLGW; TVA; on-site battery and generation support",
+      "relationship": "power system relationships",
+      "source": "SpaceXAI; Daily Memphian",
+      "source_urls": [
+        "https://x.ai/memphis/info",
+        "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva"
+      ],
+      "publication_date": "2026-08-20",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-dcab430bdfd39c7c3d6a"
     }
   ]
 }
