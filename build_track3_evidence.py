@@ -355,6 +355,71 @@ def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any], pow
             "independent_of_other_source": False,
             "review_state": "PUBLISHED_RECORD",
         })
+    for obs in remote_observations or []:
+        rows.append({
+            "evidence_id": "EVID-REMOTE-" + hashlib.sha256(
+                json.dumps(obs, sort_keys=True, ensure_ascii=False).encode("utf-8")
+            ).hexdigest()[:20],
+            "target_type": "epoch_site",
+            "target_id": obs.get("epoch_id"),
+            "target_name": obs.get("site_name"),
+            "domain": "remote_sensing",
+            "evidence_type": obs.get("modality"),
+            "claim_scope": "site_level",
+            "status": obs.get("status", "INGESTED_DERIVED"),
+            "source_kind": "public satellite STAC + raw COG processing",
+            "source_name": obs.get("sensor"),
+            "source_url": obs.get("stac_item_url") or obs.get("source_catalog"),
+            "observed_on": obs.get("observed_on"),
+            "captured_on": obs.get("observed_on"),
+            "confidence": "derived_measurement",
+            "basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+            "record_id": obs.get("scene_id"),
+            "authority": obs.get("source_collection"),
+            "raw_value": None,
+            "normalized_value": obs.get("metrics"),
+            "units": None,
+            "site_specific": True,
+            "independent_of_other_source": True,
+            "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING",
+        })
+    for event in transformer_events or []:
+        rows.append({
+            "evidence_id": event.get("evidence_id") or "EVID-TX-" + hashlib.sha256(
+                json.dumps(event, sort_keys=True, ensure_ascii=False).encode("utf-8")
+            ).hexdigest()[:20],
+            "target_type": "epoch_site",
+            "target_id": event.get("epoch_id"),
+            "target_name": event.get("site_name"),
+            "domain": "transformer_supply_chain",
+            "evidence_type": event.get("event_type"),
+            "claim_scope": "site_level",
+            "status": event.get("status", "INGESTED"),
+            "source_kind": event.get("source_kind"),
+            "source_name": event.get("source_name"),
+            "source_url": event.get("source_url"),
+            "observed_on": event.get("observed_on"),
+            "captured_on": event.get("captured_on"),
+            "confidence": event.get("confidence"),
+            "basis": event.get("basis"),
+            "record_id": event.get("record_id"),
+            "authority": event.get("authority"),
+            "raw_value": event.get("raw_value"),
+            "normalized_value": event.get("rating_mva"),
+            "units": "MVA",
+            "site_specific": True,
+            "independent_of_other_source": event.get("independent_of_other_source"),
+            "event_type": event.get("event_type"),
+            "rating_mva": event.get("rating_mva"),
+            "primary_kv": event.get("primary_kv"),
+            "secondary_kv": event.get("secondary_kv"),
+            "buyer": event.get("buyer"),
+            "destination": event.get("destination"),
+            "seller": event.get("seller"),
+            "manufacturer": event.get("manufacturer"),
+            "model": event.get("model"),
+            "review_state": "PUBLISHED_RECORD",
+        })
     for obs in cooling_observations or []:
         rows.append({
             "evidence_id": "EVID-COOLING-" + str(obs["observation_id"]),
