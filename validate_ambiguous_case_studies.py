@@ -36,8 +36,8 @@ def main()->int:
         physical_by.setdefault(str(r.get("case_id")),[]).append(r)
     errors=[]
     rows=cases.get("cases",[])
-    if len(rows)!=3:
-        errors.append(f"expected 3 closure cases, got {len(rows)}")
+    if len(rows)!=4:
+        errors.append(f"expected 4 closure cases, got {len(rows)}")
     for c in rows:
         cid=str(c.get("case_id"))
         missing=sorted(REQUIRED-set(c))
@@ -75,7 +75,7 @@ def main()->int:
     if errors:
         print("\n".join("ERROR: "+e for e in errors))
         return 1
-    print("PASS: 3 closure cases validated")
+    print("PASS: 4 closure cases validated")
     print("PASS: physical artifact counts reconcile")
     for c in rows:
         cid=c["case_id"]; n=sum(r.get("status")=="INGESTED_DERIVED" for r in physical_by.get(cid,[]))
