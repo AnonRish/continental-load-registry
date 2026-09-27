@@ -6,13 +6,14 @@
   "record_count": 93,
   "summary": {
     "sites": 93,
-    "sites_with_any_public_connection_evidence": 93,
+    "sites_with_any_public_connection_evidence": 81,
     "sites_with_verified_queue_id": 2,
     "sites_with_open_grid_research": 72,
     "sites_with_missing_publisher_fields": 92,
     "total_missing_publisher_fields": 378,
     "sites_with_manual_public_enrichment": 24,
-    "total_enrichment_source_links": 33
+    "total_enrichment_source_links": 33,
+    "researched_no_public_record_count": 0
   },
   "records": [
     {
@@ -624,6 +625,14 @@
           "basis": "Exact site-level utility/connection case was not located in the reviewed public source set.",
           "alternatives_rejected": [],
           "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        },
+        {
+          "type": "site_specific_project_record",
+          "authority": "DayOne",
+          "source_url": "https://dayonedc.com/market/johor",
+          "source_kind": "developer site",
+          "confidence": "high",
+          "basis": "DayOne identifies Kempas Tech Park as one of its two Johor hyperscale campuses and reports 390 MW in service across the two sites."
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
@@ -1012,6 +1021,14 @@
           "basis": "Operational; no public site-specific connection case found",
           "alternatives_rejected": [],
           "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        },
+        {
+          "type": "site_specific_project_record",
+          "authority": "DayOne",
+          "source_url": "https://dayonedc.com/market/johor",
+          "source_kind": "developer site",
+          "confidence": "high",
+          "basis": "DayOne identifies Nusajaya Tech Park as an operational Johor campus; the company reports 390 MW in service across the Nusajaya and Kempas campuses."
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
@@ -1304,6 +1321,14 @@
           "capacity_mw": 394,
           "capacity_kind": "potential campus load under DME contract",
           "basis": "The SEC filing states that power for the Denton Campus is supplied by Denton Municipal Electric under a power purchase agreement for a total potential campus load of approximately 394 MW, with Core Scientific as the customer. This is a service-contract capacity, not an assertion that 394 MW is continuously consumed."
+        },
+        {
+          "type": "site_specific_lease",
+          "authority": "Core Scientific",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1839341/000162828026031246/q1fy26earningsdeck.htm",
+          "source_kind": "SEC/company filing",
+          "confidence": "high",
+          "basis": "Core Scientific reports a long-term CoreWeave HPC hosting arrangement at the Denton campus."
         }
       ],
       "next_research_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately.",
@@ -2227,6 +2252,14 @@
           "source_kind": "official Google location disclosure",
           "confidence": "high",
           "basis": "Google's Nebraska data-center page identifies Lincoln as a Google data-center location and records that the Lincoln, Nebraska data center came online in 2026."
+        },
+        {
+          "type": "site_specific_service_contract",
+          "authority": "Lincoln Electric System",
+          "source_url": "https://www.les.com/sites/default/files/bd-min-dec-2023.pdf",
+          "source_kind": "utility board minutes",
+          "confidence": "high",
+          "basis": "LES authorized an extension and interconnection agreement with Agate LLC for the Google data-center project."
         }
       ],
       "next_research_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record.",
@@ -3763,6 +3796,19 @@
           "source_kind": "official Google facility disclosure",
           "confidence": "high",
           "basis": "Google's Waltham Cross facility page says Google selected Shell Energy Europe Limited as its 24/7 Carbon-Free Energy Manager in the UK and describes the arrangement as contributing to grid stability and the energy transition. This is energy-contract evidence, not a utility interconnection record."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.datacenters.google/locations/waltham-cross/"
+          ],
+          "source_url": "https://www.datacenters.google/locations/waltham-cross/",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "Google's public facility disclosure documents the Shell Energy Europe 24/7 carbon-free energy management agreement, but the retained public source set does not expose a site-specific transmission/distribution queue or service identifier.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "next_research_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier.",
@@ -4551,6 +4597,14 @@
           "basis": "Exact address is known; no defensible PJM queue ID or direct utility service case was found in the reviewed public source set.",
           "alternatives_rejected": [],
           "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        },
+        {
+          "type": "site_specific_lease",
+          "authority": "DEPLOY",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/coreweave-chester-va",
+          "source_kind": "secondary facility record",
+          "confidence": "medium",
+          "basis": "DEPLOY identifies an operating CoreWeave Chester campus under a reported 12-year license agreement."
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
@@ -4741,6 +4795,14 @@
           "basis": "Talen's revised power agreement is a contractual supply ceiling, not an interconnection queue capacity or measured load. It is retained separately from queue MW.",
           "alternatives_rejected": [],
           "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        },
+        {
+          "type": "site_specific_energy_contract",
+          "authority": "Talen Energy",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/1622536/000162828025038626/tln-20250630.htm",
+          "source_kind": "SEC filing",
+          "confidence": "high",
+          "basis": "Talen's filing identifies the AWS Data Campus power arrangement, with Talen generation supply and PPL Electric transmission and delivery, under a revised PPA allowing a path to 1,920 MW through 2042."
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
@@ -5363,6 +5425,27 @@
           "basis": "The power figures are on-site generation figures, not a PJM interconnection capacity. Microsoft/Nebius commercial relationship is also distinct from electricity service.",
           "alternatives_rejected": [],
           "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        },
+        {
+          "type": "site_specific_compute_contract",
+          "authority": "Microsoft / Nebius",
+          "source_url": "https://www.reuters.com/business/nebius-signs-174-billion-ai-infrastructure-deal-with-Microsoft-shares-jump-2025-09-08/",
+          "source_kind": "public reporting of commercial agreement",
+          "confidence": "medium",
+          "basis": "Public reporting describes the five-year Microsoft-Nebius AI infrastructure agreement tied to the Vineland, New Jersey facility."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.pjm.com/planning/service-requests"
+          ],
+          "source_url": "https://www.pjm.com/planning/service-requests",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "The retained public source set establishes the Vineland site and commercial Microsoft-Nebius compute agreement, but does not expose an exact PJM queue or local utility service identifier tied to the Epoch facility record.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
@@ -5944,6 +6027,14 @@
           "source_kind": "SEC-filed electric service agreement",
           "confidence": "high",
           "basis": "SEC filing states Dalton campuses are supplied by Dalton Utilities and Dalton 1 + Dalton 4 have access to 270 MW in aggregate, with additional capacity arrangements."
+        },
+        {
+          "type": "site_specific_service_contract",
+          "authority": "Core Scientific",
+          "source_url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
+          "source_kind": "SEC-filed agreement",
+          "confidence": "high",
+          "basis": "The filing describes Dalton Utilities power access and the contracted service arrangement for the Dalton campuses."
         }
       ],
       "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
@@ -6110,6 +6201,14 @@
           "basis": "1.2 GW is secured campus IT capacity/grid access, not current measured load and not a queue ID.",
           "alternatives_rejected": [],
           "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        },
+        {
+          "type": "site_specific_service_contract",
+          "authority": "REN / Start Campus",
+          "source_url": "https://www.startcampus.pt/press_release_august_2024_1gw",
+          "source_kind": "transmission operator / developer announcement",
+          "confidence": "high",
+          "basis": "Start Campus states REN awarded additional power, bringing secured SINES DC IT capacity to 1.2 GW."
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
@@ -6222,6 +6321,19 @@
           "basis": "xAI occupies part of a multi-tenant QTS building; utility capacity should not be attributed wholesale to xAI.",
           "alternatives_rejected": [],
           "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://wattstreet.net/state/ga/"
+          ],
+          "source_url": "https://wattstreet.net/state/ga/",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "The retained public source set establishes the Atlanta QTS/xAI site and Georgia grid jurisdiction, but does not retain an exact site-specific queue or service identifier.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
@@ -6600,6 +6712,27 @@
           "basis": "The campus is adjacent to the existing Abilene site. ERCOT is the grid operator; no unique public queue ID was located.",
           "alternatives_rejected": [],
           "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        },
+        {
+          "type": "site_specific_project_record",
+          "authority": "Crusoe",
+          "source_url": "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure",
+          "source_kind": "company announcement",
+          "confidence": "high",
+          "basis": "Crusoe publicly identifies the adjacent 900 MW Abilene AI-factory campus, two buildings and an onsite power plant supporting Microsoft AI infrastructure."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.ercot.com/services/rq/large-load-integration"
+          ],
+          "source_url": "https://www.ercot.com/services/rq/large-load-integration",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "Crusoe publicly identifies the 900 MW AI-factory expansion and its onsite power plant, but the retained public source set does not expose an exact ERCOT queue/service identifier tied to this expansion record.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
@@ -6691,6 +6824,14 @@
           "basis": "Under construction; no public site-specific connection case found",
           "alternatives_rejected": [],
           "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        },
+        {
+          "type": "site_specific_project_record",
+          "authority": "EcoDataCenter",
+          "source_url": "https://ecodatacenter.tech/data-center/ecodatacenter2",
+          "source_kind": "developer site",
+          "confidence": "high",
+          "basis": "EcoDataCenter identifies the Dalarna project, up to 600 MW available power, construction beginning in 2025 and environmental permits approved."
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
@@ -6921,6 +7062,24 @@
           "source_kind": "secondary record reproducing an official IURC order",
           "confidence": "high",
           "basis": "The April 29, 2026 IURC final order records that I&M energized Google's Fort Wayne site in November 2024; the underlying official order is Cause No. 46276."
+        },
+        {
+          "type": "site_specific_grid_connection_event",
+          "authority": "Indiana Utility Regulatory Commission",
+          "record_name": "Google Fort Wayne site energized",
+          "source_url": "https://www.in.gov/iurc/files/46276-041.pdf",
+          "source_kind": "utility commission order",
+          "confidence": "high",
+          "basis": "Indiana Utility Regulatory Commission final order dated April 29, 2026 records that Indiana Michigan Power energized Google's Fort Wayne site in November 2024."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "Indiana Michigan Power",
+          "record_name": "Google Fort Wayne large-load customer relationship",
+          "source_url": "https://www.indianamichiganpower.com/company/news/view?releaseID=10359",
+          "source_kind": "utility company disclosure",
+          "confidence": "high",
+          "basis": "Indiana Michigan Power publicly identifies Google as a large-load customer and describes its work with Google at the Fort Wayne data center."
         }
       ],
       "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
@@ -7282,6 +7441,15 @@
           "source_kind": "state government / commission record",
           "confidence": "high",
           "basis": "Michigan's official data-center material identifies MPSC approval of DTE Electric energy contracts; the cited approval reports 1,383 MW site capacity."
+        },
+        {
+          "type": "site_specific_utility_relationship",
+          "authority": "DTE Energy",
+          "record_name": "Stargate Michigan electric service",
+          "source_url": "https://openai.com/index/expanding-stargate-to-michigan/",
+          "source_kind": "company announcement",
+          "confidence": "high",
+          "basis": "OpenAI states DTE Energy will serve the Stargate Michigan campus using existing excess transmission capacity; project-funded upgrades are to support operations."
         }
       ],
       "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
@@ -7369,6 +7537,14 @@
             }
           ],
           "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        },
+        {
+          "type": "site_specific_project_record",
+          "authority": "OpenAI / SB Energy",
+          "source_url": "https://openai.com/index/stargate-sb-energy-partnership/",
+          "source_kind": "company announcement",
+          "confidence": "high",
+          "basis": "OpenAI and SB Energy identify the Milam County site and the 1.2 GW campus development/power strategy."
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
