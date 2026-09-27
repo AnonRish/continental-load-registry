@@ -45,10 +45,25 @@ jobs:
         uses: actions/attest@v4
         with:
           subject-path: track3-verification-bundle.tar.gz
+      - name: Record attestation status
+        run: |
+          cat > data/track3/attestation_status.json <<EOF
+          {
+            "schema_version": 1,
+            "status": "SIGNED_AND_UPLOADED",
+            "workflow_run_id": "${{ github.run_id }}",
+            "workflow": "${{ github.workflow }}",
+            "source_commit": "${{ github.sha }}",
+            "attestation_method": "GitHub Artifact Attestations / Sigstore",
+            "bundle": "track3-verification-bundle.tar.gz",
+            "recorded_at_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "note": "Bundle-level cryptographic attestation; does not certify the underlying empirical claims."
+          }
+          EOF
       - name: Commit generated verification artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/track3/detection_universe.json data/track3/verification_protocol.json data/track3/absence_testing.json data/track3/verification_results.json
+          git add data/track3/detection_universe.json data/track3/verification_protocol.json data/track3/absence_testing.json data/track3/verification_results.json data/track3/attestation_status.json
           git diff --cached --quiet || git commit -m "Refresh Track 3 verification results"
           git push
