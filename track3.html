@@ -91,7 +91,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <select id="siteProvince"><option value="">All states / provinces</option></select>
 <select id="siteUtility"><option value="">All utilities / grid systems</option></select>
 <select id="siteOwner"><option value="">All developers / owners</option></select>
-<select id="siteState"><option value="">All grid states</option><option value="VERIFIED_SITE_SPECIFIC">VERIFIED_SITE_SPECIFIC</option><option value="SITE_LEVEL_EVIDENCE">SITE_LEVEL_EVIDENCE</option><option value="PENDING_RESEARCH">PENDING_RESEARCH</option></select>
+<select id="siteState"><option value="">All grid states</option><option value="VERIFIED_SITE_SPECIFIC">VERIFIED_SITE_SPECIFIC</option><option value="SITE_LEVEL_EVIDENCE">SITE_LEVEL_EVIDENCE</option><option value="RESEARCHED_NO_PUBLIC_RECORD">RESEARCHED_NO_PUBLIC_RECORD</option><option value="PENDING_RESEARCH">PENDING_RESEARCH</option></select>
 <select id="siteSort"><option value="power">IT power, descending</option><option value="evidence">evidence count, descending</option><option value="name">site name, A–Z</option></select>
 </div></div>
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Location</th><th>Grid / utility</th><th>Grid state</th><th class="right">Epoch IT MW</th><th class="right">Evidence</th><th>Open</th></tr></thead><tbody id="siteRows"></tbody></table></div>
@@ -376,10 +376,11 @@ function renderStates(){
  SOURCE_AVAILABLE_NOT_INGESTED:'Relevant public external dataset exists and is cataloged, but is not yet joined to the site evidence graph.',
  NOT_INGESTED:'Evidence stream is specified by the verification design but observations are not yet ingested.',
  UNKNOWN:'Evidence needed to classify the field is not currently available.',
+ RESEARCHED_NO_PUBLIC_RECORD:'A site-specific public-record search was completed and no public queue/service record was retained; this is not evidence that service is absent.',
  CONTRADICTED:'Retained evidence conflicts with another retained evidence record.',
  SUPERSEDED:'Record was replaced by a newer evidence record.'
  };
- const states=D.schema?.statuses||Object.keys(meaning);
+ const states=[...new Set([...(D.schema?.statuses||[]),...Object.keys(meaning)])];
  document.getElementById('states').innerHTML=states.map(s=>'<div class="domain-card"><h3><span class="status '+stClass(s)+'">'+esc(s)+'</span></h3><p>'+esc(meaning[s]||'Explicit Track 3 state.')+'</p></div>').join('');
 }
 function renderMatrix(){
