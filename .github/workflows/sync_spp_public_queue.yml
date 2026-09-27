@@ -48,6 +48,23 @@ jobs:
           assert Path("data/spp_public_queue.csv").stat().st_size > 0
           print("PASS: SPP active public queue", o["record_count"])
           PY
+      - name: Update queue layer status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary=json.loads(Path("data/spp_public_queue_summary.json").read_text(encoding="utf-8"))
+          path=Path("data/queue_layer_status.json")
+          obj=json.loads(path.read_text(encoding="utf-8"))
+          feed=next(f for f in obj["feeds"] if f["id"]=="SPP")
+          feed["snapshot_present"]=True
+          feed["last_capture"]=summary["captured_at"]
+          feed["record_count"]=summary["record_count"]
+          feed["records_ge_100mw"]=summary["records_ge_100mw"]
+          obj["generated_on"]=summary["captured_at"][:10]
+          path.write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+          PY
+
       - name: Commit refreshed data
         run: |
           git config user.name "github-actions[bot]"
