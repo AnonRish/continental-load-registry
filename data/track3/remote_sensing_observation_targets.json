@@ -9,10 +9,12 @@
     "optical_target_count": 93,
     "tir_target_count": 93,
     "sar_target_count": 93,
-    "ingested_optical_scene_count": 0,
-    "ingested_tir_observation_count": 0,
-    "ingested_sar_observation_count": 0,
-    "semantics": "SOURCE_AVAILABLE_NOT_INGESTED means the public source family is available and a site-specific target is defined. It is not an observation and is not evidence of presence or absence."
+    "sites_with_any_derived_observation": 68,
+    "ingested_optical_scene_count": 149,
+    "ingested_tir_observation_count": 136,
+    "ingested_sar_observation_count": 138,
+    "derived_observation_count": 423,
+    "semantics": "SOURCE_AVAILABLE_NOT_INGESTED means a site-specific target exists but no retained derived observation exists for that modality. INGESTED_DERIVED means a retained processed observation exists. Neither status is evidence of AI compute by itself."
   },
   "source_catalog": [
     {
@@ -67,8 +69,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -79,8 +81,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -91,13 +93,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/xai-colossus-2-ff09d693",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/colossus-2",
@@ -129,8 +131,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -141,8 +143,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -153,13 +155,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/microsoft-fairwater-atlanta-9f8f329f",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-fairwater-atlanta",
@@ -253,8 +255,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -265,8 +267,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -277,13 +279,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/google-pryor-north-be7b42dd",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-pryor-north",
@@ -377,8 +379,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -389,8 +391,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -401,13 +403,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/openai-stargate-abilene-82570d68",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-abilene",
@@ -439,8 +441,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -451,8 +453,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -463,13 +465,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/microsoft-fairwater-wisconsin-45d98f47",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-fairwater-wisconsin",
@@ -563,8 +565,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -575,8 +577,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -587,13 +589,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-columbus",
@@ -625,8 +627,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -637,8 +639,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -649,13 +651,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://datacentersexposed.com/facilities/google-new-albany",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-new-albany",
@@ -811,8 +813,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -823,8 +825,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -835,13 +837,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/xai-colossus-1-ce962f82",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/colossus-1",
@@ -873,8 +875,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -885,8 +887,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -897,13 +899,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/google-council-bluffs-east-d8c434a9",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-council-bluffs-east",
@@ -935,8 +937,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -947,8 +949,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -959,13 +961,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.ercot.com/services/rq/large-load-integration",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-denton-tx",
@@ -997,8 +999,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1009,8 +1011,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1021,13 +1023,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/qts-richmond-1",
@@ -1059,8 +1061,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1071,8 +1073,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1083,13 +1085,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.misoenergy.org/api/giqueue/getprojects",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-rosemount",
@@ -1183,8 +1185,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1195,8 +1197,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1207,13 +1209,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-bristow",
@@ -1245,8 +1247,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1257,8 +1259,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1269,13 +1271,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/az/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-goodyear",
@@ -1307,8 +1309,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 4,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1319,8 +1321,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1331,13 +1333,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/meta-jeffersonville-646ed5d7",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-jeffersonville",
@@ -1431,8 +1433,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1443,8 +1445,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1455,13 +1457,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://datacentersexposed.com/facilities/amazon-new-albany-2",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/aws-new-albany",
@@ -1493,8 +1495,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1505,8 +1507,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1517,13 +1519,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://opsportal.spp.org/Studies/GIActive",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-omaha",
@@ -1555,8 +1557,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1567,8 +1569,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1579,13 +1581,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://opsportal.spp.org/Studies/GIActive",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-lincoln",
@@ -1617,8 +1619,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1629,8 +1631,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1641,13 +1643,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/qts-richmond-2",
@@ -1679,8 +1681,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1691,8 +1693,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1703,13 +1705,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/or/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-the-dalles",
@@ -1741,8 +1743,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1753,8 +1755,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1765,13 +1767,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/qts-richmond-3",
@@ -1803,8 +1805,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1815,8 +1817,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1827,13 +1829,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/al/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-montgomery",
@@ -1865,8 +1867,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1877,8 +1879,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1889,13 +1891,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/id/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-kuna",
@@ -1927,8 +1929,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 5,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -1939,8 +1941,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -1951,13 +1953,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-temple",
@@ -1989,8 +1991,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2001,8 +2003,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2013,13 +2015,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/wy/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-cheyenne",
@@ -2051,8 +2053,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2063,8 +2065,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2075,13 +2077,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.misoenergy.org/api/giqueue/getprojects",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/amazon-ridgeland",
@@ -2113,8 +2115,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2125,8 +2127,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2137,13 +2139,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/al/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-huntsville",
@@ -2237,8 +2239,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2249,8 +2251,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2261,13 +2263,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.misoenergy.org/api/giqueue/getprojects",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-project-osmium",
@@ -2299,8 +2301,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2311,8 +2313,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2323,13 +2325,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/ut/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-eagle-mountain",
@@ -2361,8 +2363,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2373,8 +2375,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2385,13 +2387,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/google-87bef61e",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-midlothian",
@@ -2485,8 +2487,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2497,8 +2499,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2509,13 +2511,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/google-b095581c",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-lancaster",
@@ -2547,8 +2549,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2559,8 +2561,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2571,13 +2573,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/or/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-qts-hillsboro-2",
@@ -2609,8 +2611,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2621,8 +2623,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2633,13 +2635,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-waltham-cross",
@@ -2671,8 +2673,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2683,8 +2685,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2695,13 +2697,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab",
@@ -2733,8 +2735,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2745,8 +2747,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2757,13 +2759,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-arcola",
@@ -2795,8 +2797,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2807,8 +2809,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2819,13 +2821,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://interchange.puc.texas.gov/Documents/58306_402_1549178.PDF",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-red-oak",
@@ -2857,8 +2859,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2869,8 +2871,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2881,13 +2883,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-papillion",
@@ -2919,8 +2921,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2931,8 +2933,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -2943,13 +2945,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://suedatacenters.org/data-centers/meta-gallatin-tn",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-gallatin",
@@ -2981,8 +2983,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -2993,8 +2995,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3005,13 +3007,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/nm/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-los-lunas",
@@ -3043,8 +3045,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3055,8 +3057,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3067,13 +3069,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.misoenergy.org/api/giqueue/getprojects",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-ellendale-nd",
@@ -3105,8 +3107,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3117,8 +3119,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3129,13 +3131,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://opsportal.spp.org/Studies/GIActive",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-sarpy",
@@ -3229,8 +3231,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3241,8 +3243,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3253,13 +3255,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va",
@@ -3353,8 +3355,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3365,8 +3367,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3377,13 +3379,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/aws-berwick",
@@ -3415,8 +3417,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3427,8 +3429,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3439,13 +3441,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/nc/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-marble-nc",
@@ -3477,8 +3479,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3489,8 +3491,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3501,13 +3503,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/sc/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-aiken",
@@ -3539,8 +3541,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3551,8 +3553,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3563,13 +3565,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu",
@@ -3601,8 +3603,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3613,8 +3615,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3625,13 +3627,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner",
@@ -3725,8 +3727,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3737,8 +3739,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3749,13 +3751,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/stack-infrastructure-nva02",
@@ -3787,8 +3789,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3799,8 +3801,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3811,13 +3813,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/anthropic-lake-mariner",
@@ -3849,8 +3851,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3861,8 +3863,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3873,13 +3875,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-nebius-new-jersey",
@@ -3911,8 +3913,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -3923,8 +3925,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -3935,13 +3937,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway",
@@ -4097,8 +4099,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4109,8 +4111,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4121,13 +4123,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/az/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/stream-phoenix",
@@ -4159,8 +4161,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4171,8 +4173,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4183,13 +4185,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/sat14-data-center-2db58790",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-sat14",
@@ -4221,8 +4223,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4233,8 +4235,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4245,13 +4247,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/tx11-187661c6",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/vantage-tx1",
@@ -4283,8 +4285,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4295,8 +4297,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4307,13 +4309,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/ga/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-dalton-1-2",
@@ -4469,8 +4471,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4481,8 +4483,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4493,13 +4495,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/ga/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/xai-qts-atlanta",
@@ -4531,8 +4533,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4543,8 +4545,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4555,13 +4557,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/nscale-keflavik",
@@ -4655,8 +4657,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4667,8 +4669,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4679,13 +4681,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.pjm.com/planning/service-requests",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-lancaster-greenfield-site",
@@ -4717,8 +4719,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4729,8 +4731,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4741,13 +4743,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-muskogee-ok",
@@ -4779,8 +4781,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4791,8 +4793,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4803,13 +4805,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.ercot.com/services/rq/large-load-integration",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/crusoe-abilene-expansion",
@@ -4841,8 +4843,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4853,8 +4855,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4865,13 +4867,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 4,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/ecodatacenter-2",
@@ -4903,8 +4905,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4915,8 +4917,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4927,13 +4929,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.gridtracker.io/example-report",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/goodnight",
@@ -4965,8 +4967,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -4977,8 +4979,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -4989,13 +4991,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/google-cedar-rapids-fa5365cb",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-cedar-rapids",
@@ -5027,8 +5029,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -5039,8 +5041,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -5051,13 +5053,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.indianamichiganpower.com/company/news/view?releaseID=10359",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/google-fort-wayne",
@@ -5089,8 +5091,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -5101,8 +5103,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -5113,13 +5115,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://registry.deploy.report/datacenters/facilities/meta-ohio-bowling-green",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-bowling-green",
@@ -5151,8 +5153,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 3,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -5163,8 +5165,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -5175,13 +5177,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.misoenergy.org/api/giqueue/getprojects",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/meta-hyperion",
@@ -5709,8 +5711,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -5721,8 +5723,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -5733,13 +5735,13 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://www.interconnection.fyi/data-center/project/qts-cedar-rapids-1855c841",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/qts-cedar-rapids",
@@ -5771,8 +5773,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "site_scene_count": 0,
+        "status": "INGESTED_DERIVED",
+        "site_scene_count": 2,
         "acquisition_target": "Acquire cloud-screened multi-date optical scenes covering the recorded site display geography; retain scene ID, acquisition date, processing level, footprint and derived change metrics."
       },
       "tir": {
@@ -5783,8 +5785,8 @@
             "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire surface-temperature/TIRS observations for the site area; retain scene ID, acquisition date, cloud quality and numeric temperature statistic."
       },
       "sar": {
@@ -5795,17 +5797,18 @@
             "url": "https://dataspace.copernicus.eu/explore-data"
           }
         ],
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
-        "numeric_observation_count": 0,
+        "status": "INGESTED_DERIVED",
+        "numeric_observation_count": 2,
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
         "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed."
+        "Retained site-level derived observations exist; they are observations of the scene and do not by themselves establish AI compute or operational status."
       ],
       "grid_evidence_url": "https://wattstreet.net/state/ut/",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/qts-eagle-mountain",
       "next_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record."
     }
-  ]
+  ],
+  "generated_at_utc": "2026-09-27T23:11:07.131010+00:00"
 }
