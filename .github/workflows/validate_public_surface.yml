@@ -260,7 +260,7 @@ jobs:
 
           assert "Browse all 271 extracted project-level records" in html
           assert 'placeholder="Search 271 project records"' in html
-          assert re.search(r'<p class="mono text-xl">250</p><p class="text-xs mt-1" style="color:var\(--ink-faint\);">Project-level records', html)
+          assert re.search(r'<p class="mono text-xl">271</p><p class="text-xs mt-1" style="color:var\(--ink-faint\);">Project-level records', html)
           assert "The project-level layer has grown to **271 records**" in readme
           assert "271 mapped project records" in readme
           assert "data/map_layer_manifest.json" in readme or "map layer manifest" in readme.lower()
