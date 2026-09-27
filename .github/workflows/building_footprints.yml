@@ -37,7 +37,7 @@ jobs:
       - name: Install footprint dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install requests numpy rasterio shapely pyproj duckdb
+          python -m pip install requests numpy rasterio shapely pyproj duckdb planetary-computer
 
       - name: Acquire current building polygons
         run: python acquire_building_footprints.py
