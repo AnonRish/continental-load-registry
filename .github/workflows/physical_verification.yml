@@ -8,6 +8,7 @@ on:
       - ".github/workflows/physical_verification.yml"
       - "acquire_physical_verification.py"
       - "data/external/epoch_ai/registry.json"
+      - "track3.html"
   workflow_dispatch:
   schedule:
     - cron: "15 4 * * 0"
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   acquire:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -40,7 +41,7 @@ jobs:
       - name: Acquire public physical observations
         env:
           PYTHONUNBUFFERED: "1"
-        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 4
+        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 6
 
       - name: Rebuild Track 3 evidence graph
         run: python build_track3_evidence.py
@@ -77,6 +78,7 @@ jobs:
           print("PASS: physical verification artifact contracts")
           print("derived observations:", obs["derived_observation_count"])
           print("transformer events:", tx["record_count"])
+          print("optical:", derived_by_modality["optical"], "tir:", derived_by_modality["tir"], "sar:", derived_by_modality["sar"])
           PY
 
       - name: Validate Python syntax
