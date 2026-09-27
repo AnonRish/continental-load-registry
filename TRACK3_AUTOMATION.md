@@ -10,6 +10,10 @@ The repository has source-specific ingestion adapters for the public source fami
 - NYISO public queue
 - SPP active public queue
 - Epoch AI data-center and global compute snapshots
+- ERCOT GIS public source capture
+- ISO-NE IRTT public-page capture
+- IESO Application Status public-page capture
+- AESO Connection Project List XLSX capture
 - physical-verification/building acquisition workflows where the source pipeline is executable
 
 These adapters run sequentially in `.github/workflows/track3_automated_pipeline.yml` so one source cannot silently overwrite another source's generated files.
@@ -23,7 +27,7 @@ Every source in the source catalog is assigned an explicit mode:
 - **SNAPSHOT_OR_HEALTHCHECK_ONLY** — the source is represented by a retained point-in-time snapshot and monitored, but has no current executable refresh adapter.
 - **CATALOG_ONLY** — source is documented but has no public URL suitable for automated retrieval.
 
-A source is never labeled ingested just because its URL is reachable.
+A raw-capture adapter may be marked ingested at the source-byte level without implying that its rows have been normalized or joined to a facility. A source is never labeled fully site-verified just because its URL is reachable.
 
 ## Scheduled operation
 
