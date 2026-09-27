@@ -301,6 +301,98 @@ def validate_site_evidence(expected_epoch_ids: set[str]) -> dict[str, int]:
     }
 
 
+ENRICHMENT_PATH = ROOT / "data" / "track3" / "public_web_enrichment_2026-09-27.json"
+
+
+def load_public_enrichment() -> dict[str, list[dict[str, Any]]]:
+    if not ENRICHMENT_PATH.exists():
+        return {}
+    payload = json.loads(ENRICHMENT_PATH.read_text(encoding="utf-8"))
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in payload.get("records", []):
+        eid = str(row.get("epoch_id") or "").strip()
+        if eid:
+            grouped.setdefault(eid, []).append(row)
+    return grouped
+
+
+def merge_public_enrichment(normalized: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Fill safe publisher fields from explicit public-source captures without overwriting raw Epoch data."""
+    out = dict(normalized)
+    provenance = list(out.get("public_enrichment") or [])
+    safe_fields = {"project", "address", "owner", "users", "construction_companies", "energy_companies"}
+    strict_investor = []
+
+    def as_values(value: Any) -> list[str]:
+        if value is None:
+            return []
+        if isinstance(value, list):
+            return [str(v).strip() for v in value if str(v).strip()]
+        text = str(value).strip()
+        return [text] if text else []
+
+    def merge_value(field: str, value: Any) -> None:
+        vals = as_values(value)
+        if not vals:
+            return
+        current = as_values(out.get(field))
+        if not current:
+            out[field] = vals[0] if len(vals) == 1 else ", ".join(dict.fromkeys(vals))
+        else:
+            combined = list(dict.fromkeys(current + vals))
+            out[field] = combined[0] if len(combined) == 1 else ", ".join(combined)
+
+    for row in rows:
+        field = str(row.get("field") or "").strip()
+        scope_note = str(row.get("scope_note") or "").lower()
+        relationship = str(row.get("relationship") or "").lower()
+        if field == "investors":
+            if "project-specific" in scope_note or "project specific" in scope_note or "financing" in relationship:
+                strict_investor.append(row)
+            continue
+        if field not in safe_fields:
+            continue
+        merge_value(field, row.get("value"))
+        provenance.append({
+            "field": field,
+            "value": row.get("value"),
+            "relationship": row.get("relationship"),
+            "source": row.get("source"),
+            "source_urls": row.get("source_urls") or [],
+            "publication_date": row.get("publication_date"),
+            "capture_date": row.get("capture_date"),
+            "evidence_id": row.get("evidence_id"),
+            "scope_note": row.get("scope_note"),
+        })
+
+    for row in strict_investor:
+        merge_value("investors", row.get("value"))
+        provenance.append({
+            "field": "investors",
+            "value": row.get("value"),
+            "relationship": row.get("relationship"),
+            "source": row.get("source"),
+            "source_urls": row.get("source_urls") or [],
+            "publication_date": row.get("publication_date"),
+            "capture_date": row.get("capture_date"),
+            "evidence_id": row.get("evidence_id"),
+            "scope_note": row.get("scope_note"),
+        })
+
+    # De-duplicate provenance deterministically.
+    seen = set()
+    deduped = []
+    for item in provenance:
+        key = json.dumps(item, sort_keys=True, ensure_ascii=False)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(item)
+    if deduped:
+        out["public_enrichment"] = deduped
+    return out
+
+
 def selftest() -> None:
     assert norm("OpenAI Stargate Abilene, TX") == "openai stargate abilene tx"
     assert tokens("OpenAI Stargate Abilene") >= {"openai", "stargate", "abilene"}
@@ -311,6 +403,16 @@ def selftest() -> None:
     ep = {"name":"Anthropic Lake Mariner","owner":"Anthropic","users":"Anthropic","address":"Barker, NY","country":"United States"}
     assert conservative_matches(ep, rows, {"anthropic lake mariner":{"registry_ids":["1670"],"relationship":"same_phase","match_confidence":"high","match_basis":"Known NYISO Lake Mariner cross-check."}})[0]["queue_id"] == "1670"
     assert not conservative_matches({"name":"Google Columbus","owner":"Google","users":"Google","address":"Columbus, OH","country":"United States"}, rows, {})
+    sample = {"project": "", "energy_companies": "", "investors": ""}
+    merged = merge_public_enrichment(sample, [
+        {"field":"project","value":"Demo Project","scope_note":"official project identity"},
+        {"field":"energy_companies","value":["Utility A","Utility B"],"scope_note":"site utility"},
+        {"field":"investors","value":["Company-level investor"],"relationship":"corporate financing context","scope_note":"not project-specific"},
+        {"field":"investors","value":["Project Financier"],"relationship":"project-specific financing","scope_note":"project-specific investor"},
+    ])
+    assert merged["project"] == "Demo Project"
+    assert merged["energy_companies"] == "Utility A, Utility B"
+    assert merged["investors"] == "Project Financier"
     # The committed evidence artifact must remain a 1:1, 93-site layer.
     payload = json.loads((OUT / "site_level_connection_evidence.json").read_text(encoding="utf-8"))
     expected_ids = {str(r.get("epoch_id") or "") for r in payload.get("records", [])}
@@ -377,6 +479,7 @@ def sync() -> None:
                 chip_by_center.setdefault(key, []).append(row)
 
         registry = parse_registry()
+        public_enrichment_by_id = load_public_enrichment()
         overrides = load_overrides()
         expected_epoch_ids = {
             "EPOCH-" + hashlib.sha256(
@@ -431,7 +534,7 @@ def sync() -> None:
                 "latest_timeline": None,
                 "latest_chip_quantities": list(latest_chips.values()),
             }
-            if latest:
+            normalized = merge_public_enrichment(normalized, public_enrichment_by_id.get(epoch_id, []))            if latest:
                 normalized["latest_timeline"] = {k: (numeric(pick(latest, aliases)) if k not in {"data_center","date","construction_status"} else pick(latest, aliases))
                     for k, aliases in TIMELINE_ALIASES.items()}
 
