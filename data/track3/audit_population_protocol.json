@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "title": "Threshold audit population protocol",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "purpose": "Parameterized protocol for building a large-compute audit population above threshold T without hard-coding a political or treaty threshold.",
+  "parameters": {
+    "threshold_T": {
+      "value": null,
+      "unit": "MW IT-equivalent or other formally defined metric",
+      "required_before_execution": true
+    },
+    "as_of_date": "date"
+  },
+  "population_sources": [
+    "data/external/epoch_ai/registry.json",
+    "data/project_level_extractions.json",
+    "data/track3/entity_resolution.json"
+  ],
+  "rules": [
+    "Preserve source-local measurement units.",
+    "Never substitute queue MW for IT MW without an explicit conversion record.",
+    "Resolve parent/subsidiary names through the entity graph before counting.",
+    "Deduplicate site/project identities before thresholding.",
+    "Store excluded/unknown cases separately rather than silently dropping them."
+  ],
+  "states": [
+    "UNASSESSED",
+    "IN_SCOPE",
+    "AUDIT_IN_PROGRESS",
+    "AUDIT_COMPLETE",
+    "EXCLUDED_WITH_REASON",
+    "UNKNOWN"
+  ],
+  "output_schema": [
+    "audit_id",
+    "target_id",
+    "threshold_T",
+    "metric_definition",
+    "measured_value",
+    "measurement_source",
+    "entity_resolution_status",
+    "audit_state",
+    "evidence_ids",
+    "as_of_date"
+  ]
+}
