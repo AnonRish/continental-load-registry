@@ -4,20 +4,20 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 224,
+    "record_count": 231,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 198,
+      "PUBLIC_SOURCE_CAPTURED": 205,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
       "energy_companies": 58,
-      "project": 31,
-      "investment": 19,
+      "project": 34,
+      "investment": 22,
       "owner": 10,
       "investors": 4,
       "construction_companies": 22,
-      "cooling": 10,
+      "cooling": 11,
       "chip_quantities": 5,
       "operational_status": 7,
       "address": 6,
@@ -3658,7 +3658,119 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "DPR's project page describes the Gallatin site as using direct air cooling with outside air and fan technology.",
       "evidence_id": "EVID-PWEB-batch3-meta-gallatin-cool-1"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "cooling",
+      "value": "Closed-loop liquid-cooled system",
+      "relationship": "site cooling architecture",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says Temple's cooling system is designed to use zero water for a majority of the year.",
+      "evidence_id": "EVID-PWEB-batch4-meta-temple-cool-0"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "investment",
+      "value": "More than $1.2 billion",
+      "relationship": "owner investment commitment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says it has invested more than $1.2 billion in the Temple data center.",
+      "evidence_id": "EVID-PWEB-batch4-meta-temple-inve-1"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "project",
+      "value": "Temple Data Center",
+      "relationship": "official project name",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official launch announcement identifies the facility as the Temple Data Center.",
+      "evidence_id": "EVID-PWEB-batch4-meta-temple-proj-2"
+    },
+    {
+      "site_name": "Meta Kuna",
+      "epoch_id": "EPOCH-5de9a1c70a3e2275",
+      "field": "investment",
+      "value": "More than $1.2 billion",
+      "relationship": "owner investment commitment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
+      "publication_date": "2026-09-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says it has invested more than $1.2 billion in the Kuna data center.",
+      "evidence_id": "EVID-PWEB-batch4-meta-kuna-inve-3"
+    },
+    {
+      "site_name": "Meta Kuna",
+      "epoch_id": "EPOCH-5de9a1c70a3e2275",
+      "field": "project",
+      "value": "Kuna Data Center",
+      "relationship": "official project name",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
+      "publication_date": "2026-09-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official launch announcement identifies the facility as the Kuna Data Center.",
+      "evidence_id": "EVID-PWEB-batch4-meta-kuna-proj-4"
+    },
+    {
+      "site_name": "Meta Cheyenne",
+      "epoch_id": "EPOCH-14cecdb5956daea1",
+      "field": "investment",
+      "value": "More than $800 million",
+      "relationship": "owner investment commitment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/07/hello-cheyenne/"
+      ],
+      "publication_date": "2024-07-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says it has invested more than $800 million in its Cheyenne data center.",
+      "evidence_id": "EVID-PWEB-batch4-meta-cheyenne-inve-5"
+    },
+    {
+      "site_name": "Meta Cheyenne",
+      "epoch_id": "EPOCH-14cecdb5956daea1",
+      "field": "project",
+      "value": "Cheyenne Data Center",
+      "relationship": "official project name",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/07/hello-cheyenne/"
+      ],
+      "publication_date": "2024-07-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official announcement identifies the facility as its Cheyenne Data Center.",
+      "evidence_id": "EVID-PWEB-batch4-meta-cheyenne-proj-6"
     }
   ],
-  "record_count": 224
+  "record_count": 231
 }
