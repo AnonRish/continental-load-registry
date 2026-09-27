@@ -148,9 +148,14 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "SITE_LEVEL_EVIDENCE",
                 "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
             }
+        if any(x.get("type") == "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE" for x in ev):
+            return {
+                "status": "RESEARCHED_NO_PUBLIC_RECORD",
+                "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service."
+            }
         return {
             "status": "PENDING_RESEARCH",
-            "basis": "No site-level connection/service evidence is currently attached."
+            "basis": "No site-level connection/service evidence or documented no-match search is currently attached."
         }
     if domain == "power_telemetry":
         observations = (power_observations_by_site or {}).get(str(rec.get("epoch_id")), [])
