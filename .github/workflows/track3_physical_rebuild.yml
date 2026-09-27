@@ -1,0 +1,78 @@
+name: Track 3 Physical Evidence Rebuild
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "acquire_physical_verification.py"
+      - "data/external/epoch_ai/registry.json"
+      - ".github/workflows/track3_physical_rebuild.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "25 5 * * 0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: track3-physical-rebuild
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install physical verification dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests numpy rasterio planetary-computer
+
+      - name: Acquire physical observations
+        run: |
+          python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 1 --workers 6
+
+      - name: Validate real observations
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("data/track3")
+          obs = json.loads((root / "remote_sensing_observations.json").read_text(encoding="utf-8"))
+          tx = json.loads((root / "transformer_supply_chain_events.json").read_text(encoding="utf-8"))
+          assert obs["site_count_target"] == 93
+          assert obs["derived_observation_count"] > 0
+          counts = {m: sum(1 for r in obs["records"] if r.get("status") == "INGESTED_DERIVED" and r.get("modality") == m) for m in ("optical","tir","sar")}
+          assert all(v > 0 for v in counts.values()), counts
+          assert tx["record_count"] == len(tx["records"]) >= 1
+          print("PASS:", counts, "transformer_events=", tx["record_count"])
+          PY
+
+      - name: Rebuild Track 3 graph
+        run: python build_track3_evidence.py
+
+      - name: Validate Python syntax
+        run: python -m py_compile acquire_physical_verification.py build_track3_evidence.py
+
+      - name: Commit physical artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/physical_verification_layer.json             data/track3/physical_site_coordinates.json             data/track3/remote_sensing_observations.json             data/track3/remote_sensing_observations.csv             data/track3/transformer_supply_chain_events.json             data/track3/transformer_supply_chain_events.csv             data/track3/transformer_event_targets.csv             data/track3_source_stack.json             data/track3_evidence_schema.json             data/track3/site_status.json             data/track3/evidence_records.json             data/track3/summary.json
+          if git diff --cached --quiet; then
+            echo "No physical artifact changes."
+            exit 0
+          fi
+          git commit -m "Publish Track 3 physical verification observations"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
