@@ -11,6 +11,7 @@ on:
       - "STRICT_DISCOVERY_RESEARCH.md"
       - "validate_strict_discovery_candidates.py"
       - "build_ambiguity_classification_summary.py"
+      - "validate_track3_complete_coverage.py"
       - "plan-a.html"
       - "research.html"
       - "api.html"
@@ -392,6 +393,8 @@ jobs:
         run: python validate_strict_discovery_candidates.py
       - name: Reconcile broad ambiguity classification summary
         run: python build_ambiguity_classification_summary.py --check
+      - name: Validate complete Track 3 coverage contract
+        run: python validate_track3_complete_coverage.py
 
       - name: Validate canonical cross-artifact consistency
         run: python validate_cross_artifact_consistency.py
