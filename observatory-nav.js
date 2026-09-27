@@ -53,14 +53,27 @@
     const wrap=document.createElement('div');wrap.className='obs-nav-wrap';wrap.setAttribute('data-observatory-nav','');
     const nav=document.createElement('nav');nav.className='obs-nav';nav.setAttribute('aria-label','Registry sections');
     wrap.appendChild(nav);
-    const insertAfter=document.querySelector('.visual-hero')||document.querySelector('header');
+    const insertAfter=document.querySelector('.visual-hero, header.hero, .hero, header');
     if(insertAfter)insertAfter.insertAdjacentElement('afterend',wrap);
-    render();progress();
+    render();progress();initSectionObserver();
     document.querySelectorAll('.obs-tab[href*="#"]').forEach(function(a){
       a.addEventListener('click',function(){
         setTimeout(function(){render()},0);
       });
     });
+  }
+  function initSectionObserver(){
+    if(!isIndex||typeof IntersectionObserver==="undefined")return;
+    const map=new Map(navItems.filter(x=>x.anchor).map(x=>[x.anchor,x]));
+    const obs=new IntersectionObserver(function(entries){
+      entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top).forEach(function(e){
+        const item=map.get(e.target.id);if(!item)return;
+        document.querySelectorAll('.obs-tab[aria-current="location"]').forEach(function(a){a.removeAttribute('aria-current')});
+        const link=document.querySelector('.obs-tab[href$="#'+item.anchor+'"]');
+        if(link)link.setAttribute('aria-current','location');
+      });
+    },{rootMargin:'-18% 0px -68% 0px',threshold:0});
+    navItems.filter(x=>x.anchor).forEach(function(x){const el=document.getElementById(x.anchor);if(el)obs.observe(el)});
   }
   window.addEventListener('scroll',progress,{passive:true});
   window.addEventListener('hashchange',render);
