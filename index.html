@@ -309,7 +309,7 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
     <div class="registry-kpi"><b id="deckSites">93</b><span>frontier sites</span></div>
     <div class="registry-kpi"><b id="deckRecords">1,623</b><span>known records</span></div>
     <div class="registry-kpi"><b id="deckGW">394.6</b><span>GW broad scope</span></div>
-    <div class="registry-kpi"><b id="deckEvidence">876</b><span>Track 3 evidence</span></div>
+    <div class="registry-kpi"><b id="deckEvidence">916</b><span>Track 3 evidence</span></div>
     <div class="registry-kpi"><b id="deckPhysical">408</b><span>physical observations</span></div>
   </div>
 </div>
@@ -320,7 +320,7 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
   <div class="registry-signal" data-signal="queue" style="--signal-pct:100%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">93 terminal</div><div class="registry-signal-s">2 site-specific IDs</div></div>
   <div class="registry-signal" data-signal="physical" style="--signal-pct:100%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">408 obs.</div><div class="registry-signal-s">136 optical · 136 TIR · 136 SAR</div></div>
   <div class="registry-signal" data-signal="transformer" style="--signal-pct:1%"><div class="registry-signal-k">Transformers</div><div class="registry-signal-v">3 events</div><div class="registry-signal-s">supply-chain evidence</div></div>
-  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">276 records</div><div class="registry-signal-s">71 sites enriched</div></div>
+  <div class="registry-signal" data-signal="web" style="--signal-pct:95%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">316 records</div><div class="registry-signal-s">88 sites enriched</div></div>
 </div>
 
 
@@ -802,9 +802,9 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
       <div class="p-4"><p id="physicalConstructionTimelines" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction timelines</p></div>
       <div class="p-4"><p id="physicalPowerTimelines" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction → power timelines</p></div>
       <div class="p-4"><p id="physicalCoolingSites" class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Cooling snapshot sites</p></div>
-      <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
+      <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">408</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
       <div class="p-4"><p id="physicalTransformerEvents" class="mono text-xl">3</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Transformer events</p></div>
-      <div class="p-4"><p id="physicalFootprintPolygons" class="mono text-xl">115,625</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Building polygons</p></div>
+      <div class="p-4"><p id="physicalFootprintPolygons" class="mono text-xl">117,479</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Building polygons</p></div>
     </div>
     <div class="scroll-x mt-5"><table class="w-full text-xs min-w-[1250px]"><thead><tr><th class="px-3 py-2">Physical-verification item</th><th class="px-3 py-2">Status</th><th class="px-3 py-2">Current coverage</th><th class="px-3 py-2">Sources</th></tr></thead>
       <tbody id="physicalVerificationBody"><tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading physical verification layer…</td></tr></tbody></table></div>
@@ -3346,13 +3346,13 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
       const e=await fetch('data/track3/evidence_records.json').then(r=>r.json());
       const n=Array.isArray(e)?e.length:(e.records?.length??e.evidence?.length??0);
       if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=n.toLocaleString();
-      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 276).toLocaleString()+' records';
-      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 71).toLocaleString()+' sites enriched';
+      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 316).toLocaleString()+' records';
+      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 88).toLocaleString()+' sites enriched';
     }catch{}
   }).catch(()=>{});
   fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
     const broad=s.expanded_known_scope ?? {};
-    document.getElementById('deckRecords').textContent=Number(broad.records ?? 1641).toLocaleString();
+    document.getElementById('deckRecords').textContent=Number(broad.records ?? 1623).toLocaleString();
     document.getElementById('deckGW').textContent=Number(broad.capacity_gw ?? 394.618).toFixed(1);
   }).catch(()=>{});
 })();
