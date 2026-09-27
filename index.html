@@ -180,20 +180,6 @@
 @media(max-width:650px){#completeConnectionTargetLedger .ctl-radar{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-fields{grid-template-columns:1fr 1fr}#completeConnectionTargetLedger .ctl-detail-grid{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-toolbar{grid-template-columns:1fr}#completeConnectionTargetLedger .ctl-site{min-width:200px}}
 </style>
 
-/* COMPACT-OBSERVATORY-V1 */
-.compact-explorer{margin:0 0 2rem;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,var(--panel),color-mix(in srgb,var(--teal-soft) 34%,var(--panel)));box-shadow:0 10px 30px rgba(22,35,58,.06)}
-.compact-explorer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.compact-explorer-kicker{font:600 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
-.compact-explorer-title{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-top:4px}
-.compact-explorer-copy{font-size:11px;line-height:1.5;color:var(--ink-soft);max-width:760px;margin-top:4px}
-.compact-explorer-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-.compact-mode{border:1px solid var(--line-strong);background:var(--panel);color:var(--ink-soft);border-radius:999px;padding:7px 11px;font:600 10px/1 'IBM Plex Sans',sans-serif;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,color .16s ease}
-.compact-mode:hover{transform:translateY(-1px);background:var(--amber-soft);color:var(--ink)}
-.compact-mode[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
-.compact-status{margin-top:9px;font:500 9px/1.4 'IBM Plex Mono',monospace;color:var(--ink-faint)}
-.registry-deep-hidden{display:none!important}
-body.registry-everything .compact-explorer{background:var(--panel)}
-@media(max-width:700px){.compact-explorer-top{display:block}.compact-explorer-actions{gap:6px}.compact-mode{padding:7px 9px}}
 </style>
 <link rel="stylesheet" href="observatory-nav.css">
 
@@ -290,9 +276,9 @@ section.mb-8{scroll-margin-top:118px}
   <div class="registry-kpis" aria-label="Registry at a glance">
     <div class="registry-kpi"><b id="deckSites">93</b><span>frontier sites</span></div>
     <div class="registry-kpi"><b id="deckRecords">1,623</b><span>known records</span></div>
-    <div class="registry-kpi"><b id="deckGW">397.8</b><span>GW broad scope</span></div>
-    <div class="registry-kpi"><b id="deckEvidence">396</b><span>Track 3 evidence</span></div>
-    <div class="registry-kpi"><b id="deckPhysical">0</b><span>physical observations</span></div>
+    <div class="registry-kpi"><b id="deckGW">394.6</b><span>GW broad scope</span></div>
+    <div class="registry-kpi"><b id="deckEvidence">733</b><span>Track 3 evidence</span></div>
+    <div class="registry-kpi"><b id="deckPhysical">359</b><span>physical observations</span></div>
   </div>
 </div>
 <div class="registry-view-hint" id="registryViewHint">Overview is the visual entry point. Use the tabs above to open the dense research layers.</div>
@@ -300,9 +286,9 @@ section.mb-8{scroll-margin-top:118px}
 <div id="registrySignalRail" class="registry-signal-rail" aria-label="Evidence signal rail">
   <div class="registry-signal" data-signal="sites" style="--signal-pct:100%"><div class="registry-signal-k">Sites</div><div class="registry-signal-v">93 / 93</div><div class="registry-signal-s">site identity ingested</div></div>
   <div class="registry-signal" data-signal="queue" style="--signal-pct:100%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">93 terminal</div><div class="registry-signal-s">2 site-specific IDs</div></div>
-  <div class="registry-signal" data-signal="physical" style="--signal-pct:0%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">0 / 93</div><div class="registry-signal-s">remote sensing processed</div></div>
+  <div class="registry-signal" data-signal="physical" style="--signal-pct:100%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">359 obs.</div><div class="registry-signal-s">120 optical · 120 TIR · 119 SAR</div></div>
   <div class="registry-signal" data-signal="transformer" style="--signal-pct:1%"><div class="registry-signal-k">Transformers</div><div class="registry-signal-v">3 events</div><div class="registry-signal-s">supply-chain evidence</div></div>
-  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">222 records</div><div class="registry-signal-s">70 sites enriched</div></div>
+  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">244 records</div><div class="registry-signal-s">70 sites enriched</div></div>
 </div>
 
 
@@ -350,7 +336,7 @@ section.mb-8{scroll-margin-top:118px}
         <div class="visual-metric"><b>1,540</b><span>row-level records</span></div>
         <div class="visual-metric"><b>394.6 GW</b><span>known scope</span></div>
         <div class="visual-metric"><b>93</b><span>Epoch sites</span></div>
-        <div class="visual-metric"><b>279</b><span>Track 3 observation tasks</span></div>
+        <div class="visual-metric"><b>219</b><span>Track 3 observation tasks</span></div>
       </div>
       <div class="mt-4 text-[10px]" style="color:rgba(240,246,252,.62);">Missing evidence is surfaced as a research state—not silently converted into absence.</div>
     </div>
@@ -359,10 +345,10 @@ section.mb-8{scroll-margin-top:118px}
 </section>
 
 <!-- ============ STAT CARDS ============ -->
-<section class="border-b hairline reveal" style="animation-delay:.05s">
+<section data-registry-view="overview" class="border-b hairline reveal" style="animation-delay:.05s">
   <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x hairline">
     <div class="px-5 sm:px-8 py-7">
-      <p class="mono text-3xl sm:text-4xl font-medium" id="statCapacity">361.9 GW</p>
+      <p class="mono text-3xl sm:text-4xl font-medium" id="statCapacity">358.7 GW</p>
       <p class="text-sm mt-2" style="color:var(--ink-soft);">Row-level capacity audited</p>
       <p class="text-xs mt-1" style="color:var(--ink-faint);" id="statCapacityNote">1,540 published facility/request rows &ge; 100 MW across nine RTOs/ISOs</p>
     </div>
@@ -507,21 +493,6 @@ section.mb-8{scroll-margin-top:118px}
     </div>
   </section>
 
-
-  <!-- ============ COMPACT EXPLORER ============ -->
-  <section id="compactExplorer" class="compact-explorer" aria-label="Registry view controls">
-    <div class="compact-explorer-top">
-      <div><div class="compact-explorer-kicker">Public observatory</div><div class="compact-explorer-title">Start with the signal. Open the research stack only when needed.</div><div class="compact-explorer-copy">The complete registry, evidence ledgers, queue tables and research machinery remain on this page. These views keep the landing experience focused without removing any underlying data.</div></div>
-    </div>
-    <div class="compact-explorer-actions" role="toolbar" aria-label="Registry detail level">
-      <button type="button" class="compact-mode" data-registry-mode="essentials" aria-pressed="true">Essentials</button>
-      <button type="button" class="compact-mode" data-registry-mode="evidence" aria-pressed="false">Evidence</button>
-      <button type="button" class="compact-mode" data-registry-mode="data" aria-pressed="false">Data tables</button>
-      <button type="button" class="compact-mode" data-registry-mode="track3" aria-pressed="false">Track 3</button>
-      <button type="button" class="compact-mode" data-registry-mode="everything" aria-pressed="false">Everything</button>
-    </div>
-    <div id="compactExplorerStatus" class="compact-status">Essentials view: overview, map, market picture and physical verification.</div>
-  </section>
 
   <!-- ============ DATA UNIVERSE CHECKLIST ============ -->
   <section id="dataUniverseChecklist" class="panel rounded-lg p-5 sm:p-6 mb-8">
@@ -3355,46 +3326,6 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
 </script>
 
 
-<script>
-(function(){
-  const deepIds=['dataUniverseChecklist','misoUnlocatedWorklist','mapLayerInventory','queueUniverse','epochConnectionTargets','dataUniverseStatus','epochSiteEvidenceInventory','regulatoryUtilityEvidence','websiteCompletenessAudit','currentPublicSourceContext','completeProjectLedger','completeConnectionTargetLedger','completeSiteEvidenceLedger','caisoFullQueueSection','freshPublicEnrichment','auxiliarySourceLayer','queueWideLayers','projectLevelExtraction','projectLevelTable','pjmSubmissionHistory','supplementalLargeLoad','supplementalBrowser','epochRegistry','module1-radar','methodology'];
-  const modeMap={
-    essentials:new Set(['physicalVerificationLayer']),
-    evidence:new Set(['queueUniverse','epochConnectionTargets','epochSiteEvidenceInventory','regulatoryUtilityEvidence','websiteCompletenessAudit','currentPublicSourceContext','physicalVerificationLayer']),
-    data:new Set(['dataUniverseChecklist','misoUnlocatedWorklist','mapLayerInventory','queueUniverse','epochConnectionTargets','dataUniverseStatus','epochSiteEvidenceInventory','regulatoryUtilityEvidence','websiteCompletenessAudit','currentPublicSourceContext','completeProjectLedger','completeConnectionTargetLedger','completeSiteEvidenceLedger','caisoFullQueueSection','freshPublicEnrichment','auxiliarySourceLayer','queueWideLayers','projectLevelExtraction','projectLevelTable','pjmSubmissionHistory','supplementalLargeLoad','supplementalBrowser','epochRegistry']),
-    track3:new Set(['queueUniverse','epochConnectionTargets','epochSiteEvidenceInventory','currentPublicSourceContext','physicalVerificationLayer','module1-radar']),
-    everything:new Set(deepIds)
-  };
-  const labels={essentials:'Essentials view: overview, map, market picture and physical verification.',evidence:'Evidence view: connection, corroboration and physical evidence layers.',data:'Data tables: full queues, project ledgers and source-level registries.',track3:'Track 3 view: physical radar, evidence graph and source controls.',everything:'Everything view: all public sections are expanded.'};
-  function setMode(mode,save){
-    mode=modeMap[mode]?mode:'essentials';
-    const allowed=modeMap[mode];
-    deepIds.forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('registry-deep-hidden',!allowed.has(id));});
-    document.querySelectorAll('.compact-mode').forEach(b=>{const active=b.dataset.registryMode===mode;b.setAttribute('aria-pressed',active?'true':'false');});
-    const st=document.getElementById('compactExplorerStatus');if(st)st.textContent=labels[mode];
-    document.body.classList.toggle('registry-everything',mode==='everything');
-    if(save)try{localStorage.setItem('registryViewMode',mode)}catch(_){ }
-  }
-  function targetSection(target){if(!target)return null;return target.closest('section')||target;}
-  function revealTarget(id){
-    const el=document.getElementById(id);if(!el)return;
-    if(el.classList.contains('registry-deep-hidden')) setMode('everything',true);
-    requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
-  }
-  function init(){
-    document.querySelectorAll('.compact-mode').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.registryMode,true)));
-    document.addEventListener('click',e=>{
-      const a=e.target.closest('a[href*="#"]');if(!a||a.target==='_blank')return;
-      const raw=a.getAttribute('href')||'';const hash=raw.split('#')[1];if(!hash)return;
-      const id=decodeURIComponent(hash);const el=document.getElementById(id);if(el&&el.classList.contains('registry-deep-hidden')){
-        e.preventDefault();revealTarget(id);history.replaceState(null,'','#'+id);
-      }
-    });
-    let mode='essentials';try{mode=localStorage.getItem('registryViewMode')||mode}catch(_){ }
-    setMode(mode,false);
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();
-</script>
+
 </body>
 </html>
