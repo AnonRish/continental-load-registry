@@ -398,7 +398,7 @@
       <div class="flex flex-wrap gap-2">
         <a href="https://www.caiso.com/documents/publicqueuereport.xlsx" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Official XLSX</a>
         <a href="https://www.caiso.com/documents/publicqueuereport.pdf" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Official PDF</a>
-        <a href="data/caiso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Local JSON snapshot</a>
+        <a href="https://www.caiso.com/documents/publicqueuereport.xlsx" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Official current workbook</a>
         <a href="data/caiso_public_queue.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download CSV</a>
       </div>
     </div>
@@ -421,8 +421,8 @@
       <div class="flex flex-wrap gap-2">
         <a href="data/miso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">MISO JSON</a><a href="data/miso_unresolved_large_loads.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">MISO unresolved worklist</a>
         <a href="data/spp_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">SPP JSON</a>
-        <a href="data/nyiso_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">NYISO JSON</a>
-        <a href="data/pjm_cycle_public_queue.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">PJM JSON</a>
+        <a href="https://www.nyiso.com/interconnections" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">NYISO official interconnections</a>
+        <a href="https://www.pjm.com/planning/m/cycle-service-request-status" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">PJM official cycle status</a>
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
@@ -473,7 +473,7 @@
         </tbody>
       </table>
     </div>
-    <p class="text-xs mt-4" style="color:var(--ink-faint);">The supplemental evidence file currently contains 53 source/evidence units. The map contains 55 geographic evidence footprints after adding historical CAISO and utility/regional layers; footprints are not facility locations. The machine-readable file preserves raw claims and source dates. The interactive map overlays all 213 project-level records; their geometry is county/town/site-area display geography. Empty capacity fields mean the cited public record did not publish a usable project MW value; the registry does not infer one from unrelated generation, tariff or IRP figures.</p>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">The supplemental evidence file count is loaded from the machine-readable public dataset. The map also contains aggregate geographic evidence footprints; footprints are not facility locations. The machine-readable file preserves raw claims and source dates. The interactive map overlays every record present in `data/project_level_map.json`; their geometry is county/town/site-area display geography. Empty capacity fields mean the cited public record did not publish a usable project MW value; the registry does not infer one from unrelated generation, tariff or IRP figures.</p>
   </section>
 
   <!-- ============ PROJECT-LEVEL RECORD BROWSER ============ -->
