@@ -64,8 +64,23 @@ def parse_registry():
     return json.loads(m.group(1))
 
 def source_inventory():
-    sm=load("data/source_manifest.json")["sources"]
-    stack=load("data/track3_source_stack.json")["sources"]
+    raw_sources=load("data/source_manifest.json").get("sources",{})
+    if isinstance(raw_sources,dict):
+        sm=[dict(v or {}, id=k) for k,v in raw_sources.items()]
+    elif isinstance(raw_sources,list):
+        sm=raw_sources
+    else:
+        raise RuntimeError("data/source_manifest.json:sources must be an object or list")
+    out={}
+    for s in sm:
+        if not isinstance(s,dict):
+            continue
+        key=s.get("id") or s.get("source_id")
+        if not key or key in out:
+            continue
+        url=s.get("url") or s.get("official_source_url")
+        local_files=s.get("snapshot_files") or ([s.get("source_file")] if s.get("source_file") else [None])
+        out["manifest:"+str(key)]={"id":key,"name":s.get("name") or s.get("source_name"),"url":url,"publisher":s.get("publisher"),"mode":s.get("mode") or ("AUTOMATED_ADAPTER" if key in AUTOMATED_ADAPTERS else ("CATALOG_ONLY" if not url else "HEALTHCHECK_ONLY")),"workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],"script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],"local_file":local_files[0],"declared_capture_date":s.get("capture_on") or s.get("capture_date") or s.get("last_captured_utc")}
     universe=load("data/external/epoch_ai/queue_source_universe.json")
     out={}
     for key,v in sm.items():
