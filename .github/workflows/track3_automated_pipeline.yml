@@ -5,10 +5,9 @@ on:
   schedule:
     - cron: "15 10 * * *"
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "track3_automation.py"
+  # Canonical generated-data refreshes are handled by track3_canonical_refresh.yml.
+  # Keep this workflow schedule/manual only to prevent concurrent writer races.
+
       - "run_track3_source_adapters.py"
       - "sync_auxiliary_queue_sources.py"
       - "build_track3_evidence.py"
@@ -50,7 +49,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: track3-canonical-writers-main
+  group: track3-legacy-maintenance
   cancel-in-progress: false
 
 # All canonical generated-data writers share this serialized lane.
