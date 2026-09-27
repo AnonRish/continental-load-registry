@@ -6,6 +6,10 @@ on:
     paths:
       - "acquire_physical_verification.py"
       - ".github/workflows/track3_physical_rebuild.yml"
+  push:
+    paths:
+      - "acquire_physical_verification.py"
+      - ".github/workflows/track3_physical_rebuild.yml"
       - "data/external/epoch_ai/registry.json"
 
 permissions:
@@ -46,7 +50,13 @@ jobs:
           obs = json.loads((root / "remote_sensing_observations.json").read_text(encoding="utf-8"))
           tx = json.loads((root / "transformer_supply_chain_events.json").read_text(encoding="utf-8"))
           assert obs["site_count_target"] == 93
-          assert obs["derived_observation_count"] > 0
+          assert len(obs["records"]) > 0
+          derived_by_modality = {m: sum(1 for r in obs["records"] if r.get("status") == "INGESTED_DERIVED" and r.get("modality") == m) for m in ("optical","tir","sar")}
+          print("physical acquisition attempts:", len(obs["records"]))
+          print("derived observations by modality:", derived_by_modality)
+          if not all(v > 0 for v in derived_by_modality.values()):
+              print("WARNING: one or more remote-sensing modalities are source-limited in this run; explicit failure/NO_SCENES records are retained.");
+
           counts = {m: sum(1 for r in obs["records"] if r.get("status") == "INGESTED_DERIVED" and r.get("modality") == m) for m in ("optical","tir","sar")}
           assert all(v > 0 for v in counts.values()), counts
           assert tx["record_count"] == len(tx["records"]) >= 1
