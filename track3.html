@@ -195,6 +195,16 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </section>
 
 <section class="section panel" style="padding:16px">
+<h2>Public research completeness dossier</h2>
+<p id="dossierMeta" class="soft small">Loading…</p>
+<div class="tools" style="margin-top:10px">
+<a class="btn" href="data/track3/public_site_dossier.json" target="_blank" rel="noopener">Open complete 93-site dossier</a>
+</div>
+<div id="dossierCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Publisher gaps</th><th>Grid / utility evidence</th><th>Queue ID</th><th>Research sources</th><th>Next action</th></tr></thead><tbody id="dossierRows"></tbody></table></div>
+</section>
+
+<section class="section panel" style="padding:16px">
 <h2>Evidence state dictionary</h2>
 <div id="states" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:12px"></div>
 </section>
@@ -283,7 +293,8 @@ const U={
  schema:'data/track3_evidence_schema.json',
  module1:'data/module1_radar_spec.json',
  audit:'data/module1_radar_summary.json',
- epoch:'data/external/epoch_ai/registry.json'
+ epoch:'data/external/epoch_ai/registry.json',
+ dossier:'data/track3/public_site_dossier.json'
 };
 let D={},filteredSites=[];
 const domains=['site_identity','grid_connection','service_or_contract','regulatory','construction','power_telemetry','remote_sensing','cooling','transformer_supply_chain','chip_inventory','chip_ownership','chip_users','chip_shipments','independent_corroboration','compute_tenancy'];
@@ -524,6 +535,22 @@ function renderProvenance(){
   return `<tr><td><strong>${esc(f.facility_name)}</strong><div class="mono faint" style="font-size:9px">${esc(f.facility_id)}</div></td><td class="small"><a target="_blank" rel="noopener" href="${esc(cp.dataset_url||'#')}">Epoch dataset</a><div class="faint">raw fields retained</div></td><td class="small">${esc(cp.publication_date||'NOT CAPTURED')}</td><td class="mono">${esc(cp.capture_date||'—')}</td><td class="mono">${esc((f.field_provenance||[]).length)} fields</td><td><span class="status ${stClass(co.status)}">${esc(co.status||'—')}</span><div class="small faint">${esc(co.distinct_source_url_count||0)} URLs / ${esc(co.distinct_source_name_count||0)} names</div></td><td><span class="status ${conflictCount?'warn':'neutral'}">${esc(cf.status||'—')}</span></td><td class="mono">${esc(v.last_verification_date||'—')}</td><td class="small">${esc(v.manual_review_status||'—')}</td><td class="mono small">${esc(f.immutable_snapshot&&f.immutable_snapshot.snapshot_commit||'—')}</td></tr>`;
  }).join('');
 }
+function renderDossier(){
+ const d=D.dossier||{}, rows=d.records||[], s=d.summary||{};
+ document.getElementById('dossierMeta').textContent=(rows.length||0)+' complete site dossiers · '+(s.sites_with_any_public_connection_evidence||0)+' with public connection evidence · '+(s.sites_with_open_grid_research||0)+' with an open site-specific grid search.';
+ document.getElementById('dossierCards').innerHTML=[
+  [rows.length,'site dossiers','93-site canonical universe'],
+  [s.sites_with_any_public_connection_evidence||0,'connection evidence','public utility/grid records'],
+  [s.sites_with_verified_queue_id||0,'verified queue IDs','site-specific IDs only'],
+  [s.total_missing_publisher_fields||0,'publisher-field gaps','empty source fields identified explicitly'],
+  [d.summary?.total_enrichment_source_links||0,'research source links','additional public sources attached']
+ ].map(x=>'<div class="domain-card"><h3>'+esc(fmt(x[0]))+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
+ const shown=rows.slice().sort((a,b)=>b.completeness.missing_field_count-a.completeness.missing_field_count || a.site_name.localeCompare(b.site_name));
+ document.getElementById('dossierRows').innerHTML=shown.map(x=>{
+   const ev=(x.public_connection_evidence||[]).length, pub=x.grid?.public_site_evidence?1:0;
+   return '<tr><td><strong>'+esc(x.site_name)+'</strong><div class="mono faint">'+esc(x.epoch_id)+'</div></td><td class="small">'+esc(x.completeness.missing_field_count)+' · '+esc(x.completeness.missing_fields.join(', ')||'none')+'</td><td>'+esc(ev+pub)+' public records</td><td class="mono">'+esc(x.grid?.queue_id||'—')+'</td><td class="mono">'+esc(x.public_research_enrichment?.source_count||0)+'</td><td class="small">'+esc(x.next_research_action||'No open action recorded.')+'</td></tr>';
+ }).join('');
+}
 function renderEntity(){
  const e=D.module1?.domain_3_entity_resolution||{};
  document.getElementById('entityRules').innerHTML=[
@@ -579,7 +606,7 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();
+ renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();renderDossier();
 }
 document.getElementById('search').addEventListener('input',renderSites);['siteState','siteSort','siteCountry','siteProvince','siteUtility','siteOwner'].forEach(id=>document.getElementById(id).addEventListener('change',renderSites));
 document.querySelectorAll('[data-download-facility]').forEach(b=>b.addEventListener('click',async()=>{const fid=b.getAttribute('data-download-facility');const rec={facility_id:fid,site:(D.sites||[]).find(x=>x.epoch_id===fid),epoch:(D.epoch?.records||[]).find(x=>x.epoch_id===fid),evidence:(D.evidence||[]).filter(x=>x.target_id===fid),provenance:(D.provenance?.facilities||[]).find(x=>x.facility_id===fid),verification:(D.verification_results?.results||[]).filter(x=>x.facility_id===fid)};const url=URL.createObjectURL(new Blob([JSON.stringify(rec,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=fid+'.track3.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}));document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
