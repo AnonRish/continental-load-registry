@@ -113,7 +113,7 @@ jobs:
       - name: Rebuild claim-level verification
         run: python build_track3_verification.py
         env:
-          GITHUB_SHA: \${{ github.sha }}
+          GITHUB_SHA: ${{ github.sha }}
 
       - name: Run read-only verification
         run: python verify_track3.py
