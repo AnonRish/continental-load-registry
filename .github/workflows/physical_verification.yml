@@ -24,7 +24,7 @@ jobs:
   acquire:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -37,12 +37,12 @@ jobs:
       - name: Install acquisition dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install requests numpy rasterio planetary-computer
+          python -m pip install requests numpy rasterio planetary-computer pystac-client
 
       - name: Acquire public physical observations
         env:
           PYTHONUNBUFFERED: "1"
-        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 6
+        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 3
 
       - name: Rebuild Track 3 evidence graph
         run: python build_track3_evidence.py
