@@ -1,0 +1,227 @@
+name: Track 3 automated data pipeline
+
+on:
+  schedule:
+    - cron: "15 10 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "track3_automation.py"
+      - "run_track3_source_adapters.py"
+      - "build_track3_evidence.py"
+      - "build_entity_resolution.py"
+      - "build_facility_provenance.py"
+      - "build_time_series_verification.py"
+      - "build_track3_verification.py"
+      - "validate_track3_ledger.py"
+      - "verify_track3.py"
+      - "data/source_manifest.json"
+      - "data/track3_source_stack.json"
+      - "data/external/epoch_ai/queue_source_universe.json"
+      - ".github/workflows/track3_automated_pipeline.yml"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: track3-automated-pipeline
+  cancel-in-progress: true
+
+jobs:
+  pipeline:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install pipeline dependencies
+        run: python -m pip install --upgrade pip requests pandas openpyxl lxml pydantic
+
+      - name: Python syntax preflight
+        run: |
+          python -m py_compile \
+            track3_automation.py \
+            run_track3_source_adapters.py \
+            build_track3_evidence.py \
+            build_entity_resolution.py \
+            build_facility_provenance.py \
+            build_time_series_verification.py \
+            build_track3_verification.py \
+            validate_track3_ledger.py \
+            verify_track3.py
+
+      - name: Run automated source adapters
+        continue-on-error: true
+        run: python run_track3_source_adapters.py
+
+      - name: Rebuild canonical evidence layer
+        run: python build_track3_evidence.py
+
+      - name: Validate canonical Track 3 ledger
+        run: python validate_track3_ledger.py
+
+      - name: Rebuild entity-resolution layer
+        run: python build_entity_resolution.py
+
+      - name: Validate entity-resolution outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("data/track3/entity_resolution.json").read_text())
+          assert len(d.get("entities",[]))==d["stats"]["entity_count"]
+          assert len(d.get("relationships",[]))==d["stats"]["relationship_edge_count"]
+          ids={x["entity_id"] for x in d.get("entities",[])}
+          assert all(x["from_entity_id"] in ids and x["to_entity_id"] in ids for x in d.get("relationships",[]))
+          print("PASS: entity-resolution graph validated")
+          PY
+
+      - name: Rebuild facility provenance
+        run: python build_facility_provenance.py
+
+      - name: Validate facility provenance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("data/track3/facility_provenance.json").read_text())
+          assert len(d.get("facilities",[])) == 93
+          assert len({x["facility_id"] for x in d["facilities"]}) == 93
+          assert len(d.get("checklist",[])) == 15
+          for f in d["facilities"]:
+              assert f.get("field_provenance")
+              assert f.get("canonical_source",{}).get("dataset_url")
+              assert f.get("verification")
+              assert f.get("immutable_snapshot")
+          print("PASS: facility provenance validated")
+          PY
+
+      - name: Rebuild time-series verification
+        run: python build_time_series_verification.py
+
+      - name: Rebuild claim-level verification
+        run: python build_track3_verification.py
+        env:
+          GITHUB_SHA: \${{ github.sha }}
+
+      - name: Run read-only verification
+        run: python verify_track3.py
+
+      - name: Source/change/duplicate/geographic quality scan
+        continue-on-error: true
+        run: python track3_automation.py
+
+      - name: Consolidate machine-readable pipeline report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("data/automation")
+          adapter=json.loads((root/"adapter_run_report.json").read_text()) if (root/"adapter_run_report.json").exists() else {"failed_count":1,"runs":[]}
+          quality=json.loads((root/"data_quality_report.json").read_text()) if (root/"data_quality_report.json").exists() else {"summary":{"remote_source_failures":1}}
+          report={
+            "schema_version":1,
+            "generated_at_utc":quality.get("generated_at_utc"),
+            "pipeline_commit":"\${{ github.sha }}",
+            "adapter_run":adapter,
+            "quality_summary":quality.get("summary",{}),
+            "automation_contract":{
+              "automated_ingestion":"Repository-backed adapters execute sequentially; sources without adapters remain explicitly healthcheck/snapshot-only.",
+              "scheduled_updates":"Source-specific adapters and this control plane run on schedules.",
+              "source_change_detection":"ETag/Last-Modified/content-length/sample fingerprint comparison.",
+              "queue_release_diff":"Current REGISTRY_DATA compared with latest retained automation snapshot.",
+              "duplicate_detection":"Duplicate ID, exact-row and same project/developer/MW groups.",
+              "geographic_matching":"Queue and Epoch/crosswalk coverage checks.",
+              "evidence_extraction":"build_track3_evidence.py and facility provenance builder.",
+              "entity_resolution":"Existing entity-resolution builder and validation.",
+              "validation":"Canonical Track 3, entity, provenance and claim-level verification checks.",
+              "ci_cd":"GitHub Actions + GitHub Pages.",
+              "failed_source_alerts":"Open/update GitHub issue on adapter or monitored-source failure."
+            }
+          }
+          (root/"pipeline_report.json").write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n")
+          PY
+
+      - name: Upload automation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: track3-automation-report
+          path: data/automation/
+          if-no-files-found: warn
+
+      - name: Alert on source/adapter failures
+        if: always()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'data/automation/pipeline_report.json';
+            if (!fs.existsSync(path)) return;
+            const r = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const failures = [];
+            for (const x of (r.adapter_run?.runs || [])) {
+              if (x.status === 'FAILED') failures.push('adapter: ' + x.source + ' (' + x.exit_code + ')');
+            }
+            const q = r.quality_summary || {};
+            if ((q.remote_source_failures || 0) > 0) failures.push('remote sources failed: ' + q.remote_source_failures);
+            if (!failures.length) return;
+            const title = '[Track 3 automated source alert] pipeline failures detected';
+            const body = [
+              'Automated Track 3 pipeline detected source/adapter failures.',
+              '',
+              ...failures.map(x => '- ' + x),
+              '',
+              'Pipeline commit: ' + r.pipeline_commit,
+              'Run: https://github.com/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId,
+              '',
+              'Inspect data/automation/adapter_run_report.json and source_health.json.'
+            ].join('\\n');
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100
+            });
+            const existing = open.find(i => i.title === title);
+            if (existing) {
+              await github.rest.issues.createComment({owner:context.repo.owner,repo:context.repo.repo,issue_number:existing.number,body});
+            } else {
+              await github.rest.issues.create({owner:context.repo.owner,repo:context.repo.repo,title,body});
+            }
+
+      - name: Final pipeline gate
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          root=Path("data/automation")
+          adapter=json.loads((root/"adapter_run_report.json").read_text()) if (root/"adapter_run_report.json").exists() else {"failed_count":1}
+          quality=json.loads((root/"data_quality_report.json").read_text()) if (root/"data_quality_report.json").exists() else {"summary":{"remote_source_failures":1}}
+          failures=[]
+          if adapter.get("failed_count",0): failures.append('adapter failures=' + str(adapter['failed_count']))
+          if quality.get("summary",{}).get("remote_source_failures",0): failures.append('remote source failures=' + str(quality['summary']['remote_source_failures']))
+          if quality.get("summary",{}).get("duplicate_id_groups",0): failures.append('duplicate ID groups=' + str(quality['summary']['duplicate_id_groups']))
+          if quality.get("summary",{}).get("evidence_missing_urls",0): failures.append('evidence records missing URLs=' + str(quality['summary']['evidence_missing_urls']))
+          if failures:
+              print('FAIL:', '; '.join(failures))
+              sys.exit(1)
+          print('PASS: Track 3 automated pipeline gate')
+          PY
+
+      - name: Commit generated pipeline outputs
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/automation data/track3 data/external/epoch_ai data/module1_radar_summary.json
+          git add data/track3/entity_resolution.json data/track3/entity_resolution_entities.csv data/track3/entity_resolution_relationships.csv data/track3/entity_resolution_research_queue.csv
+          git add data/track3/facility_provenance.json data/track3/facility_provenance_records.csv
+          git diff --cached --quiet || git commit -m "Automated Track 3 pipeline refresh"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
