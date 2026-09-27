@@ -4,6 +4,7 @@
   const isTrack3=path==='track3.html';
   const isResearch=path==='research.html';
   const isClosedCases=path==='closed-cases.html';
+  const isAccounting=path==='global-accounting.html';
   const navItems=[
     {key:'overview',label:'Overview',href:'index.html#main',anchor:'main',page:'index'},
     {key:'map',label:'Map',href:'index.html#registryMap',anchor:'registryMap',page:'index'},
@@ -11,12 +12,14 @@
     {key:'data',label:'Data',href:'index.html#completeProjectLedger',anchor:'completeProjectLedger',page:'index'},
     {key:'track3',label:'Track 3',href:'track3.html',page:'track3'},
     {key:'closed',label:'Closed cases',href:'closed-cases.html',page:'closed'},
+    {key:'accounting',label:'Global accounting',href:'global-accounting.html',page:'accounting'},
     {key:'research',label:'Research',href:'research.html',page:'research'},
     {key:'methods',label:'Methods',href:'index.html#methodology',anchor:'methodology',page:'index'}
   ];
   function activeClass(item){
     if(isTrack3&&item.page==='track3')return 'page';
     if(isClosedCases&&item.page==='closed')return 'page';
+    if(isAccounting&&item.page==='accounting')return 'page';
     if(isResearch&&item.page==='research')return 'page';
     if(isIndex&&item.page==='index'){
       if(location.hash && item.anchor===location.hash.slice(1))return 'location';
