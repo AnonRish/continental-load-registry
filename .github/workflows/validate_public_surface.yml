@@ -305,7 +305,7 @@ jobs:
                   Path(f"/tmp/{html_name}-{i}.js").write_text(script, encoding="utf-8")
               print(f"{html_name}: {len(scripts)} script blocks")
           PY
-          for f in /tmp/index.html-*.js /tmp/track3.html-*.js /tmp/plan-a.html-*.js; do
+          for f in /tmp/index.html-*.js /tmp/track3.html-*.js /tmp/plan-a.html-*.js /tmp/closed-cases.html-*.js; do
             node --check "$f"
           done
 
