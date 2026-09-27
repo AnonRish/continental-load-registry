@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "title": "Physical inspection evidence protocol",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "required_fields": [
+    "inspection_id",
+    "facility_id",
+    "inspection_datetime",
+    "inspector_identity_or_org",
+    "authority",
+    "access_basis",
+    "equipment_observed",
+    "serial_capture_policy",
+    "photographic_evidence_reference",
+    "exceptions",
+    "review_state"
+  ],
+  "chain_of_custody": [
+    "Create immutable inspection ID before field work.",
+    "Record inspector authority and access basis.",
+    "Record observed equipment by manufacturer/model/serial only when lawful.",
+    "Hash referenced evidence files.",
+    "Separate observation from interpretation.",
+    "Require independent review for disputes."
+  ],
+  "current_observation_count": 0,
+  "current_status": "NO_PUBLIC_INSPECTION_OBSERVATIONS_RETAINED"
+}
