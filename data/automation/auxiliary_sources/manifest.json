@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-27T04:48:20.036880+00:00",
+  "source_count": 4,
+  "failed_count": 0,
+  "sources": [
+    {
+      "source_id": "ERCOT-GIS",
+      "url": "https://www.ercot.com/mp/data-products/data-product-details?id=pg7-200-er",
+      "captured_at_utc": "2026-09-27T04:48:20.036880+00:00",
+      "bytes": 675108,
+      "sha256": "75543fb2772367aad3ca3f1ee6786e7ab1457c8c2f2e3cb76513ded2b419d5fb",
+      "status": "RAW_CAPTURED",
+      "path": "data/automation/auxiliary_sources/ercot_gis_source.bin",
+      "discovery_method": "ingest_grid_queues.fetch_ercot_gis_workbook"
+    },
+    {
+      "source_id": "ISO-NE",
+      "url": "https://irtt.iso-ne.com/reports/external",
+      "captured_at_utc": "2026-09-27T04:48:20.036880+00:00",
+      "http_status": 200,
+      "bytes": 3670638,
+      "sha256": "1c2c5dadafa7ceefc28d18bdd978f66b16541e9dc5eac794dda4d14de60a8122",
+      "content_type": "text/html; charset=utf-8",
+      "status": "RAW_CAPTURED",
+      "path": "data/automation/auxiliary_sources/iso_ne_public_queue.html",
+      "table_count": 1,
+      "table_row_counts": [
+        1751
+      ]
+    },
+    {
+      "source_id": "IESO",
+      "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "captured_at_utc": "2026-09-27T04:48:20.036880+00:00",
+      "http_status": 200,
+      "bytes": 49541,
+      "sha256": "dbe60af3ad804373a4354a0c6d9f8013749d3c72ccc1a9f37975861c569ac30f",
+      "content_type": "text/html; charset=utf-8",
+      "status": "RAW_CAPTURED",
+      "path": "data/automation/auxiliary_sources/ieso_application_status.html",
+      "table_parse_error": "`Import html5lib` failed.  Use pip or conda to install the html5lib package."
+    },
+    {
+      "source_id": "AESO",
+      "url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
+      "captured_at_utc": "2026-09-27T04:48:20.036880+00:00",
+      "http_status": 200,
+      "bytes": 40733,
+      "sha256": "5371af07cde3ae2afac6e92be7c094f3baad093a1b83d6c975d494b8e0e6192d",
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "status": "RAW_CAPTURED",
+      "path": "data/automation/auxiliary_sources/aeso_connection_project_list.xlsx",
+      "sheet_names": [
+        "Connection Project List"
+      ],
+      "sheet_row_counts": {
+        "Connection Project List": 215
+      },
+      "normalized_sheet_catalog": [
+        {
+          "sheet": "Connection Project List",
+          "columns": [
+            "Status",
+            "Project Name",
+            "Planning Area",
+            "Cluster",
+            "Project Type",
+            "MW Type",
+            "Stage",
+            "CA Modelled",
+            "Inclusion",
+            "Applied On",
+            "EN1 STS MW",
+            "EN1 DTS MW",
+            "EN1 ISD",
+            "EN2 STS MW",
+            "EN2 DTS MW",
+            "EN2 ISD",
+            "EN3 STS MW",
+            "EN3 DTS MW",
+            "EN3 ISD"
+          ],
+          "rows": 215
+        }
+      ]
+    }
+  ]
+}
