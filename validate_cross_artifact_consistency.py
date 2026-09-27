@@ -75,6 +75,9 @@ def main() -> None:
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
     assert cat["data/supplemental_aggregate_map.json"]["record_count"] == 66
+    assert cat["data/global_compute_universe_sources_2026-09-27.json"]["record_count"] == 3
+    assert cat["data/external/compute_atlas/facilities.json"]["record_count"] == 2228
+    assert cat["data/external/data_center_index/campuses.json"]["record_count"] == 901
 
     backlog = load("data/track3/research_backlog_summary.json")
     assert backlog["publisher_tasks"] == 273
@@ -128,7 +131,7 @@ def main() -> None:
     assert "**61** aggregate/historical footprints" not in layers_md
 
     sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-    for page in ("research.html", "api.html", "bulk-download.html"):
+    for page in ("research.html", "api.html", "bulk-download.html", "global-compute-universe.html"):
         assert page in sitemap
 
     # CSV parity for the updated map manifest.
