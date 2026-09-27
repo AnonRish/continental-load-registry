@@ -65,15 +65,106 @@ def capture_ercot():
     path=OUT/SOURCES["ERCOT-GIS"]["output"]; path.parent.mkdir(parents=True,exist_ok=True); path.write_bytes(data)
     return {"source_id":"ERCOT-GIS","url":SOURCES["ERCOT-GIS"]["url"],"captured_at_utc":NOW,"bytes":len(data),"sha256":hashlib.sha256(data).hexdigest(),"status":"RAW_CAPTURED","path":str(path.relative_to(ROOT)).replace("\\","/"),"discovery_method":"ingest_grid_queues.fetch_ercot_gis_workbook"}
 
+def json_value(v):
+    if v is None:
+        return None
+    try:
+        if pd.isna(v):
+            return None
+    except Exception:
+        pass
+    if isinstance(v, (datetime,)):
+        return v.isoformat()
+    if isinstance(v, pd.Timestamp):
+        return v.isoformat()
+    if hasattr(v, "item"):
+        try:
+            return v.item()
+        except Exception:
+            pass
+    return v
+
+def flatten_dataframe(df, source_sheet=None):
+    columns=[str(x).strip() for x in df.columns]
+    rows=[]
+    for row_num,(_,row) in enumerate(df.iterrows(),1):
+        raw={columns[i]:json_value(row.iloc[i]) for i in range(len(columns))}
+        if all(v is None or str(v).strip()=="" for v in raw.values()):
+            continue
+        rows.append({"source_sheet":source_sheet,"source_row_number":row_num,"raw":raw,"normalized":raw})
+    return rows
+
+def build_normalized_auxiliary_artifacts(capture_manifest):
+    outputs=[]
+    for item in capture_manifest:
+        sid=item.get("source_id")
+        if item.get("status")!="RAW_CAPTURED":
+            continue
+        source_path=ROOT/item["path"]
+        if not source_path.exists():
+            continue
+        captured=item.get("captured_at_utc")
+        if sid=="ERCOT-GIS":
+            try:
+                import ingest_grid_queues as g
+                raw=source_path.read_bytes()
+                df=g.parse_workbook_sheets_dynamically(
+                    raw,
+                    g.ERCOT_COLUMN_ALIASES,
+                    g.ERCOT_HEADER_SIGNAL_ALIASES,
+                    sheet_name_exclude_keywords=g.ERCOT_EXCLUDE_SHEET_KEYWORDS,
+                )
+                all_rows=[]
+                for sheet,frame in df.groupby("_source_sheet",dropna=False):
+                    all_rows.extend(flatten_dataframe(frame.drop(columns=["_source_sheet"]), str(sheet)))
+                stats=g.SourceStats("ERCOT-GIS")
+                candidates=g.normalize_ercot_records(df,stats)
+                base={"schema_version":1,"title":"ERCOT GIS public report — complete parsed rows","source_url":SOURCES["ERCOT-GIS"]["url"],"captured_at":captured,"record_count":len(all_rows),"rows":all_rows,"accounting":{"candidate_large_load_rows":len(candidates),"candidate_large_load_mw":round(sum(x["capacity_mw"] for x in candidates),2),"candidate_filter_min_mw":g.MIN_CAPACITY_MW},"semantics":"Complete parsed project-detail rows from the public GIS report. The candidate subset applies the registry's large-load filter; it is not the entire ERCOT generation universe."}
+                cand={"schema_version":1,"title":"ERCOT GIS large-load candidate layer","source_url":SOURCES["ERCOT-GIS"]["url"],"captured_at":captured,"record_count":len(candidates),"records":[r.model_dump() if hasattr(r,"model_dump") else r for r in candidates],"semantics":"Filtered candidate layer from the public GIS report. This does not assert that every candidate is an AI data center or that capacity is currently load."}
+                (DATA/"ercot_gis_public_records.json").write_text(json.dumps(base,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                (DATA/"ercot_large_load_candidates.json").write_text(json.dumps(cand,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                outputs.extend([str((DATA/"ercot_gis_public_records.json").relative_to(ROOT)),str((DATA/"ercot_large_load_candidates.json").relative_to(ROOT))])
+            except Exception as exc:
+                item["normalization_error"]=str(exc)
+        elif sid in {"ISO-NE","IESO"}:
+            try:
+                html=source_path.read_text(encoding="utf-8",errors="replace")
+                tables=pd.read_html(io.StringIO(html))
+                rows=[]
+                for table_idx,table in enumerate(tables):
+                    rows.extend(flatten_dataframe(table, f"table_{table_idx+1}"))
+                name="iso_ne_public_queue" if sid=="ISO-NE" else "ieso_public_connection_applications"
+                title="ISO-NE public external reports — parsed tables" if sid=="ISO-NE" else "IESO public application status — parsed tables"
+                obj={"schema_version":1,"title":title,"source_url":SOURCES[sid]["url"],"captured_at":captured,"record_count":len(rows),"table_count":len(tables),"rows":rows,"semantics":"Parsed public publisher tables retained row-by-row with source table and row numbers. Normalization is structural only; no site-level AI inference is made."}
+                (DATA/f"{name}.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                outputs.append(str((DATA/f"{name}.json").relative_to(ROOT)))
+            except Exception as exc:
+                item["normalization_error"]=str(exc)
+        elif sid=="AESO":
+            try:
+                sheets=pd.read_excel(io.BytesIO(source_path.read_bytes()),sheet_name=None)
+                rows=[]
+                for sheet,table in sheets.items():
+                    rows.extend(flatten_dataframe(table,str(sheet)))
+                obj={"schema_version":1,"title":"AESO Connection Project List — complete parsed rows","source_url":SOURCES[sid]["url"],"captured_at":captured,"record_count":len(rows),"sheet_count":len(sheets),"rows":rows,"semantics":"Complete rows parsed from the public AESO connection-project workbook; source field names are preserved and no AI/load interpretation is imposed."}
+                (DATA/"aeso_connection_projects.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                outputs.append(str((DATA/"aeso_connection_projects.json").relative_to(ROOT)))
+            except Exception as exc:
+                item["normalization_error"]=str(exc)
+    return outputs
+
+
 def main():
     OUT.mkdir(parents=True,exist_ok=True)
+    DATA.mkdir(parents=True,exist_ok=True)
     results=[]
     try: results.append(capture_ercot())
     except Exception as exc: results.append({"source_id":"ERCOT-GIS","status":"FAILED","error":str(exc),"url":SOURCES["ERCOT-GIS"]["url"],"captured_at_utc":NOW})
     for sid in ("ISO-NE","IESO","AESO"):
         try: results.append(capture_direct(sid,SOURCES[sid]))
         except Exception as exc: results.append({"source_id":sid,"status":"FAILED","error":str(exc),"url":SOURCES[sid]["url"],"captured_at_utc":NOW})
-    out={"schema_version":1,"generated_at_utc":NOW,"source_count":len(results),"failed_count":sum(x["status"]=="FAILED" for x in results),"sources":results}
+    normalized=build_normalized_auxiliary_artifacts(results)
+    out={"schema_version":1,"generated_at_utc":NOW,"source_count":len(results),"failed_count":sum(x["status"]=="FAILED" for x in results),"normalized_artifacts":normalized,"sources":results}
     (OUT/"manifest.json").write_text(json.dumps(out,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps(out,indent=2))
     return 1 if out["failed_count"] else 0
