@@ -17,14 +17,14 @@ As of 2026-09-27, the repository has a 93-site Epoch AI reference universe, site
 
 The highest-value empirical layer is now a small closure pilot drawn from the registry's **141-record broad ambiguity research pool** rather than the already-public 93-site Epoch reference universe. The 141 records are not treated as 141 confirmed large-load discoveries; strict case admission requires source-level load classification. Three cases are carried through queue identification, entity resolution, defensible location, public-record search, physical observation, transformer/electrical review, and bounded adjudication: **Micron Fab 3 (606 MW) → confirmed manufacturing/industrial project identity with an unresolved queue-applicant mismatch; Pontoon Bridge Road Data Center (250 MW) → confirmed proposed data-center identity; Project IQ197 (1,380 MW) → inconclusive after search, with no defensible physical coordinate.** The pilot contains **12 derived multi-sensor physical observations across the two locatable cases**. Closure does not mean facility-wide certification or detection completeness; the IQ197 result deliberately demonstrates a stopping rule rather than forcing a label.
 
-See [`closed-cases.html`](closed-cases.html), [`CLOSED_CASE_PROTOCOL.md`](CLOSED_CASE_PROTOCOL.md), [`CLASSIFICATION_AUDIT_2026-09-27.md`](CLASSIFICATION_AUDIT_2026-09-27.md), and [`data/track3/ambiguous_case_studies.json`](data/track3/ambiguous_case_studies.json).
+See [`closed-cases.html`](closed-cases.html), [`CLOSED_CASE_PROTOCOL.md`](CLOSED_CASE_PROTOCOL.md), [`CLASSIFICATION_AUDIT_2026-09-27.md`](CLASSIFICATION_AUDIT_2026-09-27.md), [`data/track3/strict_discovery_candidates.json`](data/track3/strict_discovery_candidates.json), and [`data/track3/ambiguous_case_studies.json`](data/track3/ambiguous_case_studies.json).
 
 ### Phase 1 vs. Track 3
 
 | Layer | What this repository currently provides | What it does not claim |
 |---|---|---|
-| **Phase 1 / domestic accounting** | Nine North American market/connection sources, large-load records, entity resolution, Epoch cross-reference, site-level utility/service evidence, and public physical observations. | Complete accounting of all AI-relevant compute or all electricity consumption. |
-| **Track 3 / international verification** | A public-data evidence layer, research queue, physical-observation pipeline, source-universe catalog, and machine-readable mapping to the broader Track 3 accounting problem. | A completed bilateral verification regime, treaty inspection capability, or proof that covert facilities have been found. |
+| **Independent public infrastructure accounting layer** | Nine North American market/connection sources, large-load records, entity resolution, Epoch cross-reference, site-level utility/service evidence, and public physical observations. The work is potentially useful to broader compute-accounting and undeclared-compute research. | A formal AI 2040 Phase 1 implementation, complete accounting of all AI-relevant compute, or complete accounting of electricity consumption. |
+| **Track 3-adjacent research contribution** | A public-data evidence layer, research queue, physical-observation pipeline, source-universe catalog, and machine-readable mapping to the broader Track 3 accounting problem. | A formal AI 2040 Track 3 implementation, bilateral verification regime, treaty inspection capability, or proof that covert facilities have been found. |
 
 ### Observation-layer comparison
 
