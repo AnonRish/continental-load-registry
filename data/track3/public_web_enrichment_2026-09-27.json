@@ -4,24 +4,24 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 307,
-    "sites_with_findings": 84,
+    "record_count": 316,
+    "sites_with_findings": 89,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 306,
+      "PUBLIC_SOURCE_CAPTURED": 315,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
       "energy_companies": 82,
-      "project": 58,
+      "project": 63,
       "investment": 24,
       "owner": 10,
       "investors": 5,
       "construction_companies": 41,
       "cooling": 15,
-      "chip_quantities": 5,
+      "chip_quantities": 6,
       "operational_status": 9,
-      "address": 8,
-      "service_or_contract": 12,
+      "address": 9,
+      "service_or_contract": 14,
       "users": 6,
       "regulatory": 10,
       "capacity_record": 11,
@@ -5030,8 +5030,155 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "The public site dossier identifies the Shackelford development as OpenAI Stargate and says Vantage developed it under the name Frontier.",
       "evidence_id": "EVID-PWEB-shackelford-project-20260927"
+    },
+    {
+      "site_name": "CoreWeave Lancaster Greenfield site",
+      "epoch_id": "EPOCH-7648e1438308fdae",
+      "field": "project",
+      "value": "CoreWeave Lancaster AI data center",
+      "relationship": "public project identity",
+      "source": "CoreWeave",
+      "source_urls": [
+        "https://www.coreweave.com/blog/building-pennsylvania-into-the-mid-atlantic-ai-hub"
+      ],
+      "publication_date": "2025-07-15",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "CoreWeave announced a new Lancaster, Pennsylvania data center, initially 100 MW with potential expansion to 300 MW.",
+      "evidence_id": "EVID-PWEB-lancaster-project-20260927"
+    },
+    {
+      "site_name": "CoreWeave Lancaster Greenfield site",
+      "epoch_id": "EPOCH-7648e1438308fdae",
+      "field": "address",
+      "value": "216 Greenfield Road, Lancaster, PA",
+      "relationship": "facility address",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/coreweave-lancaster-pa"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DEPLOY identifies 216 Greenfield Road, Lancaster, Pennsylvania as the CoreWeave facility address.",
+      "evidence_id": "EVID-PWEB-lancaster-address-20260927"
+    },
+    {
+      "site_name": "CoreWeave Lancaster Greenfield site",
+      "epoch_id": "EPOCH-7648e1438308fdae",
+      "field": "service_or_contract",
+      "value": "CoreWeave committed up to $6 billion to equip the Lancaster facility; initial 100 MW with potential expansion to 300 MW.",
+      "relationship": "site-specific capacity/infrastructure commitment",
+      "source": "CoreWeave",
+      "source_urls": [
+        "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Announces-Multi-Billion-Dollar-Commitment-to-AI-Infrastructure-in-Pennsylvania/default.aspx"
+      ],
+      "publication_date": "2025-07-15",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The commitment is a site-specific infrastructure statement; it does not establish a utility queue ID or measured load.",
+      "evidence_id": "EVID-PWEB-lancaster-commitment-20260927"
+    },
+    {
+      "site_name": "Anthropic Barber Lake",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "field": "project",
+      "value": "Barber Lake Facility",
+      "relationship": "public facility/project identity",
+      "source": "Cipher Digital / U.S. SEC",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm"
+      ],
+      "publication_date": "2026-09-25",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Cipher's September 2026 SEC filing identifies the Barber Lake Facility in Colorado City, Texas and describes an amended lease and updated delivery schedule.",
+      "evidence_id": "EVID-PWEB-barberlake-project-20260927"
+    },
+    {
+      "site_name": "Anthropic Barber Lake",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "field": "service_or_contract",
+      "value": "Barber Lake is under a 20-year contracted lease structure: the existing Fluidstack lease followed by a 10-year commitment from a leading AI lab; first data halls expected Q4 2026 through Q1 2027.",
+      "relationship": "site-specific long-term lease / AI capacity commitment",
+      "source": "Cipher Digital / U.S. SEC",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm",
+        "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/barberlakeleaseamendmentpr.htm"
+      ],
+      "publication_date": "2026-09-25",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The filing identifies Fluidstack and a subsequent leading-AI-lab commitment but does not name the latter in the public filing; no tenant identity is inferred here.",
+      "evidence_id": "EVID-PWEB-barberlake-contract-20260927"
+    },
+    {
+      "site_name": "Nebius Mantsala",
+      "epoch_id": "EPOCH-41dea3fb46d2e6a8",
+      "field": "project",
+      "value": "Mäntsälä AI data center",
+      "relationship": "public project identity",
+      "source": "Nebius",
+      "source_urls": [
+        "https://nebius.com/newsroom/nebius-to-construct-310-mw-ai-factory-in-finland"
+      ],
+      "publication_date": "2026-03-31",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Nebius says its first Finnish data center in Mäntsälä was expanded to 75 MW, completed earlier in 2026.",
+      "evidence_id": "EVID-PWEB-mantsala-project-20260927"
+    },
+    {
+      "site_name": "Southgate Melbourne",
+      "epoch_id": "EPOCH-827d7832237170bd",
+      "field": "project",
+      "value": "Project Southgate — Melbourne",
+      "relationship": "public AI infrastructure project",
+      "source": "Firmus",
+      "source_urls": [
+        "https://firmus.co/newsroom/southgate-expansion",
+        "https://firmus.co/newsroom/firmus-signs-multi-year-agreement-with-global-hyperscale-customer-at-project-southgate"
+      ],
+      "publication_date": "2026-03-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Firmus identifies Southgate Melbourne as the first Australian deployment of its multi-site Project Southgate program.",
+      "evidence_id": "EVID-PWEB-southgate-project-20260927"
+    },
+    {
+      "site_name": "Southgate Melbourne",
+      "epoch_id": "EPOCH-827d7832237170bd",
+      "field": "chip_quantities",
+      "value": "Approximately 18,400 NVIDIA GB300 GPUs contracted for the Melbourne facility; Firmus also reported 18,500 GB300 ordered for the first-stage program.",
+      "relationship": "site/program GPU deployment",
+      "source": "Firmus",
+      "source_urls": [
+        "https://firmus.co/newsroom/firmus-signs-multi-year-agreement-with-global-hyperscale-customer-at-project-southgate",
+        "https://firmus.co/newsroom/southgate-expansion"
+      ],
+      "publication_date": "2026-03-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Firmus's site-specific contract calls for approximately 18,400 GB300 GPUs at the Melbourne facility; the broader 18,500 figure is a first-stage program statement.",
+      "evidence_id": "EVID-PWEB-southgate-gpu-20260927"
+    },
+    {
+      "site_name": "Stream Phoenix",
+      "epoch_id": "EPOCH-ee5c7acdbc729ef8",
+      "field": "project",
+      "value": "PHXA — Stream Phoenix",
+      "relationship": "campus/project identity",
+      "source": "Stream Data Centers",
+      "source_urls": [
+        "https://www.streamdatacenters.com/locations/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Stream identifies PHXA as its Phoenix campus and reports 280 MW at full build.",
+      "evidence_id": "EVID-PWEB-stream-phoenix-project-20260927"
     }
   ],
-  "record_count": 307,
+  "record_count": 316,
   "generated_on": "2026-09-27"
 }
