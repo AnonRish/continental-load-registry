@@ -7,8 +7,8 @@
     {
       "id": "CORE_REGISTRY",
       "label": "Core row-level registry",
-      "records": 1558,
-      "mapped_records": 1558,
+      "records": 1540,
+      "mapped_records": 1540,
       "geometry": "county/zone or state/province display centroids",
       "additive_to_core": true,
       "source": "index.html REGISTRY_DATA"
@@ -84,12 +84,14 @@
     {
       "id": "CAISO_COMPLETE_QUEUE",
       "label": "CAISO complete public queue",
-      "records": null,
+      "records": 2278,
       "mapped_records": null,
       "geometry": "county/state-derived when snapshot present",
       "additive_to_core": false,
       "file": "data/caiso_public_queue.json",
-      "status": "snapshot not currently present on main"
+      "status": "snapshot present on main; latest capture 2026-09-27",
+      "records_ge_100mw": 1391,
+      "source_capture_date": "2026-09-27"
     },
     {
       "id": "NYISO_COMPLETE_QUEUE",
@@ -99,17 +101,19 @@
       "geometry": "county/state-derived when snapshot present",
       "additive_to_core": false,
       "file": "data/nyiso_public_queue.json",
-      "status": "snapshot not currently present on main"
+      "status": "snapshot not currently present on main; latest automated capture was unavailable"
     },
     {
       "id": "PJM_CYCLE_QUEUE",
       "label": "PJM Cycle Service Request universe",
-      "records": null,
+      "records": 9263,
       "mapped_records": null,
       "geometry": "public export-derived geography when snapshot present",
       "additive_to_core": false,
       "file": "data/pjm_cycle_public_queue.json",
-      "status": "snapshot not currently present on main"
+      "status": "snapshot present on main; latest capture 2026-09-27",
+      "records_ge_100mw": 2349,
+      "source_capture_date": "2026-09-27"
     },
     {
       "id": "BPA_LARGE_LOAD",
