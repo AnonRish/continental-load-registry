@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 235,
+  "record_count": 241,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -6554,6 +6554,150 @@
       "source_scope": "2025 Load & Capacity Data Report, Table IV-7 Load Interconnection Requests",
       "notes": "Historical NYISO large-load interconnection table. The Gold Book explicitly says these projects are in the NYISO Interconnection Queue. This record is non-additive to current queue/project layers and does not assert operating status. Original NYISO Gold Book zone code retained in nyiso_zone_code.",
       "nyiso_zone_code": "A"
+    },
+    {
+      "id": "XCEL-GOOGLE-PINE-ISLAND-2026",
+      "evidence_type": "utility_named_data_center_service_project",
+      "project_name": "Google Pine Island Data Center / Project Skyway",
+      "customer_or_developer": "Google",
+      "utility_or_provider": "Xcel Energy",
+      "jurisdiction": "Minnesota, US",
+      "location": "Pine Island, MN",
+      "county_or_zone": "Olmsted County",
+      "status": "electric service agreement signed; route permit process underway",
+      "planned_in_service": "service infrastructure construction targeted 2027-2028",
+      "capacity_claims": [],
+      "source_authority": "utility + municipal primary sources",
+      "source_url": "https://newsroom.xcelenergy.com/news/xcel-energy-to-power-new-google-data-center-in-minnesota",
+      "source_urls": [
+        "https://newsroom.xcelenergy.com/news/xcel-energy-to-power-new-google-data-center-in-minnesota",
+        "https://pineislandmn.gov/skyway",
+        "https://xcelenergytransmission.com/projects/skyway/"
+      ],
+      "capture_date": "2026-09-26",
+      "source_scope": "Xcel/municipal Project Skyway and Google/Xcel agreement",
+      "notes": "Xcel and Google publicly identify the Pine Island data center and associated electric-service agreement. The public materials disclose 1,400 MW wind + 200 MW solar + 300 MW storage associated with the clean-energy buildout, but those are generation/storage resources, not the data-center load; no load MW is inferred."
+    },
+    {
+      "id": "ENTERGY-GOOGLE-WEST-MEMPHIS-2025",
+      "evidence_type": "utility_named_data_center_service_project",
+      "project_name": "Google West Memphis Data Center",
+      "customer_or_developer": "Google",
+      "utility_or_provider": "Entergy Arkansas",
+      "jurisdiction": "Arkansas, US",
+      "location": "West Memphis, AR",
+      "county_or_zone": "Crittenden County",
+      "status": "announced / utility service ecosystem under development",
+      "capacity_claims": [],
+      "source_authority": "Google + Entergy primary sources",
+      "source_url": "https://blog.google/company-news/inside-google/company-announcements/google-american-innovation-arkansas/",
+      "source_urls": [
+        "https://blog.google/company-news/inside-google/company-announcements/google-american-innovation-arkansas/",
+        "https://www.entergy.com/datacenters/arkansas"
+      ],
+      "capture_date": "2026-09-26",
+      "source_scope": "Google Arkansas data-center announcement and Entergy Arkansas data-center service page",
+      "notes": "Google publicly identifies West Memphis as its first Arkansas data center. Google announced a new 600 MW solar project with Entergy as an associated energy investment; that 600 MW figure is not treated as data-center load."
+    },
+    {
+      "id": "ENTERGY-AWS-CLINTON-MS-2026",
+      "evidence_type": "utility_named_data_center_service_project",
+      "project_name": "AWS Clinton Data Center",
+      "customer_or_developer": "Amazon Web Services",
+      "utility_or_provider": "Entergy Mississippi",
+      "jurisdiction": "Mississippi, US",
+      "location": "Clinton, MS",
+      "county_or_zone": "Hinds County",
+      "status": "under construction / development",
+      "planned_in_service": "not publicly stated",
+      "capacity_claims": [],
+      "source_authority": "utility primary source",
+      "source_url": "https://www.entergy.com/blog/amazons-1-billion-investment-in-clinton-celebrated-with-ribbon-cutting",
+      "capture_date": "2026-09-26",
+      "source_scope": "Entergy Mississippi June 12, 2026 project report",
+      "notes": "Entergy identifies Amazon Web Services and the former Delphi facility in Clinton as a data-center project. No project load MW is published in the cited utility source; capital investment is not converted into electrical capacity."
+    },
+    {
+      "id": "ALABAMA-QTS-BESSEMER-PROJECT-MARVEL-2026",
+      "evidence_type": "utility_service_project_secondary_capacity",
+      "project_name": "QTS Bessemer / Project Marvel",
+      "customer_or_developer": "QTS Data Centers / Logistics Land Investment LLC",
+      "utility_or_provider": "Alabama Power",
+      "jurisdiction": "Alabama, US",
+      "location": "Bessemer, AL",
+      "county_or_zone": "Jefferson County",
+      "status": "planned / approved local land use",
+      "capacity_claims": [
+        {
+          "value_mw": 1200,
+          "unit": "MW",
+          "raw_value": "1,200 MW",
+          "qualifier": "reported planned utility power availability / campus capacity",
+          "source_url": "https://www.compute-atlas.com/facilities/qts-marvel-bessemer-al",
+          "capture_date": "2026-09-25"
+        }
+      ],
+      "source_authority": "secondary facility registry with public-source citations",
+      "source_url": "https://www.compute-atlas.com/facilities/qts-marvel-bessemer-al",
+      "source_urls": [
+        "https://www.compute-atlas.com/facilities/qts-marvel-bessemer-al",
+        "https://registry.deploy.report/datacenters/facilities/qts-project-marvel-bessemer-al"
+      ],
+      "capture_date": "2026-09-26",
+      "source_scope": "Publicly researched facility record; Alabama Power service linkage",
+      "notes": "The public research record reports 1,200 MW planned and identifies Alabama Power as utility. This is secondary evidence rather than a directly published Alabama Power MW disclosure, so it is not promoted into the core queue total."
+    },
+    {
+      "id": "ALABAMA-QTS-BESSEMER-RED-CLAY-2026",
+      "evidence_type": "utility_service_project_secondary_capacity",
+      "project_name": "Cloverleaf Infrastructure / Project Red Clay",
+      "customer_or_developer": "Cloverleaf Infrastructure",
+      "utility_or_provider": "Alabama Power",
+      "jurisdiction": "Alabama, US",
+      "location": "Lowndes County, AL",
+      "county_or_zone": "Lowndes County",
+      "status": "large-load project reported; service arrangements developing",
+      "capacity_claims": [
+        {
+          "value_mw": 1500,
+          "unit": "MW",
+          "raw_value": "1,500 MW",
+          "qualifier": "reported requested energy capacity from Alabama Power",
+          "source_url": "https://www.compute-atlas.com/facilities/cloverleaf-red-clay-lowndes-al",
+          "capture_date": "2026-09-26"
+        }
+      ],
+      "source_authority": "secondary facility registry citing local reporting",
+      "source_url": "https://www.compute-atlas.com/facilities/cloverleaf-red-clay-lowndes-al",
+      "capture_date": "2026-09-26",
+      "source_scope": "Compute Atlas public facility record",
+      "notes": "The cited public facility record reports a 1,500 MW energy-capacity request from Alabama Power. This remains secondary evidence; exact utility-contract status is not asserted."
+    },
+    {
+      "id": "ALABAMA-VOLTCORE-SOMERVILLE-2026",
+      "evidence_type": "utility_service_project_secondary_capacity",
+      "project_name": "Sovereign Gazelle Bitcoin Mining Data Center / Somerville",
+      "customer_or_developer": "Sovereign Gazelle",
+      "utility_or_provider": "Alabama Power",
+      "jurisdiction": "Alabama, US",
+      "location": "Somerville, AL",
+      "county_or_zone": "Morgan County",
+      "status": "proposed / stalled by local right-of-way issues",
+      "capacity_claims": [
+        {
+          "value_mw": 50,
+          "unit": "MW",
+          "raw_value": "50 MW",
+          "qualifier": "reported planned bitcoin-mining/data-center load",
+          "source_url": "https://suedatacenters.org/data-centers/sovereign-gazelle-somerville-al",
+          "capture_date": "2026-09-26"
+        }
+      ],
+      "source_authority": "secondary facility research record",
+      "source_url": "https://suedatacenters.org/data-centers/sovereign-gazelle-somerville-al",
+      "capture_date": "2026-09-26",
+      "source_scope": "SUE Data Centers public facility record",
+      "notes": "The source reports a 50 MW plan and says utility connections were approved; it also states VoltCore is the EPC/engineering contractor rather than site owner/operator. This is secondary evidence and remains outside the core queue total."
     }
   ]
 }
