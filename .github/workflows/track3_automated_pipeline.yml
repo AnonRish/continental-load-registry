@@ -20,6 +20,7 @@ on:
       - "verify_track3.py"
       - "data/source_manifest.json"
       - "data/track3_source_stack.json"
+      - "data/track3/public_web_enrichment_2026-09-27.json"
       - "data/external/epoch_ai/queue_source_universe.json"
       - ".github/workflows/track3_automated_pipeline.yml"
 
@@ -56,7 +57,8 @@ jobs:
             build_time_series_verification.py \
             build_track3_verification.py \
             validate_track3_ledger.py \
-            verify_track3.py
+            verify_track3.py \
+            refresh_source_manifest.py
 
       - name: Run automated source adapters
         continue-on-error: true
