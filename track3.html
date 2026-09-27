@@ -44,6 +44,15 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 .evidence{padding:11px;border:1px solid var(--line);border-radius:9px;margin-top:7px}.evidence h4{margin:0 0 4px;font-size:12px}.code{white-space:pre-wrap;word-break:break-word;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:10px;font-size:10px}
 .domain-card{border:1px solid var(--line);border-radius:10px;padding:13px}.domain-card h3{font-size:13px;margin:0}.domain-card p{font-size:11px;line-height:1.5;color:var(--ink-soft)}.matrix td,.matrix th{font-size:9.5px}.cell{display:inline-block;padding:3px 4px;border-radius:4px;border:1px solid var(--line);white-space:nowrap}.cell.good{background:var(--teal-soft);color:var(--teal)}.cell.warn{background:var(--amber-soft);color:var(--amber)}#facilityMap{height:520px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}.map-mini-legend{padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:10px;color:var(--ink-soft)}
 .footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0 40px}
+.progress-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.chart-card{padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.chart-title{font-size:12px;font-weight:600}.chart-note{font-size:10px;color:var(--ink-faint);line-height:1.45;margin-top:3px}.chart{width:100%;height:190px;display:block}
+.chart-axis{stroke:var(--line-strong);stroke-width:1}.chart-gridline{stroke:var(--line);stroke-width:1}.chart-fill{fill:var(--teal-soft)}.chart-stroke{fill:none;stroke:var(--teal);stroke-width:2.5}.chart-warn{fill:var(--amber-soft);stroke:var(--amber);stroke-width:1.2}.chart-point{fill:var(--teal);stroke:var(--panel);stroke-width:1.5}.chart-text{fill:var(--ink-soft);font:9px 'IBM Plex Mono',monospace}.chart-big{fill:var(--ink);font:700 22px 'IBM Plex Mono',monospace}
+.site-evidence-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.site-evidence-field{border:1px solid var(--line);border-radius:9px;padding:10px;background:var(--panel)}.site-evidence-field dt{font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em}.site-evidence-field dd{font-size:11px;margin:4px 0 0;line-height:1.45}
+.track3-matrix-note{padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--paper);font-size:10px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:980px){.progress-grid{grid-template-columns:1fr 1fr}.site-evidence-fields{grid-template-columns:1fr}}
+@media(max-width:650px){.progress-grid{grid-template-columns:1fr}}
 </style>
 <!-- TRACK3-PUBLIC-SURFACE-V2 -->
 </head>
@@ -66,6 +75,14 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 
 <main class="wrap">
 <section class="section"><div id="cards" class="grid cards"></div></section>
+<section class="section panel" style="padding:16px">
+<div style="display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap">
+<div><h2>Track 3 progress &amp; time-series dashboard</h2><p id="progressMeta" class="soft small">Loading current canonical counts…</p></div>
+<div class="tools"><a class="btn" href="data/track3/time_series_verification.json">Time-series verification JSON</a><a class="btn" href="data/track3/observation_queue.json">Observation queue JSON</a></div>
+</div>
+<div id="progressCharts" class="progress-grid" style="margin-top:12px"></div>
+</section>
+
 
 <section class="section panel" style="padding:16px">
 <div class="goodbox" style="padding:12px">
@@ -350,6 +367,53 @@ const U={
 };
 let D={},filteredSites=[];
 const domains=['site_identity','grid_connection','service_or_contract','regulatory','construction','power_telemetry','remote_sensing','cooling','transformer_supply_chain','chip_inventory','chip_ownership','chip_users','chip_shipments','independent_corroboration','compute_tenancy'];
+const matrixDomains=[
+ {key:'site_identity',label:'Site identity',source:'canonical'},
+ {key:'construction',label:'Construction history',source:'canonical'},
+ {key:'chip_inventory',label:'Site chip inventory',source:'canonical'},
+ {key:'grid_connection',label:'Grid / connection',source:'canonical'},
+ {key:'power_telemetry',label:'Actual power telemetry',source:'canonical'},
+ {key:'service_or_contract',label:'Service / contract',source:'canonical'},
+ {key:'compute_tenancy',label:'Compute tenancy',source:'canonical'},
+ {key:'tir_thermal',label:'TIR thermal',source:'alias',alias:'remote_sensing'},
+ {key:'sar_optical',label:'SAR / optical change detection',source:'alias',alias:'remote_sensing'},
+ {key:'cooling',label:'Cooling equipment',source:'canonical'},
+ {key:'transformer_supply_chain',label:'HV transformer supply',source:'canonical'},
+ {key:'chip_ownership',label:'Global chip ownership',source:'canonical'},
+ {key:'chip_users',label:'Global chip usage',source:'canonical'},
+ {key:'chip_shipments',label:'Global chip shipments',source:'canonical'},
+ {key:'gpu_clusters',label:'Global GPU clusters',source:'aggregate',fixed:'INGESTED_SNAPSHOT'},
+ {key:'chip_components',label:'AI chip components',source:'aggregate',fixed:'INGESTED_SNAPSHOT'},
+ {key:'ownership_accounting',label:'Ownership accounting',source:'display',fixed:'NOT_ASSESSED'},
+ {key:'independent_corroboration',label:'Independent corroboration',source:'canonical'}
+];
+const domainMeanings={
+ site_identity:'Epoch AI site record is present in the 93-site reference universe.',
+ construction:'Dated Epoch construction/history records are retained.',
+ chip_inventory:'Epoch AI site-level chip-quantity records are retained when published.',
+ grid_connection:'Site-level records are attached; a queue ID is only asserted when defensible.',
+ power_telemetry:'No site-level interval-demand telemetry dataset is currently ingested.',
+ service_or_contract:'Site-level utility/service/energy-contract evidence is tracked separately from queue-ID verification.',
+ compute_tenancy:'Site-specific compute-tenancy or capacity-contract evidence is kept separate from electricity connection and measured load.',
+ tir_thermal:'No numeric site-specific TIR thermal-anomaly dataset is currently ingested.',
+ sar_optical:'No numeric site-specific SAR/optical construction-change dataset is currently ingested.',
+ cooling:'Cooling-equipment source families are cataloged separately; structured site-level equipment events are not yet ingested.',
+ transformer_supply_chain:'Procurement, delivery and installation event records are not yet fully ingested.',
+ chip_ownership:'Aggregate external ownership source; it is not automatically attributed to this site.',
+ chip_users:'Aggregate external usage source; it is not automatically attributed to this site.',
+ chip_shipments:'Aggregate external shipment source; it is not automatically attributed to this site.',
+ gpu_clusters:'Aggregate external compute-location source; it is not automatically mapped to this site.',
+ chip_components:'Aggregate semiconductor-supply source; it is not automatically mapped to this site.',
+ ownership_accounting:'Owner/user fields are evidence inputs, not a complete legal or beneficial-ownership graph.',
+ independent_corroboration:'No independence score is inferred from the number of records or sources.'
+};
+const getDomainSpec=k=>matrixDomains.find(x=>x.key===k);
+const getDomainState=(r,k)=>{
+ const s=getDomainSpec(k);
+ if(!s)return 'UNKNOWN';
+ if(s.fixed)return s.fixed;
+ return (r.domains?.[s.alias||k]?.status)||'UNKNOWN';
+};
 const domainDescriptions={
 site_identity:'Canonical facility identity, address and reference-set membership.',
 grid_connection:'Queue, interconnection, utility, transmission and connection-system evidence.',
@@ -373,6 +437,36 @@ const stClass=s=>s==='VERIFIED_SITE_SPECIFIC'||s==='SITE_LEVEL_EVIDENCE'||s==='I
 const short=s=>{s=String(s==null?'':s);return s.length>150?s.slice(0,147)+'…':s};
 function siteGrid(r){return r.domains?.grid_connection?.status||'UNKNOWN'}
 function siteEvidence(r){return Number(r.combined_site_level_evidence_count||r.site_level_evidence_count||0)}
+function renderProgressCharts(){
+ const rows=D.sites||[], s=D.summary||{}, ts=D.time_series?.summary||{}, obs=D.obs||[];
+ const total=rows.length||93, counts={};
+ rows.forEach(r=>{const x=siteGrid(r);counts[x]=(counts[x]||0)+1});
+ const verified=counts.VERIFIED_SITE_SPECIFIC||0, evidence=counts.SITE_LEVEL_EVIDENCE||0, noRecord=counts.RESEARCHED_NO_PUBLIC_RECORD||0, pending=counts.PENDING_RESEARCH||0;
+ const byYear={};
+ (D.time_series?.site_timelines||[]).forEach(site=>(site.observed_events||[]).forEach(ev=>{const y=String(ev.date||'').slice(0,4);if(y)byYear[y]=(byYear[y]||0)+1;}));
+ const years=Object.keys(byYear).sort(), maxYear=Math.max(1,...years.map(y=>byYear[y]));
+ const obsDoneByDomain={power_telemetry:0,remote_sensing:0,cooling:0};
+ const snapshotCounts={power_telemetry:(D.power||[]).length,remote_sensing:(D.physical?.summary?.raw_tir_numeric_observations||0)+(D.physical?.summary?.raw_sar_numeric_observations||0),cooling:(D.cooling||[]).length};
+ const makeBar=(label,count,denom)=>'<div style="margin:9px 0"><div style="display:flex;justify-content:space-between;font-size:10px"><span>'+esc(label)+'</span><span class="mono">'+esc(count)+' / '+esc(denom)+'</span></div><div class="bar" style="margin-top:4px"><span style="width:'+Math.min(100,(count/Math.max(1,denom))*100)+'%"></span></div></div>';
+ const stateW=Math.max(1,Math.min(100,(verified/total)*100)),evW=Math.max(1,Math.min(100,(evidence/total)*100)),nrW=Math.max(1,Math.min(100,(noRecord/total)*100)),pW=Math.max(1,Math.min(100,(pending/total)*100));
+ let x=16, y=44, w=348, h=26;
+ const segs=[['Verified',verified,'var(--teal)'],['Site-level',evidence,'var(--teal)'],['No public record',noRecord,'var(--amber)'],['Pending',pending,'var(--line-strong)']];
+ let bars='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="8" fill="var(--line)"/>';
+ let cur=x;segs.forEach(z=>{const ww=w*(z[1]/total);bars+='<rect x="'+cur+'" y="'+y+'" width="'+ww+'" height="'+h+'" fill="'+z[2]+'"/>';cur+=ww;});
+ let legend='';cur=12;segs.forEach(z=>{legend+='<circle cx="'+cur+'" cy="91" r="4" fill="'+z[2]+'"/><text class="chart-text" x="'+(cur+7)+'" y="94">'+esc(z[0]+' '+z[1])+'</text>';cur+=82;});
+ const svg1='<svg class="chart" viewBox="0 0 380 125" role="img" aria-label="Track 3 grid state distribution"><text class="chart-big" x="16" y="24">'+total+'</text><text class="chart-text" x="55" y="23">canonical sites</text>'+bars+legend+'<text class="chart-text" x="16" y="116">Current grid-state classification from site_status.json</text></svg>';
+ const taskSvg=['power_telemetry','remote_sensing','cooling'].map((d,i)=>{const yy=34+i*40;return '<text class="chart-text" x="10" y="'+(yy+6)+'">'+esc(d.replace(/_/g,' '))+'</text><rect x="118" y="'+yy+'" width="190" height="12" rx="6" fill="var(--line)"/><rect x="118" y="'+yy+'" width="0" height="12" rx="6" fill="var(--teal)"/><text class="chart-text" x="316" y="'+(yy+9)+'">0 / 93</text>';}).join('');
+ const svg2='<svg class="chart" viewBox="0 0 380 150" role="img" aria-label="Open Track 3 acquisition task progress"><text class="chart-big" x="10" y="19">'+esc(obs.length)+'</text><text class="chart-text" x="50" y="18">open acquisition tasks</text>'+taskSvg+'<text class="chart-text" x="10" y="145">Tasks remain open until a qualifying observation with provenance is attached.</text></svg>';
+ let line='',pts='';
+ if(years.length){years.forEach((yr,i)=>{const px=30+(i/Math.max(1,years.length-1))*320;const py=125-(byYear[yr]/maxYear)*92;line+=(i?'L':'M')+px+' '+py;pts+='<circle class="chart-point" cx="'+px+'" cy="'+py+'" r="4"/><text class="chart-text" x="'+px+'" y="144" text-anchor="middle">'+yr+'</text><text class="chart-text" x="'+px+'" y="'+(py-8)+'" text-anchor="middle">'+byYear[yr]+'</text>';});}
+ const svg3='<svg class="chart" viewBox="0 0 380 160" role="img" aria-label="Observed Track 3 timeline events by year"><line class="chart-axis" x1="28" y1="126" x2="354" y2="126"/><line class="chart-gridline" x1="28" y1="34" x2="354" y2="34"/><path class="chart-stroke" d="'+line+'"/>'+pts+'<text class="chart-text" x="28" y="18">449 observed timeline events retained</text><text class="chart-text" x="28" y="157">Year labels count observed/reported events, not predictions.</text></svg>';
+ document.getElementById('progressCharts').innerHTML=
+ '<div class="chart-card"><div class="chart-title">Grid-state distribution</div><div class="chart-note">'+esc(verified)+' verified · '+esc(evidence)+' site-level evidence · '+esc(noRecord)+' searched with no retained public record.</div>'+svg1+'</div>'+
+ '<div class="chart-card"><div class="chart-title">Acquisition completion</div><div class="chart-note">0/93 qualifying interval-power, remote-sensing, and cooling tasks are marked complete by the canonical task queue.</div>'+svg2+
+ '<div style="margin-top:8px">'+makeBar('Power snapshots retained (not task completion)',snapshotCounts.power_telemetry,93)+makeBar('Cooling observations retained (not task completion)',snapshotCounts.cooling,93)+'</div></div>'+
+ '<div class="chart-card"><div class="chart-title">Observed time progress</div><div class="chart-note">Construction / operational observations retained by year across the 93-site universe.</div>'+svg3+'</div>';
+ document.getElementById('progressMeta').textContent='93 canonical sites · '+esc(ts.observed_timeline_event_count||0)+' observed timeline events · '+esc(ts.future_or_predicted_timeline_event_count||0)+' future/predicted rows kept separate · '+esc(obs.length)+' observation-acquisition tasks.';
+}
 function renderCards(){
  const s=D.summary||{}, a=D.audit||{};
  const cards=[
@@ -399,10 +493,10 @@ function renderArchitecture(){
 }
 function renderDomains(){
  const rows=D.sites||[];
- document.getElementById('domainCards').innerHTML=domains.map(dom=>{
-  const c={};rows.forEach(r=>{const s=r.domains?.[dom]?.status||'UNSET';c[s]=(c[s]||0)+1});
+ document.getElementById('domainCards').innerHTML=matrixDomains.map(spec=>{
+  const c={};rows.forEach(r=>{const s=getDomainState(r,spec.key);c[s]=(c[s]||0)+1});
   const top=Object.entries(c).sort((a,b)=>b[1]-a[1])[0]||['UNSET',0];
-  return '<div class="domain-card"><h3>'+esc(dom.replace(/_/g,' '))+'</h3><p>'+esc(domainDescriptions[dom]||'Track 3 evidence domain.')+'</p><div class="bar"><span style="width:'+Math.round(top[1]/93*100)+'%"></span></div><div style="margin-top:6px">'+Object.entries(c).map(x=>'<span class="tag">'+esc(x[0])+' · '+x[1]+'</span>').join('')+'</div></div>';
+  return '<div class="domain-card"><h3>'+esc(spec.label)+'</h3><p>'+esc(domainMeanings[spec.key]||'Track 3 evidence state.')+'</p><div class="bar"><span style="width:'+Math.round(top[1]/93*100)+'%"></span></div><div style="margin-top:6px">'+Object.entries(c).map(x=>'<span class="tag">'+esc(x[0])+' · '+x[1]+'</span>').join('')+'</div></div>';
  }).join('');
 }
 function renderPhysics(){
@@ -437,9 +531,9 @@ function renderStates(){
  document.getElementById('states').innerHTML=states.map(s=>'<div class="domain-card"><h3><span class="status '+stClass(s)+'">'+esc(s)+'</span></h3><p>'+esc(meaning[s]||'Explicit Track 3 state.')+'</p></div>').join('');
 }
 function renderMatrix(){
- const head='<tr><th>Site</th>'+domains.map(d=>'<th>'+esc(d.replace(/_/g,' '))+'</th>').join('')+'</tr>';document.getElementById('matrixHead').innerHTML=head;
- document.getElementById('matrixMeta').textContent=(D.sites||[]).length+' sites × '+domains.length+' Track 3 domains. Each cell reports the current canonical domain state.';
- document.getElementById('matrixBody').innerHTML=(D.sites||[]).map(r=>'<tr><td><strong>'+esc(r.site_name)+'</strong></td>'+domains.map(d=>{const s=r.domains?.[d]?.status||'UNSET';return '<td><span class="cell '+stClass(s)+'">'+esc(s.replace(/_/g,' '))+'</span></td>'}).join('')+'</tr>').join('');
+ const head='<tr><th>Site</th>'+matrixDomains.map(d=>'<th>'+esc(d.label)+'</th>').join('')+'</tr>';document.getElementById('matrixHead').innerHTML=head;
+ document.getElementById('matrixMeta').textContent=(D.sites||[]).length+' sites × '+matrixDomains.length+' displayed domains. Aggregate domains are explicitly marked as snapshots and are not automatically attributed to individual sites.';
+ document.getElementById('matrixBody').innerHTML=(D.sites||[]).map(r=>'<tr><td><strong>'+esc(r.site_name)+'</strong></td>'+matrixDomains.map(d=>{const s=getDomainState(r,d.key);return '<td><span class="cell '+stClass(s)+'">'+esc(s.replace(/_/g,' '))+'</span></td>'}).join('')+'</tr>').join('');
 }
 function populateSiteFilters(){
  const rows=D.sites||[];
@@ -660,12 +754,20 @@ function openSite(id){
  const g=r.grid||{}, n=er?.normalized||{}, raw=er?.raw||{}, t=n.latest_timeline||{}, chips=n.latest_chip_quantities||[];
  let h='<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));"><div class="panel card"><h3 style="font-size:14px;margin:0 0 8px">Canonical site status</h3><div class="kvs"><div>Epoch ID</div><div class="mono">'+esc(r.epoch_id)+'</div><div>Grid state</div><div><span class="status '+stClass(siteGrid(r))+'">'+esc(siteGrid(r))+'</span></div><div>Grid / utility</div><div>'+esc(g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(g.site_specific_queue_id||'—')+'</div><div>IT MW</div><div class="mono">'+esc(fmt(r.current_it_power_mw))+'</div><div>H100 equivalents</div><div class="mono">'+esc(fmt(r.current_h100_equivalents))+'</div><div>Evidence count</div><div class="mono">'+siteEvidence(r)+'</div><div>Next action</div><div>'+esc(r.next_action||'—')+'</div></div></div>';
  h+='<div class="panel card"><h3 style="font-size:14px;margin:0 0 8px">Epoch normalized record</h3><div class="kvs"><div>Name</div><div>'+esc(n.name||'—')+'</div><div>Address</div><div>'+esc(n.address||'—')+'</div><div>Owner</div><div>'+esc(n.owner||'—')+'</div><div>Users</div><div>'+esc(n.users||'—')+'</div><div>Project</div><div>'+esc(n.project||'—')+'</div><div>Capital cost</div><div>'+esc(fmt(n.current_total_capital_cost_b_2025))+' B (2025 USD)</div><div>Investors</div><div>'+esc(n.investors||'—')+'</div><div>Construction companies</div><div>'+esc(n.construction_companies||'—')+'</div><div>Energy companies</div><div>'+esc(n.energy_companies||'—')+'</div></div></div></div>';
- h+='<h3 style="font-size:14px;margin:16px 0 5px">All Track 3 domain states</h3><div class="scroll"><table><thead><tr><th>Domain</th><th>State</th><th>Basis</th></tr></thead><tbody>'+domains.map(d=>'<tr><td>'+esc(d)+'</td><td><span class="status '+stClass(r.domains?.[d]?.status||'UNKNOWN')+'">'+esc(r.domains?.[d]?.status||'UNKNOWN')+'</span></td><td>'+esc(r.domains?.[d]?.basis||'—')+'</td></tr>').join('')+'</tbody></table></div>';
+ h+='<h3 style="font-size:14px;margin:16px 0 5px">Public publisher fields</h3>
+<div class="site-evidence-fields">
+ <dl class="site-evidence-field"><dt>Investors</dt><dd>${esc(n.investors||"Not published / not retained")}</dd></dl>
+ <dl class="site-evidence-field"><dt>Construction companies</dt><dd>${esc(n.construction_companies||"Not published / not retained")}</dd></dl>
+ <dl class="site-evidence-field"><dt>Energy companies</dt><dd>${esc(n.energy_companies||"Not published / not retained")}</dd></dl>
+</div>
+<div class="track3-matrix-note" style="margin-top:10px">Blank publisher fields are rendered explicitly as <strong>Not published / not retained</strong>; no company is inferred from geography, queue jurisdiction, or generic project context.</div>
+
+<h3 style="font-size:14px;margin:16px 0 5px">All Track 3 domain states</h3><div class="scroll"><table><thead><tr><th>Domain</th><th>State</th><th>Basis</th></tr></thead><tbody>'+matrixDomains.map(d=>{const st=getDomainState(r,d.key);const basis=r.domains?.[d.alias||d.key]?.basis||domainMeanings[d.key]||'Aggregate/display field; not site-attributed.';return '<tr><td>'+esc(d.label)+'</td><td><span class="status '+stClass(st)+'">'+esc(st)+'</span></td><td>'+esc(basis)+'</td></tr>'}).join('')+'</tbody></table></div>';
  h+='<h3 style="font-size:14px;margin:16px 0 5px">Retained raw Epoch publisher fields</h3><div class="code">'+esc(JSON.stringify(raw,null,2))+'</div>';
  h+='<h3 style="font-size:14px;margin:16px 0 5px">Latest Epoch timeline</h3><div class="code">'+esc(JSON.stringify(t,null,2))+'</div>';
  h+='<h3 style="font-size:14px;margin:16px 0 5px">Latest Epoch chip quantities</h3><div class="code">'+esc(JSON.stringify(chips,null,2))+'</div>';
  h+='<h3 style="font-size:14px;margin:16px 0 5px">Evidence records</h3>'+ (ev.length?ev.map(e=>'<div class="evidence"><h4>'+esc(e.domain)+' · '+esc(e.evidence_type)+'</h4><div class="small soft">'+esc(e.basis)+'</div><div class="small faint" style="margin-top:4px">'+esc(e.source_name)+' · '+esc(e.status)+' · '+esc(e.confidence)+' · <a target="_blank" rel="noopener" href="'+esc(e.source_url||'#')+'">source</a></div></div>').join(''):'<div class="faint small">No retained evidence records.</div>');
- h+='<h3 style="font-size:14px;margin:16px 0 5px">Observation tasks</h3>'+ (obs.length?obs.map(o=>'<div class="evidence"><h4>'+esc(o.domain)+' · '+esc(o.priority)+' · '+esc(o.current_state)+'</h4><div class="small soft">'+esc(o.action)+'</div><div class="small faint">'+esc((o.required_fields||[]).join(', '))+'</div></div>').join(''):'<div class="faint small">No observation tasks.</div>');
+ h+='<h3 style="font-size:14px;margin:16px 0 5px">Track 3 acquisition tasks for this site</h3>'+ (obs.length?obs.map(o=>'<div class="evidence"><h4>'+esc(o.domain)+' · '+esc(o.priority)+' · '+esc(o.current_state)+'</h4><div class="small soft"><strong>Primary source:</strong> '+(o.grid_primary_source_url?'<a target="_blank" rel="noopener" href="'+esc(o.grid_primary_source_url)+'">'+esc(o.grid_source_type||'primary source')+'</a>':'Not published / not retained')+'</div><div class="small soft" style="margin-top:4px"><strong>Research sources:</strong> '+esc(o.next_research_sources||'Not published / not retained')+'</div><div class="small soft" style="margin-top:4px"><strong>Action:</strong> '+esc(o.action||'No acquisition action recorded.')+'</div><div class="small faint" style="margin-top:4px"><strong>Required fields:</strong> '+esc((o.required_fields||[]).join(', ')||'Not published / not retained')+'</div></div>').join(''):'<div class="faint small">No observation tasks.</div>');
  h+='<h3 style="font-size:14px;margin:16px 0 5px">Power / cooling snapshots</h3>'+p.map(o=>'<div class="evidence"><strong>Power</strong> · '+esc(o.observed_period)+' · '+esc(fmt(o.normalized_value))+' '+esc(o.units)+' · '+esc(o.confidence)+'</div>').join('')+c.map(o=>'<div class="evidence"><strong>Cooling</strong> · '+esc(o.equipment_type)+' · '+esc(o.manufacturer)+' · '+esc(o.model)+' · '+esc(fmt(o.units))+' units · '+esc(fmt(o.capacity))+' '+esc(o.capacity_units)+'</div>').join('');
  const pv=(D.provenance?.facilities||[]).find(x=>x.facility_id===id);
  if(pv){
@@ -682,7 +784,7 @@ async function load(){
  names.forEach((k,i)=>D[k]=vals[i]);
  try { D.coords=await fetch('data/track3/physical_site_coordinates.json',{cache:'no-store'}).then(res=>res.ok?res.json():{records:[]}); } catch(_err) { D.coords={records:[]}; }
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderStateBar();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();renderDossier();
+ renderProgressCharts();renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderStateBar();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();renderDossier();
 }
 document.getElementById('search').addEventListener('input',renderSites);['siteSort','siteCountry','siteProvince','siteUtility','siteOwner'].forEach(id=>document.getElementById(id).addEventListener('change',renderSites));document.getElementById('siteState').addEventListener('change',()=>{renderStateBar();renderSites();});
 document.querySelectorAll('[data-download-facility]').forEach(b=>b.addEventListener('click',async()=>{const fid=b.getAttribute('data-download-facility');const rec={facility_id:fid,site:(D.sites||[]).find(x=>x.epoch_id===fid),epoch:(D.epoch?.records||[]).find(x=>x.epoch_id===fid),evidence:(D.evidence||[]).filter(x=>x.target_id===fid),provenance:(D.provenance?.facilities||[]).find(x=>x.facility_id===fid),verification:(D.verification_results?.results||[]).filter(x=>x.facility_id===fid)};const url=URL.createObjectURL(new Blob([JSON.stringify(rec,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=fid+'.track3.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}));document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
