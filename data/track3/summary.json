@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T01:41:59.176852+00:00",
+  "generated_at_utc": "2026-09-27T03:15:56.282368+00:00",
   "epoch_site_count": 93,
   "observation_task_count": 279,
   "observation_task_counts_by_domain": {
@@ -15,7 +15,7 @@
   "site_level_evidence_site_count": 93,
   "combined_site_level_evidence_site_count": 93,
   "site_specific_queue_id_count": 2,
-  "pending_grid_connection_research_count": 30,
+  "pending_grid_connection_research_count": 29,
   "domain_status_counts": {
     "site_identity": {
       "INGESTED": 93
@@ -28,8 +28,8 @@
       "UNKNOWN": 10
     },
     "grid_connection": {
-      "SITE_LEVEL_EVIDENCE": 61,
-      "PENDING_RESEARCH": 30,
+      "SITE_LEVEL_EVIDENCE": 62,
+      "PENDING_RESEARCH": 29,
       "VERIFIED_SITE_SPECIFIC": 2
     },
     "service_or_contract": {
@@ -56,7 +56,8 @@
       "INGESTED_SNAPSHOT": 2
     },
     "transformer_supply_chain": {
-      "RESEARCH_QUEUE": 93
+      "RESEARCH_QUEUE": 92,
+      "INGESTED": 1
     },
     "chip_ownership": {
       "INGESTED_SNAPSHOT": 93
@@ -71,14 +72,16 @@
       "NOT_ASSESSED": 93
     }
   },
-  "source_stack_count": 24,
+  "source_stack_count": 26,
   "remote_sensing_derived_observation_count": 0,
-  "transformer_event_count": 0,
+  "transformer_event_count": 3,
   "source_stack_status_counts": {
     "INGESTED": 8,
     "INGESTED_PARTIAL": 1,
     "INGESTED_SNAPSHOT": 9,
     "NOT_INGESTED": 1,
+    "SOURCE_AVAILABLE_ACTIVE_ACQUISITION": 1,
+    "SOURCE_AVAILABLE_ACTIVE_FALLBACK": 1,
     "SOURCE_AVAILABLE_NOT_INGESTED": 5
   },
   "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence."
