@@ -7844,5 +7844,20 @@
       },
       "source_precision": "Epoch address/display geometry"
     }
-  ]
+  ],
+  "acquisition_pipeline": {
+    "status": "ACTIVE",
+    "script": "acquire_physical_verification.py",
+    "workflow": ".github/workflows/physical_verification.yml",
+    "site_target_count": 93,
+    "modalities": [
+      "Sentinel-2 optical",
+      "Landsat Collection 2 Level-2 surface temperature",
+      "Sentinel-1 GRD SAR"
+    ],
+    "processing": "Public raw COG windows are read around geocoded public site addresses; compact derived metrics and scene provenance are retained, while full rasters remain external.",
+    "transformer_event_ledger": "data/track3/transformer_supply_chain_events.json",
+    "transformer_target_count": 93,
+    "semantics": "Acquisition success is not itself evidence of AI compute activity. Missing observations remain explicit gaps."
+  }
 }
