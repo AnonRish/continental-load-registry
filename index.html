@@ -198,6 +198,37 @@
     <p class="text-xs mt-2" style="color:var(--ink-faint);" id="mapCaption"></p>
   </div>
 
+  <!-- ============ MAP LAYER INVENTORY ============ -->
+  <section id="mapLayerInventory" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Map accounting</p>
+        <h2 class="font-serif-display text-xl mt-1">Map layer inventory</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Every overlay is accounted for separately. Project pins are not automatically the same thing as queue rows, and aggregate footprints are never presented as facility locations.</p>
+      </div>
+      <a href="data/map_layer_manifest.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open machine-readable map manifest</a>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl" id="mapInventoryProjectCount">250</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project records</p></div>
+      <div class="p-4"><p class="mono text-xl" id="mapInventoryMappedCount">249</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project records mapped</p></div>
+      <div class="p-4"><p class="mono text-xl" id="mapInventoryAggregateCount">62</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Aggregate/historical footprints</p></div>
+      <div class="p-4"><p class="mono text-xl" id="mapInventoryEpochCount">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch AI site observations</p></div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[920px]">
+        <thead><tr><th class="px-3 py-2 text-left">Layer</th><th class="px-3 py-2 text-right">Records</th><th class="px-3 py-2 text-right">Mapped</th><th class="px-3 py-2 text-left">Geometry / treatment</th><th class="px-3 py-2 text-left">Status</th></tr></thead>
+        <tbody id="mapLayerInventoryBody">
+          <tr><td class="px-3 py-2">Project-level evidence</td><td class="px-3 py-2 text-right">250</td><td class="px-3 py-2 text-right">249</td><td class="px-3 py-2">Project/city/county/site-area display geography</td><td class="px-3 py-2">1 project intentionally unlocated</td></tr>
+          <tr><td class="px-3 py-2">Aggregate / historical evidence</td><td class="px-3 py-2 text-right">62</td><td class="px-3 py-2 text-right">62</td><td class="px-3 py-2">Regional/county/state footprints</td><td class="px-3 py-2">Non-facility evidence</td></tr>
+          <tr><td class="px-3 py-2">Epoch AI sites</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2">Public-address-derived site display points</td><td class="px-3 py-2">Separate secondary evidence layer</td></tr>
+          <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right">3,873</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
+          <tr><td class="px-3 py-2">SPP active queue</td><td class="px-3 py-2 text-right">3,076</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geography</td><td class="px-3 py-2">Current snapshot present</td></tr>
+          <tr><td class="px-3 py-2">CAISO / NYISO / PJM complete queue snapshots</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Official-source refresh layers</td><td class="px-3 py-2">Snapshot files pending successful public retrieval</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ============ QUEUE REGISTRY SOURCE UNIVERSE ============ -->
   <section id="queueUniverse" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -1789,6 +1820,16 @@ openFacilityFromHash();
     const sub=document.getElementById('mapSubcaption');
     if(sub)sub.innerHTML='Current filter · <strong>'+projectRecords.length.toLocaleString()+' project-evidence records overlaid</strong>';
   }).catch(function(err){console.error(err);});
+  fetch('data/map_layer_manifest.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('map manifest unavailable');return res.json();}).then(function(payload){
+    const layers=Array.isArray(payload.layers)?payload.layers:[];
+    const p=layers.find(function(x){return x.id==='PROJECT_LEVEL';});
+    const a=layers.find(function(x){return x.id==='SUPPLEMENTAL_AGGREGATES';});
+    const e=layers.find(function(x){return x.id==='EPOCH_AI';});
+    if(p){const x=document.getElementById('mapInventoryProjectCount');if(x)x.textContent=Number(p.records||0).toLocaleString();const y=document.getElementById('mapInventoryMappedCount');if(y)y.textContent=Number(p.mapped_records||0).toLocaleString();}
+    if(a){const x=document.getElementById('mapInventoryAggregateCount');if(x)x.textContent=Number(a.records||0).toLocaleString();}
+    if(e){const x=document.getElementById('mapInventoryEpochCount');if(x)x.textContent=Number(e.records||0).toLocaleString();}
+  }).catch(function(err){console.warn(err);});
+
   function updateCaisoQueueLayer(){
     caisoQueueCluster.clearLayers();
     if(!showCaisoQueue)return;
