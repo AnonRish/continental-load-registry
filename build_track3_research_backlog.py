@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import quote_plus
 
 ROOT = Path(__file__).resolve().parent
-SWEEP = ROOT / "data/track3/site_missing_information_sweep_2026-09-27.json"
+SWEEP = max(ROOT.glob("data/track3/site_missing_information_sweep_*.json"), key=lambda p: p.name, default=ROOT / "data/track3/site_missing_information_sweep_2026-09-27.json")
 WORKFLOWS = ROOT / "data/track3/research_workflows.json"
 OUT_JSON = ROOT / "data/track3/research_work_queue.json"
 OUT_CSV = ROOT / "data/track3/research_work_queue.csv"
