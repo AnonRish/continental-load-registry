@@ -198,6 +198,27 @@
     <p class="text-xs mt-2" style="color:var(--ink-faint);" id="mapCaption"></p>
   </div>
 
+  <!-- ============ DATA UNIVERSE CHECKLIST ============ -->
+  <section id="dataUniverseChecklist" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Coverage status</p>
+        <h2 class="font-serif-display text-xl mt-1">Market-by-market data-universe checklist</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">This table distinguishes published coverage from unresolved public-data gaps. “Partial” means the repository has source-level or project-level evidence but the public source does not yet expose a complete enumerated facility universe.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/data_universe_checklist.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Checklist JSON</a>
+        <a href="data/data_universe_checklist.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Checklist CSV</a>
+      </div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[980px]">
+        <thead><tr><th class="px-3 py-2 text-left">Market / layer</th><th class="px-3 py-2 text-left">Status</th><th class="px-3 py-2 text-left">What is actually published</th><th class="px-3 py-2 text-left">Current blocker</th></tr></thead>
+        <tbody id="dataUniverseChecklistBody"></tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ============ MISO UNLOCATED WORKLIST ============ -->
   <section id="misoUnlocatedWorklist" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -1847,6 +1868,15 @@ openFacilityFromHash();
     const sub=document.getElementById('mapSubcaption');
     if(sub)sub.innerHTML='Current filter · <strong>'+projectRecords.length.toLocaleString()+' project-evidence records overlaid</strong>';
   }).catch(function(err){console.error(err);});
+  fetch('data/data_universe_checklist.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('data-universe checklist unavailable');return res.json();}).then(function(payload){
+    const body=document.getElementById('dataUniverseChecklistBody');
+    const rows=Array.isArray(payload.records)?payload.records:[];
+    if(!body)return;
+    body.innerHTML=rows.map(function(r){
+      const cls=r.status==='expanded'?'tag-storage':'tag-neutral';
+      return '<tr><td class="px-3 py-2">'+escapeHtml(r.id)+'</td><td class="px-3 py-2"><span class="'+cls+'">'+escapeHtml(r.status)+'</span></td><td class="px-3 py-2">'+escapeHtml(r.what_is_published)+'</td><td class="px-3 py-2">'+escapeHtml(r.next_blocker)+'</td></tr>';
+    }).join('');
+  }).catch(function(err){console.warn(err);});
   fetch('data/map_layer_manifest.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('map manifest unavailable');return res.json();}).then(function(payload){
     const layers=Array.isArray(payload.layers)?payload.layers:[];
     const p=layers.find(function(x){return x.id==='PROJECT_LEVEL';});
