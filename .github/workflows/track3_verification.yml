@@ -46,6 +46,19 @@ jobs:
         uses: actions/attest@v4
         with:
           subject-path: track3-verification-bundle.tar.gz
+      - name: Reconcile verification result attestation state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("data/track3/verification_results.json")
+          obj=json.loads(path.read_text(encoding="utf-8"))
+          obj.setdefault("summary",{})["artifact_attestation_status"]="SIGNED_AND_UPLOADED"
+          obj["summary"]["attestation_workflow_run_id"]="${{ github.run_id }}"
+          obj["summary"]["attestation_bundle"]="track3-verification-bundle.tar.gz"
+          path.write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+          PY
+
       - name: Record attestation status
         run: |
           cat > data/track3/attestation_status.json <<EOF
