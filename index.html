@@ -887,12 +887,12 @@
           </div>
           <a class="text-xs link-underline" href="data/external/epoch_ai/queue_gap_analysis.csv" target="_blank" rel="noopener noreferrer">Open the 93-site research worklist</a>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-4">
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mt-4">
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="track3EpochSites" class="font-serif-display text-xl mt-1">—</div></div>
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site queue IDs</div><div id="track3QueueIds" class="font-serif-display text-xl mt-1">—</div></div>
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Combined site-level evidence</div><div id="track3Evidence" class="font-serif-display text-xl mt-1">—</div></div>
           <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">U.S. site-specific gaps</div><div id="track3USGaps" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Grid research gaps</div><div id="track3Pending" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Grid research gaps</div><div id="track3Pending" class="font-serif-display text-xl mt-1">—</div></div><div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Research-complete · no public site record</div><div id="track3NoPublicRecord" class="font-serif-display text-xl mt-1">—</div></div>
         </div>
         <div class="grid md:grid-cols-2 gap-3 mt-4">
           <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
@@ -2483,6 +2483,8 @@ openFacilityFromHash();
       document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
 document.getElementById('queueUniverseVerifiedIds').textContent=Number(summary.site_specific_queue_id_count||grid.VERIFIED_SITE_SPECIFIC||0).toLocaleString();
       document.getElementById('queueUniverseCurrentGaps').textContent=usPending.toLocaleString();
+      const noPublic=Number((grid.RESEARCHED_NO_PUBLIC_RECORD||0));
+      document.getElementById('track3NoPublicRecord').textContent=noPublic.toLocaleString();
       const domainCounts=summary.domain_status_counts||{};
       document.getElementById('track3PowerSnapshots').textContent=Number(domainCounts.power_telemetry?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
       document.getElementById('track3CoolingSnapshots').textContent=Number(domainCounts.cooling?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
