@@ -429,8 +429,8 @@
       <div class="flex flex-wrap gap-2">
         <a href="data/physical_verification_layer.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open physical layer JSON</a>
         <a href="data/physical_verification_layer.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download site CSV</a>
-        <a href="data/track3/remote_sensing_observations.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open satellite observation ledger</a>
-        <a href="data/track3/remote_sensing_observations.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download satellite CSV</a>
+        <a href="data/track3/remote_sensing_observation_targets.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open 93-site satellite target ledger</a>
+        <a href="data/track3/remote_sensing_observation_targets.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download satellite target CSV</a>
         <a href="data/track3/transformer_supply_chain_events.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open transformer event ledger</a>
         <a href="data/track3/transformer_event_targets.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download 93 transformer targets</a>
         <a href="data/track3/building_footprints_index.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open building footprint index</a>
@@ -574,6 +574,7 @@
       <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="queueWideFreshness">live</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Automated refresh</p></div>
     </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);"><strong>Satellite acquisition coverage:</strong> 93 / 93 Epoch sites now have explicit Sentinel-2, Landsat optical/TIRS, and Sentinel-1 acquisition targets. The site still reports 0 processed satellite measurements until scenes are actually acquired and derived metrics are generated. Coordinates retain their recorded source precision and are not silently promoted to exact facility coordinates.</p>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Each layer is retained separately with its source row and normalized fields. Snapshot status is factual repository state; missing local snapshots are treated as unavailable rather than synthesized. See <a class="link-underline" href="data/queue_layer_status.json" target="_blank" rel="noopener noreferrer">queue layer status</a>.</p>
   </section>
 
