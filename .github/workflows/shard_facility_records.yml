@@ -63,6 +63,8 @@ jobs:
           from pathlib import Path
           root = Path("data/facility_records")
           top = json.loads((root / "index.json").read_text(encoding="utf-8"))
+          scope = json.loads(Path("data/large_load_scope.json").read_text(encoding="utf-8"))
+          expected = scope["definitions"]["current_row_level"]["records"]
           assert top["schema_version"] == 2
           total = 0
           largest = (0, "")
@@ -76,7 +78,7 @@ jobs:
                   if size > largest[0]:
                       largest = (size, shard["file"])
                   assert size < 1_000_000, f"oversized shard: {shard['file']} ({size} bytes)"
-          assert total == top["record_count"] == 1558
+          assert total == top["record_count"] == expected
           print(f"verified {total} records; largest shard {largest[1]} = {largest[0]} bytes")
           PY
 
