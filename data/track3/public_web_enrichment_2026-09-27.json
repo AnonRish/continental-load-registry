@@ -4,10 +4,10 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 239,
+    "record_count": 244,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 213,
+      "PUBLIC_SOURCE_CAPTURED": 218,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
@@ -24,7 +24,8 @@
       "service_or_contract": 7,
       "users": 3,
       "regulatory": 6,
-      "capacity_record": 11
+      "capacity_record": 11,
+      "operational_efficiency": 5
     }
   },
   "semantics": {
@@ -3898,7 +3899,107 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Google's Iowa location page describes the Cedar Rapids facility as a new data center campus announced in 2025 and still under development.",
       "evidence_id": "EVID-PWEB-batch6-google-cedar-rapids-oper-2"
+    },
+    {
+      "site_name": "Google Omaha",
+      "epoch_id": "EPOCH-4eeccbee73808216",
+      "field": "operational_efficiency",
+      "value": {
+        "metric": "PUE",
+        "value": 1.05,
+        "period": "TTM PUE, Q4 2025"
+      },
+      "relationship": "published facility efficiency metric",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/efficiency/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "PUE is a facility-efficiency metric and is not an interval grid-load measurement or a direct estimate of AI compute power.",
+      "evidence_id": "EVID-PWEB-pue-2025q4-google-omaha"
+    },
+    {
+      "site_name": "Google Papillion",
+      "epoch_id": "EPOCH-4525348d114e3e8e",
+      "field": "operational_efficiency",
+      "value": {
+        "metric": "PUE",
+        "value": 1.09,
+        "period": "TTM PUE, Q4 2025"
+      },
+      "relationship": "published facility efficiency metric",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/efficiency/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "PUE is a facility-efficiency metric and is not an interval grid-load measurement or a direct estimate of AI compute power.",
+      "evidence_id": "EVID-PWEB-pue-2025q4-google-papillion"
+    },
+    {
+      "site_name": "Google Storey County",
+      "epoch_id": "EPOCH-2b89e13933a04725",
+      "field": "operational_efficiency",
+      "value": {
+        "metric": "PUE",
+        "value": 1.14,
+        "period": "TTM PUE, Q4 2025"
+      },
+      "relationship": "published facility efficiency metric",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/efficiency/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "PUE is a facility-efficiency metric and is not an interval grid-load measurement or a direct estimate of AI compute power.",
+      "evidence_id": "EVID-PWEB-pue-2025q4-google-storey-county"
+    },
+    {
+      "site_name": "Google The Dalles",
+      "epoch_id": "EPOCH-40ccef8ef4236635",
+      "field": "operational_efficiency",
+      "value": {
+        "metric": "PUE",
+        "value": 1.1,
+        "period": "TTM PUE, Q4 2025"
+      },
+      "relationship": "published facility efficiency metric",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/efficiency/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "PUE is a facility-efficiency metric and is not an interval grid-load measurement or a direct estimate of AI compute power.",
+      "evidence_id": "EVID-PWEB-pue-2025q4-google-the-dalles"
+    },
+    {
+      "site_name": "Google Midlothian",
+      "epoch_id": "EPOCH-85492d2b8df586a1",
+      "field": "operational_efficiency",
+      "value": {
+        "metric": "PUE",
+        "value": 1.1,
+        "period": "TTM PUE, Q4 2025"
+      },
+      "relationship": "published facility efficiency metric",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/efficiency/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "PUE is a facility-efficiency metric and is not an interval grid-load measurement or a direct estimate of AI compute power.",
+      "evidence_id": "EVID-PWEB-pue-2025q4-google-midlothian"
     }
   ],
-  "record_count": 239
+  "record_count": 244
 }
