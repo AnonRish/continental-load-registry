@@ -121,8 +121,8 @@ def build_normalized_auxiliary_artifacts(capture_manifest):
                 candidates=g.normalize_ercot_records(df,stats)
                 base={"schema_version":1,"title":"ERCOT GIS public report — complete parsed rows","source_url":SOURCES["ERCOT-GIS"]["url"],"captured_at":captured,"record_count":len(all_rows),"rows":all_rows,"accounting":{"candidate_large_load_rows":len(candidates),"candidate_large_load_mw":round(sum(x["capacity_mw"] for x in candidates),2),"candidate_filter_min_mw":g.MIN_CAPACITY_MW},"semantics":"Complete parsed project-detail rows from the public GIS report. The candidate subset applies the registry's large-load filter; it is not the entire ERCOT generation universe."}
                 cand={"schema_version":1,"title":"ERCOT GIS large-load candidate layer","source_url":SOURCES["ERCOT-GIS"]["url"],"captured_at":captured,"record_count":len(candidates),"records":[r.model_dump() if hasattr(r,"model_dump") else r for r in candidates],"semantics":"Filtered candidate layer from the public GIS report. This does not assert that every candidate is an AI data center or that capacity is currently load."}
-                (DATA/"ercot_gis_public_records.json").write_text(json.dumps(base,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-                (DATA/"ercot_large_load_candidates.json").write_text(json.dumps(cand,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                (DATA/"ercot_gis_public_records.json").write_text(json.dumps(base,indent=2,ensure_ascii=False,default=json_value)+"\n",encoding="utf-8")
+                (DATA/"ercot_large_load_candidates.json").write_text(json.dumps(cand,indent=2,ensure_ascii=False,default=json_value)+"\n",encoding="utf-8")
                 outputs.extend([str((DATA/"ercot_gis_public_records.json").relative_to(ROOT)),str((DATA/"ercot_large_load_candidates.json").relative_to(ROOT))])
             except Exception as exc:
                 item["normalization_error"]=str(exc)
@@ -136,7 +136,7 @@ def build_normalized_auxiliary_artifacts(capture_manifest):
                 name="iso_ne_public_queue" if sid=="ISO-NE" else "ieso_public_connection_applications"
                 title="ISO-NE public external reports — parsed tables" if sid=="ISO-NE" else "IESO public application status — parsed tables"
                 obj={"schema_version":1,"title":title,"source_url":SOURCES[sid]["url"],"captured_at":captured,"record_count":len(rows),"table_count":len(tables),"rows":rows,"semantics":"Parsed public publisher tables retained row-by-row with source table and row numbers. Normalization is structural only; no site-level AI inference is made."}
-                (DATA/f"{name}.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                (DATA/f"{name}.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False,default=json_value)+"\n",encoding="utf-8")
                 outputs.append(str((DATA/f"{name}.json").relative_to(ROOT)))
             except Exception as exc:
                 item["normalization_error"]=str(exc)
