@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "count": 12,
+  "count": 11,
   "records": [
     {
       "epoch_id": "EPOCH-a286a89bd1c1b6e7",
@@ -727,90 +727,6 @@
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-    },
-    {
-      "epoch_id": "EPOCH-495a9afde5e4b96c",
-      "site_name": "xAI QTS Atlanta",
-      "country": "United States",
-      "state_province": "GA",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "GA",
-      "current_it_power_mw": 17.32971,
-      "current_h100_equivalents": 11470.43961596766,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
-        },
-        "grid_connection": {
-          "status": "RESEARCHED_NO_PUBLIC_RECORD",
-          "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service."
-        },
-        "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
-        },
-        "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
-        },
-        "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
-        },
-        "remote_sensing": {
-          "status": "INGESTED_DERIVED",
-          "observation_count": 6,
-          "modalities": [
-            "optical",
-            "sar",
-            "tir"
-          ],
-          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
-        },
-        "transformer_supply_chain": {
-          "status": "RESEARCH_QUEUE",
-          "event_count": 0,
-          "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
-        }
-      },
-      "site_level_evidence_count": 2,
-      "public_web_evidence_count": 0,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 2,
-      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-5b05fa7b682be282",
