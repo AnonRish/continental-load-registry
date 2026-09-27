@@ -11,98 +11,98 @@
         "data/caiso_cluster_history.json",
         "data/caiso_public_queue.json"
       ],
-      "next_blocker": "Continue historical workbook versioning and site/entity crosswalks; no current public-queue snapshot blocker remains."
+      "next_blocker": "Current public queue snapshot is complete at the source level; remaining public research work is historical cluster/serial versioning and site/entity crosswalks where source identifiers permit."
     },
     {
       "id": "MISO",
       "status": "partial",
-      "what_is_published": "Current 3,873-row public queue plus 153 >=100 MW records in an explicit unlocated worklist; 83 were separately retained in the expanded-known additive scope.",
+      "what_is_published": "Current 3,873-row public queue, 2,997 rows >=100 MW in the captured snapshot, and 153 >=100 MW records with insufficient public geography retained as an explicit research worklist; 83 newest MISO >=100 MW requests are also preserved in the expanded-known scope.",
       "public_layers": [
         "data/miso_unresolved_large_loads.json",
         "data/miso_public_queue.json"
       ],
-      "next_blocker": "Resolve site identity/location from utility, regulatory, developer or interconnection evidence without inventing geography."
+      "next_blocker": "MISO's public response omits key location fields for the affected requests; resolve identities only from independent utility, regulatory, developer or FERC/public filing evidence."
     },
     {
       "id": "PJM",
       "status": "partial",
-      "what_is_published": "28 Load Analysis Subcommittee utility submission materials from 2025-2026 plus transition/cycle aggregate evidence.",
+      "what_is_published": "Public serial/cycle Service Request Status, 28 retained Load Analysis Subcommittee materials, and transition/large-load planning evidence. PJM's public Large Load Registry is still pending FERC approval and the current page says the new tool is targeted for Jan. 1, 2027.",
       "public_layers": [
         "data/pjm_large_load_submission_history.json",
         "data/supplemental_aggregate_map.json"
       ],
-      "next_blocker": "Obtain stable public current Cycle Service Request snapshot and project-level large-load/customer records; PJM's Large Load Registry is not yet a public per-request database."
+      "next_blocker": "Continue public LAS/service-request document extraction and maintain the registry boundary until PJM publishes the per-large-load registry."
     },
     {
       "id": "ERCOT",
       "status": "partial",
-      "what_is_published": "Current generator GIS core, Batch Zero public forms/process, and three named secondary data-center interconnection records now linked to ERCOT queue IDs.",
+      "what_is_published": "Public Large Load Integration / Batch Zero process and question guides, current generator GIS records, and named public project evidence. September 2026 notices document Batch Zero verification RFIs and a separate State & Community Impact RFI.",
       "public_layers": [
         "data/project_level_extractions.json",
         "data/supplemental_large_load_evidence.json"
       ],
-      "next_blocker": "Enumerate public Batch Zero/RIOO submissions where the underlying response is actually public."
+      "next_blocker": "The controlling Batch Zero RFI responses are submitted through ERCOT's RIOO portal and are not an open per-project public response dataset; retain public guidance/notices and named project records without fabricating hidden responses."
     },
     {
       "id": "SPP",
       "status": "partial",
-      "what_is_published": "3,076-row active public GI queue and dedicated HILL process/source layer.",
+      "what_is_published": "3,076-row active public GI queue plus the dedicated High Impact Large Load (HILL) process, including September 17, 2026 public meeting materials.",
       "public_layers": [
         "data/spp_public_queue.json",
         "data/supplemental_large_load_evidence.json"
       ],
-      "next_blocker": "Extract discrete HILL/customer records when public study/service documents expose them."
+      "next_blocker": "Extract discrete HILL customer/project records only when SPP public study, filing or project documents expose the site and customer."
     },
     {
       "id": "NYISO",
       "status": "partial",
-      "what_is_published": "21 named/crosswalked Load Project site records plus 31 Gold Book load records; current complete queue snapshot file is not present on main.",
+      "what_is_published": "21 named/crosswalked Load Project site records plus 31 Gold Book large-load records and retained official-workbook source references. A separately published complete queue snapshot is not currently present in the repository.",
       "public_layers": [
         "data/project_level_extractions.json",
         "data/nyiso_public_queue.json"
       ],
-      "next_blocker": "Successful retrieval of the official workbook and full site crosswalk."
+      "next_blocker": "Restore a successful current official workbook capture and then crosswalk all public Load Projects using queue ID, county/POI and applicant fields."
     },
     {
       "id": "ISO-NE",
       "status": "partial",
-      "what_is_published": "Two forecast large-load project records and source-level CELT material.",
+      "what_is_published": "Two named large-load forecast/project records plus retained ISO-NE public queue/source references. Public forecast material exposes project information but not a complete public study/status history.",
       "public_layers": [
         "data/project_level_extractions.json",
         "data/supplemental_large_load_evidence.json"
       ],
-      "next_blocker": "Recover project-specific study/service milestones from filings where public."
+      "next_blocker": "Continue extracting project-specific study/service milestones from public filings and planning materials."
     },
     {
       "id": "AESO",
       "status": "expanded",
-      "what_is_published": "All 28 retained Data Load project rows have project ID, project name, public planning-area/town, capacity/DTS and status; customer remains unknown when undisclosed.",
+      "what_is_published": "28 Data Load project rows with project IDs, names, requested/contract capacity, planning area/town and status. AESO also publishes a monthly project list, interactive map and GIS/KML resources; the latest published list is dated Sep. 1, 2026.",
       "public_layers": [
         "data/project_level_extractions.json"
       ],
-      "next_blocker": "Match the 28 project IDs to publicly named customers/proponents where evidence exists."
+      "next_blocker": "Match each public project ID to customers/proponents where independent public evidence exposes the identity."
     },
     {
       "id": "IESO_ON",
       "status": "expanded",
-      "what_is_published": "Six named current load/increase-load application records plus the 2,074-row application-status universe and OEB CCIM context.",
+      "what_is_published": "2,074-row Application Status universe plus six named current load/increase-load application records and OEB distribution-capacity context. Large-computational-load technical requirements were revised Sep. 3, 2026.",
       "public_layers": [
         "data/project_level_extractions.json",
         "data/supplemental_large_load_evidence.json"
       ],
-      "next_blocker": "Systematically crosswalk IESO/OEB/municipal evidence to facility identities and distribution connection records."
+      "next_blocker": "Systematically crosswalk application IDs to site identities, utility/municipal evidence and public connection records."
     },
     {
       "id": "UTILITIES_OUTSIDE_MARKETS",
       "status": "expanded",
-      "what_is_published": "271 project-level records, 271 mapped project display points, 63 aggregate/historical map footprints, and 61 supplemental evidence units.",
+      "what_is_published": "271 project-level records, 271 mapped project display points, 66 aggregate/historical map footprints, 61 supplemental evidence units, plus a 93-site public project-enrichment bridge.",
       "public_layers": [
         "data/project_level_extractions.json",
         "data/project_level_map.json",
         "data/supplemental_aggregate_map.json",
         "data/supplemental_large_load_evidence.json"
       ],
-      "next_blocker": "Continue utility-by-utility docket/service/permit extraction and de-duplicate against organized-market queues."
+      "next_blocker": "Continue utility-by-utility docket/service/permit extraction and de-duplication against organized-market queues."
     }
   ],
   "accounting": "Statuses describe public-data coverage, not whether the physical large-load universe itself is complete. No source is promoted to a facility row unless its identity and relevant fields are actually supported."
