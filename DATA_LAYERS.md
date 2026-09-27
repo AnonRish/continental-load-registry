@@ -26,7 +26,7 @@ Everything below is a separate evidence or research layer unless explicitly stat
 | `data/epoch_connection_research_targets.json` | **93** | One target per canonical Epoch site | Yes | No |
 | `data/epoch_site_evidence_records.json` | **68** | Discrete site-level evidence assertions across 59 sites | Via target popups | No |
 | `data/supplemental_large_load_evidence.json` | **61** | Utility / regulator / planning / process evidence units | Yes when mappable | Only the designated 83 MISO layer is additive |
-| `data/supplemental_aggregate_map.json` | **61** | Aggregate / historical geographic footprints | Yes | No |
+| `data/supplemental_aggregate_map.json` | **66** | Aggregate / historical geographic footprints | Yes | No |
 | `data/caiso_cluster_history.json` | **435** historical projects in C8-and-prior through C14 series | Historical generator queue population | Yes, footprints | No |
 | `data/pjm_large_load_submission_history.json` | **28** | Public LAS document/evidence entries | Document layer | No |
 | `data/public_data_catalog.json` | **15** datasets | Dataset catalog | — | — |
@@ -81,9 +81,9 @@ Project markers are individual records. Aggregate circles are explicitly regiona
 
 The map currently carries:
 
-- **199 / 199** project records plotted
+- **271 / 271** project records plotted
 - **93 / 93** Epoch connection targets plotted
-- **61** aggregate/historical footprints
+- **66** aggregate/historical footprints
 - **93** Epoch AI site observations
 
 The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
