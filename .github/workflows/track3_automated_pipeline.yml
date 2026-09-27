@@ -28,13 +28,18 @@ on:
       - "refresh_source_manifest.py"
       - "data/external/epoch_ai/queue_source_universe.json"
       - ".github/workflows/track3_automated_pipeline.yml"
+      - "data/physical_verification_layer.json"
+      - "data/track3/physical_site_coordinates.json"
+      - "data/track3/remote_sensing_observations.json"
+      - "data/track3/transformer_supply_chain_events.json"
+      - "data/track3/building_footprints_index.json"
 
 permissions:
   contents: write
   issues: write
 
 concurrency:
-  group: track3-writers-main
+  group: track3-canonical-writers-main
   cancel-in-progress: false
 
 jobs:
