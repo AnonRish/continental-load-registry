@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-27T06:50:00Z",
+  "title": "Current source-health snapshot",
+  "semantics": "This is a current repository-state report, not a guarantee that a publisher endpoint is healthy at every moment.",
+  "adapter_failures": [
+    "NYISO"
+  ],
+  "sources": [
+    {
+      "id": "CAISO",
+      "workflow": ".github/workflows/sync_caiso_public_queue.yml",
+      "url": "https://www.caiso.com/documents/publicqueuereport.xlsx",
+      "snapshot_present": true,
+      "last_capture": "2026-09-27T06:01:54Z",
+      "record_count": 2278,
+      "status": "SNAPSHOT_PRESENT"
+    },
+    {
+      "id": "MISO",
+      "workflow": ".github/workflows/sync_miso_public_queue.yml",
+      "url": "https://www.misoenergy.org/api/giqueue/getprojects",
+      "snapshot_present": true,
+      "last_capture": "2026-09-27T06:03:46Z",
+      "record_count": 3873,
+      "status": "SNAPSHOT_PRESENT"
+    },
+    {
+      "id": "SPP",
+      "workflow": ".github/workflows/sync_spp_public_queue.yml",
+      "url": "https://opsportal.spp.org/Studies/GenerateActiveCSV",
+      "snapshot_present": true,
+      "last_capture": "2026-09-27T06:03:48Z",
+      "record_count": 3076,
+      "status": "SNAPSHOT_PRESENT"
+    },
+    {
+      "id": "NYISO",
+      "workflow": ".github/workflows/sync_nyiso_public_queue.yml",
+      "url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "snapshot_present": false,
+      "last_capture": null,
+      "record_count": null,
+      "status": "SOURCE_UNAVAILABLE_OR_NOT_CAPTURED"
+    },
+    {
+      "id": "PJM",
+      "workflow": ".github/workflows/sync_pjm_cycle_public_queue.yml",
+      "url": "https://www.pjm.com/planning/m/cycle-service-request-status",
+      "snapshot_present": true,
+      "last_capture": "2026-09-27T06:02:15Z",
+      "record_count": 9263,
+      "status": "SNAPSHOT_PRESENT"
+    }
+  ],
+  "auxiliary_capture_status": "Raw ERCOT/ISO-NE/IESO/AESO source captures are retained under data/automation/auxiliary_sources; normalization workflow has been patched and will materialize public rows on the next successful control-plane run.",
+  "adapter_runs": [
+    {
+      "source": "CAISO",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "MISO",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "NYISO",
+      "status": "FAILED",
+      "exit_code": 1
+    },
+    {
+      "source": "PJM",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "SPP",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "Epoch AI",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "Epoch external compute",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "ERCOT / ISO-NE / IESO / AESO raw source capture",
+      "status": "SUCCESS",
+      "exit_code": 0
+    }
+  ]
+}
