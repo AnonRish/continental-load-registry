@@ -211,6 +211,9 @@
 .registry-kpi span{display:block;margin-top:4px;font-size:8.5px;color:var(--ink-faint)}
 .registry-view-hint{max-width:1180px;margin:0 auto 2px;padding:0 16px;font:500 8.5px/1.4 'IBM Plex Mono',monospace;color:var(--ink-faint);letter-spacing:.02em}
 .registry-view-hidden{display:none!important}
+body[data-registry-view]:not([data-registry-view="overview"]) .registry-kpis,
+body[data-registry-view]:not([data-registry-view="overview"]) #registrySignalRail{display:none!important}
+body[data-registry-view]:not([data-registry-view="overview"]) #registryViewIntro{padding-bottom:10px}
 main > section[data-registry-view="map"]{scroll-margin-top:112px}
 .registry-focus-section{box-shadow:0 0 0 2px color-mix(in srgb,var(--ui-blue) 22%,transparent),0 14px 50px rgba(17,46,91,.08)!important}
 @media(max-width:720px){
@@ -3281,6 +3284,7 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
     const m=META[v]||META.overview;
     kicker.textContent=m.k; introTitle.textContent=m.t; introCopy.textContent=m.c; hint.textContent=m.hint;
     document.documentElement.dataset.registryView=v;
+    document.body.dataset.registryView=v;
     localStorage.setItem('clr-active-view',v);
     requestAnimationFrame(()=>{
       if(v==='map' && window.registryMap?.invalidateSize) setTimeout(()=>window.registryMap.invalidateSize(),80);
