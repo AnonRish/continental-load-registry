@@ -122,7 +122,7 @@
 <section class="border-b hairline reveal" style="animation-delay:.05s">
   <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x hairline">
     <div class="px-5 sm:px-8 py-7">
-      <p class="mono text-3xl sm:text-4xl font-medium" id="statCapacity">—</p>
+      <p class="mono text-3xl sm:text-4xl font-medium" id="statCapacity">361.9 GW</p>
       <p class="text-sm mt-2" style="color:var(--ink-soft);">Row-level capacity audited</p>
       <p class="text-xs mt-1" style="color:var(--ink-faint);" id="statCapacityNote">1,558 published facility/request rows &ge; 100 MW across nine RTOs/ISOs</p>
     </div>
@@ -132,12 +132,12 @@
       <p class="text-xs mt-1" style="color:var(--ink-faint);">1,641 known &ge; 100 MW requests/records, including 83 MISO requests (35.9 GW) held outside the row-level table because public location fields are incomplete</p>
     </div>
     <div class="px-5 sm:px-8 py-7">
-      <p class="mono text-3xl sm:text-4xl font-medium" id="statStorage">—</p>
+      <p class="mono text-3xl sm:text-4xl font-medium" id="statStorage">85.0%</p>
       <p class="text-sm mt-2" style="color:var(--ink-soft);">Confirmed storage</p>
       <p class="text-xs mt-1" style="color:var(--ink-faint);">Explicit BESS token in project name or technology code</p>
     </div>
     <div class="px-5 sm:px-8 py-7">
-      <p class="mono text-3xl sm:text-4xl font-medium" id="statUnresolved">—</p>
+      <p class="mono text-3xl sm:text-4xl font-medium" id="statUnresolved">99.9%</p>
       <p class="text-sm mt-2" style="color:var(--ink-soft);">Developer identity unresolved</p>
       <p class="text-xs mt-1" style="color:var(--ink-faint);">No name match to a known public hyperscaler or colocation operator</p>
     </div>
@@ -269,13 +269,13 @@
         <tbody id="mapLayerInventoryBody">
           <tr><td class="px-3 py-2">Project-level evidence</td><td class="px-3 py-2 text-right">271</td><td class="px-3 py-2 text-right">271</td><td class="px-3 py-2">Project/city/county/site-area/service-area display geography</td><td class="px-3 py-2">All project records display-mapped; service-area points are not facility coordinates</td></tr>
           <tr><td class="px-3 py-2">Aggregate / historical evidence</td><td class="px-3 py-2 text-right">66</td><td class="px-3 py-2 text-right">66</td><td class="px-3 py-2">Regional/county/state footprints</td><td class="px-3 py-2">Non-facility evidence; includes MISO 153-record gap footprint</td></tr>
-          <tr><td class="px-3 py-2">Supplemental evidence universe</td><td class="px-3 py-2 text-right">61</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Source/evidence records, not all geographic</td><td class="px-3 py-2">Searchable evidence layer</td></tr>
+          <tr><td class="px-3 py-2">Supplemental evidence universe</td><td class="px-3 py-2 text-right">61</td><td class="px-3 py-2 text-right">Not separately mapped</td><td class="px-3 py-2">Source/evidence records, not all geographic</td><td class="px-3 py-2">Searchable evidence layer</td></tr>
           <tr><td class="px-3 py-2">Epoch AI sites</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2">Public-address-derived site display points</td><td class="px-3 py-2">Separate secondary evidence layer</td></tr>
-          <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right">3,873</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
-          <tr><td class="px-3 py-2">SPP active queue</td><td class="px-3 py-2 text-right">3,076</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geography</td><td class="px-3 py-2">Current snapshot present</td></tr>
+          <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right">3,873</td><td class="px-3 py-2 text-right">Not separately enumerated</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
+          <tr><td class="px-3 py-2">SPP active queue</td><td class="px-3 py-2 text-right">3,076</td><td class="px-3 py-2 text-right">Not separately enumerated</td><td class="px-3 py-2">Queue geography</td><td class="px-3 py-2">Current snapshot present</td></tr>
           <tr><td class="px-3 py-2">CAISO complete current queue snapshot</td><td class="px-3 py-2 text-right">2,278</td><td class="px-3 py-2 text-right">1,391 ≥100 MW</td><td class="px-3 py-2">Official CAISO workbook</td><td class="px-3 py-2">Current snapshot ingested; historical cluster series remains separate</td></tr>
-        <tr><td class="px-3 py-2">NYISO complete queue snapshot</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Official NYISO workbook</td><td class="px-3 py-2">Live retrieval adapter active; no stale snapshot is substituted</td></tr>
-        <tr><td class="px-3 py-2">PJM current Cycle Service Request snapshot</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Official PJM public status/API</td><td class="px-3 py-2">Live retrieval adapter active; public page reports 1,792 current cycle rows before export/API filtering</td></tr>
+        <tr><td class="px-3 py-2">NYISO complete queue snapshot</td><td class="px-3 py-2 text-right">Not captured</td><td class="px-3 py-2 text-right">Not captured</td><td class="px-3 py-2">Official NYISO workbook</td><td class="px-3 py-2">Live retrieval adapter active; no stale snapshot is substituted</td></tr>
+        <tr><td class="px-3 py-2">PJM current Cycle Service Request snapshot</td><td class="px-3 py-2 text-right">9,263</td><td class="px-3 py-2 text-right">Not separately enumerated</td><td class="px-3 py-2">Official PJM public status/API</td><td class="px-3 py-2">Live retrieval adapter active; public page reports 1,792 current cycle rows before export/API filtering</td></tr>
         </tbody>
       </table>
     </div>
@@ -300,8 +300,8 @@
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
       <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
       <div class="p-4"><p class="mono text-xl">77</p><p class="text-xs mt-1" style="color:var(--ink-faint);">U.S. sites with jurisdiction</p></div>
-      <div class="p-4"><p id="queueUniverseVerifiedIds" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
-      <div class="p-4"><p id="queueUniverseCurrentGaps" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current open U.S. site-specific gaps</p></div>
+      <div class="p-4"><p id="queueUniverseVerifiedIds" class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
+      <div class="p-4"><p id="queueUniverseCurrentGaps" class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current open U.S. site-specific gaps</p></div>
     </div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">The original 72-site U.S. jurisdiction-only gap is preserved as a starting benchmark. The current audit now assigns all 93 Epoch sites an explicit research disposition: verified queue ID, site-level public evidence, researched-no-public-record, or a genuinely still-open source acquisition task. A no-public-record outcome is not a claim that the site lacks grid service.</p>
   </section>
@@ -324,7 +324,7 @@
       <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Canonical Epoch sites</p></div>
       <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Site-specific queue IDs verified</p></div>
       <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Public service/contract matches</p></div>
-      <div class="p-4"><p id="queueUniverseGapHeader" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Open U.S. site-specific gaps</p></div>
+      <div class="p-4"><p id="queueUniverseGapHeader" class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Open U.S. site-specific gaps</p></div>
       <div class="p-4"><p class="mono text-xl">16</p><p class="text-xs mt-1" style="color:var(--ink-faint);">International connection targets</p></div>
     </div>
     <div class="scroll-x mt-5">
@@ -334,7 +334,7 @@
           <tr><td class="px-3 py-2">Site-specific queue verified</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2">Public queue ID is tied to the Epoch site identity</td><td class="px-3 py-2">Verified target ring</td></tr>
           <tr><td class="px-3 py-2">Public service / contract verified</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2">Public utility/regulatory evidence exists without a verified queue ID</td><td class="px-3 py-2">Evidence target ring</td></tr>
           <tr><td class="px-3 py-2">Public customer planning record</td><td class="px-3 py-2 text-right">1</td><td class="px-3 py-2">Named public customer/service planning record exists</td><td class="px-3 py-2">Planning target ring</td></tr>
-          <tr><td class="px-3 py-2">Queue jurisdiction mapped — site ID not verified</td><td id="queueUniverseGapTable" class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Current open state after the completed 93-site search; terminal researched-no-public-record cases are separated rather than left here</td><td class="px-3 py-2">Current open research target</td></tr>
+          <tr><td class="px-3 py-2">Queue jurisdiction mapped — site ID not verified</td><td id="queueUniverseGapTable" class="px-3 py-2 text-right">0</td><td class="px-3 py-2">Current open state after the completed 93-site search; terminal researched-no-public-record cases are separated rather than left here</td><td class="px-3 py-2">Current open research target</td></tr>
           <tr><td class="px-3 py-2">Country connection system mapped</td><td class="px-3 py-2 text-right">16</td><td class="px-3 py-2">International site has a named connection system but no site-level public queue ID</td><td class="px-3 py-2">Dashed target ring</td></tr>
         </tbody>
       </table>
@@ -470,13 +470,13 @@
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-7 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p id="physicalEpochSites" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
-      <div class="p-4"><p id="physicalConstructionTimelines" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction timelines</p></div>
-      <div class="p-4"><p id="physicalPowerTimelines" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction → power timelines</p></div>
-      <div class="p-4"><p id="physicalCoolingSites" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Cooling snapshot sites</p></div>
-      <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
-      <div class="p-4"><p id="physicalTransformerEvents" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Transformer events</p></div>
-      <div class="p-4"><p id="physicalFootprintPolygons" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Building polygons</p></div>
+      <div class="p-4"><p id="physicalEpochSites" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
+      <div class="p-4"><p id="physicalConstructionTimelines" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction timelines</p></div>
+      <div class="p-4"><p id="physicalPowerTimelines" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction → power timelines</p></div>
+      <div class="p-4"><p id="physicalCoolingSites" class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Cooling snapshot sites</p></div>
+      <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
+      <div class="p-4"><p id="physicalTransformerEvents" class="mono text-xl">3</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Transformer events</p></div>
+      <div class="p-4"><p id="physicalFootprintPolygons" class="mono text-xl">115,625</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Building polygons</p></div>
     </div>
     <div class="scroll-x mt-5"><table class="w-full text-xs min-w-[1250px]"><thead><tr><th class="px-3 py-2">Physical-verification item</th><th class="px-3 py-2">Status</th><th class="px-3 py-2">Current coverage</th><th class="px-3 py-2">Sources</th></tr></thead>
       <tbody id="physicalVerificationBody"><tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading physical verification layer…</td></tr></tbody></table></div>
@@ -600,10 +600,10 @@
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p><p class="mono text-[10px] mt-1" id="misoUnresolvedCount" style="color:var(--ink-faint);"></p></div>
-      <div class="p-4"><p class="mono text-xl" id="sppQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">SPP active rows</p></div>
-      <div class="p-4"><p class="mono text-xl" id="nyisoQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">NYISO queue rows</p></div>
-      <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount">3,873</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p><p class="mono text-[10px] mt-1" id="misoUnresolvedCount" style="color:var(--ink-faint);"></p></div>
+      <div class="p-4"><p class="mono text-xl" id="sppQueueWebCount">3,076</p><p class="text-xs mt-1" style="color:var(--ink-faint);">SPP active rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="nyisoQueueWebCount">Not captured</p><p class="text-xs mt-1" style="color:var(--ink-faint);">NYISO queue rows</p></div>
+      <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount">9,263</p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="queueWideFreshness">live</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Automated refresh</p></div>
     </div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);"><strong>Satellite acquisition coverage:</strong> 93 / 93 Epoch sites now have explicit Sentinel-2, Landsat optical/TIRS, and Sentinel-1 acquisition targets. The site still reports 0 processed satellite measurements until scenes are actually acquired and derived metrics are generated. Coordinates retain their recorded source precision and are not silently promoted to exact facility coordinates.</p>
@@ -680,7 +680,7 @@
     </div>
     <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);">
       <button id="projectPrev" type="button" class="px-3 py-1.5 rounded-md border hairline">Previous</button>
-      <span id="projectPage">—</span>
+      <span id="projectPage">Page 1 of 11 · 271 of 271</span>
       <button id="projectNext" type="button" class="px-3 py-1.5 rounded-md border hairline">Next</button>
     </div>
   </section>
@@ -777,7 +777,7 @@
         <tbody id="suppBrowserBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
       </table>
     </div>
-    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);"><button id="suppPrev" type="button" class="px-3 py-1.5 rounded-md border hairline">Previous</button><span id="suppPage">—</span><button id="suppNext" type="button" class="px-3 py-1.5 rounded-md border hairline">Next</button></div>
+    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);"><button id="suppPrev" type="button" class="px-3 py-1.5 rounded-md border hairline">Previous</button><span id="suppPage">Page 1 of 4 · 61 of 61</span><button id="suppNext" type="button" class="px-3 py-1.5 rounded-md border hairline">Next</button></div>
   </section>
 
   <!-- ============ EPOCH AI FRONTIER DATA-CENTER REGISTRY ============ -->
@@ -797,10 +797,10 @@
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl" id="epochStatSites">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites imported</p></div>
-      <div class="p-4"><p class="mono text-xl" id="epochStatPower">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current IT power</p></div>
-      <div class="p-4"><p class="mono text-xl" id="epochStatCompute">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current H100-equivalents</p></div>
-      <div class="p-4"><p class="mono text-xl" id="epochStatMatches">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Site-specific queue IDs</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatSites">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites imported</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatPower">13,500.2 MW</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current IT power</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatCompute">14.02M</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current H100-equivalents</p></div>
+      <div class="p-4"><p class="mono text-xl" id="epochStatMatches">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Site-specific queue IDs</p></div>
     </div>
     <div id="epochRegistryStatus" class="mt-4 text-xs" style="color:var(--ink-faint);">Loading the imported Epoch AI registry…</div>
     <div id="epochConnectionAuditSummary" class="mt-3 text-xs" style="color:var(--ink-faint);">Loading site-level connection dispositions…</div>
@@ -813,7 +813,7 @@
     <div class="scroll-x mt-3"><table class="w-full text-sm min-w-[1450px]"><thead><tr class="text-xs uppercase" style="letter-spacing:0.04em;">
       <th class="px-3 py-3">Epoch site</th><th class="px-3 py-3">Country</th><th class="px-3 py-3">Address</th><th class="px-3 py-3 text-right">Current IT MW</th><th class="px-3 py-3 text-right">H100-eq</th><th class="px-3 py-3">Owner / user</th><th class="px-3 py-3">Grid / queue</th><th class="px-3 py-3 text-right">Details</th>
     </tr></thead><tbody id="epochTableBody"></tbody></table></div>
-    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);"><button id="epochPrevPage" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Previous</button><span id="epochPageIndicator">—</span><button id="epochNextPage" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Next</button></div>
+    <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);"><button id="epochPrevPage" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Previous</button><span id="epochPageIndicator">Page 1 of 5 · 93 of 93</span><button id="epochNextPage" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Next</button></div>
     <div id="epochDetail" class="hidden mt-5 panel rounded-lg p-4 sm:p-5"></div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Epoch AI states that its data are free to use, distribute and reproduce with attribution under Creative Commons Attribution 4.0. The repository stores the raw CSVs, joined timeline/chip records and generated crosswalk. A blank crosswalk is not evidence that a site is absent from the grid; it means no conservative direct match was identified in the current nine-market registry.</p>
   </section>
@@ -870,11 +870,11 @@
     </div>
 
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 mt-6">
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Registry rows</div><div id="module1Rows" class="font-serif-display text-xl mt-1">—</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Capacity</div><div id="module1MW" class="font-serif-display text-xl mt-1">—</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">≥115 kV explicit</div><div id="module1HV" class="font-serif-display text-xl mt-1">—</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">All scenarios ≥10<sup>26</sup></div><div id="module1Flops" class="font-serif-display text-xl mt-1">—</div></div>
-      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="module1Epoch" class="font-serif-display text-xl mt-1">—</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Registry rows</div><div id="module1Rows" class="font-serif-display text-xl mt-1">1,558</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Capacity</div><div id="module1MW" class="font-serif-display text-xl mt-1">361.9 GW</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">≥115 kV explicit</div><div id="module1HV" class="font-serif-display text-xl mt-1">1,205 explicit · 1,186 pass</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">All scenarios ≥10<sup>26</sup></div><div id="module1Flops" class="font-serif-display text-xl mt-1">1,558 / 1,558</div></div>
+      <div class="panel rounded-lg p-4"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="module1Epoch" class="font-serif-display text-xl mt-1">93</div></div>
     </div>
 
     <div id="module1DomainGrid" class="grid md:grid-cols-2 xl:grid-cols-5 gap-3 mt-4">
@@ -920,11 +920,11 @@
           <a class="text-xs link-underline" href="data/external/epoch_ai/queue_gap_analysis.csv" target="_blank" rel="noopener noreferrer">Open the 93-site research worklist</a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mt-4">
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="track3EpochSites" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site queue IDs</div><div id="track3QueueIds" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Combined site-level evidence</div><div id="track3Evidence" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">U.S. site-specific gaps</div><div id="track3USGaps" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Grid research gaps</div><div id="track3Pending" class="font-serif-display text-xl mt-1">—</div></div><div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Research-complete · no public site record</div><div id="track3NoPublicRecord" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Epoch sites</div><div id="track3EpochSites" class="font-serif-display text-xl mt-1">93</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Site queue IDs</div><div id="track3QueueIds" class="font-serif-display text-xl mt-1">2</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Combined site-level evidence</div><div id="track3Evidence" class="font-serif-display text-xl mt-1">93</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">U.S. site-specific gaps</div><div id="track3USGaps" class="font-serif-display text-xl mt-1">0</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Grid research gaps</div><div id="track3Pending" class="font-serif-display text-xl mt-1">0</div></div><div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Research-complete · no public site record</div><div id="track3NoPublicRecord" class="font-serif-display text-xl mt-1">18</div></div>
         </div>
         <div class="grid md:grid-cols-2 gap-3 mt-4">
           <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
@@ -938,10 +938,10 @@
         </div>
       </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Annual power snapshots</div><div id="track3PowerSnapshots" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Cooling snapshots</div><div id="track3CoolingSnapshots" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Service / contract evidence</div><div id="track3ServiceEvidence" class="font-serif-display text-xl mt-1">—</div></div>
-          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Compute-tenancy evidence</div><div id="track3TenancyEvidence" class="font-serif-display text-xl mt-1">—</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Annual power snapshots</div><div id="track3PowerSnapshots" class="font-serif-display text-xl mt-1">6 / 93</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Cooling snapshots</div><div id="track3CoolingSnapshots" class="font-serif-display text-xl mt-1">2 / 93</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Service / contract evidence</div><div id="track3ServiceEvidence" class="font-serif-display text-xl mt-1">9 / 93</div></div>
+          <div class="panel rounded-lg p-3"><div class="text-[10px] mono uppercase" style="color:var(--ink-faint);">Compute-tenancy evidence</div><div id="track3TenancyEvidence" class="font-serif-display text-xl mt-1">4 / 93</div></div>
         </div>
         <div class="mt-4 rounded-lg panel p-4">
           <div class="flex items-center justify-between gap-3">
@@ -949,7 +949,7 @@
               <strong class="text-sm">Observation acquisition backlog</strong>
               <p class="text-xs mt-1" style="color:var(--ink-faint);">Generated for all 93 Epoch sites. These are acquisition tasks for missing evidence streams, not findings about the sites.</p>
             </div>
-            <span id="track3ObservationTasks" class="font-serif-display text-xl">—</span>
+            <span id="track3ObservationTasks" class="font-serif-display text-xl">279</span>
           </div>
           <div id="track3ObservationBreakdown" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 mt-3 text-[10px] mono" style="color:var(--ink-faint);"></div>
         </div>
@@ -1027,7 +1027,7 @@
         </div>
         <div class="flex items-center justify-between gap-3 mt-3 text-xs" style="color:var(--ink-faint);">
           <button id="track3ResearchPrev" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Previous</button>
-          <span id="track3ResearchPage">—</span>
+          <span id="track3ResearchPage">Page 1 of 5 · 93 of 93</span>
           <button id="track3ResearchNext" type="button" class="px-3 py-1.5 rounded-md border hairline disabled:opacity-40">Next</button>
         </div>
       </div>
@@ -1181,7 +1181,7 @@ let currentPage = 0;
 let filtered = REGISTRY_DATA.slice();
 
 function fmtFlops(n){
-  if (!n) return '—';
+  if (!n) return 'Not reported';
   const exp = Math.floor(Math.log10(n));
   const mant = n / Math.pow(10, exp);
   return mant.toFixed(2) + '\u00d710<sup>' + exp + '</sup>';
@@ -2614,7 +2614,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
     el.innerHTML='<div class="scroll-x"><table class="w-full text-xs"><thead><tr><th class="px-3 py-2">Source</th><th class="px-3 py-2">State</th><th class="px-3 py-2">Updated</th><th class="px-3 py-2">Role</th><th class="px-3 py-2">Link</th></tr></thead><tbody>'+
       rows.map(function(s){
         const label=s.status||'UNKNOWN';
-        const link=s.url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(s.url)+'">Open</a>':'—';
+        const link=s.url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(s.url)+'">Open</a>':'No direct source URL';
         return '<tr><td class="px-3 py-2 font-medium">'+escapeHtml(s.name||'Unnamed source')+'</td><td class="px-3 py-2"><span class="tag-neutral inline-block px-2 py-0.5 rounded text-[10px] mono">'+escapeHtml(label)+'</span></td><td class="px-3 py-2">'+escapeHtml(s.updated||'Not dated')+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escapeHtml(s.role||'Not stated in source catalog')+'</td><td class="px-3 py-2">'+link+'</td></tr>';
       }).join('')+
       '</tbody></table></div>';
@@ -2631,7 +2631,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
   function escLedger(v){const s=v==null?'':String(v);return s.replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
   function firstCapacity(r){
     const a=Array.isArray(r.capacity_claims)?r.capacity_claims[0]:null;
-    if(!a)return '—';
+    if(!a)return 'Not published';
     if(a.value_mw!=null)return String(a.value_mw)+' MW'+(a.qualifier?' · '+a.qualifier:'');
     if(a.value_mva!=null)return String(a.value_mva)+' MVA'+(a.qualifier?' · '+a.qualifier:'');
     return a.raw_value||'Not published';
@@ -2643,8 +2643,8 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
     projectPage=Math.min(projectPage,pages-1);
     const rows=projectFiltered.slice(projectPage*PP,(projectPage+1)*PP);
     body.innerHTML=rows.length?rows.map(function(r){
-      const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escLedger(r.source_url)+'">Open</a>':'—';
-      return '<tr><td class="px-3 py-2 mono">'+escLedger(r.id)+'</td><td class="px-3 py-2"><div class="font-medium">'+escLedger(r.project_name||'Not published')+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escLedger(r.evidence_type||'')+'</div></td><td class="px-3 py-2">'+escLedger(r.customer_or_developer||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_provider||'—')+'</td><td class="px-3 py-2">'+escLedger(r.jurisdiction||'—')+'</td><td class="px-3 py-2">'+escLedger(firstCapacity(r))+'</td><td class="px-3 py-2">'+escLedger(r.status||'Not stated')+'</td><td class="px-3 py-2">'+src+'</td></tr>';
+      const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escLedger(r.source_url)+'">Open</a>':'No source URL retained';
+      return '<tr><td class="px-3 py-2 mono">'+escLedger(r.id)+'</td><td class="px-3 py-2"><div class="font-medium">'+escLedger(r.project_name||'Not published')+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escLedger(r.evidence_type||'Not stated')+'</div></td><td class="px-3 py-2">'+escLedger(r.customer_or_developer||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.utility_or_provider||'Not published')+'</td><td class="px-3 py-2">'+escLedger(r.jurisdiction||'Not published')+'</td><td class="px-3 py-2">'+escLedger(firstCapacity(r))+'</td><td class="px-3 py-2">'+escLedger(r.status||'Not stated')+'</td><td class="px-3 py-2">'+src+'</td></tr>';
     }).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No project records match.</td></tr>';
     document.getElementById('projectLedgerPage').textContent='Page '+(projectPage+1)+' of '+pages;
     document.getElementById('projectLedgerPrev').disabled=projectPage===0;
@@ -2688,9 +2688,9 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
 (function(){
   function escEvidence(v){const s=v==null?'':String(v);return s.replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
   let rows=[],filtered=[],page=0;const PP=20;
-  function cap(r){if(r.capacity_mw!=null)return String(r.capacity_mw)+' MW'+(r.capacity_kind?' · '+r.capacity_kind:'');return '—';}
+  function cap(r){if(r.capacity_mw!=null)return String(r.capacity_mw)+' MW'+(r.capacity_kind?' · '+r.capacity_kind:'');return 'Not published';}
   function render(){const body=document.getElementById('siteEvidenceLedgerBody'),pages=Math.max(1,Math.ceil(filtered.length/PP));page=Math.min(page,pages-1);const rs=filtered.slice(page*PP,(page+1)*PP);
-    body.innerHTML=rs.length?rs.map(function(r){const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escEvidence(r.source_url)+'">Open</a>':'—';return '<tr><td class="px-3 py-2"><div class="font-medium">'+escEvidence(r.epoch_name||'—')+'</div><div class="mono text-[10px] mt-1">'+escEvidence(r.epoch_id)+'</div></td><td class="px-3 py-2">'+escEvidence(r.evidence_type||'Not stated')+'</td><td class="px-3 py-2">'+escEvidence(r.authority||'Not published')+'</td><td class="px-3 py-2">'+escEvidence(r.record_name||'Not published')+'</td><td class="px-3 py-2">'+escEvidence(cap(r))+'</td><td class="px-3 py-2">'+escEvidence(r.confidence||'Not stated')+'</td><td class="px-3 py-2">'+src+'</td><td class="px-3 py-2 max-w-[380px]">'+escEvidence(r.next_action||'—')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No evidence assertions match.</td></tr>';
+    body.innerHTML=rs.length?rs.map(function(r){const src=r.source_url?'<a class="link-underline" target="_blank" rel="noopener noreferrer" href="'+escEvidence(r.source_url)+'">Open</a>':'No source URL retained';return '<tr><td class="px-3 py-2"><div class="font-medium">'+escEvidence(r.epoch_name||'Not published')+'</div><div class="mono text-[10px] mt-1">'+escEvidence(r.epoch_id)+'</div></td><td class="px-3 py-2">'+escEvidence(r.evidence_type||'Not stated')+'</td><td class="px-3 py-2">'+escEvidence(r.authority||'Not published')+'</td><td class="px-3 py-2">'+escEvidence(r.record_name||'Not published')+'</td><td class="px-3 py-2">'+escEvidence(cap(r))+'</td><td class="px-3 py-2">'+escEvidence(r.confidence||'Not stated')+'</td><td class="px-3 py-2">'+src+'</td><td class="px-3 py-2 max-w-[380px]">'+escEvidence(r.next_action||'Not specified')+'</td></tr>';}).join(''):'<tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">No evidence assertions match.</td></tr>';
     document.getElementById('siteEvidencePage').textContent='Page '+(page+1)+' of '+pages;
     document.getElementById('siteEvidencePrev').disabled=page===0;document.getElementById('siteEvidenceNext').disabled=page>=pages-1;
     document.getElementById('siteEvidenceLedgerStatus').textContent=filtered.length+' of '+rows.length+' evidence assertions';
