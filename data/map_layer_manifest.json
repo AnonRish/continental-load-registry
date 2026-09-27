@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "title": "Public map layer manifest",
+  "purpose": "Authoritative inventory of map overlays, their record counts, geometry precision and accounting treatment.",
+  "layers": [
+    {
+      "id": "CORE_REGISTRY",
+      "label": "Core row-level registry",
+      "records": 1558,
+      "mapped_records": 1558,
+      "geometry": "county/zone or state/province display centroids",
+      "additive_to_core": true,
+      "source": "index.html REGISTRY_DATA"
+    },
+    {
+      "id": "PROJECT_LEVEL",
+      "label": "Project-level evidence",
+      "records": 250,
+      "mapped_records": 249,
+      "unlocated_records": [
+        "ALABAMA-POWER-WOOSTOR-CONTRACT-2026"
+      ],
+      "geometry": "project/city/county/site-area display geography",
+      "additive_to_core": false,
+      "file": "data/project_level_map.json"
+    },
+    {
+      "id": "SUPPLEMENTAL_AGGREGATES",
+      "label": "Aggregate / historical evidence",
+      "records": 62,
+      "mapped_records": 62,
+      "geometry": "regional/county/state evidence footprints",
+      "additive_to_core": false,
+      "file": "data/supplemental_aggregate_map.json"
+    },
+    {
+      "id": "EPOCH_AI",
+      "label": "Epoch AI frontier sites",
+      "records": 93,
+      "mapped_records": 93,
+      "geometry": "state/country/site display points from public address",
+      "additive_to_core": false,
+      "file": "data/epoch_ai_map.json"
+    },
+    {
+      "id": "CONNECTION_TARGETS",
+      "label": "Epoch connection research targets",
+      "records": 93,
+      "mapped_records": 93,
+      "geometry": "same site geometry as Epoch layer",
+      "additive_to_core": false,
+      "file": "data/epoch_connection_research_targets.json"
+    },
+    {
+      "id": "MISO_COMPLETE_QUEUE",
+      "label": "MISO complete public queue",
+      "records": 3873,
+      "mapped_records": null,
+      "records_ge_100mw": 2997,
+      "unresolved_ge_100_location": 153,
+      "geometry": "queue record mapped where public location exists; unresolved records remain non-spatial",
+      "additive_to_core": false,
+      "file": "data/miso_public_queue.json"
+    },
+    {
+      "id": "SPP_ACTIVE_QUEUE",
+      "label": "SPP active public queue",
+      "records": 3076,
+      "mapped_records": null,
+      "records_ge_100mw": 2332,
+      "geometry": "queue record geography",
+      "additive_to_core": false,
+      "file": "data/spp_public_queue.json"
+    },
+    {
+      "id": "CAISO_COMPLETE_QUEUE",
+      "label": "CAISO complete public queue",
+      "records": null,
+      "mapped_records": null,
+      "geometry": "county/state-derived when snapshot present",
+      "additive_to_core": false,
+      "file": "data/caiso_public_queue.json",
+      "status": "snapshot not currently present on main"
+    },
+    {
+      "id": "NYISO_COMPLETE_QUEUE",
+      "label": "NYISO complete public queue",
+      "records": null,
+      "mapped_records": null,
+      "geometry": "county/state-derived when snapshot present",
+      "additive_to_core": false,
+      "file": "data/nyiso_public_queue.json",
+      "status": "snapshot not currently present on main"
+    },
+    {
+      "id": "PJM_CYCLE_QUEUE",
+      "label": "PJM Cycle Service Request universe",
+      "records": null,
+      "mapped_records": null,
+      "geometry": "public export-derived geography when snapshot present",
+      "additive_to_core": false,
+      "file": "data/pjm_cycle_public_queue.json",
+      "status": "snapshot not currently present on main"
+    },
+    {
+      "id": "BPA_LARGE_LOAD",
+      "label": "BPA large-load request layer",
+      "records": 457,
+      "mapped_records": null,
+      "geometry": "project/POI geography where public source supports it",
+      "additive_to_core": false,
+      "source_capture_date": "2026-09-23"
+    }
+  ],
+  "accounting_note": "Layer counts are not summed across overlays. Missing map coordinates never receive invented site geography; unlocated records are either left unpinned or represented by an explicitly labeled aggregate footprint."
+}
