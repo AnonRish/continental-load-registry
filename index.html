@@ -392,6 +392,34 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Evidence confidence and source type are retained item-by-item. A source assertion that identifies a utility relationship, contract, facility or planning record is not silently promoted to a formal interconnection queue ID.</p>
   </section>
 
+  <!-- ============ REGULATORY / UTILITY EVIDENCE ============ -->
+  <section id="regulatoryUtilityEvidence" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Track 3 · regulatory / utility evidence</p>
+        <h2 class="font-serif-display text-xl mt-1">Regulatory &amp; utility evidence layer</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Primary commission, utility, ISO/RTO and system-operator sources are cataloged separately from the core queue. A source-family record is not treated as a site match unless the public record identifies the physical facility or connection.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/regulatory_utility_evidence.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open checklist JSON</a>
+        <a href="data/regulatory_utility_evidence.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download source CSV</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites in scope</p></div>
+      <div class="p-4"><p class="mono text-xl">65</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites with utility/regulatory-style evidence</p></div>
+      <div class="p-4"><p class="mono text-xl">24</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Primary source records cataloged</p></div>
+      <div class="p-4"><p class="mono text-xl">14</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Checklist categories</p></div>
+    </div>
+    <div class="scroll-x mt-5">
+      <table class="w-full text-xs min-w-[1180px]">
+        <thead><tr><th class="px-3 py-2 text-left">Checklist item</th><th class="px-3 py-2 text-left">Status</th><th class="px-3 py-2 text-left">Current coverage</th><th class="px-3 py-2 text-left">Primary source families</th></tr></thead>
+        <tbody id="regulatoryUtilityEvidenceBody"><tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading regulatory evidence checklist…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">“FOUND” indicates an authoritative source record exists in the catalog. “PARTIAL” means public evidence exists but the source does not expose a complete site-level universe. Confidential studies, customer agreements and anonymized commission filings remain explicitly non-public where applicable.</p>
+  </section>
+
   <!-- ============ COMPLETE PROJECT LEDGER ============ -->
   <section id="completeProjectLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -2535,6 +2563,23 @@ openFacilityFromHash();
   document.getElementById('siteEvidencePrev').addEventListener('click',function(){if(page>0){page--;render();}});
   document.getElementById('siteEvidenceNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(filtered.length/PP));if(page<pages-1){page++;render();}});
   fetch('data/epoch_site_evidence_records.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('site evidence unavailable');return res.json();}).then(function(p){rows=Array.isArray(p.records)?p.records:[];filter();}).catch(function(err){document.getElementById('siteEvidenceLedgerStatus').textContent='Site evidence unavailable: '+err.message;});
+})();
+</script>
+
+<script id="regulatoryUtilityEvidence-js">
+(function(){
+  function escReg(v){const s=v==null?'':String(v);return s.replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+  fetch('data/regulatory_utility_evidence.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('regulatory evidence unavailable');return res.json();}).then(function(payload){
+    const body=document.getElementById('regulatoryUtilityEvidenceBody');
+    const items=Array.isArray(payload.checklist)?payload.checklist:[];
+    body.innerHTML=items.map(function(x){
+      const ids=Array.isArray(x.source_ids)?x.source_ids:[];
+      return '<tr><td class="px-3 py-2 font-medium">'+escReg(x.item)+'</td><td class="px-3 py-2 mono">'+escReg(x.status)+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escReg(x.coverage)+'</td><td class="px-3 py-2 mono">'+escReg(ids.join(', ')||'See source index')+'</td></tr>';
+    }).join('');
+  }).catch(function(err){
+    const body=document.getElementById('regulatoryUtilityEvidenceBody');
+    if(body)body.innerHTML='<tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Regulatory evidence checklist unavailable: '+escReg(err.message)+'</td></tr>';
+  });
 })();
 </script>
 
