@@ -88,7 +88,7 @@
 
 <section class="panel" id="gridPanel" style="display:none"><div class="statusline"><div><h2 style="margin:0;font-size:15px">Facility cards</h2><div class="soft" id="gridSub" style="font-size:10px">—</div></div></div><div class="gridview" id="cards"></div></section>
 </main>
-<footer class="wrap footer">This interface follows the public Epoch explorer interaction model—map, time navigation, metric modes, owner/user/country filtering, sorting and facility details—but the underlying universe is federated. Epoch's current public explorer has 93 records and reports 44% estimated global AI-compute coverage; the registry does not treat that as a global facility-count ceiling. Epoch's facility pages use satellite imagery, permits, company disclosures, hardware and cooling models to build detailed site timelines. cite-style-placeholder</footer>
+<footer class="wrap footer">This interface follows the public Epoch explorer interaction model—map, time navigation, metric modes, owner/user/country filtering, sorting and facility details—but the underlying universe is federated. Epoch's current public explorer has 93 records and reports 44% estimated global AI-compute coverage; the registry does not treat that as a global facility-count ceiling. Epoch's facility pages use satellite imagery, permits, company disclosures, hardware and cooling models to build detailed site timelines.</footer>
 
 <div class="detail" id="detail"><div class="dialog">
 <div class="detailtop"><div class="detailtitle"><img id="dLogo" class="biglogo" alt="" src=""><div><div class="eyebrow">Facility record</div><h2 id="dName" style="margin:3px 0 2px;font-size:22px">—</h2><div class="soft" id="dLoc" style="font-size:10px">—</div></div></div><div class="row"><button class="btn" id="earth">Google Earth</button><button class="btn" id="close">Close</button></div></div>
@@ -159,7 +159,12 @@ function passes(r){
  const text=norm([r.name,r.owner,r.users,r.city,r.state,r.country,r.address].join(" "));
  if(q&&!text.includes(q))return false;if(co&&!norm(r.owner).includes(norm(co)))return false;if(cu&&r.country!==cu)return false;if(st&&statusNorm(r.status)!==st)return false;if(sc==="Both"&&!(r._epoch&&r._ai))return false;if(sc==="Epoch AI"&&!r._epoch)return false;if(sc==="AI Data Center Index"&&!r._ai)return false;if(g==="mapped"&&(r.lat==null||r.lon==null))return false;if(g==="unmapped"&&(r.lat!=null&&r.lon!=null))return false;return true;
 }
-function val(r){return metric==="compute"?r.currentCompute:metric==="power"?r.currentPower:r.currentCost}
+function val(r){
+ const y=Number(document.getElementById("year").value||2026), projected=y>=2027;
+ if(metric==="compute") return projected?(r.projectedCompute??r.currentCompute):r.currentCompute;
+ if(metric==="power") return projected?(r.projectedPower??r.currentPower):r.currentPower;
+ return projected?(r.projectedCost??r.currentCost):r.currentCost;
+}
 function apply(){
  filtered=all.filter(passes);
  const s=document.getElementById("sort").value;
@@ -168,7 +173,8 @@ function apply(){
 }
 function render(){apply();}
 function renderStats(){
- const compute=filtered.reduce((a,r)=>a+(r.currentCompute||0),0),power=filtered.reduce((a,r)=>a+(r.currentPower||0),0);
+ const y=Number(document.getElementById("year").value||2026), projected=y>=2027;
+ const compute=filtered.reduce((a,r)=>a+((projected?(r.projectedCompute??r.currentCompute):r.currentCompute)||0),0),power=filtered.reduce((a,r)=>a+((projected?(r.projectedPower??r.currentPower):r.currentPower)||0),0);
  document.getElementById("sVisible").textContent=filtered.length.toLocaleString();
  document.getElementById("sCompute").textContent=compact(compute);
  document.getElementById("sPower").textContent=power?compact(power)+" MW":"—";
@@ -235,7 +241,7 @@ function loadView(){try{const s=JSON.parse(localStorage.getItem("clr-ai-explorer
 document.querySelectorAll("[data-metric]").forEach(b=>b.addEventListener("click",()=>{metric=b.dataset.metric;document.querySelectorAll("[data-metric]").forEach(x=>x.classList.toggle("active",x===b));apply();}));
 document.querySelectorAll(".color-mode").forEach(b=>b.addEventListener("click",()=>{colorMode=b.dataset.color;document.querySelectorAll(".color-mode").forEach(x=>x.classList.toggle("active",x===b));renderMap();renderLegend();}));
 ["q","company","country","status","scope","geo","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="q"?"input":"change",apply));
-document.getElementById("year").addEventListener("input",()=>{document.getElementById("yearLabel").textContent=document.getElementById("year").value;});
+document.getElementById("year").addEventListener("input",()=>{document.getElementById("yearLabel").textContent=document.getElementById("year").value;apply();});
 document.getElementById("mapTab").addEventListener("click",()=>setView("map"));document.getElementById("listTab").addEventListener("click",()=>setView("list"));document.getElementById("gridTab").addEventListener("click",()=>setView("grid"));
 document.getElementById("prev").addEventListener("click",()=>{if(page>0){page--;renderList()}});document.getElementById("next").addEventListener("click",()=>{if(page<Math.ceil(filtered.length/perPage)-1){page++;renderList()}});
 document.getElementById("saveView").addEventListener("click",()=>{saveView();document.getElementById("saveView").textContent="Saved ✓";setTimeout(()=>document.getElementById("saveView").textContent="Save view",1000)});
