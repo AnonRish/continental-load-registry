@@ -300,7 +300,7 @@
       <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
       <div class="p-4"><p class="mono text-xl">72</p><p class="text-xs mt-1" style="color:var(--ink-faint);">U.S. jurisdiction-only gaps</p></div>
     </div>
-    <p class="text-xs mt-4" style="color:var(--ink-faint);">The gap analysis is deliberately conservative. A jurisdiction-only record means the correct queue/connection family is known, while the physical campus has not yet been tied to a specific public queue row. Operational sites may instead be represented by service contracts, regulatory dockets or completed connection records.</p>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">The original 72-site U.S. jurisdiction-only gap is preserved as a starting benchmark. The current audit closes the research worklist by assigning all 93 Epoch sites a site-level disposition: exact queue match, site-level public evidence, or explicit NO MATCH FOUND. A no-match is not a claim that the site lacks grid service.</p>
   </section>
 
   <!-- ============ EPOCH CONNECTION RESEARCH TARGETS ============ -->
@@ -1667,15 +1667,23 @@ openFacilityFromHash();
       '<div style="height:1px;background:var(--line);margin:8px 0;"></div>'+
       '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Grid jurisdiction</td><td style="text-align:right;">'+escapeHtml(t.grid_or_queue_jurisdiction||'Not mapped')+'</td></tr>'+
-      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Research state</td><td style="text-align:right;">'+escapeHtml(t.status||'UNKNOWN')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Match status</td><td style="text-align:right;">'+escapeHtml(t.connection_match_status||t.status||'UNKNOWN')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Current Epoch IT power</td><td style="text-align:right;">'+escapeHtml(ptxt)+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Customer / developer</td><td style="text-align:right;">'+escapeHtml(t.customer_or_developer||'Not retained')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Utility / provider</td><td style="text-align:right;">'+escapeHtml(t.utility_or_service_provider||'Not published')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Transmission provider</td><td style="text-align:right;">'+escapeHtml(t.transmission_interconnection_provider||'Not published')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Substation / POI</td><td style="text-align:right;">'+escapeHtml(t.substation||'Not published')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Transmission line</td><td style="text-align:right;">'+escapeHtml(t.transmission_line||'Not published')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Site queue ID</td><td style="text-align:right;">'+escapeHtml(t.site_specific_queue_id||'Not verified')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Site queue name</td><td style="text-align:right;">'+escapeHtml(t.site_specific_queue_name||'Not verified')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Queue capacity (MW)</td><td style="text-align:right;">'+escapeHtml(t.site_specific_capacity_mw!=null?String(t.site_specific_capacity_mw):'Not verified')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Service / approved MW</td><td style="text-align:right;">'+escapeHtml(t.service_capacity_mw!=null?String(t.service_capacity_mw):t.approved_capacity_mw!=null?String(t.approved_capacity_mw):'Not published')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Contract ceiling MW</td><td style="text-align:right;">'+escapeHtml(t.contract_ceiling_mw!=null?String(t.contract_ceiling_mw):'Not published')+'</td></tr>'+
       '<tr><td style="color:var(--ink-faint);padding:2px 0;">Confidence</td><td style="text-align:right;">'+escapeHtml(t.confidence||'UNKNOWN')+'</td></tr>'+
-      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Site evidence</td><td style="text-align:right;">'+escapeHtml(String(t.site_level_evidence_count||0))+' item(s)</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Evidence</td><td style="text-align:right;">'+escapeHtml(String(t.site_level_evidence_count||0))+' item(s)</td></tr>'+
       '</table>'+
       '<p style="margin-top:8px;font-size:10.5px;color:var(--amber);">'+escapeHtml(t.precision||'display geometry')+'. The point is a research target, not proof of a queue record.</p>'+
+      '<p style="margin-top:6px;font-size:10.5px;color:var(--ink-soft);line-height:1.4;">Dates: request/study '+escapeHtml(t.request_or_study_date||'not published')+' · service/approval '+escapeHtml(t.service_or_approval_date||'not published')+' · target in-service '+escapeHtml(t.target_in_service_date||'not published')+'</p>'+
       '<p style="margin-top:6px;font-size:10.5px;color:var(--ink-soft);line-height:1.4;">Next: '+escapeHtml(t.next_action||'No next action retained.')+'</p>'+
       ((t.site_level_evidence||[]).slice(0,4).map(function(e){return e.source_url?'<a class="text-xs link-underline inline-block mt-2 mr-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(e.source_url)+'">'+escapeHtml(e.authority||'evidence source')+'</a>':'';}).join(''))+
       (t.primary_source_url?'<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(t.primary_source_url)+'">Open current source</a>':'')+
