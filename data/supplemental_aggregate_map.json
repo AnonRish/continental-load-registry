@@ -4,8 +4,8 @@
   "title": "Supplemental aggregate evidence map",
   "purpose": "Display non-facility utility, regulatory and planning evidence as geographic footprints where jurisdiction is public.",
   "accounting": "These are aggregate/source-level overlays. They are never treated as facilities and are not added to the core row count.",
-  "record_count": 62,
-  "mapped_count": 62,
+  "record_count": 63,
+  "mapped_count": 63,
   "records": [
     {
       "id": "BCHYDRO-EMERGING-INDUSTRIES-2026",
@@ -1052,6 +1052,22 @@
       "label": "unlocated Alabama Power contract evidence",
       "source_url": "https://energyandpolicy.org/alabama-power-data-center-contracts-redacted/",
       "notes": "Woostor LLC contract filed August 14, 2026 is publicly identified as a large-load data-center contract, but no public source reviewed here identifies the site. The footprint is a state-level evidence visualization, not a facility location."
+    },
+    {
+      "id": "MISO-UNLOCATED-CURRENT-153-2026-09-26",
+      "evidence_type": "aggregate_miso_site_resolution_gap_footprint",
+      "provider": "MISO",
+      "jurisdiction": "MISO footprint, US",
+      "records": 153,
+      "capacity_mw": null,
+      "accounting": "Non-additive research footprint; current ≥100 MW site-resolution worklist",
+      "geometry_type": "footprint",
+      "radius_km": 430,
+      "lat": 39.5,
+      "lon": -91.5,
+      "label": "MISO current 153-record site-resolution gap",
+      "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
+      "notes": "The current MISO public snapshot has 153 ≥100 MW records in the site-resolution worklist because one or more location fields are absent. This circle is a disclosure-gap visualization, not 153 facility locations."
     }
   ]
 }
