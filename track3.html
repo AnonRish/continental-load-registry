@@ -105,6 +105,17 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </section>
 
 <section class="section panel" style="padding:16px">
+<h2>Time-series verification</h2>
+<p id="tsMeta" class="soft small">Loading…</p>
+<div class="tools" style="margin-top:10px">
+<a class="btn" href="data/track3/time_series_verification.json">Time-series JSON</a>
+<a class="btn" href="data/track3/time_series_verification.csv">Event CSV</a>
+</div>
+<div id="tsCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Verification item</th><th>Status</th><th>Coverage</th></tr></thead><tbody id="tsChecklist"></tbody></table></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Date</th><th>Buildings operational</th><th>IT MW</th><th>Total MW</th><th>Δ IT MW</th><th>Δ Total MW</th><th>Temporal status</th></tr></thead><tbody id="tsRows"></tbody></table></div>
+</section>
+<section class="section panel" style="padding:16px">
 <h2>Observed power, cooling &amp; Epoch physical records</h2>
 <div class="tools" style="margin-top:10px">
 <a class="btn" href="data/track3/power_observations.json">Power JSON</a>
@@ -203,6 +214,8 @@ const U={
  evidence:'data/track3/evidence_records.json',
  obs:'data/track3/observation_queue.json',
  power:'data/track3/power_observations.json',
+ time_series:'data/track3/time_series_verification.json',
+ physical:'data/physical_verification_layer.json',
  cooling:'data/track3/cooling_observations.json',
  sources:'data/track3_source_stack.json',
  universe:'data/external/epoch_ai/queue_source_universe.json',
@@ -334,11 +347,19 @@ function renderObs(){
  document.getElementById('obsCards').innerHTML=Object.entries(c).map(x=>'<div class="card" style="border:1px solid var(--line);border-radius:9px"><div class="num mono" style="font-size:20px">'+x[1]+'</div><div class="label">'+esc(x[0].replace(/_/g,' '))+'</div></div>').join('');
  document.getElementById('obsRows').innerHTML=(D.obs||[]).map(o=>'<tr><td><strong>'+esc(o.site_name)+'</strong></td><td>'+esc(o.domain)+'</td><td><span class="status '+(o.priority==='P0'?'warn':'neutral')+'">'+esc(o.priority)+'</span></td><td>'+esc(o.current_state)+'</td><td class="small">'+esc((o.required_fields||[]).join(', '))+'</td><td class="small">'+esc(o.action||'—')+'</td><td><a target="_blank" rel="noopener" href="'+esc(o.grid_primary_source_url||'#')+'">'+esc(o.grid_source_type||'—')+'</a></td><td class="small">'+esc(o.next_research_sources||'—')+'</td></tr>').join('');
 }
+function renderTimeSeries(){
+ const t=D.time_series||{},s=t.summary||{};
+ document.getElementById('tsMeta').textContent=(s.observed_timeline_event_count||0)+' observed facility timeline events across '+(s.sites_with_observed_timeline||0)+' / 93 sites; future/predicted rows are separated.';
+ document.getElementById('tsCards').innerHTML=[[''+(s.observed_timeline_event_count||0),'Observed timeline events','Epoch dated site observations'],[''+(s.site_level_annual_power_snapshot_count||0),'Annual power snapshots','site-specific electricity consumption'],[''+(s.caiso_historical_series_record_count||0),'CAISO history rows','historical queue series'],[''+(s.pjm_historical_material_record_count||0),'PJM history rows','dated LAS material']].map(x=>'<div class="domain-card"><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
+ document.getElementById('tsChecklist').innerHTML=(t.checklist||[]).map(x=>'<tr><td><strong>'+esc(x.item)+'</strong></td><td><span class="status '+stClass(x.status)+'">'+esc(x.status)+'</span></td><td class="small">'+esc(x.coverage)+'</td></tr>').join('');
+ const rows=[];(t.site_timelines||[]).forEach(site=>(site.observed_events||[]).forEach(ev=>rows.push({site_name:site.site_name,...ev})));rows.sort((a,b)=>b.date.localeCompare(a.date));
+ document.getElementById('tsRows').innerHTML=rows.map(x=>'<tr><td>'+esc(x.site_name)+'</td><td class="mono">'+esc(x.date)+'</td><td class="right mono">'+esc(fmt(x.buildings_operational))+'</td><td class="right mono">'+esc(fmt(x.it_power_mw))+'</td><td class="right mono">'+esc(fmt(x.total_power_mw))+'</td><td class="right mono">'+esc(fmt(x.change_from_previous_observed_event?.delta_it_power_mw))+'</td><td class="right mono">'+esc(fmt(x.change_from_previous_observed_event?.delta_total_power_mw))+'</td><td>'+esc(x.temporal_status)+'</td></tr>').join('');
+}
 function renderPhysical(){
  const rows=[];
  (D.power||[]).forEach(o=>rows.push({site:o.site_name,type:'Power',date:o.observed_period||o.observed_on,value:fmt(o.normalized_value)+' '+(o.units||''),detail:o.measurement_type,source:o.source?.source_name,link:o.source?.source_url}));
  (D.cooling||[]).forEach(o=>rows.push({site:o.site_name,type:'Cooling',date:o.observed_on,value:fmt(o.capacity)+' '+(o.capacity_units||''),detail:(o.equipment_type||'')+' · '+(o.manufacturer||'')+' · '+(o.model||'')+' · '+fmt(o.units)+' units',source:o.source?.source_name,link:o.source?.source_url}));
- document.getElementById('observationsSummary').innerHTML='<div class="domain-card"><h3>'+esc((D.power||[]).length)+'</h3><p>site-level annual power observations</p></div><div class="domain-card"><h3>'+esc((D.cooling||[]).length)+'</h3><p>site-level cooling observations</p></div><div class="domain-card"><h3>0 / 93</h3><p>numeric TIR/SAR observations currently ingested</p></div><div class="domain-card"><h3>0 / 93</h3><p>transformer event records currently ingested</p></div>';
+ const ps=D.physical?.summary||{};document.getElementById('observationsSummary').innerHTML='<div class="domain-card"><h3>'+esc((D.power||[]).length)+'</h3><p>site-level annual power observations</p></div><div class="domain-card"><h3>'+esc((D.cooling||[]).length)+'</h3><p>site-level cooling observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_tir_numeric_observations||0)+'</h3><p>Landsat TIR numeric observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_sar_numeric_observations||0)+'</h3><p>Sentinel-1 SAR observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_optical_scenes_ingested||0)+'</h3><p>Sentinel-2 optical scene windows</p></div><div class="domain-card"><h3>'+esc(ps.transformer_event_records||0)+'</h3><p>source-backed transformer events</p></div>';
  document.getElementById('physicalRows').innerHTML=rows.map(x=>'<tr><td>'+esc(x.site)+'</td><td>'+esc(x.type)+'</td><td>'+esc(x.date||'—')+'</td><td class="mono">'+esc(x.value)+'</td><td>'+esc(x.detail||'—')+'</td><td>'+(x.link?'<a target="_blank" rel="noopener" href="'+esc(x.link)+'">'+esc(x.source||'source')+'</a>':'—')+'</td></tr>').join('');
 }
 function renderEpoch(){
@@ -412,7 +433,7 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderPhysical();renderEpoch();renderSources();renderProvenance();renderEntity();renderGeo();
+ renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderEntity();renderGeo();
 }
 document.getElementById('search').addEventListener('input',renderSites);document.getElementById('siteState').addEventListener('change',renderSites);document.getElementById('siteSort').addEventListener('change',renderSites);
 document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
