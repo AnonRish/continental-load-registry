@@ -128,8 +128,8 @@ jobs:
           assert d["project_level_map"]["records"] == 271
           assert d["project_level_map"]["mapped_records"] == 271
           assert d["supplemental_evidence_units"]["records"] == 61
-          assert d["supplemental_aggregate_map"]["records"] == 63
-          assert d["supplemental_aggregate_map"]["mapped_records"] == 63
+          assert d["supplemental_aggregate_map"]["records"] == 66
+          assert d["supplemental_aggregate_map"]["mapped_records"] == 66
           assert d["caiso_historical_cluster_series"]["records"] == 435
           assert d["caiso_historical_cluster_series"]["capacity_gw"] == 121.204
 
@@ -178,8 +178,8 @@ jobs:
           assert g["project_level_extractions"]["records"] == 271
           assert g["project_level_extractions"]["mapped_records"] == 271
           assert g["supplemental_evidence_units"]["records"] == 61
-          assert g["supplemental_aggregate_map"]["records"] == 63
-          assert g["supplemental_aggregate_map"]["mapped_records"] == 63
+          assert g["supplemental_aggregate_map"]["records"] == 66
+          assert g["supplemental_aggregate_map"]["mapped_records"] == 66
 
           checklist = json.loads((root / "data_universe_checklist.json").read_text(encoding="utf-8"))
           assert len(checklist["records"]) == 10
@@ -191,8 +191,8 @@ jobs:
           layer_by_id = {x["id"]: x for x in map_manifest["layers"]}
           assert layer_by_id["PROJECT_LEVEL"]["records"] == 271
           assert layer_by_id["PROJECT_LEVEL"]["mapped_records"] == 271
-          assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["records"] == 63
-          assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["mapped_records"] == 63
+          assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["records"] == 66
+          assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["mapped_records"] == 66
           assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["records"] == 61
           assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["mapped_records"] is None
           assert layer_by_id["EPOCH_AI"]["records"] == 93
@@ -203,6 +203,9 @@ jobs:
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records"] == 3076
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records_ge_100mw"] == 2332
 
+          aggregate_map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
+          agg = next(r for r in aggregate_map_csv if r["id"] == "SUPPLEMENTAL_AGGREGATES")
+          assert int(agg["records"]) == int(agg["mapped_records"]) == 66
           project_csv = list(csv.DictReader((root / "project_level_extractions.csv").open("r", encoding="utf-8", newline="")))
           assert len(project_csv) == 271
           supp_csv = list(csv.DictReader((root / "supplemental_large_load_evidence.csv").open("r", encoding="utf-8", newline="")))
