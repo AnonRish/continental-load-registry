@@ -755,7 +755,49 @@
       "granularity": "state project aggregate",
       "source_url": "https://isadatacentercoming.com/al",
       "notes": "Public project index records 3 Alabama projects as planned or under construction with 1.25 GW pipeline capacity; this aggregate is non-additive to individual project records and is retained as a discovery/control total."
+    },
+    {
+      "id": "DUKE-CUSTOMER-PROTECTION-PLUS-2026",
+      "jurisdiction": "Duke Energy footprint, US",
+      "provider": "Duke Energy",
+      "evidence_type": "large_load_customer_service_framework",
+      "record_count": null,
+      "capacity_mw": null,
+      "threshold_mw": null,
+      "capture_date": "2026-07-23",
+      "additive_to_core_row_level": false,
+      "granularity": "utility service framework",
+      "source_url": "https://news.duke-energy.com/releases/duke-energy-data-center-growth-will-deliver-billions-of-dollars-in-customer-savings",
+      "notes": "Duke publicly states new data-center customers undergo engineering studies and can be subject to long-term commitments, financial security, termination charges and customer-funded connection costs. The release does not enumerate individual projects or MW values, so this is a process/source layer."
+    },
+    {
+      "id": "PACIFICORP-HIGH-DATA-CENTER-SCENARIO-2025",
+      "jurisdiction": "PacifiCorp footprint, US",
+      "provider": "PacifiCorp",
+      "evidence_type": "data_center_load_forecast_scenario",
+      "record_count": null,
+      "capacity_mw": null,
+      "threshold_mw": null,
+      "capture_date": "2025-03",
+      "additive_to_core_row_level": false,
+      "granularity": "system forecast scenario",
+      "source_url": "https://www.pacificorp.com/content/dam/pcorp/documents/en/pacificorp/energy/integrated-resource-plan/2025-irp/2025_IRP_Vol_2.pdf",
+      "notes": "PacifiCorp's 2025 IRP includes a High Data Center Scenario incorporating active data-center requests as requested by customers. The source publishes system forecast trajectories rather than a deduplicated project list; no project MW is inferred from the scenario chart."
+    },
+    {
+      "id": "BCHYDRO-CALL-FOR-DEMAND-2026-145MW-APPLICATION-LIMIT",
+      "jurisdiction": "British Columbia, Canada",
+      "provider": "BC Hydro",
+      "evidence_type": "large_load_application_capacity_rule",
+      "record_count": null,
+      "capacity_mw": 145,
+      "threshold_mw": 5,
+      "capture_date": "2026-02-13",
+      "additive_to_core_row_level": false,
+      "granularity": "application rule / allocation layer",
+      "source_url": "https://app.bchydro.com/accounts-billing/electrical-connections/large-load/emerging-industries-connections/questions-answers.html",
+      "notes": "BC Hydro's 2026 Call for Demand Q&A states an individual request may be no more than 145 MW per site and describes allocations of up to 100 MW for conventional data centres and 300 MW for storage data centres. These are application rules/allocations, not the load of a specific facility."
     }
   ],
-  "record_count": 55
+  "record_count": 58
 }
