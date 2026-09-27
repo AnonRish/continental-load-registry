@@ -229,6 +229,16 @@ main > section[data-registry-view="map"]{scroll-margin-top:112px}
 .visual-hero-grid{padding-top:2.6rem;padding-bottom:2.25rem}
 section.mb-8{scroll-margin-top:118px}
 
+
+.registry-signal-rail{max-width:1180px;margin:7px auto 0;padding:0 16px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.registry-signal{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:8px 9px;position:relative;overflow:hidden}
+.registry-signal:after{content:"";position:absolute;left:0;bottom:0;width:var(--signal-pct,35%);height:2px;background:var(--teal);opacity:.75}
+.registry-signal-k{font:600 8px/1 'IBM Plex Mono',monospace;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase}
+.registry-signal-v{margin-top:4px;font:600 12px/1.1 'IBM Plex Mono',monospace}
+.registry-signal-s{margin-top:3px;font-size:8px;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:900px){.registry-signal-rail{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.registry-signal-rail{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:10px}.registry-signal:last-child{grid-column:1/-1}}
+
 </head>
 <body class="min-h-screen">\n
 <!-- REGISTRY-UI-V3 -->
@@ -271,6 +281,15 @@ section.mb-8{scroll-margin-top:118px}
   </div>
 </div>
 <div class="registry-view-hint" id="registryViewHint">Overview is the visual entry point. Use the tabs above to open the dense research layers.</div>
+
+<div id="registrySignalRail" class="registry-signal-rail" aria-label="Evidence signal rail">
+  <div class="registry-signal" data-signal="sites" style="--signal-pct:100%"><div class="registry-signal-k">Sites</div><div class="registry-signal-v">93 / 93</div><div class="registry-signal-s">site identity ingested</div></div>
+  <div class="registry-signal" data-signal="queue" style="--signal-pct:100%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">93 terminal</div><div class="registry-signal-s">2 site-specific IDs</div></div>
+  <div class="registry-signal" data-signal="physical" style="--signal-pct:0%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">0 / 93</div><div class="registry-signal-s">remote sensing processed</div></div>
+  <div class="registry-signal" data-signal="transformer" style="--signal-pct:1%"><div class="registry-signal-k">Transformers</div><div class="registry-signal-v">3 events</div><div class="registry-signal-s">supply-chain evidence</div></div>
+  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">222 records</div><div class="registry-signal-s">70 sites enriched</div></div>
+</div>
+
 
 
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-[var(--panel)] focus:border focus:hairline focus:px-3 focus:py-2 focus:text-sm">Skip to registry data</a>
@@ -3280,12 +3299,20 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
     deckSites:'data/track3/summary.json',deckEvidence:'data/track3/summary.json',deckPhysical:'data/track3/summary.json'
   };
   fetch('data/track3/summary.json').then(r=>r.json()).then(async s=>{
-    if(document.getElementById('deckSites')) document.getElementById('deckSites').textContent=s.epoch_site_count ?? 93;
-    if(document.getElementById('deckPhysical')) document.getElementById('deckPhysical').textContent=s.remote_sensing_derived_observation_count ?? 0;
+    const sites=Number(s.epoch_site_count ?? 93), physical=Number(s.remote_sensing_derived_observation_count ?? 0);
+    if(document.getElementById('deckSites')) document.getElementById('deckSites').textContent=sites.toLocaleString();
+    if(document.getElementById('deckPhysical')) document.getElementById('deckPhysical').textContent=physical.toLocaleString();
+    const siteSignal=document.querySelector('[data-signal="sites"]'); if(siteSignal){siteSignal.querySelector('.registry-signal-v').textContent=sites+' / '+sites;siteSignal.style.setProperty('--signal-pct','100%');}
+    const physicalSignal=document.querySelector('[data-signal="physical"]'); if(physicalSignal){physicalSignal.querySelector('.registry-signal-v').textContent=physical+' / '+sites;physicalSignal.style.setProperty('--signal-pct',(sites?Math.min(100,physical/sites*100):0)+'%');}
+    const q=Number(s.site_specific_queue_id_count ?? 2), noPub=Number(s.research_completed_no_public_record_count ?? 12);
+    const queueSignal=document.querySelector('[data-signal="queue"]'); if(queueSignal) queueSignal.querySelector('.registry-signal-s').textContent=q+' site-specific IDs · '+noPub+' no-public-record outcomes';
+    const tx=Number(s.transformer_event_count ?? 3), txSignal=document.querySelector('[data-signal="transformer"]'); if(txSignal) txSignal.querySelector('.registry-signal-v').textContent=tx+' events';
     try{
       const e=await fetch('data/track3/evidence_records.json').then(r=>r.json());
       const n=Array.isArray(e)?e.length:(e.records?.length??e.evidence?.length??0);
       if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=n.toLocaleString();
+      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 222).toLocaleString()+' records';
+      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 70).toLocaleString()+' sites enriched';
     }catch{}
   }).catch(()=>{});
   fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
