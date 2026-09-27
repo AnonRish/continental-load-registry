@@ -5,6 +5,8 @@ on:
       - "acquire_ambiguous_case_physical.py"
       - "acquire_physical_verification.py"
       - "data/track3/ambiguous_case_physical_targets.json"
+      - "data/track3/ambiguous_case_studies.json"
+      - "validate_ambiguous_case_studies.py"
       - ".github/workflows/track3_ambiguous_case_closure.yml"
   workflow_dispatch:
 permissions:
@@ -28,7 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests numpy rasterio planetary-computer pystac-client
       - name: Validate syntax
-        run: python -m py_compile acquire_physical_verification.py acquire_ambiguous_case_physical.py
+        run: python -m py_compile acquire_physical_verification.py acquire_ambiguous_case_physical.py validate_ambiguous_case_studies.py
       - name: Acquire physical observations for closure pilot
         run: python acquire_ambiguous_case_physical.py
       - name: Validate pilot output
@@ -46,6 +48,9 @@ jobs:
           for c in d["coordinate_records"]:
               print(c["case_id"],c.get("lat"),c.get("lon"),c.get("precision"))
           PY
+      - name: Validate published closure case ledger
+        run: python validate_ambiguous_case_studies.py
+
       - name: Commit pilot physical artifacts
         run: |
           git config user.name "github-actions[bot]"
