@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "record_count": 929,
+  "record_count": 931,
   "records": [
     {
       "evidence_id": "EVID-965d5929a63b58845c8a",
@@ -11516,6 +11516,86 @@
           "B04",
           "B08",
           "SCL"
+        ],
+        "proxy_note": "Nonvegetated fraction is a coarse surface-change proxy; it is not a building-footprint measurement."
+      },
+      "units": null,
+      "site_specific": true,
+      "independent_of_other_source": true,
+      "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+    },
+    {
+      "evidence_id": "EVID-REMOTE-2530f0c24994075a376d",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "target_name": "Meta Temple",
+      "domain": "remote_sensing",
+      "evidence_type": "optical",
+      "claim_scope": "site_level",
+      "status": "INGESTED_DERIVED",
+      "source_kind": "public satellite STAC + raw COG processing",
+      "source_name": "Sentinel-2 MSI L2A",
+      "source_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2C_14RPV_20260530_1_L2A",
+      "observed_on": "2026-05-30",
+      "captured_on": "2026-05-30",
+      "confidence": "derived_measurement",
+      "basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+      "record_id": "S2C_14RPV_20260530_1_L2A",
+      "authority": "sentinel-2-l2a",
+      "raw_value": null,
+      "normalized_value": {
+        "red_reflectance_median": 0.11620000004768372,
+        "nir_reflectance_median": 0.3521000146865845,
+        "ndvi_median": 0.4617002606391907,
+        "ndvi_p10": 0.033846110105514526,
+        "ndvi_p90": 0.7992719411849976,
+        "nonvegetated_proxy_fraction": 0.2515809073497194,
+        "valid_pixel_count": 225029,
+        "source_resolution_m": 10.0,
+        "source_asset_keys": [
+          "red",
+          "nir",
+          "scl"
+        ],
+        "proxy_note": "Nonvegetated fraction is a coarse surface-change proxy; it is not a building-footprint measurement."
+      },
+      "units": null,
+      "site_specific": true,
+      "independent_of_other_source": true,
+      "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+    },
+    {
+      "evidence_id": "EVID-REMOTE-94ccc2ca040cf862ebc5",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "target_name": "Meta Temple",
+      "domain": "remote_sensing",
+      "evidence_type": "optical",
+      "claim_scope": "site_level",
+      "status": "INGESTED_DERIVED",
+      "source_kind": "public satellite STAC + raw COG processing",
+      "source_name": "Sentinel-2 MSI L2A",
+      "source_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2B_14RPV_20260925_0_L2A",
+      "observed_on": "2026-09-25",
+      "captured_on": "2026-09-25",
+      "confidence": "derived_measurement",
+      "basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+      "record_id": "S2B_14RPV_20260925_0_L2A",
+      "authority": "sentinel-2-l2a",
+      "raw_value": null,
+      "normalized_value": {
+        "red_reflectance_median": 0.17649999260902405,
+        "nir_reflectance_median": 0.2856000065803528,
+        "ndvi_median": 0.21288460493087769,
+        "ndvi_p10": 0.043217435479164124,
+        "ndvi_p90": 0.4506198763847351,
+        "nonvegetated_proxy_fraction": 0.4528392422870977,
+        "valid_pixel_count": 91697,
+        "source_resolution_m": 10.0,
+        "source_asset_keys": [
+          "red",
+          "nir",
+          "scl"
         ],
         "proxy_note": "Nonvegetated fraction is a coarse surface-change proxy; it is not a building-footprint measurement."
       },
