@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Website completeness audit",
+  "purpose": "Every user-facing section is mapped to a populated data artifact, generated interface, or explicit source-limited state. A source-limited state never means the field was silently omitted.",
+  "summary": {
+    "visible_sections_audited": 32,
+    "sections_with_backing_artifact_or_rendered_methodology": 32,
+    "current_epoch_sites": 93,
+    "project_records": 271,
+    "current_core_registry_rows": 1558,
+    "broader_known_scope_rows": 1641,
+    "track3_evidence_records": null,
+    "open_grid_research": 0,
+    "researched_no_public_record": 18,
+    "remote_sensing_processed": 0,
+    "transformer_events": 3
+  },
+  "sections": [
+    {
+      "section": "Market-by-market data-universe checklist",
+      "status": "POPULATED",
+      "artifact": "data/data_universe_checklist.json",
+      "detail": "All nine organized-market labels plus utility/Canada context and dated next-blockers."
+    },
+    {
+      "section": "153 current ≥100 MW records without public site geography",
+      "status": "POPULATED",
+      "artifact": "data/miso_public_queue.json + data/automation/geographic_match_report.json",
+      "detail": "Explicit MISO public-location limitation; records are not silently geocoded."
+    },
+    {
+      "section": "Map layer inventory",
+      "status": "POPULATED",
+      "artifact": "data/map_layer_manifest.json",
+      "detail": "Core queue, project, Epoch, building and evidence map layers cataloged."
+    },
+    {
+      "section": "Queue & connection registry universe",
+      "status": "POPULATED",
+      "artifact": "data/registry_summary.json + data/registry_raw.csv",
+      "detail": "Core queue row universe and large-load accounting."
+    },
+    {
+      "section": "Epoch AI connection research targets",
+      "status": "POPULATED",
+      "artifact": "data/external/epoch_ai/queue_crosswalk.json + queue_gap_analysis.json",
+      "detail": "All 93 Epoch sites have terminal research dispositions."
+    },
+    {
+      "section": "Data-universe completion status",
+      "status": "POPULATED",
+      "artifact": "data/data_universe_checklist.json",
+      "detail": "Current source coverage and explicit open boundaries."
+    },
+    {
+      "section": "Epoch site-level evidence inventory",
+      "status": "POPULATED",
+      "artifact": "data/epoch_site_evidence_records.json + data/track3/evidence_records.json",
+      "detail": "Site-level evidence and canonical evidence ledger."
+    },
+    {
+      "section": "Regulatory & utility evidence layer",
+      "status": "POPULATED",
+      "artifact": "data/supplemental_large_load_evidence.json + source manifests",
+      "detail": "Regulatory, utility and planning records retained with source boundaries."
+    },
+    {
+      "section": "Current public market / utility source context",
+      "status": "POPULATED",
+      "artifact": "data/current_public_market_context_2026-09-27.json",
+      "detail": "Dated source-control snapshot for major North American connection systems."
+    },
+    {
+      "section": "Physical verification layer",
+      "status": "SOURCE-LIMITED",
+      "artifact": "data/physical_verification_layer.json + data/track3/remote_sensing_observation_targets.json",
+      "detail": "93-site acquisition targets and 3 transformer events are published; processed remote-sensing measurements remain 0 in the canonical build."
+    },
+    {
+      "section": "Complete project ledger",
+      "status": "POPULATED",
+      "artifact": "data/project_level_extractions.json",
+      "detail": "271 project-level records."
+    },
+    {
+      "section": "Connection-target ledger",
+      "status": "POPULATED",
+      "artifact": "data/epoch_connection_research_targets.json",
+      "detail": "Per-site public connection research targets."
+    },
+    {
+      "section": "Site-evidence ledger",
+      "status": "POPULATED",
+      "artifact": "data/epoch_site_evidence_records.json",
+      "detail": "Source-backed facility evidence export."
+    },
+    {
+      "section": "Full active / completed / withdrawn queue",
+      "status": "POPULATED",
+      "artifact": "data/registry_raw.csv + core queue layers",
+      "detail": "Status retained at row level where sources expose it."
+    },
+    {
+      "section": "Complete public queue layers",
+      "status": "POPULATED",
+      "artifact": "data/caiso_public_queue.json, data/miso_public_queue.json, data/pjm_public_queue.json, data/spp_public_queue.json",
+      "detail": "Current captured public queue snapshots for the four largest organized layers; source limitations remain explicit for other systems."
+    },
+    {
+      "section": "Project-level extraction",
+      "status": "POPULATED",
+      "artifact": "data/project_level_extractions.json",
+      "detail": "271 extracted records from permits, utilities and public project lists."
+    },
+    {
+      "section": "Browse all project-level records",
+      "status": "POPULATED",
+      "artifact": "index.html",
+      "detail": "Client-side search/filter over the complete extracted set."
+    },
+    {
+      "section": "PJM large-load submission history",
+      "status": "POPULATED",
+      "artifact": "data/pjm_large_load_submission_history.json",
+      "detail": "Retained cycle/service-request history and source-document references."
+    },
+    {
+      "section": "Supplemental public large-load evidence",
+      "status": "POPULATED",
+      "artifact": "data/supplemental_large_load_evidence.json",
+      "detail": "61 source/evidence units."
+    },
+    {
+      "section": "Browse all supplemental evidence units",
+      "status": "POPULATED",
+      "artifact": "index.html",
+      "detail": "All retained supplemental units exposed through the interface."
+    },
+    {
+      "section": "Epoch AI frontier data-center registry",
+      "status": "POPULATED",
+      "artifact": "data/external/epoch_ai/registry.json",
+      "detail": "93-site publisher snapshot, timelines and chip quantities."
+    },
+    {
+      "section": "Multi-Modal Physical Radar",
+      "status": "POPULATED",
+      "artifact": "data/module1_radar_spec.json + data/module1_radar_summary.json",
+      "detail": "Physics checks, FLOP bound and evidence boundaries are rendered."
+    },
+    {
+      "section": "Three-scenario 90-day FLOP bound at 100 MW",
+      "status": "POPULATED",
+      "artifact": "data/module1_radar_spec.json",
+      "detail": "Reference/conservative/aggressive scenarios retained."
+    },
+    {
+      "section": "Evidence boundaries",
+      "status": "POPULATED",
+      "artifact": "index.html + data/track3/summary.json",
+      "detail": "Missing evidence states are explicit and never interpreted as absence."
+    },
+    {
+      "section": "Track 3 evidence coverage",
+      "status": "POPULATED",
+      "artifact": "data/track3/summary.json + site_status.json",
+      "detail": "93-site canonical domain matrix."
+    },
+    {
+      "section": "93-site public enrichment bridge",
+      "status": "POPULATED",
+      "artifact": "data/external/intel_accelerator_enrichment.json",
+      "detail": "Public program/owner/address/energy/EPC/grid fields are source-tracked for all 93 sites."
+    },
+    {
+      "section": "Track 3 source stack",
+      "status": "POPULATED",
+      "artifact": "data/track3_source_stack.json",
+      "detail": "30 source/control entries in the current generated build."
+    },
+    {
+      "section": "Track 3 research console",
+      "status": "POPULATED",
+      "artifact": "data/track3/site_status.json + observation_queue.json",
+      "detail": "Search/filter console and acquisition backlog."
+    },
+    {
+      "section": "Methodology",
+      "status": "POPULATED",
+      "artifact": "index.html + TRACK3.md",
+      "detail": "Method, status semantics and source boundaries."
+    },
+    {
+      "section": "Regulatory filings",
+      "status": "POPULATED",
+      "artifact": "data/supplemental_large_load_evidence.json + data/current_public_market_context_2026-09-27.json",
+      "detail": "Public regulatory/planning evidence cataloged with source status."
+    },
+    {
+      "section": "Normalized record / enrichment / provenance",
+      "status": "POPULATED",
+      "artifact": "api/v1/facilities.json + data/track3/facility_provenance.json + intel_accelerator_enrichment.json",
+      "detail": "Normalized values, raw/source fields and provenance are separately exposed."
+    }
+  ]
+}
