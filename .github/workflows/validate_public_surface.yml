@@ -9,6 +9,7 @@ on:
       - "closed-cases.css"
       - "CLOSED_CASE_PROTOCOL.md"
       - "STRICT_DISCOVERY_RESEARCH.md"
+      - "validate_strict_discovery_candidates.py"
       - "plan-a.html"
       - "research.html"
       - "api.html"
@@ -386,6 +387,8 @@ jobs:
 
       - name: Run closed-case validator
         run: python validate_ambiguous_case_studies.py
+      - name: Run strict discovery candidate validator
+        run: python validate_strict_discovery_candidates.py
 
       - name: Validate canonical cross-artifact consistency
         run: python validate_cross_artifact_consistency.py
