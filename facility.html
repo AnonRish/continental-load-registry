@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Track 3 Facility Record</title>
+<meta name="description" content="Shareable facility-level Track 3 record with evidence timeline, provenance, verification, source-document viewer and downloadable JSON.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<style>
+:root{--ink:#16233A;--soft:#4E5D72;--faint:#8493A6;--paper:#EEF2ED;--panel:#FBFCFA;--line:#D7DEDA;--strong:#B7C2BC;--amber:#A85E0A;--amber-soft:#F3E3C9;--teal:#33604F;--teal-soft:#DBE9E2}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,sans-serif}.wrap{max-width:1180px;margin:auto;padding:20px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}.tools{display:flex;flex-wrap:wrap;gap:8px}.btn{border:1px solid var(--strong);background:transparent;color:var(--ink);padding:8px 11px;border-radius:8px;text-decoration:none;cursor:pointer;font-size:12px}.btn:hover{background:var(--amber-soft)}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.soft{color:var(--soft)}.faint{color:var(--faint)}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.kvs{display:grid;grid-template-columns:180px 1fr;gap:6px;font-size:12px}.kvs div:nth-child(odd){color:var(--faint)}table{width:100%;border-collapse:collapse;font-size:11px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}.status{display:inline-flex;padding:3px 7px;border-radius:999px;border:1px solid var(--strong);font:10px ui-monospace,monospace}.good{background:var(--teal-soft);color:var(--teal)}.warn{background:var(--amber-soft);color:var(--amber)}#map{height:430px;border-radius:10px;overflow:hidden}.timeline{border-left:2px solid var(--line);padding-left:14px}.event{margin:0 0 12px;padding:10px;border:1px solid var(--line);border-radius:9px}.event h3{margin:0 0 5px;font-size:12px}.viewer{display:none;position:fixed;inset:0;background:rgba(10,16,25,.64);z-index:20;padding:20px}.viewer.open{display:block}.viewer-inner{height:100%;max-width:1200px;margin:auto;background:var(--panel);border:1px solid var(--strong);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}.viewer-head{padding:10px 14px;display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line)}iframe{width:100%;height:100%;border:0}pre{white-space:pre-wrap;word-break:break-word;background:var(--paper);border:1px solid var(--line);padding:10px;border-radius:9px;font-size:10px}
+</style></head><body><main class="wrap"><div class="tools"><a class="btn" href="track3.html">← Track 3 Observatory</a><a class="btn" href="api.html">API</a><a class="btn" href="bulk-download.html">Bulk downloads</a></div><div id="app"></div></main>
+<div id="viewer" class="viewer"><div class="viewer-inner"><div class="viewer-head"><strong id="viewerTitle">Source document</strong><button class="btn" id="closeViewer">Close</button></div><div style="flex:1;display:flex;min-height:0"><iframe id="viewerFrame" title="Source document viewer"></iframe></div></div></div>
+<script>
+const qs=new URLSearchParams(location.search),id=qs.get('facility');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString(undefined,{maximumFractionDigits:2});
+async function get(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error(u+' '+r.status);return r.json();}
+function statusClass(s){return ['PASS','INGESTED','VERIFIED_SITE_SPECIFIC'].includes(s)?'good':(['UNKNOWN','NOT_TESTED','NOT_ASSESSED','NOT_INGESTED','PENDING_RESEARCH'].includes(s)?'warn':'');}
+async function main(){
+ if(!id){document.getElementById('app').innerHTML='<div class="panel"><h1>Missing facility identifier</h1><p class="soft">Use facility.html?facility=EPOCH-…</p></div>';return;}
+ const [map,sites,evidence,ts,prov,ver]=await Promise.all([
+  get('data/epoch_ai_map.json'),get('data/track3/site_status.json'),get('data/track3/evidence_records.json'),
+  get('data/track3/time_series_verification.json'),get('data/track3/facility_provenance.json'),get('data/track3/verification_results.json')
+ ]);
+ const m=(map.records||[]).find(x=>x.id===id),s=(sites.records||[]).find(x=>x.epoch_id===id),es=(evidence.records||[]).filter(x=>x.target_id===id);
+ const pv=(prov.facilities||[]).find(x=>x.facility_id===id),vr=(ver.results||[]).filter(x=>x.facility_id===id);
+ const siteTs=(ts.site_timelines||[]).find(x=>x.epoch_id===id);
+ if(!m||!s){document.getElementById('app').innerHTML='<div class="panel"><h1>Facility not found</h1><p class="soft">'+esc(id)+'</p></div>';return;}
+ const n=(s.normalized||{}),g=s.grid||{};
+ document.title=(m.site_name||id)+' · Track 3 Facility';
+ let html='<div class="panel"><div class="tools"><span class="status '+statusClass(s.domains?.site_identity?.status)+'">'+esc(s.domains?.site_identity?.status||'—')+'</span><span class="status">'+esc(id)+'</span></div><h1>'+esc(m.site_name)+'</h1><p class="soft">'+esc(m.address||'')+' · '+esc(s.state_province||m.country||'')+'</p><div class="tools"><button class="btn" id="downloadRecord">Download facility record JSON</button>';
+ const sourceUrls=[m.epoch_source_url,m.grid_evidence_url,...es.map(x=>x.source_url)].filter(Boolean);
+ if(sourceUrls[0])html+='<button class="btn" data-view-source="'+esc(sourceUrls[0])+'">View source document</button>';
+ html+='<a class="btn" href="track3.html#facility-'+encodeURIComponent(id)+'">Open in observatory</a></div></div>';
+ html+='<div class="grid"><div class="panel"><h2>Facility identity &amp; grid</h2><div class="kvs"><div>Address</div><div>'+esc(m.address||'—')+'</div><div>Owner/developer</div><div>'+esc(m.owner||'—')+'</div><div>Users</div><div>'+esc(m.users||'—')+'</div><div>Project</div><div>'+esc(m.project||'—')+'</div><div>Grid / utility</div><div>'+esc(m.grid_jurisdiction||g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(m.site_queue_id||g.site_specific_queue_id||'—')+'</div><div>IT power</div><div class="mono">'+fmt(m.current_power_mw)+' MW</div><div>H100 eq.</div><div class="mono">'+fmt(m.current_h100_equivalents)+'</div></div></div>';
+ html+='<div class="panel"><h2>Verification</h2><table><thead><tr><th>Claim</th><th>Status</th><th>Basis</th></tr></thead><tbody>'+vr.map(x=>'<tr><td>'+esc(x.claim)+'</td><td><span class="status '+statusClass(x.status)+'">'+esc(x.status)+'</span></td><td>'+esc(x.basis||'—')+'</td></tr>').join('')+'</tbody></table></div></div>';
+ html+='<div class="panel"><h2>Facility map</h2><div id="map"></div><p class="small faint" style="margin-top:8px">Coordinate precision: '+esc(m.precision||'—')+'</p></div>';
+ html+='<div class="panel"><h2>Evidence timeline</h2><div class="timeline">'+(siteTs?.observed_events||[]).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(e=>'<div class="event"><h3>'+esc(e.date)+' · '+esc(e.temporal_status||'observed')+'</h3><div class="soft small">Buildings operational: '+esc(fmt(e.buildings_operational))+' · IT MW: '+esc(fmt(e.it_power_mw))+' · Total MW: '+esc(fmt(e.power_mw))+'</div><div class="small">'+esc(e.construction_status||'')+'</div></div>').join('')||'<div class="faint small">No retained facility timeline events.</div>'+'</div></div>';
+ html+='<div class="panel"><h2>Evidence records &amp; sources</h2>'+(es.map(e=>'<div class="event"><h3>'+esc(e.domain)+' · '+esc(e.evidence_type)+'</h3><p class="soft small">'+esc(e.basis||'—')+'</p><p class="small faint">'+esc(e.source_name||'—')+' · '+esc(e.status||'—')+' · '+esc(e.confidence||'—')+'</p><div class="tools">'+(e.source_url?'<button class="btn" data-view-source="'+esc(e.source_url)+'">View source</button><a class="btn" target="_blank" rel="noopener" href="'+esc(e.source_url)+'">Open source</a>':'')+'</div></div>').join('')||'<p class="faint small">No evidence records.</p>')+'</div>';
+ html+='<div class="panel"><h2>Provenance</h2><pre>'+esc(JSON.stringify(pv||{},null,2))+'</pre></div>';
+ document.getElementById('app').innerHTML=html;
+ const dl={facility_id:id,facility_map:m,site_status:s,evidence_records:es,timeline:siteTs||null,provenance:pv||null,verification_results:vr,generated_at:new Date().toISOString()};
+ document.getElementById('downloadRecord').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(dl,null,2)],{type:'application/json'}));a.download=id+'.track3.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+ document.querySelectorAll('[data-view-source]').forEach(b=>b.onclick=()=>openSource(b.getAttribute('data-view-source')));
+ const mapObj=L.map('map').setView([Number(m.lat),Number(m.lon)],12);
+ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(mapObj);
+ L.circleMarker([Number(m.lat),Number(m.lon)],{radius:9,weight:2,fillOpacity:.7}).addTo(mapObj).bindPopup('<strong>'+esc(m.site_name)+'</strong><br>'+esc(m.address||'')+'<br>'+fmt(m.current_power_mw)+' MW');
+}
+function openSource(url){document.getElementById('viewerTitle').textContent=url;document.getElementById('viewerFrame').src=url;document.getElementById('viewer').classList.add('open');}
+document.getElementById('closeViewer').onclick=()=>{document.getElementById('viewer').classList.remove('open');document.getElementById('viewerFrame').src='';};
+main().catch(e=>document.getElementById('app').innerHTML='<div class="panel"><h1>Facility record could not be loaded</h1><p class="soft">'+esc(e.message)+'</p></div>');
+</script></body></html>
