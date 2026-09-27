@@ -42,32 +42,51 @@ def main():
         assert len(SHEETS)==5
         print("PASS: NYISO parser self-test");return
     s=requests.Session();s.headers.update({"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153 Safari/537.36","Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8","Referer":PAGE_URL,"Origin":"https://www.nyiso.com"})
-    page=s.get(PAGE_URL,timeout=60);page.raise_for_status()
-    parser=LinkParser();parser.feed(page.text)
-    candidates=[]
-    for href,text_value in parser.links:
-        label=(text_value+" "+href).lower()
-        downloadable=any(token in label for token in (".xlsx", ".xls", ".zip", "download"))
-        if (("queue" not in label and "interconnection" not in label) and not downloadable) or not href:
-            continue
-        u=urljoin(PAGE_URL,href)
-        if u not in candidates:candidates.append(u)
-    for fallback in ALTERNATE_FALLBACK_URLS:
-        if fallback not in candidates:
-            candidates.append(fallback)
-    r=None
-    for url in candidates:
-        for attempt in range(3):
+    # Try the official workbook URLs first. The public landing page can be an
+    # anti-bot challenge, so it must never be a prerequisite for the queue file.
+    candidates=list(dict.fromkeys(ALTERNATE_FALLBACK_URLS + [u+"?download=1" for u in ALTERNATE_FALLBACK_URLS]))
+    try:
+        page=s.get(PAGE_URL,timeout=60,allow_redirects=True)
+        if page.ok:
+            parser=LinkParser();parser.feed(page.text)
+            discovered=[]
+            for href,text_value in parser.links:
+                label=(text_value+" "+href).lower()
+                downloadable=any(token in label for token in (".xlsx", ".xls", ".zip", "download"))
+                if (("queue" not in label and "interconnection" not in label) and not downloadable) or not href:
+                    continue
+                u=urljoin(PAGE_URL,href)
+                if u not in discovered: discovered.append(u)
+            candidates=discovered+candidates
+    except requests.RequestException:
+        pass
+
+    def fetch_xlsx(url: str):
+        seen=set()
+        current=url
+        for attempt in range(4):
+            if current in seen:
+                return None
+            seen.add(current)
             try:
-                rr=s.get(url,timeout=90,allow_redirects=True)
+                rr=s.get(current,timeout=90,allow_redirects=False)
+                if 300 <= rr.status_code < 400:
+                    loc=rr.headers.get("Location")
+                    if not loc:
+                        return None
+                    current=urljoin(current,loc)
+                    continue
                 rr.raise_for_status()
                 if rr.content[:2]==b"PK":
-                    r=rr
-                    break
-                time.sleep(2*(attempt+1))
-            except Exception:
-                if attempt==2: break
-                time.sleep(2*(attempt+1))
+                    return rr
+            except requests.RequestException:
+                return None
+            time.sleep(2*(attempt+1))
+        return None
+
+    r=None
+    for url in candidates:
+        r=fetch_xlsx(url)
         if r is not None:
             break
     if r is None:
