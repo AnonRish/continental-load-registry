@@ -24,7 +24,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [ ] Per-artifact SHA-256 + byte-count generation for retained physical outputs is not automated yet; tracked as issue #32.
 - [x] Track 3 public revision is aligned to 2026-09-27.
 - [x] README filename corrected to ground_truth_overrides_example.json.
-- [ ] The generated verification results must finish their post-observation CI refresh so the claim ledger and physical ledger are synchronized on the same source snapshot.
+- [x] Claim-level verification results have been refreshed against the retained physical observations: 423 PASS, 296 UNKNOWN, 25 NOT_TESTED; facility-wide state is 0 VERIFIED_PRESENT / 0 VERIFIED_ABSENT / 93 INCONCLUSIVE. A subsequent verifier workflow run failed only at the Git push race; the workflow has since been hardened with serialized runs and rebase-before-push.
 
 ## 3. Reproducibility and engineering rigor
 
