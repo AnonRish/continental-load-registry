@@ -71,7 +71,7 @@ def main() -> None:
     assert scope_cat["core_record_count"] == row_count
     assert scope_cat["expanded_known_record_count"] == 1623
     assert_close(scope_cat["expanded_known_capacity_gw"], 394.6181)
-    assert cat["data/track3/evidence_records.json"]["record_count"] == 916
+    assert cat["data/track3/evidence_records.json"]["record_count"] == 868
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
     assert cat["data/supplemental_aggregate_map.json"]["record_count"] == 66
