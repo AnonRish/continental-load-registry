@@ -177,9 +177,9 @@ The project-level dataset now includes **60 BPA large-load request records** wit
 
 The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
 
-The project-level layer has grown to **235 records** and all 235 are mapped in `data/project_level_map.json`. A separate `data/supplemental_aggregate_map.json` adds **61 geographic footprints** for utility/regulatory aggregates; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
+The project-level layer has grown to **241 records** and all 241 are mapped in `data/project_level_map.json`. A separate `data/supplemental_aggregate_map.json` adds **61 geographic footprints** for utility/regulatory aggregates; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
 
-The project-level layer has grown to **235 records**: 33 Virginia DEQ permit identities, 60 BPA large-load request records, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, two ISO-NE forecast project records, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
+The project-level layer has grown to **241 records**: 33 Virginia DEQ permit identities, 60 BPA large-load request records, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, two ISO-NE forecast project records, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
 
 PJM large-load history is cataloged in `data/pjm_large_load_submission_history.json` with **28 public 2025–2026 LAS material entries**, preserving the utility submission/document trail without treating documents as facility rows.
 
@@ -205,7 +205,7 @@ Current examples include:
 
 Additional utility layers now include APS's reported 19 GW uncommitted extra-large-customer queue, AEP's 69 GW of contracted load growth through 2030, AEP Ohio's approximately 12 GW of new contracted load through 2030, the planned 10 GW Piketon data-center campus, Ameren Missouri's up-to-2 GW demand-planning envelope, and PacifiCorp's ongoing tens-to-hundreds-of-MW large-customer request stream. These remain supplemental and are not added to the core total without project-level deduplication.
 
-The supplemental evidence file now contains **47 source/evidence units**, including the current CAISO full public-queue report metadata and additional BPA/PJM/ComEd/MISO utility and planning evidence. These units are not automatically additive.
+The supplemental evidence file now contains **55 source/evidence units**, including the current CAISO full public-queue report metadata and additional BPA/PJM/ComEd/MISO utility and planning evidence. These units are not automatically additive.
 
 These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
 
@@ -219,7 +219,7 @@ On the map, the **Connection targets** toggle overlays all 93 research targets o
 
 ### Project-level extraction
 
-The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **235 individually identifiable records** extracted from public source material:
+The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **241 individually identifiable records** extracted from public source material:
 
 - **60 BPA large-load request records**, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed.
 - **33 Virginia DEQ issued-air permit records**, with permit number, named site/project, county and issuance date.
@@ -244,9 +244,13 @@ The remaining hard limits are explicit rather than hidden. MISO's 83 additional 
 
 `data/caiso_cluster_history.json` and its CSV companion preserve a historical generator-interconnection series covering Cluster 8-and-prior through Cluster 14: **435 projects / 121.204 GW** in the historical series. A separately published Cluster 15 energy-only subset is recorded at **48 projects / 14.421 GW**. The current full CAISO Public Queue Report is linked from the dashboard as the source for future complete row-level refreshes; historical series values are kept separate and non-additive.
 
+### Additional utility-linked projects
+
+The project layer also includes six newly extracted utility-linked records outside the organized-market core: Google/Xcel's Pine Island, Minnesota data center; Google's West Memphis, Arkansas data center; AWS's Clinton, Mississippi data center; QTS Bessemer / Project Marvel; Cloverleaf Infrastructure's Project Red Clay; and the Sovereign Gazelle/Somerville large-load project. Source-specific capacity claims are retained only where the cited public record provides them; associated generation additions are not relabeled as data-center load.
+
 ### Supplemental public large-load evidence
 
-The supplemental evidence file now contains **41 source/evidence units**. The website provides a searchable browser for all of them. These include MISO's unlocated requests, utility pipelines, regulatory aggregates, planning forecasts, connection/process sources, permit inventories, ERCOT Batch Zero source material and non-RTO utility evidence. The measures are not summed because their populations, dates, units and overlap relationships differ.
+The supplemental evidence file now contains **55 source/evidence units**. The website provides a searchable browser for all of them. These include MISO's unlocated requests, utility pipelines, regulatory aggregates, planning forecasts, connection/process sources, permit inventories, ERCOT Batch Zero source material and non-RTO utility evidence. The measures are not summed because their populations, dates, units and overlap relationships differ.
 
 ## Regulatory filings section
 
@@ -389,4 +393,4 @@ Apache License 2.0 -- see `LICENSE`.
 grid.telemetry.initiative@gmail.com
 
 
-**Map coverage:** `data/project_level_map.json` contains 235 project-level records and currently has numeric display coordinates for all 235. `data/supplemental_aggregate_map.json` contains 61 aggregate/historical records and currently has numeric display coordinates for all 61. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
+**Map coverage:** `data/project_level_map.json` contains 235 project-level records and currently has numeric display coordinates for all 241. `data/supplemental_aggregate_map.json` contains 61 aggregate/historical records and currently has numeric display coordinates for all 61. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
