@@ -1,0 +1,587 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Global AI Data-Center Coverage & Discovery Ledger",
+  "purpose": "Capture 100% of the current Epoch AI AI-data-centers explorer dataset while separately identifying externally reported facilities and programs that may extend beyond Epoch's current coverage. This is a research coverage instrument, not a claim that any public source is a complete census of every AI data center on earth.",
+  "epoch_capture": {
+    "current_explorer_records": 93,
+    "current_explorer_status": "100_PERCENT_OF_CURRENT_EPOCH_EXPLORER",
+    "source_url": "https://epoch.ai/data/ai-data-centers/directory",
+    "source_updated": "2026-09-24",
+    "accessed_on": "2026-09-27",
+    "license": "CC BY 4.0",
+    "note": "The current Epoch directory reports 93 results. Every current Epoch record is already preserved in data/external/epoch_ai/registry.json."
+  },
+  "epoch_global_coverage_report": {
+    "global_compute_coverage_percent": 44,
+    "coverage_reference_date": "2026-09-09",
+    "explorer_site_count_at_publication": 86,
+    "source_url": "https://epoch.ai/topics/data-centers",
+    "chinese_coverage_range_percent": [
+      9,
+      31
+    ],
+    "semantics": "Coverage is an estimate of cumulative AI data-center capacity divided by cumulative chip-owner capacity; owner capacity is extrapolated after the last Q4 2025 observation. It should not be interpreted as a global facility-count percentage."
+  },
+  "current_epoch_normalized_field_coverage": {
+    "records": 93,
+    "address": {
+      "captured": 80,
+      "missing": 13
+    },
+    "project": {
+      "captured": 64,
+      "missing": 29
+    },
+    "investors": {
+      "captured": 10,
+      "missing": 83
+    },
+    "construction_companies": {
+      "captured": 28,
+      "missing": 65
+    },
+    "energy_companies": {
+      "captured": 63,
+      "missing": 30
+    }
+  },
+  "current_research_state": {
+    "track3_sites": 93,
+    "research_tasks": 984,
+    "publisher_field_tasks": 273,
+    "domain_tasks": 711,
+    "public_web_evidence_records": 316,
+    "public_web_evidence_sites": 88,
+    "remote_sensing_derived_observations": 408,
+    "remote_sensing_sites_with_derived_observations": 68
+  },
+  "discovery_universes": [
+    {
+      "id": "EPOCH_AI",
+      "records": 93,
+      "scope": "current Epoch explorer",
+      "date": "2026-09-24",
+      "role": "canonical current frontier-AI site universe"
+    },
+    {
+      "id": "AI_DATA_CENTER_INDEX",
+      "records": 346,
+      "countries": 64,
+      "date": "2026-06-18",
+      "role": "external discovery / independent comparator",
+      "url": "https://aidatacenterindex.com/"
+    },
+    {
+      "id": "DATA_CENTER_INDEX",
+      "records": 702,
+      "countries": 64,
+      "date": "2026-09-26",
+      "role": "broader global data-center campus discovery",
+      "url": "https://datacenterindex.ai/"
+    },
+    {
+      "id": "COMPUTE_ATLAS",
+      "records": 2228,
+      "geography": "United States",
+      "date": "2026-09-25",
+      "role": "broader US data-center discovery",
+      "url": "https://www.compute-atlas.com/data"
+    }
+  ],
+  "owner_coverage": [
+    {
+      "owner": "Total explorer coverage",
+      "coverage_percent": 44,
+      "reference_date": "2026-09-09",
+      "note": "Epoch AI published this as its estimated global AI-compute coverage when the explorer had 86 sites."
+    },
+    {
+      "owner": "xAI",
+      "coverage_percent": 100,
+      "reference_date": "2026-09-09",
+      "note": "Equal by construction in Epoch's coverage model."
+    },
+    {
+      "owner": "Meta",
+      "coverage_percent": 68,
+      "reference_date": "2026-09-09",
+      "note": "Epoch estimate."
+    },
+    {
+      "owner": "CoreWeave",
+      "coverage_percent": 54,
+      "reference_date": "2026-09-09",
+      "note": "Epoch estimate."
+    },
+    {
+      "owner": "Google",
+      "coverage_percent": 40,
+      "reference_date": "2026-09-09",
+      "note": "Epoch estimate."
+    },
+    {
+      "owner": "Amazon",
+      "coverage_percent": 37,
+      "reference_date": "2026-09-09",
+      "note": "Epoch estimate."
+    },
+    {
+      "owner": "Oracle",
+      "coverage_percent": 37,
+      "reference_date": "2026-09-09",
+      "note": "Epoch estimate."
+    },
+    {
+      "owner": "Microsoft",
+      "coverage_percent": 33,
+      "reference_date": "2026-09-09",
+      "note": "Epoch estimate."
+    },
+    {
+      "owner": "China",
+      "coverage_percent": 17,
+      "reference_date": "2026-09-09",
+      "note": "Epoch reports an estimated range of roughly 9–31% for China."
+    }
+  ],
+  "candidate_records": [
+    {
+      "id": "DCI-IND-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Adani & Google Visakhapatnam AI Campus",
+      "country": "India",
+      "region": "Andhra Pradesh",
+      "capacity_mw": 1000,
+      "status": "under_construction",
+      "source_class": "first_party",
+      "source_url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+      "overlap_status": "likely_new_or_split_campus",
+      "research_action": "Verify whether the gigawatt-scale hub is one campus or multiple counted campuses before promotion."
+    },
+    {
+      "id": "DCI-IND-002",
+      "record_type": "facility_candidate",
+      "facility_name": "NTT DATA / Neysa Telangana AI Data Center Cluster",
+      "country": "India",
+      "region": "Telangana",
+      "capacity_mw": 400,
+      "status": "announced",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=India",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Cluster/program; requires campus-level decomposition and primary-source verification."
+    },
+    {
+      "id": "DCI-IND-003",
+      "record_type": "facility_candidate",
+      "facility_name": "Yotta D2 AI Supercluster",
+      "country": "India",
+      "region": "Uttar Pradesh",
+      "capacity_mw": 250,
+      "status": "under_construction",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=India",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify exact campus boundary, power scope and source date."
+    },
+    {
+      "id": "DCI-IND-004",
+      "record_type": "facility_candidate",
+      "facility_name": "Reliance Jio Jamnagar AI Mega Campus",
+      "country": "India",
+      "region": "Gujarat",
+      "capacity_mw": null,
+      "status": "under_construction",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=India",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Capacity not stated in cited public index row; seek operator/source filing."
+    },
+    {
+      "id": "DCI-CHN-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Baidu AI Cloud Yanqi Lake",
+      "country": "China",
+      "region": "Beijing",
+      "capacity_mw": 600,
+      "status": "operational",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/china/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Cross-check against Baidu/Beijing source and Epoch coverage before promotion."
+    },
+    {
+      "id": "DCI-CHN-002",
+      "record_type": "facility_candidate",
+      "facility_name": "Huawei Cloud Guizhou AI Data Center",
+      "country": "China",
+      "region": "Guizhou",
+      "capacity_mw": 400,
+      "status": "operational",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/china/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Seek Huawei/local-government primary source and establish campus boundary."
+    },
+    {
+      "id": "DCI-CHN-003",
+      "record_type": "facility_candidate",
+      "facility_name": "Tencent Tianjin AI Data Center",
+      "country": "China",
+      "region": "Tianjin",
+      "capacity_mw": 300,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/china/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Validate exact site and current operating status."
+    },
+    {
+      "id": "DCI-CHN-004",
+      "record_type": "facility_candidate",
+      "facility_name": "ByteDance Volcengine Inner Mongolia Horinger",
+      "country": "China",
+      "region": "Inner Mongolia",
+      "capacity_mw": 100,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/china/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Check whether this is distinct from other Horinger entries."
+    },
+    {
+      "id": "DCI-CHN-005",
+      "record_type": "facility_candidate",
+      "facility_name": "DeepSeek AI Training Cluster",
+      "country": "China",
+      "region": "Inner Mongolia",
+      "capacity_mw": 100,
+      "status": "reported",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/china/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Treat as reported lead until primary or local planning evidence is found."
+    },
+    {
+      "id": "DCI-CHN-006",
+      "record_type": "facility_candidate",
+      "facility_name": "SenseTime Lin-gang AI Data Center",
+      "country": "China",
+      "region": "Shanghai",
+      "capacity_mw": null,
+      "status": "operational",
+      "source_class": "first_party_public_sector",
+      "source_url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20240415/82400f77d757431699873ebff2bfc2d6.html",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Operational status and 8.1 EFLOPS deployed are publicly reported; MW remains to be established."
+    },
+    {
+      "id": "DCI-CHN-007",
+      "record_type": "cluster_program_candidate",
+      "facility_name": "ByteDance Ulanqab AI data-center expansion",
+      "country": "China",
+      "region": "Inner Mongolia",
+      "capacity_mw": 5500,
+      "status": "reported_pipeline",
+      "source_class": "reported_secondary",
+      "source_url": "https://www.scmp.com/tech/big-tech/article/3366220/bytedance-expand-massive-ai-data-centre-cluster-inner-mongolia-source-says",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Reported 5–6 GW cluster; not a single facility. Keep separate from facility census."
+    },
+    {
+      "id": "DCI-CHN-008",
+      "record_type": "facility_candidate",
+      "facility_name": "Z.ai 1 GW AI data center",
+      "country": "China",
+      "region": "Unknown",
+      "capacity_mw": 1000,
+      "status": "reported_partially_online",
+      "source_class": "reported_secondary",
+      "source_url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/z-ai-finishes-building-1gw-data-center-in-china-with-chinese-chips",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Validate exact location, campus identity and operating phase."
+    },
+    {
+      "id": "DCI-MYS-001",
+      "record_type": "facility_candidate",
+      "facility_name": "ByteDance Johor AI Data Center",
+      "country": "Malaysia",
+      "region": "Johor",
+      "capacity_mw": 500,
+      "status": "under_construction",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Malaysia",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify distinct site identity versus DayOne/Johor records."
+    },
+    {
+      "id": "DCI-THA-001",
+      "record_type": "facility_candidate",
+      "facility_name": "ByteDance Thailand AI Data Hub",
+      "country": "Thailand",
+      "region": "Thailand",
+      "capacity_mw": 400,
+      "status": "under_construction",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Thailand",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify exact site, operator entity and source capacity."
+    },
+    {
+      "id": "DCI-MYS-002",
+      "record_type": "facility_candidate",
+      "facility_name": "Oracle Malaysia AI Data Center",
+      "country": "Malaysia",
+      "region": "Malaysia",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Malaysia",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify whether 500 MW is campus capacity or broader program scope."
+    },
+    {
+      "id": "DCI-MYS-003",
+      "record_type": "facility_candidate",
+      "facility_name": "YTL / NVIDIA Johor AI Data Center",
+      "country": "Malaysia",
+      "region": "Johor",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Malaysia",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Resolve campus boundary and whether capacity overlaps another Johor project."
+    },
+    {
+      "id": "DCI-USA-001",
+      "record_type": "facility_candidate",
+      "facility_name": "AWS Pennsylvania AI data center",
+      "country": "United States",
+      "region": "Pennsylvania",
+      "capacity_mw": 1920,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/united-states/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Potential overlap with Amazon Pennsylvania records; entity-resolve before adding."
+    },
+    {
+      "id": "DCI-USA-002",
+      "record_type": "facility_candidate",
+      "facility_name": "Vantage Frontier Shackelford",
+      "country": "United States",
+      "region": "Texas",
+      "capacity_mw": 1400,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/countries/united-states/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify exact campus and build phase."
+    },
+    {
+      "id": "DCI-CAN-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Wonder Valley Off-Grid AI Data Center Park",
+      "country": "Canada",
+      "region": "Alberta",
+      "capacity_mw": 7500,
+      "status": "planned",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Large proposed campus; verify planning status, power scope and exact project entity."
+    },
+    {
+      "id": "DCI-UAE-001",
+      "record_type": "facility_candidate",
+      "facility_name": "G42 Stargate UAE–US AI Campus",
+      "country": "United Arab Emirates",
+      "region": "Abu Dhabi",
+      "capacity_mw": 5000,
+      "status": "under_construction",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Separate campus from individual 200 MW Stargate cluster and other UAE projects."
+    },
+    {
+      "id": "DCI-SAU-001",
+      "record_type": "facility_candidate",
+      "facility_name": "DataVolt NEOM Oxagon AI data center",
+      "country": "Saudi Arabia",
+      "region": "Oxagon",
+      "capacity_mw": 1500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Establish whether 1.5 GW is full campus or phase/program capacity."
+    },
+    {
+      "id": "DCI-BRA-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Scala AI City — Eldorado do Sul",
+      "country": "Brazil",
+      "region": "Rio Grande do Sul",
+      "capacity_mw": 4750,
+      "status": "planned",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Treat 4.75 GW as authorized/planned campus scope, not delivered load."
+    },
+    {
+      "id": "DCI-FRA-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Mistral Campus AI / MGX",
+      "country": "France",
+      "region": "Hauts-de-France",
+      "capacity_mw": 1400,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify campus/program boundary and source capacity."
+    },
+    {
+      "id": "DCI-ROU-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Romania Black Sea AI Gigafactory",
+      "country": "Romania",
+      "region": "Romania",
+      "capacity_mw": 1500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://aidatacenterindex.com/",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify project entity, phase boundary and public source."
+    },
+    {
+      "id": "DCI-POL-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft Azure Poland Central",
+      "country": "Poland",
+      "region": "Masovian",
+      "capacity_mw": 500,
+      "status": "operational",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Poland",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Likely cloud/AI-relevant rather than AI-only; classify workload separately."
+    },
+    {
+      "id": "DCI-GBR-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft Azure UK South Region",
+      "country": "United Kingdom",
+      "region": "Greater London",
+      "capacity_mw": 500,
+      "status": "operational",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=United%20Kingdom",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Likely cloud/AI-relevant rather than AI-only; classify workload separately."
+    },
+    {
+      "id": "DCI-BRA-002",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft São Paulo AI Infrastructure",
+      "country": "Brazil",
+      "region": "São Paulo",
+      "capacity_mw": 500,
+      "status": "operational",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Brazil",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify whether figure is site-specific or program capacity."
+    },
+    {
+      "id": "DCI-USA-003",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft Goodyear AI/data-center infrastructure",
+      "country": "United States",
+      "region": "Arizona",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?state=AZ",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify campus identity and whether 500 MW is full-build scope."
+    },
+    {
+      "id": "DCI-USA-004",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft Quincy AI/data-center infrastructure",
+      "country": "United States",
+      "region": "Washington",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?state=WA",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify campus identity and AI workload designation."
+    },
+    {
+      "id": "DCI-SWE-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft Sweden Central AI/data-center infrastructure",
+      "country": "Sweden",
+      "region": "Sweden",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Sweden",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Verify exact campus and whether 500 MW is full-build."
+    },
+    {
+      "id": "DCI-JPN-001",
+      "record_type": "facility_candidate",
+      "facility_name": "Microsoft Japan AI data centers",
+      "country": "Japan",
+      "region": "Japan",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Japan",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Program/campus boundary needs primary-source confirmation."
+    },
+    {
+      "id": "DCI-JPN-002",
+      "record_type": "facility_candidate",
+      "facility_name": "AWS Tokyo AI/data-center infrastructure",
+      "country": "Japan",
+      "region": "Tokyo",
+      "capacity_mw": 500,
+      "status": "tracked; verify",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects?country=Japan",
+      "overlap_status": "unresolved_overlap",
+      "research_action": "Classify AI-specific versus general cloud capacity."
+    },
+    {
+      "id": "DCI-USA-005",
+      "record_type": "facility_candidate",
+      "facility_name": "Meta Hyperion",
+      "country": "United States",
+      "region": "Louisiana",
+      "capacity_mw": 5000,
+      "status": "under_construction",
+      "source_class": "secondary_discovery",
+      "source_url": "https://datacenterindex.ai/projects/meta-hyperion",
+      "overlap_status": "already_in_epoch",
+      "research_action": "Already represented in the current Epoch/93-site layer; retain as cross-source corroboration, not a new row."
+    }
+  ],
+  "candidate_record_count": 33,
+  "promotion_policy": "No discovery candidate is added to the canonical Epoch 93-site mirror or the conservative large-load core without entity resolution, source-backed facility identity, a clear capacity scope, and a documented overlap check.",
+  "limitations": [
+    "There is no authoritative worldwide census of AI data centers.",
+    "Epoch's global compute coverage is a modeled capacity estimate, not a facility-count census.",
+    "External discovery indexes have their own inclusion rules and may contain cloud programs, phases, power assets, or overlapping campus records.",
+    "A candidate being absent from Epoch does not prove it is absent from the world, and appearing in a discovery index does not prove it is a distinct facility."
+  ]
+}
