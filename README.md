@@ -177,9 +177,9 @@ The project-level dataset now includes **60 BPA large-load request records** wit
 
 The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
 
-The project-level layer has grown to **250 records**, with **249 mapped project records**. The only intentionally unlocated project-level record is the **Woostor LLC Alabama Power contract**, because the public contract evidence reviewed does not identify a site. A separate `data/supplemental_aggregate_map.json` adds **62 geographic evidence footprints**; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
+The project-level layer has grown to **253 records**, with **252 mapped project records**. The only intentionally unlocated project-level record is the **Woostor LLC Alabama Power contract**, because the public contract evidence reviewed does not identify a site. A separate `data/supplemental_aggregate_map.json` adds **63 geographic evidence footprints**; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
 
-The 250 project records have one canonical `evidence_type` each. Current counts are:
+The 253 project records have one canonical `evidence_type` each. Current counts are:
 
 - `environmental_permit_record`: 33
 - `named_utility_load_project`: 8
@@ -203,7 +203,7 @@ The 250 project records have one canonical `evidence_type` each. Current counts 
 - `utility_named_large_load_transmission_project`: 1
 - `utility_large_load_contract_record`: 3
 
-Those counts sum to exactly 250. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
+Those counts are generated from the canonical JSON and currently sum to exactly 253. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
 
 The interactive map overlays **249 mapped project-level records** and separately represents the unlocated Woostor contract through a labeled Alabama regional evidence footprint. `data/map_layer_manifest.json` is the machine-readable inventory of every map overlay and its geometry/accounting treatment.
 
@@ -231,7 +231,7 @@ Current examples include:
 
 Additional utility layers now include APS's reported 19 GW uncommitted extra-large-customer queue, AEP's 69 GW of contracted load growth through 2030, AEP Ohio's approximately 12 GW of new contracted load through 2030, the planned 10 GW Piketon data-center campus, Ameren Missouri's up-to-2 GW demand-planning envelope, and PacifiCorp's ongoing tens-to-hundreds-of-MW large-customer request stream. These remain supplemental and are not added to the core total without project-level deduplication.
 
-The supplemental evidence file now contains **55 source/evidence units**, including the current CAISO full public-queue report metadata and additional BPA/PJM/ComEd/MISO utility and planning evidence. These units are not automatically additive.
+The supplemental evidence file now contains **58 source/evidence units**, including the current CAISO full public-queue report metadata and additional BPA/PJM/ComEd/MISO utility and planning evidence. These units are not automatically additive.
 
 These measures are **not summed** into a single "total capacity" because they have different units, vintages, geographic scopes, stage definitions and overlap relationships. The only direct additive expansion to the current row-level registry is the separately identified 83-record / 35.9 GW MISO population used in the expanded-known scope metric.
 
@@ -256,7 +256,7 @@ The repository has a dedicated project-level evidence layer at `data/project_lev
 
 The project layer is deliberately **not additive** to the 1,558-row core queue table or the 1,641-record expanded-known scope. Multiple dated capacity claims inside one project are retained separately. No MW is inferred when a utility does not publish the load.
 
-The interactive map now overlays **249 mapped project-level records** and separately represents the one unlocated Woostor contract as a labeled aggregate footprint. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **61 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
+The interactive map now overlays **252 mapped project-level records** and separately represents the one unlocated Woostor contract as a labeled aggregate footprint. Map geometry is explicitly display geography (public site-area, town, county, state/province or country centroid), not an invented street address. A separate `data/supplemental_aggregate_map.json` layer adds **63 aggregate utility/regulatory and historical-queue footprints**, displayed as shaded areas and labeled as non-facility evidence.
 
 The Epoch AI map layer contains **93 frontier-site observations** and is backed by the canonical `data/external/epoch_ai/site_level_connection_evidence.json` crosswalk. Of the 93 sites, **59 currently have site-level grid evidence records and 34 remain pending site-specific grid-record research**. The map popups expose the evidence status and available source links.
 
@@ -419,7 +419,7 @@ Apache License 2.0 -- see `LICENSE`.
 grid.telemetry.initiative@gmail.com
 
 
-**Map coverage:** `data/project_level_map.json` contains 235 project-level records and currently has numeric display coordinates for all 241. `data/supplemental_aggregate_map.json` contains 61 aggregate/historical records and currently has numeric display coordinates for all 61. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
+**Map coverage:** `data/project_level_map.json` contains 252 mapped project records out of 253 project-level records; the sole unlocated project is explicitly documented. `data/supplemental_aggregate_map.json` contains 63 aggregate/historical records and currently has numeric display coordinates for all 63. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
 
 
 Map-layer accounting is published in `data/map_layer_manifest.json` and `data/map_layer_manifest.csv`.
