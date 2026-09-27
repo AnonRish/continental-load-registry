@@ -11,6 +11,7 @@ FALLBACK_URL="https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnectio
 ALTERNATE_FALLBACK_URLS=[
     "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
     "https://www.nyiso.com/documents/20142/2226333/NYISO-Interconnection-Queue.xlsx",
+    "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx/f615d83e-eea6-ccf6-ec07-b4ecbe78d8ef",
 ]
 SHEETS={"Interconnection Queue":"active"," Cluster Projects":"cluster_active","Withdrawn":"withdrawn","Cluster Projects-Withdrawn":"cluster_withdrawn","In Service":"in_service"}
 class LinkParser(HTMLParser):
