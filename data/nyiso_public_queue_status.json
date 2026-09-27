@@ -2,17 +2,14 @@
   "schema_version": 1,
   "source_id": "NYISO",
   "status": "SOURCE_UNAVAILABLE_AT_CAPTURE",
-  "captured_at": "2026-09-27T04:45:00Z",
+  "captured_at": "2026-09-27T04:49:36Z",
   "page_url": "https://www.nyiso.com/interconnections",
   "official_workbook_urls": [
     "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
-    "https://www.nyiso.com/documents/20142/2226333/NYISO-Interconnection-Queue.xlsx"
+    "https://www.nyiso.com/documents/20142/2226333/NYISO-Interconnection-Queue.xlsx",
+    "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx/f615d83e-eea6-ccf6-ec07-b4ecbe78d8ef"
   ],
-  "error": "The automated public-source adapter received a non-XLSX response from the official workbook candidates. No complete queue rows were fabricated.",
+  "error": "Automated retrieval did not return an XLSX payload. No queue rows were fabricated.",
   "existing_snapshot_present": false,
-  "retained_alternatives": [
-    "data/project_level_extractions.json",
-    "data/supplemental_large_load_evidence.json"
-  ],
-  "next_action": "Retry the official workbook source on the next scheduled capture; promote to a current complete row-level export only after a valid XLSX payload is received and parsed."
+  "next_action": "Retry the official workbook source on the next scheduled run; preserve named public Load Project/Gold Book evidence separately until the workbook is captured."
 }
