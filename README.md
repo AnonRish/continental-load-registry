@@ -156,6 +156,8 @@ attribution under CC BY 4.0.
 
 ## Track 3 physical verification layers
 
+Build revision: 2026-09-27 physical evidence publication pass.
+
 The physical-verification layer is now an active acquisition surface rather than a checklist only. The repository retains compact Sentinel-2 optical, Landsat Collection 2 surface-temperature, and Sentinel-1 GRD derived observations with scene provenance when the public source scene is available. Full source rasters remain external.
 
 Current building-footprint geometry is acquired from the Overture Maps building dataset and retained as per-site GeoJSON. Overture documents that building geometry represents a two-dimensional building footprint or roofprint, and its Python client supports bounding-box downloads; this repository uses the underlying public GeoParquet through DuckDB for batch acquisition.
