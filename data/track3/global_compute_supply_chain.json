@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Global AI-compute supply-chain evidence layer",
+  "purpose": "Assemble public evidence relevant to Track 3 accounting of pre-deal compute production, sales, ownership and physical end use without treating aggregate estimates as transaction-level proof.",
+  "status_semantics": {
+    "INGESTED_SNAPSHOT": "Repository contains a dated source snapshot or derived table.",
+    "PUBLIC_OFFICIAL_SOURCE": "Official public source is cataloged but not ingested transaction-level data.",
+    "PARTIAL": "Some chain elements are represented; complete reconciliation is not possible from the retained public source.",
+    "UNKNOWN": "A numeric/global closure cannot be computed without missing transaction or inspection data."
+  },
+  "current": {
+    "owner_cumulative_rows": 215,
+    "distinct_owners": 10,
+    "sales_timeline_rows": 160,
+    "sales_organization_rows": 12,
+    "sales_chip_type_rows": 36,
+    "distinct_chip_types": 25,
+    "component_by_chip_rows": 102,
+    "component_by_designer_rows": 43,
+    "supply_denominator_quarters": 8,
+    "user_year_end_rows": 11,
+    "user_labs": 5,
+    "global_transaction_level_closure": "UNKNOWN",
+    "current_untraced_pool": "UNKNOWN"
+  },
+  "source_layers": [
+    {
+      "id": "EPOCH_OWNER_CUMULATIVE",
+      "status": "INGESTED_SNAPSHOT",
+      "repository_paths": [
+        "data/external/epoch_ai/ai_chip_owners_cumulative_by_designer.csv",
+        "data/external/epoch_ai/ai_chip_owners_cumulative_by_chip_type.csv"
+      ],
+      "role": "Aggregate organization/owner snapshots; cumulative rows overlap in time and must not be summed across dates."
+    },
+    {
+      "id": "EPOCH_SALES_TIMELINE",
+      "status": "INGESTED_SNAPSHOT",
+      "repository_path": "data/external/epoch_ai/ai_chip_sales_timelines_by_chip.csv",
+      "role": "Quarter/chip estimated unit and H100e flows; not invoices, serial records, or guaranteed shipments."
+    },
+    {
+      "id": "EPOCH_SALES_ORGS",
+      "status": "INGESTED_SNAPSHOT",
+      "repository_path": "data/external/epoch_ai/ai_chip_sales_organizations.csv",
+      "role": "Publisher organization/chip-designer scope."
+    },
+    {
+      "id": "EPOCH_USERS",
+      "status": "INGESTED_SNAPSHOT",
+      "repository_paths": [
+        "data/external/epoch_ai/ai_chip_users_year_end_by_lab.csv",
+        "data/external/epoch_ai/ai_chip_users_intermediates_by_lab.csv"
+      ],
+      "role": "Organization-level user snapshots; physical location linkage remains separate."
+    },
+    {
+      "id": "EPOCH_COMPONENTS",
+      "status": "INGESTED_SNAPSHOT",
+      "repository_paths": [
+        "data/external/epoch_ai/ai_chip_components_quarterly_by_chip.csv",
+        "data/external/epoch_ai/ai_chip_components_quarterly_by_designer.csv",
+        "data/external/epoch_ai/ai_chip_components_supply_denominators.csv"
+      ],
+      "role": "Upstream component-supply and implied production constraints."
+    },
+    {
+      "id": "NVIDIA_SEC_2026",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "role": "Current public disclosure of direct/indirect customer structure, product scope, geography and controlled-compute export exposure."
+    },
+    {
+      "id": "TSMC_ANNUAL_2025",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
+      "role": "Upstream manufacturing/packaging capacity context and global manufacturing footprint."
+    },
+    {
+      "id": "US_CENSUS_TRADE",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://www.census.gov/data/developers/data-sets/international-trade.html",
+      "role": "Public U.S. merchandise import/export data by HS code, geography, quantity/value and shipping information; commodity classifications are broader than individual accelerator models."
+    },
+    {
+      "id": "GLEIF_LEVEL2",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://www.gleif.org/en/lei-data/access-and-use-lei-data/level-2-data-who-owns-whom",
+      "role": "Global legal-entity identity plus direct/ultimate parent relationships."
+    },
+    {
+      "id": "GLEIF_DAILY_2026_09_25",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://www.gleif.org/en/lei-data/gleif-concatenated-file/download-the-concatenated-file",
+      "role": "Latest public Level 1/Level 2 files available 2026-09-25 in the current web check."
+    },
+    {
+      "id": "SEC_EXHIBIT_21",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://www.sec.gov/edgar/search/",
+      "role": "Issuer subsidiary lists and corporate-family evidence for public companies."
+    },
+    {
+      "id": "EU_WEEE",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://environment.ec.europa.eu/topics/waste-and-recycling/waste-electrical-and-electronic-equipment-weee/implementation-weee-directive_en",
+      "role": "Official WEEE collection/reuse/recycling reporting context relevant to decommissioning/attrition modeling."
+    }
+  ],
+  "chain_model": [
+    {
+      "stage": 1,
+      "name": "Production",
+      "inputs": [
+        "logic_wafers",
+        "advanced_packaging",
+        "HBM",
+        "auxiliary_components"
+      ],
+      "output": "finished_accelerator_production_estimate"
+    },
+    {
+      "stage": 2,
+      "name": "Sale",
+      "inputs": [
+        "vendor_production",
+        "sales_records"
+      ],
+      "output": "direct_customer_delivery_record"
+    },
+    {
+      "stage": 3,
+      "name": "Transfer/resale",
+      "inputs": [
+        "customer_delivery",
+        "resale_or_transfer_records"
+      ],
+      "output": "current_recipient_record"
+    },
+    {
+      "stage": 4,
+      "name": "Current owner",
+      "inputs": [
+        "entity_resolution",
+        "legal_relationships"
+      ],
+      "output": "auditable_owner"
+    },
+    {
+      "stage": 5,
+      "name": "Physical location",
+      "inputs": [
+        "owner_records",
+        "site_evidence",
+        "inspection"
+      ],
+      "output": "physical_end_use"
+    },
+    {
+      "stage": 6,
+      "name": "Disposition",
+      "inputs": [
+        "current_inventory",
+        "decommissioning",
+        "recycling",
+        "destruction"
+      ],
+      "output": "verified_terminal_state"
+    }
+  ],
+  "closure_requirements": [
+    "Every pre-deal production estimate needs a source/date and unit definition.",
+    "Every direct sale used in deterministic audit needs a vendor-recipient relation.",
+    "Every resale/transfer needs source and destination entities where recorded.",
+    "Current-owner identity must resolve through the entity graph.",
+    "Physical end use requires site evidence or authorized inspection; company-level ownership is not enough.",
+    "Decommissioning requires recycler/destruction corroboration or remains in the residual pool."
+  ],
+  "public_source_limit": "No public source found in this pass provides a globally exhaustive transaction-level serial-number ledger of all AI accelerators. Therefore a complete numeric global untraced-compute value cannot honestly be filled from public data alone."
+}
