@@ -364,7 +364,7 @@ jobs:
           cases = json.loads(Path("data/track3/ambiguous_case_studies.json").read_text(encoding="utf-8"))
           strict = json.loads(Path("data/track3/strict_discovery_candidates.json").read_text(encoding="utf-8"))
 
-          assert len(cases["cases"]) == 3
+          assert len(cases["cases"]) == 4
           for case in cases["cases"]:
               q = case["queue"]
               assert str(q["project_type"]).strip().lower() in {"load", "new load facility", "increase load"}
@@ -373,7 +373,7 @@ jobs:
 
           ids = [x["queue_id"] for x in strict["candidates"]]
           assert len(ids) == len(set(ids))
-          assert 4 <= len(ids) <= 5
+          assert len(ids) == 5
           for x in strict["candidates"]:
               assert x["capacity_mw"] >= 100
               assert x["load_status"] == "PUBLICLY_CLASSIFIED_LOAD"
