@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Global compute universe source manifest",
+  "purpose": "Source registry for the broader database surface. These universes are kept non-additive and source-labeled; conservative entity resolution links overlaps without claiming a worldwide census.",
+  "sources": [
+    {
+      "name": "Epoch AI",
+      "role": "frontier AI data-center anchor",
+      "reference_record_count": 93,
+      "license": "CC BY 4.0",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory",
+      "local_snapshot": "data/external/epoch_ai/registry.json",
+      "mode": "local canonical snapshot",
+      "notes": "Current explorer records are preserved locally. Epoch's own global-compute coverage estimate is a capacity-coverage measure, not a facility-count census."
+    },
+    {
+      "name": "Compute Atlas",
+      "role": "broad U.S. compute universe",
+      "reference_record_count": 2228,
+      "license": "CC BY 4.0",
+      "source_url": "https://www.compute-atlas.com/api/facilities",
+      "stable_snapshot_url": "https://raw.githubusercontent.com/ek33450505/compute-atlas/v1.34.0/data/facilities.json",
+      "local_snapshot": "data/external/compute_atlas/facilities.json",
+      "mode": "live API + scheduled snapshot",
+      "notes": "Includes data centers, crypto-mining sites and dedicated power-generation records. The database keeps facilityType so these populations are not silently mixed."
+    },
+    {
+      "name": "Data Center Index",
+      "role": "global named-campus universe",
+      "reference_record_count": 901,
+      "counted_campus_count": 702,
+      "license": "CC BY 4.0",
+      "source_url": "https://datacenterindex.ai/data",
+      "download_url": "https://datacenterindex.ai/data/datacenterindex-campuses.json",
+      "local_snapshot": "data/external/data_center_index/campuses.json",
+      "mode": "public download + scheduled snapshot",
+      "notes": "The free file contains 901 tracked rows, including 702 counted campuses and rows for phases/buildings/power assets/programs that the publisher does not count as campuses."
+    }
+  ],
+  "coverage_semantics": {
+    "unique_view": "Conservative name-plus-place matching. A match is a link between source records, not proof that two records are the same legal entity when source identity is ambiguous.",
+    "missing_fields": "A blank or unavailable field is not treated as zero or absence.",
+    "global_completeness": "No public source used here establishes a complete worldwide census. The objective is broader source coverage with explicit provenance and uncertainty."
+  },
+  "planned_additions": [
+    "National and provincial/state data-center permit/utility inventories outside current source universes",
+    "Additional regional AI infrastructure indexes with reusable licenses",
+    "Historical snapshots and change detection across every source",
+    "Primary-source enrichment for capacity, power, grid connection, tenants, construction and physical evidence"
+  ]
+}
