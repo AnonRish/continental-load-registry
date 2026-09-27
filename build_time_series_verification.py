@@ -292,7 +292,7 @@ def main() -> int:
             {"path": str(TIMELINE_CSV.relative_to(ROOT)).replace("\\", "/"), "publisher": "Epoch AI", "role": "dated facility construction/power timeline"},
             {"path": str(POWER_JSON.relative_to(ROOT)).replace("\\", "/"), "publisher": "published company report snapshots", "role": "site-specific annual electricity consumption"},
             {"path": str(CAISO_JSON.relative_to(ROOT)).replace("\\", "/"), "publisher": "CAISO", "role": "historical queue series"},
-            {"path": str(PJM_JSON.relative_to(ROOT)).replace("\\", "/"), "PJM LAS public material", "role": "dated large-load submission history"},
+            {"path": str(PJM_JSON.relative_to(ROOT)).replace("\\", "/"), "publisher": "PJM", "role": "dated large-load submission history"},
         ],
     }
 
