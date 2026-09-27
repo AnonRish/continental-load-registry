@@ -21,6 +21,7 @@ concurrency:
 
 jobs:
   refresh:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -36,7 +37,9 @@ jobs:
           import json
           from pathlib import Path
           d=json.loads(Path("data/track3/research_backlog_summary.json").read_text())
-          assert d["publisher_tasks"] == d["source_sweep"]["effective_unresolved_publisher_fields"] if isinstance(d.get("source_sweep"), dict) else True
+          assert d["publisher_tasks"] == sum(d["publisher_by_field"].values())
+          assert d["domain_tasks"] == sum(d["domain_by_domain"].values())
+          assert d["total_tasks"] == d["publisher_tasks"] + d["domain_tasks"]
           assert d["coverage_assertions"]["publisher_tasks_equal_effective_unresolved"]
           assert d["coverage_assertions"]["domain_tasks_equal_open_cells"]
           assert d["coverage_assertions"]["all_93_sites_represented"]
