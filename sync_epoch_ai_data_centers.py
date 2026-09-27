@@ -157,15 +157,26 @@ def numeric(value: Any) -> float | int | None:
 
 
 def infer_region(address: str, country: str) -> str | None:
-    a = norm(address)
+    """Infer a state/province without confusing street suffixes (Ct, Rd, etc.) for postal codes."""
+    raw = str(address or "").strip()
+    a = norm(raw)
     c = norm(country)
+
+    # Prefer the postal-address token immediately before a US ZIP / Canadian postal code.
+    # This avoids matching street abbreviations such as "Ct" (court) as Connecticut.
     if c in {"united states", "usa", "us"} or "united states" in c:
-        for name, code in STATE_NAMES.items():
-            if re.search(r"\b" + re.escape(code.lower()) + r"\b", a) or re.search(r"\b" + re.escape(name) + r"\b", a):
+        m = re.search(r"(?:,|\s)\b([A-Z]{2})\b\s+\d{5}(?:-\d{4})?\s*$", raw)
+        if m and m.group(1) in {v for v in STATE_NAMES.values()}:
+            return m.group(1)
+        for name, code in sorted(STATE_NAMES.items(), key=lambda kv: len(kv[0]), reverse=True):
+            if re.search(r"\b" + re.escape(name.lower()) + r"\b", a):
                 return code
     if c in {"canada"} or "canada" in c:
-        for name, code in PROVINCE_CODES.items():
-            if re.search(r"\b" + re.escape(code.lower()) + r"\b", a) or re.search(r"\b" + re.escape(name) + r"\b", a):
+        m = re.search(r"(?:,|\s)\b([A-Z]{2})\b\s+[A-Z]\d[A-Z]\s*\d[A-Z]\d\s*$", raw, re.I)
+        if m and m.group(1).upper() in {v for v in PROVINCE_CODES.values()}:
+            return m.group(1).upper()
+        for name, code in sorted(PROVINCE_CODES.items(), key=lambda kv: len(kv[0]), reverse=True):
+            if re.search(r"\b" + re.escape(name.lower()) + r"\b", a):
                 return code
     return None
 
