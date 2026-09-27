@@ -48,6 +48,16 @@
     const max=document.documentElement.scrollHeight-window.innerHeight;
     i.style.width=(max>0?Math.min(100,Math.max(0,window.scrollY/max*100)):0)+'%';
   }
+  function injectIndexCaseLink(){
+    const actions=document.querySelector('.registry-deck-actions');
+    if(!actions||document.getElementById('navClosedCasesLink'))return;
+    const a=document.createElement('a');
+    a.id='navClosedCasesLink';
+    a.className='registry-mini-link';
+    a.href='closed-cases.html';
+    a.textContent='Closed cases';
+    actions.appendChild(a);
+  }
   function injectClosureFocus(){
     if(!isTrack3||document.getElementById('closureFocusBanner'))return;
     fetch('data/track3/ambiguous_case_studies.json?cb=20260927',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
@@ -68,8 +78,9 @@
     const old=document.querySelector('[data-observatory-nav]');
     if(old)old.remove();
     document.getElementById('closureFocusBanner')?.remove();
+    document.getElementById('navClosedCasesLink')?.remove();
     progress();
-    if(isIndex)return;
+    if(isIndex){injectIndexCaseLink();return;}
     const wrap=document.createElement('div');wrap.className='obs-nav-wrap';wrap.setAttribute('data-observatory-nav','');
     const nav=document.createElement('nav');nav.className='obs-nav';nav.setAttribute('aria-label','Registry sections');
     wrap.appendChild(nav);
