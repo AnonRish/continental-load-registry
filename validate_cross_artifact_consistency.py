@@ -94,7 +94,7 @@ def main() -> None:
     epoch = coverage["epoch_capture"]
     assert epoch["current_explorer_records"] == 93
     assert epoch["current_explorer_status"] == "100_PERCENT_OF_CURRENT_EPOCH_EXPLORER"
-    assert coverage["candidate_record_count"] == len(coverage["candidate_records"]) == 30
+    assert coverage["candidate_record_count"] == len(coverage["candidate_records"]) == 33
     assert len(coverage["discovery_universes"]) == 4
     assert len(coverage["owner_coverage"]) == 9
 
@@ -135,7 +135,7 @@ def main() -> None:
 
     print("PASS: canonical cross-artifact consistency")
     print(f"core rows={row_count} capacity_gw={capacity_gw:.4f}")
-    print("Epoch explorer=93/93; candidates=30; research backlog=984; observation tasks=211")
+    print("Epoch explorer=93/93; candidates=33; research backlog=984; observation tasks=211")
 
 
 if __name__ == "__main__":
