@@ -272,7 +272,9 @@
           <tr><td class="px-3 py-2">Epoch AI sites</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2">Public-address-derived site display points</td><td class="px-3 py-2">Separate secondary evidence layer</td></tr>
           <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right">3,873</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
           <tr><td class="px-3 py-2">SPP active queue</td><td class="px-3 py-2 text-right">3,076</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Queue geography</td><td class="px-3 py-2">Current snapshot present</td></tr>
-          <tr><td class="px-3 py-2">CAISO / NYISO / PJM complete queue snapshots</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Official-source refresh layers</td><td class="px-3 py-2">Snapshot files pending successful public retrieval</td></tr>
+          <tr><td class="px-3 py-2">CAISO complete current queue snapshot</td><td class="px-3 py-2 text-right">2,278</td><td class="px-3 py-2 text-right">1,391 ≥100 MW</td><td class="px-3 py-2">Official CAISO workbook</td><td class="px-3 py-2">Current snapshot ingested; historical cluster series remains separate</td></tr>
+        <tr><td class="px-3 py-2">NYISO complete queue snapshot</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Official NYISO workbook</td><td class="px-3 py-2">Live retrieval adapter active; no stale snapshot is substituted</td></tr>
+        <tr><td class="px-3 py-2">PJM current Cycle Service Request snapshot</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Official PJM public status/API</td><td class="px-3 py-2">Live retrieval adapter active; public page reports 1,792 current cycle rows before export/API filtering</td></tr>
         </tbody>
       </table>
     </div>
@@ -300,7 +302,7 @@
       <div class="p-4"><p id="queueUniverseVerifiedIds" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Verified site-level queue IDs</p></div>
       <div class="p-4"><p id="queueUniverseCurrentGaps" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current open U.S. site-specific gaps</p></div>
     </div>
-    <p class="text-xs mt-4" style="color:var(--ink-faint);">The original 72-site U.S. jurisdiction-only gap is preserved as a starting benchmark. The current audit closes the research worklist by assigning all 93 Epoch sites a site-level disposition: exact queue match, site-level public evidence, or explicit NO MATCH FOUND. A no-match is not a claim that the site lacks grid service.</p>
+    <p class="text-xs mt-4" style="color:var(--ink-faint);">The original 72-site U.S. jurisdiction-only gap is preserved as a starting benchmark. The current audit now assigns all 93 Epoch sites an explicit research disposition: verified queue ID, site-level public evidence, researched-no-public-record, or a genuinely still-open source acquisition task. A no-public-record outcome is not a claim that the site lacks grid service.</p>
   </section>
 
   <!-- ============ EPOCH CONNECTION RESEARCH TARGETS ============ -->
