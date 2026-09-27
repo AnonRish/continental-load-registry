@@ -23,6 +23,7 @@ a{color:inherit}.tools{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-f
 @media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.barrow{grid-template-columns:170px minmax(100px,1fr) 55px}}
 @media(max-width:620px){.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.filters{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="observatory-nav.css">
 </head>
 <body>
 <div class="wrap">
@@ -147,5 +148,6 @@ async function load(){
 ["next","next2"].forEach(id=>document.getElementById(id).onclick=()=>move(1));
 load().catch(e=>{document.getElementById("meta").textContent="Research queue failed to load: "+e.message});
 </script>
+<script src="observatory-nav.js" defer></script>
 </body>
 </html>
