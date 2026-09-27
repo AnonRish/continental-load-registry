@@ -22,6 +22,7 @@ concurrency:
 
 jobs:
   acquire:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
