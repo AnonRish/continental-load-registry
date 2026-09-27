@@ -102,7 +102,7 @@ The workflow opens or updates a GitHub issue titled:
 
 `[Track 3 automated source alert] pipeline failures detected`
 
-The issue contains the failing adapter/source and the pipeline run reference. The final gate still fails when an automated adapter or monitored remote source is unavailable.
+The issue contains the failing adapter/source and the pipeline run reference. Source or adapter failures remain explicitly recorded and issue-alerted; the publication gate blocks only integrity failures such as duplicate IDs or malformed evidence.
 
 ## Current limitation
 
