@@ -19,11 +19,12 @@ async function main(){
  const [map,sites,evidence,ts,prov,ver,dossier]=await Promise.all([
   get('data/epoch_ai_map.json'),get('data/track3/site_status.json'),get('data/track3/evidence_records.json'),
   get('data/track3/time_series_verification.json'),get('data/track3/facility_provenance.json'),get('data/track3/verification_results.json'),
-  get('data/track3/public_site_dossier.json')
+  get('data/track3/public_site_dossier.json'),get('data/external/intel_accelerator_enrichment.json')
  ]);
  const m=(map.records||[]).find(x=>x.id===id),s=(sites.records||[]).find(x=>x.epoch_id===id),es=(evidence.records||[]).filter(x=>x.target_id===id);
  const pv=(prov.facilities||[]).find(x=>x.facility_id===id),vr=(ver.results||[]).filter(x=>x.facility_id===id);
  const dr=(dossier.records||[]).find(x=>x.epoch_id===id)||{};
+ const er=(enrichment.records||[]).find(x=>x.epoch_id===id)||{};
  const siteTs=(ts.site_timelines||[]).find(x=>x.epoch_id===id);
  if(!m||!s){document.getElementById('app').innerHTML='<div class="panel"><h1>Facility not found</h1><p class="soft">'+esc(id)+'</p></div>';return;}
  const n=(s.normalized||{}),g=s.grid||{};
