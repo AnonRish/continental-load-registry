@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "scope": "93 canonical Epoch AI frontier-AI reference sites",
+  "workflow_order": [
+    "DISCOVER",
+    "VERIFY_SCOPE",
+    "CAPTURE",
+    "CORROBORATE",
+    "CLASSIFY",
+    "INGEST"
+  ],
+  "stages": {
+    "DISCOVER": "Run the task's site-specific search links and the named source families.",
+    "VERIFY_SCOPE": "Confirm the source actually identifies the site, campus, parcel, project, utility case or physical observation.",
+    "CAPTURE": "Record source URL, document/filing/permit/scene locator, publication or record date when exposed, access date, and the exact supported value/observation.",
+    "CORROBORATE": "For material claims, seek a distinct source origin; mirrored or syndicated copies are not independent corroboration.",
+    "CLASSIFY": "Use an explicit disposition: FOUND, PUBLIC_LEAD_REVIEW_REQUIRED, NO_PUBLIC_RECORD, SOURCE_UNAVAILABLE, DUPLICATE_OF_EXISTING_SOURCE, or CONFLICT_NEEDS_REVIEW.",
+    "INGEST": "Submit through the research submission schema; canonical builders remain the state gate."
+  },
+  "publisher_workflows": {
+    "project": {
+      "label": "Project / program identity",
+      "objective": "Identify the public project/program name corresponding to the site without collapsing a site into a broader corporate initiative.",
+      "search": [
+        "Official owner/developer project pages",
+        "planning and permit documents",
+        "utility/interconnection filings",
+        "local government development records",
+        "reputable local reporting"
+      ],
+      "queries": [
+        "\"{site}\" project data center",
+        "\"{site}\" project program {state}",
+        "\"{site}\" site:sec.gov data center"
+      ],
+      "capture": [
+        "exact public name",
+        "site/project linkage",
+        "publication date",
+        "source URL",
+        "source locator"
+      ],
+      "accept": "Direct site/campus/project linkage.",
+      "reject": "Company-wide initiative with no site linkage."
+    },
+    "investors": {
+      "label": "Investors / financing parties",
+      "objective": "Identify disclosed project-specific financing or investment parties; do not infer them from ownership, tenancy, or ordinary shareholders.",
+      "search": [
+        "SEC 10-K/10-Q/8-K and exhibits",
+        "bond and development-agreement records",
+        "project financing announcements",
+        "municipal incentive records",
+        "official company releases"
+      ],
+      "queries": [
+        "\"{site}\" financing investor",
+        "\"{site}\" development agreement financing",
+        "\"{site}\" investor data center"
+      ],
+      "capture": [
+        "party name",
+        "relationship type",
+        "document/filing",
+        "site/project linkage",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Source explicitly connects the party to financing/investment in the project.",
+      "reject": "Market shareholders or unrelated financing with no site/project linkage."
+    },
+    "construction_companies": {
+      "label": "Construction companies / EPC / GC",
+      "objective": "Identify site-specific general contractors, EPCs, builders, civil contractors or major construction partners.",
+      "search": [
+        "Building permits and permit applicants",
+        "planning/zoning packets",
+        "county/city project records",
+        "contractor project portfolios",
+        "owner/developer releases",
+        "procurement/bid notices"
+      ],
+      "queries": [
+        "\"{site}\" contractor construction",
+        "\"{site}\" EPC general contractor",
+        "\"{site}\" permit contractor {state}"
+      ],
+      "capture": [
+        "company",
+        "role",
+        "site linkage",
+        "permit/contract/project reference",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "The source names the contractor/EPC and ties it to the site/project.",
+      "reject": "Generic contractor work elsewhere for the same owner."
+    },
+    "energy_companies": {
+      "label": "Energy companies / utilities",
+      "objective": "Identify the site-specific serving utility, power provider, energy partner or disclosed direct-supply counterparty.",
+      "search": [
+        "Utility service filings",
+        "state/provincial regulator dockets",
+        "utility large-load/interconnection records",
+        "utility press releases",
+        "site development filings"
+      ],
+      "queries": [
+        "\"{site}\" utility electricity",
+        "\"{site}\" power supply utility {state}",
+        "\"{site}\" interconnection {state}"
+      ],
+      "capture": [
+        "company",
+        "relationship type",
+        "site linkage",
+        "case/docket/project ID",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Source explicitly connects the company to serving, interconnection, supply, or a site-specific agreement.",
+      "reject": "Regional utility presence with no site linkage."
+    },
+    "owner": {
+      "label": "Owner / legal project entity",
+      "objective": "Resolve the current site owner/operator entity at the appropriate legal-entity level.",
+      "search": [
+        "County assessor/property records",
+        "permit applicant/owner",
+        "SEC subsidiary disclosures",
+        "state corporate registries/GLEIF",
+        "official owner pages"
+      ],
+      "queries": [
+        "\"{site}\" owner property",
+        "\"{site}\" LLC owner",
+        "\"{site}\" parcel owner {state}"
+      ],
+      "capture": [
+        "legal entity",
+        "role",
+        "parcel/address if public",
+        "record date",
+        "URL/locator"
+      ],
+      "accept": "Primary or official public record identifies the entity at the site.",
+      "reject": "Parent company alone when a site-specific legal entity is disclosed."
+    },
+    "users": {
+      "label": "Users / tenants / compute counterparties",
+      "objective": "Identify disclosed site users or tenants without turning general customers or partnerships into site occupancy.",
+      "search": [
+        "Owner/operator releases",
+        "tenant/customer announcements",
+        "lease/development records",
+        "company infrastructure disclosures",
+        "reputable local reporting"
+      ],
+      "queries": [
+        "\"{site}\" tenant",
+        "\"{site}\" customer compute",
+        "\"{site}\" Anthropic OR OpenAI OR Google OR Microsoft OR Meta OR Amazon"
+      ],
+      "capture": [
+        "user/tenant",
+        "relationship",
+        "site linkage",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Source explicitly ties the user/tenant/customer relationship to the site/campus.",
+      "reject": "Company-wide customer relationship with no site-specific connection."
+    },
+    "address": {
+      "label": "Site address",
+      "objective": "Resolve the most defensible public physical address or site location string.",
+      "search": [
+        "Official project documents",
+        "permits",
+        "planning packets",
+        "property records",
+        "utility/site filings",
+        "operator/developer pages"
+      ],
+      "queries": [
+        "\"{site}\" address data center",
+        "\"{site}\" permit address {state}",
+        "\"{site}\" parcel"
+      ],
+      "capture": [
+        "address",
+        "record type",
+        "site linkage",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Direct official/primary address or two independent public sources.",
+      "reject": "Geocoding guesses or nearby mailing addresses without site linkage."
+    },
+    "chip_quantities": {
+      "label": "Chip / accelerator quantities",
+      "objective": "Capture site-specific accelerator counts or chip-type quantities only when explicitly attributed to the site.",
+      "search": [
+        "Epoch site-level records",
+        "owner/developer disclosures",
+        "chip/supplier announcements",
+        "procurement or planning documents",
+        "reputable infrastructure reporting"
+      ],
+      "queries": [
+        "\"{site}\" GPU chips",
+        "\"{site}\" H100 H200 GPU",
+        "\"{site}\" accelerator chips"
+      ],
+      "capture": [
+        "chip type",
+        "quantity",
+        "date/period",
+        "source wording",
+        "URL/locator"
+      ],
+      "accept": "Site-specific quantity is explicitly published or preserved in a canonical site-level source.",
+      "reject": "Global shipment/ownership estimates without site allocation."
+    }
+  },
+  "domain_workflows": {
+    "service_or_contract": {
+      "label": "Service / energy contract",
+      "objective": "Find site-specific utility service, capacity reservation, power purchase, direct supply, or contractual energy evidence.",
+      "search": [
+        "Serving utility tariff/service filings",
+        "regulator dockets",
+        "utility large-load proceedings",
+        "municipal/development agreements",
+        "company disclosures"
+      ],
+      "queries": [
+        "\"{site}\" service agreement utility",
+        "\"{site}\" power contract",
+        "\"{site}\" load service agreement {state}"
+      ],
+      "capture": [
+        "counterparties",
+        "contract/service type",
+        "capacity if stated",
+        "case/docket/document ID",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Document identifies the site and contractual/service relationship.",
+      "reject": "Generic tariff availability or regional service."
+    },
+    "regulatory": {
+      "label": "Regulatory / permitting",
+      "objective": "Collect site-specific planning, zoning, building, environmental, water, air, tax-incentive, or utility proceedings.",
+      "search": [
+        "Municipal planning/building portals",
+        "county records",
+        "state/provincial regulator databases",
+        "environmental agency records",
+        "tax-incentive/public development records"
+      ],
+      "queries": [
+        "\"{site}\" permit planning zoning",
+        "\"{site}\" environmental permit {state}",
+        "\"{site}\" public hearing data center"
+      ],
+      "capture": [
+        "agency",
+        "record type",
+        "case/permit number",
+        "status",
+        "date",
+        "site linkage",
+        "URL/locator"
+      ],
+      "accept": "Official record clearly pertains to the site/project.",
+      "reject": "General policy or program pages without a site-specific action."
+    },
+    "compute_tenancy": {
+      "label": "Compute tenancy / occupancy",
+      "objective": "Establish site-specific tenant/operator/customer evidence for compute infrastructure.",
+      "search": [
+        "Owner/operator releases",
+        "customer/tenant disclosures",
+        "lease or development records",
+        "infrastructure project documents",
+        "reputable local reporting"
+      ],
+      "queries": [
+        "\"{site}\" tenant data center",
+        "\"{site}\" customer cloud compute",
+        "\"{site}\" lease data center"
+      ],
+      "capture": [
+        "tenant/user",
+        "relationship",
+        "capacity/purpose if stated",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Site-specific occupancy or tenancy directly documented.",
+      "reject": "A company's general use of cloud or data centers."
+    },
+    "power_telemetry": {
+      "label": "Power observations / telemetry",
+      "objective": "Find measured or reported electrical consumption/demand attributable to the site while keeping annual aggregates separate from interval telemetry.",
+      "search": [
+        "Utility/regulator filings",
+        "public grid market/load data",
+        "company sustainability reports",
+        "site energy disclosures",
+        "public planning/service documents"
+      ],
+      "queries": [
+        "\"{site}\" electricity consumption MW",
+        "\"{site}\" load MW utility",
+        "\"{site}\" electricity usage annual"
+      ],
+      "capture": [
+        "measurement type",
+        "value/unit",
+        "interval or period",
+        "meter/site scope",
+        "source date",
+        "URL/locator"
+      ],
+      "accept": "Numeric observation with clear site scope and measurement period/type.",
+      "reject": "Queue MW, service capacity, generation capacity, or contracted demand presented as measured load."
+    },
+    "remote_sensing": {
+      "label": "Remote sensing",
+      "objective": "Acquire repeatable optical/TIR/SAR evidence for construction, surface/thermal change, and campus evolution.",
+      "search": [
+        "Copernicus Sentinel-2 / Sentinel-1",
+        "USGS Landsat optical/TIRS",
+        "public STAC catalogs",
+        "USGS 3DEP for geometry support"
+      ],
+      "queries": [
+        "\"{site}\" satellite construction",
+        "\"{site}\" satellite thermal data center",
+        "\"{site}\" SAR construction"
+      ],
+      "capture": [
+        "scene/product ID",
+        "acquisition date",
+        "AOI",
+        "processing method",
+        "derived metric",
+        "source URL/catalog identifier"
+      ],
+      "accept": "Reproducible scene plus derived observation with provenance.",
+      "reject": "A satellite image link with no retained observation/processing record."
+    },
+    "cooling": {
+      "label": "Cooling infrastructure",
+      "objective": "Identify site-level cooling equipment, cooling plant design, water use, heat rejection, or cooling infrastructure.",
+      "search": [
+        "Permits and planning documents",
+        "water/environmental records",
+        "owner/developer disclosures",
+        "Epoch cooling datasets",
+        "equipment/project announcements"
+      ],
+      "queries": [
+        "\"{site}\" cooling plant",
+        "\"{site}\" cooling towers chiller",
+        "\"{site}\" water use data center"
+      ],
+      "capture": [
+        "equipment/type",
+        "quantity/capacity if stated",
+        "water/thermal metric if stated",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "Cooling evidence is site-specific and source-backed.",
+      "reject": "Generic data-center cooling design not tied to the site."
+    },
+    "transformer_supply_chain": {
+      "label": "Transformer supply chain",
+      "objective": "Find site-specific transformer specification, procurement, shipment, delivery, installation, or energization evidence.",
+      "search": [
+        "Utility capital/project filings",
+        "public procurement/bid records",
+        "owner/developer disclosures",
+        "manufacturer/contractor project pages",
+        "transport/logistics reporting"
+      ],
+      "queries": [
+        "\"{site}\" transformer",
+        "\"{site}\" substation transformer",
+        "\"{site}\" transformer delivery procurement"
+      ],
+      "capture": [
+        "manufacturer",
+        "model/specification",
+        "quantity",
+        "procurement/shipment/install status",
+        "date",
+        "source URL/locator"
+      ],
+      "accept": "Event tied to the site or its electrical project.",
+      "reject": "Manufacturer product announcement with no site linkage."
+    },
+    "independent_corroboration": {
+      "label": "Independent corroboration",
+      "objective": "Attach a materially independent public source corroborating a site-specific claim already supported elsewhere.",
+      "search": [
+        "Utility/regulator records",
+        "municipal records",
+        "official owner/developer documents",
+        "independent reputable reporting",
+        "independent remote sensing"
+      ],
+      "queries": [
+        "\"{site}\" utility",
+        "\"{site}\" permit",
+        "\"{site}\" construction"
+      ],
+      "capture": [
+        "claim being corroborated",
+        "second source",
+        "source type",
+        "date",
+        "URL/locator",
+        "what exactly agrees/disagrees"
+      ],
+      "accept": "Second source has a distinct origin and supports the same site-specific claim.",
+      "reject": "Mirror copies, syndicated duplicates, or self-referential reposts."
+    }
+  }
+}
