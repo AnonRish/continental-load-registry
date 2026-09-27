@@ -107,8 +107,11 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
     if domain == "service_or_contract":
         types = {"site_specific_service_contract","site_specific_service","site_specific_energy_contract","site_specific_utility_planning"}
         matches = [x for x in ev if x.get("type") in types]
-        if matches:
-            return {"status":"SITE_LEVEL_EVIDENCE","basis":"A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."}
+        crosswalk_service = bool(
+            crosswalk_ev and any(token in crosswalk_status for token in ("service", "contract", "planning", "energy"))
+        )
+        if matches or crosswalk_service:
+            return {"status":"SITE_LEVEL_EVIDENCE","basis":"A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."}
         return {"status":"NOT_INGESTED","basis":"No site-specific service or energy-contract evidence is currently attached."}
     if domain == "compute_tenancy":
         matches = [x for x in ev if x.get("type") in {"site_specific_compute_tenancy","site_specific_compute_contract","site_specific_lease"}]
@@ -129,16 +132,7 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
     if domain == "grid_connection":
         connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support"}
         connection_evidence = [x for x in ev if x.get("type") in connection_types]
-        crosswalk_connection_evidence = bool(
-            crosswalk_ev and (
-                "grid_record" in crosswalk_status
-                or "utility_record" in crosswalk_status
-                or "service_record" in crosswalk_status
-                or "regulatory_record" in crosswalk_status
-                or "power_request" in crosswalk_status
-                or "load_request" in crosswalk_status
-            )
-        )
+        crosswalk_connection_evidence = bool(crosswalk_ev)
         if grid.get("site_specific_queue_id"):
             return {
                 "status": "VERIFIED_SITE_SPECIFIC",
@@ -234,18 +228,16 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
 
 def evidence_domain(ev: dict[str, Any]) -> str:
     t = str(ev.get("type") or "")
-    if t == "site_specific_regulatory" or "regulatory" in t:
-        return "regulatory"
-    if t in {"site_specific_service_contract", "site_specific_service", "site_specific_utility_relationship", "site_specific_utility", "site_specific_power_request", "site_specific_load_request", "site_specific_queue"}:
-        return "grid_connection"
     if t in {"site_specific_energy_contract","site_specific_service_contract","site_specific_service","site_specific_utility_planning"}:
         return "service_or_contract"
     if t in {"site_specific_compute_tenancy","site_specific_compute_contract","site_specific_lease"}:
         return "compute_tenancy"
     if t in {"site_specific_facility_record", "site_specific_project_record"}:
         return "site_identity"
-    if t == "site_specific_utility_planning":
-        return "service_or_contract"
+    if t == "site_specific_regulatory" or "regulatory" in t:
+        return "regulatory"
+    if t in {"site_specific_utility_relationship", "site_specific_utility", "site_specific_power_request", "site_specific_load_request", "site_specific_queue", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_service", "site_specific_facility_utility_evidence"}:
+        return "grid_connection"
     return "grid_connection"
 
 def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any], power_observations: list[dict[str, Any]] | None = None, cooling_observations: list[dict[str, Any]] | None = None, remote_observations: list[dict[str, Any]] | None = None, transformer_events: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
