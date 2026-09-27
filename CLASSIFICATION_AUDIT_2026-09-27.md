@@ -4,7 +4,7 @@ Updated: 2026-09-27
 
 ## Why this audit exists
 
-The 142-row Genuinely Ambiguous / Unclassified Large Load set is a broad research pool, not 142 confirmed large-load discovery targets. Before a case is promoted into the closed-case pilot, its source record must independently establish that the underlying project is a load request rather than generation, surplus, transmission, replacement, upgrade, or another project type.
+The 141-row Genuinely Ambiguous / Unclassified Large Load set is a broad research pool, not 141 confirmed large-load discovery targets. Before a case is promoted into the closed-case pilot, its source record must independently establish that the underlying project is a load request rather than generation, surplus, transmission, replacement, upgrade, or another project type.
 
 ## Concrete false-positive found
 
@@ -37,7 +37,7 @@ These five are not presented as a representative sample. They are the next repro
 
 ## Rule for the website
 
-The UI should call the 142 records a **broad ambiguous research pool**. The strict candidate page should use **admitted load candidates**. A broad-pool row never becomes a discovery finding merely because it lacks an identified developer.
+The UI should call the 141 records a **broad ambiguous research pool**. The strict candidate page should use **admitted load candidates**. A broad-pool row never becomes a discovery finding merely because it lacks an identified developer.
 
 ## Sources used for this audit
 
