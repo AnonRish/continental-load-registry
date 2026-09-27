@@ -1,4 +1,3 @@
-# Last refreshed by full-registry completion pass: trigger live CAISO snapshot sync.
 #!/usr/bin/env python3
 """Download and normalize CAISO's complete public interconnection queue workbook.
 
@@ -229,7 +228,7 @@ def selftest() -> None:
     frame = pd.DataFrame([
         ["TEST PROJECT", 1234, 150.0, "KERN", "CA", "SCE", "Serial LGIP", "ACTIVE", "Executed"],
         [None, None, None, None, None, None, None, None, None],
-        ["Legend text", None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None, "Legend/footer"],
     ], columns=cols)
     rows = normalize_sheet(frame, "Grid GenerationQueue")
     assert len(rows) == 1
