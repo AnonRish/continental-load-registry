@@ -4,9 +4,9 @@
   "title": "Epoch AI site-level grid and utility evidence inventory",
   "purpose": "Discrete evidence assertions underlying the 93-site Track 3 connection research targets. Each record is an evidence item, not a separate facility.",
   "accounting": "Evidence items are not additive capacity records. Multiple assertions can describe one site; source confidence is retained as published by the evidence layer.",
-  "record_count": 68,
+  "record_count": 102,
   "site_count": 93,
-  "sites_with_evidence": 59,
+  "sites_with_evidence": 93,
   "records": [
     {
       "id": "EPOCH-c20399471d1c5e4a-E01",
@@ -17,17 +17,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_power_request",
       "authority": "Tennessee Valley Authority (TVA)",
+      "record_id": null,
       "record_name": "Colossus II direct-supply power request",
       "source_url": "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva",
+      "source_urls": [
+        "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva"
+      ],
       "source_kind": "dated local reporting on utility request",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The August 20, 2026 report states that SpaceXAI asked TVA to directly supply more electricity to its Colossus II campus spanning Memphis and Southaven. This establishes a site-specific TVA power relationship/request, not a queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number.",
-      "lat": 35.8,
-      "lon": -86.3,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-d9050b43689ed24c-E01",
@@ -38,17 +41,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Georgia Power",
+      "record_id": null,
       "record_name": "Fairwater Atlanta utility relationship",
       "source_url": "https://registry.deploy.report/datacenters/facilities/qts-fayetteville-ga-campus",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/qts-fayetteville-ga-campus"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies Georgia Power as the utility and describes the Ashley Park 500/230-kV substation and customer substations serving the Fayetteville campus. This is utility/site evidence, not a site-specific queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search Georgia PSC and Georgia Power large-load filings for the Fairwater/QTS Fayetteville campus, including docket records and service/interconnection documentation.",
-      "lat": 32.7,
-      "lon": -83.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-45b3c74314eb1f26-E01",
@@ -59,17 +65,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Indiana Michigan Power (AEP)",
+      "record_id": null,
       "record_name": "Project Rainier / New Carlisle power supply",
       "source_url": "https://www.compute-atlas.com/facilities/amazon-project-rainier-new-carlisle-in",
+      "source_urls": [
+        "https://www.compute-atlas.com/facilities/amazon-project-rainier-new-carlisle-in"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies grid power from Indiana Michigan Power together with natural-gas generation for the Amazon Project Rainier campus in New Carlisle. This is site-level utility evidence, not a formal queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case.",
-      "lat": 39.9,
-      "lon": -86.3,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-ea699c935d46e066-E01",
@@ -80,17 +89,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Grand River Dam Authority (GRDA)",
+      "record_id": null,
       "record_name": "Google Pryor power supply / customer relationship",
       "source_url": "https://grda.com/wp-content/uploads/2025/06/Continuing-Disclosure-2024_06.26.2025-FINAL.pdf",
+      "source_urls": [
+        "https://grda.com/wp-content/uploads/2025/06/Continuing-Disclosure-2024_06.26.2025-FINAL.pdf"
+      ],
       "source_kind": "official GRDA continuing-disclosure document",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "GRDA's official continuing-disclosure filing identifies Google Inc. as a major industrial/commercial power customer. Combined with the Epoch Pryor site identity, this establishes a public utility/customer relationship but not a site-specific interconnection case.",
+      "alternatives_rejected": [],
       "next_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number.",
-      "lat": 35.6,
-      "lon": -97.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-8838deed95ffb554-E01",
@@ -101,17 +113,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_capacity_record",
       "authority": "AEP Ohio",
+      "record_id": null,
       "record_name": "Meta Prometheus public utility/facility record",
       "source_url": "https://www.datacenter.fyi/utility/american-electric-power",
+      "source_urls": [
+        "https://www.datacenter.fyi/utility/american-electric-power"
+      ],
       "source_kind": "public-record facility index",
       "confidence": "medium",
       "capacity_mw": 695,
       "capacity_kind": "reported facility capacity",
       "basis": "The AEP public-record index lists Meta Prometheus in Ohio and associates it with AEP; a reported 695 MW facility capacity is retained as source-specific facility data, not equated with queue capacity or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate.",
-      "lat": 40.4,
-      "lon": -82.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-8838deed95ffb554-E02",
@@ -122,17 +137,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "AEP Ohio",
+      "record_id": null,
       "record_name": "Meta Prometheus grid relationship",
       "source_url": "https://registry.deploy.report/datacenters/facilities/meta-ohio-new-albany",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-ohio-new-albany"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies AEP Ohio as the grid-interconnection utility for the Meta New Albany campus. The record is retained as corroborating utility evidence.",
+      "alternatives_rejected": [],
       "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate.",
-      "lat": 40.4,
-      "lon": -82.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-2c2e40ddb178da3e-E01",
@@ -143,17 +161,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "AEP Texas / Oncor",
+      "record_id": null,
       "record_name": "Stargate Abilene serving-utility record",
       "source_url": "https://registry.deploy.report/datacenters/stargate-infrastructure-stargate-abilene",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/stargate-infrastructure-stargate-abilene"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies ERCOT as the grid operator and Oncor / AEP Texas as the serving utility for the Stargate Abilene campus. It also distinguishes grid connection from behind-the-meter generation. This is not a formal queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search ERCOT large-load records, AEP Texas/Oncor service records, TCEQ permits and Taylor County filings for a site-specific case or agreement.",
-      "lat": 31.1,
-      "lon": -99.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-f5dc9d7a3f02c2e9-E01",
@@ -164,17 +185,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "We Energies",
+      "record_id": null,
       "record_name": "Fairwater Mount Pleasant utility relationship",
       "source_url": "https://registry.deploy.report/datacenters/microsoft-fairwater-wisconsin",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/microsoft-fairwater-wisconsin"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies We Energies as the sole grid power supplier for Microsoft's Fairwater campus and identifies MISO as the grid operator. This is site-level utility evidence, not a queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search Wisconsin PSC, We Energies and MISO records for the Fairwater service/interconnection case and associated generation/transmission filings.",
-      "lat": 44.6,
-      "lon": -89.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-04f65e1aee6c98ab-E01",
+      "epoch_id": "EPOCH-04f65e1aee6c98ab",
+      "epoch_name": "DayOne Kempas",
+      "country": "Malaysia",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Malaysia national / utility grid system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/dayone-kempas",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/dayone-kempas"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 322.47,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Exact site-level utility/connection case was not located in the reviewed public source set.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-d8b28fdbc55817f9-E01",
@@ -185,17 +233,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "AEP Ohio",
+      "record_id": null,
       "record_name": "Google Columbus utility relationship",
       "source_url": "https://datacentersexposed.com/facilities/google-columbus",
+      "source_urls": [
+        "https://datacentersexposed.com/facilities/google-columbus"
+      ],
       "source_kind": "public-source facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies Google Columbus at 5076 S High Street in Columbus, Ohio and associates it with AEP Ohio and PJM. This is a facility/utility relationship, not a queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search AEP Ohio, PUCO and PJM records for the site-specific service/interconnection record and reconcile multiple campus/building addresses.",
-      "lat": 40.4,
-      "lon": -82.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-5b353d56a567a70b-E01",
@@ -206,17 +257,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "City of New Albany, Ohio",
+      "record_id": null,
       "record_name": "Google New Albany data center",
       "source_url": "https://datacenters.newalbanyohio.org/",
+      "source_urls": [
+        "https://datacenters.newalbanyohio.org/"
+      ],
       "source_kind": "municipal data-center information portal",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "City portal identifies Google's New Albany campus as an operating data-center site; utility/queue identity still requires a separate site-level service or queue record.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 40.4,
-      "lon": -82.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-83ca909f7eb211c7-E01",
@@ -227,17 +281,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_grid_facility_record",
       "authority": "Arizona Public Service",
+      "record_id": null,
       "record_name": "Google Mesa data-center facility record",
       "source_url": "https://www.datacenter.fyi/public-record/google-aa4275ee",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-aa4275ee"
+      ],
       "source_kind": "public-record facility registry",
       "confidence": "medium",
       "capacity_mw": 275.991,
       "capacity_kind": "facility power capacity",
       "basis": "The public-record facility entry identifies a Google hyperscale site at 7232 E Elliot Rd, Mesa, Arizona, with Arizona Public Service as grid operator and a reported 275.991 MW power capacity. This is a facility/grid record and is not asserted as an APS measured load series.",
+      "alternatives_rejected": [],
       "next_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing.",
-      "lat": 39.8,
-      "lon": -98.6,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-83ca909f7eb211c7-E02",
@@ -248,17 +305,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Arizona Public Service",
+      "record_id": null,
       "record_name": "Google Mesa utility relationship",
       "source_url": "https://www.datacenter.fyi/public-record/google-aa4275ee",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-aa4275ee"
+      ],
       "source_kind": "public-record facility registry",
       "confidence": "medium",
       "capacity_mw": 275.991,
       "capacity_kind": "facility power capacity",
       "basis": "The public-record Google Mesa entry identifies Arizona Public Service as grid operator and reports 275.991 MW of facility power capacity. This is site-level utility/facility evidence, not an APS measured load series or queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing.",
-      "lat": 39.8,
-      "lon": -98.6,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-55d4b5e818b5bb2a-E01",
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "epoch_name": "DayOne Nusajaya",
+      "country": "Malaysia",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Malaysia national / utility grid system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/dayone-nusajaya",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/dayone-nusajaya"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 240,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-2dadeb4b013bef05-E01",
@@ -269,17 +353,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_power",
       "authority": "Memphis Light, Gas and Water / TVA",
+      "record_id": null,
       "record_name": "Colossus 1 grid supply",
       "source_url": "https://www.mlgw.com/xai",
+      "source_urls": [
+        "https://www.mlgw.com/xai"
+      ],
       "source_kind": "official utility source",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "MLGW maintains a dedicated xAI/Colossus power-information page; independent public reporting and utility references describe the Colossus 1 site as served by the MLGW/TVA system. This establishes the site's utility connection relationship, not a claim about measured continuous load.",
+      "alternatives_rejected": [],
       "next_action": "Search MLGW/TVA filings and Memphis/Shelby regulatory records for the site-specific service agreement, connection upgrade record and any currently applicable capacity figure.",
-      "lat": 35.8,
-      "lon": -86.3,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-1c8ee8b0305c6313-E01",
@@ -290,17 +377,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_utility_relationship",
       "authority": "MidAmerican Energy",
+      "record_id": null,
       "record_name": "Google Council Bluffs utility relationship",
       "source_url": "https://suedatacenters.org/data-centers/google-council-bluffs-ia",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/google-council-bluffs-ia"
+      ],
       "source_kind": "secondary public-record facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility registry identifies MidAmerican Energy as the utility for Google's Council Bluffs campus and provides a site-specific facility record. The evidence establishes the utility relationship but does not identify a queue case number.",
+      "alternatives_rejected": [],
       "next_action": "Search MidAmerican, Iowa Utilities Board and MISO records for a site-specific Google Council Bluffs service/interconnection case.",
-      "lat": 42.1,
-      "lon": -93.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-ac1ca1cf8df13b3c-E01",
@@ -311,17 +401,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_service_contract",
       "authority": "Denton Municipal Electric / Core Scientific",
+      "record_id": null,
       "record_name": "Denton Campus power purchase agreement",
       "source_url": "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm",
+      "source_urls": [
+        "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001193125-26-165121/d149019dex992.htm"
+      ],
       "source_kind": "SEC-filed utility/service disclosure",
       "confidence": "high",
       "capacity_mw": 394,
       "capacity_kind": "potential campus load under DME contract",
       "basis": "The SEC filing states that power for the Denton Campus is supplied by Denton Municipal Electric under a power purchase agreement for a total potential campus load of approximately 394 MW, with Core Scientific as the customer. This is a service-contract capacity, not an assertion that 394 MW is continuously consumed.",
+      "alternatives_rejected": [],
       "next_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately.",
-      "lat": 31.1,
-      "lon": -99.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-cc12c3e42b3eaf08-E01",
@@ -332,17 +425,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "QTS Data Centers",
+      "record_id": null,
       "record_name": "Richmond 1 data-center campus",
       "source_url": "https://q.com/data-centers/richmond-1/",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-1/"
+      ],
       "source_kind": "official operator facility disclosure",
       "confidence": "high",
       "capacity_mw": 238,
       "capacity_kind": "QTS campus critical capacity",
       "basis": "QTS identifies Richmond 1 at 6000 Technology Boulevard and related Portugee Road addresses in Sandston, Virginia and states 238 MW campus capacity.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-cc12c3e42b3eaf08-E02",
@@ -353,17 +449,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Dominion Energy",
+      "record_id": null,
       "record_name": "QTS Richmond 1 utility relationship",
       "source_url": "https://epoch.ai/data/ai-data-centers",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers"
+      ],
       "source_kind": "Epoch AI site dataset field",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The current Epoch AI site record for QTS Richmond 1 lists Dominion Energy in its structured energy-company field. QTS separately identifies the Richmond 1 campus and its 238 MW facility capacity. This is secondary utility-relationship evidence, not a verified PJM queue record or metered load.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-8358e445402d91c2-E01",
@@ -374,17 +473,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Xcel Energy",
+      "record_id": null,
       "record_name": "Meta Rosemount data-center power supply",
       "source_url": "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center",
+      "source_urls": [
+        "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
+      ],
       "source_kind": "official utility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Xcel Energy's March 15, 2024 announcement states it would provide the energy needed to power Meta's new Rosemount data center and identifies the facility as supporting Meta AI workloads.",
+      "alternatives_rejected": [],
       "next_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents.",
-      "lat": 46.3,
-      "lon": -94.3,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-0d287943c30fe239-E01",
@@ -395,17 +497,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_grid_facility_record",
       "authority": "Canton Municipal Utilities",
+      "record_id": null,
       "record_name": "Amazon Madison Mega Site public-record entry",
       "source_url": "https://www.datacenter.fyi/state/ms",
+      "source_urls": [
+        "https://www.datacenter.fyi/state/ms"
+      ],
       "source_kind": "public-record facility registry",
       "confidence": "medium",
       "capacity_mw": 476.991,
       "capacity_kind": "facility power capacity",
       "basis": "The Mississippi public-record index identifies Amazon Madison Mega Site in the Canton area and associates the Amazon facility record with Canton Municipal Utilities and a reported 476.991 MW capacity. This is facility/service evidence, not a measured consumption series.",
+      "alternatives_rejected": [],
       "next_action": "Search Canton Municipal Utilities, Entergy Mississippi where applicable, Mississippi PSC, Madison County and local permitting records for the specific electrical service/interconnection record.",
-      "lat": 32.7,
-      "lon": -89.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-6db3bc2c79843ffd-E01",
@@ -416,17 +521,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_grid_facility_record",
       "authority": "Dominion Energy Virginia",
+      "record_id": null,
       "record_name": "Google Bristow public utility/facility record",
       "source_url": "https://www.datacenter.fyi/state/va/bristow",
+      "source_urls": [
+        "https://www.datacenter.fyi/state/va/bristow"
+      ],
       "source_kind": "public-record facility registry",
       "confidence": "medium",
       "capacity_mw": 167.904,
       "capacity_kind": "facility/project capacity reported in public-record index",
       "basis": "The public Bristow facility index associates a Google project with Dominion Energy and reports 167.904 MW; the record is treated as utility/facility evidence rather than a verified transmission queue match.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-6db3bc2c79843ffd-E02",
@@ -437,17 +545,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Dominion Energy Virginia",
+      "record_id": null,
       "record_name": "Google Bristow utility relationship",
       "source_url": "https://www.datacenter.fyi/public-record/google-be69857b",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-be69857b"
+      ],
       "source_kind": "public-record facility registry",
       "confidence": "medium",
       "capacity_mw": 167.904,
       "capacity_kind": "facility/project capacity reported in public-record index",
       "basis": "The public-record Google Bristow entry associates the site with Dominion Energy and reports 167.904 MW. This is utility/facility evidence and does not establish a PJM queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-93a4aa4fa40d40ca-E01",
@@ -458,17 +569,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_facility_record",
       "authority": "Arizona Public Service",
+      "record_id": null,
       "record_name": "Microsoft Goodyear data-center facility",
       "source_url": "https://suedatacenters.org/data-centers/microsoft-goodyear-az",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/microsoft-goodyear-az"
+      ],
       "source_kind": "public-source facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The facility record identifies Microsoft Goodyear in Maricopa County, Arizona and names Arizona Public Service as the utility; it also preserves exact site coordinates. The record reports no established public power-capacity figure for this specific facility, so none is inferred here.",
+      "alternatives_rejected": [],
       "next_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection case.",
-      "lat": 34,
-      "lon": -111.9,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-93a4aa4fa40d40ca-E02",
@@ -479,17 +593,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Arizona Public Service",
+      "record_id": null,
       "record_name": "Microsoft Goodyear utility relationship",
       "source_url": "https://www.datacenter.fyi/public-record/microsoft-befedf4d",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/microsoft-befedf4d"
+      ],
       "source_kind": "public-record facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The public-record Microsoft Goodyear entry identifies Arizona Public Service as the utility for the site. Facility capacity and actual metered demand remain separate quantities.",
+      "alternatives_rejected": [],
       "next_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection case.",
-      "lat": 34,
-      "lon": -111.9,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-1ac0959562dee191-E01",
@@ -500,17 +617,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Duke Energy Indiana",
+      "record_id": null,
       "record_name": "Meta Jeffersonville data-center utility relationship",
       "source_url": "https://datacenters.atmeta.com/wp-content/uploads/2024/10/Indiana-Jeffersonville.pdf",
+      "source_urls": [
+        "https://datacenters.atmeta.com/wp-content/uploads/2024/10/Indiana-Jeffersonville.pdf"
+      ],
       "source_kind": "official Meta facility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Meta's Jeffersonville project profile states that Meta is working with Duke Energy as a local partner while building the Jeffersonville data center and pursuing its renewable-energy goals.",
+      "alternatives_rejected": [],
       "next_action": "Search Indiana Michigan Power / Duke Energy Indiana and Indiana Utility Regulatory Commission records for the site's service/interconnection case.",
-      "lat": 39.9,
-      "lon": -86.3,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-6799460068cbed36-E01",
@@ -521,17 +641,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_development_record",
       "authority": "Hunt Midwest",
+      "record_id": null,
       "record_name": "Google data center at Hunt Midwest Business Center",
       "source_url": "https://huntmidwest.com/2024/03/google-announces-1-billion-data-center-at-hunt-midwest-business-center/",
+      "source_urls": [
+        "https://huntmidwest.com/2024/03/google-announces-1-billion-data-center-at-hunt-midwest-business-center/"
+      ],
       "source_kind": "official developer/industrial-park announcement",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Hunt Midwest publicly announced Google's $1 billion data-center project at the Hunt Midwest Business Center in Kansas City, Missouri. This establishes the project/site relationship; it does not by itself establish an interconnection queue ID or electrical capacity.",
+      "alternatives_rejected": [],
       "next_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record.",
-      "lat": 39.8,
-      "lon": -98.6,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-bdc85fadae79b6b2-E01",
@@ -542,17 +665,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "Amazon Web Services",
+      "record_id": null,
       "record_name": "AWS New Albany / Beech Road campus",
       "source_url": "https://suedatacenters.org/data-centers/aws-beech-road-new-albany-oh",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/aws-beech-road-new-albany-oh"
+      ],
       "source_kind": "public-source facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The public facility record identifies the AWS New Albany Beech/Miller Road campus in New Albany, Ohio and provides exact coordinates plus a construction status. It does not establish an electrical service or queue ID, so none is inferred.",
+      "alternatives_rejected": [],
       "next_action": "Search AEP Ohio, PUCO, PJM and New Albany/Plain Township permitting records for the electrical service and interconnection record for this campus.",
-      "lat": 39.8,
-      "lon": -98.6,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-4eeccbee73808216-E01",
@@ -563,17 +689,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "Google",
+      "record_id": null,
       "record_name": "Google Omaha data center",
       "source_url": "https://datacenters.google/locations/nebraska/",
+      "source_urls": [
+        "https://datacenters.google/locations/nebraska/"
+      ],
       "source_kind": "official Google location disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Google's Nebraska data-center page identifies Omaha as one of Google's Nebraska data-center communities and documents continued data-center investment there.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 41.5,
-      "lon": -99.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-4eeccbee73808216-E02",
@@ -584,17 +713,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Omaha Public Power District",
+      "record_id": null,
       "record_name": "Google Omaha demand-response / utility relationship",
       "source_url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/how-were-making-data-centers-more-flexible-to-benefit-power-grids/",
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/how-were-making-data-centers-more-flexible-to-benefit-power-grids/"
+      ],
       "source_kind": "official Google utility-interaction disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Google's published data-center grid-flexibility update says Google demonstrated demand response with Omaha Public Power District by reducing power demand associated with machine-learning workloads during three grid events. This establishes a site-specific utility interaction, not a queue ID or interval meter dataset.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 41.5,
-      "lon": -99.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-e06bc7faa8b1b187-E01",
@@ -605,17 +737,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "Google",
+      "record_id": null,
       "record_name": "Google Lincoln data center",
       "source_url": "https://datacenters.google/locations/nebraska/",
+      "source_urls": [
+        "https://datacenters.google/locations/nebraska/"
+      ],
       "source_kind": "official Google location disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Google's Nebraska data-center page identifies Lincoln as a Google data-center location and records that the Lincoln, Nebraska data center came online in 2026.",
+      "alternatives_rejected": [],
       "next_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record.",
-      "lat": 41.6,
-      "lon": -72.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-052be5b551cd099b-E01",
@@ -626,17 +761,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "QTS Data Centers",
+      "record_id": null,
       "record_name": "Richmond 2 data-center campus",
       "source_url": "https://q.com/data-centers/richmond-2/",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-2/"
+      ],
       "source_kind": "official operator facility disclosure",
       "confidence": "high",
       "capacity_mw": 180,
       "capacity_kind": "QTS planned critical campus capacity",
       "basis": "QTS identifies the Richmond 2 campus in Sandston, Virginia and states 180 MW planned upon completion at the named campus.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-052be5b551cd099b-E02",
@@ -647,17 +785,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Dominion Energy",
+      "record_id": null,
       "record_name": "QTS Richmond 2 secondary utility relationship",
       "source_url": "https://epoch.ai/data/ai-data-centers",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers"
+      ],
       "source_kind": "Epoch AI structured site field",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The preserved Epoch AI record for QTS Richmond 2 lists Dominion Energy in its structured energy-company field. This is secondary site-level utility evidence; it is not a verified PJM queue ID or measured load series.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-40ccef8ef4236635-E01",
@@ -668,17 +809,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Northern Wasco County PUD",
+      "record_id": null,
       "record_name": "Google The Dalles serving utility",
       "source_url": "https://registry.deploy.report/datacenters/facilities/google-the-dalles-river-road-building-wasco-or",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/google-the-dalles-river-road-building-wasco-or"
+      ],
       "source_kind": "sourced public facility registry",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "DEPLOY identifies the Google The Dalles facility at 3500 River Road and lists Northern Wasco County PUD as the serving utility and grid source. The record is site-level utility evidence, not a site-specific transmission queue ID or metered load series.",
+      "alternatives_rejected": [],
       "next_action": "Search Northern Wasco County PUD, BPA and Oregon public records for a specific interconnection/service case or account.",
-      "lat": 44,
-      "lon": -120.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-02484a65a5dac16d-E01",
@@ -689,17 +833,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_record",
       "authority": "QTS Data Centers",
+      "record_id": null,
       "record_name": "Richmond 3 data-center campus",
       "source_url": "https://q.com/data-centers/richmond-3/",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-3/"
+      ],
       "source_kind": "official operator facility disclosure",
       "confidence": "high",
       "capacity_mw": 240,
       "capacity_kind": "QTS planned critical campus capacity",
       "basis": "QTS identifies Richmond 3 in Sandston, Virginia and states 240 MW planned upon completion for the 221-acre campus.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-02484a65a5dac16d-E02",
@@ -710,17 +857,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Dominion Energy",
+      "record_id": null,
       "record_name": "QTS Richmond 3 secondary utility relationship",
       "source_url": "https://epoch.ai/data/ai-data-centers",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers"
+      ],
       "source_kind": "Epoch AI structured site field",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The preserved Epoch AI record for QTS Richmond 3 lists Dominion Energy in its structured energy-company field. This is secondary site-level utility evidence; it is not a verified PJM queue ID or measured load series.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-0788d9aeb3114553-E01",
@@ -731,17 +881,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_regulatory",
       "authority": "Alabama Public Service Commission / Alabama Power",
+      "record_id": "Docket 32382",
       "record_name": "Dotier participation contract",
       "source_url": "https://www.psc.alabama.gov/",
+      "source_urls": [
+        "https://www.psc.alabama.gov/"
+      ],
       "source_kind": "state commission docket reference",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The Alabama PSC record concerns an Alabama Power participation contract with Dotier, a Meta subsidiary, supporting projects for the Montgomery-area data center.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 32.8,
-      "lon": -86.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-5de9a1c70a3e2275-E01",
@@ -752,17 +905,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Idaho Power",
+      "record_id": null,
       "record_name": "Meta Kuna data-center energy planning",
       "source_url": "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
       "source_kind": "official Meta facility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Meta states it worked with Idaho Power years in advance to plan for the Kuna data center's energy needs and identifies Idaho Power among the local partners for the operating site.",
+      "alternatives_rejected": [],
       "next_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case.",
-      "lat": 44.2,
-      "lon": -114.6,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-6ff5e1aeb6f0c7e3-E01",
@@ -773,17 +929,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Oncor Electric",
+      "record_id": null,
       "record_name": "Meta Temple data-center energy planning",
       "source_url": "https://datacenters.atmeta.com/2026/07/temple-we-are-online/",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
       "source_kind": "official Meta facility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Meta states it worked with Oncor Electric years in advance to plan for and meet the Temple data center's energy needs and identifies Oncor among the local project partners.",
+      "alternatives_rejected": [],
       "next_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case.",
-      "lat": 31.1,
-      "lon": -99.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-14cecdb5956daea1-E01",
@@ -794,17 +953,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Black Hills Energy",
+      "record_id": null,
       "record_name": "Meta Cheyenne grid / energy relationship",
       "source_url": "https://datacenters.atmeta.com/2024/07/hello-cheyenne/",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/07/hello-cheyenne/"
+      ],
       "source_kind": "official Meta project disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Meta's July 2, 2024 first-party Cheyenne project announcement says Meta will work with Black Hills Energy to add new resources to the grid, including renewables. This establishes a site-specific utility/grid relationship, not a queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 43,
-      "lon": -107.6,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-4a87099a6d1e001f-E01",
@@ -815,17 +977,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Entergy Mississippi",
+      "record_id": null,
       "record_name": "Amazon Ridgeland secondary utility relationship",
       "source_url": "https://epoch.ai/data/ai-data-centers",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers"
+      ],
       "source_kind": "Epoch AI structured site field",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The preserved Epoch AI record for Amazon Ridgeland at 1626 County Line Road, Ridgeland, Mississippi lists Entergy in its structured energy-company field. This is secondary site-level utility evidence and does not establish an interconnection queue ID or metered demand.",
+      "alternatives_rejected": [],
       "next_action": "Search Entergy Mississippi, Mississippi Public Service Commission, MISO and Madison/Ridgeland public records for the underlying service or interconnection case.",
-      "lat": 32.7,
-      "lon": -89.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-27e284efc1b1abc2-E01",
@@ -836,17 +1001,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Tennessee Valley Authority",
+      "record_id": null,
       "record_name": "Meta Huntsville secondary utility relationship",
       "source_url": "https://epoch.ai/data/ai-data-centers",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers"
+      ],
       "source_kind": "Epoch AI structured site field",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The preserved Epoch AI record for Meta Huntsville in Toney, Alabama lists Tennessee Valley Authority among its structured energy-company fields. This is secondary energy/utility evidence; the other named companies are not assumed to be serving utilities.",
+      "alternatives_rejected": [],
       "next_action": "Search TVA, Alabama Public Service Commission, local utility records and SERC-related connection filings for the underlying service or interconnection case.",
-      "lat": 32.8,
-      "lon": -86.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-a69e48fd129d0cdb-E01",
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "epoch_name": "Coreweave Helios",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_INTERCONNECTION_AND_SERVICE_EVIDENCE",
+      "authority": "AEP Texas Inc.",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://investor.galaxy.com/news-releases/news-release-details/galaxy-completes-ercot-interconnection-studies-and-secures",
+      "source_urls": [
+        "https://investor.galaxy.com/news-releases/news-release-details/galaxy-completes-ercot-interconnection-studies-and-secures"
+      ],
+      "source_kind": "utility/infrastructure company primary release",
+      "confidence": "high",
+      "capacity_mw": 830,
+      "capacity_kind": "service/contract capacity",
+      "basis": "Public source names ERCOT, AEP Texas and WETT and states the additional 830 MW approval; no public ERCOT queue/project identifier was located, so no queue ID is inferred.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-534376160415dc84-E01",
@@ -857,17 +1049,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "MidAmerican Energy",
+      "record_id": null,
       "record_name": "Microsoft Project Osmium utility relationship",
       "source_url": "https://www.cleanenergydistricts.org/data-centers-in-iowa-resource-hub",
+      "source_urls": [
+        "https://www.cleanenergydistricts.org/data-centers-in-iowa-resource-hub"
+      ],
       "source_kind": "secondary Iowa data-center infrastructure registry",
       "confidence": "medium",
       "capacity_mw": 150,
       "capacity_kind": "facility capacity reported by source",
       "basis": "The Iowa data-center resource identifies Microsoft Project Osmium in Iowa and lists MidAmerican Energy as its utility. The 150 MW figure is source-reported facility information and is not substituted for an interconnection-queue capacity or metered demand.",
+      "alternatives_rejected": [],
       "next_action": "Search MidAmerican Energy, MISO, Iowa Utilities Board and local records for the underlying service/interconnection case.",
-      "lat": 42.1,
-      "lon": -93.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-0bb0b996b7c96beb-E01",
@@ -878,17 +1073,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Rocky Mountain Power",
+      "record_id": null,
       "record_name": "Meta Eagle Mountain grid infrastructure relationship",
       "source_url": "https://datacenters.atmeta.com/2026/09/deepening-our-investment-in-eagle-mountain-utah/",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/deepening-our-investment-in-eagle-mountain-utah/"
+      ],
       "source_kind": "official Meta project disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Meta's September 14, 2026 first-party Eagle Mountain update says Meta fully funded new generation and grid infrastructure supporting operations on the Rocky Mountain Power grid. This establishes site-specific grid evidence, not a public queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 39.3,
-      "lon": -111.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-85492d2b8df586a1-E01",
+      "epoch_id": "EPOCH-85492d2b8df586a1",
+      "epoch_name": "Google Midlothian",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/google-midlothian",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/google-midlothian"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 103,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Site identity and operation are public; the reviewed evidence does not establish a unique ERCOT queue ID or direct utility service record. Jurisdiction mapping is not promoted to a site match.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-2b89e13933a04725-E01",
@@ -899,17 +1121,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Public Utilities Commission of Nevada / NV Energy",
+      "record_id": null,
       "record_name": "Google Storey County energy supply agreement",
       "source_url": "https://puc.nv.gov/uploadedFiles/puc.nv.gov/Content/About/Media_Outreach/NewsletterJuly2024.pdf",
+      "source_urls": [
+        "https://puc.nv.gov/uploadedFiles/puc.nv.gov/Content/About/Media_Outreach/NewsletterJuly2024.pdf"
+      ],
       "source_kind": "state utility regulator filing index",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The Nevada PUC's July 2024 newsletter lists Docket 24-06014, a joint application by Sierra Pacific Power Company d/b/a NV Energy and Callisto Enterprises LLC for approval of an Energy Supply Agreement. The associated public record identifies Google as the customer for data-center electric service in Storey County. This is regulatory/site-service evidence, not a queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 39.8,
-      "lon": -98.6,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-f92e98f4b76a9bcd-E01",
+      "epoch_id": "EPOCH-f92e98f4b76a9bcd",
+      "epoch_name": "Google Lancaster",
+      "country": "United States",
+      "state_province": "OH",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/google-lancaster",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/google-lancaster"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 137,
+      "capacity_kind": "site-planned capacity",
+      "basis": "A public facility record exists for the exact Lancaster address, but no conservative PJM queue/service identifier was found.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-78f8285078416a9e-E01",
@@ -920,17 +1169,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Portland General Electric",
+      "record_id": null,
       "record_name": "Meta-QTS Hillsboro 2 secondary utility relationship",
       "source_url": "https://epoch.ai/data/ai-data-centers",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers"
+      ],
       "source_kind": "Epoch AI structured site field",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The preserved Epoch AI record for Meta-QTS Hillsboro 2 lists Portland General Electric and Avangrid in its structured energy-company field. This is secondary energy/utility evidence at the site level; the record is not a queue ID and Avangrid is not assumed to be the serving utility.",
+      "alternatives_rejected": [],
       "next_action": "Search Portland General Electric, BPA, Oregon utility/regulatory records and Hillsboro public records for the underlying service/interconnection case.",
-      "lat": 41.5,
-      "lon": -99.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-a2c9f0846296fe65-E01",
@@ -941,17 +1193,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_energy_contract",
       "authority": "Shell Energy Europe Limited / Google",
+      "record_id": null,
       "record_name": "Google Waltham Cross 24/7 carbon-free energy management agreement",
       "source_url": "https://www.datacenters.google/locations/waltham-cross/",
+      "source_urls": [
+        "https://www.datacenters.google/locations/waltham-cross/"
+      ],
       "source_kind": "official Google facility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Google's Waltham Cross facility page says Google selected Shell Energy Europe Limited as its 24/7 Carbon-Free Energy Manager in the UK and describes the arrangement as contributing to grid stability and the energy transition. This is energy-contract evidence, not a utility interconnection record.",
+      "alternatives_rejected": [],
       "next_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier.",
-      "lat": 55.3781,
-      "lon": -3.436,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-a286a89bd1c1b6e7-E01",
+      "epoch_id": "EPOCH-a286a89bd1c1b6e7",
+      "epoch_name": "VNET Bayin Ulanqab",
+      "country": "China",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "China State Grid / Inner Mongolia provincial grid system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 221,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-785d6e4c34607dd4-E01",
@@ -962,17 +1241,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Dominion Energy",
+      "record_id": null,
       "record_name": "Google Arcola serving-utility relationship",
       "source_url": "https://suedatacenters.org/data-centers/google-arcola-loudoun-va",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/google-arcola-loudoun-va"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The SueDataCenters facility record identifies Dominion Energy as the utility for Google's Arcola data-center site in Loudoun County, Virginia. This establishes site-level utility evidence, not a public queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search Dominion Energy, Virginia SCC, PJM and local Loudoun County records for the exact service/interconnection case, contract, substation or project identifier.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-f1a2bcdd78478bc2-E01",
+      "epoch_id": "EPOCH-f1a2bcdd78478bc2",
+      "epoch_name": "Google Red Oak",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021"
+      ],
+      "source_kind": "Texas Department of Licensing and Regulation site/project record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 77,
+      "capacity_kind": "site-planned capacity",
+      "basis": "The exact TDLR project for the Red Oak facility was reviewed; no utility or ERCOT queue identifier was located in the public record reviewed.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-4525348d114e3e8e-E01",
@@ -983,17 +1289,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_planning",
       "authority": "OPPD",
+      "record_id": null,
       "record_name": "Google Papillion large-customer planning",
       "source_url": "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf",
+      "source_urls": [
+        "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf"
+      ],
       "source_kind": "official utility planning document",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "OPPD planning material discusses transmission/distribution improvements, capacity purchases and new generation to meet Google's expected system demand.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 41.5,
-      "lon": -99.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-d29894d37388a96a-E01",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "epoch_name": "Meta Gallatin",
+      "country": "United States",
+      "state_province": "TN",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_UTILITY_SERVICE_EVIDENCE",
+      "authority": "Tennessee Valley Authority (TVA)",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
+      ],
+      "source_kind": "customer primary source",
+      "confidence": "medium",
+      "capacity_mw": null,
+      "capacity_kind": null,
+      "basis": "TVA serving-utility relationship is established in the public facility registry retained by the project. No public TVA queue ID was found.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-02c050b6b554fadd-E01",
@@ -1004,17 +1337,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Public Service Company of New Mexico (PNM)",
+      "record_id": null,
       "record_name": "Meta Los Lunas serving-utility relationship",
       "source_url": "https://registry.deploy.report/datacenters/facilities/meta-new-mexico-los-lunas",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-new-mexico-los-lunas"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The DEPLOY facility record identifies Public Service Company of New Mexico (PNM) as the serving utility for Meta Los Lunas and records PNM procurement of renewable energy and hybrid BESS to serve the campus. This is secondary site-level utility evidence, not a queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 34.4,
-      "lon": -106.1,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-768183e4de6062d2-E01",
@@ -1025,17 +1361,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_compute_tenancy",
       "authority": "CoreWeave / Applied Digital",
+      "record_id": null,
       "record_name": "CoreWeave Ellendale Campus 250 MW datacenter leases",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1144879/000164117225013199/form8-k.htm",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1144879/000164117225013199/form8-k.htm"
+      ],
       "source_kind": "SEC-filed definitive agreement",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Applied Digital's May 28, 2025 SEC filing says subsidiaries entered leases with CoreWeave to deliver up to an aggregate 250 MW of infrastructure at the 400 MW Ellendale, North Dakota campus, covering Building 2 (100 MW) and Building 3 (150 MW). This establishes a site-specific compute-tenant/capacity contract, not a utility connection or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the serving utility, North Dakota regulatory records, MISO/SPP-relevant records and site permitting sources for the electrical service/interconnection record associated with the leased compute capacity.",
-      "lat": 47.5,
-      "lon": -100.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-4b5df4f52274f2ba-E01",
@@ -1046,17 +1385,116 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Omaha Public Power District",
+      "record_id": null,
       "record_name": "Meta Sarpy serving-utility relationship",
       "source_url": "https://registry.deploy.report/datacenters/facilities/meta-nebraska-sarpy",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-nebraska-sarpy"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The DEPLOY facility record identifies Omaha Public Power District as the serving utility for Meta Sarpy in Papillion, Nebraska. This is site-level utility evidence, not a queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 41.5,
-      "lon": -99.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-77e196fc5320fd70-E01",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "epoch_name": "Huawei Horinger",
+      "country": "China",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "China State Grid / Inner Mongolia provincial grid system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 346,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-2d362a1adb09fddd-E01",
+      "epoch_id": "EPOCH-2d362a1adb09fddd",
+      "epoch_name": "CoreWeave Chester VA",
+      "country": "United States",
+      "state_province": "VA",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 82,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Exact address is known; no defensible PJM queue ID or direct utility service case was found in the reviewed public source set.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-ea5d1ae5837aba5c-E01",
+      "epoch_id": "EPOCH-ea5d1ae5837aba5c",
+      "epoch_name": "Oracle Batam",
+      "country": "Indonesia",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "PLN grid connection system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/oracle-batam",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/oracle-batam"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 72,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-03aad260b30bfbe1-E01",
+      "epoch_id": "EPOCH-03aad260b30bfbe1",
+      "epoch_name": "AWS Berwick",
+      "country": "United States",
+      "state_province": "PA",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_POWER_CONTRACT_EVIDENCE",
+      "authority": "Talen Energy",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/aws-berwick",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/aws-berwick"
+      ],
+      "source_kind": "Epoch AI site record; public facility/contract reporting",
+      "confidence": "medium",
+      "capacity_mw": 960,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Talen's revised power agreement is a contractual supply ceiling, not an interconnection queue capacity or measured load. It is retained separately from queue MW.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-eb87487504bda8ed-E01",
@@ -1067,17 +1505,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_service",
       "authority": "Murphy Electric Power Board / Duke Energy",
+      "record_id": null,
       "record_name": "Marble data-center utility supply",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm"
+      ],
       "source_kind": "SEC-filed utility/service disclosure",
       "confidence": "high",
       "capacity_mw": 117,
       "capacity_kind": null,
       "basis": "Public filing identifies 35 MW from Murphy EPB and 82 MW from Duke Energy for the Marble campus.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 35.5,
-      "lon": -79.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-7d9b5af0cce16f1c-E01",
@@ -1088,17 +1529,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Aiken Electric Cooperative",
+      "record_id": null,
       "record_name": "Meta Aiken serving-utility relationship",
       "source_url": "https://suedatacenters.org/data-centers/meta-aiken-county-sc",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/meta-aiken-county-sc"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The SueDataCenters record identifies Aiken Electric Cooperative as the utility for Meta's Aiken data center in Graniteville, South Carolina. This is secondary utility evidence, not a queue ID or measured load.",
+      "alternatives_rejected": [],
       "next_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "lat": 33.8,
-      "lon": -80.9,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-af62ae3440fe885a-E01",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "epoch_name": "Huawei Wuhu",
+      "country": "China",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "China State Grid / Anhui provincial grid system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 157,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-d1b62579c6be3fe8-E01",
@@ -1109,17 +1577,44 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_queue",
       "authority": "NYISO",
+      "record_id": "1670",
       "record_name": "Lake Mariner Data II",
       "source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "source_urls": [
+        "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"
+      ],
       "source_kind": "official queue workbook",
       "confidence": "high",
       "capacity_mw": 250,
       "capacity_kind": null,
       "basis": "Same Lake Mariner campus as the Epoch Core42 record; the queue request is not treated as a duplicate of Epoch IT power.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 42.9,
-      "lon": -75.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-71d0091a05448224-E01",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "epoch_name": "Microsoft SAT40",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "source_kind": "Texas Department of Licensing and Regulation",
+      "confidence": "documented_search_result",
+      "capacity_mw": 75,
+      "capacity_kind": "site-planned capacity",
+      "basis": "TDLR confirms the exact SAT40 address and Microsoft ownership. No public ERCOT queue/service ID was identified.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-c89a3269719f868a-E01",
@@ -1130,17 +1625,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_service",
       "authority": "NOVEC",
+      "record_id": null,
       "record_name": "NVA02 dedicated substations",
       "source_url": "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/",
+      "source_urls": [
+        "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/"
+      ],
       "source_kind": "official STACK facility disclosure",
       "confidence": "high",
       "capacity_mw": 600,
       "capacity_kind": null,
       "basis": "STACK states NVA02 has two dedicated 300 MW onsite substations from Northern Virginia Electric Cooperative.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 37.5,
-      "lon": -78.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-29fb769630142638-E01",
@@ -1151,17 +1649,166 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_queue",
       "authority": "NYISO",
+      "record_id": "1670",
       "record_name": "Lake Mariner Data II",
       "source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "source_urls": [
+        "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx"
+      ],
       "source_kind": "official queue workbook",
       "confidence": "high",
       "capacity_mw": 250,
       "capacity_kind": null,
       "basis": "Epoch site address is 7725 Lake Rd, Barker, NY; NYISO Q1670 is Lake Mariner Data II in Niagara County.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 42.9,
-      "lon": -75.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-781cbfae186209ad-E01",
+      "epoch_id": "EPOCH-781cbfae186209ad",
+      "epoch_name": "Microsoft-Nebius New Jersey",
+      "country": "United States",
+      "state_province": "NJ",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_BEHIND_THE_METER_SERVICE_EVIDENCE",
+      "authority": "Bloom Energy",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-nebius-new-jersey",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/microsoft-nebius-new-jersey"
+      ],
+      "source_kind": "public facility registry; customer/contract reporting",
+      "confidence": "medium",
+      "capacity_mw": 250,
+      "capacity_kind": "service/contract capacity",
+      "basis": "The power figures are on-site generation figures, not a PJM interconnection capacity. Microsoft/Nebius commercial relationship is also distinct from electricity service.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-f48a533b01898dfd-E01",
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "epoch_name": "CoreWeave Norway",
+      "country": "Norway",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Statnett / local distribution network",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 42,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-41dea3fb46d2e6a8-E01",
+      "epoch_id": "EPOCH-41dea3fb46d2e6a8",
+      "epoch_name": "Nebius Mantsala",
+      "country": "Finland",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Fingrid / local distribution network",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/nebius-mantsala",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/nebius-mantsala"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 75,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-827d7832237170bd-E01",
+      "epoch_id": "EPOCH-827d7832237170bd",
+      "epoch_name": "Southgate Melbourne",
+      "country": "Australia",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "AEMO / local network service provider",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/southgate-melbourne",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/southgate-melbourne"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 41,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-ee5c7acdbc729ef8-E01",
+      "epoch_id": "EPOCH-ee5c7acdbc729ef8",
+      "epoch_name": "Stream Phoenix",
+      "country": "United States",
+      "state_province": "AZ",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_UTILITY_SERVICE_EVIDENCE",
+      "authority": "Arizona Public Service (APS)",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/stream-phoenix",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/stream-phoenix"
+      ],
+      "source_kind": "public facility registry",
+      "confidence": "medium",
+      "capacity_mw": 280,
+      "capacity_kind": "site-planned capacity",
+      "basis": "APS is retained as the utility; planned facility capacity is not treated as utility service capacity.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-0355f445ca6cbed4-E01",
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "epoch_name": "Microsoft SAT14",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+      ],
+      "source_kind": "Texas Department of Licensing and Regulation",
+      "confidence": "documented_search_result",
+      "capacity_mw": 47,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Exact address and Microsoft ownership are confirmed across multiple TDLR phase records; no unique electric connection ID was found.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-96d37578ca36f86c-E01",
@@ -1172,17 +1819,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_project_record",
       "authority": "Texas Department of Licensing and Regulation",
+      "record_id": "TX11",
       "record_name": "Vantage TX11 / TX1 project",
       "source_url": "https://www.tdlr.texas.gov/",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/"
+      ],
       "source_kind": "state construction/project record",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "State construction records identify project TX11 at 14720 Omicron Drive under Vantage Data Centers TX1 LLC; this establishes the physical project identity but not a queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 31.1,
-      "lon": -99.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-8696ef81d91560a9-E01",
@@ -1193,17 +1843,150 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_service_contract",
       "authority": "Dalton Utilities",
+      "record_id": null,
       "record_name": "DU electric service agreement / Dalton Campuses",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm"
+      ],
       "source_kind": "SEC-filed electric service agreement",
       "confidence": "high",
       "capacity_mw": 270,
       "capacity_kind": null,
       "basis": "SEC filing states Dalton campuses are supplied by Dalton Utilities and Dalton 1 + Dalton 4 have access to 270 MW in aggregate, with additional capacity arrangements.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 32.7,
-      "lon": -83.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-e20c2909085b37fd-E01",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "epoch_name": "Alibaba Zhangbei",
+      "country": "China",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "China State Grid / Hebei provincial grid system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 169,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Operational; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-8baa344f9717520c-E01",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "epoch_name": "Start Campus Sines Data Campus",
+      "country": "Portugal",
+      "state_province": "",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_GRID_CAPACITY_EVIDENCE",
+      "authority": "REN (Redes Energéticas Nacionais)",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://www.startcampus.pt/press_release_august_2024_1gw",
+      "source_urls": [
+        "https://www.startcampus.pt/press_release_august_2024_1gw",
+        "https://www.startcampus.pt/start-campus-inaugurates-sin01-data-center"
+      ],
+      "source_kind": "developer primary source",
+      "confidence": "high",
+      "capacity_mw": 1200,
+      "capacity_kind": "service/contract capacity",
+      "basis": "1.2 GW is secured campus IT capacity/grid access, not current measured load and not a queue ID.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-495a9afde5e4b96c-E01",
+      "epoch_id": "EPOCH-495a9afde5e4b96c",
+      "epoch_name": "xAI QTS Atlanta",
+      "country": "United States",
+      "state_province": "GA",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_UTILITY_SERVICE_EVIDENCE",
+      "authority": "Georgia Power",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/xai-qts-atlanta",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/xai-qts-atlanta"
+      ],
+      "source_kind": "Epoch AI site record; public facility registry",
+      "confidence": "medium",
+      "capacity_mw": 17,
+      "capacity_kind": "site-planned capacity",
+      "basis": "xAI occupies part of a multi-tenant QTS building; utility capacity should not be attributed wholesale to xAI.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-f1a70be0079d215a-E01",
+      "epoch_id": "EPOCH-f1a70be0079d215a",
+      "epoch_name": "Nscale Keflavik",
+      "country": "Iceland",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Landsnet / local distribution network",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/nscale-keflavik",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/nscale-keflavik"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 5.11,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Site identity documented; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-5b05fa7b682be282-E01",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "epoch_name": "Anthropic Barber Lake",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Epoch connection research",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 207,
+      "capacity_kind": "site-planned capacity",
+      "basis": "The closest same-area raw queue candidate, 28INR0119 / 1190 Barber Lake Switch 138kV / 341.8 MW, is a Rabbit Hollow Energy Storage BESS and is rejected as unrelated generation/storage.",
+      "alternatives_rejected": [
+        {
+          "candidate_id": "28INR0119",
+          "candidate_record": "Rabbit Hollow Energy Storage",
+          "candidate_poi": "1190 Barber Lake Switch 138kV",
+          "candidate_capacity_mw": 341.8,
+          "candidate_status": "Facilities Study",
+          "rejected_reason": "Confirmed battery-energy-storage queue row; no Anthropic/Cipher identity and not a data-center service request."
+        }
+      ],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-7648e1438308fdae-E01",
@@ -1214,17 +1997,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_facility_utility_evidence",
       "authority": "PPL Electric",
+      "record_id": null,
       "record_name": "CoreWeave Lancaster data center",
       "source_url": "https://registry.deploy.report/datacenters/facilities/coreweave-lancaster-pa",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/coreweave-lancaster-pa"
+      ],
       "source_kind": "secondary verified facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "DEPLOY identifies the exact 216 Greenfield Road CoreWeave Lancaster facility; the broader research record identifies PPL Electric as the serving utility.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 40.9,
-      "lon": -77.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-65e758d676dc06d6-E01",
@@ -1235,17 +2021,68 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_service_contract",
       "authority": "OG&E",
+      "record_id": null,
       "record_name": "OG&E electric service agreement",
       "source_url": "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm"
+      ],
       "source_kind": "SEC-filed electric service agreement",
       "confidence": "high",
       "capacity_mw": 100,
       "capacity_kind": null,
       "basis": "SEC filing states power for the Muskogee campus is supplied by OG&E and gives estimated maximum demand of 100,000 kW.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 35.6,
-      "lon": -97.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-4569f5444951b2fd-E01",
+      "epoch_id": "EPOCH-4569f5444951b2fd",
+      "epoch_name": "Crusoe Abilene Expansion",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_GRID_IDENTITY_NO_QUEUE",
+      "authority": "ERCOT system",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://registry.deploy.report/datacenters/facilities/crusoe-abilene-ii-microsoft-tx",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/crusoe-abilene-ii-microsoft-tx"
+      ],
+      "source_kind": "public facility registry; developer reporting",
+      "confidence": "medium",
+      "capacity_mw": 900,
+      "capacity_kind": "site-planned capacity",
+      "basis": "The campus is adjacent to the existing Abilene site. ERCOT is the grid operator; no unique public queue ID was located.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-dadec9d6ef7fca88-E01",
+      "epoch_id": "EPOCH-dadec9d6ef7fca88",
+      "epoch_name": "EcoDataCenter 2",
+      "country": "Sweden",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Svenska kraftnät / local distribution network",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/ecodatacenter-2",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/ecodatacenter-2"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 48,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Under construction; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-bbf05f2d8903eccc-E01",
@@ -1256,17 +2093,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_regulatory_support",
       "authority": "Texas Commission on Environmental Quality",
+      "record_id": "Permit 182880 / PSDTX1698 / GHGPSDTX268",
       "record_name": "Goodnight Data Center permit",
       "source_url": "https://www.tceq.texas.gov/",
+      "source_urls": [
+        "https://www.tceq.texas.gov/"
+      ],
       "source_kind": "state environmental permit record",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "TCEQ permitting records identify the Goodnight Data Center and Crusoe Energy Systems as applicant; this is supporting site evidence, not a queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 31.1,
-      "lon": -99.4,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-2d6a8403fde79650-E01",
@@ -1277,17 +2117,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Alliant Energy",
+      "record_id": null,
       "record_name": "Google Big Cedar data-center project",
       "source_url": "https://www.alliantenergy.com/news/news-center/2025/06/060425-googlebigcedarannouncement",
+      "source_urls": [
+        "https://www.alliantenergy.com/news/news-center/2025/06/060425-googlebigcedarannouncement"
+      ],
       "source_kind": "official utility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Alliant officially confirmed Google's Cedar Rapids data-center project at Alliant's Big Cedar Industrial Center.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 42.1,
-      "lon": -93.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-f340a33a5ef18d4f-E01",
@@ -1298,17 +2141,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_regulatory",
       "authority": "Indiana Michigan Power / Indiana Utility Regulatory Commission",
+      "record_id": "Cause No. 46276",
       "record_name": "Google Fort Wayne energization",
       "source_url": "https://datacenterdata.io/insights/updates/u/b721b76c4739/",
+      "source_urls": [
+        "https://datacenterdata.io/insights/updates/u/b721b76c4739/"
+      ],
       "source_kind": "secondary record reproducing an official IURC order",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "The April 29, 2026 IURC final order records that I&M energized Google's Fort Wayne site in November 2024; the underlying official order is Cause No. 46276.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 39.9,
-      "lon": -86.3,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-177c53f92d72ec4a-E01",
@@ -1319,17 +2165,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Toledo Edison",
+      "record_id": null,
       "record_name": "Meta Bowling Green energy planning",
       "source_url": "https://datacenters.atmeta.com/2025/04/hello-bowling-green/",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+      ],
       "source_kind": "official Meta disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Meta states it worked closely with Toledo Edison from the beginning to plan the site's energy needs.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 40.4,
-      "lon": -82.8,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-bbcf0efa8bcebd41-E01",
@@ -1340,17 +2189,68 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_regulatory",
       "authority": "Louisiana Public Service Commission / Entergy Louisiana",
+      "record_id": null,
       "record_name": "Large-load service proceedings for Meta Hyperion",
       "source_url": "https://www.lpsc.louisiana.gov/",
+      "source_urls": [
+        "https://www.lpsc.louisiana.gov/"
+      ],
       "source_kind": "state commission docket family",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Louisiana public-service records identify large-load service proceedings associated with the Holly Ridge/Hyperion campus and Entergy Louisiana.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 31,
-      "lon": -92,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-1b7cb9c2b0eb479f-E01",
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "epoch_name": "Microsoft Narvik Norway",
+      "country": "Norway",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "Statnett / local distribution network",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-narvik-norway",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/microsoft-narvik-norway"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": 92,
+      "capacity_kind": "site-planned capacity",
+      "basis": "No public utility/queue identifier was found in the reviewed record set.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-dc6199921ba82b85-E01",
+      "epoch_id": "EPOCH-dc6199921ba82b85",
+      "epoch_name": "OpenAI Stargate Lordstown",
+      "country": "United States",
+      "state_province": "OH",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "PJM system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+      "source_urls": [
+        "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+      ],
+      "source_kind": "Epoch AI site/publication",
+      "confidence": "documented_search_result",
+      "capacity_mw": 300,
+      "capacity_kind": "site-planned capacity",
+      "basis": "The existing Foxconn substation is site context, not a queue or service record. No site-specific PJM identifier was located.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-145ed5861bdf2982-E01",
@@ -1361,17 +2261,164 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_regulatory",
       "authority": "Michigan Public Service Commission / DTE Electric",
+      "record_id": null,
       "record_name": "DTE special-contract approval / Stargate Michigan",
       "source_url": "https://www.michigan.gov/som/data-centers",
+      "source_urls": [
+        "https://www.michigan.gov/som/data-centers"
+      ],
       "source_kind": "state government / commission record",
       "confidence": "high",
       "capacity_mw": 1383,
       "capacity_kind": null,
       "basis": "Michigan's official data-center material identifies MPSC approval of DTE Electric energy contracts; the cited approval reports 1,383 MW site capacity.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 39.8,
-      "lon": -98.6,
-      "precision": "country centroid"
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-e3aa5f34aa5c4a7b-E01",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "epoch_name": "OpenAI Stargate Milam",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "ERCOT system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+      "source_urls": [
+        "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+      ],
+      "source_kind": "Epoch AI site/publication",
+      "confidence": "documented_search_result",
+      "capacity_mw": 1200,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Same-county raw ERCOT queue rows 26INR0633 and 26INR0630 are 500 MW battery-storage projects and are rejected as unrelated generation/storage.",
+      "alternatives_rejected": [
+        {
+          "candidate_id": "26INR0633",
+          "candidate_record": "Betel Storage II",
+          "candidate_poi": "3377 Little Pond 345",
+          "candidate_capacity_mw": 500,
+          "rejected_reason": "Explicit BESS/storage project; developer/customer identity does not match Stargate/SB Energy."
+        },
+        {
+          "candidate_id": "26INR0630",
+          "candidate_record": "Betel Storage I",
+          "candidate_poi": "3377 Little Pond Switch 345",
+          "candidate_capacity_mw": 500,
+          "rejected_reason": "Explicit BESS/storage project; unrelated to data-center load."
+        }
+      ],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-3816121e8d72fe04-E01",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "epoch_name": "OpenAI Stargate New Mexico",
+      "country": "United States",
+      "state_province": "NM",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "WECC / PNM serving system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+      "source_urls": [
+        "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+      ],
+      "source_kind": "Epoch AI site/publication",
+      "confidence": "documented_search_result",
+      "capacity_mw": 2200,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Site and on-site generation plans are public, but no conservative site-to-queue/service identifier was found.",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-b427a75f62d61aae-E01",
+      "epoch_id": "EPOCH-b427a75f62d61aae",
+      "epoch_name": "OpenAI Stargate Shackelford",
+      "country": "United States",
+      "state_province": "TX",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "ERCOT system",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+      "source_urls": [
+        "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+      ],
+      "source_kind": "Epoch AI site/publication",
+      "confidence": "documented_search_result",
+      "capacity_mw": 1400,
+      "capacity_kind": "site-planned capacity",
+      "basis": "Raw ERCOT candidate 26INR0500 is a 206.5 MW BESS at 1442 CFRSW 345kV and is rejected as unrelated storage, despite county-name similarity.",
+      "alternatives_rejected": [
+        {
+          "candidate_id": "26INR0500",
+          "candidate_record": "Shackleford BESS",
+          "candidate_poi": "1442 CFRSW 345kV",
+          "candidate_capacity_mw": 206.5,
+          "rejected_reason": "Explicit BESS/storage queue row with unrelated developer; not a data-center request."
+        }
+      ],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-661288625d17662a-E01",
+      "epoch_id": "EPOCH-661288625d17662a",
+      "epoch_name": "OpenAI Stargate UAE",
+      "country": "United Arab Emirates",
+      "state_province": "",
+      "evidence_status": "no_match_found",
+      "evidence_type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+      "authority": "UAE transmission / local distribution connection process",
+      "record_id": null,
+      "record_name": "NO MATCH FOUND — site-specific queue / service record",
+      "source_url": "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-uae",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-uae"
+      ],
+      "source_kind": "Epoch AI site record",
+      "confidence": "documented_search_result",
+      "capacity_mw": null,
+      "capacity_kind": null,
+      "basis": "Announced/under development; no public site-specific connection case found",
+      "alternatives_rejected": [],
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "capture_date": "2026-09-26"
+    },
+    {
+      "id": "EPOCH-78e7d8474fbdf968-E01",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "epoch_name": "OpenAI Stargate Wisconsin",
+      "country": "United States",
+      "state_province": "WI",
+      "evidence_status": "evidence_found",
+      "evidence_type": "SITE_SPECIFIC_GRID_CONNECTION_EVIDENCE",
+      "authority": "We Energies (WEC Energy Group)",
+      "record_id": null,
+      "record_name": "site-level connection/service evidence",
+      "source_url": "https://registry.deploy.report/datacenters/vantage-lighthouse-port-washington-wisconsin",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/vantage-lighthouse-port-washington-wisconsin",
+        "https://openai.com/index/stargate-community/"
+      ],
+      "source_kind": "public facility registry; OpenAI primary source",
+      "confidence": "medium",
+      "capacity_mw": 1300,
+      "capacity_kind": "service/contract capacity",
+      "basis": "1.3 GW is the connection sought from We Energies; 3.5 GW is long-term site potential. These values are not equated with current IT load or a PJM/MISO queue row.",
+      "alternatives_rejected": [],
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-d2da66ea035880ce-E01",
@@ -1382,17 +2429,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Alliant Energy",
+      "record_id": null,
       "record_name": "QTS Cedar Rapids / Big Cedar campus",
       "source_url": "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
+      "source_urls": [
+        "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr"
+      ],
       "source_kind": "official utility disclosure",
       "confidence": "high",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "Alliant officially confirmed QTS's Cedar Rapids data-center campus on 612 acres of the Big Cedar Industrial Center.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 42.1,
-      "lon": -93.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-d2da66ea035880ce-E02",
@@ -1403,17 +2453,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_load_request",
       "authority": "MISO",
+      "record_id": null,
       "record_name": "SNA LLC Cedar Rapids new-load announcement",
       "source_url": "https://cdn.misoenergy.org/NEW%20LOAD%20ANNOUNCEMENTS%20IN%20MISO%20REGIONS%2012062024684954.pdf",
+      "source_urls": [
+        "https://cdn.misoenergy.org/NEW%20LOAD%20ANNOUNCEMENTS%20IN%20MISO%20REGIONS%2012062024684954.pdf"
+      ],
       "source_kind": "official MISO new-load announcement",
       "confidence": "medium",
       "capacity_mw": 616,
       "capacity_kind": null,
       "basis": "MISO public new-load announcement lists a 616 MW Cedar Rapids request under shell company SNA LLC; secondary facility research associates this request with the QTS phase, so identity is retained as medium rather than promoted to a direct queue ID.",
+      "alternatives_rejected": [],
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "lat": 42.1,
-      "lon": -93.5,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     },
     {
       "id": "EPOCH-4b4d686b6c457a68-E01",
@@ -1424,17 +2477,20 @@
       "evidence_status": "evidence_found",
       "evidence_type": "site_specific_utility_relationship",
       "authority": "Rocky Mountain Power",
+      "record_id": null,
       "record_name": "QTS Eagle Mountain serving-utility relationship",
       "source_url": "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut"
+      ],
       "source_kind": "secondary sourced facility registry",
       "confidence": "medium",
       "capacity_mw": null,
       "capacity_kind": null,
       "basis": "DEPLOY identifies Rocky Mountain Power as the serving utility for QTS's Eagle Mountain facility in Utah. The QTS facility record independently states it is working directly with local utilities on power needs and that QTS will pay for project energy infrastructure.",
+      "alternatives_rejected": [],
       "next_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record.",
-      "lat": 39.3,
-      "lon": -111.7,
-      "precision": "state centroid derived from public address"
+      "capture_date": "2026-09-26"
     }
   ]
 }
