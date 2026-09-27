@@ -3,7 +3,7 @@
 Build Track 3 evidence artifacts from the preserved Epoch site universe and
 site-level research layer.
 
-The builder never interprets a missing record as evidence of absence.
+The builder never interprets a missing record as evidence of absence.\n# 2026-09-27 integrity refresh: regenerate canonical evidence/provenance artifacts from retained source layers.
 """
 
 from __future__ import annotations
