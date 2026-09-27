@@ -25,6 +25,8 @@ REGISTRY = EPOCH / "registry.json"
 GAP = EPOCH / "queue_gap_analysis.csv"
 POWER_OBSERVATIONS = OUT / "power_observations.json"
 COOLING_OBSERVATIONS = OUT / "cooling_observations.json"
+REMOTE_OBSERVATIONS = OUT / "remote_sensing_observations.json"
+TRANSFORMER_EVENTS = OUT / "transformer_supply_chain_events.json"
 
 SITE_DOMAINS = (
     "site_identity",
@@ -80,7 +82,7 @@ def external_snapshot_available(domain: str) -> bool:
     return all((EPOCH / name).exists() and (EPOCH / name).stat().st_size > 0
                for name in EXTERNAL_SOURCE_FILES[domain])
 
-def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, cooling_observations_by_site: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
+def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, cooling_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, remote_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, transformer_events_by_site: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
     ev = rec.get("site_level_connection_evidence") or []
     grid = rec.get("grid_crosswalk") or {}
     crosswalk_ev = grid.get("site_level_public_evidence") or {}
@@ -178,10 +180,34 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
         }
-    if domain in {"remote_sensing", "transformer_supply_chain"}:
+    if domain == "remote_sensing":
+        observations = [
+            x for x in (remote_observations_by_site or {}).get(str(rec.get("epoch_id")), [])
+            if x.get("status") == "INGESTED_DERIVED"
+        ]
+        if observations:
+            return {
+                "status": "INGESTED_DERIVED",
+                "observation_count": len(observations),
+                "modalities": sorted({str(x.get("modality")) for x in observations}),
+                "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
+            }
         return {
             "status": "NOT_INGESTED",
-            "basis": "The public repository currently specifies this evidence stream but does not ingest its measurements."
+            "basis": "No site-level remote-sensing observations have been successfully processed yet."
+        }
+    if domain == "transformer_supply_chain":
+        events = (transformer_events_by_site or {}).get(str(rec.get("epoch_id")), [])
+        if events:
+            return {
+                "status": "INGESTED",
+                "event_count": len(events),
+                "basis": "Source-backed HV-transformer procurement, delivery, installation, or assignment events are retained."
+            }
+        return {
+            "status": "RESEARCH_QUEUE",
+            "event_count": 0,
+            "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
         }
     if domain == "independent_corroboration":
         independent = [x for x in ev if x.get("independent_of_other_source") is True]
@@ -406,12 +432,22 @@ def main() -> int:
     power_observations = power_payload.get("records", [])
     cooling_payload = load_json(COOLING_OBSERVATIONS) if COOLING_OBSERVATIONS.exists() else {"records": []}
     cooling_observations = cooling_payload.get("records", [])
+    remote_payload = load_json(REMOTE_OBSERVATIONS) if REMOTE_OBSERVATIONS.exists() else {"records": []}
+    remote_observations = remote_payload.get("records", [])
+    transformer_payload = load_json(TRANSFORMER_EVENTS) if TRANSFORMER_EVENTS.exists() else {"records": []}
+    transformer_events = transformer_payload.get("records", [])
     power_by_site: dict[str, list[dict[str, Any]]] = {}
+    remote_by_site: dict[str, list[dict[str, Any]]] = {}
+    transformer_by_site: dict[str, list[dict[str, Any]]] = {}
     cooling_by_site: dict[str, list[dict[str, Any]]] = {}
     for obs in power_observations:
         power_by_site.setdefault(str(obs.get("epoch_id")), []).append(obs)
     for obs in cooling_observations:
         cooling_by_site.setdefault(str(obs.get("epoch_id")), []).append(obs)
+    for obs in remote_observations:
+        remote_by_site.setdefault(str(obs.get("epoch_id")), []).append(obs)
+    for event in transformer_events:
+        transformer_by_site.setdefault(str(event.get("epoch_id")), []).append(event)
     gaps = list(csv.DictReader(GAP.open("r", encoding="utf-8-sig", newline="")))
 
     epoch_ids = {str(x["epoch_id"]) for x in reg["records"]}
@@ -438,6 +474,8 @@ def main() -> int:
                 domain,
                 power_by_site,
                 cooling_by_site,
+                remote_by_site,
+                transformer_by_site,
             )
             domains[domain] = s
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
@@ -487,6 +525,10 @@ def main() -> int:
         "pending_grid_connection_research_count": len(pending),
         "domain_status_counts": status_counts,
         "source_stack_count": len(source_stack.get("sources", [])),
+        "remote_sensing_derived_observation_count": sum(
+            1 for x in remote_observations if x.get("status") == "INGESTED_DERIVED"
+        ),
+        "transformer_event_count": len(transformer_events),
         "source_stack_status_counts": {
             status: sum(1 for source in source_stack.get("sources", []) if source.get("status") == status)
             for status in sorted({source.get("status") for source in source_stack.get("sources", []) if source.get("status")})
