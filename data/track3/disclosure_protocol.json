@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "title": "Voluntary disclosure / amnesty / buyback evidence protocol",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "allowed_event_types": [
+    "VOLUNTARY_DISCLOSURE",
+    "AMNESTY_REQUEST",
+    "BUYBACK",
+    "RETURN_TO_VENDOR",
+    "DESTRUCTION_CERTIFICATE"
+  ],
+  "required_fields": [
+    "disclosure_id",
+    "organization",
+    "event_type",
+    "event_date",
+    "quantity_or_scope",
+    "claimed_destination",
+    "supporting_evidence_ids",
+    "independent_verification_state"
+  ],
+  "verification_rule": "A voluntary disclosure or buyback claim is never promoted to verified inventory reduction without supporting evidence and a defined verification rule.",
+  "current_verified_events": 0
+}
