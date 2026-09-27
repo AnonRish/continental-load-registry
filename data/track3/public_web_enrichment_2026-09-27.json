@@ -4,19 +4,19 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 231,
+    "record_count": 236,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 205,
+      "PUBLIC_SOURCE_CAPTURED": 210,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
       "energy_companies": 58,
       "project": 34,
-      "investment": 22,
+      "investment": 24,
       "owner": 10,
       "investors": 4,
-      "construction_companies": 22,
+      "construction_companies": 25,
       "cooling": 11,
       "chip_quantities": 5,
       "operational_status": 7,
@@ -3770,7 +3770,87 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Meta's official announcement identifies the facility as its Cheyenne Data Center.",
       "evidence_id": "EVID-PWEB-batch4-meta-cheyenne-proj-6"
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-0788d9aeb3114553",
+      "field": "investment",
+      "value": "More than $1.5 billion",
+      "relationship": "campus investment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/09/montgomery-were-growing/"
+      ],
+      "publication_date": "2025-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says the Montgomery campus expansion increased its investment to more than $1.5 billion.",
+      "evidence_id": "EVID-PWEB-batch5-meta-montgomery-inve-0"
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-0788d9aeb3114553",
+      "field": "construction_companies",
+      "value": "Hensel Phelps",
+      "relationship": "construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/05/hello-montgomery/"
+      ],
+      "publication_date": "2024-05-16",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's Montgomery launch announcement directs construction information to Hensel Phelps and identifies it among project partners.",
+      "evidence_id": "EVID-PWEB-batch5-meta-montgomery-cons-1"
+    },
+    {
+      "site_name": "Meta Huntsville",
+      "epoch_id": "EPOCH-27e284efc1b1abc2",
+      "field": "investment",
+      "value": "$1.5 billion+",
+      "relationship": "data-center investment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/wp-content/uploads/2025/02/Meta_s-Huntsville-Data-Center.pdf"
+      ],
+      "publication_date": "2025-02-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's Huntsville fact sheet states a $1.5B+ data center investment in Alabama.",
+      "evidence_id": "EVID-PWEB-batch5-meta-huntsville-inve-2"
+    },
+    {
+      "site_name": "Microsoft Fairwater Wisconsin",
+      "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "field": "construction_companies",
+      "value": "Walsh Construction",
+      "relationship": "general contractor / construction partner",
+      "source": "Microsoft Local",
+      "source_urls": [
+        "https://local.microsoft.com/blog/mount-pleasant-datacenter-project-update/"
+      ],
+      "publication_date": "2026-07-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Microsoft's July 2026 Mount Pleasant update names Walsh Construction as the contact for ongoing site work; the same page notes prior construction phases involving Kiewit, so contractor identity is time-scoped.",
+      "evidence_id": "EVID-PWEB-batch5-microsoft-fairwater-wiscon-cons-5"
+    },
+    {
+      "site_name": "Microsoft Fairwater Wisconsin",
+      "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "field": "construction_companies",
+      "value": "Kiewit",
+      "relationship": "historical construction partner",
+      "source": "Microsoft Local",
+      "source_urls": [
+        "https://local.microsoft.com/blog/mount-pleasant-datacenter-project-update/"
+      ],
+      "publication_date": "2024-09-12",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Microsoft's Mount Pleasant update records Kiewit as the general contractor for an earlier phase/site-preparation period; retained as a historical relationship rather than a current exclusivity claim.",
+      "evidence_id": "EVID-PWEB-batch5-microsoft-fairwater-wiscon-cons-6"
     }
   ],
-  "record_count": 231
+  "record_count": 236
 }
