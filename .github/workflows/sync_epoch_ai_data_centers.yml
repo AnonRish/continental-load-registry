@@ -163,13 +163,17 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Sync Epoch AI data-center evidence"
-            # The repository can receive a documentation/data commit while this
-            # long-running sync is executing. Rebase the generated snapshot
-            # onto the current main before pushing so a valid run does not fail
-            # merely because main advanced during the download/validation work.
-            git fetch origin main
-            git rebase --autostash origin/main
-            git push origin HEAD:main
+            # Generated artifacts are authoritative for this job. Merge any
+            # newer main commits while keeping this job's generated files on
+            # conflicts, then retry the push if another generator advances main.
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git merge -X ours origin/main --no-edit
+              if git push origin HEAD:main; then
+                break
+              fi
+              if [ "$attempt" -eq 3 ]; then exit 1; fi
+            done
           fi
 
 # CI invariant: changes to this workflow must execute the full Track 3 sync against main.
