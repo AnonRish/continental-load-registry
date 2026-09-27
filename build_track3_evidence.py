@@ -620,6 +620,12 @@ def main() -> int:
         "records": pending,
         "semantics": "A pending record means the registry has not attached site-specific grid/service evidence yet; it does not mean the site lacks a connection.",
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (OUT / "research_complete_no_public_record.json").write_text(json.dumps({
+        "schema_version": 1,
+        "count": len(researched_no_public_record),
+        "records": researched_no_public_record,
+        "semantics": "These sites had a documented site-specific search and no public queue/service record was retained. This is not evidence of absence of grid service.",
+    }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     task_counts_by_domain = {
         domain: sum(1 for task in observation_queue if task["domain"] == domain)
