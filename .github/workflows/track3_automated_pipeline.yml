@@ -219,7 +219,7 @@ jobs:
           PY
 
       - name: Commit generated pipeline outputs
-        if: ${{ !cancelled() }}
+        if: ${{ success() }}
         run: |
 
           git config user.name "github-actions[bot]"
