@@ -3588,6 +3588,13 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
     document.getElementById('glanceSites')&&(document.getElementById('glanceSites').textContent=fmt(sites));
     document.getElementById('glancePhysical')&&(document.getElementById('glancePhysical').textContent=fmt(physical));
     document.getElementById('glanceOpen')&&(document.getElementById('glanceOpen').textContent=fmt(open));
+    document.getElementById('deckSites')&&(document.getElementById('deckSites').textContent=fmt(sites));
+    document.getElementById('deckPhysical')&&(document.getElementById('deckPhysical').textContent=fmt(physical));
+    const metricEls=[...document.querySelectorAll('.visual-metric b')];
+    if(metricEls[0]) metricEls[0].textContent=fmt(Number((summary.current_core_registry_rows)||1540));
+    if(metricEls[1]) metricEls[1].textContent=(Number((summary.broader_known_scope_capacity_gw))||394.6).toFixed(1)+' GW';
+    if(metricEls[2]) metricEls[2].textContent=fmt(sites);
+    if(metricEls[3]) metricEls[3].textContent=fmt(Number(summary.observation_task_count||211));
     const pb=document.getElementById('glancePhysicalBar'); if(pb) pb.style.setProperty('--fill',Math.min(100,physical/Math.max(1,sites*6)*100)+'%');
     const ob=document.getElementById('glanceOpenBar'); if(ob) ob.style.setProperty('--fill',Math.min(100,100-open/Math.max(1,sites*12)*100)+'%');
 
