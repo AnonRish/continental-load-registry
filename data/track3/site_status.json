@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-27T03:20:14.644868+00:00",
+    "generated_at_utc": "2026-09-27T03:22:25.629592+00:00",
     "epoch_site_count": 93,
     "observation_task_count": 279,
     "observation_task_counts_by_domain": {
@@ -17,7 +17,7 @@
     "site_level_evidence_site_count": 93,
     "combined_site_level_evidence_site_count": 93,
     "site_specific_queue_id_count": 2,
-    "pending_grid_connection_research_count": 24,
+    "pending_grid_connection_research_count": 21,
     "domain_status_counts": {
       "site_identity": {
         "INGESTED": 93
@@ -30,13 +30,13 @@
         "UNKNOWN": 10
       },
       "grid_connection": {
-        "SITE_LEVEL_EVIDENCE": 67,
-        "PENDING_RESEARCH": 24,
+        "SITE_LEVEL_EVIDENCE": 70,
+        "PENDING_RESEARCH": 21,
         "VERIFIED_SITE_SPECIFIC": 2
       },
       "service_or_contract": {
-        "NOT_INGESTED": 88,
-        "SITE_LEVEL_EVIDENCE": 5
+        "NOT_INGESTED": 86,
+        "SITE_LEVEL_EVIDENCE": 7
       },
       "regulatory": {
         "NOT_ASSESSED": 88,
@@ -1195,7 +1195,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -1960,12 +1960,12 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -3274,7 +3274,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -3582,7 +3582,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -4193,12 +4193,12 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -5353,7 +5353,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -5892,7 +5892,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, or energy-contract record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -6734,8 +6734,8 @@
           "basis": "No retained site-level chip-quantity rows."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
           "status": "NOT_INGESTED",
