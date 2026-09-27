@@ -44,14 +44,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin main
-          git rebase --autostash origin/main
           git add data/track3/facility_provenance.json data/track3/facility_provenance_records.csv data/track3/provenance_snapshots/
           if git diff --cached --quiet; then
             echo "No facility provenance changes."
             exit 0
           fi
           git commit -m "Refresh Track 3 facility provenance"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git merge -X ours origin/main --no-edit
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" -eq 3 ]; then exit 1; fi
+          done
