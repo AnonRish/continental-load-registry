@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 250,
+  "record_count": 253,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -6921,6 +6921,84 @@
       "capture_date": "2026-09-26",
       "source_scope": "Alabama Power electric-service contract filed August 14, 2026",
       "notes": "The public contract is redacted and the customer/site has not been identified in the public sources reviewed. This record is intentionally unlocated; it should not be assigned an Alabama city centroid because that would imply a false site."
+    },
+    {
+      "id": "ERCOT-30INR0031-CALDWELL-2026",
+      "evidence_type": "secondary_data_center_interconnection_project",
+      "project_name": "Caldwell County Energy Center",
+      "customer_or_developer": "Caldwell County Energy Center, LLC",
+      "utility_or_provider": "ERCOT",
+      "jurisdiction": "Texas, US",
+      "location": "Caldwell County, TX",
+      "county_or_zone": "Caldwell County",
+      "queue_id": "30INR0031",
+      "status": "SS Completed, FIS Started, No IA",
+      "planned_in_service": "2025-02-03",
+      "capacity_claims": [
+        {
+          "value_mw": 1500,
+          "unit": "MW",
+          "raw_value": "1,500 MW",
+          "qualifier": "public facility tracker interconnection capacity"
+        }
+      ],
+      "source_authority": "secondary public facility/permit tracker",
+      "source_url": "https://savrn.com/data-center-permits-tracker",
+      "capture_date": "2026-09-26",
+      "source_scope": "Current Data Center Permits Tracker",
+      "notes": "Named ERCOT data-center interconnection project. Treat as secondary facility evidence and potentially overlapping with the core ERCOT queue row; not added to core totals."
+    },
+    {
+      "id": "ERCOT-33INR0005-BULLOCK-2026",
+      "evidence_type": "secondary_data_center_interconnection_project",
+      "project_name": "Bullock Data Center",
+      "customer_or_developer": "Bullock Data Center, LLC",
+      "utility_or_provider": "ERCOT",
+      "jurisdiction": "Texas, US",
+      "location": "Hill County, TX",
+      "county_or_zone": "Hill County",
+      "queue_id": "33INR0005",
+      "status": "SS Completed, FIS Started, No IA",
+      "planned_in_service": "2026-06-12",
+      "capacity_claims": [
+        {
+          "value_mw": 1400,
+          "unit": "MW",
+          "raw_value": "1,400 MW",
+          "qualifier": "public facility tracker interconnection capacity"
+        }
+      ],
+      "source_authority": "secondary public facility/permit tracker",
+      "source_url": "https://savrn.com/data-center-permits-tracker",
+      "capture_date": "2026-09-26",
+      "source_scope": "Current Data Center Permits Tracker",
+      "notes": "Named ERCOT data-center interconnection project. Secondary source; likely overlaps ERCOT queue data and is therefore non-additive."
+    },
+    {
+      "id": "ERCOT-33INR0006-LIBERTY-2026",
+      "evidence_type": "secondary_data_center_interconnection_project",
+      "project_name": "Liberty Thermal Energy Center / Liberty Data Center I",
+      "customer_or_developer": "Liberty Data Center I, LLC",
+      "utility_or_provider": "ERCOT",
+      "jurisdiction": "Texas, US",
+      "location": "Hill County, TX",
+      "county_or_zone": "Hill County",
+      "queue_id": "33INR0006",
+      "status": "SS Completed, FIS Started, No IA",
+      "planned_in_service": "2026-06-12",
+      "capacity_claims": [
+        {
+          "value_mw": 1400,
+          "unit": "MW",
+          "raw_value": "1,400 MW",
+          "qualifier": "public facility tracker interconnection capacity"
+        }
+      ],
+      "source_authority": "secondary public facility/permit tracker",
+      "source_url": "https://savrn.com/data-center-permits-tracker",
+      "capture_date": "2026-09-26",
+      "source_scope": "Current Data Center Permits Tracker",
+      "notes": "Named ERCOT data-center interconnection project. Secondary source; likely overlaps ERCOT queue data and is therefore non-additive."
     }
   ]
 }
