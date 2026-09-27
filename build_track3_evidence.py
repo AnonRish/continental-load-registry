@@ -511,6 +511,9 @@ def main() -> int:
     for event in transformer_events:
         transformer_by_site.setdefault(str(event.get("epoch_id")), []).append(event)
     gaps = list(csv.DictReader(GAP.open("r", encoding="utf-8-sig", newline="")))
+    crosswalk_path = EPOCH / "queue_crosswalk.json"
+    crosswalk_payload = load_json(crosswalk_path) if crosswalk_path.exists() else {"records": []}
+    crosswalk_by_id = {str(x.get("epoch_id")): x for x in crosswalk_payload.get("records", [])}
 
     epoch_ids = {str(x["epoch_id"]) for x in reg["records"]}
     evidence_ids = {str(x["epoch_id"]) for x in evidence["records"]}
