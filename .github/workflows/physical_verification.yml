@@ -90,23 +90,28 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/physical_verification_layer.json data/physical_verification_layer.csv \
-            data/track3/physical_site_coordinates.json \
-            data/track3/remote_sensing_observations.json data/track3/remote_sensing_observations.csv \
-            data/track3/transformer_supply_chain_events.json data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
-            data/track3_source_stack.json data/track3_evidence_schema.json
+
+          git add -A data/physical_verification_layer.json data/physical_verification_layer.csv \
+            data/track3/physical_site_coordinates.json data/track3/remote_sensing_observations.json \
+            data/track3/remote_sensing_observations.csv data/track3/transformer_supply_chain_events.json \
+            data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
+            data/track3_source_stack.json data/track3_evidence_schema.json data/track3/site_status.json \
+            data/track3/evidence_records.json data/track3/summary.json data/website_completeness_audit.json
           if git diff --cached --quiet; then
             echo "No physical-verification data changes."
             exit 0
           fi
           git commit -m "Refresh physical verification observations"
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git merge -X ours origin/main --no-edit
-            if git push origin HEAD:main; then
-              exit 0
+            if git rebase -X theirs origin/main; then
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+            else
+              git rebase --abort || true
             fi
-            sleep 2
+            sleep 3
           done
           echo "Unable to push physical verification refresh after retries."
           exit 1
