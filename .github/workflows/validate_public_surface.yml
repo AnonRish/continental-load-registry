@@ -258,8 +258,8 @@ jobs:
           html = Path("index.html").read_text(encoding="utf-8")
           readme = Path("README.md").read_text(encoding="utf-8")
 
-          assert "Browse all 241 extracted project-level records" in html
-          assert 'placeholder="Search 241 project records"' in html
+          assert "Browse all 271 extracted project-level records" in html
+          assert 'placeholder="Search 271 project records"' in html
           assert re.search(r'<p class="mono text-xl">250</p><p class="text-xs mt-1" style="color:var\(--ink-faint\);">Project-level records', html)
           assert "The project-level layer has grown to **271 records**" in readme
           assert "271 mapped project records" in readme
