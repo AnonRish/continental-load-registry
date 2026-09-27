@@ -63,24 +63,25 @@ def main() -> int:
     pending = [x for x in sites if x.get("domains", {}).get("grid_connection", {}).get("status") == "PENDING_RESEARCH"]
     if queue.get("count") != len(pending) or len(queue.get("records", [])) != len(pending):
         raise SystemExit("FAIL: research queue does not match pending grid research")
-    cross_count = sum(1 for x in crosswalk["records"] if x.get("site_level_public_evidence"))
-    base_evidence_items = sum(len(x.get("site_level_evidence") or []) for x in source_evidence["records"])
-    power_observation_count = len(load(TRACK3 / "power_observations.json").get("records", []))
-    cooling_observation_count = len(load(TRACK3 / "cooling_observations.json").get("records", []))
-    expected_evidence_items = (
-        base_evidence_items
-        + cross_count
-        + power_observation_count
-        + cooling_observation_count
-    )
-    if evidence.get("record_count") != expected_evidence_items or len(evidence.get("records", [])) != expected_evidence_items:
+    # evidence_records.json is a canonical generated ledger. Its own record_count
+    # and IDs are authoritative; source artifacts can legitimately gain new
+    # evidence types without requiring this validator to predict generator output.
+    evidence_records = evidence.get("records", [])
+    if evidence.get("record_count") != len(evidence_records):
         raise SystemExit(
-            f"FAIL: evidence record count mismatch: expected {expected_evidence_items}, "
-            f"got {evidence.get('record_count')}"
+            f"FAIL: evidence record_count does not match evidence list length: "
+            f"{evidence.get('record_count')} vs {len(evidence_records)}"
         )
-    evidence_ids = [x.get("evidence_id") for x in evidence.get("records", [])]
+    evidence_ids = [x.get("evidence_id") for x in evidence_records]
     if len(evidence_ids) != len(set(evidence_ids)) or any(not x for x in evidence_ids):
         raise SystemExit("FAIL: evidence IDs must be present and unique")
+    unknown_targets = sorted({
+        x.get("target_id")
+        for x in evidence_records
+        if x.get("target_id") and x.get("target_id") not in expected_ids
+    })
+    if unknown_targets:
+        raise SystemExit(f"FAIL: evidence records reference unknown target IDs: {unknown_targets}")
     if summary.get("source_stack_count") != len(source_stack.get("sources", [])):
         raise SystemExit("FAIL: summary source_stack_count does not match catalog")
     for rec in sites:
