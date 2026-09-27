@@ -147,11 +147,10 @@ jobs:
               assert r["id"] and r["evidence_type"] and r["source_url"].startswith("https://")
 
           project_map = json.loads((root / "project_level_map.json").read_text(encoding="utf-8"))
-          assert project_map["record_count"] == len(project_map["records"]) == 252
-          assert project_map["mapped_count"] == 252
+          assert project_map["record_count"] == len(project_map["records"]) == 271
+          assert project_map["mapped_count"] == 271
           map_ids = {r["id"] for r in project_map["records"]}
-          assert map_ids.issubset(set(project_ids))
-          assert set(project_ids) - map_ids == {"ALABAMA-POWER-WOOSTOR-CONTRACT-2026"}
+          assert map_ids == set(project_ids)
           assert all(r.get("lat") is not None and r.get("lon") is not None for r in project_map["records"])
 
           aggregate_map = json.loads((root / "supplemental_aggregate_map.json").read_text(encoding="utf-8"))
