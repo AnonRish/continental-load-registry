@@ -19,10 +19,10 @@
       "records": 261,
       "mapped_records": 261,
       "unlocated_records": [],
-      "geometry": "project/city/county/site-area display geography, with one explicitly labeled state-jurisdiction fallback",
+      "geometry": "project/city/county/site-area/service-area display geography",
       "additive_to_core": false,
       "file": "data/project_level_map.json",
-      "status": "all 261 project records have display geometry; service-area and jurisdiction points are explicitly labeled where site addresses are not public"
+      "status": "all 261 project records have display geometry; service-area points are not facility coordinates"
     },
     {
       "id": "SUPPLEMENTAL_AGGREGATES",
@@ -121,5 +121,5 @@
       "source_capture_date": "2026-09-23"
     }
   ],
-  "accounting_note": "Layer counts are not summed across overlays. Missing map coordinates never receive invented site geography; the one unlocated project-level record (Woostor LLC) is represented only through a labeled Alabama regional contract footprint, and the current 153-record MISO location gap is represented only through a labeled MISO regional disclosure footprint."
+  "accounting_note": "Layer counts are not summed across overlays. Missing map coordinates never receive invented site geography. Jurisdiction/state/service-area display points are labeled as display geometry, not facility coordinates."
 }
