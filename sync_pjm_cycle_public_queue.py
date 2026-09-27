@@ -9,6 +9,7 @@ import pandas as pd,requests
 PAGE="https://www.pjm.com/planning/m/cycle-service-request-status"
 BASE="https://www.pjm.com"
 UA="Mozilla/5.0 (compatible; Continental-Large-Load-Registry/1.0; +https://github.com/AnonRish/continental-load-registry)"
+PUBLIC_BROWSER_KEY_FALLBACK="E29477D0-70E0-4825-89B0-43F460BF9AB4"
 
 def fetch():
     s=requests.Session()
