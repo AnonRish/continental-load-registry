@@ -262,7 +262,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <footer class="footer"><div class="tools">
 <a class="btn" href="data/track3/summary.json">Summary JSON</a>
 <a class="btn" href="data/track3/site_status.json">Site status JSON</a>
-<a class="btn" href="data/track3/research_queue.json">Research queue JSON</a>
+<a class="btn" href="data/track3/research_queue.json">Research queue JSON</a><a class="btn" href="data/track3/research_complete_no_public_record.json">Completed no-public-record ledger</a>
 <a class="btn" href="data/track3/observation_queue.json">Observation queue JSON</a>
 <a class="btn" href="data/track3/observation_queue.csv">Observation queue CSV</a>
 <a class="btn" href="data/track3/power_observations.json">Power observations</a>
@@ -328,6 +328,7 @@ function renderCards(){
   [s.combined_site_level_evidence_site_count||0,'Sites with any combined evidence','site-level + crosswalk layers'],
   [s.site_specific_queue_id_count||0,'Verified site-specific queue IDs','out of 93 Epoch sites'],
   [s.pending_grid_connection_research_count||0,'Pending grid research','open site-specific connection gaps'],
+  [s.research_completed_no_public_record_count||0,'Research-complete no public record','documented site searches with no retained public match'],
   [D.evidence.length,'Evidence records','canonical evidence ledger'],
   [D.obs.length,'Observation tasks','acquisition backlog']
  ];
