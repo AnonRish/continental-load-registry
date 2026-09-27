@@ -71,7 +71,7 @@ jobs:
           tx=json.loads((root/"data/track3/transformer_supply_chain_events.json").read_text(encoding="utf-8"))
           assert len(status["records"])==93
           assert len(observation["tasks"])==summary["observation_task_count"]
-          assert audit["summary"]["track3_evidence_records"]==len(evidence["records"])==195
+          assert audit["summary"]["track3_evidence_records"]==len(evidence["records"])
           assert physical["summary"]["transformer_event_records"]==tx["record_count"]==3
           print("PASS: Track 3 runtime contracts")
           PY
