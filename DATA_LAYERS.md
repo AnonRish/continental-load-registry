@@ -1,6 +1,6 @@
 # Data Layers — Continental Large-Load / Track 3 Registry
 
-Updated: 2026-09-26
+Updated: 2026-09-27
 
 ## Accounting rule
 
@@ -8,9 +8,9 @@ The registry deliberately separates **unique row-level queue records**, **projec
 
 The current additive large-load expansion is:
 
-- Core row-level registry: **1,558 records / 361.875 GW**
+- Core row-level registry: **1,540 records / 358.7181 GW**
 - Additional known MISO records: **83 / 35.9 GW**
-- Expanded known scope: **1,641 records / 397.775 GW**
+- Expanded known scope: **1,623 records / 394.6181 GW**
 
 Everything below is a separate evidence or research layer unless explicitly stated otherwise.
 
@@ -21,12 +21,12 @@ Everything below is a separate evidence or research layer unless explicitly stat
 | `data/registry_raw.csv` | 751 retained raw rows | Source-field extract | Indirect | No |
 | `data/large_load_scope.json` | — | Accounting | — | — |
 | `data/market_universe_manifest.json` | 10 market/source families | Coverage manifest | — | — |
-| `data/project_level_extractions.json` | **199** | Individual project / permit / service / queue evidence | Yes | No |
-| `data/project_level_map.json` | **199** | Individual mapped project records | Yes | No |
+| `data/project_level_extractions.json` | **271** | Individual project / permit / service / queue evidence | Yes | No |
+| `data/project_level_map.json` | **271** | Individual mapped project records | Yes | No |
 | `data/epoch_connection_research_targets.json` | **93** | One target per canonical Epoch site | Yes | No |
 | `data/epoch_site_evidence_records.json` | **68** | Discrete site-level evidence assertions across 59 sites | Via target popups | No |
-| `data/supplemental_large_load_evidence.json` | **47** | Utility / regulator / planning / process evidence units | Yes when mappable | Only the designated 83 MISO layer is additive |
-| `data/supplemental_aggregate_map.json` | **47** | Aggregate / historical geographic footprints | Yes | No |
+| `data/supplemental_large_load_evidence.json` | **61** | Utility / regulator / planning / process evidence units | Yes when mappable | Only the designated 83 MISO layer is additive |
+| `data/supplemental_aggregate_map.json` | **61** | Aggregate / historical geographic footprints | Yes | No |
 | `data/caiso_cluster_history.json` | **435** historical projects in C8-and-prior through C14 series | Historical generator queue population | Yes, footprints | No |
 | `data/pjm_large_load_submission_history.json` | **28** | Public LAS document/evidence entries | Document layer | No |
 | `data/public_data_catalog.json` | **15** datasets | Dataset catalog | — | — |
@@ -49,7 +49,7 @@ The underlying evidence inventory contains **68 discrete assertions across 59 si
 
 ## Project-level layer
 
-The **199** project records currently include:
+The **271** project records currently include:
 
 - 60 BPA large-load request records
 - 33 Virginia DEQ issued air-permit records
@@ -83,7 +83,7 @@ The map currently carries:
 
 - **199 / 199** project records plotted
 - **93 / 93** Epoch connection targets plotted
-- **47** aggregate/historical footprints
+- **61** aggregate/historical footprints
 - **93** Epoch AI site observations
 
 The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
@@ -129,6 +129,10 @@ The project-level layer also preserves public records from BPA, Virginia DEQ, Co
 5. Never replace a missing value with an estimate and label it as publisher data.
 6. Keep overlapping populations non-additive unless a record is explicitly designated as the additive 83-request MISO expansion.
 7. Use `UNKNOWN`, null or explicit disclosure-limit states instead of silently dropping difficult records.
+
+## Global AI data-center coverage
+
+The repository mirrors **93/93 current Epoch AI explorer records** and maintains an external discovery queue at `data/global_ai_datacenter_coverage_2026-09-27.json`. External discovery universes are not additive to the canonical site or large-load totals. Promotion requires entity resolution, public-source verification, explicit capacity scope, date/status verification, and overlap checks.
 
 ## Where to start
 
