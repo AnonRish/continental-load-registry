@@ -123,7 +123,7 @@ def main() -> int:
                 f"FAIL: queue ID present without VERIFIED_SITE_SPECIFIC on {rec.get('epoch_id')}"
             )
     print("PASS: canonical Track 3 integrity checks passed")
-    print(f"93 Epoch IDs aligned; grid states={grid_counts}; combined site evidence={combined}; evidence items={expected_evidence_items}; pending grid research={len(pending)}.")
+    print(f"93 Epoch IDs aligned; grid states={grid_counts}; combined site evidence={combined}; evidence items={len(evidence_records)}; pending grid research={len(pending)}.")
     return 0
 
 if __name__ == "__main__":
