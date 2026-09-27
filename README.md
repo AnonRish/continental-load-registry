@@ -420,7 +420,7 @@ Apache License 2.0 -- see `LICENSE`.
 grid.telemetry.initiative@gmail.com
 
 
-**Map coverage:** `data/project_level_map.json` contains 271 mapped project records out of 271 project-level records; all records now have display geometry, with service-area/jurisdiction points explicitly labeled where a site address is not public. `data/supplemental_aggregate_map.json` contains 63 aggregate/historical records and currently has numeric display coordinates for all 63. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
+**Map coverage:** `data/project_level_map.json` contains 271 mapped project records out of 271 project-level records; all records now have display geometry, with service-area/jurisdiction points explicitly labeled where a site address is not public. `data/supplemental_aggregate_map.json` contains 66 aggregate/historical records and currently has numeric display coordinates for all 63. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
 
 
 Map-layer accounting is published in `data/map_layer_manifest.json` and `data/map_layer_manifest.csv`.
