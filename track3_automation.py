@@ -64,37 +64,76 @@ def parse_registry():
     return json.loads(m.group(1))
 
 def source_inventory():
-    raw_sources=load("data/source_manifest.json").get("sources",{})
+    manifest=load("data/source_manifest.json")
+    raw_sources=manifest.get("sources",{})
     if isinstance(raw_sources,dict):
-        sm=[dict(v or {}, id=k) for k,v in raw_sources.items()]
+        manifest_items=[(str(k), dict(v or {}, id=k)) for k,v in raw_sources.items()]
     elif isinstance(raw_sources,list):
-        sm=raw_sources
+        manifest_items=[(str(v.get("id") or v.get("source_id") or ""), v) for v in raw_sources if isinstance(v,dict)]
     else:
         raise RuntimeError("data/source_manifest.json:sources must be an object or list")
+
     out={}
-    for s in sm:
-        if not isinstance(s,dict):
-            continue
-        key=s.get("id") or s.get("source_id")
+    for key,s in manifest_items:
         if not key or key in out:
             continue
-        url=s.get("url") or s.get("official_source_url")
-        local_files=s.get("snapshot_files") or ([s.get("source_file")] if s.get("source_file") else [None])
-        out["manifest:"+str(key)]={"id":key,"name":s.get("name") or s.get("source_name"),"url":url,"publisher":s.get("publisher"),"mode":s.get("mode") or ("AUTOMATED_ADAPTER" if key in AUTOMATED_ADAPTERS else ("CATALOG_ONLY" if not url else "HEALTHCHECK_ONLY")),"workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],"script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],"local_file":local_files[0],"declared_capture_date":s.get("capture_on") or s.get("capture_date") or s.get("last_captured_utc")}
-    universe=load("data/external/epoch_ai/queue_source_universe.json")
-    out={}
-    for key,v in sm.items():
-        u=v.get("official_source_url") or v.get("feed_url")
-        out["manifest:"+key]={"id":key,"name":v.get("source_name"),"url":u,"publisher":v.get("publisher"),"mode":"AUTOMATED_ADAPTER" if key in AUTOMATED_ADAPTERS else "SNAPSHOT_OR_HEALTHCHECK_ONLY","workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],"script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],"local_file":v.get("source_file"),"declared_capture_date":v.get("capture_date")}
+        url=s.get("url") or s.get("official_source_url") or s.get("feed_url")
+        local_files=s.get("snapshot_files")
+        if not local_files and s.get("source_file"):
+            local_files=[s.get("source_file")]
+        out["manifest:"+key]={
+            "id":key,
+            "name":s.get("name") or s.get("source_name"),
+            "url":url,
+            "publisher":s.get("publisher"),
+            "mode":s.get("mode") or ("AUTOMATED_ADAPTER" if key in AUTOMATED_ADAPTERS else ("CATALOG_ONLY" if not url else "SNAPSHOT_OR_HEALTHCHECK_ONLY")),
+            "workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],
+            "script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],
+            "local_file":(local_files or [None])[0],
+            "declared_capture_date":s.get("capture_on") or s.get("capture_date") or s.get("last_captured_utc"),
+        }
+
+    stack_payload=load("data/track3_source_stack.json")
+    stack=stack_payload.get("sources",[]) if isinstance(stack_payload,dict) else stack_payload
     for s in stack:
-        key=s.get("id")
-        if key in out: continue
-        out["stack:"+str(key)]={"id":key,"name":s.get("name"),"url":s.get("url"),"publisher":None,"mode":"AUTOMATED_ADAPTER" if key in AUTOMATED_ADAPTERS else ("CATALOG_ONLY" if not s.get("url") else "HEALTHCHECK_ONLY"),"workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],"script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],"local_file":(s.get("snapshot_files") or [None])[0],"declared_capture_date":s.get("capture_on") or s.get("last_captured_utc")}
+        if not isinstance(s,dict):
+            continue
+        key=str(s.get("id") or "")
+        if not key or "stack:"+key in out:
+            continue
+        url=s.get("url")
+        local_files=s.get("snapshot_files") or ([s.get("source_file")] if s.get("source_file") else [None])
+        out["stack:"+key]={
+            "id":key,
+            "name":s.get("name"),
+            "url":url,
+            "publisher":s.get("publisher") or s.get("authority"),
+            "mode":"AUTOMATED_ADAPTER" if key in AUTOMATED_ADAPTERS else ("CATALOG_ONLY" if not url else "HEALTHCHECK_ONLY"),
+            "workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],
+            "script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],
+            "local_file":local_files[0],
+            "declared_capture_date":s.get("capture_on") or s.get("updated") or s.get("last_captured_utc"),
+        }
+
+    universe=load("data/external/epoch_ai/queue_source_universe.json")
     for group in ("direct_queue_and_connection_sources","cross_cutting_public_sources"):
         for s in universe.get(group,[]):
-            key="universe:"+str(s.get("id"))
-            if key in out: continue
-            out[key]={"id":s.get("id"),"name":s.get("name"),"url":s.get("url"),"publisher":s.get("authority"),"mode":"HEALTHCHECK_ONLY" if s.get("url") else "CATALOG_ONLY","workflow":None,"script":None,"local_file":None,"declared_capture_date":None}
+            if not isinstance(s,dict):
+                continue
+            key="universe:"+str(s.get("id") or s.get("name") or "")
+            if key in out:
+                continue
+            out[key]={
+                "id":s.get("id"),
+                "name":s.get("name"),
+                "url":s.get("url"),
+                "publisher":s.get("authority"),
+                "mode":"HEALTHCHECK_ONLY" if s.get("url") else "CATALOG_ONLY",
+                "workflow":None,
+                "script":None,
+                "local_file":None,
+                "declared_capture_date":None,
+            }
     return list(out.values())
 
 def http_fingerprint(url):
