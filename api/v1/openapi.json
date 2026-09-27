@@ -1,0 +1,92 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Continental Registry Static API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://anonrish.github.io/continental-load-registry"
+    }
+  ],
+  "paths": {
+    "/api/v1/facilities.json": {
+      "get": {
+        "summary": "List the 93 Track 3 facility records",
+        "responses": {
+          "200": {
+            "description": "JSON facility index"
+          }
+        }
+      }
+    },
+    "/data/facility_records/index.json": {
+      "get": {
+        "summary": "List the 1,558 queue registry facility-record shards",
+        "responses": {
+          "200": {
+            "description": "RTO shard index"
+          }
+        }
+      }
+    },
+    "/data/facility_records/{rto}/{shard}.json": {
+      "get": {
+        "summary": "Fetch a queue/facility record shard",
+        "parameters": [
+          {
+            "name": "rto",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "shard",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Facility record shard"
+          }
+        }
+      }
+    },
+    "/data/external/epoch_ai/crosswalk.json": {
+      "get": {
+        "summary": "Fetch Epoch-to-grid crosswalk",
+        "responses": {
+          "200": {
+            "description": "Crosswalk JSON"
+          }
+        }
+      }
+    },
+    "/data/track3/evidence_records.json": {
+      "get": {
+        "summary": "Fetch Track 3 evidence ledger",
+        "responses": {
+          "200": {
+            "description": "Evidence records"
+          }
+        }
+      }
+    },
+    "/data/track3/facility_provenance.json": {
+      "get": {
+        "summary": "Fetch facility provenance ledger",
+        "responses": {
+          "200": {
+            "description": "Provenance records"
+          }
+        }
+      }
+    }
+  }
+}
