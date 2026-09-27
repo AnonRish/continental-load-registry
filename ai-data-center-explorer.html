@@ -91,7 +91,7 @@
 <div class="stat"><b id="sCompute">—</b><span>visible H100-eq</span></div>
 <div class="stat"><b id="sPower">—</b><span>visible IT power</span></div>
 <div class="stat"><b id="sCountries">—</b><span>countries</span></div>
-<div class="stat"><b id="sEpoch">93</b><span>Epoch anchor records</span></div>
+<div class="stat"><b id="sEpoch">93</b><span>Epoch anchor records · owner logos</span></div>
 <div class="stat"><b id="sRich">—</b><span>facilities with rich evidence</span></div>
 </section>
 
@@ -146,7 +146,7 @@
 
 <section class="panel" id="gridPanel" style="display:none"><div class="statusline"><div><h2 style="margin:0;font-size:15px">Facility cards</h2><div class="soft" id="gridSub" style="font-size:10px">—</div></div></div><div class="gridview" id="cards"></div></section>
 </main>
-<footer class="wrap footer">This interface follows the public Epoch explorer interaction model—map, time navigation, metric modes, owner/user/country filtering, sorting and facility details—but the underlying universe is federated. Epoch's current public explorer has 93 records and reports 44% estimated global AI-compute coverage; the registry does not treat that as a global facility-count ceiling. Epoch's facility pages use satellite imagery, permits, company disclosures, hardware and cooling models to build detailed site timelines.</footer>
+<footer class="wrap footer">This interface follows the public Epoch explorer interaction model—map, exact-date navigation, metric modes, owner/user/country filtering, sorting and facility details—but the underlying universe is federated. The Epoch snapshot stored here contains 93 facilities, 545 dated timeline observations, 227 chip-quantity observations, plus equipment-reference catalogs. Cooling/chiller tables are Epoch's equipment library, not a claim that every catalog model is installed at a particular site.</footer>
 
 <div class="detail" id="detail"><div class="dialog">
 <div class="detailtop"><div class="detailtitle"><img id="dLogo" class="biglogo" alt="" src=""><div><div class="eyebrow">Facility record</div><h2 id="dName" style="margin:3px 0 2px;font-size:22px">—</h2><div class="soft" id="dLoc" style="font-size:10px">—</div></div></div><div class="row"><button class="btn" id="earth">Google Earth</button><button class="btn" id="close">Close</button></div></div>
@@ -337,7 +337,7 @@ async function load(){
   for(const e of epoch)e.chipRecords=chipMap.get(norm(e.name))||[];
   for(const x of ai)if(x.epoch)x.chipRecords=x.epoch.chipRecords;
   all=[...epoch,...ai.filter(x=>!x.epoch)].map(x=>Object.assign(x,{scope:x._epoch&&x._ai?"Both":x._epoch?"Epoch AI":"AI Data Center Index"}));
-  buildSelectors();buildEpochFacilitySelector();buildLogoCoverage();updateDateControls(epochDates[Math.min(epochDates.length-1,epochDates.findIndex(d=>d>="2026-09-27"))]||epochDates[epochDates.length-1]);render();
+  buildSelectors();buildEpochFacilitySelector();buildLogoCoverage();let defaultIdx=0;for(let i=0;i<epochDates.length;i++){if(epochDates[i]<="2026-09-27")defaultIdx=i;}if(window.__savedExplorerDate&&epochDates.includes(window.__savedExplorerDate))defaultIdx=epochDates.indexOf(window.__savedExplorerDate);updateDateControls(epochDates[defaultIdx]||epochDates[epochDates.length-1]);render();
   if(document.getElementById("epochFacility"))document.getElementById("epochFacility").value=epoch[0]?.id||"";
   renderEpochHistory();renderChipLedger();renderCoolingLibrary();
  }catch(err){
@@ -501,7 +501,7 @@ document.getElementById("datePicker").addEventListener("change",()=>{const d=doc
 document.getElementById("mapTab").addEventListener("click",()=>setView("map"));document.getElementById("listTab").addEventListener("click",()=>setView("list"));document.getElementById("gridTab").addEventListener("click",()=>setView("grid"));
 document.getElementById("prev").addEventListener("click",()=>{if(page>0){page--;renderList()}});document.getElementById("next").addEventListener("click",()=>{if(page<Math.ceil(filtered.length/perPage)-1){page++;renderList()}});
 document.getElementById("saveView").addEventListener("click",()=>{saveView();document.getElementById("saveView").textContent="Saved ✓";setTimeout(()=>document.getElementById("saveView").textContent="Save view",1000)});
-document.getElementById("resetView").addEventListener("click",()=>{["q","company","country","status","scope","geo"].forEach(id=>document.getElementById(id).value="");document.getElementById("sort").value="compute";metric="compute";colorMode="owner";if(epochDates.length)updateDateControls(epochDates.find(d=>d>="2026-09-27")||epochDates[epochDates.length-1]);document.querySelectorAll("[data-metric]").forEach((x,i)=>x.classList.toggle("active",i===0));document.querySelectorAll(".color-mode").forEach((x,i)=>x.classList.toggle("active",i===0));apply()});
+document.getElementById("resetView").addEventListener("click",()=>{["q","company","country","status","scope","geo"].forEach(id=>document.getElementById(id).value="");document.getElementById("sort").value="compute";metric="compute";colorMode="owner";if(epochDates.length){let i=0;for(let j=0;j<epochDates.length;j++){if(epochDates[j]<="2026-09-27")i=j;}updateDateControls(epochDates[i]||epochDates[epochDates.length-1]);}document.querySelectorAll("[data-metric]").forEach((x,i)=>x.classList.toggle("active",i===0));document.querySelectorAll(".color-mode").forEach((x,i)=>x.classList.toggle("active",i===0));apply()});
 document.getElementById("satToggle").addEventListener("click",()=>{satellite=!satellite;if(!map)return;Object.values(map._layers||{}).forEach(l=>{if(l instanceof L.TileLayer)map.removeLayer(l)});L.tileLayer(satellite?"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}":"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:satellite?"© Esri":"© OpenStreetMap contributors"}).addTo(map);document.getElementById("satToggle").textContent=satellite?"Street basemap":"Satellite basemap";});
 document.getElementById("close").addEventListener("click",()=>document.getElementById("detail").classList.remove("open"));document.getElementById("detail").addEventListener("click",e=>{if(e.target.id==="detail")e.currentTarget.classList.remove("open")});
 document.getElementById("export").addEventListener("click",()=>{const h=["name","owner","selected_date","status","country","state","city","scope","selected_h100e","selected_power_mw","selected_cost_b","lat","lon"];const rows=[h,...filtered.map(r=>{const v=valueAtDate(r,selectedDate());return[r.name,r.owner,selectedDate(),v.status,r.country,r.state,r.city,r.scope,v.compute,v.power,v.cost,r.lat,r.lon]})];const csv=rows.map(a=>a.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="ai-data-center-explorer-view.csv";a.click();});
