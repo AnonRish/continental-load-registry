@@ -344,6 +344,9 @@ jobs:
           print("PASS: critical public artifacts exist, are non-empty, and parse as JSON")
           PY
 
+      - name: Validate canonical cross-artifact consistency
+        run: python validate_cross_artifact_consistency.py
+
       - name: Validate discovery files
         run: |
           python - <<'PY'
