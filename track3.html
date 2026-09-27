@@ -493,6 +493,7 @@ function renderEntityResolution(){
  document.getElementById('entityRels').innerHTML=rels.map(x=>'<tr><td>'+esc(x.relationship_type)+'</td><td>'+esc(names.get(x.from_entity_id)||x.from_entity_id)+'</td><td>'+esc(names.get(x.to_entity_id)||x.to_entity_id)+'</td><td class="mono">'+esc(Number(x.confidence_score).toFixed(2))+'</td><td>'+esc(x.temporal_status)+'</td><td class="small mono">'+esc(x.evidence_id)+'</td></tr>').join('')||'<tr><td colspan="6" class="faint">No relationships.</td></tr>';
 }function renderFacilityMap(){
  const rows=D.epochMap?.records||[]; if(!rows.length){document.getElementById('facilityMapMeta').textContent='No facility coordinates available.';return;}
+ const coordMap=new Map((D.coords?.records||[]).filter(x=>x.lat!=null&&x.lon!=null).map(x=>[x.epoch_id,x]));
  const map=L.map('facilityMap',{preferCanvas:true,worldCopyJump:false,zoomControl:true,minZoom:2,maxZoom:12}).setView([45,-95],3);
  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap contributors &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
  const line=getComputedStyle(document.documentElement).getPropertyValue('--line-strong').trim()||'#667085';
@@ -504,7 +505,7 @@ function renderEntityResolution(){
  ];
  boundaries.forEach(x=>fetch(x[0],{cache:'force-cache'}).then(r=>r.ok?r.json():null).then(g=>g&&L.geoJSON(g,{style:{color:line,weight:x[1],opacity:x[2],fill:false},interactive:false}).addTo(map)).catch(()=>{}));
  rows.forEach(r=>{
-  const st=(D.sites||[]).find(x=>x.epoch_id===r.id), marker=L.circleMarker([Number(r.lat),Number(r.lon)],{radius:7,weight:1.5,fillOpacity:.75});
+  const st=(D.sites||[]).find(x=>x.epoch_id===r.id), coord=coordMap.get(r.id), lat=coord?.lat!=null?coord.lat:r.lat, lon=coord?.lon!=null?coord.lon:r.lon, precision=coord?.precision||r.precision, marker=L.circleMarker([Number(lat),Number(lon)],{radius:7,weight:1.5,fillOpacity:.75});
   marker.bindPopup('<div style="min-width:220px"><strong>'+esc(r.site_name)+'</strong><div class="mono faint">'+esc(r.id)+'</div><p class="small soft" style="margin:6px 0">'+esc(r.address||'—')+'</p><p class="small">IT power: <span class="mono">'+esc(fmt(r.current_power_mw))+' MW</span><br>Grid: '+esc(r.grid_jurisdiction||'—')+'<br>Status: '+esc(r.grid_status||'—')+'</p><a class="btn" href="facility.html?facility='+encodeURIComponent(r.id)+'">Open facility page</a></div>');
   marker.addTo(map);
  });
@@ -607,6 +608,7 @@ function openSite(id){
 async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
+ try { D.coords=await fetch('data/track3/physical_site_coordinates.json',{cache:'no-store'}).then(res=>res.ok?res.json():{records:[]}); } catch(_err) { D.coords={records:[]}; }
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
  renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();renderDossier();
 }
