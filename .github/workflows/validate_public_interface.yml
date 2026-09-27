@@ -108,13 +108,15 @@ jobs:
           from pathlib import Path
           root=Path(".")
           idx=json.loads((root/"data/facility_records/index.json").read_text())
-          assert idx["record_count"] == sum(idx["rto_counts"].values()) == 1558
+          scope=json.loads((root/"data/large_load_scope.json").read_text(encoding="utf-8"))
+          expected=scope["definitions"]["current_row_level"]["records"]
+          assert idx["record_count"] == sum(idx["rto_counts"].values()) == expected
           total=0
           for rto,path in idx["files"].items():
               d=json.loads((root/path).read_text())
               assert d["rto"] == rto
               assert d["record_count"] == sum(s["record_count"] for s in d["shards"])
               total += d["record_count"]
-          assert total == 1558
+          assert total == expected
           print("PASS: facility-record shards", total)
           PY
