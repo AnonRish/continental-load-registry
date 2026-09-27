@@ -16,12 +16,14 @@ async function get(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw E
 function statusClass(s){return ['PASS','INGESTED','VERIFIED_SITE_SPECIFIC'].includes(s)?'good':(['UNKNOWN','NOT_TESTED','NOT_ASSESSED','NOT_INGESTED','PENDING_RESEARCH'].includes(s)?'warn':'');}
 async function main(){
  if(!id){document.getElementById('app').innerHTML='<div class="panel"><h1>Missing facility identifier</h1><p class="soft">Use facility.html?facility=EPOCH-…</p></div>';return;}
- const [map,sites,evidence,ts,prov,ver]=await Promise.all([
+ const [map,sites,evidence,ts,prov,ver,dossier]=await Promise.all([
   get('data/epoch_ai_map.json'),get('data/track3/site_status.json'),get('data/track3/evidence_records.json'),
-  get('data/track3/time_series_verification.json'),get('data/track3/facility_provenance.json'),get('data/track3/verification_results.json')
+  get('data/track3/time_series_verification.json'),get('data/track3/facility_provenance.json'),get('data/track3/verification_results.json'),
+  get('data/track3/public_site_dossier.json')
  ]);
  const m=(map.records||[]).find(x=>x.id===id),s=(sites.records||[]).find(x=>x.epoch_id===id),es=(evidence.records||[]).filter(x=>x.target_id===id);
  const pv=(prov.facilities||[]).find(x=>x.facility_id===id),vr=(ver.results||[]).filter(x=>x.facility_id===id);
+ const dr=(dossier.records||[]).find(x=>x.epoch_id===id)||{};
  const siteTs=(ts.site_timelines||[]).find(x=>x.epoch_id===id);
  if(!m||!s){document.getElementById('app').innerHTML='<div class="panel"><h1>Facility not found</h1><p class="soft">'+esc(id)+'</p></div>';return;}
  const n=(s.normalized||{}),g=s.grid||{};
@@ -30,8 +32,15 @@ async function main(){
  const sourceUrls=[m.epoch_source_url,m.grid_evidence_url,...es.map(x=>x.source_url)].filter(Boolean);
  if(sourceUrls[0])html+='<button class="btn" data-view-source="'+esc(sourceUrls[0])+'">View source document</button>';
  html+='<a class="btn" href="track3.html#facility-'+encodeURIComponent(id)+'">Open in observatory</a></div></div>';
- html+='<div class="grid"><div class="panel"><h2>Facility identity &amp; grid</h2><div class="kvs"><div>Address</div><div>'+esc(m.address||'—')+'</div><div>Owner/developer</div><div>'+esc(m.owner||'—')+'</div><div>Users</div><div>'+esc(m.users||'—')+'</div><div>Project</div><div>'+esc(m.project||'—')+'</div><div>Grid / utility</div><div>'+esc(m.grid_jurisdiction||g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(m.site_queue_id||g.site_specific_queue_id||'—')+'</div><div>IT power</div><div class="mono">'+fmt(m.current_power_mw)+' MW</div><div>H100 eq.</div><div class="mono">'+fmt(m.current_h100_equivalents)+'</div></div></div>';
+ const pub=(dr.public_research_enrichment||{}), missing=(dr.completeness||{}).missing_fields||[];
+ html+='<div class="grid"><div class="panel"><h2>Facility identity &amp; grid</h2><div class="kvs"><div>Address</div><div>'+esc(m.address||'NOT CAPTURED IN EPOCH')+'</div><div>Owner/developer</div><div>'+esc(m.owner||'NOT DISCLOSED IN EPOCH')+'</div><div>Users</div><div>'+esc(m.users||'NOT DISCLOSED IN EPOCH')+'</div><div>Project</div><div>'+esc(m.project||'NOT CAPTURED IN EPOCH')+'</div><div>Grid / utility</div><div>'+esc(m.grid_jurisdiction||g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(m.site_queue_id||g.site_specific_queue_id||'NO VERIFIED SITE ID')+'</div><div>IT power</div><div class="mono">'+fmt(m.current_power_mw)+' MW</div><div>H100 eq.</div><div class="mono">'+fmt(m.current_h100_equivalents)+'</div></div></div>';
  html+='<div class="panel"><h2>Verification</h2><table><thead><tr><th>Claim</th><th>Status</th><th>Basis</th></tr></thead><tbody>'+vr.map(x=>'<tr><td>'+esc(x.claim)+'</td><td><span class="status '+statusClass(x.status)+'">'+esc(x.status)+'</span></td><td>'+esc(x.basis||'—')+'</td></tr>').join('')+'</tbody></table></div></div>';
+ html+='<div class="panel"><h2>Public research enrichment</h2><p class="soft small">Additional public-source facts attached to this facility; source-specific numbers remain separate from Epoch IT-power accounting.</p>';
+ if(pub.facts) html+='<div class="event"><h3>Researched facts</h3><ul style="margin:6px 0 0 18px">'+pub.facts.map(x=>'<li class="small" style="margin:4px 0">'+esc(x)+'</li>').join('')+'</ul></div>';
+ if(pub.sources?.length) html+='<div class="event"><h3>Research sources</h3>'+pub.sources.map(x=>'<div class="tools" style="margin:5px 0"><a class="btn" target="_blank" rel="noopener" href="'+esc(x[1])+'">'+esc(x[0])+'</a></div>').join('')+'</div>';
+ const pubFields=Object.entries(pub).filter(([k])=>!['facts','sources','source_count'].includes(k));
+ if(pubFields.length) html+='<div class="event"><h3>Structured enrichment</h3><pre>'+esc(JSON.stringify(Object.fromEntries(pubFields),null,2))+'</pre></div>';
+ html+='<div class="event"><h3>Publisher-field completeness</h3><div class="small">'+esc(missing.length)+' source fields are not present in the Epoch publisher record: '+esc(missing.join(', ')||'none')+'.</div></div></div>';
  html+='<div class="panel"><h2>Facility map</h2><div id="map"></div><p class="small faint" style="margin-top:8px">Coordinate precision: '+esc(m.precision||'—')+'</p></div>';
  html+='<div class="panel"><h2>Evidence timeline</h2><div class="timeline">'+(siteTs?.observed_events||[]).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(e=>'<div class="event"><h3>'+esc(e.date)+' · '+esc(e.temporal_status||'observed')+'</h3><div class="soft small">Buildings operational: '+esc(fmt(e.buildings_operational))+' · IT MW: '+esc(fmt(e.it_power_mw))+' · Total MW: '+esc(fmt(e.power_mw))+'</div><div class="small">'+esc(e.construction_status||'')+'</div></div>').join('')||'<div class="faint small">No retained facility timeline events.</div>'+'</div></div>';
  html+='<div class="panel"><h2>Evidence records &amp; sources</h2>'+(es.map(e=>'<div class="event"><h3>'+esc(e.domain)+' · '+esc(e.evidence_type)+'</h3><p class="soft small">'+esc(e.basis||'—')+'</p><p class="small faint">'+esc(e.source_name||'—')+' · '+esc(e.status||'—')+' · '+esc(e.confidence||'—')+'</p><div class="tools">'+(e.source_url?'<button class="btn" data-view-source="'+esc(e.source_url)+'">View source</button><a class="btn" target="_blank" rel="noopener" href="'+esc(e.source_url)+'">Open source</a>':'')+'</div></div>').join('')||'<p class="faint small">No evidence records.</p>')+'</div>';
