@@ -71,7 +71,26 @@ def main():
         if r is not None:
             break
     if r is None:
-        raise RuntimeError("NYISO interconnection source did not return an XLSX payload")
+        # NYISO currently exposes an official workbook URL, but automated retrieval
+        # may return an HTML/anti-bot response instead of the XLSX payload. Do not
+        # manufacture a queue snapshot; preserve a machine-readable source-status
+        # record and let the rest of the public-data pipeline continue.
+        root=Path(a.output_dir); root.mkdir(parents=True,exist_ok=True)
+        now=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
+        status={
+            "schema_version":1,
+            "source_id":"NYISO",
+            "status":"SOURCE_UNAVAILABLE_AT_CAPTURE",
+            "captured_at":now,
+            "page_url":PAGE_URL,
+            "official_workbook_urls":ALTERNATE_FALLBACK_URLS,
+            "error":"Automated retrieval did not return an XLSX payload. No queue rows were fabricated.",
+            "existing_snapshot_present":(root/"nyiso_public_queue.json").exists(),
+            "next_action":"Retry the official workbook source on the next scheduled run; preserve named public Load Project/Gold Book evidence separately until the workbook is captured."
+        }
+        (root/"nyiso_public_queue_status.json").write_text(json.dumps(status,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+        print(json.dumps(status,indent=2))
+        return
     source_url=r.url
     book=pd.ExcelFile(io.BytesIO(r.content));recs=[]
     for sheet,status in SHEETS.items():
