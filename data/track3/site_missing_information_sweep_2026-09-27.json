@@ -6,9 +6,9 @@
     "purpose": "Exhaustive gap inventory from canonical Track 3 artifacts plus a targeted live-public-source sweep. Public leads are not silently promoted to canonical evidence.",
     "sites": 93,
     "total_missing_publisher_fields": 378,
-    "remaining_unresolved_publisher_fields": 372,
-    "sites_with_public_research_leads": 30,
-    "total_public_research_leads": 35,
+    "remaining_unresolved_publisher_fields": 371,
+    "sites_with_public_research_leads": 33,
+    "total_public_research_leads": 53,
     "open_track3_domain_cells": 745,
     "publisher_missing_field_counts": {
       "project": 76,
@@ -348,7 +348,8 @@
         }
       ],
       "next_research_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-8838deed95ffb554",
@@ -1072,6 +1073,13 @@
           "finding": "Google's official sources confirm multiple long-running data-center operations in Council Bluffs; continue resolving the precise campus/project identifier.",
           "source": "Google",
           "source_url": null
+        },
+        {
+          "field": "project",
+          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
+          "finding": "Google's official sources confirm multiple long-running Council Bluffs data-center facilities; a 100 MW renewable PPA with Cubico Sustainable Investments is documented for the Iowa operations.",
+          "source": "Google Cloud",
+          "source_url": "https://cloud.google.com/blog/topics/sustainability/new-power-purchasing-agreement-method-lands-1-gw-clean-energy"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -1093,7 +1101,8 @@
         }
       ],
       "next_research_action": "Search MidAmerican, Iowa Utilities Board and MISO records for a site-specific Google Council Bluffs service/interconnection case.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
@@ -1225,6 +1234,13 @@
           "finding": "QTS's official Richmond 1 page reports 238 MW, a 207-acre campus and six planned facilities.",
           "source": "QTS",
           "source_url": "https://q.com/data-centers/richmond-1/"
+        },
+        {
+          "field": "capacity_record",
+          "status": "PUBLIC_SOURCE",
+          "finding": "QTS Richmond 1 official page reports 238 MW, 207 acres, six planned facilities and 2.3 million ft² current space.",
+          "source": "QTS",
+          "source_url": "https://q.com/data-centers/richmond-1/"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -1248,7 +1264,8 @@
         }
       ],
       "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-8358e445402d91c2",
@@ -1308,6 +1325,13 @@
           "finding": "Xcel Energy publicly states it will power Meta's AI data center in Rosemount, Minnesota.",
           "source": "Xcel Energy",
           "source_url": "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
+        },
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Xcel Energy states it will power Meta's AI data center in Rosemount, Minnesota.",
+          "source": "Xcel Energy",
+          "source_url": "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -1328,7 +1352,8 @@
         }
       ],
       "next_research_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-0d287943c30fe239",
@@ -1378,7 +1403,29 @@
         "chip_shipments": "INGESTED_SNAPSHOT",
         "independent_corroboration": "NOT_ASSESSED"
       },
-      "public_research_leads": [],
+      "public_research_leads": [
+        {
+          "field": "owner",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Mississippi DEQ identifies Amazon Data Services Inc. as the facility entity for the Madison Mega Site and gives the physical address 1978 Highway 22, Canton, MS 39046.",
+          "source": "Mississippi Department of Environmental Quality",
+          "source_url": "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+        },
+        {
+          "field": "address",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Mississippi DEQ gives 1978 Highway 22, Canton, MS 39046 as the physical address for Amazon Data Services / Madison Mega Site.",
+          "source": "Mississippi Department of Environmental Quality",
+          "source_url": "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+        },
+        {
+          "field": "regulatory",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Air-construction permit 1720-00098 is recorded for Amazon Data Services Inc., Madison Mega Site; the permit modification entered public-comment status on 2026-08-24.",
+          "source": "Mississippi Department of Environmental Quality",
+          "source_url": "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+        }
+      ],
       "remaining_unresolved_publisher_fields": [
         "investors",
         "construction_companies",
@@ -1397,7 +1444,8 @@
         }
       ],
       "next_research_action": "Search Canton Municipal Utilities, Entergy Mississippi where applicable, Mississippi PSC, Madison County and local permitting records for the specific electrical service/interconnection record.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-6db3bc2c79843ffd",
@@ -1596,7 +1644,15 @@
         "chip_shipments": "INGESTED_SNAPSHOT",
         "independent_corroboration": "NOT_ASSESSED"
       },
-      "public_research_leads": [],
+      "public_research_leads": [
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
+          "finding": "DEPLOY identifies Duke Energy Indiana as the serving utility for Meta Jeffersonville; Meta's official directory confirms the Jeffersonville project and 1,250 peak construction workers.",
+          "source": "DEPLOY / Meta Data Centers",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/meta-indiana-jeffersonville"
+        }
+      ],
       "remaining_unresolved_publisher_fields": [
         "project",
         "investors",
@@ -1616,7 +1672,8 @@
         }
       ],
       "next_research_action": "Search Indiana Michigan Power / Duke Energy Indiana and Indiana Utility Regulatory Commission records for the site's service/interconnection case.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-6799460068cbed36",
@@ -1967,7 +2024,15 @@
         "chip_shipments": "INGESTED_SNAPSHOT",
         "independent_corroboration": "NOT_ASSESSED"
       },
-      "public_research_leads": [],
+      "public_research_leads": [
+        {
+          "field": "capacity_record",
+          "status": "PUBLIC_SOURCE",
+          "finding": "QTS Richmond 2 official page reports 180 MW planned on completion, 85 acres and five planned buildings.",
+          "source": "QTS",
+          "source_url": "https://q.com/data-centers/richmond-2/"
+        }
+      ],
       "remaining_unresolved_publisher_fields": [
         "owner",
         "users",
@@ -1989,7 +2054,8 @@
         }
       ],
       "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-40ccef8ef4236635",
@@ -2125,6 +2191,13 @@
           "finding": "QTS's official Richmond 3 page reports 240 MW planned, a 221-acre campus and five Freedom Design buildings.",
           "source": "QTS",
           "source_url": "https://q.com/data-centers/richmond-3/"
+        },
+        {
+          "field": "capacity_record",
+          "status": "PUBLIC_SOURCE",
+          "finding": "QTS Richmond 3 official page reports 240 MW planned on completion, 221 acres and five planned buildings.",
+          "source": "QTS",
+          "source_url": "https://q.com/data-centers/richmond-3/"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -2148,7 +2221,8 @@
         }
       ],
       "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-0788d9aeb3114553",
@@ -2284,6 +2358,13 @@
           "finding": "Meta's official Kuna announcement names Idaho Power as a project partner and energy provider.",
           "source": "Meta Data Centers",
           "source_url": null
+        },
+        {
+          "field": "construction_companies",
+          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
+          "finding": "Meta's official U.S. data-center directory confirms the Kuna campus, its $1.2B+ investment, 2022 groundbreak and 1,600 peak skilled-trade workers; Hensel Phelps is named in Meta's separate Kuna project announcement as a partner.",
+          "source": "Meta Data Centers",
+          "source_url": "https://datacenters.atmeta.com/all-locations/"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -2304,7 +2385,8 @@
         }
       ],
       "next_research_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
@@ -3525,10 +3607,16 @@
           "finding": "Meta's official Gallatin announcement confirms the facility is operating and emphasizes infrastructure and renewable-energy access; the retained announcement does not name a specific utility.",
           "source": "Meta Data Centers",
           "source_url": "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
+        },
+        {
+          "field": "project",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Meta's official Gallatin announcement confirms the facility is online and notes a more than $1.5B total investment once fully built out; no external investor is inferred.",
+          "source": "Meta Data Centers",
+          "source_url": "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
         }
       ],
       "remaining_unresolved_publisher_fields": [
-        "project",
         "investors",
         "construction_companies",
         "energy_companies"
@@ -3546,7 +3634,8 @@
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-02c050b6b554fadd",
@@ -4482,6 +4571,13 @@
           "finding": "STACK publicly describes NVA02 with two dedicated 300 MW onsite substations from NOVEC; retain as utility/infrastructure lead until site-level ingestion.",
           "source": "STACK Infrastructure",
           "source_url": null
+        },
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
+          "finding": "STACK states NVA02 has two dedicated 300 MW onsite substations from NOVEC.",
+          "source": "STACK Infrastructure",
+          "source_url": null
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -4505,7 +4601,8 @@
         }
       ],
       "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-29fb769630142638",
@@ -4777,7 +4874,8 @@
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-827d7832237170bd",
@@ -5274,6 +5372,13 @@
           "finding": "Start Campus says the Sines campus uses seawater cooling and renewable electricity; the master plan totals 1.2 GW.",
           "source": "Start Campus",
           "source_url": null
+        },
+        {
+          "field": "cooling",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Start Campus says its Sines campus uses seawater cooling and renewable electricity; total campus master plan is 1.2 GW.",
+          "source": "Start Campus",
+          "source_url": null
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -5290,7 +5395,8 @@
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-495a9afde5e4b96c",
@@ -5417,6 +5523,13 @@
           "finding": "Nscale's Keflavik infrastructure uses renewable geothermal and hydropower.",
           "source": "Nscale",
           "source_url": null
+        },
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_SOURCE",
+          "finding": "Nscale describes its Keflavik infrastructure as powered by renewable geothermal and hydropower.",
+          "source": "Nscale",
+          "source_url": null
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -5433,7 +5546,8 @@
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-5b05fa7b682be282",
@@ -6133,6 +6247,13 @@
           "finding": "DEPLOY identifies Entergy as the serving utility for the Meta Hyperion Richland Parish facility.",
           "source": "DEPLOY",
           "source_url": "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
+        },
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_SOURCE",
+          "finding": "DEPLOY identifies Entergy as the serving utility for Meta Hyperion in Richland Parish.",
+          "source": "DEPLOY",
+          "source_url": "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -6146,7 +6267,8 @@
         }
       ],
       "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
@@ -6343,6 +6465,13 @@
           "finding": "OpenAI says DTE Energy serves the Michigan Stargate campus; the project is developed by Related Digital and uses closed-loop cooling.",
           "source": "OpenAI",
           "source_url": null
+        },
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_SOURCE",
+          "finding": "OpenAI says DTE Energy serves the Michigan Stargate campus; the site is developed by Related Digital and uses closed-loop cooling.",
+          "source": "OpenAI",
+          "source_url": null
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -6359,7 +6488,8 @@
         }
       ],
       "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
@@ -6419,6 +6549,13 @@
           "finding": "OpenAI publicly describes the Milam County site as a 1.2 GW site with SB Energy selected to build and operate.",
           "source": "OpenAI",
           "source_url": null
+        },
+        {
+          "field": "project",
+          "status": "PUBLIC_SOURCE",
+          "finding": "OpenAI publicly describes the Milam County site as a 1.2 GW site and says SB Energy was selected to build and operate it.",
+          "source": "OpenAI",
+          "source_url": null
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -6441,7 +6578,8 @@
         }
       ],
       "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-3816121e8d72fe04",
@@ -6707,6 +6845,13 @@
           "finding": "OpenAI says Oracle/Vantage are working with WEC Energy Group on generation and capacity for the Wisconsin Stargate campus.",
           "source": "OpenAI",
           "source_url": "https://openai.com/index/stargate-community/"
+        },
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_SOURCE",
+          "finding": "OpenAI says Oracle and Vantage are working with WEC Energy Group on new generation and capacity for the Wisconsin Stargate campus.",
+          "source": "OpenAI",
+          "source_url": "https://openai.com/index/stargate-community/"
         }
       ],
       "remaining_unresolved_publisher_fields": [
@@ -6728,7 +6873,8 @@
         }
       ],
       "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
-      "last_reviewed": "2026-09-27"
+      "last_reviewed": "2026-09-27",
+      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
     },
     {
       "epoch_id": "EPOCH-d2da66ea035880ce",
