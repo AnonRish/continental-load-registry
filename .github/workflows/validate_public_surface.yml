@@ -205,6 +205,8 @@ jobs:
           assert len(project_csv) == 253
           supp_csv = list(csv.DictReader((root / "supplemental_large_load_evidence.csv").open("r", encoding="utf-8", newline="")))
           assert len(supp_csv) == 58
+          miso_csv = list(csv.DictReader((root / "miso_unresolved_large_loads.csv").open("r", encoding="utf-8", newline="")))
+          assert len(miso_csv) == 153
           manifest_csv = list(csv.DictReader((root / "market_universe_manifest.csv").open("r", encoding="utf-8", newline="")))
           assert len(manifest_csv) == 10
           map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
