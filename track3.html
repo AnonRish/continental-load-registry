@@ -56,8 +56,41 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </style>
 <!-- TRACK3-PUBLIC-SURFACE-V2 -->
 <link rel="stylesheet" href="observatory-nav.css">
+
+/* TRACK3-UI-V3 */
+#track3ViewDeck{position:sticky;top:0;z-index:120;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--panel) 90%,transparent);backdrop-filter:blur(16px) saturate(135%);box-shadow:0 8px 26px rgba(8,18,32,.07)}
+.t3-deck{max-width:1320px;margin:auto;padding:9px 18px}
+.t3-top{display:flex;align-items:center;gap:9px}
+.t3-mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--ink);color:var(--panel);font:700 10px 'IBM Plex Mono',monospace}
+.t3-name{font-size:12px;font-weight:700;letter-spacing:-.01em}
+.t3-live{margin-left:auto;font:500 8px 'IBM Plex Mono',monospace;color:var(--faint);text-transform:uppercase;letter-spacing:.08em}
+.t3-tabs{display:flex;gap:5px;overflow:auto;scrollbar-width:none;padding-top:7px}
+.t3-tabs::-webkit-scrollbar{display:none}
+.t3-tab{border:1px solid transparent;background:transparent;color:var(--soft);border-radius:8px;padding:7px 10px;cursor:pointer;font-size:10px;font-weight:650;white-space:nowrap}
+.t3-tab:hover{background:var(--amber-soft);color:var(--ink)}
+.t3-tab.active{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.t3-view-hidden{display:none!important}
+.t3-section-shell{scroll-margin-top:108px}
+@media(max-width:620px){.t3-deck{padding-inline:10px}.t3-name{display:none}.t3-live{font-size:7px}}
+
 </head>
 <body>
+
+<!-- TRACK3-UI-V3 -->
+<div id="track3ViewDeck">
+  <div class="t3-deck">
+    <div class="t3-top"><div class="t3-mark">T3</div><div class="t3-name">Track 3 Evidence Observatory</div><div class="t3-live">complete evidence surface · focused views</div></div>
+    <nav class="t3-tabs" role="tablist" aria-label="Track 3 views">
+      <button class="t3-tab active" type="button" data-t3-view="summary" role="tab" aria-selected="true">Summary</button>
+      <button class="t3-tab" type="button" data-t3-view="sites" role="tab" aria-selected="false">Sites &amp; Map</button>
+      <button class="t3-tab" type="button" data-t3-view="physical" role="tab" aria-selected="false">Physical</button>
+      <button class="t3-tab" type="button" data-t3-view="evidence" role="tab" aria-selected="false">Evidence</button>
+      <button class="t3-tab" type="button" data-t3-view="operations" role="tab" aria-selected="false">Operations</button>
+      <button class="t3-tab" type="button" data-t3-view="reference" role="tab" aria-selected="false">Reference</button>
+    </nav>
+  </div>
+</div>
+
 <header class="hero"><div class="wrap">
 <div class="tools">
 <a class="btn" href="index.html">← Main registry</a>
@@ -883,5 +916,37 @@ load().catch(e=>{document.getElementById('cards').innerHTML='<div class="panel c
 })();
 </script>
 <script src="observatory-nav.js" defer></script>
+
+<script>
+/* TRACK3-UI-V3 controller */
+(()=> {
+  const tabs=[...document.querySelectorAll('.t3-tab')];
+  const secs=[...document.querySelectorAll('main > section')];
+  const view=(h,i)=>{
+    const s=(h||'').toLowerCase();
+    if(/progress & time-series|definition & architecture/.test(s)) return 'summary';
+    if(/all track 3 evidence domains|site × domain coverage|facility map|complete epoch site record layer|93-site public enrichment bridge/.test(s)) return 'sites';
+    if(/observation acquisition program|time-series verification|observed power, cooling|physical records|public enrichment capture/.test(s)) return 'physical';
+    if(/full evidence ledger|evidence & provenance|facility-level evidence|detection & verification/.test(s)) return 'evidence';
+    if(/research console|missing-information research sweep|automated pipeline|entity resolution/.test(s)) return 'operations';
+    return 'reference';
+  };
+  secs.forEach((s,i)=>{
+    const h=s.querySelector('h1,h2,h3')?.textContent||'';
+    s.dataset.t3View=view(h,i); s.classList.add('t3-section-shell');
+  });
+  function set(v){
+    secs.forEach(s=>s.classList.toggle('t3-view-hidden',s.dataset.t3View!==v));
+    tabs.forEach(b=>{const on=b.dataset.t3View===v;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+    localStorage.setItem('t3-active-view',v);
+    window.scrollTo({top:0,behavior:'smooth'});
+    setTimeout(()=>window.dispatchEvent(new Event('resize')),70);
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>set(b.dataset.t3View)));
+  const stored=localStorage.getItem('t3-active-view');
+  set(tabs.some(b=>b.dataset.t3View===stored)?stored:'summary');
+})();
+</script>
+
 </body>
 </html>
