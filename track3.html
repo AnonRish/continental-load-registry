@@ -137,6 +137,22 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Facility</th><th>Raw source</th><th>Publication date</th><th>Capture</th><th>Exact fields</th><th>Corroboration</th><th>Conflict</th><th>Last verified</th><th>Audit</th><th>Snapshot</th></tr></thead><tbody id="provRows"></tbody></table></div>
 </section>
 <section class="section panel" style="padding:16px">
+<h2>Track 3 detection &amp; verification</h2>
+<p id="detMeta" class="soft small">Loading…</p>
+<div class="tools" style="margin-top:10px">
+<a class="btn" href="data/track3/detection_universe.json">Detection JSON</a>
+<a class="btn" href="data/track3/verification_results.json">Verification results</a>
+<a class="btn" href="data/track3/verification_protocol.json">Verification protocol</a>
+<a class="btn" href="data/track3/absence_testing.json">Absence-testing ledger</a>
+<a class="btn" href="TRACK3_VERIFICATION.md">Verification procedure</a>
+</div>
+<div id="detCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Verification status</th><th>Count</th><th>Meaning</th></tr></thead><tbody id="verStatusRows"></tbody></table></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Facility / candidate</th><th>Detection class</th><th>Entry / candidate reason</th><th>Epoch</th><th>Queue / evidence</th></tr></thead><tbody id="detRows"></tbody></table></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Facility</th><th>Search record</th><th>Source</th><th>Date</th><th>Result</th><th>Follow-up</th></tr></thead><tbody id="absenceRows"></tbody></table></div>
+<div class="warnbox" style="padding:11px;margin-top:12px"><strong>Verification boundary:</strong> PASS is claim-specific. The presence of an Epoch record, queue record, company disclosure, permit, or satellite-source availability does not automatically certify current physical AI compute. Missing evidence remains UNKNOWN or NOT TESTED.</div>
+</section>
+<section class="section panel" style="padding:16px">
 <h2>Entity resolution</h2>
 <p id="entityMeta" class="soft small">Loading…</p>
 <div class="tools" style="margin-top:10px">
@@ -382,7 +398,26 @@ function renderPhysical(){
  (D.cooling||[]).forEach(o=>rows.push({site:o.site_name,type:'Cooling',date:o.observed_on,value:fmt(o.capacity)+' '+(o.capacity_units||''),detail:(o.equipment_type||'')+' · '+(o.manufacturer||'')+' · '+(o.model||'')+' · '+fmt(o.units)+' units',source:o.source?.source_name,link:o.source?.source_url}));
  const ps=D.physical?.summary||{};document.getElementById('observationsSummary').innerHTML='<div class="domain-card"><h3>'+esc((D.power||[]).length)+'</h3><p>site-level annual power observations</p></div><div class="domain-card"><h3>'+esc((D.cooling||[]).length)+'</h3><p>site-level cooling observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_tir_numeric_observations||0)+'</h3><p>Landsat TIR numeric observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_sar_numeric_observations||0)+'</h3><p>Sentinel-1 SAR observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_optical_scenes_ingested||0)+'</h3><p>Sentinel-2 optical scene windows</p></div><div class="domain-card"><h3>'+esc(ps.transformer_event_records||0)+'</h3><p>source-backed transformer events</p></div>';
  document.getElementById('physicalRows').innerHTML=rows.map(x=>'<tr><td>'+esc(x.site)+'</td><td>'+esc(x.type)+'</td><td>'+esc(x.date||'—')+'</td><td class="mono">'+esc(x.value)+'</td><td>'+esc(x.detail||'—')+'</td><td>'+(x.link?'<a target="_blank" rel="noopener" href="'+esc(x.link)+'">'+esc(x.source||'source')+'</a>':'—')+'</td></tr>').join('');
+}function renderDetectionVerification(){
+ const d=D.detection||{},v=D.verification_results||{},a=D.absence||{},s=d.summary||{},sc=v.summary?.status_counts||{};
+ document.getElementById('detMeta').textContent=s.tracked_facilities+' tracked facilities · '+s.ai_compute_candidates+' AI/compute surveillance candidates outside Epoch · '+s.non_ai_industrial_control_group+' non-AI industrial controls · '+s.unknown_large_compute+' unknown large-compute/load candidates · '+s.documented_absence_search_facilities+' facilities with explicit documented absence-search records.';
+ document.getElementById('detCards').innerHTML=[
+  [s.tracked_facilities,'tracked facilities','Epoch reference universe'],
+  [s.known_ai_compute,'known AI compute','publisher/derived compute-positive records'],
+  [s.probable_ai_compute,'probable AI compute','Epoch records without positive current compute field'],
+  [s.ai_compute_candidates,'outside-Epoch AI candidates','queue rows with compute/AI signal'],
+  [s.non_ai_industrial_control_group,'industrial controls','non-AI keyword control population'],
+  [s.unknown_large_compute,'unknown large loads','no strong classifier signal']
+ ].map(x=>'<div class="domain-card"><h3>'+esc(fmt(x[0]))+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
+ const meanings=(D.verification_protocol||{}).statuses||{};
+ document.getElementById('verStatusRows').innerHTML=Object.entries(meanings).map(([k,x])=>'<tr><td><span class="status '+stClass(k)+'">'+esc(k)+'</span></td><td class="mono">'+esc(sc[k]||0)+'</td><td class="small">'+esc(x.meaning||'')+'</td></tr>').join('');
+ const rows=[];
+ (d.tracked_facilities||[]).forEach(x=>rows.push('<tr><td><strong>'+esc(x.facility_name)+'</strong><div class="mono faint">'+esc(x.facility_id)+'</div></td><td>'+esc(x.classification)+'</td><td class="small">'+esc(x.entry_reason)+'</td><td>YES</td><td class="small">'+esc((x.source_crosscheck?.retained_site_evidence?.count||0)+' evidence records · '+(x.source_crosscheck?.queue_registry?.status||'—'))+'</td></tr>'));
+ (d.queue_candidates_not_in_epoch||[]).slice(0,300).forEach(x=>rows.push('<tr><td><strong>'+esc(x.project_name||x.candidate_id)+'</strong><div class="mono faint">'+esc(x.candidate_id)+'</div></td><td>'+esc(x.classification)+'</td><td class="small">Queue/request row retained as a surveillance candidate because it has no conservative direct Epoch match.</td><td>NO</td><td class="small">'+esc(x.rto||'—')+' · '+esc(fmt(x.mw))+' MW</td></tr>'));
+ document.getElementById('detRows').innerHTML=rows.join('');
+ document.getElementById('absenceRows').innerHTML=(a.records||[]).flatMap(x=>(x.search_records||[]).map(r=>'<tr><td>'+esc(x.facility_name)+'</td><td class="mono">'+esc(r.evidence_id||'—')+'</td><td><strong>'+esc(r.source_name||'—')+'</strong><div class="small faint">'+esc(r.authority||'')+'</div></td><td class="mono">'+esc(r.captured_on||'—')+'</td><td class="small">'+esc(r.claim||'—')+'</td><td class="small">'+esc((x.follow_up||[]).join('; '))+'</td></tr>')).join('')||'<tr><td colspan="6" class="faint">No explicit absence-search records.</td></tr>';
 }
+
 function renderEntityResolution(){
  const e=D.entity||{},s=e.stats||{};
  document.getElementById('entityMeta').textContent=(s.entity_count||0)+' entities · '+(s.relationship_edge_count||0)+' relationship edges · '+(s.variant_groups||0)+' name-variant groups · '+(s.legal_entity_research_targets||0)+' legal-entity research targets.';
@@ -477,7 +512,7 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderEntity();renderEntityResolution();renderGeo();
+ renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();
 }
 document.getElementById('search').addEventListener('input',renderSites);document.getElementById('siteState').addEventListener('change',renderSites);document.getElementById('siteSort').addEventListener('change',renderSites);
 document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
