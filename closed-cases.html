@@ -148,7 +148,8 @@ async function loadNextCandidates(){
     el.innerHTML=d.candidates.map((x,i)=>{
       const sources=(x.source_ladder||[]).filter(s=>s.url).slice(0,3).map(s=>'<a class="cc-candidate-source" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.kind||'source')+' ↗</a>').join('');
       const gates=(x.next_gates||[]).slice(0,4).map(g=>'<span class="cc-gate-chip">'+esc(g.replace(/_/g,' '))+'</span>').join('');
-      return '<div><b>'+String(i+1).padStart(2,'0')+'</b><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.rto)+' · '+esc(x.queue_id)+' · '+esc(x.capacity_mw)+' MW<br>'+esc(x.current_identity_gap)+'<br>'+esc(x.current_physical_gap)+'</span><div class="cc-candidate-sources">'+sources+'</div><div class="cc-gate-chips">'+gates+'</div><a class="cc-candidate-link" href="STRICT_DISCOVERY_RESEARCH.md">Research packet →</a></div>';
+      const role=(x.research_role||'').toLowerCase().includes('control')?'CONTROL':'PRIMARY TARGET';
+      return '<div><b>'+String(i+1).padStart(2,'0')+'</b><span class="cc-role">'+esc(role)+'</span><strong>'+esc(x.project_name)+'</strong><span>'+esc(x.rto)+' · '+esc(x.queue_id)+' · '+esc(x.capacity_mw)+' MW<br>'+esc(x.current_identity_gap)+'<br>'+esc(x.current_physical_gap)+'</span><div class="cc-candidate-sources">'+sources+'</div><div class="cc-gate-chips">'+gates+'</div><a class="cc-candidate-link" href="STRICT_DISCOVERY_RESEARCH.md">Research packet →</a></div>';
     }).join('')+
       '<div style="grid-column:1/-1;background:transparent;border-style:dashed;min-height:auto"><strong>Admission rule</strong><span>Explicit source-level load classification is required. Missing developer information alone does not qualify as discovery evidence.</span><a class="cc-candidate-link" href="data/track3/strict_discovery_candidates.json">Open strict candidate ledger →</a></div>';
   }catch(e){
