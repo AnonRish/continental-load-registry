@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-26",
+  "generated_on": "2026-09-27",
   "title": "Track 3 physical verification layer",
   "objective": "Independently verify large computational facilities using physical observations, remote sensing, infrastructure records and construction/power chronology without treating any missing layer as evidence of absence.",
   "checklist": [
@@ -44,9 +44,11 @@
     {
       "id": "TRANSFORMER",
       "item": "Transformer installation/procurement evidence",
-      "status": "NOT_INGESTED",
-      "coverage": "No structured HV-transformer procurement, delivery or installation event dataset is currently ingested.",
+      "status": "INGESTED_PARTIAL",
+      "coverage": "2 source-backed transformer records are retained for 1 Epoch site (Meta Hyperion); 93-site target queue remains published, and planned specifications are not treated as proof of installation.",
       "primary_sources": [
+        "miso-mtep25",
+        "entergy-transformer-transport",
         "transformer-supply-chain"
       ]
     },
@@ -123,9 +125,13 @@
       "substation": 90,
       "transmission": 113
     },
-    "transformer_event_records": 0,
+    "transformer_event_records": 2,
     "backup_generation_site_records": 0,
-    "semantics": "Source availability is not ingestion. External project/permit evidence is not treated as a site match until a physical-site linkage exists."
+    "semantics": "Source availability is not ingestion. External project/permit evidence is not treated as a site match until a physical-site linkage exists.",
+    "transformer_event_site_count": 1,
+    "transformer_target_site_count": 93,
+    "building_footprint_polygon_site_count": 0,
+    "building_footprint_polygon_count": 0
   },
   "source_catalog": [
     {
