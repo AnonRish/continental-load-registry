@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T07:04:00Z",
+  "generated_at_utc": "2026-09-27T07:35:00Z",
   "title": "Merged 93-site enrichment view",
-  "purpose": "Derived view joining the canonical Epoch site universe, the existing public enrichment bridge, and current additive public-web findings. Raw publisher values are never overwritten and absent information is never inferred.",
+  "purpose": "Canonical derived view of Epoch publisher data plus the existing enrichment bridge and additive public-web records.",
   "accounting": {
     "site_count": 93,
-    "sites_with_fresh_public_records": 59,
-    "fresh_public_source_records": 157,
-    "canonical_public_source_records": 153
+    "sites_with_fresh_public_records": 61,
+    "fresh_public_source_records": 170,
+    "canonical_public_source_records": 166
   },
   "records": [
     {
@@ -33,7 +33,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -78,7 +78,7 @@
       "state_province": "GA",
       "epoch_it_power_mw": 636,
       "epoch_h100_equivalents": 768768.7220818596,
-      "fresh_public_record_count": 0,
+      "fresh_public_record_count": 2,
       "fields": {
         "owner": {
           "epoch_value": "Microsoft #confident",
@@ -95,8 +95,10 @@
         "project": {
           "epoch_value": "Microsoft AI WAN #confident",
           "bridge_value": "Microsoft AI WAN",
-          "fresh_public_values": [],
-          "status": "CAPTURED"
+          "fresh_public_values": [
+            "Microsoft AI WAN"
+          ],
+          "status": "FRESH_PUBLIC_WEB_CAPTURED"
         },
         "address": {
           "epoch_value": "1435 Hwy 54 W, Fayetteville, GA 30214",
@@ -113,15 +115,19 @@
           "status": "NO_NEW_CAPTURE"
         },
         "energy_companies": {
-          "fresh_public_values": [],
-          "status": "NO_NEW_CAPTURE"
+          "fresh_public_values": [
+            "Georgia Power"
+          ],
+          "status": "FRESH_PUBLIC_WEB_CAPTURED"
         },
         "chip_quantities": {
           "fresh_public_values": [],
           "status": "NO_NEW_CAPTURE"
         }
       },
-      "fresh_public_sources": []
+      "fresh_public_sources": [
+        "https://intelaccelerator.com/projects"
+      ]
     },
     {
       "epoch_id": "EPOCH-45b3c74314eb1f26",
@@ -130,7 +136,7 @@
       "state_province": "IN",
       "epoch_it_power_mw": 910,
       "epoch_h100_equivalents": 685912.076806468,
-      "fresh_public_record_count": 0,
+      "fresh_public_record_count": 2,
       "fields": {
         "owner": {
           "epoch_value": "Amazon #confident",
@@ -147,8 +153,10 @@
         "project": {
           "epoch_value": "Project Rainier #confident",
           "bridge_value": "Project Rainier",
-          "fresh_public_values": [],
-          "status": "CAPTURED"
+          "fresh_public_values": [
+            "Project Rainier"
+          ],
+          "status": "FRESH_PUBLIC_WEB_CAPTURED"
         },
         "address": {
           "epoch_value": "55001 Larrison Blvd, New Carlisle, IN 46552",
@@ -165,15 +173,19 @@
           "status": "NO_NEW_CAPTURE"
         },
         "energy_companies": {
-          "fresh_public_values": [],
-          "status": "NO_NEW_CAPTURE"
+          "fresh_public_values": [
+            "Indiana Michigan Power (AEP)"
+          ],
+          "status": "FRESH_PUBLIC_WEB_CAPTURED"
         },
         "chip_quantities": {
           "fresh_public_values": [],
           "status": "NO_NEW_CAPTURE"
         }
       },
-      "fresh_public_sources": []
+      "fresh_public_sources": [
+        "https://intelaccelerator.com/projects"
+      ]
     },
     {
       "epoch_id": "EPOCH-ea699c935d46e066",
@@ -200,7 +212,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Mayes County Data Center / Google Pryor (MidAmerica) Data Center Campus"
           ],
@@ -431,13 +443,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -503,7 +515,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Columbus data center"
           ],
@@ -562,7 +574,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -609,7 +621,7 @@
       "state_province": "",
       "epoch_it_power_mw": 183,
       "epoch_h100_equivalents": 289540.17180394137,
-      "fresh_public_record_count": 6,
+      "fresh_public_record_count": 8,
       "fields": {
         "owner": {
           "epoch_value": "Google #confident",
@@ -619,13 +631,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Hyperion / Meta Richland Parish Data Center"
           ],
@@ -647,6 +659,7 @@
         },
         "energy_companies": {
           "fresh_public_values": [
+            "Entergy Louisiana",
             "Entergy Louisiana"
           ],
           "status": "FRESH_PUBLIC_WEB_CAPTURED"
@@ -658,7 +671,8 @@
       },
       "fresh_public_sources": [
         "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/",
-        "https://louisianaaihub.com/projects/meta-hyperion"
+        "https://louisianaaihub.com/projects/meta-hyperion",
+        "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
       ]
     },
     {
@@ -680,19 +694,19 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -744,7 +758,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -796,7 +810,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -852,7 +866,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Denton Campus"
           ],
@@ -895,7 +909,7 @@
       "state_province": "VA",
       "epoch_it_power_mw": 238,
       "epoch_h100_equivalents": 242546.7407781708,
-      "fresh_public_record_count": 3,
+      "fresh_public_record_count": 4,
       "fields": {
         "owner": {
           "epoch_value": "",
@@ -907,13 +921,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -957,7 +971,7 @@
       "state_province": "MN",
       "epoch_it_power_mw": 178,
       "epoch_h100_equivalents": 215675.11520970188,
-      "fresh_public_record_count": 2,
+      "fresh_public_record_count": 3,
       "fields": {
         "owner": {
           "epoch_value": "Meta #confident",
@@ -973,7 +987,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Bigfoot / Jimnist; Meta Rosemount Data Center"
           ],
@@ -995,6 +1009,7 @@
         },
         "energy_companies": {
           "fresh_public_values": [
+            "Xcel Energy",
             "Xcel Energy"
           ],
           "status": "FRESH_PUBLIC_WEB_CAPTURED"
@@ -1006,7 +1021,8 @@
       },
       "fresh_public_sources": [
         "https://rosemountmn.gov/progress",
-        "https://datacenters.atmeta.com/asset/rosemount-data-center-info-sheet/"
+        "https://datacenters.atmeta.com/asset/rosemount-data-center-info-sheet/",
+        "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
       ]
     },
     {
@@ -1016,13 +1032,15 @@
       "state_province": "MS",
       "epoch_it_power_mw": 284,
       "epoch_h100_equivalents": 214348.14354550533,
-      "fresh_public_record_count": 1,
+      "fresh_public_record_count": 4,
       "fields": {
         "owner": {
           "epoch_value": "Amazon #confident",
           "bridge_value": "Amazon #confident",
-          "fresh_public_values": [],
-          "status": "CAPTURED"
+          "fresh_public_values": [
+            "Amazon Data Services Inc."
+          ],
+          "status": "FRESH_PUBLIC_WEB_CAPTURED"
         },
         "users": {
           "epoch_value": "Anthropic #speculative",
@@ -1041,8 +1059,10 @@
         "address": {
           "epoch_value": "Amazon Data Services Inc, Madison Mega Site Nissan Parkway and Highway 22 Canton, Mississippi Madison County",
           "bridge_value": "Amazon Data Services Inc, Madison Mega Site Nissan Parkway and Highway 22 Canton, Mississippi Madison County",
-          "fresh_public_values": [],
-          "status": "CAPTURED"
+          "fresh_public_values": [
+            "1978 Highway 22, Canton, MS 39046"
+          ],
+          "status": "FRESH_PUBLIC_WEB_CAPTURED"
         },
         "investors": {
           "fresh_public_values": [],
@@ -1062,7 +1082,8 @@
         }
       },
       "fresh_public_sources": [
-        "https://epoch.ai/data/ai-data-centers/directory/amazon-madison-mega-site"
+        "https://epoch.ai/data/ai-data-centers/directory/amazon-madison-mega-site",
+        "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
       ]
     },
     {
@@ -1090,7 +1111,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1148,7 +1169,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1205,7 +1226,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Meta Jeffersonville Data Center"
           ],
@@ -1258,19 +1279,19 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1310,13 +1331,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1372,7 +1393,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Omaha data center"
           ],
@@ -1422,13 +1443,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Lincoln data center"
           ],
@@ -1468,7 +1489,7 @@
       "state_province": "VA",
       "epoch_it_power_mw": 180,
       "epoch_h100_equivalents": 182920.66700353715,
-      "fresh_public_record_count": 3,
+      "fresh_public_record_count": 4,
       "fields": {
         "owner": {
           "epoch_value": "",
@@ -1480,13 +1501,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1540,13 +1561,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1582,7 +1603,7 @@
       "state_province": "VA",
       "epoch_it_power_mw": 144,
       "epoch_h100_equivalents": 174835.77564426477,
-      "fresh_public_record_count": 3,
+      "fresh_public_record_count": 4,
       "fields": {
         "owner": {
           "epoch_value": "",
@@ -1594,13 +1615,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1660,7 +1681,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Montgomery Data Center"
           ],
@@ -1720,7 +1741,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1778,7 +1799,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1836,7 +1857,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -1947,7 +1968,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2004,7 +2025,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2108,7 +2129,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2160,13 +2181,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Midlothian data center"
           ],
@@ -2222,13 +2243,13 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2272,13 +2293,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2330,7 +2351,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2386,7 +2407,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2494,13 +2515,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2546,13 +2567,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Red Oak data center"
           ],
@@ -2608,7 +2629,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Papillion data center"
           ],
@@ -2667,7 +2688,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Gallatin Data Center"
           ],
@@ -2730,7 +2751,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2786,7 +2807,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2838,7 +2859,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2890,13 +2911,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2948,7 +2969,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -2996,19 +3017,19 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3106,7 +3127,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3160,7 +3181,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3206,13 +3227,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3264,7 +3285,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3310,13 +3331,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3362,13 +3383,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3420,7 +3441,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3472,7 +3493,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3524,7 +3545,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "CoreWeave Norway / Bulk N01 42 MW facility"
           ],
@@ -3584,7 +3605,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3630,19 +3651,19 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3682,13 +3703,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3734,13 +3755,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             [
               "SAT14 - Phase 1",
@@ -3796,19 +3817,19 @@
       "fields": {
         "owner": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3860,7 +3881,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3914,7 +3935,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -3966,7 +3987,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "SINES Data Campus / SIN01–SIN06"
           ],
@@ -4027,7 +4048,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4073,7 +4094,7 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Nscale GPU deployments / Verne Iceland campus"
           ],
@@ -4081,7 +4102,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4137,13 +4158,13 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4189,7 +4210,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4241,7 +4262,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4297,7 +4318,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "New 900 MW AI Factory Campus / Abilene expansion"
           ],
@@ -4355,7 +4376,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "EcoDataCenter 2 / Borlänge development"
           ],
@@ -4417,7 +4438,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4469,7 +4490,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Cedar Rapids data center"
           ],
@@ -4525,7 +4546,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Google Data Center"
           ],
@@ -4583,7 +4604,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4700,7 +4721,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [
             "Nscale Narvik campus / Aker Nscale Northern Norway AI infrastructure"
           ],
@@ -4708,7 +4729,7 @@
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4816,7 +4837,7 @@
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4875,7 +4896,7 @@
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -4939,7 +4960,7 @@
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -5107,7 +5128,7 @@
         },
         "address": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -5154,13 +5175,13 @@
         },
         "users": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
@@ -5221,7 +5242,7 @@
         },
         "project": {
           "epoch_value": "",
-          "bridge_value": "",
+          "bridge_value": null,
           "fresh_public_values": [],
           "status": "NOT_CAPTURED"
         },
