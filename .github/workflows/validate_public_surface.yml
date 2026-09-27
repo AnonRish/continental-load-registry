@@ -214,7 +214,7 @@ jobs:
           manifest_csv = list(csv.DictReader((root / "market_universe_manifest.csv").open("r", encoding="utf-8", newline="")))
           assert len(manifest_csv) == 10
           map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
-          assert len(map_csv) == 11
+          assert len(map_csv) == 12
 
           history = json.loads((root / "caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
