@@ -697,3 +697,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+# Canonical rebuild trigger: publish crosswalk-joined Track 3 statuses after completeness pass.
