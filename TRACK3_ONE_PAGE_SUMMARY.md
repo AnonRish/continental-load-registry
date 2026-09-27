@@ -29,7 +29,7 @@ The last category is not proof of absence.
 
 ## Phase 1 versus Track 3
 
-The nine-market registry is most directly a Phase 1 / domestic public accounting contribution: how much large publicly evidenced load exists, where it is, and what public entity/evidence is attached.
+The nine-market registry is an independent public-evidence accounting/observability layer for large loads. It may contribute evidence to broader compute-accounting and undeclared-compute research, but it is not a formal AI 2040 Phase 1 implementation.
 
 The broader Track 3 / international verification problem requires additional accounting of compute production, sales/resales, ownership transfers, physical inspection, and independent verification mechanisms. This repository contributes evidence and discovery infrastructure to that problem; it does not constitute a bilateral U.S.–China verification regime.
 
