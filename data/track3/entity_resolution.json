@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T16:38:56.446066+00:00",
+  "generated_at_utc": "2026-09-27T16:44:59.954414+00:00",
   "title": "Track 3 Entity Resolution Layer",
   "semantics": "Confidence is evidence strength, not probability. Name normalization is a reconciliation key, not proof of legal identity. Missing ownership, landowner, colocation and shell-company findings remain unresolved rather than inferred.",
   "stats": {
@@ -9,11 +9,11 @@
     "distinct_core_project_names": 979,
     "project_level_records": 271,
     "site_evidence_records": 102,
-    "entity_count": 2187,
-    "relationship_edge_count": 1834,
+    "entity_count": 2190,
+    "relationship_edge_count": 1837,
     "parent_subsidiary_edges": 31,
     "variant_groups": 213,
-    "legal_entity_research_targets": 701,
+    "legal_entity_research_targets": 702,
     "building_geometry_sites": 66,
     "building_polygons": 117479
   },
@@ -22,7 +22,7 @@
       "id": "DEVELOPER_OPERATOR_DATABASE",
       "item": "Much larger developer/operator database",
       "status": "INGESTED",
-      "coverage": "2187 entity records including 720 distinct developer strings from 1540 core queue rows."
+      "coverage": "2190 entity records including 720 distinct developer strings from 1540 core queue rows."
     },
     {
       "id": "PARENT_SUBSIDIARY_GRAPH",
@@ -58,13 +58,13 @@
       "id": "SHELL_COMPANY_RESOLUTION",
       "item": "Shell-company resolution",
       "status": "RESEARCH_QUEUE",
-      "coverage": "701 legal-form candidates are queued against GLEIF, OpenCorporates, SEC and jurisdictional registries. No entity is called a shell solely from its legal suffix."
+      "coverage": "702 legal-form candidates are queued against GLEIF, OpenCorporates, SEC and jurisdictional registries. No entity is called a shell solely from its legal suffix."
     },
     {
       "id": "CONFIDENCE_EVIDENCE",
       "item": "Confidence score + evidence for every identity match",
       "status": "INGESTED",
-      "coverage": "1834 relationship edges carry evidence IDs, source URLs where available, temporal state and numeric evidence-strength scores."
+      "coverage": "1837 relationship edges carry evidence IDs, source URLs where available, temporal state and numeric evidence-strength scores."
     }
   ],
   "source_catalog": [
@@ -20383,6 +20383,16 @@
       "evidence_strength_max": 0.9
     },
     {
+      "entity_id": "ENT-turner-construction",
+      "canonical_name": "Turner Construction",
+      "entity_type": "construction_company",
+      "name_variants": [
+        "Turner Construction"
+      ],
+      "source_evidence_count": 1,
+      "evidence_strength_max": 0.95
+    },
+    {
       "entity_id": "ENT-meta-jeffersonville-data-center",
       "canonical_name": "Meta Jeffersonville Data Center",
       "entity_type": "project_name",
@@ -20491,6 +20501,16 @@
       ],
       "source_evidence_count": 2,
       "evidence_strength_max": 0.97
+    },
+    {
+      "entity_id": "ENT-hemphill-construction",
+      "canonical_name": "Hemphill Construction Co. Inc.",
+      "entity_type": "construction_company",
+      "name_variants": [
+        "Hemphill Construction Co. Inc."
+      ],
+      "source_evidence_count": 1,
+      "evidence_strength_max": 0.95
     },
     {
       "entity_id": "ENT-nextera-energy-resources",
@@ -21138,6 +21158,16 @@
       "entity_type": "owner_operator",
       "name_variants": [
         "QTS Cedar Rapids LLC / QTS Data Centers"
+      ],
+      "source_evidence_count": 1,
+      "evidence_strength_max": 0.9
+    },
+    {
+      "entity_id": "ENT-qts-cedar-rapids-data-center-campus",
+      "canonical_name": "QTS Cedar Rapids Data Center Campus",
+      "entity_type": "project_name",
+      "name_variants": [
+        "QTS Cedar Rapids Data Center Campus"
       ],
       "source_evidence_count": 1,
       "evidence_strength_max": 0.9
@@ -41780,6 +41810,19 @@
     {
       "relationship_id": "REL-1519",
       "from_entity_id": "EPOCH-1ac0959562dee191",
+      "to_entity_id": "ENT-turner-construction",
+      "relationship_type": "SITE_CONSTRUCTION_COMPANY",
+      "evidence_id": "EPOCH-1ac0959562dee191",
+      "source": "epoch_ai_registry",
+      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
+      "confidence_score": 0.95,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "OBSERVED_OR_REPORTED",
+      "notes": "Explicit Epoch construction-company field."
+    },
+    {
+      "relationship_id": "REL-1520",
+      "from_entity_id": "EPOCH-1ac0959562dee191",
       "to_entity_id": "ENT-meta-jeffersonville-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
       "evidence_id": "EPOCH-1ac0959562dee191",
@@ -41791,7 +41834,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1520",
+      "relationship_id": "REL-1521",
       "from_entity_id": "EPOCH-6799460068cbed36",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41804,7 +41847,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1521",
+      "relationship_id": "REL-1522",
       "from_entity_id": "EPOCH-6799460068cbed36",
       "to_entity_id": "ENT-evergy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -41817,7 +41860,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1522",
+      "relationship_id": "REL-1523",
       "from_entity_id": "EPOCH-bdc85fadae79b6b2",
       "to_entity_id": "ENT-amazon",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41830,7 +41873,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1523",
+      "relationship_id": "REL-1524",
       "from_entity_id": "EPOCH-bdc85fadae79b6b2",
       "to_entity_id": "ENT-aep-ohio",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -41843,7 +41886,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1524",
+      "relationship_id": "REL-1525",
       "from_entity_id": "EPOCH-4eeccbee73808216",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41856,7 +41899,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1525",
+      "relationship_id": "REL-1526",
       "from_entity_id": "EPOCH-4eeccbee73808216",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -41869,7 +41912,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1526",
+      "relationship_id": "REL-1527",
       "from_entity_id": "EPOCH-4eeccbee73808216",
       "to_entity_id": "ENT-google-omaha-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -41882,7 +41925,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1527",
+      "relationship_id": "REL-1528",
       "from_entity_id": "EPOCH-e06bc7faa8b1b187",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41895,7 +41938,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1528",
+      "relationship_id": "REL-1529",
       "from_entity_id": "EPOCH-e06bc7faa8b1b187",
       "to_entity_id": "ENT-lincoln-electric-system",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -41908,7 +41951,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1529",
+      "relationship_id": "REL-1530",
       "from_entity_id": "EPOCH-e06bc7faa8b1b187",
       "to_entity_id": "ENT-google-lincoln-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -41921,7 +41964,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1530",
+      "relationship_id": "REL-1531",
       "from_entity_id": "EPOCH-052be5b551cd099b",
       "to_entity_id": "ENT-qts-data-centers",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41934,7 +41977,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1531",
+      "relationship_id": "REL-1532",
       "from_entity_id": "EPOCH-052be5b551cd099b",
       "to_entity_id": "ENT-dominion-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -41947,7 +41990,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1532",
+      "relationship_id": "REL-1533",
       "from_entity_id": "EPOCH-052be5b551cd099b",
       "to_entity_id": "ENT-richmond-2-data-center-campus",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -41960,7 +42003,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1533",
+      "relationship_id": "REL-1534",
       "from_entity_id": "EPOCH-40ccef8ef4236635",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41973,7 +42016,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1534",
+      "relationship_id": "REL-1535",
       "from_entity_id": "EPOCH-40ccef8ef4236635",
       "to_entity_id": "ENT-northern-wasco-county-pud-bpa",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -41986,7 +42029,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1535",
+      "relationship_id": "REL-1536",
       "from_entity_id": "EPOCH-02484a65a5dac16d",
       "to_entity_id": "ENT-qts-data-centers",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -41999,7 +42042,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1536",
+      "relationship_id": "REL-1537",
       "from_entity_id": "EPOCH-02484a65a5dac16d",
       "to_entity_id": "ENT-dominion-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42012,7 +42055,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1537",
+      "relationship_id": "REL-1538",
       "from_entity_id": "EPOCH-02484a65a5dac16d",
       "to_entity_id": "ENT-richmond-3-data-center-campus",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42025,7 +42068,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1538",
+      "relationship_id": "REL-1539",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42038,7 +42081,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1539",
+      "relationship_id": "REL-1540",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42051,7 +42094,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1540",
+      "relationship_id": "REL-1541",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "ENT-alabama-power",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42064,7 +42107,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1541",
+      "relationship_id": "REL-1542",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "ENT-hensel-phelps",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42077,7 +42120,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1542",
+      "relationship_id": "REL-1543",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "ENT-montgomery-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42090,7 +42133,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1543",
+      "relationship_id": "REL-1544",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42103,7 +42146,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1544",
+      "relationship_id": "REL-1545",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42116,7 +42159,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1545",
+      "relationship_id": "REL-1546",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "ENT-idaho-power",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42129,7 +42172,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1546",
+      "relationship_id": "REL-1547",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "ENT-hensel-phelps",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42142,7 +42185,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1547",
+      "relationship_id": "REL-1548",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "ENT-kuna-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42155,7 +42198,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1548",
+      "relationship_id": "REL-1549",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42168,7 +42211,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1549",
+      "relationship_id": "REL-1550",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42181,7 +42224,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1550",
+      "relationship_id": "REL-1551",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "ENT-oncor-electric",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42194,7 +42237,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1551",
+      "relationship_id": "REL-1552",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "ENT-je-dunn",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42207,7 +42250,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1552",
+      "relationship_id": "REL-1553",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "ENT-temple-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42220,7 +42263,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1553",
+      "relationship_id": "REL-1554",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42233,7 +42276,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1554",
+      "relationship_id": "REL-1555",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42246,7 +42289,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1555",
+      "relationship_id": "REL-1556",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "ENT-black-hills-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42259,7 +42302,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1556",
+      "relationship_id": "REL-1557",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "ENT-goat-systems",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42272,7 +42315,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1557",
+      "relationship_id": "REL-1558",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "ENT-cheyenne-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42285,7 +42328,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1558",
+      "relationship_id": "REL-1559",
       "from_entity_id": "EPOCH-4a87099a6d1e001f",
       "to_entity_id": "ENT-amazon",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42298,7 +42341,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1559",
+      "relationship_id": "REL-1560",
       "from_entity_id": "EPOCH-4a87099a6d1e001f",
       "to_entity_id": "ENT-anthropic-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42311,7 +42354,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1560",
+      "relationship_id": "REL-1561",
       "from_entity_id": "EPOCH-4a87099a6d1e001f",
       "to_entity_id": "ENT-entergy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42324,7 +42367,20 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1561",
+      "relationship_id": "REL-1562",
+      "from_entity_id": "EPOCH-4a87099a6d1e001f",
+      "to_entity_id": "ENT-hemphill-construction",
+      "relationship_type": "SITE_CONSTRUCTION_COMPANY",
+      "evidence_id": "EPOCH-4a87099a6d1e001f",
+      "source": "epoch_ai_registry",
+      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
+      "confidence_score": 0.95,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "OBSERVED_OR_REPORTED",
+      "notes": "Explicit Epoch construction-company field."
+    },
+    {
+      "relationship_id": "REL-1563",
       "from_entity_id": "EPOCH-4a87099a6d1e001f",
       "to_entity_id": "ENT-project-rainier-speculative",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42337,7 +42393,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1562",
+      "relationship_id": "REL-1564",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42350,7 +42406,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1563",
+      "relationship_id": "REL-1565",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42363,7 +42419,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1564",
+      "relationship_id": "REL-1566",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "ENT-tennessee-valley-authority",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42376,7 +42432,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1565",
+      "relationship_id": "REL-1567",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "ENT-nextera-energy-resources",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42389,7 +42445,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1566",
+      "relationship_id": "REL-1568",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "ENT-first-solar",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42402,7 +42458,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1567",
+      "relationship_id": "REL-1569",
       "from_entity_id": "EPOCH-a69e48fd129d0cdb",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42415,7 +42471,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1568",
+      "relationship_id": "REL-1570",
       "from_entity_id": "EPOCH-a69e48fd129d0cdb",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42428,7 +42484,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1569",
+      "relationship_id": "REL-1571",
       "from_entity_id": "EPOCH-534376160415dc84",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42441,7 +42497,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1570",
+      "relationship_id": "REL-1572",
       "from_entity_id": "EPOCH-534376160415dc84",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42454,7 +42510,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1571",
+      "relationship_id": "REL-1573",
       "from_entity_id": "EPOCH-534376160415dc84",
       "to_entity_id": "ENT-miso",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42467,7 +42523,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1572",
+      "relationship_id": "REL-1574",
       "from_entity_id": "EPOCH-0bb0b996b7c96beb",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42480,7 +42536,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1573",
+      "relationship_id": "REL-1575",
       "from_entity_id": "EPOCH-0bb0b996b7c96beb",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42493,7 +42549,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1574",
+      "relationship_id": "REL-1576",
       "from_entity_id": "EPOCH-0bb0b996b7c96beb",
       "to_entity_id": "ENT-williams",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42506,7 +42562,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1575",
+      "relationship_id": "REL-1577",
       "from_entity_id": "EPOCH-0bb0b996b7c96beb",
       "to_entity_id": "ENT-mortenson",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42519,7 +42575,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1576",
+      "relationship_id": "REL-1578",
       "from_entity_id": "EPOCH-85492d2b8df586a1",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42532,7 +42588,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1577",
+      "relationship_id": "REL-1579",
       "from_entity_id": "EPOCH-85492d2b8df586a1",
       "to_entity_id": "ENT-google-midlothian-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42545,7 +42601,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1578",
+      "relationship_id": "REL-1580",
       "from_entity_id": "EPOCH-2b89e13933a04725",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42558,7 +42614,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1579",
+      "relationship_id": "REL-1581",
       "from_entity_id": "EPOCH-2b89e13933a04725",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42571,7 +42627,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1580",
+      "relationship_id": "REL-1582",
       "from_entity_id": "EPOCH-2b89e13933a04725",
       "to_entity_id": "ENT-nv-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42584,7 +42640,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1581",
+      "relationship_id": "REL-1583",
       "from_entity_id": "EPOCH-f92e98f4b76a9bcd",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42597,7 +42653,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1582",
+      "relationship_id": "REL-1584",
       "from_entity_id": "EPOCH-78f8285078416a9e",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42610,7 +42666,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1583",
+      "relationship_id": "REL-1585",
       "from_entity_id": "EPOCH-78f8285078416a9e",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42623,7 +42679,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1584",
+      "relationship_id": "REL-1586",
       "from_entity_id": "EPOCH-78f8285078416a9e",
       "to_entity_id": "ENT-portland-general-electric",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42636,7 +42692,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1585",
+      "relationship_id": "REL-1587",
       "from_entity_id": "EPOCH-78f8285078416a9e",
       "to_entity_id": "ENT-avangrid",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42649,7 +42705,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1586",
+      "relationship_id": "REL-1588",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42662,7 +42718,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1587",
+      "relationship_id": "REL-1589",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42675,7 +42731,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1588",
+      "relationship_id": "REL-1590",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-shell-energy-europe",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42688,7 +42744,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1589",
+      "relationship_id": "REL-1591",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-engie",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42701,7 +42757,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1590",
+      "relationship_id": "REL-1592",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-250-companies",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42714,7 +42770,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1591",
+      "relationship_id": "REL-1593",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-majority-local",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42727,7 +42783,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1592",
+      "relationship_id": "REL-1594",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "ENT-no-specific-general-contractor-published",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42740,7 +42796,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1593",
+      "relationship_id": "REL-1595",
       "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
       "to_entity_id": "ENT-vnet",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42753,7 +42809,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1594",
+      "relationship_id": "REL-1596",
       "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
       "to_entity_id": "ENT-bytedance-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42766,7 +42822,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1595",
+      "relationship_id": "REL-1597",
       "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
       "to_entity_id": "ENT-10-gw-hyperscale-2-0",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42779,7 +42835,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1596",
+      "relationship_id": "REL-1598",
       "from_entity_id": "EPOCH-785d6e4c34607dd4",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42792,7 +42848,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1597",
+      "relationship_id": "REL-1599",
       "from_entity_id": "EPOCH-785d6e4c34607dd4",
       "to_entity_id": "ENT-dominion-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42805,7 +42861,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1598",
+      "relationship_id": "REL-1600",
       "from_entity_id": "EPOCH-f1a2bcdd78478bc2",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42818,7 +42874,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1599",
+      "relationship_id": "REL-1601",
       "from_entity_id": "EPOCH-f1a2bcdd78478bc2",
       "to_entity_id": "ENT-google-red-oak-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42831,7 +42887,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1600",
+      "relationship_id": "REL-1602",
       "from_entity_id": "EPOCH-4525348d114e3e8e",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42844,7 +42900,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1601",
+      "relationship_id": "REL-1603",
       "from_entity_id": "EPOCH-4525348d114e3e8e",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42857,7 +42913,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1602",
+      "relationship_id": "REL-1604",
       "from_entity_id": "EPOCH-4525348d114e3e8e",
       "to_entity_id": "ENT-omaha-public-power-district",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42870,7 +42926,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1603",
+      "relationship_id": "REL-1605",
       "from_entity_id": "EPOCH-4525348d114e3e8e",
       "to_entity_id": "ENT-google-papillion-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42883,7 +42939,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1604",
+      "relationship_id": "REL-1606",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42896,7 +42952,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1605",
+      "relationship_id": "REL-1607",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42909,7 +42965,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1606",
+      "relationship_id": "REL-1608",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "ENT-tennessee-valley-authority-tva",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42922,7 +42978,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1607",
+      "relationship_id": "REL-1609",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "ENT-tennessee-solar-counterparties",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -42935,7 +42991,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1608",
+      "relationship_id": "REL-1610",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "ENT-dpr-construction",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -42948,7 +43004,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1609",
+      "relationship_id": "REL-1611",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "ENT-gallatin-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -42961,7 +43017,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1610",
+      "relationship_id": "REL-1612",
       "from_entity_id": "EPOCH-02c050b6b554fadd",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -42974,7 +43030,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1611",
+      "relationship_id": "REL-1613",
       "from_entity_id": "EPOCH-02c050b6b554fadd",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -42987,7 +43043,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1612",
+      "relationship_id": "REL-1614",
       "from_entity_id": "EPOCH-02c050b6b554fadd",
       "to_entity_id": "ENT-public-service-of-new-mexico-pnm",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43000,7 +43056,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1613",
+      "relationship_id": "REL-1615",
       "from_entity_id": "EPOCH-768183e4de6062d2",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43013,7 +43069,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1614",
+      "relationship_id": "REL-1616",
       "from_entity_id": "EPOCH-768183e4de6062d2",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43026,7 +43082,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1615",
+      "relationship_id": "REL-1617",
       "from_entity_id": "EPOCH-4b5df4f52274f2ba",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43039,7 +43095,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1616",
+      "relationship_id": "REL-1618",
       "from_entity_id": "EPOCH-4b5df4f52274f2ba",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43052,7 +43108,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1617",
+      "relationship_id": "REL-1619",
       "from_entity_id": "EPOCH-4b5df4f52274f2ba",
       "to_entity_id": "ENT-omaha-public-power-district",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43065,7 +43121,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1618",
+      "relationship_id": "REL-1620",
       "from_entity_id": "EPOCH-77e196fc5320fd70",
       "to_entity_id": "ENT-huawei",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43078,7 +43134,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1619",
+      "relationship_id": "REL-1621",
       "from_entity_id": "EPOCH-2d362a1adb09fddd",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43091,7 +43147,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1620",
+      "relationship_id": "REL-1622",
       "from_entity_id": "EPOCH-2d362a1adb09fddd",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43104,7 +43160,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1621",
+      "relationship_id": "REL-1623",
       "from_entity_id": "EPOCH-ea5d1ae5837aba5c",
       "to_entity_id": "ENT-oracle",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43117,7 +43173,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1622",
+      "relationship_id": "REL-1624",
       "from_entity_id": "EPOCH-03aad260b30bfbe1",
       "to_entity_id": "ENT-amazon",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43130,7 +43186,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1623",
+      "relationship_id": "REL-1625",
       "from_entity_id": "EPOCH-03aad260b30bfbe1",
       "to_entity_id": "ENT-anthropic-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43143,7 +43199,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1624",
+      "relationship_id": "REL-1626",
       "from_entity_id": "EPOCH-03aad260b30bfbe1",
       "to_entity_id": "ENT-ppl-electric-utilities-talen-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43156,7 +43212,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1625",
+      "relationship_id": "REL-1627",
       "from_entity_id": "EPOCH-03aad260b30bfbe1",
       "to_entity_id": "ENT-project-rainier-speculative",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43169,7 +43225,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1626",
+      "relationship_id": "REL-1628",
       "from_entity_id": "EPOCH-eb87487504bda8ed",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43182,7 +43238,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1627",
+      "relationship_id": "REL-1629",
       "from_entity_id": "EPOCH-eb87487504bda8ed",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43195,7 +43251,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1628",
+      "relationship_id": "REL-1630",
       "from_entity_id": "EPOCH-eb87487504bda8ed",
       "to_entity_id": "ENT-duke-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43208,7 +43264,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1629",
+      "relationship_id": "REL-1631",
       "from_entity_id": "EPOCH-7d9b5af0cce16f1c",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43221,7 +43277,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1630",
+      "relationship_id": "REL-1632",
       "from_entity_id": "EPOCH-7d9b5af0cce16f1c",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43234,7 +43290,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1631",
+      "relationship_id": "REL-1633",
       "from_entity_id": "EPOCH-7d9b5af0cce16f1c",
       "to_entity_id": "ENT-dpr-construction",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -43247,7 +43303,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1632",
+      "relationship_id": "REL-1634",
       "from_entity_id": "EPOCH-af62ae3440fe885a",
       "to_entity_id": "ENT-huawei",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43260,7 +43316,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1633",
+      "relationship_id": "REL-1635",
       "from_entity_id": "EPOCH-d1b62579c6be3fe8",
       "to_entity_id": "ENT-core42",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43273,7 +43329,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1634",
+      "relationship_id": "REL-1636",
       "from_entity_id": "EPOCH-d1b62579c6be3fe8",
       "to_entity_id": "ENT-g42",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43286,7 +43342,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1635",
+      "relationship_id": "REL-1637",
       "from_entity_id": "EPOCH-71d0091a05448224",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43299,7 +43355,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1636",
+      "relationship_id": "REL-1638",
       "from_entity_id": "EPOCH-29fb769630142638",
       "to_entity_id": "ENT-ai-xpv-platform",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43312,7 +43368,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1637",
+      "relationship_id": "REL-1639",
       "from_entity_id": "EPOCH-29fb769630142638",
       "to_entity_id": "ENT-anthropic",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43325,7 +43381,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1638",
+      "relationship_id": "REL-1640",
       "from_entity_id": "EPOCH-781cbfae186209ad",
       "to_entity_id": "ENT-nebius",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43338,7 +43394,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1639",
+      "relationship_id": "REL-1641",
       "from_entity_id": "EPOCH-781cbfae186209ad",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43351,7 +43407,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1640",
+      "relationship_id": "REL-1642",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43364,7 +43420,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1641",
+      "relationship_id": "REL-1643",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43377,7 +43433,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1642",
+      "relationship_id": "REL-1644",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "ENT-bulk-infrastructure",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -43390,7 +43446,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1643",
+      "relationship_id": "REL-1645",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "ENT-coreweave-norway-bulk-n01-42-mw-facility",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43403,7 +43459,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1644",
+      "relationship_id": "REL-1646",
       "from_entity_id": "EPOCH-41dea3fb46d2e6a8",
       "to_entity_id": "ENT-nebius",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43416,7 +43472,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1645",
+      "relationship_id": "REL-1647",
       "from_entity_id": "EPOCH-41dea3fb46d2e6a8",
       "to_entity_id": "ENT-microsoft-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43429,7 +43485,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1646",
+      "relationship_id": "REL-1648",
       "from_entity_id": "EPOCH-827d7832237170bd",
       "to_entity_id": "ENT-firmus",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43442,7 +43498,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1647",
+      "relationship_id": "REL-1649",
       "from_entity_id": "EPOCH-0355f445ca6cbed4",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43455,7 +43511,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1648",
+      "relationship_id": "REL-1650",
       "from_entity_id": "EPOCH-0355f445ca6cbed4",
       "to_entity_id": "ENT-page-southerland-page-page",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -43468,7 +43524,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1649",
+      "relationship_id": "REL-1651",
       "from_entity_id": "EPOCH-0355f445ca6cbed4",
       "to_entity_id": "ENT-sat14-phase-1-sat14-phase-2-sat14-phase-3-sat14-phase-4",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43481,7 +43537,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1650",
+      "relationship_id": "REL-1652",
       "from_entity_id": "EPOCH-8696ef81d91560a9",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43494,7 +43550,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1651",
+      "relationship_id": "REL-1653",
       "from_entity_id": "EPOCH-8696ef81d91560a9",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43507,7 +43563,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1652",
+      "relationship_id": "REL-1654",
       "from_entity_id": "EPOCH-e20c2909085b37fd",
       "to_entity_id": "ENT-alibaba",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43520,7 +43576,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1653",
+      "relationship_id": "REL-1655",
       "from_entity_id": "EPOCH-e20c2909085b37fd",
       "to_entity_id": "ENT-alibaba",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43533,7 +43589,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1654",
+      "relationship_id": "REL-1656",
       "from_entity_id": "EPOCH-8baa344f9717520c",
       "to_entity_id": "ENT-nscale",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43546,7 +43602,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1655",
+      "relationship_id": "REL-1657",
       "from_entity_id": "EPOCH-8baa344f9717520c",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43559,7 +43615,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1656",
+      "relationship_id": "REL-1658",
       "from_entity_id": "EPOCH-8baa344f9717520c",
       "to_entity_id": "ENT-edp",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43572,7 +43628,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1657",
+      "relationship_id": "REL-1659",
       "from_entity_id": "EPOCH-8baa344f9717520c",
       "to_entity_id": "ENT-sines-data-campus-sin01-sin06",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43585,7 +43641,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1658",
+      "relationship_id": "REL-1660",
       "from_entity_id": "EPOCH-495a9afde5e4b96c",
       "to_entity_id": "ENT-spacexai",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43598,7 +43654,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1659",
+      "relationship_id": "REL-1661",
       "from_entity_id": "EPOCH-495a9afde5e4b96c",
       "to_entity_id": "ENT-spacexai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43611,7 +43667,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1660",
+      "relationship_id": "REL-1662",
       "from_entity_id": "EPOCH-f1a70be0079d215a",
       "to_entity_id": "ENT-nscale",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43624,7 +43680,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1661",
+      "relationship_id": "REL-1663",
       "from_entity_id": "EPOCH-f1a70be0079d215a",
       "to_entity_id": "ENT-nscale-gpu-deployments-verne-iceland-campus",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43637,7 +43693,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1662",
+      "relationship_id": "REL-1664",
       "from_entity_id": "EPOCH-f1a70be0079d215a",
       "to_entity_id": "ENT-icelandic-geothermal-and-hydropower-system",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43650,7 +43706,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1663",
+      "relationship_id": "REL-1665",
       "from_entity_id": "EPOCH-5b05fa7b682be282",
       "to_entity_id": "ENT-cipher-mining",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43663,7 +43719,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1664",
+      "relationship_id": "REL-1666",
       "from_entity_id": "EPOCH-5b05fa7b682be282",
       "to_entity_id": "ENT-anthropic",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43676,37 +43732,11 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1665",
-      "from_entity_id": "EPOCH-7648e1438308fdae",
-      "to_entity_id": "ENT-coreweave",
-      "relationship_type": "SITE_OWNER_OPERATOR",
-      "evidence_id": "EPOCH-7648e1438308fdae",
-      "source": "epoch_ai_registry",
-      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
-      "confidence_score": 0.98,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "OBSERVED_OR_REPORTED",
-      "notes": "Explicit Epoch owner field."
-    },
-    {
-      "relationship_id": "REL-1666",
-      "from_entity_id": "EPOCH-7648e1438308fdae",
-      "to_entity_id": "ENT-openai-speculative",
-      "relationship_type": "SITE_COMPUTE_USER",
-      "evidence_id": "EPOCH-7648e1438308fdae",
-      "source": "epoch_ai_registry",
-      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
-      "confidence_score": 0.9,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "OBSERVED_OR_REPORTED",
-      "notes": "Explicit Epoch users field."
-    },
-    {
       "relationship_id": "REL-1667",
-      "from_entity_id": "EPOCH-65e758d676dc06d6",
+      "from_entity_id": "EPOCH-7648e1438308fdae",
       "to_entity_id": "ENT-coreweave",
       "relationship_type": "SITE_OWNER_OPERATOR",
-      "evidence_id": "EPOCH-65e758d676dc06d6",
+      "evidence_id": "EPOCH-7648e1438308fdae",
       "source": "epoch_ai_registry",
       "source_url": "https://epoch.ai/data/data-centers-documentation/records",
       "confidence_score": 0.98,
@@ -43716,6 +43746,32 @@
     },
     {
       "relationship_id": "REL-1668",
+      "from_entity_id": "EPOCH-7648e1438308fdae",
+      "to_entity_id": "ENT-openai-speculative",
+      "relationship_type": "SITE_COMPUTE_USER",
+      "evidence_id": "EPOCH-7648e1438308fdae",
+      "source": "epoch_ai_registry",
+      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
+      "confidence_score": 0.9,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "OBSERVED_OR_REPORTED",
+      "notes": "Explicit Epoch users field."
+    },
+    {
+      "relationship_id": "REL-1669",
+      "from_entity_id": "EPOCH-65e758d676dc06d6",
+      "to_entity_id": "ENT-coreweave",
+      "relationship_type": "SITE_OWNER_OPERATOR",
+      "evidence_id": "EPOCH-65e758d676dc06d6",
+      "source": "epoch_ai_registry",
+      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
+      "confidence_score": 0.98,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "OBSERVED_OR_REPORTED",
+      "notes": "Explicit Epoch owner field."
+    },
+    {
+      "relationship_id": "REL-1670",
       "from_entity_id": "EPOCH-65e758d676dc06d6",
       "to_entity_id": "ENT-openai-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43728,7 +43784,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1669",
+      "relationship_id": "REL-1671",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43741,7 +43797,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1670",
+      "relationship_id": "REL-1672",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43754,7 +43810,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1671",
+      "relationship_id": "REL-1673",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "ENT-crusoe-onsite-power-generation",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43767,7 +43823,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1672",
+      "relationship_id": "REL-1674",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "ENT-new-900-mw-ai-factory-campus-abilene-expansion",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43780,7 +43836,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1673",
+      "relationship_id": "REL-1675",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "ENT-mistral-ai",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43793,7 +43849,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1674",
+      "relationship_id": "REL-1676",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "ENT-mistral-ai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43806,7 +43862,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1675",
+      "relationship_id": "REL-1677",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "ENT-local-hydropower",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43819,7 +43875,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1676",
+      "relationship_id": "REL-1678",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "ENT-wind-power",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43832,7 +43888,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1677",
+      "relationship_id": "REL-1679",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "ENT-borl-nge-energi",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43845,7 +43901,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1678",
+      "relationship_id": "REL-1680",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "ENT-ecodatacenter-2-borl-nge-development",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43858,7 +43914,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1679",
+      "relationship_id": "REL-1681",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "ENT-google-speculative",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43871,7 +43927,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1680",
+      "relationship_id": "REL-1682",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43884,7 +43940,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1681",
+      "relationship_id": "REL-1683",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "ENT-serena",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -43897,7 +43953,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1682",
+      "relationship_id": "REL-1684",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "ENT-crusoe",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -43910,7 +43966,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1683",
+      "relationship_id": "REL-1685",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "ENT-hoffman",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -43923,7 +43979,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1684",
+      "relationship_id": "REL-1686",
       "from_entity_id": "EPOCH-2d6a8403fde79650",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43936,7 +43992,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1685",
+      "relationship_id": "REL-1687",
       "from_entity_id": "EPOCH-2d6a8403fde79650",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43949,7 +44005,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1686",
+      "relationship_id": "REL-1688",
       "from_entity_id": "EPOCH-2d6a8403fde79650",
       "to_entity_id": "ENT-google-cedar-rapids-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -43962,7 +44018,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1687",
+      "relationship_id": "REL-1689",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "ENT-google",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -43975,7 +44031,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1688",
+      "relationship_id": "REL-1690",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "ENT-google-deepmind-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -43988,7 +44044,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1689",
+      "relationship_id": "REL-1691",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "ENT-indiana-michigan-power",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44001,7 +44057,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1690",
+      "relationship_id": "REL-1692",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "ENT-google-data-center",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44014,7 +44070,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1691",
+      "relationship_id": "REL-1693",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44027,7 +44083,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1692",
+      "relationship_id": "REL-1694",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44040,7 +44096,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1693",
+      "relationship_id": "REL-1695",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "ENT-williams",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44053,7 +44109,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1694",
+      "relationship_id": "REL-1696",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "ENT-je-dunn-construction",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -44066,7 +44122,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1695",
+      "relationship_id": "REL-1697",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44079,7 +44135,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1696",
+      "relationship_id": "REL-1698",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "ENT-meta",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44092,7 +44148,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1697",
+      "relationship_id": "REL-1699",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "ENT-entergy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44105,7 +44161,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1698",
+      "relationship_id": "REL-1700",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "ENT-mortenson",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -44118,7 +44174,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1699",
+      "relationship_id": "REL-1701",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "ENT-hyperion",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44131,7 +44187,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1700",
+      "relationship_id": "REL-1702",
       "from_entity_id": "EPOCH-1b7cb9c2b0eb479f",
       "to_entity_id": "ENT-nscale",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44144,7 +44200,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1701",
+      "relationship_id": "REL-1703",
       "from_entity_id": "EPOCH-1b7cb9c2b0eb479f",
       "to_entity_id": "ENT-microsoft",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44157,7 +44213,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1702",
+      "relationship_id": "REL-1704",
       "from_entity_id": "EPOCH-1b7cb9c2b0eb479f",
       "to_entity_id": "ENT-nscale-narvik-campus-aker-nscale-northern-norway-ai-infrastructure",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44170,7 +44226,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1703",
+      "relationship_id": "REL-1705",
       "from_entity_id": "EPOCH-dc6199921ba82b85",
       "to_entity_id": "ENT-softbank",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44183,7 +44239,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1704",
+      "relationship_id": "REL-1706",
       "from_entity_id": "EPOCH-dc6199921ba82b85",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44196,7 +44252,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1705",
+      "relationship_id": "REL-1707",
       "from_entity_id": "EPOCH-dc6199921ba82b85",
       "to_entity_id": "ENT-firstenergy-ohio-edison",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44209,7 +44265,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1706",
+      "relationship_id": "REL-1708",
       "from_entity_id": "EPOCH-dc6199921ba82b85",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44222,7 +44278,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1707",
+      "relationship_id": "REL-1709",
       "from_entity_id": "EPOCH-145ed5861bdf2982",
       "to_entity_id": "ENT-oracle",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44235,7 +44291,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1708",
+      "relationship_id": "REL-1710",
       "from_entity_id": "EPOCH-145ed5861bdf2982",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44248,7 +44304,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1709",
+      "relationship_id": "REL-1711",
       "from_entity_id": "EPOCH-145ed5861bdf2982",
       "to_entity_id": "ENT-dte-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44261,7 +44317,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1710",
+      "relationship_id": "REL-1712",
       "from_entity_id": "EPOCH-145ed5861bdf2982",
       "to_entity_id": "ENT-related-digital",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -44274,7 +44330,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1711",
+      "relationship_id": "REL-1713",
       "from_entity_id": "EPOCH-145ed5861bdf2982",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44287,7 +44343,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1712",
+      "relationship_id": "REL-1714",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "ENT-softbank",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44300,7 +44356,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1713",
+      "relationship_id": "REL-1715",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44313,7 +44369,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1714",
+      "relationship_id": "REL-1716",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "ENT-sb-energy-onsite-generation-and-storage",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44326,7 +44382,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1715",
+      "relationship_id": "REL-1717",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "ENT-texas-grid-modernization",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44339,7 +44395,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1716",
+      "relationship_id": "REL-1718",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "ENT-sb-energy",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -44352,7 +44408,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1717",
+      "relationship_id": "REL-1719",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44365,7 +44421,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1718",
+      "relationship_id": "REL-1720",
       "from_entity_id": "EPOCH-3816121e8d72fe04",
       "to_entity_id": "ENT-oracle",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44378,7 +44434,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1719",
+      "relationship_id": "REL-1721",
       "from_entity_id": "EPOCH-3816121e8d72fe04",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44391,7 +44447,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1720",
+      "relationship_id": "REL-1722",
       "from_entity_id": "EPOCH-3816121e8d72fe04",
       "to_entity_id": "ENT-bloom-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44404,7 +44460,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1721",
+      "relationship_id": "REL-1723",
       "from_entity_id": "EPOCH-3816121e8d72fe04",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44417,7 +44473,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1722",
+      "relationship_id": "REL-1724",
       "from_entity_id": "EPOCH-b427a75f62d61aae",
       "to_entity_id": "ENT-oracle",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44430,7 +44486,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1723",
+      "relationship_id": "REL-1725",
       "from_entity_id": "EPOCH-b427a75f62d61aae",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44443,7 +44499,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1724",
+      "relationship_id": "REL-1726",
       "from_entity_id": "EPOCH-b427a75f62d61aae",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44456,7 +44512,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1725",
+      "relationship_id": "REL-1727",
       "from_entity_id": "EPOCH-661288625d17662a",
       "to_entity_id": "ENT-g42",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44469,7 +44525,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1726",
+      "relationship_id": "REL-1728",
       "from_entity_id": "EPOCH-661288625d17662a",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44482,7 +44538,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1727",
+      "relationship_id": "REL-1729",
       "from_entity_id": "EPOCH-661288625d17662a",
       "to_entity_id": "ENT-uae-energy-infrastructure-counterparties-not-specified-in-the-cited-op",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44495,7 +44551,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1728",
+      "relationship_id": "REL-1730",
       "from_entity_id": "EPOCH-661288625d17662a",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44508,7 +44564,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1729",
+      "relationship_id": "REL-1731",
       "from_entity_id": "EPOCH-78e7d8474fbdf968",
       "to_entity_id": "ENT-oracle",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44521,7 +44577,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1730",
+      "relationship_id": "REL-1732",
       "from_entity_id": "EPOCH-78e7d8474fbdf968",
       "to_entity_id": "ENT-openai",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44534,7 +44590,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1731",
+      "relationship_id": "REL-1733",
       "from_entity_id": "EPOCH-78e7d8474fbdf968",
       "to_entity_id": "ENT-wec-energy-group",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44547,7 +44603,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1732",
+      "relationship_id": "REL-1734",
       "from_entity_id": "EPOCH-78e7d8474fbdf968",
       "to_entity_id": "ENT-stargate",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44560,7 +44616,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1733",
+      "relationship_id": "REL-1735",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "ENT-qts-cedar-rapids-qts-data-centers",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44573,7 +44629,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1734",
+      "relationship_id": "REL-1736",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "ENT-alliant-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44586,7 +44642,20 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1735",
+      "relationship_id": "REL-1737",
+      "from_entity_id": "EPOCH-d2da66ea035880ce",
+      "to_entity_id": "ENT-qts-cedar-rapids-data-center-campus",
+      "relationship_type": "SITE_PROJECT_REFERENCE",
+      "evidence_id": "EPOCH-d2da66ea035880ce",
+      "source": "epoch_ai_registry",
+      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
+      "confidence_score": 0.9,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "OBSERVED_OR_REPORTED",
+      "notes": "Publisher project field; not asserted to be a legal alias."
+    },
+    {
+      "relationship_id": "REL-1738",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-qts-data-centers",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44599,7 +44668,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1736",
+      "relationship_id": "REL-1739",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-meta-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44612,7 +44681,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1737",
+      "relationship_id": "REL-1740",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-rocky-mountain-power-pacificorp",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44625,7 +44694,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1738",
+      "relationship_id": "REL-1741",
       "from_entity_id": "EPOCH-c20399471d1c5e4a",
       "to_entity_id": "BLDGSET-EPOCH-c20399471d1c5e4a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44638,7 +44707,7 @@
       "notes": "4622 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1739",
+      "relationship_id": "REL-1742",
       "from_entity_id": "EPOCH-d9050b43689ed24c",
       "to_entity_id": "BLDGSET-EPOCH-d9050b43689ed24c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44651,7 +44720,7 @@
       "notes": "1116 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1740",
+      "relationship_id": "REL-1743",
       "from_entity_id": "EPOCH-ea699c935d46e066",
       "to_entity_id": "BLDGSET-EPOCH-ea699c935d46e066",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44664,7 +44733,7 @@
       "notes": "458 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1741",
+      "relationship_id": "REL-1744",
       "from_entity_id": "EPOCH-2c2e40ddb178da3e",
       "to_entity_id": "BLDGSET-EPOCH-2c2e40ddb178da3e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44677,7 +44746,7 @@
       "notes": "289 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1742",
+      "relationship_id": "REL-1745",
       "from_entity_id": "EPOCH-f5dc9d7a3f02c2e9",
       "to_entity_id": "BLDGSET-EPOCH-f5dc9d7a3f02c2e9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44690,7 +44759,7 @@
       "notes": "1624 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1743",
+      "relationship_id": "REL-1746",
       "from_entity_id": "EPOCH-d8b28fdbc55817f9",
       "to_entity_id": "BLDGSET-EPOCH-d8b28fdbc55817f9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44703,7 +44772,7 @@
       "notes": "1420 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1744",
+      "relationship_id": "REL-1747",
       "from_entity_id": "EPOCH-5b353d56a567a70b",
       "to_entity_id": "BLDGSET-EPOCH-5b353d56a567a70b",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44716,7 +44785,7 @@
       "notes": "406 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1745",
+      "relationship_id": "REL-1748",
       "from_entity_id": "EPOCH-2dadeb4b013bef05",
       "to_entity_id": "BLDGSET-EPOCH-2dadeb4b013bef05",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44729,7 +44798,7 @@
       "notes": "2924 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1746",
+      "relationship_id": "REL-1749",
       "from_entity_id": "EPOCH-1c8ee8b0305c6313",
       "to_entity_id": "BLDGSET-EPOCH-1c8ee8b0305c6313",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44742,7 +44811,7 @@
       "notes": "347 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1747",
+      "relationship_id": "REL-1750",
       "from_entity_id": "EPOCH-ac1ca1cf8df13b3c",
       "to_entity_id": "BLDGSET-EPOCH-ac1ca1cf8df13b3c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44755,7 +44824,7 @@
       "notes": "1710 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1748",
+      "relationship_id": "REL-1751",
       "from_entity_id": "EPOCH-cc12c3e42b3eaf08",
       "to_entity_id": "BLDGSET-EPOCH-cc12c3e42b3eaf08",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44768,7 +44837,7 @@
       "notes": "1033 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1749",
+      "relationship_id": "REL-1752",
       "from_entity_id": "EPOCH-8358e445402d91c2",
       "to_entity_id": "BLDGSET-EPOCH-8358e445402d91c2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44781,7 +44850,7 @@
       "notes": "832 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1750",
+      "relationship_id": "REL-1753",
       "from_entity_id": "EPOCH-6db3bc2c79843ffd",
       "to_entity_id": "BLDGSET-EPOCH-6db3bc2c79843ffd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44794,7 +44863,7 @@
       "notes": "2873 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1751",
+      "relationship_id": "REL-1754",
       "from_entity_id": "EPOCH-93a4aa4fa40d40ca",
       "to_entity_id": "BLDGSET-EPOCH-93a4aa4fa40d40ca",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44807,7 +44876,7 @@
       "notes": "1191 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1752",
+      "relationship_id": "REL-1755",
       "from_entity_id": "EPOCH-1ac0959562dee191",
       "to_entity_id": "BLDGSET-EPOCH-1ac0959562dee191",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44820,7 +44889,7 @@
       "notes": "6116 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1753",
+      "relationship_id": "REL-1756",
       "from_entity_id": "EPOCH-bdc85fadae79b6b2",
       "to_entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44833,7 +44902,7 @@
       "notes": "525 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1754",
+      "relationship_id": "REL-1757",
       "from_entity_id": "EPOCH-4eeccbee73808216",
       "to_entity_id": "BLDGSET-EPOCH-4eeccbee73808216",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44846,7 +44915,7 @@
       "notes": "4140 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1755",
+      "relationship_id": "REL-1758",
       "from_entity_id": "EPOCH-e06bc7faa8b1b187",
       "to_entity_id": "BLDGSET-EPOCH-e06bc7faa8b1b187",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44859,7 +44928,7 @@
       "notes": "101 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1756",
+      "relationship_id": "REL-1759",
       "from_entity_id": "EPOCH-052be5b551cd099b",
       "to_entity_id": "BLDGSET-EPOCH-052be5b551cd099b",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44872,7 +44941,7 @@
       "notes": "946 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1757",
+      "relationship_id": "REL-1760",
       "from_entity_id": "EPOCH-40ccef8ef4236635",
       "to_entity_id": "BLDGSET-EPOCH-40ccef8ef4236635",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44885,7 +44954,7 @@
       "notes": "2317 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1758",
+      "relationship_id": "REL-1761",
       "from_entity_id": "EPOCH-02484a65a5dac16d",
       "to_entity_id": "BLDGSET-EPOCH-02484a65a5dac16d",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44898,7 +44967,7 @@
       "notes": "946 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1759",
+      "relationship_id": "REL-1762",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "BLDGSET-EPOCH-0788d9aeb3114553",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44911,7 +44980,7 @@
       "notes": "159 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1760",
+      "relationship_id": "REL-1763",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44924,7 +44993,7 @@
       "notes": "667 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1761",
+      "relationship_id": "REL-1764",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44937,7 +45006,7 @@
       "notes": "2566 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1762",
+      "relationship_id": "REL-1765",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "BLDGSET-EPOCH-14cecdb5956daea1",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44950,7 +45019,7 @@
       "notes": "7675 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1763",
+      "relationship_id": "REL-1766",
       "from_entity_id": "EPOCH-4a87099a6d1e001f",
       "to_entity_id": "BLDGSET-EPOCH-4a87099a6d1e001f",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44963,7 +45032,7 @@
       "notes": "1209 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1764",
+      "relationship_id": "REL-1767",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "BLDGSET-EPOCH-27e284efc1b1abc2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44976,7 +45045,7 @@
       "notes": "520 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1765",
+      "relationship_id": "REL-1768",
       "from_entity_id": "EPOCH-0bb0b996b7c96beb",
       "to_entity_id": "BLDGSET-EPOCH-0bb0b996b7c96beb",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44989,7 +45058,7 @@
       "notes": "205 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1766",
+      "relationship_id": "REL-1769",
       "from_entity_id": "EPOCH-85492d2b8df586a1",
       "to_entity_id": "BLDGSET-EPOCH-85492d2b8df586a1",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45002,7 +45071,7 @@
       "notes": "355 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1767",
+      "relationship_id": "REL-1770",
       "from_entity_id": "EPOCH-f92e98f4b76a9bcd",
       "to_entity_id": "BLDGSET-EPOCH-f92e98f4b76a9bcd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45015,7 +45084,7 @@
       "notes": "375 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1768",
+      "relationship_id": "REL-1771",
       "from_entity_id": "EPOCH-78f8285078416a9e",
       "to_entity_id": "BLDGSET-EPOCH-78f8285078416a9e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45028,7 +45097,7 @@
       "notes": "1125 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1769",
+      "relationship_id": "REL-1772",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "BLDGSET-EPOCH-a2c9f0846296fe65",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45041,7 +45110,7 @@
       "notes": "18241 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1770",
+      "relationship_id": "REL-1773",
       "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
       "to_entity_id": "BLDGSET-EPOCH-a286a89bd1c1b6e7",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45054,7 +45123,7 @@
       "notes": "0 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1771",
+      "relationship_id": "REL-1774",
       "from_entity_id": "EPOCH-785d6e4c34607dd4",
       "to_entity_id": "BLDGSET-EPOCH-785d6e4c34607dd4",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45067,7 +45136,7 @@
       "notes": "1860 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1772",
+      "relationship_id": "REL-1775",
       "from_entity_id": "EPOCH-f1a2bcdd78478bc2",
       "to_entity_id": "BLDGSET-EPOCH-f1a2bcdd78478bc2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45080,7 +45149,7 @@
       "notes": "3715 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1773",
+      "relationship_id": "REL-1776",
       "from_entity_id": "EPOCH-4525348d114e3e8e",
       "to_entity_id": "BLDGSET-EPOCH-4525348d114e3e8e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45093,7 +45162,7 @@
       "notes": "769 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1774",
+      "relationship_id": "REL-1777",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "BLDGSET-EPOCH-d29894d37388a96a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45106,7 +45175,7 @@
       "notes": "414 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1775",
+      "relationship_id": "REL-1778",
       "from_entity_id": "EPOCH-02c050b6b554fadd",
       "to_entity_id": "BLDGSET-EPOCH-02c050b6b554fadd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45119,7 +45188,7 @@
       "notes": "1899 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1776",
+      "relationship_id": "REL-1779",
       "from_entity_id": "EPOCH-768183e4de6062d2",
       "to_entity_id": "BLDGSET-EPOCH-768183e4de6062d2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45132,7 +45201,7 @@
       "notes": "54 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1777",
+      "relationship_id": "REL-1780",
       "from_entity_id": "EPOCH-4b5df4f52274f2ba",
       "to_entity_id": "BLDGSET-EPOCH-4b5df4f52274f2ba",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45145,7 +45214,7 @@
       "notes": "699 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1778",
+      "relationship_id": "REL-1781",
       "from_entity_id": "EPOCH-03aad260b30bfbe1",
       "to_entity_id": "BLDGSET-EPOCH-03aad260b30bfbe1",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45158,7 +45227,7 @@
       "notes": "424 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1779",
+      "relationship_id": "REL-1782",
       "from_entity_id": "EPOCH-eb87487504bda8ed",
       "to_entity_id": "BLDGSET-EPOCH-eb87487504bda8ed",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45171,7 +45240,7 @@
       "notes": "676 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1780",
+      "relationship_id": "REL-1783",
       "from_entity_id": "EPOCH-7d9b5af0cce16f1c",
       "to_entity_id": "BLDGSET-EPOCH-7d9b5af0cce16f1c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45184,7 +45253,7 @@
       "notes": "217 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1781",
+      "relationship_id": "REL-1784",
       "from_entity_id": "EPOCH-af62ae3440fe885a",
       "to_entity_id": "BLDGSET-EPOCH-af62ae3440fe885a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45197,7 +45266,7 @@
       "notes": "845 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1782",
+      "relationship_id": "REL-1785",
       "from_entity_id": "EPOCH-d1b62579c6be3fe8",
       "to_entity_id": "BLDGSET-EPOCH-d1b62579c6be3fe8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45210,7 +45279,7 @@
       "notes": "97 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1783",
+      "relationship_id": "REL-1786",
       "from_entity_id": "EPOCH-c89a3269719f868a",
       "to_entity_id": "BLDGSET-EPOCH-c89a3269719f868a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45223,7 +45292,7 @@
       "notes": "2207 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1784",
+      "relationship_id": "REL-1787",
       "from_entity_id": "EPOCH-29fb769630142638",
       "to_entity_id": "BLDGSET-EPOCH-29fb769630142638",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45236,7 +45305,7 @@
       "notes": "97 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1785",
+      "relationship_id": "REL-1788",
       "from_entity_id": "EPOCH-781cbfae186209ad",
       "to_entity_id": "BLDGSET-EPOCH-781cbfae186209ad",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45249,7 +45318,7 @@
       "notes": "1902 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1786",
+      "relationship_id": "REL-1789",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "BLDGSET-EPOCH-f48a533b01898dfd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45262,7 +45331,7 @@
       "notes": "113 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1787",
+      "relationship_id": "REL-1790",
       "from_entity_id": "EPOCH-ee5c7acdbc729ef8",
       "to_entity_id": "BLDGSET-EPOCH-ee5c7acdbc729ef8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45275,7 +45344,7 @@
       "notes": "3035 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1788",
+      "relationship_id": "REL-1791",
       "from_entity_id": "EPOCH-0355f445ca6cbed4",
       "to_entity_id": "BLDGSET-EPOCH-0355f445ca6cbed4",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45288,7 +45357,7 @@
       "notes": "5690 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1789",
+      "relationship_id": "REL-1792",
       "from_entity_id": "EPOCH-96d37578ca36f86c",
       "to_entity_id": "BLDGSET-EPOCH-96d37578ca36f86c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45301,7 +45370,7 @@
       "notes": "4561 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1790",
+      "relationship_id": "REL-1793",
       "from_entity_id": "EPOCH-8696ef81d91560a9",
       "to_entity_id": "BLDGSET-EPOCH-8696ef81d91560a9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45314,7 +45383,7 @@
       "notes": "1285 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1791",
+      "relationship_id": "REL-1794",
       "from_entity_id": "EPOCH-495a9afde5e4b96c",
       "to_entity_id": "BLDGSET-EPOCH-495a9afde5e4b96c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45327,7 +45396,7 @@
       "notes": "7179 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1792",
+      "relationship_id": "REL-1795",
       "from_entity_id": "EPOCH-f1a70be0079d215a",
       "to_entity_id": "BLDGSET-EPOCH-f1a70be0079d215a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45340,7 +45409,7 @@
       "notes": "1231 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1793",
+      "relationship_id": "REL-1796",
       "from_entity_id": "EPOCH-7648e1438308fdae",
       "to_entity_id": "BLDGSET-EPOCH-7648e1438308fdae",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45353,7 +45422,7 @@
       "notes": "3384 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1794",
+      "relationship_id": "REL-1797",
       "from_entity_id": "EPOCH-65e758d676dc06d6",
       "to_entity_id": "BLDGSET-EPOCH-65e758d676dc06d6",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45366,7 +45435,7 @@
       "notes": "100 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1795",
+      "relationship_id": "REL-1798",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "BLDGSET-EPOCH-4569f5444951b2fd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45379,7 +45448,7 @@
       "notes": "289 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1796",
+      "relationship_id": "REL-1799",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "BLDGSET-EPOCH-dadec9d6ef7fca88",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45392,7 +45461,7 @@
       "notes": "4018 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1797",
+      "relationship_id": "REL-1800",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "BLDGSET-EPOCH-bbf05f2d8903eccc",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45405,7 +45474,7 @@
       "notes": "55 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1798",
+      "relationship_id": "REL-1801",
       "from_entity_id": "EPOCH-2d6a8403fde79650",
       "to_entity_id": "BLDGSET-EPOCH-2d6a8403fde79650",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45418,7 +45487,7 @@
       "notes": "452 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1799",
+      "relationship_id": "REL-1802",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "BLDGSET-EPOCH-f340a33a5ef18d4f",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45431,7 +45500,7 @@
       "notes": "542 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1800",
+      "relationship_id": "REL-1803",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "BLDGSET-EPOCH-177c53f92d72ec4a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45444,7 +45513,7 @@
       "notes": "218 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1801",
+      "relationship_id": "REL-1804",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "BLDGSET-EPOCH-bbcf0efa8bcebd41",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45457,7 +45526,7 @@
       "notes": "108 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1802",
+      "relationship_id": "REL-1805",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "BLDGSET-EPOCH-d2da66ea035880ce",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45470,7 +45539,7 @@
       "notes": "61 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1803",
+      "relationship_id": "REL-1806",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "BLDGSET-EPOCH-4b4d686b6c457a68",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45483,7 +45552,7 @@
       "notes": "250 polygons; release 2026-09-23.1."
     },
     {
-      "relationship_id": "REL-1804",
+      "relationship_id": "REL-1807",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-ii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45496,7 +45565,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1805",
+      "relationship_id": "REL-1808",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-iii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45509,7 +45578,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1806",
+      "relationship_id": "REL-1809",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-iv",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45522,7 +45591,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1807",
+      "relationship_id": "REL-1810",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-v",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45535,7 +45604,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1808",
+      "relationship_id": "REL-1811",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-vi",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45548,7 +45617,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1809",
+      "relationship_id": "REL-1812",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-uk",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45561,7 +45630,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1810",
+      "relationship_id": "REL-1813",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-norway-as",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45574,7 +45643,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1811",
+      "relationship_id": "REL-1814",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-sweden-ab",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45587,7 +45656,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1812",
+      "relationship_id": "REL-1815",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-canada-enterprises",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45600,7 +45669,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1813",
+      "relationship_id": "REL-1816",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-canada-services",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45613,7 +45682,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1814",
+      "relationship_id": "REL-1817",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-chi-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45626,7 +45695,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1815",
+      "relationship_id": "REL-1818",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-chi-3-procurement",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45639,7 +45708,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1816",
+      "relationship_id": "REL-1819",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-db1",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45652,7 +45721,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1817",
+      "relationship_id": "REL-1820",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-france-sas",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45665,7 +45734,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1818",
+      "relationship_id": "REL-1821",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45678,7 +45747,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1819",
+      "relationship_id": "REL-1822",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-u-s",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45691,7 +45760,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1820",
+      "relationship_id": "REL-1823",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-arizona-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45704,7 +45773,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1821",
+      "relationship_id": "REL-1824",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-virginia-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45717,7 +45786,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1822",
+      "relationship_id": "REL-1825",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-uk-data-centre",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45730,7 +45799,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1823",
+      "relationship_id": "REL-1826",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-canada-operations-ulc",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45743,7 +45812,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1824",
+      "relationship_id": "REL-1827",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-management-services",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45756,7 +45825,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1825",
+      "relationship_id": "REL-1828",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-property-manager",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45769,7 +45838,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1826",
+      "relationship_id": "REL-1829",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-sweden-ab",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45782,7 +45851,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1827",
+      "relationship_id": "REL-1830",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-nova-dc-fee-owner",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45795,7 +45864,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1828",
+      "relationship_id": "REL-1831",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-nova-dc",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45808,7 +45877,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1829",
+      "relationship_id": "REL-1832",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qts-critical-facilities-management",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45821,7 +45890,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1830",
+      "relationship_id": "REL-1833",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qts-finance",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45834,7 +45903,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1831",
+      "relationship_id": "REL-1834",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-investment-properties-irving",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45847,7 +45916,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1832",
+      "relationship_id": "REL-1835",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-technology-services-lenexa",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45860,7 +45929,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1833",
+      "relationship_id": "REL-1836",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-technology-services-richmond-ii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -45873,7 +45942,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1834",
+      "relationship_id": "REL-1837",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qae-acquisition",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -56502,6 +56571,18 @@
     {
       "entity_id": "ENT-goat-systems",
       "entity_name": "Goat Systems LLC",
+      "resolution_state": "UNRESOLVED_LEGAL_ENTITY",
+      "next_sources": [
+        "GLEIF LEI / Level 2",
+        "OpenCorporates relationships/statements",
+        "SEC EDGAR Exhibit 21",
+        "State/provincial corporate registry"
+      ],
+      "note": "Legal-form suffix does not establish shell-company status."
+    },
+    {
+      "entity_id": "ENT-hemphill-construction",
+      "entity_name": "Hemphill Construction Co. Inc.",
       "resolution_state": "UNRESOLVED_LEGAL_ENTITY",
       "next_sources": [
         "GLEIF LEI / Level 2",

@@ -2,15 +2,15 @@
   "schema_version": 1,
   "protocol_version": "T3-V1",
   "title": "Track 3 versioned verification results",
-  "generated_at_utc": "2026-09-27T16:38:57.050550+00:00",
-  "source_snapshot_commit": "6d13ceedc9b9df03702245a1f9845389772ed7d7",
+  "generated_at_utc": "2026-09-27T16:45:00.545993+00:00",
+  "source_snapshot_commit": "0bf926c70600b5ddc02d7071c22ffad0f86cea92",
   "semantics": "Claim-level automated verification results; not facility-wide certification.",
   "summary": {
     "facility_count": 93,
     "verification_record_count": 744,
     "status_counts": {
-      "PASS": 347,
-      "UNKNOWN": 304,
+      "PASS": 348,
+      "UNKNOWN": 303,
       "NOT_TESTED": 93
     },
     "pass_only_with_evidence_rule": true,
@@ -2676,9 +2676,12 @@
       "verification_id": "VR-EPOCH-4a87099a6d1e001f-CORR",
       "facility_id": "EPOCH-4a87099a6d1e001f",
       "claim": "INDEPENDENT_CORROBORATION",
-      "status": "UNKNOWN",
-      "evidence_refs": [],
-      "basis": "Fewer than two retained site evidence records.",
+      "status": "PASS",
+      "evidence_refs": [
+        null,
+        null
+      ],
+      "basis": "At least two retained site evidence records exist; metadata corroboration does not prove methodological independence.",
       "verifier": "automated_metadata_check"
     },
     {
