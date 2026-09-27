@@ -1,0 +1,96 @@
+name: Validate public research interface
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "track3.html"
+      - "facility.html"
+      - "api.html"
+      - "api/v1/facilities.json"
+      - "api/v1/openapi.json"
+      - "bulk-download.html"
+      - "data/bulk_download_manifest.json"
+      - ".github/workflows/validate_public_interface.yml"
+  pull_request:
+    paths:
+      - "index.html"
+      - "track3.html"
+      - "facility.html"
+      - "api.html"
+      - "api/v1/facilities.json"
+      - "api/v1/openapi.json"
+      - "bulk-download.html"
+      - "data/bulk_download_manifest.json"
+      - ".github/workflows/validate_public_interface.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Validate JSON/API contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for p in ["api/v1/facilities.json","api/v1/openapi.json","data/bulk_download_manifest.json","data/epoch_ai_map.json","data/external/epoch_ai/crosswalk.json"]:
+              json.loads(Path(p).read_text(encoding="utf-8"))
+          api=json.loads(Path("api/v1/facilities.json").read_text())
+          assert api["record_count"] == len(api["records"]) == 93
+          assert len({x["facility_id"] for x in api["records"]}) == 93
+          openapi=json.loads(Path("api/v1/openapi.json").read_text())
+          assert "/api/v1/facilities.json" in openapi["paths"]
+          assert "/data/facility_records/{rto}/{shard}.json" in openapi["paths"]
+          print("PASS: API contracts")
+          PY
+      - name: Validate public interface markers
+        run: |
+          test -s facility.html
+          test -s api.html
+          test -s bulk-download.html
+          grep -q "facility.html?facility=" track3.html
+          grep -q "Download facility record JSON" facility.html
+          grep -q "Download facility CSV" facility.html
+          grep -q "source document" facility.html
+          grep -q "Mexican state boundaries" index.html
+          grep -q "Mexican state boundaries" track3.html
+          echo "PASS: public interface markers"
+      - name: Validate inline JavaScript
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          out=Path("/tmp/interface-js");out.mkdir(exist_ok=True)
+          for name in ["index.html","track3.html","facility.html","api.html","bulk-download.html"]:
+              c=Path(name).read_text(encoding="utf-8")
+              for i,s in enumerate(re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>",c,re.S|re.I),1):
+                  if s.strip():
+                      (out/f"{name.replace('.','-')}-{i}.js").write_text(s,encoding="utf-8")
+          PY
+          for f in /tmp/interface-js/*.js; do node --check "$f"; done
+      - name: Validate facility record shards
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path(".")
+          idx=json.loads((root/"data/facility_records/index.json").read_text())
+          assert idx["record_count"] == sum(idx["rto_counts"].values()) == 1558
+          total=0
+          for rto,path in idx["files"].items():
+              d=json.loads((root/path).read_text())
+              assert d["rto"] == rto
+              assert d["record_count"] == len(d["shards"]) * 40 or d["record_count"] < 40
+              total += d["record_count"]
+          assert total == 1558
+          print("PASS: facility-record shards", total)
+          PY
