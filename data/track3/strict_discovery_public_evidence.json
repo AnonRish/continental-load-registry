@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "case_id": "AMB-AESO-P3108",
+  "queue_source": {
+    "name": "Interconnection.fyi / AESO-derived queue record",
+    "url": "https://www.interconnection.fyi/project/aeso-p3108",
+    "what_it_proves": "Public queue record identifies P3108 as a 1,300 MW load in Calgary.",
+    "evidence_tier": "SECONDARY_QUEUE_MIRROR"
+  },
+  "public_authority_sources": [
+    {
+      "publisher": "Rocky View County",
+      "url": "https://www.rockyview.ca/build-plan-and-develop/planning/planning-projects-underway/wild-rose-power-hub-area-structure-plan",
+      "what_it_proves": "The County says the Wild Rose Power Hub ASP covers a primarily data-centre project, identifies three quarter sections, and gives official plan location POINT (-113.714161 50.943554).",
+      "evidence_tier": "LOCAL_GOVERNMENT_PRIMARY"
+    },
+    {
+      "publisher": "Alberta Major Projects",
+      "url": "https://majorprojects.alberta.ca/details/Wild-Rose-Power-Hub/12207",
+      "what_it_proves": "The provincial project page describes Wild Rose Power Hub as a proposed hyperscale data centre, gives developer Chinook Development LP, states the approximate 194-hectare/479-acre area and identifies the project as proposed.",
+      "evidence_tier": "PROVINCIAL_GOVERNMENT_PRIMARY"
+    },
+    {
+      "publisher": "Rocky View County Terms of Reference",
+      "url": "https://www.rockyview.ca/Portals/0/Files/BuildingPlanning/Planning/UnderReview/WildRose/Wild-Rose-TOR.pdf",
+      "what_it_proves": "County terms of reference identify the Wild Rose Power Hub ASP as a developer-funded data-centre project and describe the site/planning process.",
+      "evidence_tier": "LOCAL_GOVERNMENT_PRIMARY"
+    }
+  ],
+  "disposition": {
+    "current": "PUBLIC_PROJECT_IDENTITY_RESOLVED",
+    "meaning": "The previously unresolved project/load signal can now be linked to a named proposed data-centre development and an official planning point/parcel set.",
+    "not_proved": [
+      "operational status",
+      "energization",
+      "measured electricity consumption",
+      "AI workload",
+      "chip inventory",
+      "transformer installation",
+      "covert status"
+    ]
+  },
+  "next_gates": [
+    "physical_observation",
+    "transformer_or_service_search",
+    "operational_status",
+    "compute_end_use"
+  ],
+  "searched_on": "2026-09-27"
+}
