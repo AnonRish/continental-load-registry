@@ -1,0 +1,42 @@
+name: Track 3 facility provenance
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'build_facility_provenance.py'
+      - 'data/external/epoch_ai/registry.json'
+      - 'data/track3/evidence_records.json'
+      - 'data/track3/site_status.json'
+      - 'data/track3/building_footprints_index.json'
+  schedule:
+    - cron: '31 3 * * 0'
+permissions: {contents: write}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python build_facility_provenance.py
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('data/track3/facility_provenance.json'))
+          assert len(d['facilities']) == 93
+          assert len({x['facility_id'] for x in d['facilities']}) == 93
+          for x in d['facilities']:
+              assert x['field_provenance']
+              assert x['canonical_source']['dataset_url']
+              assert x['verification']
+          print('validated 93 facility records')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/track3/facility_provenance.json data/track3/facility_provenance_records.csv
+          git diff --cached --quiet || git commit -m "Refresh Track 3 facility provenance"
+          git push
