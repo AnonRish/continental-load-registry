@@ -99,7 +99,12 @@ def source_health(prev):
             old_tuple=(old.get("etag"),old.get("last_modified"),old.get("content_length"),old.get("sample_sha256"))
             new_tuple=(fp.get("etag"),fp.get("last_modified"),fp.get("content_length"),fp.get("sample_sha256"))
             changed=old_tuple!=new_tuple
-        item={**s,"checked_at_utc":NOW_ISO,"fingerprint":fp,"changed_since_previous_check":changed,"local_artifact_present":bool(s.get("local_file") and (ROOT/"data"/s["local_file"]).exists())}
+        local_file=s.get("local_file")
+        local_candidates=[]
+        if local_file:
+            local_candidates += [ROOT/"data"/local_file, ROOT/"data"/"external"/"epoch_ai"/local_file, ROOT/local_file]
+        local_path=next((p for p in local_candidates if p.exists()),None)
+        item={**s,"checked_at_utc":NOW_ISO,"fingerprint":fp,"changed_since_previous_check":changed,"local_artifact_present":local_path is not None,"local_artifact_path":str(local_path.relative_to(ROOT)).replace("\\","/") if local_path else None,"declared_sha256":None}
         if fp.get("status")=="FAILED":
             item["failure_class"]="REMOTE_SOURCE_UNAVAILABLE"
             failed.append(item)
