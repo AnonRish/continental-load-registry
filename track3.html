@@ -130,6 +130,19 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </section>
 
 <section class="section panel" style="padding:16px">
+<h2>Entity resolution</h2>
+<p id="entityMeta" class="soft small">Loading…</p>
+<div class="tools" style="margin-top:10px">
+<a class="btn" href="data/track3/entity_resolution.json">Entity graph JSON</a>
+<a class="btn" href="data/track3/entity_resolution_entities.csv">Entities CSV</a>
+<a class="btn" href="data/track3/entity_resolution_relationships.csv">Relationships CSV</a>
+<a class="btn" href="data/track3/entity_resolution_research_queue.csv">Legal-entity queue</a>
+</div>
+<div id="entityCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Resolution item</th><th>Status</th><th>Coverage</th></tr></thead><tbody id="entityChecklist"></tbody></table></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Relationship</th><th>From</th><th>To</th><th>Confidence</th><th>Temporal</th><th>Evidence</th></tr></thead><tbody id="entityRels"></tbody></table></div>
+</section>
+<section class="section panel" style="padding:16px">
 <h2>Complete Epoch site record layer</h2>
 <p id="epochMeta" class="soft small">Loading…</p>
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Site</th><th>Address</th><th>Owner</th><th>Users</th><th>Current IT MW</th><th>H100 eq</th><th>Capital cost</th><th>Latest construction / power</th><th>Latest chips</th><th>Grid crosswalk</th></tr></thead><tbody id="epochRows"></tbody></table></div>
@@ -220,6 +233,7 @@ const U={
  sources:'data/track3_source_stack.json',
  universe:'data/external/epoch_ai/queue_source_universe.json',
  external:'data/track3/external_source_snapshots.json',
+ entity:'data/track3/entity_resolution.json',
  schema:'data/track3_evidence_schema.json',
  module1:'data/module1_radar_spec.json',
  audit:'data/module1_radar_summary.json',
@@ -362,6 +376,22 @@ function renderPhysical(){
  const ps=D.physical?.summary||{};document.getElementById('observationsSummary').innerHTML='<div class="domain-card"><h3>'+esc((D.power||[]).length)+'</h3><p>site-level annual power observations</p></div><div class="domain-card"><h3>'+esc((D.cooling||[]).length)+'</h3><p>site-level cooling observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_tir_numeric_observations||0)+'</h3><p>Landsat TIR numeric observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_sar_numeric_observations||0)+'</h3><p>Sentinel-1 SAR observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_optical_scenes_ingested||0)+'</h3><p>Sentinel-2 optical scene windows</p></div><div class="domain-card"><h3>'+esc(ps.transformer_event_records||0)+'</h3><p>source-backed transformer events</p></div>';
  document.getElementById('physicalRows').innerHTML=rows.map(x=>'<tr><td>'+esc(x.site)+'</td><td>'+esc(x.type)+'</td><td>'+esc(x.date||'—')+'</td><td class="mono">'+esc(x.value)+'</td><td>'+esc(x.detail||'—')+'</td><td>'+(x.link?'<a target="_blank" rel="noopener" href="'+esc(x.link)+'">'+esc(x.source||'source')+'</a>':'—')+'</td></tr>').join('');
 }
+function renderEntityResolution(){
+ const e=D.entity||{},s=e.stats||{};
+ document.getElementById('entityMeta').textContent=(s.entity_count||0)+' entities · '+(s.relationship_edge_count||0)+' relationship edges · '+(s.variant_groups||0)+' name-variant groups · '+(s.legal_entity_research_targets||0)+' legal-entity research targets.';
+ document.getElementById('entityCards').innerHTML=[
+  [s.distinct_developer_strings||0,'developer strings','core queue'],
+  [s.distinct_core_project_names||0,'project-name strings','core queue'],
+  [s.parent_subsidiary_edges||0,'parent/subsidiary edges','SEC Exhibit 21 seeds'],
+  [s.building_geometry_sites||0,'sites with building geometry','Overture Maps'],
+  [s.building_polygons||0,'building polygons','published geometry'],
+  [s.legal_entity_research_targets||0,'legal-entity targets','GLEIF/OpenCorporates/SEC']
+ ].map(x=>'<div class="domain-card"><h3>'+esc(fmt(x[0]))+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
+ document.getElementById('entityChecklist').innerHTML=(e.checklist||[]).map(x=>'<tr><td><strong>'+esc(x.item)+'</strong></td><td><span class="status '+stClass(x.status)+'">'+esc(x.status)+'</span></td><td class="small">'+esc(x.coverage)+'</td></tr>').join('');
+ const rels=(e.relationships||[]).slice(0,300);
+ const names=new Map((e.entities||[]).map(x=>[x.entity_id,x.canonical_name]));
+ document.getElementById('entityRels').innerHTML=rels.map(x=>'<tr><td>'+esc(x.relationship_type)+'</td><td>'+esc(names.get(x.from_entity_id)||x.from_entity_id)+'</td><td>'+esc(names.get(x.to_entity_id)||x.to_entity_id)+'</td><td class="mono">'+esc(Number(x.confidence_score).toFixed(2))+'</td><td>'+esc(x.temporal_status)+'</td><td class="small mono">'+esc(x.evidence_id)+'</td></tr>').join('')||'<tr><td colspan="6" class="faint">No relationships.</td></tr>';
+}
 function renderEpoch(){
  const rows=D.epoch?.records||[];
  document.getElementById('epochMeta').textContent=rows.length+' Epoch site records with normalized values, retained raw publisher fields, latest timeline, latest chip quantities and grid crosswalk.';
@@ -433,7 +463,7 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderEntity();renderGeo();
+ renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderEntity();renderEntityResolution();renderGeo();
 }
 document.getElementById('search').addEventListener('input',renderSites);document.getElementById('siteState').addEventListener('change',renderSites);document.getElementById('siteSort').addEventListener('change',renderSites);
 document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
