@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "pilot_scope": "Three cases selected from the 141-facility Genuinely Ambiguous / Unclassified Large Load tier. Closure means each gate reached a terminal evidence state; it does not mean every gate produced a positive observation.",
+  "cases": [
+    {
+      "case_id": "AMB-NYISO-1765",
+      "rto": "NYISO",
+      "queue_id": "1765",
+      "project_name": "Micron Fab 3",
+      "capacity_mw": 606,
+      "pilot_role": "entity-resolution stress test; manufacturing outcome",
+      "initial_registry_classification": "Genuinely Ambiguous / Unclassified Large Load",
+      "adjudication": "CONFIRMED_MANUFACTURING_OR_INDUSTRIAL",
+      "closure_state": "CLOSED_WITH_BOUNDED_IDENTITY_MATCH",
+      "queue": {
+        "status": "FOUND",
+        "source_url": "https://www.interconnection.fyi/project/nyiso-1765",
+        "details": "Active 606 MW load; applicant Eldo Varghese; POI National Grid - Clay Substation."
+      },
+      "entity_resolution": {
+        "status": "PARTIAL_RESOLUTION",
+        "resolved_project": "Micron semiconductor manufacturing campus at White Pine Commerce Park",
+        "mismatch": "Queue applicant field is Eldo Varghese; no public source reviewed explains that mismatch.",
+        "sources": [
+          "https://www.micron.com/content/dam/micron/global/public/corporate/us-expansion/new-york/micron-ny-smp-01-dam-jpa-v2.pdf",
+          "https://www.nist.gov/document/micron-ny-feis-final"
+        ]
+      },
+      "location": {
+        "status": "FOUND",
+        "address": "5171 NYS Route 31, Clay, NY 13041",
+        "latitude": 43.190793,
+        "longitude": -76.157056,
+        "precision": "official project coordinates"
+      },
+      "public_evidence": [
+        {
+          "source": "Micron joint application",
+          "url": "https://www.micron.com/content/dam/micron/global/public/corporate/us-expansion/new-york/micron-ny-smp-01-dam-jpa-v2.pdf",
+          "what_it_proves": "Official project application gives 5171 Route 31 and coordinates 43.190793, -76.157056.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "NIST-hosted FEIS",
+          "url": "https://www.nist.gov/document/micron-ny-feis-final",
+          "what_it_proves": "The White Pine Commerce Park project is a semiconductor manufacturing facility with four DRAM fabs and ancillary infrastructure.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "NYSDEC permit notice",
+          "url": "https://dec.ny.gov/news/environmental-notice-bulletin/2025-11-05/public-notice/town-of-clay-micron-new-york-semiconductor-manufacturing-llc",
+          "what_it_proves": "Regulatory record names Micron New York Semiconductor Manufacturing LLC and the 5171 Route 31 facility.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "National Grid Micron project",
+          "url": "https://www.nationalgridus.com/construction-projects/Community-Projects/Micron/",
+          "what_it_proves": "National Grid documents electric service infrastructure intended to serve Micron's semiconductor plant.",
+          "accessed_on": "2026-09-27"
+        }
+      ],
+      "physical_observations": {
+        "status": "FOUND",
+        "derived_observation_count": 6,
+        "scene_ids": [
+          "S2B_MSIL2A_20260726T155819_R097_T18TVN_20260726T195417",
+          "S2C_MSIL2A_20260926T155011_R054_T18TUN_20260926T202610",
+          "S1A_IW_GRDH_1SDV_20250312T230015_20250312T230040_058278_073409",
+          "S1D_IW_GRDH_1SDV_20260922T225914_20260922T225939_004697_008C7D",
+          "LC09_L2SP_015030_20260127_02_T1",
+          "LC09_L2SP_015030_20260924_02_T1"
+        ],
+        "quality_note": "Two optical scenes were acquired, but the 2026-09-26 scene is 99.87% cloud covered. Both SAR windows returned zero valid pixels. Landsat thermal deltas were +0.496 K and -0.038 K relative to local background. These are physical observations, not compute-use proof.",
+        "artifact_path": "data/track3/ambiguous_case_physical_observations.json"
+      },
+      "transformer_check": {
+        "status": "SYSTEM_INFRASTRUCTURE_FOUND_NO_TRANSFORMER_EVENT",
+        "summary": "National Grid records an expanded Clay Substation and eight 345 kV service laterals to Micron. No project-specific transformer procurement/delivery/energization event was retained in the reviewed public search.",
+        "sources": [
+          "https://www.nationalgridus.com/media/construction-projects/pdfs/ny/micron/construction-commencement-notice-february-2026.pdf",
+          "https://www.nationalgridus.com/media/oasis/filings-and-studies/national-grid-local-transmission-plan-2025.pdf"
+        ],
+        "searched_on": "2026-09-27"
+      },
+      "unresolved_items": [
+        "Applicant mismatch between NYISO queue record and Micron legal project sponsor is not publicly explained.",
+        "Satellite evidence is bounded by cloud cover and zero-valid-pixel SAR windows.",
+        "Operational/energized status is not established by this case study."
+      ],
+      "methods_note": "The classification is driven by project-specific public records and entity resolution; the satellite layer independently confirms that the declared project location can be processed but does not itself identify semiconductor use.",
+      "last_verified_on": "2026-09-27"
+    },
+    {
+      "case_id": "AMB-NYISO-1745",
+      "rto": "NYISO",
+      "queue_id": "1745",
+      "project_name": "Pontoon Bridge Road Data Center",
+      "capacity_mw": 250,
+      "pilot_role": "data-center identity outcome",
+      "initial_registry_classification": "Genuinely Ambiguous / Unclassified Large Load",
+      "adjudication": "CONFIRMED_DATA_CENTER",
+      "closure_state": "CLOSED_WITH_PUBLIC_SITE_IDENTITY",
+      "queue": {
+        "status": "FOUND",
+        "source_url": "https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf",
+        "details": "NYISO large-load table lists queue 1745, 250 MW, Pontoon Bridge Road Data Center, Haverstock-Adirondack 345 kV transmission lines, NYPA."
+      },
+      "entity_resolution": {
+        "status": "RESOLVED",
+        "resolved_entity": "American Data Center Partners LLC",
+        "site": "466 Pontoon Bridge Road, Massena, NY 13662",
+        "sources": [
+          "https://suedatacenters.org/data-centers/pontoon-bridge-road-massena-ny",
+          "https://www.stlawco.gov/sites/default/files/RealProperty/2026%20Sales/Sales%20for%20Website%201-1-26%20to%203-2-2026.pdf"
+        ]
+      },
+      "location": {
+        "status": "FOUND",
+        "address": "466 Pontoon Bridge Road, Massena, NY 13662",
+        "latitude": 44.9593,
+        "longitude": -74.9129,
+        "precision": "approximate street-address geocode"
+      },
+      "public_evidence": [
+        {
+          "source": "St. Lawrence County property sales",
+          "url": "https://www.stlawco.gov/sites/default/files/RealProperty/2026%20Sales/Sales%20for%20Website%201-1-26%20to%203-2-2026.pdf",
+          "what_it_proves": "The county's 2026 sales file lists 466 Pontoon Bridge Rd, 69.4 acres, sold Jan 9, 2026, with current owner field American Data... and prior owner Air Products and Chemicals Inc.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "SUE Data Centers public record",
+          "url": "https://suedatacenters.org/data-centers/pontoon-bridge-road-massena-ny",
+          "what_it_proves": "Public facility record identifies the proposed data center, operator, exact street address and approximate OSM coordinates; it cites a Watertown Post account and OSM geocode.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "NYSRC large-load table",
+          "url": "https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf",
+          "what_it_proves": "Queue 1745 is listed as a 250 MW Pontoon Bridge Road Data Center request connected to Haverstock-Adirondack 345 kV lines.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "Compute Atlas",
+          "url": "https://www.compute-atlas.com/facilities/pontoon-bridge-road-massena-ny",
+          "what_it_proves": "Independent facility record repeats the 466 Pontoon Bridge Road address and approximate coordinates.",
+          "accessed_on": "2026-09-27"
+        }
+      ],
+      "physical_observations": {
+        "status": "FOUND",
+        "derived_observation_count": 6,
+        "scene_ids": [
+          "S2C_MSIL2A_20260728T154811_R054_T18TWQ_20260728T205140",
+          "S2C_MSIL2A_20260926T155011_R054_T18TVQ_20260926T202610",
+          "S1A_IW_GRDH_1SDV_20251102T225225_20251102T225250_061705_07B5ED",
+          "S1C_IW_GRDH_1SDV_20260923T225120_20260923T225201_009581_013112",
+          "LC08_L2SP_015029_20250524_02_T2",
+          "LC09_L2SP_015029_20260924_02_T1"
+        ],
+        "quality_note": "One 2026-07-28 optical scene is fully cloud covered; the 2026-09-26 optical scene is 85.23% cloud covered. Both SAR windows returned zero valid pixels. Landsat thermal deltas were +0.374 K and +0.123 K relative to local background. These observations do not establish operation or compute workload.",
+        "artifact_path": "data/track3/ambiguous_case_physical_observations.json"
+      },
+      "transformer_check": {
+        "status": "NO_PUBLIC_EVENT_FOUND",
+        "summary": "Reviewed searches found the queue's Haverstock-Adirondack 345 kV electrical context but no retained project-specific transformer procurement/delivery/energization event for 466 Pontoon Bridge Road. This is a search outcome, not evidence that no transformer exists.",
+        "sources": [
+          "https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf",
+          "https://suedatacenters.org/data-centers/pontoon-bridge-road-massena-ny"
+        ],
+        "searched_on": "2026-09-27"
+      },
+      "unresolved_items": [
+        "Site is proposed; operation/energization is not established.",
+        "Exact transformer specification or delivery record was not found publicly.",
+        "Remote-sensing metrics are coarse and partly degraded by cloud/zero-valid-pixel scenes."
+      ],
+      "methods_note": "This case closes the identity question using public site/entity records plus an independent physical pull. The satellite layer is corroboration of the location being targetable, not a data-center classifier.",
+      "last_verified_on": "2026-09-27"
+    },
+    {
+      "case_id": "AMB-IESO-2026-903",
+      "rto": "IESO",
+      "queue_id": "2026-903",
+      "project_name": "Project IQ197",
+      "capacity_mw": 1380,
+      "pilot_role": "deliberately unresolved outcome; tests location/identity stopping rule",
+      "initial_registry_classification": "Genuinely Ambiguous / Unclassified Large Load",
+      "adjudication": "INCONCLUSIVE_AFTER_SEARCH",
+      "closure_state": "CLOSED_AT_STOPPING_RULE",
+      "queue": {
+        "status": "FOUND",
+        "source_url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+        "details": "Active new load facility, 1,380 MW, applicant 197 McKay Barrie Corp, Essa transmission zone, proposed in-service 2027-Q4."
+      },
+      "entity_resolution": {
+        "status": "PARTIAL_RESOLUTION",
+        "resolved_entity": "197 McKay Barrie Corp is the registered owner of the Barrie Property at 197 McKay Road East",
+        "boundary": "The public sources reviewed do not establish what the 1,380 MW load will actually consume or that it is a data center.",
+        "sources": [
+          "https://www.minicounsel.ca/scj/2022/6295",
+          "https://www.squareyards.ca/sale/on/simcoe/barrie/rural-barrie-southeast/197-mckay-road-east-rd"
+        ]
+      },
+      "location": {
+        "status": "UNRESOLVED_FOR_PHYSICAL_TARGETING",
+        "address": "197 McKay Road East, Barrie, ON L9J 0E9",
+        "latitude": null,
+        "longitude": null,
+        "precision": "automated public-address geocode did not return a defensible coordinate"
+      },
+      "public_evidence": [
+        {
+          "source": "IESO application status",
+          "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+          "what_it_proves": "Queue 2026-903 is an active 1,380 MW new load facility for applicant 197 McKay Barrie Corp.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "Ontario Superior Court decision",
+          "url": "https://www.minicounsel.ca/scj/2022/6295",
+          "what_it_proves": "197 McKay Barrie Corp is identified as the registered owner of the Barrie Property at 197 McKay Road East; the property was described as a sand and gravel pit and held for development.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "Property listing",
+          "url": "https://www.squareyards.ca/sale/on/simcoe/barrie/rural-barrie-southeast/197-mckay-road-east-rd",
+          "what_it_proves": "The property listing describes a commercial land parcel and licensed operating sand/gravel pit in the Salem Secondary Plan.",
+          "accessed_on": "2026-09-27"
+        }
+      ],
+      "physical_observations": {
+        "status": "PHYSICAL_TARGET_UNRESOLVED",
+        "derived_observation_count": 0,
+        "attempt": "The acquisition runner attempted public address geocoding and rejected the result rather than substituting a Simcoe/Barrie centroid. No satellite scene was processed.",
+        "artifact_path": "data/track3/ambiguous_case_physical_observations.json"
+      },
+      "transformer_check": {
+        "status": "NO_PUBLIC_EVENT_FOUND",
+        "summary": "Reviewed searches for Project IQ197 / 197 McKay Barrie Corp did not produce a project-specific transformer procurement, delivery, installation, or energization event.",
+        "searched_on": "2026-09-27"
+      },
+      "unresolved_items": [
+        "Exact facility parcel/coordinate for the 1,380 MW load is not established in reviewed public sources.",
+        "End-use identity remains unknown despite a legal-entity/property-owner link.",
+        "No physical scene was processed because the location gate did not close.",
+        "Transformer event evidence was not located publicly."
+      ],
+      "methods_note": "This is a deliberate inconclusive case. The workflow demonstrates that a queue/entity match can be real while the physical and end-use questions remain unresolved; the correct disposition is not to force a data-center or non-data-center label.",
+      "last_verified_on": "2026-09-27"
+    }
+  ]
+}
