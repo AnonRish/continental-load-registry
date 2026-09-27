@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "protocol_version": "T3-V1",
+  "title": "Track 3 verification protocol",
+  "core_rule": "PASS is only valid for the named claim when its evidence gates are satisfied. No evidence -> UNKNOWN. An unrun test -> NOT_TESTED. No status is inferred from another status.",
+  "statuses": {
+    "PASS": {
+      "meaning": "Claim-specific evidence gates satisfied.",
+      "evidence_requirements": [
+        "claim-specific evidence reference(s)",
+        "source URL or stable record locator",
+        "no unresolved direct contradiction",
+        "independent verifier where required"
+      ]
+    },
+    "FAIL": {
+      "meaning": "Claim-specific evidence explicitly contradicts the claim.",
+      "evidence_requirements": [
+        "contradicting evidence reference",
+        "source URL/locator",
+        "exact claim scope"
+      ]
+    },
+    "UNKNOWN": {
+      "meaning": "Test/search was attempted but evidence is insufficient for PASS or FAIL.",
+      "evidence_requirements": [
+        "documented test/search",
+        "evidence gap"
+      ]
+    },
+    "NOT_TESTED": {
+      "meaning": "Test has not run.",
+      "evidence_requirements": [
+        "explicit unrun state"
+      ]
+    },
+    "NOT_APPLICABLE": {
+      "meaning": "Claim does not apply.",
+      "evidence_requirements": [
+        "explicit rationale"
+      ]
+    },
+    "UNASSESSED": {
+      "meaning": "No verifier has assigned a result.",
+      "evidence_requirements": [
+        "result left unassigned"
+      ]
+    }
+  },
+  "claims": {
+    "UNIVERSE_ENTRY": "Facility/request is in the declared Track 3 research population.",
+    "AI_COMPUTE_PUBLISHER_CHECK": "Epoch explicitly records AI-data-center compute evidence; publisher/derived check only.",
+    "SITE_IDENTITY": "Facility has stable identity and site locator.",
+    "GRID_CONNECTION": "Site-specific connection/service/queue record exists.",
+    "POWER_OBSERVATION": "Site-specific electricity observation exists with source, time/period and units.",
+    "PHYSICAL_REMOTE_SENSING": "Site-level optical/TIR/SAR observation is acquired and traceable.",
+    "INDEPENDENT_CORROBORATION": "Material claim is supported by distinct retained sources.",
+    "END_TO_END_TRACK3": "Physical, electrical, compute and independent-verifier chain is sufficient for the exact claim.",
+    "ARTIFACT_ATTESTATION": "Verification bundle has a valid cryptographic attestation."
+  },
+  "pass_rules": {
+    "UNIVERSE_ENTRY": [
+      "stable ID",
+      "canonical source record",
+      "documented inclusion reason"
+    ],
+    "AI_COMPUTE_PUBLISHER_CHECK": [
+      "explicit Epoch AI-data-center record",
+      "positive compute-related publisher field",
+      "publisher/derived scope stated"
+    ],
+    "SITE_IDENTITY": [
+      "stable ID",
+      "facility name",
+      "address/equivalent site locator"
+    ],
+    "GRID_CONNECTION": [
+      "site-specific queue/service/interconnection identifier or equivalent site-specific primary utility record",
+      "source URL",
+      "site-specific scope"
+    ],
+    "POWER_OBSERVATION": [
+      "site-specific value",
+      "measurement period",
+      "units",
+      "source URL"
+    ],
+    "PHYSICAL_REMOTE_SENSING": [
+      "site-level observation",
+      "acquisition identifier/date",
+      "source URL",
+      "measurement/derived metric",
+      "processing method"
+    ],
+    "INDEPENDENT_CORROBORATION": [
+      "two distinct retained source records",
+      "materially overlapping claim",
+      "independence caveat"
+    ],
+    "END_TO_END_TRACK3": [
+      "independent verifier",
+      "primary evidence",
+      "independent corroboration",
+      "physical + electrical + compute/accounting evidence"
+    ],
+    "ARTIFACT_ATTESTATION": [
+      "attestation exists",
+      "subject digest matches",
+      "workflow/commit identity recorded"
+    ]
+  },
+  "absence_testing_rule": "A no-match/no-found statement must point to a retained search record naming the source/database, URL/locator, capture date, search scope and result. Missing rows or fields are not absence evidence.",
+  "versioning_rule": "Every result carries protocol_version, generation timestamp and source_snapshot_commit. Historical artifacts are retained by Git.",
+  "independent_verifier": "The repository has a separate read-only verifier workflow and a standalone verify_track3.py procedure. This is operational separation, not a claim of organizational independence; a third party can run the same verifier against an immutable commit.",
+  "signed_audit": "The verification workflow produces a verification bundle and uses GitHub Artifact Attestations (Sigstore-backed) to create a cryptographic provenance/integrity claim for that bundle.",
+  "dispute_correction": "Corrections use append-only GitHub issues/events with facility/evidence IDs, proposed change, source and rationale; old snapshots are retained."
+}
