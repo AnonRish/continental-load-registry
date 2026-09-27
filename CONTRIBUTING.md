@@ -116,7 +116,7 @@ and evidence for unresolved compute:
 
 ## Pull requests
 
-Keep PRs focused. Include the source links and explain exactly which fields changed and why. For regenerated artifacts, include the generating command and source capture date.
+Use the repository PR template at .github/PULL_REQUEST_TEMPLATE.md. Keep PRs focused. Include the source links and explain exactly which fields changed and why. For regenerated artifacts, include the generating command and source capture date.
 
 A contribution that changes an evidence state should identify the underlying evidence record that caused the transition.
 
