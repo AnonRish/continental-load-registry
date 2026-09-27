@@ -2,20 +2,20 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-27T16:44:59.684331+00:00",
+    "generated_at_utc": "2026-09-27T17:05:45.030349+00:00",
     "epoch_site_count": 93,
-    "observation_task_count": 219,
+    "observation_task_count": 211,
     "observation_task_counts_by_domain": {
       "cooling": 93,
       "power_telemetry": 93,
-      "remote_sensing": 33
+      "remote_sensing": 25
     },
     "observation_task_counts_by_priority": {
-      "P0": 126,
+      "P0": 118,
       "P1": 93
     },
     "site_level_evidence_site_count": 93,
-    "public_web_evidence_record_count": 270,
+    "public_web_evidence_record_count": 276,
     "public_web_evidence_site_count": 71,
     "combined_site_level_evidence_site_count": 93,
     "site_specific_queue_id_count": 2,
@@ -54,8 +54,8 @@
         "INGESTED_SNAPSHOT": 6
       },
       "remote_sensing": {
-        "INGESTED_DERIVED": 60,
-        "NOT_INGESTED": 33
+        "INGESTED_DERIVED": 68,
+        "NOT_INGESTED": 25
       },
       "cooling": {
         "NOT_INGESTED": 78,
@@ -79,7 +79,7 @@
       }
     },
     "source_stack_count": 30,
-    "remote_sensing_derived_observation_count": 359,
+    "remote_sensing_derived_observation_count": 408,
     "transformer_event_count": 3,
     "source_stack_status_counts": {
       "INGESTED": 8,
@@ -174,9 +174,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 10,
+      "public_web_evidence_count": 11,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 12,
+      "combined_site_level_evidence_count": 13,
       "next_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number."
     },
     {
@@ -912,9 +912,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 8,
+      "public_web_evidence_count": 9,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 10,
+      "combined_site_level_evidence_count": 11,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
@@ -1404,9 +1404,9 @@
         }
       },
       "site_level_evidence_count": 2,
-      "public_web_evidence_count": 7,
+      "public_web_evidence_count": 8,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 10,
+      "combined_site_level_evidence_count": 11,
       "next_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
     },
     {
@@ -1650,9 +1650,9 @@
         }
       },
       "site_level_evidence_count": 2,
-      "public_web_evidence_count": 3,
+      "public_web_evidence_count": 4,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 6,
+      "combined_site_level_evidence_count": 7,
       "next_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case."
     },
     {
@@ -1980,9 +1980,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 2,
+      "public_web_evidence_count": 4,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 4,
+      "combined_site_level_evidence_count": 6,
       "next_action": "Search AEP Ohio, PUCO, PJM and New Albany/Plain Township permitting records for the electrical service and interconnection record for this campus."
     },
     {
@@ -2616,8 +2616,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
@@ -2694,8 +2700,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -2772,8 +2784,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -2850,8 +2868,14 @@
           "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -3006,8 +3030,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -3084,8 +3114,14 @@
           "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -3162,8 +3198,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -4320,8 +4362,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
@@ -6043,7 +6091,7 @@
         },
         "remote_sensing": {
           "status": "INGESTED_DERIVED",
-          "observation_count": 5,
+          "observation_count": 6,
           "modalities": [
             "optical",
             "sar",

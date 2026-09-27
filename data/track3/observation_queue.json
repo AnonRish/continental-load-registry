@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T16:44:59.684331+00:00",
-  "task_count": 219,
+  "generated_at_utc": "2026-09-27T17:05:45.030349+00:00",
+  "task_count": 211,
   "task_counts_by_domain": {
     "cooling": 93,
     "power_telemetry": 93,
-    "remote_sensing": 33
+    "remote_sensing": 25
   },
   "task_counts_by_priority": {
-    "P0": 126,
+    "P0": 118,
     "P1": 93
   },
   "tasks": [
@@ -1801,35 +1801,6 @@
       "supporting_snapshot_note": null
     },
     {
-      "task_id": "EPOCH-6ff5e1aeb6f0c7e3::remote_sensing",
-      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "site_name": "Meta Temple",
-      "country": "United States",
-      "state_province": "TX",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
-      ],
-      "next_action_from_site": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case.",
-      "grid_primary_source_url": "https://www.ercot.com/services/rq/large-load-integration",
-      "grid_source_type": "RTO/ISO official",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
       "task_id": "EPOCH-6ff5e1aeb6f0c7e3::cooling",
       "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "site_name": "Meta Temple",
@@ -1873,35 +1844,6 @@
         "metering_authority",
         "source_url",
         "quality_flag"
-      ],
-      "next_action_from_site": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "grid_primary_source_url": "https://wattstreet.net/state/wy/",
-      "grid_source_type": "state queue coverage index",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
-      "task_id": "EPOCH-14cecdb5956daea1::remote_sensing",
-      "epoch_id": "EPOCH-14cecdb5956daea1",
-      "site_name": "Meta Cheyenne",
-      "country": "United States",
-      "state_province": "WY",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
       ],
       "next_action_from_site": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
       "grid_primary_source_url": "https://wattstreet.net/state/wy/",
@@ -1963,35 +1905,6 @@
       "supporting_snapshot_note": null
     },
     {
-      "task_id": "EPOCH-4a87099a6d1e001f::remote_sensing",
-      "epoch_id": "EPOCH-4a87099a6d1e001f",
-      "site_name": "Amazon Ridgeland",
-      "country": "United States",
-      "state_province": "MS",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
-      ],
-      "next_action_from_site": "Search Entergy Mississippi, Mississippi Public Service Commission, MISO and Madison/Ridgeland public records for the underlying service or interconnection case.",
-      "grid_primary_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
-      "grid_source_type": "RTO/ISO official",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
       "task_id": "EPOCH-4a87099a6d1e001f::cooling",
       "epoch_id": "EPOCH-4a87099a6d1e001f",
       "site_name": "Amazon Ridgeland",
@@ -2042,35 +1955,6 @@
       "grid_source_date": "2026-09-26",
       "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
       "supporting_snapshot_note": "Annual site-level electricity snapshot exists; interval telemetry acquisition remains open."
-    },
-    {
-      "task_id": "EPOCH-27e284efc1b1abc2::remote_sensing",
-      "epoch_id": "EPOCH-27e284efc1b1abc2",
-      "site_name": "Meta Huntsville",
-      "country": "United States",
-      "state_province": "AL",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
-      ],
-      "next_action_from_site": "Search TVA, Alabama Public Service Commission, local utility records and SERC-related connection filings for the underlying service or interconnection case.",
-      "grid_primary_source_url": "https://wattstreet.net/state/al/",
-      "grid_source_type": "state queue coverage index",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
     },
     {
       "task_id": "EPOCH-27e284efc1b1abc2::cooling",
@@ -2206,35 +2090,6 @@
       "supporting_snapshot_note": null
     },
     {
-      "task_id": "EPOCH-534376160415dc84::remote_sensing",
-      "epoch_id": "EPOCH-534376160415dc84",
-      "site_name": "Microsoft Project Osmium",
-      "country": "United States",
-      "state_province": "IA",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
-      ],
-      "next_action_from_site": "Search MidAmerican Energy, MISO, Iowa Utilities Board and local records for the underlying service/interconnection case.",
-      "grid_primary_source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
-      "grid_source_type": "RTO/ISO official",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
       "task_id": "EPOCH-534376160415dc84::cooling",
       "epoch_id": "EPOCH-534376160415dc84",
       "site_name": "Microsoft Project Osmium",
@@ -2287,35 +2142,6 @@
       "supporting_snapshot_note": "Annual site-level electricity snapshot exists; interval telemetry acquisition remains open."
     },
     {
-      "task_id": "EPOCH-0bb0b996b7c96beb::remote_sensing",
-      "epoch_id": "EPOCH-0bb0b996b7c96beb",
-      "site_name": "Meta Eagle Mountain",
-      "country": "United States",
-      "state_province": "UT",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
-      ],
-      "next_action_from_site": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
-      "grid_primary_source_url": "https://wattstreet.net/state/ut/",
-      "grid_source_type": "state queue coverage index",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
       "task_id": "EPOCH-0bb0b996b7c96beb::cooling",
       "epoch_id": "EPOCH-0bb0b996b7c96beb",
       "site_name": "Meta Eagle Mountain",
@@ -2359,35 +2185,6 @@
         "metering_authority",
         "source_url",
         "quality_flag"
-      ],
-      "next_action_from_site": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
-      "grid_primary_source_url": "https://www.ercot.com/services/rq/large-load-integration",
-      "grid_source_type": "RTO/ISO official",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
-      "task_id": "EPOCH-85492d2b8df586a1::remote_sensing",
-      "epoch_id": "EPOCH-85492d2b8df586a1",
-      "site_name": "Google Midlothian",
-      "country": "United States",
-      "state_province": "TX",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
       ],
       "next_action_from_site": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
       "grid_primary_source_url": "https://www.ercot.com/services/rq/large-load-integration",
@@ -3174,35 +2971,6 @@
         "metering_authority",
         "source_url",
         "quality_flag"
-      ],
-      "next_action_from_site": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
-      "grid_primary_source_url": "https://www.pjm.com/planning/service-requests",
-      "grid_source_type": "RTO/ISO official",
-      "grid_source_date": "2026-09-26",
-      "next_research_sources": "GridTracker; Interconnection.fyi; Watt Street; FERC eLibrary; SueDataCenters / Compute Atlas; DataCenter.fyi",
-      "supporting_snapshot_note": null
-    },
-    {
-      "task_id": "EPOCH-2d362a1adb09fddd::remote_sensing",
-      "epoch_id": "EPOCH-2d362a1adb09fddd",
-      "site_name": "CoreWeave Chester VA",
-      "country": "United States",
-      "state_province": "VA",
-      "domain": "remote_sensing",
-      "current_state": "NOT_INGESTED",
-      "priority": "P0",
-      "action": "Acquire multi-temporal TIR, SAR, and/or high-resolution optical observations and derive site-specific physical activity or thermal measurements.",
-      "required_fields": [
-        "observed_on",
-        "sensor",
-        "scene_id",
-        "latitude",
-        "longitude",
-        "baseline_value",
-        "observed_value",
-        "delta",
-        "quality_flag",
-        "source_url"
       ],
       "next_action_from_site": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
       "grid_primary_source_url": "https://www.pjm.com/planning/service-requests",

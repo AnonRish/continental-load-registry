@@ -207,8 +207,14 @@
           "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         },
         "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
           "status": "NOT_INGESTED",
