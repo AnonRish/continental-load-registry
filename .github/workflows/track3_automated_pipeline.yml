@@ -62,6 +62,9 @@ jobs:
         continue-on-error: true
         run: python run_track3_source_adapters.py
 
+      - name: Refresh source manifest capture metadata
+        run: python refresh_source_manifest.py
+
       - name: Rebuild canonical evidence layer
         run: python build_track3_evidence.py
 
