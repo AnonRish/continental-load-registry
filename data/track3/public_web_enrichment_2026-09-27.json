@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T16:33:00Z",
+  "generated_at_utc": "2026-09-27T16:40:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
@@ -4033,7 +4033,119 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Reported financing structure included an SPV intended to buy NVIDIA processors and rent them to xAI for use in Colossus 2; Reuters reported NVIDIA would invest in the financing. This is a project-linked financing relationship, not a claim that NVIDIA owns Colossus 2.",
       "evidence_id": "EVID-PWEB-5d41ec59"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "project",
+      "value": "Richmond 1 Data Center Campus",
+      "relationship": "official campus/project identity",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-1/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "QTS labels the site Richmond 1 and describes it as a multi-building data center campus. This is a project/campus identity, not an investor record.",
+      "evidence_id": "EVID-PWEB-2fd5cd0a"
+    },
+    {
+      "site_name": "QTS Richmond 2",
+      "epoch_id": "EPOCH-052be5b551cd099b",
+      "field": "project",
+      "value": "Richmond 2 Data Center Campus",
+      "relationship": "official campus/project identity",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-2/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "QTS labels the site Richmond 2 and describes an 85-acre, five-building master-planned campus.",
+      "evidence_id": "EVID-PWEB-d33c46da"
+    },
+    {
+      "site_name": "QTS Richmond 3",
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "field": "project",
+      "value": "Richmond 3 Data Center Campus",
+      "relationship": "official campus/project identity",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-3/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "QTS labels the site Richmond 3 and describes a 221-acre, five-building master-planned campus.",
+      "evidence_id": "EVID-PWEB-5a9535ce"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "cooling",
+      "value": "Evaporative-cooled and air-cooled chiller units; CRAC/CRAH cooling; temperature and humidity sensors",
+      "relationship": "facility cooling disclosure for RIC1 DC1-DC3 factsheet",
+      "source": "QTS facility factsheet",
+      "source_urls": [
+        "https://qtsdatacenters.com/wp-content/uploads/2024/07/QTS_Facility_Sheet_RIC1-DC1-DC2-DC3.pdf"
+      ],
+      "publication_date": "2024-07-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Scope is the RIC1 DC1-DC3 factsheet subset, which states cooling equipment types and environmental monitoring. It should not be extrapolated to every RIC1 building.",
+      "evidence_id": "EVID-PWEB-9491d56c"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "backup_generation",
+      "value": "On-site diesel fuel with multiple refueling contracts; 48 hours of generator runtime",
+      "relationship": "facility backup-generation disclosure for RIC1 DC1-DC3",
+      "source": "QTS facility factsheet",
+      "source_urls": [
+        "https://qtsdatacenters.com/wp-content/uploads/2024/07/QTS_Facility_Sheet_RIC1-DC1-DC2-DC3.pdf"
+      ],
+      "publication_date": "2024-07-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Factsheet-level disclosure for RIC1 DC1-DC3; this is infrastructure capability, not observed generator operation or measured fuel use.",
+      "evidence_id": "EVID-PWEB-460b3900"
+    },
+    {
+      "site_name": "Google Kansas City East",
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "field": "cooling",
+      "value": "SPX Cooling Technologies NC8422V-1 evaporative cooling towers; 18 units; modeled 135.3 MW",
+      "relationship": "cooling equipment / Epoch AI model",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/google-kansas-city-east"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch AI reports 18 NC8422V-1 evaporative cooling towers with modeled 135.3 MW total cooling capacity. The figure is part of Epoch AI's cooling-equipment power model, not interval electrical telemetry.",
+      "evidence_id": "EVID-PWEB-7da3a6c7"
+    },
+    {
+      "site_name": "Google Kansas City East",
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "field": "construction_status",
+      "value": "Building 1 operational as of 2026-08-01; Buildings 2-4 under construction at earlier dated milestones",
+      "relationship": "dated buildout trajectory",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/google-kansas-city-east"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch AI's dated satellite observations record land clearing in 2024, foundations for Buildings 1-4, generator/cooling installation, and Building 1 operational in August 2026.",
+      "evidence_id": "EVID-PWEB-7882ba53"
     }
   ],
-  "record_count": 246
+  "record_count": 253
 }
