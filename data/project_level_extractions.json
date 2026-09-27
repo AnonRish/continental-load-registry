@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 243,
+  "record_count": 250,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -6751,6 +6751,176 @@
       "capture_date": "2026-09-26",
       "source_scope": "Entergy corporate/EEI growth article",
       "notes": "Entergy describes the AWS Madison County project as a 650 MW data center project. This is a utility primary-source statement but the article does not provide a public queue/POI identifier; no such identifier is inferred."
+    },
+    {
+      "id": "DOMINION-EDSALL-DATA-CENTER-176MW-2024",
+      "evidence_type": "utility_data_center_service_project",
+      "project_name": "Edsall Lines and Substation Project / Fairfax data center customer",
+      "customer_or_developer": "Customer not publicly named in filing",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Fairfax County, VA",
+      "county_or_zone": "Fairfax County",
+      "status": "service planning / transmission project",
+      "capacity_claims": [
+        {
+          "value_mw": 176,
+          "unit": "MW",
+          "raw_value": "176 megawatts",
+          "qualifier": "projected load requested by data-center customer",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/edsall/pdfs/application-volume-2-of-3-2024-edsall.pdf",
+          "capture_date": "2024"
+        }
+      ],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/edsall/pdfs/application-volume-2-of-3-2024-edsall.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "230 kV Edsall Lines and Substation Project, Application Volume 2",
+      "notes": "Dominion's filing states the customer requested 176 MW of projected load for a planned data-center development in Fairfax County. Customer name is not public in the cited filing."
+    },
+    {
+      "id": "DOMINION-LAKESIDE-MEC-240MW-2023",
+      "evidence_type": "utility_data_center_service_project",
+      "project_name": "Lakeside Campus / MEC DP",
+      "customer_or_developer": "MEC (customer name not otherwise identified in filing)",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Mecklenburg County, VA",
+      "county_or_zone": "Mecklenburg County",
+      "status": "service planning / transmission project",
+      "capacity_claims": [
+        {
+          "value_mw": 240,
+          "unit": "MW",
+          "raw_value": "240 MW at full build-out",
+          "qualifier": "MEC data-center DP request",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/jeffress/pdfs/jeffress-scc-application-vol-1-of-3.pdf",
+          "capture_date": "2023"
+        },
+        {
+          "value_mw": 24,
+          "unit": "MW",
+          "raw_value": "24 MW in 2025",
+          "qualifier": "summer peak forecast",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/jeffress/pdfs/jeffress-scc-application-vol-1-of-3.pdf",
+          "capture_date": "2023"
+        },
+        {
+          "value_mw": 30,
+          "unit": "MW",
+          "raw_value": "30 MW in 2026",
+          "qualifier": "summer peak forecast",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/jeffress/pdfs/jeffress-scc-application-vol-1-of-3.pdf",
+          "capture_date": "2023"
+        },
+        {
+          "value_mw": 60,
+          "unit": "MW",
+          "raw_value": "60 MW in 2027",
+          "qualifier": "summer peak forecast",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/jeffress/pdfs/jeffress-scc-application-vol-1-of-3.pdf",
+          "capture_date": "2023"
+        }
+      ],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/jeffress/pdfs/jeffress-scc-application-vol-1-of-3.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Jeffress SCC Application Volume 1",
+      "notes": "Dominion's filing states MEC's DP request served a data-center customer and projects 240 MW at full build-out with 24/30/60 MW near-term summer-peak values. This is a planned service profile, not measured consumption."
+    },
+    {
+      "id": "DOMINION-LEESBURG-AREA-1372MW-2024",
+      "evidence_type": "utility_data_center_service_area_record",
+      "project_name": "Leesburg Load Area — three data-center customer campuses",
+      "customer_or_developer": "Three customers; names confidential in filing",
+      "utility_or_provider": "Dominion Energy Virginia",
+      "jurisdiction": "Virginia, US",
+      "location": "Eastern Loudoun County, VA",
+      "county_or_zone": "Loudoun County",
+      "status": "service planning / area transmission project",
+      "capacity_claims": [
+        {
+          "value_mw": 1372,
+          "unit": "MW",
+          "raw_value": "approximately 1,372 MW",
+          "qualifier": "combined projected customer load plus emerging area load",
+          "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-2-of-3-2024.pdf",
+          "capture_date": "2024"
+        }
+      ],
+      "source_authority": "Dominion Energy regulatory filing",
+      "source_url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/nova/pdfs/application-documents/application-volume-2-of-3-2024.pdf",
+      "capture_date": "2026-09-26",
+      "source_scope": "Leesburg Load Area data-center service planning",
+      "notes": "The 1,372 MW figure covers combined projected customer load and emerging load in the area; it is an area-level figure and must not be added to the three campus records separately."
+    },
+    {
+      "id": "GA-GEORGIA-POWER-HILLS-BRIDGE-LARGE-LOAD-2026",
+      "evidence_type": "utility_named_large_load_transmission_project",
+      "project_name": "Hills Bridge–Speedway 500 kV Transmission Project",
+      "customer_or_developer": "Customer not publicly named",
+      "utility_or_provider": "Georgia Power",
+      "jurisdiction": "Georgia, US",
+      "location": "Henry and Clayton Counties, GA",
+      "county_or_zone": "Henry / Clayton Counties",
+      "status": "transmission project under development",
+      "capacity_claims": [],
+      "source_authority": "utility primary source",
+      "source_url": "https://www.georgiapower.com/about/grid-reliability/grid-projects/transmission-projects/hills-bridge-speedway.html",
+      "capture_date": "2026-09-26",
+      "source_scope": "Georgia Power project page",
+      "notes": "Georgia Power states the transmission project is being developed to serve a specific large-load customer. No project MW is published on the cited page, so no load capacity is inferred."
+    },
+    {
+      "id": "ALABAMA-POWER-DOTIER-CONTRACT-2026",
+      "evidence_type": "utility_large_load_contract_record",
+      "project_name": "Dotier LLC — Alabama Power electric-service contract",
+      "customer_or_developer": "Dotier LLC (Meta subsidiary)",
+      "utility_or_provider": "Alabama Power",
+      "jurisdiction": "Alabama, US",
+      "location": "Montgomery, AL",
+      "county_or_zone": "Montgomery County",
+      "status": "contract filed with Alabama PSC",
+      "capacity_claims": [],
+      "source_authority": "Alabama PSC filing reporting / utility contract evidence",
+      "source_url": "https://energyandpolicy.org/alabama-power-data-center-contracts-redacted/",
+      "capture_date": "2026-09-26",
+      "source_scope": "Alabama Power large-load contract filed June 18, 2026",
+      "notes": "Alabama Power filed a contract with Dotier LLC on June 18, 2026. Public contract capacity is redacted. Alabama environmental permitting identifies Dotier Data Center at 1055 Hyundai Boulevard, Montgomery. No load MW is inferred from unrelated generator ratings or investment figures."
+    },
+    {
+      "id": "ALABAMA-POWER-NEBIUS-CONTRACT-2026",
+      "evidence_type": "utility_large_load_contract_record",
+      "project_name": "Alabama ADC Holdings LLC — Alabama Power electric-service contract",
+      "customer_or_developer": "Alabama ADC Holdings LLC (Nebius affiliate)",
+      "utility_or_provider": "Alabama Power",
+      "jurisdiction": "Alabama, US",
+      "location": "Birmingham, AL",
+      "county_or_zone": "Jefferson County",
+      "status": "contract filed with Alabama PSC",
+      "capacity_claims": [],
+      "source_authority": "Alabama PSC contract transmittal / public contract evidence",
+      "source_url": "https://www.scribd.com/document/1068237120/Alabama-Power-electronic-filing-contract-for-electric-service-with-Alabama-ADC-Holdings-LLC",
+      "capture_date": "2026-09-26",
+      "source_scope": "Alabama Power electric-service contract filed July 24, 2026",
+      "notes": "The public contract version is redacted. Independent public records identify Alabama ADC Holdings LLC as a Nebius affiliate and identify the Birmingham AI data-center site. Contract capacity remains unknown in the public contract; no MW is inferred."
+    },
+    {
+      "id": "ALABAMA-POWER-WOOSTOR-CONTRACT-2026",
+      "evidence_type": "utility_large_load_contract_record",
+      "project_name": "Woostor LLC — Alabama Power electric-service contract",
+      "customer_or_developer": "Woostor LLC",
+      "utility_or_provider": "Alabama Power",
+      "jurisdiction": "Alabama, US",
+      "location": null,
+      "county_or_zone": null,
+      "status": "contract filed with Alabama PSC",
+      "capacity_claims": [],
+      "source_authority": "Alabama PSC contract evidence / secondary filing review",
+      "source_url": "https://energyandpolicy.org/alabama-power-data-center-contracts-redacted/",
+      "capture_date": "2026-09-26",
+      "source_scope": "Alabama Power electric-service contract filed August 14, 2026",
+      "notes": "The public contract is redacted and the customer/site has not been identified in the public sources reviewed. This record is intentionally unlocated; it should not be assigned an Alabama city centroid because that would imply a false site."
     }
   ]
 }
