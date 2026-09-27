@@ -37,7 +37,31 @@
         "pending_site_specific_search": 0
       },
       "satellite_tir_sar_numeric_status": "NOT_INGESTED",
-      "transformer_supply_chain_status": "NOT_INGESTED"
+      "transformer_supply_chain_status": "NOT_INGESTED",
+      "physical_verification": {
+        "optical_sites": 93,
+        "tir_sites": 93,
+        "sar_sites": 93,
+        "raw_optical_scenes_ingested": 0,
+        "raw_tir_numeric_observations": 0,
+        "raw_sar_numeric_observations": 0,
+        "construction_timeline_sites": 93,
+        "construction_to_power_sites": 93,
+        "building_footprint_raw_change_detection_sites": 0,
+        "cooling_sites_with_snapshot": 2,
+        "power_sites_with_annual_snapshot": 6,
+        "external_permit_records": 33,
+        "external_substation_transmission_evidence_records": {
+          "substation": 90,
+          "transmission": 113
+        },
+        "transformer_event_records": 0,
+        "backup_generation_site_records": 0,
+        "semantics": "Source availability is not ingestion. External project/permit evidence is not treated as a site match until a physical-site linkage exists."
+      },
+      "satellite_optical_status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "satellite_tir_numeric_status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "satellite_sar_numeric_status": "SOURCE_AVAILABLE_NOT_INGESTED"
     },
     "domain_3_entity_resolution": {
       "tier_counts": {
@@ -47,8 +71,8 @@
       },
       "review_priority_count": 141,
       "wratio_thresholds": {
-        "auto_confirm": 88.0,
-        "gray_zone_floor": 70.0
+        "auto_confirm": 88,
+        "gray_zone_floor": 70
       },
       "storage_tier_isolated": true
     },
@@ -56,7 +80,7 @@
       "leaflet_map": true,
       "table_to_map_rto_sync": true,
       "ambiguous_radius_formula": "max(5.0, sqrt(capacity_mw) * 0.35)",
-      "bess_radius_px": 3.0,
+      "bess_radius_px": 3,
       "bess_opacity": 0.35,
       "country_and_state_boundaries": true
     },
@@ -66,6 +90,6 @@
       "ceii_to_bis_transfer_status": "PROPOSED_RESEARCH_PROTOCOL_ONLY"
     }
   },
-  "five_domain_gate": "UNVERIFIED_PENDING_REMOTE_SENSING_AND_TRANSFORMER_EVIDENCE",
+  "five_domain_gate": "UNVERIFIED_PENDING_RAW_REMOTE_SENSING_AND_TRANSFORMER_EVIDENCE",
   "note": "The radar never treats a missing queue field, missing voltage, missing imagery, or missing procurement evidence as proof of absence. Queue capacity, Epoch IT power, and calculated FLOPs remain separate measurements."
 }
