@@ -43,6 +43,7 @@ TRACK3_SCHEMA = ROOT / "data" / "track3_evidence_schema.json"
 
 CDSE_STAC = "https://stac.dataspace.copernicus.eu/v1/search"
 USGS_STAC = "https://landsatlook.usgs.gov/stac-server/search"
+MPC_STAC = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
 SESSION = requests.Session()
 SESSION.headers.update({
@@ -112,7 +113,20 @@ def search_stac(kind: str, collection: str, bbox: list[float], limit: int = 80) 
         "limit": limit,
     }
     endpoint = CDSE_STAC if kind == "cdse" else USGS_STAC
-    return list(post_json(endpoint, payload).get("features", []))
+    primary = list(post_json(endpoint, payload).get("features", []))
+    if primary:
+        return primary
+
+    fallback_collection = {
+        "sentinel-2-l2a": "sentinel-2-l2a",
+        "sentinel-1-grd": "sentinel-1-grd",
+        "landsat-c2l2-st": "landsat-c2-l2",
+    }.get(collection)
+    if not fallback_collection:
+        return primary
+    fallback_payload = dict(payload)
+    fallback_payload["collections"] = [fallback_collection]
+    return list(post_json(MPC_STAC, fallback_payload).get("features", []))
 
 def best_temporal_items(items: list[dict[str, Any]], count: int = 3) -> list[dict[str, Any]]:
     unique = {str(x.get("id")): x for x in items if x.get("id")}
@@ -140,7 +154,15 @@ def asset_href(assets: dict[str, Any], candidates: list[str]) -> tuple[str | Non
     if not key:
         return None, None
     href = assets.get(key, {}).get("href")
-    return (str(href) if href else None), key
+    if not href:
+        return None, key
+    href = str(href)
+    try:
+        if "planetarycomputer.microsoft.com" in href or ".blob.core.windows.net" in href:
+            href = str(planetary_computer.sign(href))
+    except Exception:
+        pass
+    return href, key
 
 def read_window(href: str, lon: float, lat: float, pixels: int) -> tuple[np.ndarray, dict[str, Any]]:
     env = {
@@ -237,7 +259,7 @@ def scene_metrics_optical(item: dict[str, Any], lat: float, lon: float) -> dict[
 
 def scene_metrics_tir(item: dict[str, Any], lat: float, lon: float) -> dict[str, Any]:
     assets = item.get("assets", {})
-    st_href, st_key = asset_href(assets, ["ST_B10", "st_b10", "surface_temperature", "ST"])
+    st_href, st_key = asset_href(assets, ["ST_B10", "st_b10", "surface_temperature", "ST", "lwir11", "thermal"])
     if not st_href:
         raise RuntimeError("Landsat ST item lacks a surface-temperature asset")
     st, st_meta = read_window(st_href, lon, lat, 192)
