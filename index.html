@@ -198,6 +198,33 @@
     <p class="text-xs mt-2" style="color:var(--ink-faint);" id="mapCaption"></p>
   </div>
 
+  <!-- ============ MISO UNLOCATED WORKLIST ============ -->
+  <section id="misoUnlocatedWorklist" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">MISO unresolved geography</p>
+        <h2 class="font-serif-display text-xl mt-1">153 current ≥100 MW records without public site geography</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">These records remain in the current MISO queue snapshot and research worklist, but the public response used here does not expose enough location fields to create defensible facility pins. They are searchable below instead of being silently omitted.</p>
+      </div>
+      <a href="data/miso_unresolved_large_loads.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download MISO worklist CSV</a>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">153</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Unlocated ≥100 MW records</p></div>
+      <div class="p-4"><p class="mono text-xl">2,997</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue records ≥100 MW</p></div>
+      <div class="p-4"><p class="mono text-xl">3,873</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current MISO queue records</p></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
+      <input id="misoUnlocatedSearch" type="search" placeholder="Search queue ID, status, cycle…" class="rounded-md px-3 py-2 text-sm" aria-label="Search MISO unlocated queue records">
+      <div id="misoUnlocatedStatus" class="text-xs self-center" style="color:var(--ink-faint);">Loading 153-record worklist…</div>
+    </div>
+    <div class="scroll-x mt-4">
+      <table class="w-full text-xs min-w-[900px]">
+        <thead><tr><th class="px-3 py-2 text-left">Queue ID</th><th class="px-3 py-2 text-right">MW</th><th class="px-3 py-2 text-left">Status</th><th class="px-3 py-2 text-left">Queue date</th><th class="px-3 py-2 text-left">Study cycle</th><th class="px-3 py-2 text-left">Why unlocated</th></tr></thead>
+        <tbody id="misoUnlocatedBody"></tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ============ MAP LAYER INVENTORY ============ -->
   <section id="mapLayerInventory" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
