@@ -424,6 +424,21 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">“FOUND” indicates an authoritative source record exists in the catalog. “PARTIAL” means public evidence exists but the source does not expose a complete site-level universe. Confidential studies, customer agreements and anonymized commission filings remain explicitly non-public where applicable.</p>
   </section>
 
+  <!-- ============ WEBSITE COMPLETENESS ============ -->
+  <section id="websiteCompletenessAudit" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Self-audit · 2026-09-27</p>
+        <h2 class="font-serif-display text-xl mt-1">Website completeness audit</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Every major user-facing section is mapped to a populated dataset, generated interface, or explicit source-limited state. No blank field is silently treated as zero, absence, or verification.</p>
+      </div>
+      <a class="text-xs link-underline" href="data/website_completeness_audit.json" target="_blank" rel="noopener noreferrer">Open complete audit manifest</a>
+    </div>
+    <div id="websiteCompletenessMeta" class="text-xs mt-4" style="color:var(--ink-faint);">Loading completeness audit…</div>
+    <div id="websiteCompletenessCards" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 mt-3"></div>
+    <div class="scroll-x mt-4"><table class="w-full text-xs min-w-[1000px]"><thead><tr><th>Section</th><th>Status</th><th>Backing artifact</th><th>What is populated / bounded</th></tr></thead><tbody id="websiteCompletenessRows"></tbody></table></div>
+  </section>
+
   <!-- ============ CURRENT PUBLIC SOURCE CONTEXT ============ -->
   <section id="currentPublicSourceContext" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -2721,6 +2736,15 @@ fetch('data/current_public_market_context_2026-09-27.json?v=1',{cache:'no-store'
    return '<tr><td><strong>'+escapeHtml(s.id)+'</strong><div class="small faint">'+escapeHtml(s.authority)+'</div></td><td><span class="status '+(String(s.status).includes('CURRENT')||String(s.status).includes('ACTIVE')||String(s.status).includes('MONTHLY')?'good':'warn')+'">'+escapeHtml(s.status)+'</span></td><td class="small">'+escapeHtml(s.current_context)+'</td><td class="small">'+escapeHtml(extra)+' <a target="_blank" rel="noopener" href="'+escapeHtml(s.official_url||'#')+'">Source</a></td></tr>';
  }).join('');
 }).catch(function(e){var b=document.getElementById('currentSourceContextBody');if(b)b.innerHTML='<tr><td colspan="4" class="px-3 py-6" style="color:var(--amber);">Current source context unavailable: '+escapeHtml(e.message)+'</td></tr>';});
+</script>
+<script>
+fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('audit unavailable');return r.json();}).then(function(p){
+ var s=p.summary||{},meta=document.getElementById('websiteCompletenessMeta');
+ if(meta)meta.textContent=s.visible_sections_audited+' major sections audited · '+s.sections_with_backing_artifact_or_rendered_methodology+' backed by data/methodology · '+(s.current_epoch_sites||0)+' Epoch sites · '+(s.project_records||0)+' project records.';
+ var cards=[[(s.visible_sections_audited||0),'Sections audited'],[(s.sections_with_backing_artifact_or_rendered_methodology||0),'Backed sections'],[(s.current_epoch_sites||0),'Epoch sites'],[(s.project_records||0),'Project records'],[(s.track3_evidence_records||0),'Track 3 evidence'],[(s.remote_sensing_processed||0),'Processed RS observations'],[(s.transformer_events||0),'Transformer events']];
+ var ce=document.getElementById('websiteCompletenessCards'); if(ce)ce.innerHTML=cards.map(function(x){return '<div class="panel rounded-lg p-2"><div class="mono text-sm">'+escapeHtml(String(x[0]))+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(x[1])+'</div></div>';}).join('');
+ var re=document.getElementById('websiteCompletenessRows'); if(re)re.innerHTML=(p.sections||[]).map(function(x){return '<tr><td><strong>'+escapeHtml(x.section)+'</strong></td><td><span class="status '+(x.status==='POPULATED'?'good':'warn')+'">'+escapeHtml(x.status)+'</span></td><td class="mono small">'+escapeHtml(x.artifact)+'</td><td class="small">'+escapeHtml(x.detail)+'</td></tr>';}).join('');
+}).catch(function(e){var m=document.getElementById('websiteCompletenessMeta');if(m)m.textContent='Completeness audit unavailable: '+e.message;});
 </script>
 </body>
 </html>
