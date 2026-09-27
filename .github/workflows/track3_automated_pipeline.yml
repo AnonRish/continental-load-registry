@@ -208,14 +208,19 @@ jobs:
           import json,sys
           from pathlib import Path
           root=Path("data/automation")
-          quality=json.loads((root/"data_quality_report.json").read_text()) if (root/"data_quality_report.json").exists() else {"summary":{}}
+          required=("adapter_run_report.json","data_quality_report.json","pipeline_report.json","source_health.json","queue_release_diff.json","duplicate_report.json","geographic_match_report.json")
+          missing=[name for name in required if not (root/name).exists() or (root/name).stat().st_size==0]
+          if missing:
+              print("FAIL: missing Track 3 automation report(s):", ", ".join(missing))
+              sys.exit(1)
+          adapter=json.loads((root/"adapter_run_report.json").read_text())
+          quality=json.loads((root/"data_quality_report.json").read_text())
           failures=[]
           if quality.get("summary",{}).get("duplicate_id_groups",0): failures.append('duplicate ID groups=' + str(quality['summary']['duplicate_id_groups']))
           if quality.get("summary",{}).get("evidence_missing_urls",0): failures.append('evidence records missing URLs=' + str(quality['summary']['evidence_missing_urls']))
           if failures:
               print('FAIL:', '; '.join(failures))
               sys.exit(1)
-          adapter=json.loads((root/"adapter_run_report.json").read_text()) if (root/"adapter_run_report.json").exists() else {"failed_count":0}
           if adapter.get("failed_count",0):
               print('WARNING: one or more source adapters failed; failure state is retained in adapter_run_report.json and no unavailable source is converted to zero records.')
           print('PASS: Track 3 publish-state validation')
