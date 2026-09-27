@@ -9,7 +9,7 @@
     "remaining_unresolved_publisher_fields": 371,
     "sites_with_public_research_leads": 33,
     "total_public_research_leads": 53,
-    "open_track3_domain_cells": 712,
+    "open_track3_domain_cells": 711,
     "publisher_missing_field_counts": {
       "project": 76,
       "investors": 83,
@@ -25,11 +25,11 @@
       "data/track3/public_site_dossier.json",
       "data/external/intel_accelerator_enrichment.json"
     ],
-    "total_public_enrichment_resolved_fields": 398,
+    "total_public_enrichment_resolved_fields": 399,
     "total_targeted_publicly_resolved_fields": 14,
-    "effective_unresolved_publisher_fields": 274,
+    "effective_unresolved_publisher_fields": 273,
     "effective_unresolved_field_counts": {
-      "investors": 80,
+      "investors": 79,
       "construction_companies": 76,
       "project": 54,
       "users": 24,
@@ -39,8 +39,8 @@
       "owner": 1
     },
     "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
-    "public_web_enrichment_records": 200,
-    "public_web_enrichment_sites": 69,
+    "public_web_enrichment_records": 246,
+    "public_web_enrichment_sites": 71,
     "researched_no_public_record_grid_cells": 18
   },
   "records": [
@@ -67,7 +67,6 @@
         "energy_companies": []
       },
       "open_track3_domains": [
-        "service_or_contract",
         "compute_tenancy",
         "power_telemetry",
         "remote_sensing",
@@ -80,7 +79,7 @@
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
         "grid_connection": "SITE_LEVEL_EVIDENCE",
-        "service_or_contract": "NOT_INGESTED",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "NOT_ASSESSED",
         "compute_tenancy": "UNKNOWN",
         "power_telemetry": "NOT_INGESTED",
@@ -129,11 +128,11 @@
         "energy_companies",
         "regulatory",
         "project",
-        "investment"
+        "investment",
+        "investors"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
-        "investors",
         "construction_companies"
       ],
       "publisher_field_reconciliation": {
@@ -145,9 +144,9 @@
         },
         "investors": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "construction_companies": {
           "dossier_missing": true,
@@ -12931,5 +12930,6 @@
         }
       }
     }
-  ]
+  ],
+  "generated_on": "2026-09-27"
 }
