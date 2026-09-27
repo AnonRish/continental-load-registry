@@ -52,7 +52,7 @@
     "AI_COMPUTE_PUBLISHER_CHECK": "Epoch explicitly records AI-data-center compute evidence; publisher/derived check only.",
     "SITE_IDENTITY": "Facility has stable identity and site locator.",
     "GRID_CONNECTION": "Site-specific connection/service/queue record exists.",
-    "POWER_OBSERVATION": "Site-specific electricity observation exists with source, time/period and units.",
+    "POWER_OBSERVATION": "Site-specific electricity observation exists with source, period and units.",
     "PHYSICAL_REMOTE_SENSING": "Site-level optical/TIR/SAR observation is acquired and traceable.",
     "INDEPENDENT_CORROBORATION": "Material claim is supported by distinct retained sources.",
     "END_TO_END_TRACK3": "Physical, electrical, compute and independent-verifier chain is sufficient for the exact claim.",
@@ -109,9 +109,9 @@
       "workflow/commit identity recorded"
     ]
   },
-  "absence_testing_rule": "A no-match/no-found statement must point to a retained search record naming the source/database, URL/locator, capture date, search scope and result. Missing rows or fields are not absence evidence.",
-  "versioning_rule": "Every result carries protocol_version, generation timestamp and source_snapshot_commit. Historical artifacts are retained by Git.",
-  "independent_verifier": "The repository has a separate read-only verifier workflow and a standalone verify_track3.py procedure. This is operational separation, not a claim of organizational independence; a third party can run the same verifier against an immutable commit.",
-  "signed_audit": "The verification workflow produces a verification bundle and uses GitHub Artifact Attestations (Sigstore-backed) to create a cryptographic provenance/integrity claim for that bundle.",
-  "dispute_correction": "Corrections use append-only GitHub issues/events with facility/evidence IDs, proposed change, source and rationale; old snapshots are retained."
+  "absence_testing_rule": "A no-match statement must point to a retained search record naming the source/database, URL/locator, capture date, search scope and result. Missing rows or fields are not absence evidence.",
+  "independent_verifier": "verify_track3.py is intentionally read-only; its GitHub Actions workflow has contents: read only. This is operational separation, not organizational independence.",
+  "signed_audit": "The signed bundle workflow uses GitHub Artifact Attestations, which are Sigstore-backed cryptographic provenance/integrity claims.",
+  "versioning_rule": "Every result carries protocol_version, generation timestamp and source_snapshot_commit. Git history preserves prior versions.",
+  "dispute_correction": "Corrections are append-only GitHub issue/event records; historical snapshots are retained and superseding records reference the original."
 }
