@@ -323,7 +323,7 @@
       <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Canonical Epoch sites</p></div>
       <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Site-specific queue IDs verified</p></div>
       <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Public service/contract matches</p></div>
-      <div class="p-4"><p class="mono text-xl">72</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Jurisdiction-only U.S. gaps</p></div>
+      <div class="p-4"><p id="queueUniverseGapHeader" class="mono text-xl">—</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Open U.S. site-specific gaps</p></div>
       <div class="p-4"><p class="mono text-xl">16</p><p class="text-xs mt-1" style="color:var(--ink-faint);">International connection targets</p></div>
     </div>
     <div class="scroll-x mt-5">
@@ -333,7 +333,7 @@
           <tr><td class="px-3 py-2">Site-specific queue verified</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2">Public queue ID is tied to the Epoch site identity</td><td class="px-3 py-2">Verified target ring</td></tr>
           <tr><td class="px-3 py-2">Public service / contract verified</td><td class="px-3 py-2 text-right">2</td><td class="px-3 py-2">Public utility/regulatory evidence exists without a verified queue ID</td><td class="px-3 py-2">Evidence target ring</td></tr>
           <tr><td class="px-3 py-2">Public customer planning record</td><td class="px-3 py-2 text-right">1</td><td class="px-3 py-2">Named public customer/service planning record exists</td><td class="px-3 py-2">Planning target ring</td></tr>
-          <tr><td class="px-3 py-2">Queue jurisdiction mapped — site ID not verified</td><td class="px-3 py-2 text-right">72</td><td class="px-3 py-2">Correct grid/connection system is identified, but no defensible site-specific public ID has been established</td><td class="px-3 py-2">Dashed target ring</td></tr>
+          <tr><td class="px-3 py-2">Queue jurisdiction mapped — site ID not verified</td><td id="queueUniverseGapTable" class="px-3 py-2 text-right">—</td><td class="px-3 py-2">Correct grid/connection system is identified, but no defensible site-specific public ID has been established</td><td class="px-3 py-2">Dashed target ring</td></tr>
           <tr><td class="px-3 py-2">Country connection system mapped</td><td class="px-3 py-2 text-right">16</td><td class="px-3 py-2">International site has a named connection system but no site-level public queue ID</td><td class="px-3 py-2">Dashed target ring</td></tr>
         </tbody>
       </table>
@@ -878,7 +878,7 @@
       <h3 class="font-serif-display text-base">Evidence boundaries</h3>
       <div class="grid md:grid-cols-3 gap-4 mt-3 text-xs leading-relaxed" style="color:var(--ink-soft);">
         <div><strong style="color:var(--ink);">Stream A</strong><br>All nine required market labels are present in the current registry. Source limitations remain explicit; no market row is treated as a universal large-load census.</div>
-        <div><strong style="color:var(--ink);">Streams B/C</strong><br>Satellite TIR/SAR numeric telemetry and transformer procurement-event records are defined by the spec but are <strong>not yet ingested</strong>. Their absence never becomes a PASS.</div>
+        <div><strong style="color:var(--ink);">Streams B/C</strong><br>Satellite acquisition targets now cover all 93 Epoch sites; processed TIR/SAR/optical measurements remain separate until actually acquired. Three source-backed transformer events are retained, with a 93-site research target list still open. Missing evidence never becomes a PASS.</div>
         <div><strong style="color:var(--ink);">Epoch</strong><br>93 Epoch AI sites are retained separately. Current site-level evidence and queue IDs remain distinct from queue-origin MW.</div>
       </div>
       <div class="panel rounded-lg mt-5 p-5">
@@ -923,6 +923,21 @@
           </div>
           <div id="track3ObservationBreakdown" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 mt-3 text-[10px] mono" style="color:var(--ink-faint);"></div>
         </div>
+      <div class="panel rounded-lg mt-5 p-5" id="publicEnrichmentBridge">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+          <div>
+            <h3 class="font-serif-display text-base">93-site public enrichment bridge</h3>
+            <p class="text-xs mt-1 max-w-3xl" style="color:var(--ink-soft);">Program names, public owners/users, addresses, energy partners, construction/EPC relationships and grid operators are captured here when a retained public source exposes them. Uncaptured fields are explicitly marked rather than inferred.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a class="text-xs link-underline" href="data/external/intel_accelerator_enrichment.json" target="_blank" rel="noopener noreferrer">Open enrichment JSON</a>
+            <a class="text-xs link-underline" href="data/external/intel_accelerator_enrichment.csv" target="_blank" rel="noopener noreferrer">Open enrichment CSV</a>
+          </div>
+        </div>
+        <p id="publicEnrichmentMeta" class="text-xs mt-3" style="color:var(--ink-faint);">Loading public enrichment coverage…</p>
+        <div id="publicEnrichmentCards" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 mt-3"></div>
+      </div>
+
       <div class="panel rounded-lg mt-5 p-5">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
@@ -2485,6 +2500,8 @@ openFacilityFromHash();
       document.getElementById('track3Pending').textContent=Number(summary.pending_grid_connection_research_count||grid.PENDING_RESEARCH||0).toLocaleString();
 document.getElementById('queueUniverseVerifiedIds').textContent=Number(summary.site_specific_queue_id_count||grid.VERIFIED_SITE_SPECIFIC||0).toLocaleString();
       document.getElementById('queueUniverseCurrentGaps').textContent=usPending.toLocaleString();
+      if(document.getElementById('queueUniverseGapHeader'))document.getElementById('queueUniverseGapHeader').textContent=usPending.toLocaleString();
+      if(document.getElementById('queueUniverseGapTable'))document.getElementById('queueUniverseGapTable').textContent=usPending.toLocaleString();
       const noPublic=Number((grid.RESEARCHED_NO_PUBLIC_RECORD||0));
       document.getElementById('track3NoPublicRecord').textContent=noPublic.toLocaleString();
       const domainCounts=summary.domain_status_counts||{};
@@ -2660,5 +2677,26 @@ fetch('data/physical_verification_layer.json?v=2',{cache:'no-store'}).then(funct
   set('physicalTransformerEvents', s.transformer_event_records);
   set('physicalFootprintPolygons', s.building_footprint_polygon_count);
 }).catch(function(err){const body=document.getElementById('physicalVerificationBody');if(body)body.innerHTML='<tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Physical verification layer unavailable: '+escPV(err.message)+'</td></tr>';});})();</script>
+<script>
+fetch('data/external/intel_accelerator_enrichment.json?v=1',{cache:'no-store'}).then(function(res){
+ if(!res.ok)throw new Error('public enrichment unavailable');
+ return res.json();
+}).then(function(p){
+ var s=p.summary||{},fc=s.field_source_capture_counts||{};
+ var meta=document.getElementById('publicEnrichmentMeta');
+ if(meta)meta.textContent=(s.enriched_site_count||0)+' / '+(s.site_count||0)+' sites have at least one additional public-source enrichment field; blank values are explicitly non-inferred.';
+ var cards=[
+  [fc.public_program||0,'Programs'],
+  [fc.public_owner||0,'Public owners'],
+  [fc.public_users||0,'Public users'],
+  [fc.public_address||0,'Public addresses'],
+  [fc.energy_partners||0,'Energy partners'],
+  [fc.construction_epc||0,'EPC records'],
+  [fc.grid_operator||0,'Grid operators']
+ ];
+ var el=document.getElementById('publicEnrichmentCards');
+ if(el)el.innerHTML=cards.map(function(x){return '<div class="panel rounded-lg p-2"><div class="mono text-sm">'+escapeHtml(String(x[0]))+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(x[1])+'</div></div>';}).join('');
+}).catch(function(err){var el=document.getElementById('publicEnrichmentMeta');if(el)el.textContent='Public enrichment coverage unavailable: '+err.message;});
+</script>
 </body>
 </html>
