@@ -13,7 +13,7 @@
     "track3_evidence_records": 373,
     "open_grid_research": 0,
     "researched_no_public_record": 12,
-    "remote_sensing_processed": 0,
+    "remote_sensing_processed": 359,
     "transformer_events": 3,
     "public_web_enrichment_records": 244,
     "public_web_enrichment_sites": 70,
@@ -79,9 +79,9 @@
     },
     {
       "section": "Physical verification layer",
-      "status": "SOURCE-LIMITED",
-      "artifact": "data/physical_verification_layer.json + data/track3/remote_sensing_observation_targets.json",
-      "detail": "93-site acquisition targets and 3 transformer events are published; processed remote-sensing measurements remain 0 in the canonical build."
+      "status": "POPULATED",
+      "artifact": "data/physical_verification_layer.json + data/track3/remote_sensing_observations.json + data/track3/building_footprints_index.json",
+      "detail": "93-site acquisition target is live. Current retained physical build has 359 derived remote-sensing observations (120 optical, 120 TIR, 119 SAR) from 60 geocoded sites, 3 transformer events, and building polygons for 66 sites / 117,479 polygons. Unresolved geocoding and unavailable source records remain explicit."
     },
     {
       "section": "Complete project ledger",
