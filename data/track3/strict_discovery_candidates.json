@@ -6,7 +6,13 @@
   "definition": "Candidate must have explicit public evidence that the underlying project is a load request and must retain a material unresolved identity, location, or infrastructure question.",
   "admission_gates": {
     "explicit_load_type_required": true,
-    "excluded_project_types": ["GENERATION", "SURPLUS", "TRANSMISSION", "REPLACEMENT", "UPGRADE"],
+    "excluded_project_types": [
+      "GENERATION",
+      "SURPLUS",
+      "TRANSMISSION",
+      "REPLACEMENT",
+      "UPGRADE"
+    ],
     "storage_or_hybrid_requires_explicit_load_component": true,
     "physical_target_must_be_independently_established_before_satellite_interpretation": true,
     "missing_developer_does_not_equal_discovery": true
@@ -63,6 +69,19 @@
       "identity_gap": "Named interconnecting entity exists; physical campus identity is not established from the queue record alone",
       "physical_gap": "No defensible site coordinate retained",
       "research_role": "secondary closure target; public secondary sources already associate it with data-center/AI development"
+    },
+    {
+      "case_id": "NEXT-AESO-P2970",
+      "queue_id": "P2970",
+      "rto": "AESO",
+      "project_name": "Beacon Langdon A.I. Hub 2 Load",
+      "capacity_mw": 1400,
+      "county_or_area": "Calgary planning area",
+      "poi": "Public queue-derived connection record; exact physical parcel not retained",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Developer/owner not publicly exposed in retained queue source surface",
+      "physical_gap": "Exact site coordinate not retained; planning-area identity is not a physical-site coordinate",
+      "research_role": "alternate fifth closure target; useful for entity-resolution and public cross-source alias testing"
     }
   ],
   "excluded_examples": [
@@ -79,5 +98,5 @@
       "reason": "Current public project-type evidence identifies it as Surplus, so its presence in an unresolved-location worklist does not establish a large-load candidate."
     }
   ],
-  "selection_note": "This is an evidentiary admission set, not a ranking of importance or likelihood of outcome. It is deliberately separate from the broad 141-row ambiguity pool."
+  "selection_note": "This is an evidentiary admission set, not a ranking of importance or likelihood of outcome. It is deliberately separate from the broad 141-row ambiguity pool. A fifth alternate target was added from the AESO AI/data-load group."
 }
