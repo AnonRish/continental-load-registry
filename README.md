@@ -56,6 +56,9 @@ aimed at surfacing large requests that lack a confirmed public operator.
 - `PLAN_A.md` -- the repository-level Plan A contribution notes and scope boundary. This is an independent research contribution, not an AI Futures Project publication or certification.
 - `CONTRIBUTING.md` -- evidence-submission protocol for adding reproducible Track 3 records.
 - `CITATION.cff` -- machine-readable repository citation metadata.
+- `PHYSICAL_SOURCES.md` + `data/track3/physical_source_manifest.json` -- provenance and retention rules for satellite/remote-sensing and building-footprint acquisition, with a read-only validator in `validate_physical_provenance.py`.
+
+**Repository layout note:** The Track 3/Epoch/Plan A material is on the `main` branch alongside the registry core; the current audit found no separate `gh-pages` branch carrying a divergent Track 3 implementation.
 
 ## AI 2040 Plan A / Track 3 reference surface
 
