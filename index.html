@@ -3265,15 +3265,17 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
     requestAnimationFrame(()=>{
       if(v==='map' && window.registryMap?.invalidateSize) setTimeout(()=>window.registryMap.invalidateSize(),80);
     });
-    if(location.hash && document.getElementById(location.hash.slice(1)) && document.getElementById(location.hash.slice(1)).dataset.registryView!==v) {
-      history.replaceState(null,'',location.pathname+location.search);
-    }
     window.dispatchEvent(new CustomEvent('registry:viewchange',{detail:{view:v}}));
   }
   tabs.forEach(b=>b.addEventListener('click',()=>{setDisplay(b.dataset.registryView);window.scrollTo({top:0,behavior:'smooth'});}));
   const valid=new Set(tabs.map(x=>x.dataset.registryView));
   const stored=localStorage.getItem('clr-active-view');
-  setDisplay(valid.has(stored)?stored:'overview');
+  const hashTarget=location.hash ? document.getElementById(location.hash.slice(1)) : null;
+  const requestedFromHash=hashTarget?.dataset.registryView;
+  setDisplay(valid.has(requestedFromHash)?requestedFromHash:(valid.has(stored)?stored:'overview'));
+  if(hashTarget && requestedFromHash){
+    setTimeout(()=>hashTarget.scrollIntoView({behavior:'smooth',block:'start'}),120);
+  }
   const nums={
     deckSites:'data/track3/summary.json',deckEvidence:'data/track3/summary.json',deckPhysical:'data/track3/summary.json'
   };
