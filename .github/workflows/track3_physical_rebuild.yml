@@ -1,15 +1,15 @@
 name: Track 3 Physical Evidence Rebuild
 
+
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "acquire_physical_verification.py"
-      - ".github/workflows/track3_physical_rebuild.yml"
-      - "data/external/epoch_ai/registry.json"
 
 permissions:
   contents: write
+
+concurrency:
+  group: track3-physical-rebuild-main
+  cancel-in-progress: true
 
 concurrency:
   group: track3-physical-rebuild-main
