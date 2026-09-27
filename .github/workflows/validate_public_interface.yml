@@ -56,25 +56,25 @@ jobs:
           assert "/data/facility_records/{rto}/{shard}.json" in openapi["paths"]
           print("PASS: API contracts")
           PY
-       - name: Validate Track 3 / Module 1 runtime contracts
-         run: |
-           python - <<'PY'
-           import json
-           from pathlib import Path
-           root=Path(".")
-           summary=json.loads((root/"data/track3/summary.json").read_text(encoding="utf-8"))
-           observation=json.loads((root/"data/track3/observation_queue.json").read_text(encoding="utf-8"))
-           status=json.loads((root/"data/track3/site_status.json").read_text(encoding="utf-8"))
-           evidence=json.loads((root/"data/track3/evidence_records.json").read_text(encoding="utf-8"))
-           audit=json.loads((root/"data/website_completeness_audit.json").read_text(encoding="utf-8"))
-           physical=json.loads((root/"data/physical_verification_layer.json").read_text(encoding="utf-8"))
-           tx=json.loads((root/"data/track3/transformer_supply_chain_events.json").read_text(encoding="utf-8"))
-           assert len(status["records"])==93
-           assert len(observation["tasks"])==summary["observation_task_count"]
-           assert audit["summary"]["track3_evidence_records"]==len(evidence["records"])==195
-           assert physical["summary"]["transformer_event_records"]==tx["record_count"]==3
-           print("PASS: Track 3 runtime contracts")
-           PY
+      - name: Validate Track 3 / Module 1 runtime contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path(".")
+          summary=json.loads((root/"data/track3/summary.json").read_text(encoding="utf-8"))
+          observation=json.loads((root/"data/track3/observation_queue.json").read_text(encoding="utf-8"))
+          status=json.loads((root/"data/track3/site_status.json").read_text(encoding="utf-8"))
+          evidence=json.loads((root/"data/track3/evidence_records.json").read_text(encoding="utf-8"))
+          audit=json.loads((root/"data/website_completeness_audit.json").read_text(encoding="utf-8"))
+          physical=json.loads((root/"data/physical_verification_layer.json").read_text(encoding="utf-8"))
+          tx=json.loads((root/"data/track3/transformer_supply_chain_events.json").read_text(encoding="utf-8"))
+          assert len(status["records"])==93
+          assert len(observation["tasks"])==summary["observation_task_count"]
+          assert audit["summary"]["track3_evidence_records"]==len(evidence["records"])==195
+          assert physical["summary"]["transformer_event_records"]==tx["record_count"]==3
+          print("PASS: Track 3 runtime contracts")
+          PY
 
       - name: Validate public interface markers
         run: |
