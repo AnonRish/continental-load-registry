@@ -204,9 +204,9 @@ The 271 project records have one canonical `evidence_type` each. Current counts 
 - `utility_data_center_service_area_record`: 1
 - `utility_named_large_load_transmission_project`: 1
 
-Those counts are generated from the canonical JSON and sum to exactly 253. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
+Those counts are generated from the canonical JSON and sum to exactly 271. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
 
-The interactive map overlays **252 mapped project-level records** and separately represents the unlocated Woostor contract through a labeled Alabama regional evidence footprint. `data/map_layer_manifest.json` is the machine-readable inventory of every map overlay and its geometry/accounting treatment.
+The interactive map overlays **271 mapped project-level records** and separately represents the unlocated Woostor contract through a labeled Alabama regional evidence footprint. `data/map_layer_manifest.json` is the machine-readable inventory of every map overlay and its geometry/accounting treatment.
 
 PJM large-load history is cataloged in `data/pjm_large_load_submission_history.json` with **28 public 2025–2026 LAS material entries**, preserving the utility submission/document trail without treating documents as facility rows.
 
@@ -420,7 +420,7 @@ Apache License 2.0 -- see `LICENSE`.
 grid.telemetry.initiative@gmail.com
 
 
-**Map coverage:** `data/project_level_map.json` contains 252 mapped project records out of 253 project-level records; the sole unlocated project is explicitly documented. `data/supplemental_aggregate_map.json` contains 63 aggregate/historical records and currently has numeric display coordinates for all 63. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
+**Map coverage:** `data/project_level_map.json` contains 271 mapped project records out of 271 project-level records; all records now have display geometry, with service-area/jurisdiction points explicitly labeled where a site address is not public. `data/supplemental_aggregate_map.json` contains 63 aggregate/historical records and currently has numeric display coordinates for all 63. Coordinate precision is retained per record; a centroid/display point is never presented as a street address.
 
 
 Map-layer accounting is published in `data/map_layer_manifest.json` and `data/map_layer_manifest.csv`.
