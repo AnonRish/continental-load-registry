@@ -571,7 +571,16 @@ def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, 
     physical["site_records"] = site_records
     save_json(PHYSICAL_LAYER, physical)
 
-    headers = ["epoch_id","site_name","country","state_province","address","lat","lon","coordinate_precision"]
+    headers = [
+        "epoch_id","site_name","country","state_province","address","lat","lon",
+        "coordinate_precision","current_it_power_mw","construction_status",
+        "construction_timeline_record_count","construction_to_power_status",
+        "building_footprint_status","optical_status","optical_scene_count",
+        "tir_status","tir_scene_count","sar_status","sar_scene_count",
+        "substation_expansion_status","transformer_status","transformer_event_count",
+        "transmission_line_status","cooling_status","backup_generation_status",
+        "permit_chronology_status",
+    ]
     with (ROOT / "data" / "physical_verification_layer.csv").open("w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(headers)
@@ -580,6 +589,24 @@ def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, 
                 rec.get("epoch_id"), rec.get("site_name"), rec.get("country"),
                 rec.get("state_province"), rec.get("address"), rec.get("lat"),
                 rec.get("lon"), rec.get("coordinate_precision"),
+                rec.get("current_it_power_mw"),
+                (rec.get("construction") or {}).get("status"),
+                (rec.get("construction") or {}).get("timeline_record_count"),
+                (rec.get("construction_to_power_timeline") or {}).get("status"),
+                (rec.get("building_footprint_expansion") or {}).get("status"),
+                (rec.get("optical_imagery") or {}).get("status"),
+                (rec.get("optical_imagery") or {}).get("scene_count"),
+                (rec.get("tir_thermal") or {}).get("status"),
+                (rec.get("tir_thermal") or {}).get("scene_count"),
+                (rec.get("sar") or {}).get("status"),
+                (rec.get("sar") or {}).get("scene_count"),
+                (rec.get("substation_expansion_detection") or {}).get("status"),
+                (rec.get("transformer_installation_procurement") or {}).get("status"),
+                (rec.get("transformer_installation_procurement") or {}).get("event_count"),
+                (rec.get("transmission_line_construction") or {}).get("status"),
+                (rec.get("cooling_infrastructure") or {}).get("status"),
+                (rec.get("backup_generation_infrastructure") or {}).get("status"),
+                (rec.get("construction_permit_chronology") or {}).get("status"),
             ])
 
 def main() -> int:
