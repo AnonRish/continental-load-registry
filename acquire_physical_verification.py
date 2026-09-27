@@ -410,7 +410,7 @@ def process_site(site: dict[str, Any], coord: dict[str, Any], scenes_per_modalit
                     "cloud_cover_pct": item.get("properties", {}).get("eo:cloud_cover"),
                     "metrics": metrics,
                     "comparison_to_previous": {},
-                    "status": "INGESTED_DERIVED",
+                    "status": "INGESTED_DERIVED" if any(x.get("status") == "INGESTED_DERIVED" for x in observations) else "SOURCE_AVAILABLE_NOT_INGESTED",
                     "quality_flag": "RAW_COG_WINDOW_PROCESSED",
                     "processing_version": "physical-verification-v1",
                 }
@@ -440,7 +440,12 @@ def process_site(site: dict[str, Any], coord: dict[str, Any], scenes_per_modalit
                 })
     return output
 
-def transformer_targets(sites: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def transformer_targets(sites: list[dict[str, Any]], existing_events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    event_counts: dict[str, int] = {}
+    for event in existing_events:
+        eid = str(event.get("epoch_id") or "")
+        if eid:
+            event_counts[eid] = event_counts.get(eid, 0) + 1
     out = []
     for site in sites:
         name = str(site["normalized"].get("name") or "")
@@ -453,7 +458,7 @@ def transformer_targets(sites: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "address": address,
             "region": region,
             "status": "RESEARCH_QUEUE",
-            "event_count": 0,
+            "event_count": event_counts.get(str(site["epoch_id"]), 0),
             "source_families": [
                 "state/provincial utility commission filings",
                 "serving-utility capital-project and procurement filings",
@@ -477,7 +482,7 @@ def transformer_targets(sites: list[dict[str, Any]]) -> list[dict[str, Any]]:
         })
     return out
 
-def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, dict[str, Any]], transformer_targets_rows: list[dict[str, Any]]) -> None:
+def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, dict[str, Any]], transformer_targets_rows: list[dict[str, Any]], transformer_events: list[dict[str, Any]]) -> None:
     physical = load_json(PHYSICAL_LAYER)
     site_records = physical.get("site_records", [])
     obs_ok = [x for x in observations if x.get("status") == "INGESTED_DERIVED"]
@@ -530,13 +535,14 @@ def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, 
                 "basis": "Multi-temporal Sentinel-2 windows are processed; NDVI/nonvegetated metrics are a coarse campus-change proxy, not a polygonized building footprint.",
             }
         tx = next((x for x in transformer_targets_rows if x["epoch_id"] == eid), None)
+        site_transformer_events = [x for x in transformer_events if str(x.get("epoch_id") or "") == eid]
         if tx:
             rec["transformer_installation_procurement"] = {
                 **(rec.get("transformer_installation_procurement") or {}),
-                "status": "RESEARCH_QUEUE",
-                "event_count": 0,
+                "status": "INGESTED" if site_transformer_events else "RESEARCH_QUEUE",
+                "event_count": len(site_transformer_events),
                 "target_id": tx["target_id"],
-                "note": "No transformer event is asserted without a retained public event record.",
+                "note": "Event status is source-backed; planned specifications are not treated as installation/energization.",
             }
     psummary = physical.setdefault("summary", {})
     psummary["raw_optical_scenes_ingested"] = sum(1 for x in obs_ok if x.get("modality") == "optical")
@@ -545,7 +551,7 @@ def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, 
     psummary["building_footprint_raw_change_detection_sites"] = len({
         x["epoch_id"] for x in obs_ok if x.get("modality") == "optical"
     })
-    psummary["transformer_event_records"] = 0
+    psummary["transformer_event_records"] = len(transformer_events)
     for item in physical.get("checklist", []):
         ident = str(item.get("id"))
         if ident == "OPTICAL":
@@ -565,8 +571,12 @@ def update_physical_layer(observations: list[dict[str, Any]], coords: dict[str, 
             item["status"] = "INGESTED_DERIVED_PROXY" if n else "INGESTED_CHRONOLOGY_NOT_RAW_IMAGERY"
             item["coverage"] = f"{n} sites have multi-temporal optical observations for coarse campus-change proxy analysis; polygonized footprints remain separate."
         elif ident == "TRANSFORMER":
-            item["status"] = "RESEARCH_QUEUE"
-            item["coverage"] = "A structured 93-site transformer-event research queue is published. Event count remains 0 until source-backed procurement/delivery/installation evidence is retained."
+            n = psummary["transformer_event_records"]
+            item["status"] = "INGESTED" if n else "RESEARCH_QUEUE"
+            item["coverage"] = (
+                f"{n} source-backed transformer procurement/delivery/specification event records are retained; "
+                "the 93-site research queue remains published for uncovered sites."
+            )
     physical["generated_on"] = datetime.now(timezone.utc).date().isoformat()
     physical["site_records"] = site_records
     save_json(PHYSICAL_LAYER, physical)
@@ -622,21 +632,23 @@ def main() -> int:
         raise SystemExit(f"Expected 93 Epoch sites, got {len(sites)}")
 
     coords = ensure_coordinates(sites)
-    target_rows = transformer_targets(sites)
+    existing_transformer = load_json(TRANSFORMER_JSON) if TRANSFORMER_JSON.exists() else {}
+    existing_events = list(existing_transformer.get("records") or [])
+    target_rows = transformer_targets(sites, existing_events)
     save_json(TRANSFORMER_JSON, {
         "schema_version": 1,
         "generated_on": datetime.now(timezone.utc).date().isoformat(),
-        "record_count": 0,
+        "record_count": len(existing_events),
         "target_count": len(target_rows),
-        "status": "RESEARCH_QUEUE",
-        "records": [],
+        "status": "INGESTED_SOURCE_BACKED_EVENTS" if existing_events else "RESEARCH_QUEUE",
+        "records": existing_events,
         "targets": target_rows,
-        "semantics": "Only source-backed procurement/delivery/installation events may be added to records. Targets are not events.",
+        "semantics": "Only source-backed procurement/delivery/installation/specification events may be added to records. Targets are not events.",
     })
     with TRANSFORMER_CSV.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "target_id","epoch_id","site_name","address","region","status",
-            "event_count","source_families","search_queries","required_event_fields",
+            "event_count","source_families","search_queries","required_event_fields","semantics",
         ])
         writer.writeheader()
         for row in target_rows:
@@ -645,8 +657,15 @@ def main() -> int:
                 "source_families": "; ".join(row["source_families"]),
                 "search_queries": "; ".join(row["search_queries"]),
                 "required_event_fields": "; ".join(row["required_event_fields"]),
+                "semantics": row["semantics"],
             })
 
+    prior_observations = []
+    if OBS_JSON.exists():
+        try:
+            prior_observations = list(load_json(OBS_JSON).get("records") or [])
+        except Exception:
+            prior_observations = []
     observations: list[dict[str, Any]] = []
     runnable = [s for s in sites if coords.get(str(s["epoch_id"]), {}).get("lat") is not None]
     with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
@@ -678,6 +697,26 @@ def main() -> int:
         str(x.get("observed_on")),
         str(x.get("scene_id")),
     ))
+    current_keys = {
+        (str(x.get("epoch_id")), str(x.get("modality")), str(x.get("scene_id")))
+        for x in observations
+        if x.get("status") == "INGESTED_DERIVED"
+    }
+    current_derived = any(x.get("status") == "INGESTED_DERIVED" for x in observations)
+    if not current_derived and any(x.get("status") == "INGESTED_DERIVED" for x in prior_observations):
+        observations = list(prior_observations)
+    else:
+        observations.extend(
+            x for x in prior_observations
+            if x.get("status") == "INGESTED_DERIVED"
+            and (str(x.get("epoch_id")), str(x.get("modality")), str(x.get("scene_id"))) not in current_keys
+        )
+        observations.sort(key=lambda x: (
+            str(x.get("epoch_id")),
+            str(x.get("modality")),
+            str(x.get("observed_on")),
+            str(x.get("scene_id")),
+        ))
     save_json(OBS_JSON, {
         "schema_version": 1,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -692,18 +731,19 @@ def main() -> int:
         "epoch_id","site_name","address","latitude","longitude","coordinate_precision",
         "modality","sensor","scene_id","observed_on","stac_item_url","source_catalog",
         "source_collection","cloud_cover_pct","status","quality_flag","processing_version",
-        "metrics_json","comparison_to_previous_json","error",
+        "metrics_json","comparison_to_previous_json","error","semantics",
     ]
     with OBS_CSV.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=csv_fields)
         writer.writeheader()
         for row in observations:
-            out = {k: row.get(k) for k in csv_fields if k not in {"metrics_json","comparison_to_previous_json"}}
+            out = {k: row.get(k) for k in csv_fields if k not in {"metrics_json","comparison_to_previous_json","semantics"}}
+            out["semantics"] = "Derived observation retained from a public raw scene; absence or missing scene is not evidence of absence."
             out["metrics_json"] = json.dumps(row.get("metrics") or {}, sort_keys=True)
             out["comparison_to_previous_json"] = json.dumps(row.get("comparison_to_previous") or {}, sort_keys=True)
             writer.writerow(out)
 
-    update_physical_layer(observations, coords, target_rows)
+    update_physical_layer(observations, coords, target_rows, existing_events)
 
     stack = load_json(SOURCE_STACK)
     sources = stack.get("sources", [])
@@ -747,8 +787,11 @@ def main() -> int:
         },
     ]
     for item in additions:
-        if item["id"] not in source_ids:
+        existing = next((source for source in sources if str(source.get("id")) == item["id"]), None)
+        if existing is None:
             sources.append(item)
+        else:
+            existing.update(item)
     stack["sources"] = sources
     stack["source_stack_count"] = len(sources)
     stack["source_stack_status_counts"] = {
