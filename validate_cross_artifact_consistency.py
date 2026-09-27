@@ -116,10 +116,16 @@ def main() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "1,558 row-level facilities" not in readme
     assert "361.875 GW" not in readme
+    assert "1,641 requests / records and 397.775 GW" not in readme
+    assert "1,558-row core" not in readme
+    assert "252 mapped project-level records" not in readme
+    assert "63 aggregate utility/regulatory and historical-queue footprints" not in readme
 
     layers_md = (ROOT / "DATA_LAYERS.md").read_text(encoding="utf-8")
     assert "1,558 records / 361.875 GW" not in layers_md
     assert "1,641 records / 397.775 GW" not in layers_md
+    assert "**199 / 199** project records plotted" not in layers_md
+    assert "**61** aggregate/historical footprints" not in layers_md
 
     sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
     for page in ("research.html", "api.html", "bulk-download.html"):
