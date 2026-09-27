@@ -1,0 +1,51 @@
+name: Track 3 research backlog refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "45 11 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "build_track3_research_backlog.py"
+      - "data/track3/research_workflows.json"
+      - "data/track3/site_missing_information_sweep_*.json"
+      - ".github/workflows/track3_research_backlog.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: track3-research-backlog
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Build one-task research backlog
+        run: python build_track3_research_backlog.py
+      - name: Validate generated counts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("data/track3/research_backlog_summary.json").read_text())
+          assert d["publisher_tasks"] == d["source_sweep"]["effective_unresolved_publisher_fields"] if isinstance(d.get("source_sweep"), dict) else True
+          assert d["coverage_assertions"]["publisher_tasks_equal_effective_unresolved"]
+          assert d["coverage_assertions"]["domain_tasks_equal_open_cells"]
+          assert d["coverage_assertions"]["all_93_sites_represented"]
+          print("PASS: research backlog coverage assertions")
+          PY
+      - name: Commit refreshed research backlog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/track3/research_work_queue.json data/track3/research_work_queue.csv data/track3/research_backlog_summary.json
+          git diff --cached --quiet || git commit -m "Refresh Track 3 research backlog"
+          git push origin HEAD:main
