@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-26",
+  "generated_on": "2026-09-27",
   "title": "Canadian and non-U.S. Epoch connection-source framework",
   "canada_epoch_site_count": 0,
-  "note": "The current 93-site Epoch snapshot contains no Canada records. Canadian sources are nevertheless registered for the same site-to-connection matching workflow so future Epoch sites can be resolved without using aggregate capacity as a site match.",
+  "note": "The current 93-site Epoch snapshot contains no Canada records. Canadian connection sources are nevertheless maintained as a ready-to-use layer and now include current 2026 public intake/planning context.",
   "sources": [
     {
       "jurisdiction": "British Columbia, Canada",
@@ -39,5 +39,48 @@
     "Prefer exact service applications, grid-connection agreements, planning approvals or regulator dockets over sector aggregates.",
     "Preserve local-language identifiers and raw project names alongside normalized English names.",
     "Record NO MATCH FOUND where site identity is public but no individual connection record is public."
+  ],
+  "current_public_context": [
+    {
+      "jurisdiction": "British Columbia, Canada",
+      "provider": "BC Hydro",
+      "status": "2026_call_for_demand_closed",
+      "public_context": "15 Emerging Industries applications representing close to 800 MW of requested load; feasibility results were scheduled for August 24, 2026 with successful applicants anticipated by end-September 2026.",
+      "source_url": "https://app.bchydro.com/accounts-billing/electrical-connections/large-load/emerging-industries-connections.html",
+      "accounting": "Aggregate intake context only; applications are not automatically mapped to individual data centers."
+    },
+    {
+      "jurisdiction": "Ontario, Canada",
+      "provider": "IESO",
+      "status": "current_public_connection_application_universe",
+      "public_context": "Public Application Status provides a large connection universe; the September 2026 source exposes 2,074 application rows. Large-computational-load technical requirements were revised September 3, 2026.",
+      "source_url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "secondary_source_url": "https://ieso.ca/Sector-Participants/Planning-and-Forecasting",
+      "accounting": "Application-level records may be confidential at later study stages; exact site matching must use public identifiers."
+    },
+    {
+      "jurisdiction": "Quebec, Canada",
+      "provider": "Hydro-Québec",
+      "status": "sector_context",
+      "public_context": "Hydro-Québec publicly describes a fast-growing data-center sector; its rate proposal discusses an electricity sector peak near 200 MW currently and a potential increase toward roughly 1,000 MW by 2035.",
+      "source_url": "https://news.hydroquebec.com/news/press-releases/all-quebec/hydro-quebec-proposing-regie-energie-new-rate-large-data-centres-adjustment-rate-cryptographic-use-applied-blockchains.html",
+      "accounting": "Sector aggregate only; not a facility-level match."
+    },
+    {
+      "jurisdiction": "Manitoba, Canada",
+      "provider": "Manitoba Hydro",
+      "status": "large_load_application_requirements_published",
+      "public_context": "Requests above 5 MW require legal entity, site location, construction start, operation schedule, peak MW, annual GWh and related project information under the published large-supply process.",
+      "source_url": "https://www.hydro.mb.ca/your_home/large_supply_request/",
+      "accounting": "Connection-process requirements; no customer-level data-center universe is asserted."
+    },
+    {
+      "jurisdiction": "Ontario",
+      "provider": "Alectra Utilities",
+      "status": "named_data_center_connection_project",
+      "public_context": "Vaughan MTS No. 6 planning documents describe a proposed 230 kV station with 170 MVA capacity supporting an undisclosed customer's proposed 108 MVA data-center facility.",
+      "source_url": "https://alectrautilities.com/VaughanMTS6",
+      "accounting": "Named/discrete connection project evidence, but customer identity is not public in the cited source."
+    }
   ]
 }
