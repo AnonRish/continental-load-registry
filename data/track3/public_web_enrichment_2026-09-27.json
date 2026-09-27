@@ -1,0 +1,1016 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-27T06:07:00Z",
+  "title": "Public web enrichment capture — 2026-09-27",
+  "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
+  "accounting": {
+    "record_count": 65,
+    "sites_with_findings": 25,
+    "disposition_counts": {
+      "PUBLIC_SOURCE_CAPTURED": 65
+    },
+    "field_counts": {
+      "energy_companies": 24,
+      "project": 15,
+      "investment": 4,
+      "owner": 3,
+      "investors": 3,
+      "construction_companies": 7,
+      "cooling": 2,
+      "chip_quantities": 1,
+      "operational_status": 1,
+      "address": 1,
+      "service_or_contract": 4
+    }
+  },
+  "semantics": {
+    "owner_investment_not_external_investor": "Owner investment commitments are retained as investment facts but not relabeled as third-party investors.",
+    "utility_vs_ppa": "Serving utility, grid operator, renewable PPA counterparty, and energy manager are separate relationship types.",
+    "contractor_scope": "Developer/project partner/commissioning contractor is not automatically a general contractor.",
+    "secondary_sources": "Secondary public registries are retained when they provide a concrete site-level linkage; source class remains explicit.",
+    "uncertainty": "A source that does not establish a quantity remains non-quantitative rather than being converted into a numeric estimate."
+  },
+  "records": [
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "energy_companies",
+      "value": [
+        "Memphis Light, Gas and Water (MLGW)",
+        "Tennessee Valley Authority (TVA)"
+      ],
+      "relationship": "site utility / direct-supply request",
+      "source": "xAI Memphis Info Center; Daily Memphian",
+      "source_urls": [
+        "https://x.ai/memphis/info",
+        "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva"
+      ],
+      "publication_date": "2026-08-20",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "xAI states standard operations draw power from MLGW; Daily Memphian reports a site-specific request to TVA for additional direct supply. These are distinct relationships, not a single utility label."
+    },
+    {
+      "site_name": "Microsoft Fairwater Wisconsin",
+      "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "field": "project",
+      "value": "Fairwater",
+      "relationship": "data-center project name",
+      "source": "Microsoft",
+      "source_urls": [
+        "https://blogs.microsoft.com/on-the-issues/2025/09/18/made-in-wisconsin-the-worlds-most-powerful-ai-datacenter/"
+      ],
+      "publication_date": "2025-09-18",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Microsoft identifies the Mount Pleasant AI data center as Fairwater."
+    },
+    {
+      "site_name": "Microsoft Fairwater Wisconsin",
+      "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "field": "investment",
+      "value": "Initial $3.3B pledge; additional $4B commitment; >$7B total Wisconsin commitment",
+      "relationship": "owner investment commitment",
+      "source": "Microsoft",
+      "source_urls": [
+        "https://blogs.microsoft.com/on-the-issues/2025/09/18/made-in-wisconsin-the-worlds-most-powerful-ai-datacenter/"
+      ],
+      "publication_date": "2025-09-18",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "This is owner investment, not an external investor/financing party."
+    },
+    {
+      "site_name": "DayOne Kempas",
+      "epoch_id": "EPOCH-04f65e1aee6c98ab",
+      "field": "owner",
+      "value": "DayOne Data Centers",
+      "relationship": "developer/operator",
+      "source": "DayOne",
+      "source_urls": [
+        "https://dayonedc.com/about-us",
+        "https://dayonedc.com/market/johor"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DayOne describes Kempas Tech Park as its second Malaysia data-center site."
+    },
+    {
+      "site_name": "DayOne Kempas",
+      "epoch_id": "EPOCH-04f65e1aee6c98ab",
+      "field": "investors",
+      "value": [
+        "SoftBank Vision Fund",
+        "Coatue Management",
+        "Ken Griffin",
+        "Baupost Group",
+        "GIC"
+      ],
+      "relationship": "corporate financing/investment context",
+      "source": "DayOne",
+      "source_urls": [
+        "https://dayonedc.com/about-us"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Investors are disclosed by DayOne at company/funding level; the source does not allocate a specific investor cheque to Kempas alone."
+    },
+    {
+      "site_name": "DayOne Kempas",
+      "epoch_id": "EPOCH-04f65e1aee6c98ab",
+      "field": "energy_companies",
+      "value": "Tenaga Nasional Berhad (TNB)",
+      "relationship": "green-energy supply partnership",
+      "source": "DayOne; CGS",
+      "source_urls": [
+        "https://dayonedc.com/about-us",
+        "https://cdn1.i3investor.com/my/files/dfgs88n/2025/06/13/1570666695--882063151.pdf"
+      ],
+      "publication_date": "2025-06-12",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DayOne says it partnered with TNB on green-energy solutions; CGS describes a CRESS deal covering DayOne Johor campuses including Kempas."
+    },
+    {
+      "site_name": "DayOne Nusajaya",
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "field": "owner",
+      "value": "DayOne Data Centers",
+      "relationship": "developer/operator",
+      "source": "DayOne",
+      "source_urls": [
+        "https://dayonedc.com/about-us",
+        "https://dayonedc.com/market/johor"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "DayOne Nusajaya",
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "field": "energy_companies",
+      "value": "Tenaga Nasional Berhad (TNB)",
+      "relationship": "green-energy supply partnership",
+      "source": "DayOne; CGS",
+      "source_urls": [
+        "https://dayonedc.com/about-us",
+        "https://cdn1.i3investor.com/my/files/dfgs88n/2025/06/13/1570666695--882063151.pdf"
+      ],
+      "publication_date": "2025-06-12",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-unknown",
+      "field": "construction_companies",
+      "value": "JE Dunn",
+      "relationship": "construction partner / contractor",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta explicitly lists JE Dunn among local partners for the Temple Data Center."
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Oncor Electric",
+      "relationship": "energy / utility planning partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says it worked with Oncor to plan for and meet Temple energy needs."
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-unknown",
+      "field": "cooling",
+      "value": "Closed-loop liquid-cooled system",
+      "relationship": "site cooling architecture",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+      ],
+      "publication_date": "2026-07-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta says the system is designed to use zero water for a majority of the year."
+    },
+    {
+      "site_name": "Meta Kuna",
+      "epoch_id": "EPOCH-unknown",
+      "field": "construction_companies",
+      "value": "Hensel Phelps",
+      "relationship": "construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
+      "publication_date": "2026-09-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Kuna",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Idaho Power",
+      "relationship": "electric utility / energy planning",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+      ],
+      "publication_date": "2026-09-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Gallatin",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "field": "project",
+      "value": "Gallatin Data Center",
+      "relationship": "official project name",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/",
+        "https://datacenters.atmeta.com/2020/08/hello-gallatin/"
+      ],
+      "publication_date": "2024-11-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Gallatin",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "field": "energy_companies",
+      "value": [
+        "Tennessee Valley Authority (TVA)",
+        "Tennessee solar counterparties"
+      ],
+      "relationship": "renewable-energy support / power system",
+      "source": "Meta Data Centers; Gallatin Economic Development Agency",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2020/08/hello-gallatin/",
+        "https://www.gallatingetsit.com/corporate-tech"
+      ],
+      "publication_date": "2020-08-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta states it contracted for 220 MW of new solar energy in Tennessee to support operations in the area and thanks TVA and local partners."
+    },
+    {
+      "site_name": "Meta Gallatin",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "field": "investment",
+      "value": ">$1.5B",
+      "relationship": "owner investment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
+      ],
+      "publication_date": "2024-11-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Owner investment, not external financing."
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Alabama Power",
+      "relationship": "serving utility",
+      "source": "DEPLOY / Alabama PSC public record",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-alabama-montgomery",
+        "https://www.pscpublicaccess.alabama.gov/pscpublicaccess/PSC/CommissionMeetingDetailsPage.aspx?meetingId=e818fcfc-459d-49d9-9dc1-0a674ff9164c"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Alabama PSC record also identifies Dotier LLC, a Meta subsidiary, in connection with Alabama Power renewable subscription projects for a Montgomery data center."
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Montgomery Data Center",
+      "relationship": "official project name",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/09/montgomery-were-growing/"
+      ],
+      "publication_date": "2025-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Rosemount",
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "field": "project",
+      "value": "Bigfoot / Jimnist; Meta Rosemount Data Center",
+      "relationship": "project alias / official facility",
+      "source": "City of Rosemount; Meta Data Centers",
+      "source_urls": [
+        "https://rosemountmn.gov/progress",
+        "https://datacenters.atmeta.com/asset/rosemount-data-center-info-sheet/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "City source says the project was previously code-named Bigfoot or Jimnist and identifies Meta as the company."
+    },
+    {
+      "site_name": "Meta Rosemount",
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "field": "energy_companies",
+      "value": "Xcel Energy",
+      "relationship": "utility / infrastructure partner",
+      "source": "City of Rosemount; Xcel-related public project description",
+      "source_urls": [
+        "https://rosemountmn.gov/progress"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Rosemount states Meta collaborated with the City and Xcel Energy on energy upgrades and new transmission lines."
+    },
+    {
+      "site_name": "Meta Sarpy",
+      "epoch_id": "EPOCH-4b5df4f52274f2ba",
+      "field": "energy_companies",
+      "value": "Omaha Public Power District",
+      "relationship": "serving utility",
+      "source": "DEPLOY; Meta Data Centers",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-nebraska-sarpy",
+        "https://datacenters.atmeta.com/2021/03/sarpy-expanding-by-nearly-1-million-square-feet/"
+      ],
+      "publication_date": "2021-03-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Sarpy",
+      "epoch_id": "EPOCH-4b5df4f52274f2ba",
+      "field": "investment",
+      "value": "$2.5B+",
+      "relationship": "owner investment",
+      "source": "Meta Data Centers / current US locations",
+      "source_urls": [
+        "https://datacenters.atmeta.com/us-locations/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Current Meta location page states $2.5B+ investment; owner investment is not treated as an external investor."
+    },
+    {
+      "site_name": "Meta Los Lunas",
+      "epoch_id": "EPOCH-02c050b6b554fadd",
+      "field": "energy_companies",
+      "value": "Public Service Company of New Mexico (PNM)",
+      "relationship": "serving / interconnecting utility",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/meta-los-lunas-new-mexico"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Cheyenne",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Black Hills Energy",
+      "relationship": "serving utility",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-wyoming-cheyenne"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Cheyenne",
+      "epoch_id": "EPOCH-unknown",
+      "field": "construction_companies",
+      "value": "Goat Systems LLC",
+      "relationship": "commissioning / contractor",
+      "source": "Wyoming Public Media; public reporting",
+      "source_urls": [
+        "https://www.wyomingpublicmedia.org/natural-resources-energy/2026-07-21/meta-appeals-board-of-public-utilities-notice-of-violation-regarding-bacterial-contamination"
+      ],
+      "publication_date": "2026-07-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Source identifies Goat Systems as the contractor responsible for fill-and-flush operations at the site; this is not a claim that it is the site's general contractor."
+    },
+    {
+      "site_name": "Meta Prometheus",
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "field": "construction_companies",
+      "value": "Williams Companies",
+      "relationship": "behind-the-meter generation construction / project partner",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-ohio-new-albany"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Williams is associated with the Socrates South gas-generation project behind the Meta New Albany campus; not necessarily the site's general contractor."
+    },
+    {
+      "site_name": "Meta Prometheus",
+      "epoch_id": "EPOCH-8838deed95ffb554",
+      "field": "energy_companies",
+      "value": [
+        "AEP Ohio",
+        "Vistra/Constellation",
+        "Oklo",
+        "TerraPower"
+      ],
+      "relationship": "grid interconnection and disclosed power counterparties",
+      "source": "DEPLOY; Meta/public project records",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-ohio-new-albany",
+        "https://registry.deploy.report/datacenters/meta-prometheus-ohio"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "AEP Ohio is the grid-interconnection utility; the other entities are disclosed nuclear/advanced-generation counterparties. These relationships must not be collapsed into a single utility label."
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "AEP Ohio",
+      "relationship": "serving utility",
+      "source": "DataCentersExposed / Data Center Search",
+      "source_urls": [
+        "https://datacentersexposed.com/facilities/google-new-albany",
+        "https://datacentersearch.org/sites/google-new-albany"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-unknown",
+      "field": "chip_quantities",
+      "value": "Google TPU v5e, TPU v5p, TPU v6e (type presence; quantity not published by source)",
+      "relationship": "site accelerator inventory type",
+      "source": "Samaritan Research",
+      "source_urls": [
+        "https://samaritan-research.org/data/ai-data-centers/directory/google-new-albany"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Source estimates chip types but does not establish a defensible unit count; the quantity field remains unknown."
+    },
+    {
+      "site_name": "Google Papillion",
+      "epoch_id": "EPOCH-4525348d114e3e8e",
+      "field": "energy_companies",
+      "value": "Omaha Public Power District",
+      "relationship": "serving utility",
+      "source": "OPPD",
+      "source_urls": [
+        "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf"
+      ],
+      "publication_date": "2019-10-04",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "OPPD public filing states Google announced a data center in Papillion within the district's service territory."
+    },
+    {
+      "site_name": "Google Papillion",
+      "epoch_id": "EPOCH-4525348d114e3e8e",
+      "field": "project",
+      "value": "Google Papillion data center",
+      "relationship": "project name",
+      "source": "Google; OPPD",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/",
+        "https://www.oppd.com/media/316613/neomaha01a-pos-2019.pdf"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Omaha",
+      "epoch_id": "EPOCH-4eeccbee73808216",
+      "field": "project",
+      "value": "Google Omaha data center",
+      "relationship": "project name",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Lincoln",
+      "epoch_id": "EPOCH-e06bc7faa8b1b187",
+      "field": "project",
+      "value": "Google Lincoln data center",
+      "relationship": "project name",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Lincoln",
+      "epoch_id": "EPOCH-e06bc7faa8b1b187",
+      "field": "operational_status",
+      "value": "Online in 2026",
+      "relationship": "official milestone",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Texas sites",
+      "epoch_id": null,
+      "field": "project",
+      "value": [
+        "Google Midlothian",
+        "Google Red Oak"
+      ],
+      "relationship": "official Texas campus identities",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/texas/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "State-level source confirms Midlothian and Red Oak as Google's two current Texas locations."
+    },
+    {
+      "site_name": "Google Midlothian",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Google Midlothian data center",
+      "relationship": "official site identity",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/texas/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Red Oak",
+      "epoch_id": "EPOCH-f1a2bcdd78478bc2",
+      "field": "project",
+      "value": "Google Red Oak data center",
+      "relationship": "official site identity",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/texas/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Storey County",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "NV Energy",
+      "relationship": "serving utility",
+      "source": "SUE Data Centers registry",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/google-storey-county-nv"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Bristow",
+      "epoch_id": "EPOCH-6db3bc2c79843ffd",
+      "field": "owner",
+      "value": "Nova Mango Farms LLC",
+      "relationship": "site owner/developer",
+      "source": "datacenter.fyi public records",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-be69857b"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "This source identifies Nova Mango Farms LLC as owner/developer and Google as operator."
+    },
+    {
+      "site_name": "Google Bristow",
+      "epoch_id": "EPOCH-6db3bc2c79843ffd",
+      "field": "energy_companies",
+      "value": "Dominion Energy Virginia",
+      "relationship": "grid operator",
+      "source": "datacenter.fyi public records",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-be69857b"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Bristow",
+      "epoch_id": "EPOCH-6db3bc2c79843ffd",
+      "field": "address",
+      "value": "13001 Rollins Ford Road, Bristow, VA 20136",
+      "relationship": "public facility address",
+      "source": "datacenter.fyi public records",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-be69857b"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Fort Wayne",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Indiana Michigan Power",
+      "relationship": "utility information provided to City of Fort Wayne",
+      "source": "City of Fort Wayne",
+      "source_urls": [
+        "https://engage.cityoffortwayne.org/data-center"
+      ],
+      "publication_date": "2025-12-11",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Fort Wayne",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Google Data Center",
+      "relationship": "official local project identity",
+      "source": "City of Fort Wayne",
+      "source_urls": [
+        "https://engage.cityoffortwayne.org/data-center"
+      ],
+      "publication_date": "2025-12-11",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "CoreWeave Denton TX",
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "field": "service_or_contract",
+      "value": "~260 MW leased power / HPC infrastructure contract",
+      "relationship": "CoreWeave lease from Core Scientific",
+      "source": "Core Scientific",
+      "source_urls": [
+        "https://investors.corescientific.com/news-events/press-releases/detail/110/core-scientific-and-coreweave-announce-1-2-billion-expansion-at-denton-tx-site"
+      ],
+      "publication_date": "2025-03-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "CoreWeave Dalton 1 & 2",
+      "epoch_id": "EPOCH-8696ef81d91560a9",
+      "field": "service_or_contract",
+      "value": "~175 MW leased power",
+      "relationship": "CoreWeave lease from Core Scientific",
+      "source": "Core Scientific",
+      "source_urls": [
+        "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001628280-26-013214/q4fy25earningsdeckvfinal.htm"
+      ],
+      "publication_date": "2026-03-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "CoreWeave Muskogee OK",
+      "epoch_id": "EPOCH-65e758d676dc06d6",
+      "field": "service_or_contract",
+      "value": "~70 MW leased power",
+      "relationship": "CoreWeave lease from Core Scientific",
+      "source": "Core Scientific",
+      "source_urls": [
+        "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001628280-26-013214/q4fy25earningsdeckvfinal.htm"
+      ],
+      "publication_date": "2026-03-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "CoreWeave Marble NC",
+      "epoch_id": "EPOCH-eb87487504bda8ed",
+      "field": "service_or_contract",
+      "value": "~65 MW leased power",
+      "relationship": "CoreWeave lease from Core Scientific",
+      "source": "Core Scientific",
+      "source_urls": [
+        "https://investors.corescientific.com/sec-filings/all-sec-filings/content/0001628280-26-013214/q4fy25earningsdeckvfinal.htm"
+      ],
+      "publication_date": "2026-03-02",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "CoreWeave Chester VA",
+      "epoch_id": "EPOCH-2d362a1adb09fddd",
+      "field": "investment",
+      "value": "$200M facility fit-out financing",
+      "relationship": "facility financing",
+      "source": "Epoch AI citing Chirisa",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "This is facility financing associated with Chirisa fit-out; not necessarily an equity investor in CoreWeave."
+    },
+    {
+      "site_name": "Meta-QTS Hillsboro 2",
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "field": "energy_companies",
+      "value": "Portland General Electric (PGE) / Tower Solar counterparties",
+      "relationship": "utility and renewable-energy supply context",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/meta-qts-hillsboro-2"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch's source list records a QTS Hillsboro 2 announcement and an agreement with PGE for a 120 MWac solar installation."
+    },
+    {
+      "site_name": "Google Waltham Cross",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Shell Energy Europe Limited",
+      "relationship": "24/7 carbon-free energy manager",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/waltham-cross/"
+      ],
+      "publication_date": "2025-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Shell is identified as energy manager for Google's UK clean-energy portfolio, not necessarily the distribution utility."
+    },
+    {
+      "site_name": "Google Waltham Cross",
+      "epoch_id": "EPOCH-unknown",
+      "field": "construction_companies",
+      "value": "250+ companies, majority local; no specific general contractor published",
+      "relationship": "construction ecosystem",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/waltham-cross/"
+      ],
+      "publication_date": "2025-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Google says more than 250 companies worked on the facility; it does not identify a single principal contractor on this page."
+    },
+    {
+      "site_name": "VNET Bayin Ulanqab",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "10 GW Hyperscale 2.0",
+      "relationship": "campus program",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Start Campus Sines Data Campus",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "field": "project",
+      "value": "SINES Data Campus / SIN01–SIN06",
+      "relationship": "official campus program",
+      "source": "Open Compute Project; EDP",
+      "source_urls": [
+        "https://www.opencompute.org/facilities/73/start-campus-sines-12gw-data-campus-sin01",
+        "https://edp.com/en/media/news/start-campus-and-edp-enter-agreement-accelerate-renewable-powered-data-centre"
+      ],
+      "publication_date": "2026-02-25",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Start Campus Sines Data Campus",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "field": "energy_companies",
+      "value": "EDP",
+      "relationship": "preferred long-term green-energy partner under MoU",
+      "source": "EDP",
+      "source_urls": [
+        "https://edp.com/en/media/news/start-campus-and-edp-enter-agreement-accelerate-renewable-powered-data-centre"
+      ],
+      "publication_date": "2026-02-25",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Start Campus Sines Data Campus",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "field": "investors",
+      "value": "Davidson Kempner",
+      "relationship": "capital partner referenced in campus development",
+      "source": "EDP",
+      "source_urls": [
+        "https://edp.com/en/media/news/start-campus-and-edp-enter-agreement-accelerate-renewable-powered-data-centre"
+      ],
+      "publication_date": "2026-02-25",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "EDP describes Start Campus's platform as complemented by Davidson Kempner's capital; it is capital context for the developer/platform, not necessarily a project-only equity allocation."
+    },
+    {
+      "site_name": "Start Campus Sines Data Campus",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "field": "cooling",
+      "value": "Ocean/seawater cooling",
+      "relationship": "site cooling architecture",
+      "source": "Open Compute Project / EDP",
+      "source_urls": [
+        "https://www.opencompute.org/facilities/73/start-campus-sines-12gw-data-campus-sin01",
+        "https://edp.com/en/media/news/start-campus-and-edp-enter-agreement-accelerate-renewable-powered-data-centre"
+      ],
+      "publication_date": "2026-02-25",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-unknown",
+      "field": "construction_companies",
+      "value": "Related Digital",
+      "relationship": "campus developer",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/expanding-stargate-to-michigan/"
+      ],
+      "publication_date": "2025-10-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "OpenAI calls Related Digital the developer; it is not necessarily the general contractor."
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "DTE Energy",
+      "relationship": "serving utility / power partner",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-community/",
+        "https://openai.com/index/expanding-stargate-to-michigan/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-unknown",
+      "field": "construction_companies",
+      "value": "SB Energy",
+      "relationship": "development/execution partner",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-sb-energy-partnership/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "OpenAI selected SB Energy to build and operate the 1.2 GW Milam County site."
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-unknown",
+      "field": "investors",
+      "value": [
+        "OpenAI",
+        "SoftBank Group"
+      ],
+      "relationship": "investment into SB Energy supporting Stargate development",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-sb-energy-partnership/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "OpenAI and SoftBank each invested $500M in SB Energy. This is platform investment supporting development, not necessarily direct project equity."
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "WEC Energy Group",
+      "relationship": "power infrastructure / dedicated electricity rate context",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-community/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Cedar Rapids",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Google Cedar Rapids data center",
+      "relationship": "official project identity",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/iowa/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Council Bluffs (East)",
+      "epoch_id": "EPOCH-1c8ee8b0305c6313",
+      "field": "energy_companies",
+      "value": "Cubico Sustainable Investments (renewable PPA counterparty)",
+      "relationship": "renewable power procurement",
+      "source": "Google Cloud",
+      "source_urls": [
+        "https://cloud.google.com/blog/topics/sustainability/new-power-purchasing-agreement-method-lands-1-gw-clean-energy"
+      ],
+      "publication_date": "2026-09-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "This is a renewable PPA relationship and not necessarily the serving utility."
+    },
+    {
+      "site_name": "AWS New Albany",
+      "epoch_id": "EPOCH-bdc85fadae79b6b2",
+      "field": "energy_companies",
+      "value": "AEP Ohio",
+      "relationship": "serving utility",
+      "source": "DataCentersExposed",
+      "source_urls": [
+        "https://datacentersexposed.com/facilities/amazon-new-albany-2"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Amazon Madison Mega Site",
+      "epoch_id": "EPOCH-0d287943c30fe239",
+      "field": "project",
+      "value": "Project Rainier (site association)",
+      "relationship": "project collaboration identity",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/amazon-madison-mega-site"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch describes the site as likely part of the Anthropic–Amazon Project Rainier collaboration."
+    }
+  ]
+}
