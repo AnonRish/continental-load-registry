@@ -1,29 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:12:00Z",
+  "generated_at_utc": "2026-09-27T06:18:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 98,
-    "sites_with_findings": 46,
+    "record_count": 134,
+    "sites_with_findings": 52,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 98
+      "PUBLIC_SOURCE_CAPTURED": 133,
+      "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "energy_companies": 35,
-      "project": 18,
-      "investment": 7,
-      "owner": 6,
-      "investors": 4,
-      "construction_companies": 10,
-      "cooling": 4,
-      "chip_quantities": 1,
-      "operational_status": 1,
-      "address": 4,
+      "energy_companies": 42,
+      "project": 24,
+      "investment": 12,
+      "owner": 8,
+      "investors": 5,
+      "construction_companies": 13,
+      "cooling": 8,
+      "chip_quantities": 3,
+      "operational_status": 3,
+      "address": 5,
       "service_or_contract": 4,
-      "users": 2,
-      "regulatory": 1,
-      "capacity_record": 1
+      "users": 3,
+      "regulatory": 2,
+      "capacity_record": 2
     }
   },
   "semantics": {
@@ -1494,6 +1495,561 @@
       "publication_date": "2025-04-09",
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft SAT14",
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "field": "address",
+      "value": "3545 Wiseman Boulevard, San Antonio, TX 78251",
+      "relationship": "facility address",
+      "source": "Texas Department of Licensing and Regulation (TDLR)",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+      ],
+      "publication_date": "2021-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft SAT14",
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "field": "project",
+      "value": [
+        "SAT14 - Phase 1",
+        "SAT14 - Phase 2",
+        "SAT14 - Phase 3",
+        "SAT14 - Phase 4"
+      ],
+      "relationship": "state-registered construction projects for SAT14 Data Center",
+      "source": "TDLR",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+      ],
+      "publication_date": "2021-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft SAT14",
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "field": "regulatory",
+      "value": "TDLR projects TABS2021019142, TABS2021019471, TABS2021019588, TABS2021019686; Phase 1 closed, Phases 2-4 inspection complete",
+      "relationship": "Texas architectural-barriers construction record",
+      "source": "TDLR",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+      ],
+      "publication_date": "2021-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft SAT14",
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "field": "investment",
+      "value": "$154.9M Phase 1 + $26.8M Phase 2 + $31.3M Phase 3 + $27.2M Phase 4 estimated costs",
+      "relationship": "TDLR registered construction values",
+      "source": "TDLR",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+      ],
+      "publication_date": "2021-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Permit/registered project values; not necessarily total facility capex and not external investment."
+    },
+    {
+      "site_name": "Microsoft SAT14",
+      "epoch_id": "EPOCH-0355f445ca6cbed4",
+      "field": "construction_companies",
+      "value": "Page Southerland Page (Page)",
+      "relationship": "design firm of record",
+      "source": "TDLR",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+        "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+      ],
+      "publication_date": "2021-07-06",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "This is a design firm, not a general-contractor designation."
+    },
+    {
+      "site_name": "QTS Cedar Rapids",
+      "epoch_id": "EPOCH-unknown",
+      "field": "owner",
+      "value": "QTS Cedar Rapids LLC / QTS Data Centers",
+      "relationship": "project entity / developer",
+      "source": "City of Cedar Rapids; Alliant Energy; QTS",
+      "source_urls": [
+        "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
+        "https://q.com/data-centers/cedar-rapids/"
+      ],
+      "publication_date": "2025-02-13",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Cedar Rapids",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Alliant Energy",
+      "relationship": "energy partner / grid infrastructure provider",
+      "source": "Alliant Energy; QTS",
+      "source_urls": [
+        "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
+        "https://q.com/the-qts-difference/energy-approach/"
+      ],
+      "publication_date": "2025-02-13",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Cedar Rapids",
+      "epoch_id": "EPOCH-unknown",
+      "field": "investment",
+      "value": "Minimum $750M campus investment; up to $18M community betterment contribution over 20 years after first construction phase",
+      "relationship": "project investment/development agreement",
+      "source": "Alliant Energy; City of Cedar Rapids",
+      "source_urls": [
+        "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr"
+      ],
+      "publication_date": "2025-02-13",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Project-level investment commitment; not an external investor."
+    },
+    {
+      "site_name": "QTS Cedar Rapids",
+      "epoch_id": "EPOCH-unknown",
+      "field": "cooling",
+      "value": "Closed-loop cooling system with minimal ongoing water consumption",
+      "relationship": "site cooling architecture",
+      "source": "Alliant Energy / QTS",
+      "source_urls": [
+        "https://www.alliantenergy.com/news/illuminate/%2C-w-%2C/2026/05/050726-qts"
+      ],
+      "publication_date": "2026-05-07",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Eagle Mountain",
+      "epoch_id": "EPOCH-unknown",
+      "field": "owner",
+      "value": "QTS Data Centers",
+      "relationship": "operator/developer",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut"
+      ],
+      "publication_date": "2026-09-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Eagle Mountain",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "Rocky Mountain Power (PacifiCorp)",
+      "relationship": "serving utility",
+      "source": "DEPLOY / SUE Data Centers",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut",
+        "https://suedatacenters.org/data-centers/qts-eagle-mountain-ut"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Eagle Mountain",
+      "epoch_id": "EPOCH-unknown",
+      "field": "cooling",
+      "value": "Closed-loop cooling; approximately 600,000-gallon one-time fill per building plus modest domestic use",
+      "relationship": "site cooling architecture",
+      "source": "SUE Data Centers",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/qts-eagle-mountain-ut"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Eagle Mountain",
+      "epoch_id": "EPOCH-unknown",
+      "field": "investment",
+      "value": "Sweetwater #3 community-reinvestment tax-increment financing; first-phase increment projected at about $98.86M",
+      "relationship": "public-development financing context",
+      "source": "SUE Data Centers / Eagle Mountain City RDA",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/qts-eagle-mountain-ut"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Public development financing context; not project equity investment."
+    },
+    {
+      "site_name": "Google Lincoln",
+      "epoch_id": "EPOCH-e06bc7faa8b1b187",
+      "field": "project",
+      "value": "Google Lincoln data center",
+      "relationship": "official state project identity",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Lincoln",
+      "epoch_id": "EPOCH-e06bc7faa8b1b187",
+      "field": "operational_status",
+      "value": "Google says the Lincoln, Nebraska data center comes online in 2026",
+      "relationship": "official milestone",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Nebraska",
+      "epoch_id": null,
+      "field": "investment",
+      "value": "$1.2B new investment announced in 2023 across Lincoln, Omaha and Papillion",
+      "relationship": "state-level Google data-center investment program",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/nebraska/"
+      ],
+      "publication_date": "2023-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "State-level figure; do not allocate the entire amount to a single facility."
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "energy_companies",
+      "value": "AEP Ohio",
+      "relationship": "serving utility",
+      "source": "DataCentersExposed / public facility sources",
+      "source_urls": [
+        "https://datacentersexposed.com/facilities/google-new-albany",
+        "https://datacentersearch.org/sites/google-new-albany"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "chip_quantities",
+      "value": "Google TPU v5e, TPU v5p and TPU v6e; unit quantity not published by this source",
+      "relationship": "site accelerator type evidence",
+      "source": "Samaritan Research",
+      "source_urls": [
+        "https://samaritan-research.org/data/ai-data-centers/directory/google-new-albany"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Type presence only; this does not establish a unit count."
+    },
+    {
+      "site_name": "Microsoft Goodyear",
+      "epoch_id": "EPOCH-93a4aa4fa40d40ca",
+      "field": "energy_companies",
+      "value": "Arizona Public Service (APS)",
+      "relationship": "serving utility / utility feed",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/microsoft-goodyear-phx70"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft Goodyear",
+      "epoch_id": "EPOCH-93a4aa4fa40d40ca",
+      "field": "operational_status",
+      "value": "Partially energized",
+      "relationship": "current facility status",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/microsoft-goodyear-phx70"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft Goodyear",
+      "epoch_id": "EPOCH-93a4aa4fa40d40ca",
+      "field": "cooling",
+      "value": "Water-use and wastewater infrastructure are part of Microsoft's Goodyear community commitments; per-facility cooling architecture not established by the cited record",
+      "relationship": "site infrastructure context",
+      "source": "Microsoft / DEPLOY",
+      "source_urls": [
+        "https://local.microsoft.com/communities/americas/greater-phoenix/",
+        "https://registry.deploy.report/datacenters/microsoft-goodyear-phx70"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained as infrastructure context; not a claim that the exact cooling system is known."
+    },
+    {
+      "site_name": "Meta Jeffersonville",
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "field": "project",
+      "value": "Meta Jeffersonville Data Center",
+      "relationship": "official facility identity",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/us-locations/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Jeffersonville",
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "field": "energy_companies",
+      "value": "Duke Energy Indiana",
+      "relationship": "serving utility",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-indiana-jeffersonville"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Jeffersonville",
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "field": "investment",
+      "value": "$800M+",
+      "relationship": "owner investment",
+      "source": "Meta Data Centers / DEPLOY",
+      "source_urls": [
+        "https://datacenters.atmeta.com/us-locations/",
+        "https://registry.deploy.report/datacenters/facilities/meta-indiana-jeffersonville"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Owner investment, not an external investor."
+    },
+    {
+      "site_name": "Meta Eagle Mountain",
+      "epoch_id": "EPOCH-37a6d8d86c4f2f72",
+      "field": "construction_companies",
+      "value": "Mortenson",
+      "relationship": "construction partner",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Eagle Mountain",
+      "epoch_id": "EPOCH-37a6d8d86c4f2f72",
+      "field": "energy_companies",
+      "value": "Williams",
+      "relationship": "energy partner / generation context",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Energy-partner relationship from the enrichment registry; not necessarily the serving utility."
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-unknown",
+      "field": "users",
+      "value": "Microsoft",
+      "relationship": "customer agreement / AI compute deployment",
+      "source": "Nscale",
+      "source_urls": [
+        "https://www.nscale.com/press-releases/nscale-microsoft-norway",
+        "https://news.microsoft.com/source/emea/features/the-port-town-in-norway-emerging-as-an-ai-hub/"
+      ],
+      "publication_date": "2026-04-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Nscale Narvik campus / Aker Nscale Northern Norway AI infrastructure",
+      "relationship": "project/campus identity",
+      "source": "Nscale; Microsoft; Aker Nscale",
+      "source_urls": [
+        "https://www.nscale.com/press-releases/nscale-microsoft-norway",
+        "https://news.microsoft.com/source/emea/features/the-port-town-in-norway-emerging-as-an-ai-hub/",
+        "https://mb.cision.com/Public/18835/4261024/994c2d210bb66616.pdf"
+      ],
+      "publication_date": "2026-04-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-unknown",
+      "field": "capacity_record",
+      "value": "230 MW secured grid capacity at the Narvik/Kvandal site; more than 30,000 NVIDIA Rubin GPUs in Microsoft's expanded 2027 deployment",
+      "relationship": "campus-level infrastructure commitment",
+      "source": "Nscale; Aker Nscale",
+      "source_urls": [
+        "https://www.nscale.com/press-releases/nscale-microsoft-norway",
+        "https://mb.cision.com/Public/18835/4261024/994c2d210bb66616.pdf"
+      ],
+      "publication_date": "2026-04-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Campus-level commitment; not a site-level current load measurement."
+    },
+    {
+      "site_name": "CoreWeave Norway",
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "field": "project",
+      "value": "CoreWeave Norway / Bulk N01 42 MW facility",
+      "relationship": "project/site identity",
+      "source": "Epoch AI / Bulk Infrastructure",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "CoreWeave Norway",
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "field": "construction_companies",
+      "value": "Bulk Infrastructure",
+      "relationship": "developer/campus partner",
+      "source": "Epoch AI / Bulk Infrastructure",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Bulk is the infrastructure developer/campus partner in the source set; this is not necessarily a general-contractor designation."
+    },
+    {
+      "site_name": "CoreWeave Norway",
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "field": "chip_quantities",
+      "value": "NVIDIA B200 — estimated 20.1k units",
+      "relationship": "site accelerator inventory estimate",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch estimate, not a company-disclosed procurement count."
+    },
+    {
+      "site_name": "CoreWeave Norway",
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "field": "cooling",
+      "value": "32 unknown air-cooled chillers, estimated 56.3 MW capacity",
+      "relationship": "site cooling model",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Modeled equipment observation, not a manufacturer-confirmed bill of materials."
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-unknown",
+      "field": "project",
+      "value": "Stargate UAE — Abu Dhabi 1 GW cluster; 200 MW expected to go live in 2026",
+      "relationship": "international project/program",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/introducing-stargate-uae/"
+      ],
+      "publication_date": "2025-05-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-unknown",
+      "field": "investors",
+      "value": [
+        "G42",
+        "Oracle",
+        "NVIDIA",
+        "Cisco",
+        "SoftBank"
+      ],
+      "relationship": "named project partners in OpenAI's Stargate UAE partnership",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/introducing-stargate-uae/"
+      ],
+      "publication_date": "2025-05-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "OpenAI identifies these as partners to the agreement; partner status is not equivalent to disclosed project equity."
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-unknown",
+      "field": "energy_companies",
+      "value": "UAE energy/infrastructure counterparties not specified in the cited OpenAI announcement",
+      "relationship": "negative capture / unresolved utility field",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/introducing-stargate-uae/"
+      ],
+      "publication_date": "2025-05-22",
+      "capture_date": "2026-09-27",
+      "disposition": "NO_PUBLIC_VALUE_CAPTURED",
+      "scope_note": "Retained only as an explicit searched field state; no energy company is inferred."
     }
   ]
 }
