@@ -2919,6 +2919,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
     const s=String(r.connection_match_status||r.status||'').toUpperCase();
     if(s.includes('VERIFIED'))return ['VERIFIED','good'];
     if(s.includes('SITE_LEVEL'))return ['SITE LEVEL','good'];
+    if(Number(r.site_level_evidence_count||0)>0)return ['SITE EVIDENCE','good'];
     if(s.includes('NO_MATCH')||s.includes('NO_PUBLIC'))return ['NO PUBLIC MATCH','warn'];
     return ['JURISDICTION','warn'];
   }
@@ -2995,7 +2996,7 @@ const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
     document.getElementById('targetLedgerCompletenessFilter').addEventListener('change',filterTargets);
     document.getElementById('targetLedgerPrev').addEventListener('click',function(){if(targetPage>0){targetPage--;renderTargets();}});
     document.getElementById('targetLedgerNext').addEventListener('click',function(){const pages=Math.max(1,Math.ceil(targetFiltered.length/TP));if(targetPage<pages-1){targetPage++;renderTargets();}});
-    fetch('data/epoch_connection_research_targets.json?v=2',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('connection targets unavailable');return res.json();}).then(function(p){
+    fetch('data/epoch_connection_research_targets.json?v=3',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('connection targets unavailable');return res.json();}).then(function(p){
       targets=Array.isArray(p.records)?p.records:[];
       const jurisdictions=[...new Set(targets.map(function(x){return x.grid_or_queue_jurisdiction}).filter(Boolean))].sort();
       const sel=document.getElementById('targetLedgerJurisdictionFilter');
