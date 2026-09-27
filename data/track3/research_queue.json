@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "count": 29,
+  "count": 24,
   "records": [
     {
       "epoch_id": "EPOCH-04f65e1aee6c98ab",
@@ -157,83 +157,6 @@
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
-      "epoch_id": "EPOCH-6799460068cbed36",
-      "site_name": "Google Kansas City East",
-      "country": "United States",
-      "state_province": "MO",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": null,
-      "current_it_power_mw": 105,
-      "current_h100_equivalents": 202627.5896917635,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "UNKNOWN",
-          "basis": "No retained site-level chip-quantity rows."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
-        },
-        "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
-        },
-        "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
-        },
-        "cooling": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
-        },
-        "transformer_supply_chain": {
-          "status": "RESEARCH_QUEUE",
-          "event_count": 0,
-          "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
-      "next_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record."
-    },
-    {
       "epoch_id": "EPOCH-e06bc7faa8b1b187",
       "site_name": "Google Lincoln",
       "country": "United States",
@@ -306,8 +229,8 @@
         }
       },
       "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "crosswalk_public_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record."
     },
     {
@@ -768,8 +691,8 @@
         }
       },
       "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "crosswalk_public_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
@@ -1156,83 +1079,6 @@
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-    },
-    {
-      "epoch_id": "EPOCH-ee5c7acdbc729ef8",
-      "site_name": "Stream Phoenix",
-      "country": "United States",
-      "state_province": "AZ",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": null,
-      "current_it_power_mw": 64,
-      "current_h100_equivalents": 46134.4113188479,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records are retained."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
-        },
-        "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
-        },
-        "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
-        },
-        "transformer_supply_chain": {
-          "status": "RESEARCH_QUEUE",
-          "event_count": 0,
-          "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
-      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-e20c2909085b37fd",
@@ -1851,83 +1697,6 @@
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
-      "epoch_id": "EPOCH-dc6199921ba82b85",
-      "site_name": "OpenAI Stargate Lordstown",
-      "country": "United States",
-      "state_province": "OH",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "OH",
-      "current_it_power_mw": 0,
-      "current_h100_equivalents": 0,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records are retained."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
-        },
-        "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
-        },
-        "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
-        },
-        "transformer_supply_chain": {
-          "status": "RESEARCH_QUEUE",
-          "event_count": 0,
-          "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
-      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-    },
-    {
       "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
       "site_name": "OpenAI Stargate Milam",
       "country": "United States",
@@ -2000,85 +1769,8 @@
         }
       },
       "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
-      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-    },
-    {
-      "epoch_id": "EPOCH-3816121e8d72fe04",
-      "site_name": "OpenAI Stargate New Mexico",
-      "country": "United States",
-      "state_province": "NM",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": null,
-      "current_it_power_mw": 0,
-      "current_h100_equivalents": 0,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "UNKNOWN",
-          "basis": "No retained site-level chip-quantity rows."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
-        },
-        "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
-        },
-        "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
-        },
-        "transformer_supply_chain": {
-          "status": "RESEARCH_QUEUE",
-          "event_count": 0,
-          "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "crosswalk_public_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -2157,83 +1849,6 @@
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 1,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-    },
-    {
-      "epoch_id": "EPOCH-78e7d8474fbdf968",
-      "site_name": "OpenAI Stargate Wisconsin",
-      "country": "United States",
-      "state_province": "WI",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": null,
-      "current_it_power_mw": 0,
-      "current_h100_equivalents": 0,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records are retained."
-        },
-        "chip_inventory": {
-          "status": "UNKNOWN",
-          "basis": "No retained site-level chip-quantity rows."
-        },
-        "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
-        },
-        "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
-        },
-        "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
-        },
-        "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
-        },
-        "power_telemetry": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
-        },
-        "remote_sensing": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-level remote-sensing observations have been successfully processed yet."
-        },
-        "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
-        },
-        "transformer_supply_chain": {
-          "status": "RESEARCH_QUEUE",
-          "event_count": 0,
-          "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
-      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     }
   ],
   "semantics": "A pending record means the registry has not attached site-specific grid/service evidence yet; it does not mean the site lacks a connection."
