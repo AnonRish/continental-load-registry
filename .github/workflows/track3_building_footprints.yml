@@ -1,23 +1,13 @@
 name: Track 3 Building Footprint Rebuild
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "README.md"
-      - "acquire_building_footprints.py"
-      - "data/external/epoch_ai/registry.json"
-      - "data/track3/physical_site_coordinates.json"
-      - ".github/workflows/track3_building_footprints.yml"
   workflow_dispatch:
-  schedule:
-    - cron: "45 5 * * 0"
 
 permissions:
   contents: write
 
 concurrency:
-  group: track3-building-footprints-rebuild
+  group: building-footprints-main
   cancel-in-progress: true
 
 jobs:
