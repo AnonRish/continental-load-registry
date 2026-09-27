@@ -88,9 +88,9 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str) 
     cmd = overture_command() + [
         "download",
         f"--bbox={bbox[0]},{bbox[1]},{bbox[2]},{bbox[3]}",
-        "--format=geojson",
-        "--type=building",
-        "--output", str(tmp_path),
+        "-f", "geojson",
+        "--type", "building",
+        "-o", str(tmp_path),
     ]
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=240)
     if result.returncode != 0:
@@ -234,6 +234,12 @@ def main() -> int:
         "records": results,
         "semantics": "This is a current building-footprint geometry layer. It complements, but does not replace, dated construction chronology and remote-sensing observations.",
     })
+
+    schema_path = ROOT / "data" / "track3_evidence_schema.json"
+    schema = load_json(schema_path)
+    if "INGESTED_POLYGONIZED" not in schema.get("statuses", []):
+        schema["statuses"].append("INGESTED_POLYGONIZED")
+    save_json(schema_path, schema)
 
     physical_path = ROOT / "data" / "physical_verification_layer.json"
     physical = load_json(physical_path)
