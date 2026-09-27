@@ -288,7 +288,7 @@ section.mb-8{scroll-margin-top:118px}
   <div class="registry-signal" data-signal="queue" style="--signal-pct:100%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">93 terminal</div><div class="registry-signal-s">2 site-specific IDs</div></div>
   <div class="registry-signal" data-signal="physical" style="--signal-pct:100%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">359 obs.</div><div class="registry-signal-s">120 optical · 120 TIR · 119 SAR</div></div>
   <div class="registry-signal" data-signal="transformer" style="--signal-pct:1%"><div class="registry-signal-k">Transformers</div><div class="registry-signal-v">3 events</div><div class="registry-signal-s">supply-chain evidence</div></div>
-  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">244 records</div><div class="registry-signal-s">70 sites enriched</div></div>
+  <div class="registry-signal" data-signal="web" style="--signal-pct:75%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">246 records</div><div class="registry-signal-s">71 sites enriched</div></div>
 </div>
 
 
@@ -359,7 +359,7 @@ section.mb-8{scroll-margin-top:118px}
     </div>
     <div class="px-5 sm:px-8 py-7">
       <p class="mono text-3xl sm:text-4xl font-medium" id="statStorage">85.0%</p>
-      <p class="text-sm mt-2" style="color:var(--ink-soft);">Confirmed storage</p>
+      <p class="text-sm mt-2" style="color:var(--ink-soft);">Rows tagged as storage</p>
       <p class="text-xs mt-1" style="color:var(--ink-faint);">Explicit BESS token in project name or technology code</p>
     </div>
     <div class="px-5 sm:px-8 py-7">
@@ -3230,12 +3230,12 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
 /* REGISTRY-UI-V3 controller */
 (()=> {
   const META = {
-    overview:{k:'CONTROL ROOM',t:'See the system, then drill down.',c:'A compact visual entry point to the registry. The full evidence and queue universe stays intact behind the views.',hint:'Overview keeps the homepage calm: visual context + market coverage. Dense tables live in the other views.'},
-    map:{k:'GEOGRAPHY',t:'Map the load universe.',c:'Interactive map, layer accounting, site registry and queue geography. Map display points are not automatically facility coordinates.',hint:'Use the map toggles for different evidence classes; open Sites for the 93-site frontier-AI registry.'},
-    sites:{k:'FRONTIER AI SITES',t:'Browse the 93-site reference universe.',c:'Site identity, connection research, evidence coverage and the complete site-level ledger. Unknown stays unknown.',hint:'Site-level evidence and queue rows are deliberately kept separate so the same MW is not counted twice.'},
-    evidence:{k:'EVIDENCE',t:'Follow the proof chain.',c:'Physical verification, utility/regulatory records, project relationships, enrichment and supplemental evidence — each with its own source class.',hint:'A missing stream is a gap, not a negative finding.'},
-    coverage:{k:'DATA COVERAGE',t:'See what is published — and what is not.',c:'Market completeness, unresolved MISO geography, source context, full queue layers, project records and historical snapshots.',hint:'Coverage status distinguishes captured data from public-source limitations and research still outstanding.'},
-    method:{k:'METHOD',t:'Read the rules behind the registry.',c:'Module 1 radar, methodology, boundary conditions and evidence semantics. This is where assumptions are documented.',hint:'The research surface is designed to expose uncertainty instead of hiding it.'}
+    overview:{k:'CONTROL ROOM',t:'Start with the signal.',c:'One calm landing view for the market picture, physical verification and evidence signal. The dense research record stays one click away.',hint:'Overview is intentionally compact. Map, Sites, Evidence, Coverage and Method open the deeper layers.'},
+    map:{k:'GEOGRAPHY',t:'See where the load sits.',c:'Interactive geography for queue records, project evidence and frontier-AI sites. Display points retain their published precision.',hint:'Use one layer at a time when you need clarity; open a site from the map for its record.'},
+    sites:{k:'FRONTIER AI SITES',t:'Open one site at a time.',c:'The 93-site frontier-AI reference universe, with connection research and evidence coverage kept separate from queue rows.',hint:'Unknown stays unknown; site-level evidence and queue data are never silently merged.'},
+    evidence:{k:'EVIDENCE',t:'Trace claims to sources.',c:'Physical observations, utility/regulatory records, project relationships and public enrichment, with source class preserved.',hint:'A missing stream is a research gap, not a negative finding.'},
+    coverage:{k:'DATA COVERAGE',t:'See what exists.',c:'Market coverage, queue scope, historical snapshots, source limitations and unresolved public-record fields.',hint:'This view is where the registry explains scope without forcing it into the main landing experience.'},
+    method:{k:'METHOD',t:'Know how the record is built.',c:'Evidence semantics, boundary conditions, Module 1 radar and the rules used to separate fact, lead and unknown.',hint:'The methodology explains why a record is retained, rejected, or left unresolved.'}
   };
   const viewForId = {
     dataUniverseChecklist:'coverage',misoUnlocatedWorklist:'coverage',mapLayerInventory:'map',queueUniverse:'sites',
