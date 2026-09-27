@@ -43,6 +43,9 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 3 --workers 3
 
+      - name: Rebuild Track 3 evidence graph
+        run: python build_track3_evidence.py
+
       - name: Validate generated physical artifacts
         run: |
           python - <<'PY'
@@ -60,6 +63,9 @@ jobs:
           assert obs["site_count_target"] == 93
           assert tx["target_count"] == 93
           assert tx["record_count"] == len(tx["records"]) == 0
+          track3 = json.loads((root / "track3" / "site_status.json").read_text(encoding="utf-8"))
+          assert len(track3["records"]) == 93
+          assert track3["summary"]["remote_sensing_derived_observation_count"] == obs["derived_observation_count"]
           print("PASS: physical verification artifact contracts")
           print("derived observations:", obs["derived_observation_count"])
           print("transformer events:", tx["record_count"])
