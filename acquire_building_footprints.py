@@ -207,10 +207,15 @@ def main() -> int:
     if len(sites) != 93:
         raise SystemExit(f"Expected 93 Epoch sites, got {len(sites)}")
 
-    coords = load_json(SITE_COORDS) if SITE_COORDS.exists() else {"records": []}
-    if len(coords.get("records") or []) != 93:
-        coords = {"records": list(ensure_coordinates(sites).values())}
-    coord_map = {str(x["epoch_id"]): x for x in coords.get("records", [])}
+    cached = load_json(SITE_COORDS) if SITE_COORDS.exists() else {"records": []}
+    cached_records = cached.get("records") or []
+    cached_geocoded = sum(1 for x in cached_records if x.get("lat") is not None and x.get("lon") is not None)
+    # Re-run the richer geocoder whenever the cache still contains unresolved sites.
+    # This prevents an early partial cache from permanently blocking polygon acquisition.
+    if len(cached_records) != 93 or cached_geocoded < 93:
+        coord_map = ensure_coordinates(sites)
+    else:
+        coord_map = {str(x["epoch_id"]): x for x in cached_records}
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     date_stamp = datetime.now(timezone.utc).date().isoformat()
