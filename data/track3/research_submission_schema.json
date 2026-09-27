@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "required": [
+    "task_id",
+    "result_status",
+    "site_name",
+    "epoch_id",
+    "target",
+    "sources"
+  ],
+  "result_statuses": [
+    "FOUND",
+    "PUBLIC_LEAD_REVIEW_REQUIRED",
+    "NO_PUBLIC_RECORD",
+    "SOURCE_UNAVAILABLE",
+    "DUPLICATE_OF_EXISTING_SOURCE",
+    "CONFLICT_NEEDS_REVIEW"
+  ],
+  "source_fields": [
+    "source_name",
+    "source_url",
+    "source_kind",
+    "record_id_or_locator",
+    "publication_date",
+    "accessed_date",
+    "site_specificity",
+    "evidence_summary"
+  ],
+  "extraction_fields": [
+    "field_or_domain",
+    "normalized_value",
+    "raw_value",
+    "units",
+    "temporal_scope",
+    "confidence",
+    "notes"
+  ],
+  "rules": [
+    "FOUND requires a source-backed site-specific claim or observation.",
+    "PUBLIC_LEAD_REVIEW_REQUIRED is discovery only and cannot overwrite a canonical field.",
+    "NO_PUBLIC_RECORD must state the search scope and source families checked.",
+    "Do not infer values from geographic proximity, company-wide disclosures, queue MW, utility service capacity, or generic equipment announcements.",
+    "Preserve conflicts; do not select a winner without source-based reconciliation."
+  ]
+}
