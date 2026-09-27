@@ -5,45 +5,6 @@ on:
   schedule:
     - cron: "15 10 * * *"
   workflow_dispatch:
-  # Canonical generated-data refreshes are handled by track3_canonical_refresh.yml.
-  # Keep this workflow schedule/manual only to prevent concurrent writer races.
-
-      - "run_track3_source_adapters.py"
-      - "sync_auxiliary_queue_sources.py"
-      - "build_track3_evidence.py"
-      - "build_entity_resolution.py"
-      - "build_facility_provenance.py"
-      - "build_time_series_verification.py"
-      - "build_track3_verification.py"
-      - "build_public_facility_api.py"
-      - "validate_track3_ledger.py"
-      - "verify_track3.py"
-      - "data/source_manifest.json"
-      - "data/track3_source_stack.json"
-      - "data/track3/public_web_enrichment_2026-09-27.json"
-      - "data/track3/publisher_completeness_matrix_2026-09-27.json"
-      - "data/track3/domain_completeness_matrix_2026-09-27.json"
-      - "data/track3/public_site_enrichment_merged_2026-09-27.json"
-      - "refresh_source_manifest.py"
-      - "data/external/epoch_ai/queue_source_universe.json"
-      - ".github/workflows/track3_automated_pipeline.yml"
-      - "data/physical_verification_layer.json"
-      - "data/track3/physical_site_coordinates.json"
-      - "data/track3/remote_sensing_observations.json"
-      - "build_remote_sensing_target_status.py"
-      - "data/track3/strict_discovery_public_evidence.json"
-      - "data/track3/strict_discovery_physical_targets.json"
-      - "data/track3/global_compute_supply_chain.json"
-      - "data/track3/public_global_source_observations.json"
-      - "data/track3/track3_completeness_matrix.json"
-      - "data/track3/certificate_model.json"
-      - "track3_certificate.py"
-      - "TRACK3_COMPLETE_COVERAGE.md"
-      - "global-accounting.html"
-      - "acquire_strict_discovery_physical.py"
-      - "data/track3/transformer_supply_chain_events.json"
-      - "data/track3/building_footprints_index.json"
-
 permissions:
   contents: write
   issues: write
