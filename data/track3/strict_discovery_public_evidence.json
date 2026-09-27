@@ -47,5 +47,124 @@
     "operational_status",
     "compute_end_use"
   ],
-  "searched_on": "2026-09-27"
+  "searched_on": "2026-09-27",
+  "cases": [
+    {
+      "case_id": "AMB-AESO-P3066",
+      "queue_id": "P3066",
+      "rto": "AESO",
+      "observations": [
+        {
+          "source": "Interconnection.fyi AESO queue",
+          "url": "https://www.interconnection.fyi/project/aeso-p3066",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3066 is an active 1,864 MW Load request in Clearwater County with POI 38-Caroline; developer is not exposed.",
+          "evidence_tier": "SECONDARY_QUEUE_MIRROR"
+        },
+        {
+          "source": "GridLens AESO data-load table",
+          "url": "https://gridlens.ca/data-centres",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3066 appears as a 1,864 MW Data Load in the Caroline planning area at Stage 2 / assessment, with ISD under review.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens Caroline 378S",
+          "url": "https://gridlens.ca/substation/378S",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "The Caroline planning area has 1,864 DTS MW across 2 projects and lists P3066 as Data Load; substation/POI context is not a facility coordinate.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        }
+      ],
+      "current_disposition": "OPEN_PHYSICAL_AND_ENTITY_RESOLUTION",
+      "do_not_infer": [
+        "Clearwater County is not a parcel",
+        "POI 38-Caroline is not the facility address",
+        "1,864 MW is not measured electricity or IT load",
+        "secondary data-center classification is not developer/owner proof"
+      ]
+    },
+    {
+      "case_id": "AMB-AESO-P3198",
+      "queue_id": "P3198",
+      "rto": "AESO",
+      "observations": [
+        {
+          "source": "GridLens AESO connection queue",
+          "url": "https://gridlens.ca/queue",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3198 is listed as an 1,800 MW Data Load in Fort Saskatchewan, Stage 1 / assessment, ISD under review.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens Opal 439S",
+          "url": "https://gridlens.ca/substation/439S",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3198 appears in the Fort Saskatchewan planning area alongside the 439S substation context; this does not establish a parcel.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens data-centre activity",
+          "url": "https://gridlens.ca/data-centres",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3198 is one of 45 current Alberta data-load projects and was detected as newly listed in August 2026.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        }
+      ],
+      "current_disposition": "OPEN_PHYSICAL_AND_ENTITY_RESOLUTION",
+      "do_not_infer": [
+        "Fort Saskatchewan planning area is not a parcel",
+        "substation association is not physical-site identity",
+        "Data Load is not measured electricity",
+        "no developer name is not evidence of concealment"
+      ]
+    },
+    {
+      "case_id": "AMB-AESO-P2958",
+      "queue_id": "P2958",
+      "rto": "AESO",
+      "observations": [
+        {
+          "source": "AESO Connection Assessment",
+          "url": "https://www.aeso.ca/assets/NIDs-LARA/Appendix-A-Connection-Assessment-Ft-Sask-Path2Zero.pdf",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P2958 is a proposed Fort Saskatchewan load facility request associated with the Ft. Sask. Path2Zero materials; the project is explicitly modeled as Industrial in the AESO study scope.",
+          "evidence_tier": "OFFICIAL_AESO_PRIMARY"
+        }
+      ],
+      "current_disposition": "CONTROL_INDUSTRIAL_LOAD",
+      "do_not_infer": [
+        "industrial load does not imply compute",
+        "connection-study load does not equal measured operating demand"
+      ]
+    },
+    {
+      "case_id": "AMB-AESO-P2614",
+      "queue_id": "P2614",
+      "rto": "AESO",
+      "observations": [
+        {
+          "source": "AESO P2614 Connection Assessment",
+          "url": "https://www.aeso.ca/assets/NIDs-LARA/Appendix-A-Connection-Assessment-Ft-Sask-Path2Zero.pdf",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "Dow Chemical Canada ULC submitted the request; requested new-facility DTS capacity is 231 MW and the study's project component is identified as Industrial. The document also describes existing Dow Fort Saskatchewan load and waste-heat generation context.",
+          "evidence_tier": "OFFICIAL_AESO_PRIMARY"
+        },
+        {
+          "source": "GridLens 166S",
+          "url": "https://gridlens.ca/substation/166S",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P2614 is listed as a 231 MW Industrial Load in Fort Saskatchewan, Stage 4 / AUC Applications, with ISD 2027-09-01.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        }
+      ],
+      "current_disposition": "CONTROL_INDUSTRIAL_LOAD",
+      "do_not_infer": [
+        "project-study capacity is not measured operating demand",
+        "industrial classification does not imply compute",
+        "transmission modifications are not evidence of current load"
+      ]
+    }
+  ],
+  "semantics": "Source observations are claim-scoped. Secondary trackers remain secondary and do not overwrite publisher-origin fields. Official AESO study documents establish project-study facts, not independent proof of current operation."
 }
