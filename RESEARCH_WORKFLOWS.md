@@ -8,6 +8,12 @@ The registry now treats a small number of end-to-end ambiguous cases as the prim
 
 The pilot population is the Genuinely Ambiguous / Unclassified Large Load tier. Epoch sites are retained as an independent reference/cross-check rather than as the primary pilot universe.
 
+## Candidate admission gate
+
+Do not begin a load-discovery case merely because a record is large, unnamed, or missing a developer. First retain source evidence that the project type is Load, New load facility, Increase load, or an equivalent load-side category. Generation, Surplus, Transmission, Replacement, and Upgrade records remain outside the strict discovery candidate set unless their specific load component is separately established.
+
+The 141-row Genuinely Ambiguous / Unclassified Large Load universe is therefore a **broad research pool**, not a count of 141 confirmed discoveries.
+
 ## Closed-case workflow
 
 1. Select one candidate from the declared ambiguous-case population using the published selection rule.
