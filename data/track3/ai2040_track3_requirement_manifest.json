@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "AI 2040 Plan A Track 3 requirement-to-artifact manifest",
+  "repository_status": "TRACK_3_RELEVANT_RESEARCH_INFRASTRUCTURE_NOT_FORMAL_AI_2040_IMPLEMENTATION",
+  "upstream_sources": [
+    {
+      "id": "AI2040-GET-INVOLVED",
+      "url": "https://ai-2040.com/supplements/verification-plan/get-involved",
+      "role": "Four-track framework and verification skill/open-problem descriptions."
+    },
+    {
+      "id": "AI2040-COVERT-PROJECTS",
+      "url": "https://ai-2040.com/print/covert-ai-projects",
+      "role": "Plan A covert-project accounting, physical-location tracing, incentives/aerial imagery, audits, sampling, inspection, serial continuity and residual L."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "T3-A",
+      "name": "Pre-deal compute production accounting",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/global_compute_supply_chain.json",
+      "status": "PARTIAL",
+      "proof": "Aggregate component/production-context snapshots retained",
+      "missing": "Exhaustive vendor production declarations."
+    },
+    {
+      "id": "T3-B",
+      "name": "Sales and resales traced to physical end use",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/global_compute_supply_chain.json",
+      "status": "PARTIAL",
+      "proof": "Sales/user/entity/site evidence layers and research packets",
+      "missing": "Global transaction and resale ledger."
+    },
+    {
+      "id": "T3-C",
+      "name": "Above-threshold owner audit",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/audit_population_protocol.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Parameterized threshold population schema",
+      "missing": "Externally fixed threshold and audit population."
+    },
+    {
+      "id": "T3-D",
+      "name": "Random small-owner sampling",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/sampling_protocol.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Deterministic frame/seed/sample schema",
+      "missing": "Closed tail population and actual sample."
+    },
+    {
+      "id": "T3-E",
+      "name": "Physical inspection",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/inspection_protocol.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Inspection fields and chain of custody",
+      "missing": "Authorized inspections."
+    },
+    {
+      "id": "T3-F",
+      "name": "Serial-number continuity",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/serial_continuity_protocol.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Lifecycle/integrity rules",
+      "missing": "Global serial ledger."
+    },
+    {
+      "id": "T3-G",
+      "name": "Decommissioning/recycling verification",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/decommissioning_protocol.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Verification-state protocol",
+      "missing": "Compute-specific verified destruction/recycling events."
+    },
+    {
+      "id": "T3-H",
+      "name": "Residual untraced compute pool L",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/untraced_compute_pool.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Residual accounting schema",
+      "missing": "Closed transaction inputs."
+    },
+    {
+      "id": "T3-I",
+      "name": "Locate remaining unaccounted compute",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/physical_verification_layer.json",
+      "status": "PARTIAL",
+      "proof": "Optical/TIR/SAR observations and 93-site targeting",
+      "missing": "Global covert-site detection and universal absence bound."
+    },
+    {
+      "id": "T3-J",
+      "name": "Incentive / amnesty / buyback disclosure evidence",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "data/track3/disclosure_protocol.json",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Event types and verification state",
+      "missing": "Verified real-world program events."
+    },
+    {
+      "id": "T3-K",
+      "name": "Certificate bounding covert compute",
+      "upstream_source_ids": [
+        "AI2040-COVERT-PROJECTS"
+      ],
+      "artifact": "track3_certificate.py",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "proof": "Failure-aware upper-bound model",
+      "missing": "Closed population, randomized sample, verified audit outcomes."
+    },
+    {
+      "id": "T3-L",
+      "name": "Energy/grid and physical public evidence",
+      "upstream_source_ids": [
+        "AI2040-GET-INVOLVED"
+      ],
+      "artifact": "track3-complete-coverage.html",
+      "status": "PARTIAL",
+      "proof": "Large-load, grid, physical and infrastructure evidence layers",
+      "missing": "Electricity-draw telemetry is distinct from queue/interconnection records."
+    }
+  ],
+  "guardrails": [
+    "A queue/interconnection request is not metered electricity draw.",
+    "Metered electricity draw is not direct proof of AI compute.",
+    "Aggregate vendor/customer snapshots are not transaction-level serial continuity.",
+    "A public data-center identity is not evidence of covert status.",
+    "An empty public record is not evidence of absence."
+  ]
+}
