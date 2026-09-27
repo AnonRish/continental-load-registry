@@ -4,14 +4,14 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 236,
+    "record_count": 239,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 210,
+      "PUBLIC_SOURCE_CAPTURED": 213,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "energy_companies": 58,
+      "energy_companies": 59,
       "project": 34,
       "investment": 24,
       "owner": 10,
@@ -19,7 +19,7 @@
       "construction_companies": 25,
       "cooling": 11,
       "chip_quantities": 5,
-      "operational_status": 7,
+      "operational_status": 9,
       "address": 6,
       "service_or_contract": 7,
       "users": 3,
@@ -3850,7 +3850,55 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Microsoft's Mount Pleasant update records Kiewit as the general contractor for an earlier phase/site-preparation period; retained as a historical relationship rather than a current exclusivity claim.",
       "evidence_id": "EVID-PWEB-batch5-microsoft-fairwater-wiscon-cons-6"
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-0788d9aeb3114553",
+      "field": "energy_companies",
+      "value": "Alabama Power Company",
+      "relationship": "publicly identified energy partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/wp-content/uploads/2025/09/Meta-Montgomery-Data-Center.pdf"
+      ],
+      "publication_date": "2025-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's Montgomery fact sheet says it is working with local partners including Alabama Power Company to meet its 100% clean and renewable energy goal.",
+      "evidence_id": "EVID-PWEB-batch6-meta-montgomery-ener-0"
+    },
+    {
+      "site_name": "Google Fort Wayne",
+      "epoch_id": "EPOCH-f340a33a5ef18d4f",
+      "field": "operational_status",
+      "value": "Operational",
+      "relationship": "official current operating status",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/locations/indiana/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Google's Indiana location page describes Fort Wayne as an operational data center.",
+      "evidence_id": "EVID-PWEB-batch6-google-fort-wayne-oper-1"
+    },
+    {
+      "site_name": "Google Cedar Rapids",
+      "epoch_id": "EPOCH-2d6a8403fde79650",
+      "field": "operational_status",
+      "value": "In development",
+      "relationship": "official current development status",
+      "source": "Google Data Centers",
+      "source_urls": [
+        "https://www.datacenters.google/locations/iowa/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Google's Iowa location page describes the Cedar Rapids facility as a new data center campus announced in 2025 and still under development.",
+      "evidence_id": "EVID-PWEB-batch6-google-cedar-rapids-oper-2"
     }
   ],
-  "record_count": 236
+  "record_count": 239
 }
