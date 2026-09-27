@@ -2,6 +2,12 @@
 
 Updated: 2026-09-27
 
+## Scope boundary for Track 3 interpretation
+
+The main large-load registry is a North American public-evidence system. Its strongest direct use is the Phase 1 question of how much publicly evidenced compute/load exists and who is associated with it; it should not be presented as the bilateral U.S.–China component of a complete international verification regime.
+
+The registry also does not claim to discover covert facilities. Its evidence comes from public records and other publicly accessible signals. A covert project would be expected to minimize precisely those signals. The honest capability claim is therefore: **raise the cost of hiding and map the ambiguous middle**, while preserving UNKNOWN and other missingness states rather than turning them into absence claims.
+
 ## What “100% captured” means here
 
 The repository already contains **100% of the current Epoch AI AI-data-centers directory: 93 of 93 records**, accessed on 2026-09-27 from Epoch's current directory. Epoch's directory itself is not a global census: its September 2026 research update reported an estimated 44% of global AI compute coverage when its explorer had 86 sites, with materially lower coverage for China.

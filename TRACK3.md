@@ -2,7 +2,13 @@
 
 This layer turns the continental registry from a queue table into an auditable evidence graph for whether material AI compute can be accounted for through public physical, electrical, hardware, and independent evidence.
 
-## Evidence states
+### Scope and limits
+
+The current registry is a **North America public-evidence layer**, not an international U.S.–China verification system. It maps most directly to the Phase 1 task of establishing how much publicly evidenced compute/load exists and who is associated with it. Extending that work to bilateral U.S.–China visibility would require additional country-specific public sources, legal/access pathways, and independent verification mechanisms beyond this registry.
+
+The observatory should also not be described as a detector of secret facilities. Its observations are built from public signals: queue and connection records, utility/service records, permits, regulatory documents, operator disclosures, imagery and other publicly accessible evidence. A genuinely covert project would have an incentive to avoid those signals. The defensible claim is that the registry can **raise the cost of hiding and map the ambiguous middle**, while keeping uncertainty explicit.
+
+# Evidence states
 
 **PENDING_RESEARCH**, **SOURCE_AVAILABLE_NOT_INGESTED**, and **NOT_INGESTED** never mean that a facility or compute stockpile is absent.
 
