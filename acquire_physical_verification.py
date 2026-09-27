@@ -782,6 +782,20 @@ def main() -> int:
         str(x.get("observed_on")),
         str(x.get("scene_id")),
     ))
+    status_counts: dict[str, int] = {}
+    modality_status: dict[str, dict[str, int]] = {}
+    samples: dict[str, list[str]] = {}
+    for row in observations:
+        status = str(row.get("status") or "UNKNOWN_STATUS")
+        modality = str(row.get("modality") or "unknown")
+        status_counts[status] = status_counts.get(status, 0) + 1
+        modality_status.setdefault(modality, {})[status] = modality_status.setdefault(modality, {}).get(status, 0) + 1
+        if row.get("error") and len(samples.setdefault(status, [])) < 3:
+            samples[status].append(str(row.get("error")))
+    print("physical status counts:", json.dumps(status_counts, sort_keys=True), flush=True)
+    print("physical modality/status:", json.dumps(modality_status, sort_keys=True), flush=True)
+    if samples:
+        print("physical error samples:", json.dumps(samples, sort_keys=True), flush=True)
     current_keys = {
         (str(x.get("epoch_id")), str(x.get("modality")), str(x.get("scene_id")))
         for x in observations
