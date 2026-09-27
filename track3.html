@@ -137,6 +137,13 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Facility</th><th>Raw source</th><th>Publication date</th><th>Capture</th><th>Exact fields</th><th>Corroboration</th><th>Conflict</th><th>Last verified</th><th>Audit</th><th>Snapshot</th></tr></thead><tbody id="provRows"></tbody></table></div>
 </section>
 <section class="section panel" style="padding:16px">
+<h2>Automated pipeline</h2>
+<p id="autoMeta" class="soft small">Loading…</p>
+<div class="tools" style="margin-top:10px"><a class="btn" href="data/automation/data_quality_report.json">Data-quality report</a><a class="btn" href="data/automation/source_health.json">Source health</a><a class="btn" href="data/automation/adapter_run_report.json">Adapter runs</a><a class="btn" href="data/automation/queue_release_diff.json">Queue release diff</a><a class="btn" href="data/automation/duplicate_report.json">Duplicate report</a><a class="btn" href="data/automation/geographic_match_report.json">Geographic report</a><a class="btn" href="TRACK3_AUTOMATION.md">Automation procedure</a></div>
+<div id="autoCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table><thead><tr><th>Control</th><th>Status</th><th>Count / state</th></tr></thead><tbody id="autoRows"></tbody></table></div>
+</section>
+<section class="section panel" style="padding:16px">
 <h2>Track 3 detection &amp; verification</h2>
 <p id="detMeta" class="soft small">Loading…</p>
 <div class="tools" style="margin-top:10px">
@@ -398,7 +405,14 @@ function renderPhysical(){
  (D.cooling||[]).forEach(o=>rows.push({site:o.site_name,type:'Cooling',date:o.observed_on,value:fmt(o.capacity)+' '+(o.capacity_units||''),detail:(o.equipment_type||'')+' · '+(o.manufacturer||'')+' · '+(o.model||'')+' · '+fmt(o.units)+' units',source:o.source?.source_name,link:o.source?.source_url}));
  const ps=D.physical?.summary||{};document.getElementById('observationsSummary').innerHTML='<div class="domain-card"><h3>'+esc((D.power||[]).length)+'</h3><p>site-level annual power observations</p></div><div class="domain-card"><h3>'+esc((D.cooling||[]).length)+'</h3><p>site-level cooling observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_tir_numeric_observations||0)+'</h3><p>Landsat TIR numeric observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_sar_numeric_observations||0)+'</h3><p>Sentinel-1 SAR observations</p></div><div class="domain-card"><h3>'+esc(ps.raw_optical_scenes_ingested||0)+'</h3><p>Sentinel-2 optical scene windows</p></div><div class="domain-card"><h3>'+esc(ps.transformer_event_records||0)+'</h3><p>source-backed transformer events</p></div>';
  document.getElementById('physicalRows').innerHTML=rows.map(x=>'<tr><td>'+esc(x.site)+'</td><td>'+esc(x.type)+'</td><td>'+esc(x.date||'—')+'</td><td class="mono">'+esc(x.value)+'</td><td>'+esc(x.detail||'—')+'</td><td>'+(x.link?'<a target="_blank" rel="noopener" href="'+esc(x.link)+'">'+esc(x.source||'source')+'</a>':'—')+'</td></tr>').join('');
-}function renderDetectionVerification(){
+}function renderAutomation(){
+ const q=D.automation||{},s=q.summary||{};
+ document.getElementById('autoMeta').textContent=(s.source_count||0)+' cataloged sources · '+(s.automated_adapter_sources||0)+' automated adapters · '+(s.healthcheck_or_snapshot_only_sources||0)+' healthcheck/snapshot-only sources · '+(s.remote_source_failures||0)+' remote failures.';
+ document.getElementById('autoCards').innerHTML=[[(s.source_count||0),'cataloged sources','unified source control plane'],[(s.automated_adapter_sources||0),'automated adapters','live parser/sync workflows'],[(s.healthcheck_or_snapshot_only_sources||0),'non-ingest sources','explicitly not called ingested'],[(s.queue_added||0),'queue additions','last release diff'],[(s.queue_removed||0),'queue removals','last release diff'],[(s.duplicate_id_groups||0),'duplicate ID groups','data-quality findings'],[(s.remote_source_failures||0),'source failures','automated alert threshold']].map(x=>'<div class="domain-card"><h3>'+esc(fmt(x[0]))+'</h3><p>'+esc(x[1])+'<br><span class="small soft">'+esc(x[2])+'</span></p></div>').join('');
+ const rows=[['Source change detection','ENABLED','ETag / Last-Modified / bounded sample fingerprint'],['Queue release diff','ENABLED',(s.queue_changed||0)+' changed records'],['Duplicate detection',((s.duplicate_id_groups||0)||(s.exact_duplicate_groups||0))?'ATTENTION':'CLEAN',(s.duplicate_id_groups||0)+' ID groups · '+(s.exact_duplicate_groups||0)+' exact groups'],['Geographic matching','ENABLED',(s.queue_current_records||0)+' current queue records'],['Evidence extraction','ENABLED_EXISTING_BUILDERS',(s.evidence_records||0)+' evidence records'],['Entity resolution','ENABLED_EXISTING_PIPELINE',(s.entity_count||0)+' entities · '+(s.relationship_edges||0)+' edges'],['Failed-source alerts','ENABLED',(s.remote_source_failures||0)+' remote failures']];
+ document.getElementById('autoRows').innerHTML=rows.map(x=>'<tr><td><strong>'+esc(x[0])+'</strong></td><td>'+esc(x[1])+'</td><td class="small">'+esc(x[2])+'</td></tr>').join('');
+}
+function renderDetectionVerification(){
  const d=D.detection||{},v=D.verification_results||{},a=D.absence||{},s=d.summary||{},sc=v.summary?.status_counts||{};
  document.getElementById('detMeta').textContent=s.tracked_facilities+' tracked facilities · '+s.ai_compute_candidates+' AI/compute surveillance candidates outside Epoch · '+s.non_ai_industrial_control_group+' non-AI industrial controls · '+s.unknown_large_compute+' unknown large-compute/load candidates · '+s.documented_absence_search_facilities+' facilities with explicit documented absence-search records.';
  document.getElementById('detCards').innerHTML=[
@@ -512,7 +526,7 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();
+ renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();
 }
 document.getElementById('search').addEventListener('input',renderSites);document.getElementById('siteState').addEventListener('change',renderSites);document.getElementById('siteSort').addEventListener('change',renderSites);
 document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
