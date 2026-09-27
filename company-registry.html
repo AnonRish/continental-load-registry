@@ -46,6 +46,17 @@
 <p>Epoch's current explorer provides interactive maps, ranked directories, time controls, per-site specifications, hardware, cooling, satellite exploration and buildout history. This implementation uses that interaction model as a benchmark, then adds company identity, source-universe provenance, portfolio comparison, customizable tables and a direct Google Earth handoff. Epoch currently covers 93 frontier-AI sites; the company layer is built to span the broader operator universe. citeturn433726search0turn433726search1turn433726search2</p>
 </section>
 
+<section class="panel">
+<div class="sectionhead"><div><h2>Choose a company portfolio</h2><p>All currently tracked operator records are selectable; filters narrow the same universe.</p></div><span class="chip good">225-operator discovery universe</span></div>
+<div class="controls" style="margin-top:10px">
+<input id="operatorSearch" placeholder="Search company or operator">
+<select id="operatorSelect"><option value="">Loading operators…</option></select>
+<select id="quickCompany"><option value="">Priority company…</option><option>Microsoft</option><option>Amazon Web Services</option><option>Google</option><option>Meta</option><option>NVIDIA</option><option>Oracle</option><option>OpenAI</option><option>CoreWeave</option><option>xAI</option><option>Alibaba Cloud</option></select>
+<select id="operatorMin"><option value="">Any facility count</option><option value="1">1+ facilities</option><option value="3">3+ facilities</option><option value="10">10+ facilities</option><option value="25">25+ facilities</option></select>
+<select id="operatorCountries"><option value="">Any country reach</option><option value="5">5+ countries</option><option value="10">10+ countries</option><option value="20">20+ countries</option></select>
+</div>
+</section>
+
 <div class="company-head">
 <div class="logo"><span id="logoFallback">?</span><img id="logoImg" alt="" hidden></div>
 <div><div class="eyebrow">Selected company</div><div class="company-title" id="companyName">Loading…</div><div class="company-meta" id="companyMeta"></div></div>
@@ -76,7 +87,7 @@
 
 <section class="panel view" id="view-timeline"><div class="sectionhead"><div><h2>Buildout timeline</h2><p>Facility start-year distribution plus source-reported status. Epoch buildout observations are shown in facility dossiers when a site matches.</p></div><div class="toolbar"><select id="yearCut" class="btn"><option value="">All years</option><option value="2025">2025 and earlier</option><option value="2026">2026 and earlier</option><option value="2027">2027 and earlier</option><option value="2028">2028 and earlier</option><option value="2030">2030 and earlier</option></select></div></div><div class="timeline" id="timelineRows"></div></section>
 
-<section class="panel view" id="view-hardware"><div class="sectionhead"><div><h2>Hardware, power and workload</h2><p>Source fields plus Epoch enrichment when a facility can be matched.</p></div></div><div class="dashboard"><div class="chartbox"><h3>Energy mix</h3><div id="energyChart"></div></div><div class="chartbox"><h3>AI workload mix</h3><div id="workloadChart"></div></div></div><div class="tablewrap" style="margin-top:10px"><table><thead><tr><th>Facility</th><th>MW</th><th>Energy</th><th>AI workload</th><th>Readiness</th><th>Hardware / Epoch chips</th></tr></thead><tbody id="hardwareRows"></tbody></table></div></section>
+<section class="panel view" id="view-hardware"><div class="sectionhead"><div><h2>Hardware, power and workload</h2><p>Source fields plus Epoch enrichment when a facility can be matched.</p></div></div><div class="dashboard"><div class="chartbox"><h3>Energy mix</h3><div id="energyChart"></div></div><div class="chartbox"><h3>AI workload mix</h3><div id="workloadChart"></div></div></div><div class="tablewrap" style="margin-top:10px"><table><thead><tr><th>Facility</th><th>MW</th><th>Energy</th><th>AI workload</th><th>Readiness</th><th>Hardware / Epoch chips</th><th>Cooling / Epoch</th></tr></thead><tbody id="hardwareRows"></tbody></table></div></section>
 
 <section class="panel view" id="view-sources"><div class="sectionhead"><div><h2>Source ledger</h2><p>Every loaded facility keeps its source URL array; source absence is not replaced with a placeholder.</p></div><button class="btn" id="copySources">Copy source list</button></div><div class="source-grid" id="sourceGrid" style="margin-top:10px"></div></section>
 
@@ -113,6 +124,13 @@ const statusLabel=x=>String(x||"").replace(/\\s+/g," ").trim()||"Unknown";
 const logoUrl=n=>{const s=opSlug({slug:n}),ic=logoMap[s]||logoMap[slugify(String(n).split("/")[0])]||"database";return "https://cdn.simpleicons.org/"+ic};
 async function json(url){const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error(String(r.status));return r.json()}
 
+function populateOperators(){
+ const q=norm(document.getElementById("operatorSearch").value),min=Number(document.getElementById("operatorMin").value||0),countries=Number(document.getElementById("operatorCountries").value||0);
+ const list=OPS.filter(o=>{const n=norm(opName(o));return (!q||n.includes(q)||norm(opSlug(o)).includes(q))&&opCount(o)>=min&&opCountries(o)>=countries}).sort((a,b)=>opName(a).localeCompare(opName(b)));
+ const sel=document.getElementById("operatorSelect"),want=opSlug(SELECTED||{});
+ sel.innerHTML="<option value=''>Select a company…</option>"+list.map(o=>"<option value='"+esc(opSlug(o))+"'>"+esc(opName(o))+" · "+opCount(o)+" facilities</option>").join("");
+ if(list.some(o=>opSlug(o)===want))sel.value=want;
+}
 async function loadOperators(){
  try{
    const j=await json("data/company_operator_universe_2026-09-27.json");
@@ -168,7 +186,7 @@ function renderFacilities(){
  document.querySelectorAll("#facilityRows tr[data-open]").forEach(tr=>tr.onclick=e=>{if(e.target.closest("a"))return;openFacility(rows[Number(tr.dataset.open)])});document.getElementById("facilityEmpty").hidden=rows.length>0;
 }
 function renderTimeline(){const m=groupCount(ALL,x=>x.start_year||"Unknown"),es=Object.entries(m).sort((a,b)=>String(a[0]).localeCompare(String(b[0]))),mx=Math.max(1,...es.map(x=>x[1]));document.getElementById("timelineRows").innerHTML=es.map(([y,n])=>"<div class='timeline-row'><div class='mono'>"+esc(y)+"</div><div class='yearbar'><i style='width:"+((n/mx)*100).toFixed(1)+"%'></i></div><div class='mono' style='text-align:right'>"+n+" sites</div></div>").join("")||"<div class='empty'>No start-year fields published.</div>"}
-function renderHardware(){document.getElementById("energyChart").innerHTML=bars(groupCount(ALL,x=>x.energy_type),"");document.getElementById("workloadChart").innerHTML=bars(groupCount(ALL,x=>x.ai_focus),"");document.getElementById("hardwareRows").innerHTML=ALL.slice().sort((a,b)=>(cap(b)||-1)-(cap(a)||-1)).map(x=>{const ep=epochMatch(x),n=epochNorm(ep),chips=n.latest_chip_quantities||n.latest_chips||[];return "<tr><td>"+esc(x.title||x.name||x.id)+"</td><td>"+(cap(x)==null?"—":cap(x)+" MW")+"</td><td>"+esc(x.energy_type||"—")+"</td><td>"+esc(x.ai_focus||"—")+"</td><td>"+esc(x.readiness||"—")+"</td><td>"+esc(Array.isArray(x.hardware)?x.hardware.join(", "):(x.hardware||chips.map(c=>c.chip_type+(c.number_units?" × "+Number(c.number_units).toLocaleString():"")).join(", ")||"—"))+"</td></tr>"}).join("")||"<tr><td colspan='6'><div class='empty'>No rows.</div></td></tr>"}
+function renderHardware(){document.getElementById("energyChart").innerHTML=bars(groupCount(ALL,x=>x.energy_type),"");document.getElementById("workloadChart").innerHTML=bars(groupCount(ALL,x=>x.ai_focus),"");document.getElementById("hardwareRows").innerHTML=ALL.slice().sort((a,b)=>(cap(b)||-1)-(cap(a)||-1)).map(x=>{const ep=epochMatch(x),n=epochNorm(ep),chips=n.latest_chip_quantities||n.latest_chips||[];return "<tr><td>"+esc(x.title||x.name||x.id)+"</td><td>"+(cap(x)==null?"—":cap(x)+" MW")+"</td><td>"+esc(x.energy_type||"—")+"</td><td>"+esc(x.ai_focus||"—")+"</td><td>"+esc(x.readiness||"—")+"</td><td>"+esc(Array.isArray(x.hardware)?x.hardware.join(", "):(x.hardware||chips.map(c=>c.chip_type+(c.number_units?" × "+Number(c.number_units).toLocaleString():"")).join(", ")||"—"))+"</td><td>"+esc(n.latest_cooling||n.cooling||"—")+"</td></tr>"}).join("")||"<tr><td colspan='6'><div class='empty'>No rows.</div></td></tr>"}
 function renderSources(){const map=new Map();for(const x of ALL)for(const u of Array.isArray(x.sources)?x.sources:[]){if(!map.has(u))map.set(u,new Set());map.get(u).add(x.title||x.name||x.id||"Unnamed")}document.getElementById("sourceGrid").innerHTML=[...map.entries()].sort((a,b)=>b[1].size-a[1].size).slice(0,100).map(([u,s])=>"<div class='source'><b>"+s.size+" facility"+(s.size===1?"":"ies")+"</b><a href='"+esc(u)+"' target='_blank' rel='noopener'>"+esc(u)+"</a><span>"+esc([...s].slice(0,3).join(" · ")+(s.size>3?" · …":""))+"</span></div>").join("")||"<div class='empty'>No source URLs.</div>"}
 function renderCompare(){const s=document.getElementById("compareCompany");s.innerHTML=OPS.filter(o=>opSlug(o)!==opSlug(SELECTED)).map(o=>"<option value='"+esc(opSlug(o))+"'>"+esc(opName(o))+"</option>").join("");updateCompare()}
 async function updateCompare(){const o=OPS.find(x=>opSlug(x)===document.getElementById("compareCompany").value);if(!o)return;const a=ALL,b=await portfolio(o);const metrics=[["Facilities",a.length,b.length],["Capacity MW",a.reduce((z,x)=>z+(cap(x)||0),0),b.reduce((z,x)=>z+(cap(x)||0),0)],["Operational",a.filter(x=>status(x.status)==="operational").length,b.filter(x=>status(x.status)==="operational").length],["Countries",new Set(a.map(x=>x.country).filter(Boolean)).size,new Set(b.map(x=>x.country).filter(Boolean)).size]];document.getElementById("compareView").innerHTML=[{n:opName(SELECTED),v:metrics.map(x=>x[1])},{n:opName(o),v:metrics.map(x=>x[2])}].map(c=>"<div class='compare-card'><div class='eyebrow'>Portfolio</div><h3>"+esc(c.n)+"</h3>"+metrics.map((m,i)=>"<div style='display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:10px'><span>"+esc(m[0])+"</span><b class='mono'>"+Number(c.v[i]).toLocaleString(undefined,{maximumFractionDigits:0})+"</b></div>").join("")+"</div>").join("")}
@@ -192,7 +210,7 @@ function openFacility(x){const ep=epochMatch(x),n=epochNorm(ep);document.getElem
 }
 function setView(v){document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===v));document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id==="view-"+v));if(v==="map")setTimeout(()=>{renderMap();MAP.invalidateSize()},0)}
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>setView(t.dataset.view));document.getElementById("goFacilities").onclick=()=>setView("facilities");
-document.getElementById("downloadBtn").onclick=()=>exportCSV();document.getElementById("downloadSvgBtn").onclick=chartSvg();
+document.getElementById("downloadBtn").onclick=()=>exportCSV();document.getElementById("downloadSvgBtn").onclick=chartSvg;
 document.getElementById("shareBtn").onclick=async()=>{if(navigator.clipboard)await navigator.clipboard.writeText(location.href);document.getElementById("shareBtn").textContent="Copied";setTimeout(()=>document.getElementById("shareBtn").textContent="Share",1000)};
 document.getElementById("fitMap").onclick=()=>renderMap();document.getElementById("mapColor").onchange=()=>renderMap();document.getElementById("streetMode").onclick=()=>{initMap();if(MAP.hasLayer(SAT))MAP.removeLayer(SAT);if(!MAP.hasLayer(STREET))STREET.addTo(MAP)};document.getElementById("satMode").onclick=()=>{initMap();if(MAP.hasLayer(STREET))MAP.removeLayer(STREET);if(!MAP.hasLayer(SAT))SAT.addTo(MAP)};
 document.getElementById("earthAll").onclick=()=>{const x=ALL.find(coords);if(x)window.open("https://earth.google.com/web/search/"+Number(x.lat)+","+Number(x.lng),"_blank","noopener")};
@@ -204,7 +222,10 @@ document.querySelectorAll("#view-custom input[data-col]").forEach(cb=>cb.onchang
 document.getElementById("overviewMetric").onchange=()=>renderOverview();document.getElementById("dClose").onclick=()=>document.getElementById("facilityModal").classList.remove("open");document.getElementById("facilityModal").onclick=e=>{if(e.target.id==="facilityModal")e.currentTarget.classList.remove("open")};
 document.getElementById("theme").onclick=()=>{const d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;localStorage.setItem("clr-theme",n)};const saved=localStorage.getItem("clr-theme");if(saved)document.documentElement.dataset.theme=saved;
 
-(async()=>{try{const mode=await loadOperators();await loadEpoch();document.getElementById("sourceBtn").dataset.mode=mode;document.getElementById("sourceHealth")?.remove();if(OPS.length)await selectCompany(chooseDefault())}catch(e){document.getElementById("companyName").textContent="Operator source unavailable";document.getElementById("companyMeta").innerHTML="<span class='chip warn'>No structured company feed loaded</span>"}})();
+["operatorSearch","operatorMin","operatorCountries"].forEach(id=>document.getElementById(id).addEventListener(id==="operatorSearch"?"input":"change",populateOperators));
+document.getElementById("operatorSelect").onchange=async()=>{const o=OPS.find(x=>opSlug(x)===document.getElementById("operatorSelect").value);if(o)await selectCompany(o)};
+document.getElementById("quickCompany").onchange=async()=>{const n=document.getElementById("quickCompany").value;const o=OPS.find(x=>opName(x).toLowerCase()===String(n).toLowerCase());if(o){await selectCompany(o);document.getElementById("operatorSelect").value=opSlug(o);}document.getElementById("quickCompany").value=""};
+(async()=>{try{const mode=await loadOperators();populateOperators();await loadEpoch();document.getElementById("sourceBtn").dataset.mode=mode;document.getElementById("sourceHealth")?.remove();if(OPS.length)await selectCompany(chooseDefault())}catch(e){document.getElementById("companyName").textContent="Operator source unavailable";document.getElementById("companyMeta").innerHTML="<span class='chip warn'>No structured company feed loaded</span>"}})();
 </script>
 </body>
 </html>
