@@ -10,7 +10,7 @@ Its North American registry currently covers nine organized markets. A separate 
 
 The repository has a reproducible grid-ingestion pipeline with source hashes and filter funnels; conservative entity resolution; facility research records; a 93-site Epoch crosswalk; public site-level utility/service evidence; a structured Track 3 evidence ledger; a one-task research queue; and public API/bulk-download surfaces.
 
-The physical layer is no longer just a design checklist. As of 2026-09-27 it retains 421 derived remote-sensing observations across 68 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. It also retains current Overture Maps building footprints for 68 sites.
+The physical layer is no longer just a design checklist. As of 2026-09-27 it retains 423 derived remote-sensing observations across 68 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. It also retains current Overture Maps building footprints for 68 sites.
 
 The physical observations are intentionally compact: scene/item IDs, dates, source URLs, processing version, and derived metrics are retained rather than full raster archives.
 
