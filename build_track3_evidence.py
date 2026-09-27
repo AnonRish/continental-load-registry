@@ -105,8 +105,9 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             if rec.get("chip_quantity_record_count", 0) > 0 else "No retained site-level chip-quantity rows."
         }
     if domain == "service_or_contract":
-        types = {"site_specific_service_contract","site_specific_service","site_specific_energy_contract","site_specific_utility_planning"}
-        matches = [x for x in ev if x.get("type") in types]
+        types = {"site_specific_service_contract","site_specific_service","site_specific_energy_contract","site_specific_utility_planning","site_specific_behind_the_meter_service_evidence"}
+        type_lower = {str(x).lower() for x in types}
+        matches = [x for x in ev if str(x.get("type") or "").lower() in type_lower]
         crosswalk_service = bool(
             crosswalk_ev and any(token in crosswalk_status for token in ("service", "contract", "planning", "energy"))
         )
@@ -130,8 +131,9 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
         }
     if domain == "grid_connection":
-        connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support"}
-        connection_evidence = [x for x in ev if x.get("type") in connection_types]
+        connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support", "site_specific_behind_the_meter_service_evidence", "site_specific_grid_identity_no_queue"}
+        connection_type_lower = {str(x).lower() for x in connection_types}
+        connection_evidence = [x for x in ev if str(x.get("type") or "").lower() in connection_type_lower]
         crosswalk_connection_evidence = bool(crosswalk_ev)
         if grid.get("site_specific_queue_id"):
             return {
