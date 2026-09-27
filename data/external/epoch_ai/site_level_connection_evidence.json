@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "generated_on": "2026-09-26",
   "objective": "Connect every Epoch AI site to the most specific public electricity queue, service, utility, regulatory, planning or connection record available.",
   "semantics": "evidence_found means a site-level source was identified. It does not mean every site has a formal public queue ID. queue IDs are only assigned to defensible queue matches.",
@@ -167,9 +167,26 @@
       "country": "Malaysia",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Malaysia national / utility grid system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/dayone-kempas"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/dayone-kempas",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 322.47,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Exact site-level utility/connection case was not located in the reviewed public source set.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-d8b28fdbc55817f9",
@@ -250,9 +267,26 @@
       "country": "Malaysia",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Malaysia national / utility grid system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/dayone-nusajaya"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/dayone-nusajaya",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 240,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-2dadeb4b013bef05",
@@ -769,9 +803,26 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_INTERCONNECTION_AND_SERVICE_EVIDENCE",
+          "authority": "AEP Texas Inc.",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://investor.galaxy.com/news-releases/news-release-details/galaxy-completes-ercot-interconnection-studies-and-secures"
+          ],
+          "source_url": "https://investor.galaxy.com/news-releases/news-release-details/galaxy-completes-ercot-interconnection-studies-and-secures",
+          "source_kind": "utility/infrastructure company primary release",
+          "confidence": "high",
+          "capacity_mw": 830,
+          "capacity_kind": "service/contract capacity",
+          "basis": "Public source names ERCOT, AEP Texas and WETT and states the additional 830 MW approval; no public ERCOT queue/project identifier was located, so no queue ID is inferred.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-534376160415dc84",
@@ -821,9 +872,26 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/google-midlothian"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/google-midlothian",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 103,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Site identity and operation are public; the reviewed evidence does not establish a unique ERCOT queue ID or direct utility service record. Jurisdiction mapping is not promoted to a site match.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-2b89e13933a04725",
@@ -851,9 +919,26 @@
       "country": "United States",
       "state_province": "OH",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/google-lancaster"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/google-lancaster",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 137,
+          "capacity_kind": "site-planned capacity",
+          "basis": "A public facility record exists for the exact Lancaster address, but no conservative PJM queue/service identifier was found.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-78f8285078416a9e",
@@ -902,9 +987,26 @@
       "country": "China",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "China State Grid / Inner Mongolia provincial grid system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 221,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-785d6e4c34607dd4",
@@ -932,9 +1034,26 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021"
+          ],
+          "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021",
+          "source_kind": "Texas Department of Licensing and Regulation site/project record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 77,
+          "capacity_kind": "site-planned capacity",
+          "basis": "The exact TDLR project for the Red Oak facility was reviewed; no utility or ERCOT queue identifier was located in the public record reviewed.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-4525348d114e3e8e",
@@ -962,9 +1081,26 @@
       "country": "United States",
       "state_province": "TN",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_UTILITY_SERVICE_EVIDENCE",
+          "authority": "Tennessee Valley Authority (TVA)",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
+          ],
+          "source_url": "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/",
+          "source_kind": "customer primary source",
+          "confidence": "medium",
+          "capacity_mw": null,
+          "capacity_kind": null,
+          "basis": "TVA serving-utility relationship is established in the public facility registry retained by the project. No public TVA queue ID was found.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-02c050b6b554fadd",
@@ -1033,9 +1169,26 @@
       "country": "China",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "China State Grid / Inner Mongolia provincial grid system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 346,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-2d362a1adb09fddd",
@@ -1043,9 +1196,26 @@
       "country": "United States",
       "state_province": "VA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 82,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Exact address is known; no defensible PJM queue ID or direct utility service case was found in the reviewed public source set.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-ea5d1ae5837aba5c",
@@ -1053,9 +1223,26 @@
       "country": "Indonesia",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "PLN grid connection system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/oracle-batam"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/oracle-batam",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 72,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-03aad260b30bfbe1",
@@ -1063,9 +1250,26 @@
       "country": "United States",
       "state_province": "PA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_POWER_CONTRACT_EVIDENCE",
+          "authority": "Talen Energy",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/aws-berwick"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/aws-berwick",
+          "source_kind": "Epoch AI site record; public facility/contract reporting",
+          "confidence": "medium",
+          "capacity_mw": 960,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Talen's revised power agreement is a contractual supply ceiling, not an interconnection queue capacity or measured load. It is retained separately from queue MW.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-eb87487504bda8ed",
@@ -1114,9 +1318,26 @@
       "country": "China",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "China State Grid / Anhui provincial grid system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 157,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-d1b62579c6be3fe8",
@@ -1150,9 +1371,26 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+          ],
+          "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247",
+          "source_kind": "Texas Department of Licensing and Regulation",
+          "confidence": "documented_search_result",
+          "capacity_mw": 75,
+          "capacity_kind": "site-planned capacity",
+          "basis": "TDLR confirms the exact SAT40 address and Microsoft ownership. No public ERCOT queue/service ID was identified.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-c89a3269719f868a",
@@ -1207,9 +1445,26 @@
       "country": "United States",
       "state_province": "NJ",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_BEHIND_THE_METER_SERVICE_EVIDENCE",
+          "authority": "Bloom Energy",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/microsoft-nebius-new-jersey"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-nebius-new-jersey",
+          "source_kind": "public facility registry; customer/contract reporting",
+          "confidence": "medium",
+          "capacity_mw": 250,
+          "capacity_kind": "service/contract capacity",
+          "basis": "The power figures are on-site generation figures, not a PJM interconnection capacity. Microsoft/Nebius commercial relationship is also distinct from electricity service.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-f48a533b01898dfd",
@@ -1217,9 +1472,26 @@
       "country": "Norway",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Statnett / local distribution network",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 42,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-41dea3fb46d2e6a8",
@@ -1227,9 +1499,26 @@
       "country": "Finland",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Fingrid / local distribution network",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/nebius-mantsala"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/nebius-mantsala",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 75,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-827d7832237170bd",
@@ -1237,9 +1526,26 @@
       "country": "Australia",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "AEMO / local network service provider",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/southgate-melbourne"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/southgate-melbourne",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 41,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-ee5c7acdbc729ef8",
@@ -1247,9 +1553,26 @@
       "country": "United States",
       "state_province": "AZ",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_UTILITY_SERVICE_EVIDENCE",
+          "authority": "Arizona Public Service (APS)",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/stream-phoenix"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/stream-phoenix",
+          "source_kind": "public facility registry",
+          "confidence": "medium",
+          "capacity_mw": 280,
+          "capacity_kind": "site-planned capacity",
+          "basis": "APS is retained as the utility; planned facility capacity is not treated as utility service capacity.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-0355f445ca6cbed4",
@@ -1257,9 +1580,28 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+            "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+            "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+          ],
+          "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+          "source_kind": "Texas Department of Licensing and Regulation",
+          "confidence": "documented_search_result",
+          "capacity_mw": 47,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Exact address and Microsoft ownership are confirmed across multiple TDLR phase records; no unique electric connection ID was found.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-96d37578ca36f86c",
@@ -1309,9 +1651,26 @@
       "country": "China",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "China State Grid / Hebei provincial grid system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 169,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Operational; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-8baa344f9717520c",
@@ -1319,9 +1678,27 @@
       "country": "Portugal",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_GRID_CAPACITY_EVIDENCE",
+          "authority": "REN (Redes Energéticas Nacionais)",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://www.startcampus.pt/press_release_august_2024_1gw",
+            "https://www.startcampus.pt/start-campus-inaugurates-sin01-data-center"
+          ],
+          "source_url": "https://www.startcampus.pt/press_release_august_2024_1gw",
+          "source_kind": "developer primary source",
+          "confidence": "high",
+          "capacity_mw": 1200,
+          "capacity_kind": "service/contract capacity",
+          "basis": "1.2 GW is secured campus IT capacity/grid access, not current measured load and not a queue ID.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-495a9afde5e4b96c",
@@ -1329,9 +1706,26 @@
       "country": "United States",
       "state_province": "GA",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_UTILITY_SERVICE_EVIDENCE",
+          "authority": "Georgia Power",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/xai-qts-atlanta"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/xai-qts-atlanta",
+          "source_kind": "Epoch AI site record; public facility registry",
+          "confidence": "medium",
+          "capacity_mw": 17,
+          "capacity_kind": "site-planned capacity",
+          "basis": "xAI occupies part of a multi-tenant QTS building; utility capacity should not be attributed wholesale to xAI.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-f1a70be0079d215a",
@@ -1339,9 +1733,26 @@
       "country": "Iceland",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Landsnet / local distribution network",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/nscale-keflavik"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/nscale-keflavik",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 5.11,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Site identity documented; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-5b05fa7b682be282",
@@ -1349,9 +1760,35 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Epoch connection research",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 207,
+          "capacity_kind": "site-planned capacity",
+          "basis": "The closest same-area raw queue candidate, 28INR0119 / 1190 Barber Lake Switch 138kV / 341.8 MW, is a Rabbit Hollow Energy Storage BESS and is rejected as unrelated generation/storage.",
+          "alternatives_rejected": [
+            {
+              "candidate_id": "28INR0119",
+              "candidate_record": "Rabbit Hollow Energy Storage",
+              "candidate_poi": "1190 Barber Lake Switch 138kV",
+              "candidate_capacity_mw": 341.8,
+              "candidate_status": "Facilities Study",
+              "rejected_reason": "Confirmed battery-energy-storage queue row; no Anthropic/Cipher identity and not a data-center service request."
+            }
+          ],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-7648e1438308fdae",
@@ -1400,9 +1837,26 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_GRID_IDENTITY_NO_QUEUE",
+          "authority": "ERCOT system",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://registry.deploy.report/datacenters/facilities/crusoe-abilene-ii-microsoft-tx"
+          ],
+          "source_url": "https://registry.deploy.report/datacenters/facilities/crusoe-abilene-ii-microsoft-tx",
+          "source_kind": "public facility registry; developer reporting",
+          "confidence": "medium",
+          "capacity_mw": 900,
+          "capacity_kind": "site-planned capacity",
+          "basis": "The campus is adjacent to the existing Abilene site. ERCOT is the grid operator; no unique public queue ID was located.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-dadec9d6ef7fca88",
@@ -1410,9 +1864,26 @@
       "country": "Sweden",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Svenska kraftnät / local distribution network",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/ecodatacenter-2"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/ecodatacenter-2",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 48,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Under construction; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-bbf05f2d8903eccc",
@@ -1522,9 +1993,26 @@
       "country": "Norway",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "Statnett / local distribution network",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/microsoft-narvik-norway"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-narvik-norway",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": 92,
+          "capacity_kind": "site-planned capacity",
+          "basis": "No public utility/queue identifier was found in the reviewed record set.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-dc6199921ba82b85",
@@ -1532,9 +2020,26 @@
       "country": "United States",
       "state_province": "OH",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "PJM system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+          ],
+          "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+          "source_kind": "Epoch AI site/publication",
+          "confidence": "documented_search_result",
+          "capacity_mw": 300,
+          "capacity_kind": "site-planned capacity",
+          "basis": "The existing Foxconn substation is site context, not a queue or service record. No site-specific PJM identifier was located.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-145ed5861bdf2982",
@@ -1563,9 +2068,41 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "ERCOT system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+          ],
+          "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+          "source_kind": "Epoch AI site/publication",
+          "confidence": "documented_search_result",
+          "capacity_mw": 1200,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Same-county raw ERCOT queue rows 26INR0633 and 26INR0630 are 500 MW battery-storage projects and are rejected as unrelated generation/storage.",
+          "alternatives_rejected": [
+            {
+              "candidate_id": "26INR0633",
+              "candidate_record": "Betel Storage II",
+              "candidate_poi": "3377 Little Pond 345",
+              "candidate_capacity_mw": 500,
+              "rejected_reason": "Explicit BESS/storage project; developer/customer identity does not match Stargate/SB Energy."
+            },
+            {
+              "candidate_id": "26INR0630",
+              "candidate_record": "Betel Storage I",
+              "candidate_poi": "3377 Little Pond Switch 345",
+              "candidate_capacity_mw": 500,
+              "rejected_reason": "Explicit BESS/storage project; unrelated to data-center load."
+            }
+          ],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-3816121e8d72fe04",
@@ -1573,9 +2110,26 @@
       "country": "United States",
       "state_province": "NM",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "WECC / PNM serving system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+          ],
+          "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+          "source_kind": "Epoch AI site/publication",
+          "confidence": "documented_search_result",
+          "capacity_mw": 2200,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Site and on-site generation plans are public, but no conservative site-to-queue/service identifier was found.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-b427a75f62d61aae",
@@ -1583,9 +2137,34 @@
       "country": "United States",
       "state_province": "TX",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "ERCOT system",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand"
+          ],
+          "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+          "source_kind": "Epoch AI site/publication",
+          "confidence": "documented_search_result",
+          "capacity_mw": 1400,
+          "capacity_kind": "site-planned capacity",
+          "basis": "Raw ERCOT candidate 26INR0500 is a 206.5 MW BESS at 1442 CFRSW 345kV and is rejected as unrelated storage, despite county-name similarity.",
+          "alternatives_rejected": [
+            {
+              "candidate_id": "26INR0500",
+              "candidate_record": "Shackleford BESS",
+              "candidate_poi": "1442 CFRSW 345kV",
+              "candidate_capacity_mw": 206.5,
+              "rejected_reason": "Explicit BESS/storage queue row with unrelated developer; not a data-center request."
+            }
+          ],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-661288625d17662a",
@@ -1593,9 +2172,26 @@
       "country": "United Arab Emirates",
       "state_province": "",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search national/transmission/distribution connection registers and regulator records."
+      "site_level_evidence": [
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "authority": "UAE transmission / local distribution connection process",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-uae"
+          ],
+          "source_url": "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-uae",
+          "source_kind": "Epoch AI site record",
+          "confidence": "documented_search_result",
+          "capacity_mw": null,
+          "capacity_kind": null,
+          "basis": "Announced/under development; no public site-specific connection case found",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+        }
+      ],
+      "site_level_evidence_status": "no_match_found",
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-78e7d8474fbdf968",
@@ -1603,9 +2199,27 @@
       "country": "United States",
       "state_province": "WI",
       "existing_queue_crosswalk": null,
-      "site_level_evidence": [],
-      "site_level_evidence_status": "pending_site_specific_search",
-      "next_action": "Search primary RTO/ISO queue, utility large-load/service records, state PUC/PSC dockets, FERC and local records."
+      "site_level_evidence": [
+        {
+          "type": "SITE_SPECIFIC_GRID_CONNECTION_EVIDENCE",
+          "authority": "We Energies (WEC Energy Group)",
+          "record_name": "site-level connection/service evidence",
+          "source_urls": [
+            "https://registry.deploy.report/datacenters/vantage-lighthouse-port-washington-wisconsin",
+            "https://openai.com/index/stargate-community/"
+          ],
+          "source_url": "https://registry.deploy.report/datacenters/vantage-lighthouse-port-washington-wisconsin",
+          "source_kind": "public facility registry; OpenAI primary source",
+          "confidence": "medium",
+          "capacity_mw": 1300,
+          "capacity_kind": "service/contract capacity",
+          "basis": "1.3 GW is the connection sought from We Energies; 3.5 GW is long-term site potential. These values are not equated with current IT load or a PJM/MISO queue row.",
+          "alternatives_rejected": [],
+          "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        }
+      ],
+      "site_level_evidence_status": "evidence_found",
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-d2da66ea035880ce",
