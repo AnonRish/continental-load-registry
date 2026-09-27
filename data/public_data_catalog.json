@@ -295,6 +295,35 @@
       "mapped": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/nyiso_public_queue_status.json",
       "notes": "Explicit current capture result; no queue rows are fabricated when official workbook retrieval returns a non-XLSX response."
+    },
+    {
+      "path": "data/track3/public_web_enrichment_2026-09-27.json",
+      "name": "Fresh public-web site enrichment ledger",
+      "type": "public_web_enrichment",
+      "record_count": 98,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_enrichment_2026-09-27.json",
+      "notes": "98 additive site-level public findings captured 2026-09-27; source scope and relationship types retained."
+    },
+    {
+      "path": "data/track3/public_web_enrichment_2026-09-27.csv",
+      "name": "Fresh public-web site enrichment CSV",
+      "type": "public_web_enrichment_csv",
+      "record_count": 98,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_enrichment_2026-09-27.csv"
+    },
+    {
+      "path": "data/track3/public_site_enrichment_merged_2026-09-27.json",
+      "name": "Merged 93-site enrichment view",
+      "type": "site_enrichment_view",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_enrichment_merged_2026-09-27.json",
+      "notes": "Combines canonical Epoch, existing enrichment bridge and fresh public-web findings without overwriting raw source values."
     }
   ]
 }
