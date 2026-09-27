@@ -88,3 +88,9 @@ This is the current repository-state checklist for reviewing the Continental Lar
 **Still incomplete:** closing more ambiguous cases; processing the remaining 25 Epoch sites; completing interval power evidence; expanding cooling/transformer/service/regulatory research; achieving facility-wide end-to-end verification; automating SHA-256/byte manifests for retained physical derivatives; and independent external review.
 
 **Correct interpretation:** this is a substantially implemented public-evidence contribution to the broader Track 3 problem, not a completed international verification regime and not evidence that covert compute has been comprehensively detected.
+## 8. Global accounting expansion
+
+- [x] Aggregate owner/user/sales/component snapshots are retained as a public-source layer.
+- [x] Official public source anchors added for NVIDIA/SEC, TSMC manufacturing context, U.S. Census trade data, GLEIF Level 2 ownership, SEC Exhibit 21, and EU WEEE reporting.
+- [x] Certificate model and untraced-pool framework are documented.
+- [ ] Transaction-level global vendor sales, serial continuity, physical inspection, and verified decommissioning remain unavailable in the public repository.
