@@ -277,7 +277,7 @@ The project layer also includes six newly extracted utility-linked records outsi
 
 ### Supplemental public large-load evidence
 
-The supplemental evidence file now contains **55 source/evidence units**. The website provides a searchable browser for all of them. These include MISO's unlocated requests, utility pipelines, regulatory aggregates, planning forecasts, connection/process sources, permit inventories, ERCOT Batch Zero source material and non-RTO utility evidence. The measures are not summed because their populations, dates, units and overlap relationships differ.
+The supplemental evidence file now contains **58 source/evidence units**. The website provides a searchable browser for all of them. These include MISO's unlocated requests, utility pipelines, regulatory aggregates, planning forecasts, connection/process sources, permit inventories, ERCOT Batch Zero source material and non-RTO utility evidence. The measures are not summed because their populations, dates, units and overlap relationships differ.
 
 ## Regulatory filings section
 
