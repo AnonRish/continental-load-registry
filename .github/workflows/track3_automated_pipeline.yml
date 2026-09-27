@@ -205,7 +205,7 @@ jobs:
           quality=json.loads((root/"data_quality_report.json").read_text()) if (root/"data_quality_report.json").exists() else {"summary":{"remote_source_failures":1}}
           failures=[]
           if adapter.get("failed_count",0): failures.append('adapter failures=' + str(adapter['failed_count']))
-          if quality.get("summary",{}).get("remote_source_failures",0): failures.append('remote source failures=' + str(quality['summary']['remote_source_failures']))
+          if quality.get("summary",{}).get("automated_remote_source_failures",0): failures.append('automated source failures=' + str(quality['summary']['automated_remote_source_failures']))
           if quality.get("summary",{}).get("duplicate_id_groups",0): failures.append('duplicate ID groups=' + str(quality['summary']['duplicate_id_groups']))
           if quality.get("summary",{}).get("evidence_missing_urls",0): failures.append('evidence records missing URLs=' + str(quality['summary']['evidence_missing_urls']))
           if failures:
