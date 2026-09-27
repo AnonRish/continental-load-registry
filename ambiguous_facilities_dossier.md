@@ -1,6 +1,6 @@
 # Ambiguous large-load facilities — investigative dossier
 
-Generated 2026-09-21 by `investigate_ambiguous_loads.py`.
+Generated 2026-09-27 by `investigate_ambiguous_loads.py`.
 
 **Read this first.** This is a worklist of leads, not a set of findings. Nothing here was fetched or verified: each search URL points at a public search engine, and results still need a human to read them. "Developer Not Disclosed" is usually a property of what the source register publishes (SPP, MISO, CAISO, ISO-NE and AESO publish no applicant), not evidence about the developer. A facility's label changes only when a researcher records a verified identity with evidence in `ground_truth_overrides.json`.
 
@@ -10,8 +10,8 @@ Filter: `capacity_mw >= 100`, `load_type_tier == "Genuinely Ambiguous / Unclassi
 
 | Filter step | Rows |
 |---|---:|
-| Registry rows loaded | 1,802 |
-| Not in the ambiguous tier | 1,660 |
+| Registry rows loaded | 1,540 |
+| Not in the ambiguous tier | 1,398 |
 | Capacity missing or unreadable | 0 |
 | Below 100 MW | 0 |
 | Developer resolved to a known entity (outside the two categories) | 1 |
@@ -19,18 +19,18 @@ Filter: `capacity_mw >= 100`, `load_type_tier == "Genuinely Ambiguous / Unclassi
 
 Data sources:
 
-- `index.html`: 1,802 rows, AESO, CAISO, ERCOT, IESO, ISO-NE, MISO, NYISO, PJM, SPP
-- `data/computational_load_estimates_new5.csv`: 638 rows, AESO, CAISO, ISO-NE, MISO, NYISO — replaces 638 index.html rows for AESO, CAISO, ISO-NE, MISO, NYISO
+- `index.html`: 1,540 rows, AESO, CAISO, ERCOT, IESO, ISO-NE, MISO, NYISO, PJM, SPP
+- `data/computational_load_estimates.csv`: 733 rows, ERCOT, PJM — replaces 733 index.html rows for ERCOT, PJM
 
 | RTO | Facilities | GW | Verified |
 |---|---:|---:|---:|
 | AESO | 30 | 20.4 | 0 |
-| NYISO | 38 | 13.5 | 0 |
+| NYISO | 38 | 13.5 | 2 |
 | IESO | 25 | 8.7 | 0 |
 | MISO | 36 | 8.6 | 0 |
 | SPP | 12 | 2.7 | 0 |
 
-**Verified: 0 of 141.** Record confirmed identities in `ground_truth_overrides.json` and re-run.
+**Verified: 2 of 141** (0.9 GW) — 1 × Confirmed Data Center Campus; 1 × Confirmed Industrial Park / Manufacturing.
 
 ## Ranked summary
 
@@ -60,7 +60,7 @@ All facilities, by capacity.
 | 20 | IESO | 2025-848 | 695 | ON · West zone | EPC/PUC TransCo TS - Phase 1A | Under Study | — |
 | 21 | MISO | S1156 | 632 | TX | (no project name published) | Active | — |
 | 22 | MISO | S1161 | 625 | AR | (no project name published) | Active | — |
-| 23 | NYISO | 1765 | 606 | NY · Onondaga | Micron Fab 3 | Active | — |
+| 23 | NYISO | 1765 | 606 | NY · Onondaga | Micron Fab 3 | Active | Confirmed Industrial Park / Manufacturing |
 | 24 | NYISO | 1627 | 576 | NY · Onondaga | Micron Fab 2 | Facilities Study | — |
 | 25 | IESO | 2025-863 | 550 | ON · West zone | Essex Transmission - Phase 1B | Under Study | — |
 | 26 | MISO | S1157 | 534 | TX | (no project name published) | Active | — |
@@ -105,7 +105,7 @@ All facilities, by capacity.
 | 65 | IESO | 2026-871 | 250 | ON · Toronto zone | Creekside Industrial Load | Under Study | — |
 | 66 | NYISO | 1670 | 250 | NY · Niagara | Lake Mariner Data II | Under Study | — |
 | 67 | NYISO | 1732 | 250 | NY · Niagara | Wulf Compute Data Center II | Under Study | — |
-| 68 | NYISO | 1745 | 250 | NY · St Lawrence | Pontoon Bridge Road Data Center | Under Study | — |
+| 68 | NYISO | 1745 | 250 | NY · St Lawrence | Pontoon Bridge Road Data Center | Under Study | Confirmed Data Center Campus |
 | 69 | NYISO | 1752 | 250 | NY · Broome | Broome County Tech Park | Under Study | — |
 | 70 | SPP | GEN-2025-SR10 | 238 | OK · Konawa | (no project name published) | Under Study | — |
 | 71 | NYISO | 1728 | 233 | NY · St Lawrence | Arsenal Data Site 250 | Under Study | — |
@@ -223,8 +223,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | St. Lawrence Infrastructure, LLC — Developer Not Matched To Known List |
 | Point of interconnection | NYPA's 230kV Moses Massena 1 (MMS-1) and 230kV Moses Massena 2 (MMS-2) |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2028-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -245,8 +243,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Caroline" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -266,8 +262,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -287,8 +281,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -327,8 +319,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -348,8 +338,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Brooks" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -369,8 +357,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -409,7 +395,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | McCredie - Montgomery 345 kV Line Tap |
 | Location field | county field "Randolph", Missouri |
-| Projected date | 2024-03-31 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -430,8 +415,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Donovan Drive Holdings LLC — Developer Not Matched To Known List |
 | Point of interconnection | East Fishkill to Wood Street 345 kV lines (38 and 39) |
 | Location field | county field "Dutchess", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2026-10-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -452,8 +435,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | 2030-09-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -473,8 +454,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Didsbury" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -494,8 +473,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Strathmore/Blackie" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -515,8 +492,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | St. Lawrence Infrastructure, LLC — Developer Not Matched To Known List |
 | Point of interconnection | NYPA HA-2, 345kV Transmission Line |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2030-01-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -537,8 +512,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -558,8 +531,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -579,8 +550,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Sheerness" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -639,7 +608,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Texas |
 | Transmission owner | ENTERGY TEXAS, INC. |
-| Projected date | 2026-08-29 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -661,7 +629,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Arkansas |
 | Transmission owner | ENTERGY ARKANSAS, LLC |
-| Projected date | 2025-08-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -676,16 +643,24 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 
 ### 23. NYISO 1765 — Micron Fab 3 · 606 MW · NY
 
+> **VERIFIED — Confirmed Industrial Park / Manufacturing**
+> Confirmed by Track 3 closure review on 2026-09-27.
+> Operator: Micron New York Semiconductor Manufacturing LLC
+>
+> 1. https://www.micron.com/content/dam/micron/global/public/corporate/us-expansion/new-york/micron-ny-smp-01-dam-jpa-v2.pdf (accessed 2026-09-27)
+> 2. https://www.nist.gov/document/micron-ny-feis-final (accessed 2026-09-27)
+> 3. https://dec.ny.gov/news/environmental-notice-bulletin/2025-11-05/public-notice/town-of-clay-micron-new-york-semiconductor-manufacturing-llc (accessed 2026-09-27)
+>
+> Notes: Queue record is named Micron Fab 3 but its applicant field is Eldo Varghese. The bounded conclusion is that the named project maps to Micron's semiconductor manufacturing campus; the applicant-field mismatch remains unresolved.
+
 | | |
 |---|---|
 | Status (as published) | Active |
 | Developer (as published) | Eldo Varghese — Developer Not Matched To Known List |
 | Point of interconnection | National Grid - Clay Substation |
 | Location field | county field "Onondaga", New York |
-| Source technology / end-use | Load - end-use not stated |
-| Projected date | 2037-07-01 |
 
-**Search leads** (nothing below has been fetched or verified)
+<details><summary>Search leads (facility already verified)</summary>
 
 | Lead | Query (click to search) |
 |---|---|
@@ -696,6 +671,8 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Substation · Substation / point of interconnection | [`"National Grid - Clay Substation" (substation OR interconnection OR "facilities study" OR "system impact study") New York`](https://www.google.com/search?q=%22National+Grid+-+Clay+Substation%22+%28substation+OR+interconnection+OR+%22facilities+study%22+OR+%22system+impact+study%22%29+New+York) |
 | Substation · RTO / ISO documents | [`site:nyiso.com ("Q#1765" OR Q1765 OR "Queue #1765" OR 1765 OR "Micron Fab 3")`](https://www.google.com/search?q=site%3Anyiso.com+%28%22Q%231765%22+OR+Q1765+OR+%22Queue+%231765%22+OR+1765+OR+%22Micron+Fab+3%22%29) |
 
+</details>
+
 ### 24. NYISO 1627 — Micron Fab 2 · 576 MW · NY
 
 | | |
@@ -704,8 +681,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Micron New York Semiconductor Manufacturing LLC — Developer Not Matched To Known List |
 | Point of interconnection | National Grid Clay 345 kV Substation |
 | Location field | county field "Onondaga", New York |
-| Source technology / end-use | Load - Manufacturing (Microchip Fabrication) |
-| Projected date | 2027-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -746,7 +721,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Texas |
 | Transmission owner | ENTERGY TEXAS, INC. |
-| Projected date | 2026-08-29 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -767,8 +741,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -788,7 +760,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | McCredie - Montgomery 345 kV Line Tap |
 | Location field | county field "Randolph", Missouri |
-| Projected date | 2024-03-31 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -809,8 +780,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | North East Data LLC — Developer Not Matched To Known List |
 | Point of interconnection | 230kV lines 77 and 78 |
 | Location field | county field "Niagara", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2029-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -871,8 +840,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Micron New York Semiconductor Manufacturing LLC — Developer Not Matched To Known List |
 | Point of interconnection | Clay 345 kV Substation |
 | Location field | county field "Onondaga", New York |
-| Source technology / end-use | Load - Manufacturing (Microchip Fabrication) |
-| Projected date | 2025-06-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -893,8 +860,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Arconic Corporation — Developer Not Matched To Known List |
 | Point of interconnection | Haverstock to Adirondak 345kV line HA-1 |
 | Location field | county field "St Lawrence", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2027-05-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -915,8 +880,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -936,8 +899,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -976,8 +937,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | North Country Data Center — Developer Not Matched To Known List |
 | Point of interconnection | Reynolds 115kV |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center (Cryptocurrency Mining) |
-| Projected date | 2026-01-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -998,8 +957,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1019,8 +976,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "High River" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1040,8 +995,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1061,8 +1014,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1082,8 +1033,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1103,8 +1052,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Edmonton" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1124,8 +1071,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Lethbridge" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1145,8 +1090,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1166,8 +1109,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1206,8 +1147,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Turin Management LLC — Developer Not Matched To Known List |
 | Point of interconnection | Line 1: 345KV from EDIC to Fraser. Line 2: 345 KV from Marcy to Coopers Corners |
 | Location field | county field "Herkimer", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-07-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1228,8 +1167,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Highwall Energy, LLC — Developer Not Matched To Known List |
 | Point of interconnection | same POI of Q#1080 (Mineral Basin Solar), connects to NYSEG's L47 line |
 | Location field | county field "Clearfield", Pennsylvania |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2029-03-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1271,7 +1208,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Arkansas |
 | Transmission owner | ENTERGY ARKANSAS, LLC |
-| Projected date | 2029-03-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1292,8 +1228,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Patriot Forge PA, LLC — Developer Not Matched To Known List |
 | Point of interconnection | Tap on the NYSEG 345 kV Line 47 (Homer City -Mainesburg 345 kV) |
 | Location field | county field "Tioga", Pennsylvania |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2029-02-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1314,8 +1248,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Industrial Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1335,8 +1267,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Peace River" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1356,8 +1286,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Calgary" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1415,7 +1343,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Lakefield Junction 345kV |
 | Location field | county field "Cottonwood", Minnesota |
-| Projected date | 2027-10-30 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1436,8 +1363,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Genesee County Economic Devel. — Developer Not Matched To Known List |
 | Point of interconnection | Kintigh/Niagara - New Rochester 345kV |
 | Location field | county field "Genesee", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2026-11-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1458,8 +1383,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | GCEDC — Developer Not Matched To Known List |
 | Point of interconnection | 115 kv STAMP substation |
 | Location field | county field "Genesee", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2028-05-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1480,8 +1403,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Riverview Innovation & Technology Campus, Inc. — Developer Not Matched To Known List |
 | Point of interconnection | Huntley - Packard 230kV line 78 |
 | Location field | county field "Erie", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1502,8 +1423,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | ZeroC Data Centers, LLC — Developer Not Matched To Known List |
 | Point of interconnection | Haverstock-Adirondack 345kV transmission line HA-2 |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2029-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1524,8 +1443,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Ranalli SuperDC LLC — Developer Not Matched To Known List |
 | Point of interconnection | Clay to Pannell ckts PC-1 and PC-2 |
 | Location field | county field "Onondaga", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-06-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1584,8 +1501,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Lake Mariner Data LLC — Developer Not Matched To Known List |
 | Point of interconnection | Kintigh 345kV Substation |
 | Location field | county field "Niagara", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2027-02-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1606,8 +1521,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | TeraWulf Brookings LLC — Developer Not Matched To Known List |
 | Point of interconnection | Kintigh 345kV sub-station |
 | Location field | county field "Niagara", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2030-07-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1622,16 +1535,24 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 
 ### 68. NYISO 1745 — Pontoon Bridge Road Data Center · 250 MW · NY
 
+> **VERIFIED — Confirmed Data Center Campus**
+> Confirmed by Track 3 closure review on 2026-09-27.
+> Operator: American Data Center Partners LLC
+>
+> 1. https://suedatacenters.org/data-centers/pontoon-bridge-road-massena-ny (accessed 2026-09-27)
+> 2. https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf (accessed 2026-09-27)
+> 3. https://www.stlawco.gov/sites/default/files/RealProperty/2026%20Sales/Sales%20for%20Website%201-1-26%20to%203-2-2026.pdf (accessed 2026-09-27)
+>
+> Notes: Public sources independently associate the queue project with 466 Pontoon Bridge Road and American Data Center Partners LLC. The site record remains proposed; the classification is not an operational claim.
+
 | | |
 |---|---|
 | Status (as published) | Under Study |
 | Developer (as published) | American Data Center Partners LLC — Developer Not Matched To Known List |
 | Point of interconnection | Haverstock-Adirondack 345kV transmission lines |
 | Location field | county field "St Lawrence", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2028-06-01 |
 
-**Search leads** (nothing below has been fetched or verified)
+<details><summary>Search leads (facility already verified)</summary>
 
 | Lead | Query (click to search) |
 |---|---|
@@ -1642,6 +1563,8 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Substation · Substation / point of interconnection | [`"Haverstock-Adirondack 345kV transmission lines" (substation OR interconnection OR "facilities study" OR "system impact study") New York`](https://www.google.com/search?q=%22Haverstock-Adirondack+345kV+transmission+lines%22+%28substation+OR+interconnection+OR+%22facilities+study%22+OR+%22system+impact+study%22%29+New+York) |
 | Substation · RTO / ISO documents | [`site:nyiso.com ("Q#1745" OR Q1745 OR "Queue #1745" OR 1745 OR "Pontoon Bridge Road Data Center")`](https://www.google.com/search?q=site%3Anyiso.com+%28%22Q%231745%22+OR+Q1745+OR+%22Queue+%231745%22+OR+1745+OR+%22Pontoon+Bridge+Road+Data+Center%22%29) |
 
+</details>
+
 ### 69. NYISO 1752 — Broome County Tech Park · 250 MW · NY
 
 | | |
@@ -1650,8 +1573,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | The Agency — Developer Not Matched To Known List |
 | Point of interconnection | 345 kV POI via a loop on the existing Oakdale-Fraser Line 32. The interconnection substation will have a ring bus configuration. |
 | Location field | county field "Broome", New York |
-| Source technology / end-use | Load - Research and Development |
-| Projected date | 2037-07-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1692,8 +1613,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Arconic Corporation — Developer Not Matched To Known List |
 | Point of interconnection | Haverstock to Adirondak 345kV line HA-1 |
 | Location field | county field "St Lawrence", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2028-10-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1714,8 +1633,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Arconic Corporation — Developer Not Matched To Known List |
 | Point of interconnection | Haverstock to Adirondak 345kV line HA-1 |
 | Location field | county field "St Lawrence", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2028-08-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1736,8 +1653,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Fort Saskatchewan" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Industrial Load |
-| Projected date | 2027-09-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1757,8 +1672,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1778,7 +1691,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Magnolia |
 | Location field | county field "Rock", Minnesota |
-| Projected date | 2027-10-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1799,7 +1711,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Stoddard - Morley 161kV |
 | Location field | county field "Stoddard", Missouri |
-| Projected date | 2026-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1821,7 +1732,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Michigan |
 | Transmission owner | METC |
-| Projected date | 2027-03-15 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1842,7 +1752,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Neoga South |
 | Location field | county field "Cumberland and Coles", Illinois |
-| Projected date | 2027-07-11 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1977,7 +1886,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Ritchie Plant 230 kV Substation |
 | Location field | county field "Phillips", Arkansas |
-| Projected date | 2027-09-30 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -1998,7 +1906,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Adna 345 kV |
 | Location field | county field "Cape Girardeau", Missouri |
-| Projected date | 2026-06-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2019,7 +1926,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | 343515 Chatham Main - 346555 North Aurburn (Ameren) 138.0kV |
 | Location field | county field "Sangamon", Louisiana |
-| Projected date | 2029-01-09 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2040,7 +1946,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Calamus East |
 | Location field | county field "Clinton", Minnesota |
-| Projected date | 2028-06-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2062,7 +1967,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Michigan |
 | Transmission owner | METC |
-| Projected date | 2028-03-31 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2084,7 +1988,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Missouri |
 | Transmission owner | AMEREN MISSOURI |
-| Projected date | 2028-05-31 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2105,7 +2008,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Dell - Manila 161 kV |
 | Location field | county field "Mississippi", Arkansas |
-| Projected date | 2028-08-03 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2126,8 +2028,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | ZeroC Data Centers, LLC — Developer Not Matched To Known List |
 | Point of interconnection | Dennison 115kV substation |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center (Cryptocurrency Mining) |
-| Projected date | 2025-08-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2148,8 +2048,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Holtec Decommissioning International (HDI) — Developer Not Matched To Known List |
 | Point of interconnection | Buchanan 138kV Substation |
 | Location field | county field "Westchester", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-03-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2170,8 +2068,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Greenidge Generation, LLC — Developer Not Matched To Known List |
 | Point of interconnection | New York State Electric & Gas (NYSEG) - Greenidge 115 kV Substation |
 | Location field | county field "Yates", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2028-05-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2192,8 +2088,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | North Country Data Center LLC — Developer Not Matched To Known List |
 | Point of interconnection | NYPA - HW1 and HW2 (345kV) Lines - at Haverstock Substation |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-03-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2292,8 +2186,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | GLOBE DH LLC — Developer Not Matched To Known List |
 | Point of interconnection | Beck Packard 76 230kV |
 | Location field | county field "Niagara", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2028-10-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2314,8 +2206,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | GLOBE DH LLC — Developer Not Matched To Known List |
 | Point of interconnection | Beck Packard 76 230kV |
 | Location field | county field "Niagara Falls", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2027-01-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2336,8 +2226,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | GLOBE DH LLC — Developer Not Matched To Known List |
 | Point of interconnection | Niagara Packard 77 230kV |
 | Location field | county field "Niagara Falls", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2029-03-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2358,7 +2246,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | 4LATHAM-4N DEC E 138 kV |
 | Location field | county field "Macon", Illinois |
-| Projected date | 2026-05-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2379,8 +2266,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | EKG Group LLC — Developer Not Matched To Known List |
 | Point of interconnection | Albany?Bethlehem 115 kV Line #18 |
 | Location field | county field "Albany", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2028-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2401,8 +2286,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | WF Industrial XII LLC — Developer Not Matched To Known List |
 | Point of interconnection | 138-872 Holbrook to Sills Rd |
 | Location field | county field "Suffolk", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2423,8 +2306,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | not published by the source register |
 | Location field | AESO planning area "Wabamun" (a hub named for a town, not a municipality boundary) |
-| Source technology / end-use | Data Load |
-| Projected date | UNKNOWN |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2444,8 +2325,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Cayuga Operating Company, LLC — Developer Not Matched To Known List |
 | Point of interconnection | Milliken 115kV Substation |
 | Location field | county field "Tompkins", New York |
-| Source technology / end-use | Load - Data Center (AI) |
-| Projected date | 2027-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2523,7 +2402,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Neoga South 138kV |
 | Location field | county field "Cumberland", Illinois |
-| Projected date | 2026-09-22 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2544,7 +2422,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Cronk Road |
 | Location field | county field "Hillsdale", Michigan |
-| Projected date | 2027-01-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2566,7 +2443,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Louisiana |
 | Transmission owner | ENTERGY LOUISIANA, LLC |
-| Projected date | 2028-06-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2588,7 +2464,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Minnesota |
 | Transmission owner | GREAT RIVER ENERGY |
-| Projected date | 2029-12-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2610,7 +2485,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, South Dakota |
 | Transmission owner | OTTER TAIL POWER COMPANY |
-| Projected date | 2028-09-30 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2631,8 +2505,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | iPark East Fishkill LLC — Developer Not Matched To Known List |
 | Point of interconnection | New 115kV line from CHG&E East Fishkill Substation |
 | Location field | county field "Dutchess", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2028-10-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2653,8 +2525,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | URI TALY — Developer Not Matched To Known List |
 | Point of interconnection | Broad Street 34.5 kV Line 93 |
 | Location field | county field "Horseheads", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-01-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2675,8 +2545,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Niagara Falls Redevelopment LLC — Developer Not Matched To Known List |
 | Point of interconnection | Adams to Packard 115kV lines 187 and 188 |
 | Location field | county field "Niagara", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2027-01-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2698,7 +2566,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Missouri |
 | Transmission owner | AMEREN MISSOURI |
-| Projected date | 2028-07-03 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2720,7 +2587,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Illinois |
 | Transmission owner | AMEREN ILLINOIS |
-| Projected date | 2027-12-31 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2742,7 +2608,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Michigan |
 | Transmission owner | METC |
-| Projected date | 2027-01-07 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2782,7 +2647,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | DU PONT - WHITE LAKE 138.0kV |
 | Location field | county field "Muskegon", Michigan |
-| Projected date | 2029-06-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2862,7 +2726,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Big Stone South 230kV |
 | Location field | county field "Codington", South Dakota |
-| Projected date | 2026-11-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2883,8 +2746,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Sabey Data Center Properties, LLC — Developer Not Matched To Known List |
 | Point of interconnection | Moses-Reynolds MRG-1 and Moses-Reynolds MRG-2 at 115kV |
 | Location field | county field "St. Lawrence", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2026-11-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2906,7 +2767,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Minnesota |
 | Transmission owner | NORTHERN STATES POWER COMPANY |
-| Projected date | 2029-05-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2947,7 +2807,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Dixon 120kV - Bus # 265182 |
 | Location field | county field "Tuscola", Michigan |
-| Projected date | 2027-01-30 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -2987,7 +2846,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Chisago County Substation |
 | Location field | county field "Chisago", Minnesota |
-| Projected date | 2026-10-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -3008,7 +2866,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | not published by the source register — Developer Not Disclosed |
 | Point of interconnection | Hinshaw 345 kV |
 | Location field | county field "Jasper and Starke", Indiana |
-| Projected date | 2027-12-27 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -3030,7 +2887,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Michigan |
 | Transmission owner | METC |
-| Projected date | 2026-12-04 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -3052,7 +2908,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Michigan |
 | Transmission owner | METC |
-| Projected date | 2027-03-27 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -3074,7 +2929,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | not published by the source register |
 | Location field | county not published, Wisconsin |
 | Transmission owner | AMERICAN TRANSMISSION COMPANY |
-| Projected date | 2028-08-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -3095,8 +2949,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Developer (as published) | Turin Management LLC — Developer Not Matched To Known List |
 | Point of interconnection | Ilion Municipal 115kV substation |
 | Location field | county field "Herkimer", New York |
-| Source technology / end-use | Load - Data Center |
-| Projected date | 2029-02-01 |
 
 **Search leads** (nothing below has been fetched or verified)
 
@@ -3171,4 +3023,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 
 ## Overrides audit
 
-No overrides were loaded.
+- Applied to a facility in this dossier: 2
+- Match a registry record that this run's filter excludes: 0
+- Match nothing in the loaded registry (check the RTO and queue_id): 0
