@@ -15,7 +15,7 @@ from datetime import datetime,timezone
 from pathlib import Path
 import requests,pandas as pd
 
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/"data"/"automation"/"auxiliary_sources"; NOW=datetime.now(timezone.utc).isoformat()
+ROOT=Path(__file__).resolve().parent; DATA=ROOT/"data"; OUT=DATA/"automation"/"auxiliary_sources"; NOW=datetime.now(timezone.utc).isoformat()
 UA="continental-load-registry/auxiliary-source-capture"
 TIMEOUT=90
 
