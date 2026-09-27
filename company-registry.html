@@ -87,25 +87,39 @@ const priority=[
 ["G42","AI infrastructure group","https://aidatacenterindex.com/operators/g42/","Joint ventures and strategic partners should remain explicit."]
 ];
 document.getElementById("priority").innerHTML=priority.map(x=>"<tr><td><b>"+esc(x[0])+"</b></td><td>"+esc(x[1])+"</td><td><a href='"+esc(x[2])+"' target='_blank' rel='noopener'>source</a></td><td>"+esc(x[3])+"</td></tr>").join("");
-let OPS=[],filtered=[],selected=null;
+let OPS=[],filtered=[],selected=null,SNAPSHOT=null;
 function name(o){return o.name||o.operator||o.title||o.company||""}
 function count(o){return Number(o.facility_count??o.facilities??o.count??0)||0}
 function countries(o){return Number(o.country_count??o.countries??o.country_reach??0)||0}
 function oslug(o){return o.slug||o.id||slug(name(o))}
 async function loadOps(){
-  const h=document.getElementById("health");
-  try{
-    const r=await fetch("https://aidatacenterindex.com/api/operators.json",{cache:"no-store"});
-    if(!r.ok) throw Error(r.status);
-    const j=await r.json();
-    OPS=Array.isArray(j)?j:(j.operators||j.items||j.data||[]);
-    document.getElementById("ops").textContent=(j.total_operators||OPS.length).toLocaleString();
-    h.textContent="live"; h.style.color="var(--teal)";
-  }catch(e){
-    OPS=priority.map(x=>({name:x[0],slug:slug(x[0]),facility_count:0,country_count:0,fallback:true}));
-    h.textContent="fallback"; h.style.color="var(--amber)";
-  }
-  renderList();
+ const h=document.getElementById("health");
+ try{
+   const local=await fetch("data/company_operator_universe_2026-09-27.json",{cache:"no-store"});
+   if(local.ok){
+     SNAPSHOT=await local.json();
+     OPS=(SNAPSHOT.operators||[]).map(o=>Object.assign({},o.summary||{},{
+       name:o.name,slug:o.slug,_portfolio:o.items||[],
+       facility_count:Number((o.summary||{}).facility_count??o.facility_count_loaded??0)||0,
+       country_count:Number((o.summary||{}).country_count??0)||0
+     }));
+     document.getElementById("ops").textContent=String(SNAPSHOT.operator_count||OPS.length);
+     h.textContent="snapshot"; h.style.color="var(--teal)";
+     renderList(); return;
+   }
+ }catch(e){}
+ try{
+   const r=await fetch("https://aidatacenterindex.com/api/operators.json",{cache:"no-store"});
+   if(!r.ok) throw Error(r.status);
+   const j=await r.json();
+   OPS=Array.isArray(j)?j:(j.operators||j.items||j.data||[]);
+   document.getElementById("ops").textContent=String(j.total_operators||OPS.length);
+   h.textContent="live"; h.style.color="var(--teal)";
+ }catch(e){
+   OPS=priority.map(x=>({name:x[0],slug:slug(x[0]),facility_count:0,country_count:0,fallback:true}));
+   h.textContent="fallback"; h.style.color="var(--amber)";
+ }
+ renderList();
 }
 function renderList(){
  const q=document.getElementById("q").value.toLowerCase().trim(), min=Number(document.getElementById("min").value||0), cs=Number(document.getElementById("countries").value||0);
@@ -120,9 +134,12 @@ async function openCompany(o){
  const source="https://aidatacenterindex.com/operators/"+encodeURIComponent(s)+"/";
  p.innerHTML="<div class='eyebrow'>Company portfolio</div><div class='porthead'><div><h2>"+esc(n)+"</h2><div class='soft' style='font-size:10px'>Loading public structured facility records…</div></div><a class='btn primary' href='"+source+"' target='_blank' rel='noopener'>Source profile →</a></div>";
  try{
-   const r=await fetch("https://aidatacenterindex.com/operators/"+encodeURIComponent(s)+"/index.json",{cache:"no-store"});
-   if(!r.ok) throw Error(r.status);
-   const j=await r.json(), items=j.items||j.records||j.facilities||[];
+   let items=Array.isArray(o._portfolio)?o._portfolio:null;
+   if(!items){
+     const r=await fetch("https://aidatacenterindex.com/operators/"+encodeURIComponent(s)+"/index.json",{cache:"no-store"});
+     if(!r.ok) throw Error(r.status);
+     const j=await r.json(); items=j.items||j.records||j.facilities||[];
+   }
    const mw=items.reduce((a,x)=>a+(Number(x.megawatts)||0),0);
    p.innerHTML="<div class='eyebrow'>Public company portfolio</div><div class='porthead'><div><h2>"+esc(n)+"</h2><div class='soft' style='font-size:10px'>Source-linked AI facility slice · not a complete corporate-building census.</div></div><a class='btn' href='"+source+"' target='_blank' rel='noopener'>Open source profile →</a></div>"+
    "<div class='mini-grid'><div class='mini'><b>"+items.length.toLocaleString()+"</b><span>loaded facility records</span></div><div class='mini'><b>"+count(o).toLocaleString()+"</b><span>source facility count</span></div><div class='mini'><b>"+countries(o).toLocaleString()+"</b><span>source country reach</span></div><div class='mini'><b>"+mw.toLocaleString()+"</b><span>MW visible in loaded rows</span></div></div>"+
