@@ -136,7 +136,16 @@ def main():
         ]
     counts={}
     for r in results: counts[r["status"]]=counts.get(r["status"],0)+1
-    verification={"schema_version":1,"protocol_version":"T3-V1","title":"Track 3 versioned verification results","generated_at_utc":GENERATED,"source_snapshot_commit":SHA,"semantics":"Claim-level automated verification results; not facility-wide certification.","summary":{"facility_count":len(tracked),"verification_record_count":len(results),"status_counts":counts,"pass_only_with_evidence_rule":True,"independent_verifier_recorded":False,"artifact_attestation_status":"CI_ATTESTATION_CONFIGURED_PENDING_RUN"},"results":results}
+    attestation_state="CI_ATTESTATION_CONFIGURED_PENDING_RUN"
+    attestation_path=OUT/"attestation_status.json"
+    if attestation_path.exists():
+        try:
+            att=json.loads(attestation_path.read_text(encoding="utf-8"))
+            if att.get("status")=="SIGNED_AND_UPLOADED":
+                attestation_state="SIGNED_AND_UPLOADED" if att.get("source_commit")==SHA else "SIGNED_FOR_PRIOR_SNAPSHOT"
+        except Exception:
+            attestation_state="ATTESTATION_STATUS_INVALID"
+    verification={"schema_version":1,"protocol_version":"T3-V1","title":"Track 3 versioned verification results","generated_at_utc":GENERATED,"source_snapshot_commit":SHA,"semantics":"Claim-level automated verification results; not facility-wide certification.","summary":{"facility_count":len(tracked),"verification_record_count":len(results),"status_counts":counts,"pass_only_with_evidence_rule":True,"independent_verifier_recorded":False,"artifact_attestation_status":attestation_state},"results":results}
     (OUT/"verification_results.json").write_text(json.dumps(verification,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     absence={"schema_version":1,"title":"Track 3 documented absence-testing ledger","generated_at_utc":GENERATED,"rule":"Only explicit documented search records are treated as absence-test evidence. All other missing matches remain NO_ABSENCE_CLAIM.","records":[{"facility_id":f["facility_id"],"facility_name":f["facility_name"],"status":f["absence_testing"]["status"],"search_records":f["absence_testing"]["search_records"],"not_searched_or_not_ingested":["DC Byte facility-level commercial export","site-level optical/TIR/SAR numeric observations"],"required_follow_up":["formal queue/service filing","utility/PUC/PSC record","company disclosure or permit","DC Byte or comparable independent directory","site-level remote sensing where applicable"]} for f in tracked if f["absence_testing"]["status"]=="DOCUMENTED_SEARCH_RESULT"]}
     (OUT/"absence_testing.json").write_text(json.dumps(absence,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
