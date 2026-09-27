@@ -4,10 +4,30 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 ## 1. Verification substance
 
+### Priority reorder for reviewer value
+
+**P0 — close cases before widening.** The dominant remaining test is whether the registry can move genuinely ambiguous public load records from queue entry to a defensible disposition. Three closure-pilot cases are now published in `ambiguous-case-studies.html` and `data/track3/ambiguous_case_studies.json`: two source-backed bounded classifications and one deliberately inconclusive stopping-rule case.
+
+**P1 — expand the 93-site Epoch layer only after the closure loop is demonstrated.** Epoch is a useful reference/cross-check universe, but those sites are already publicly identified; more breadth there should not displace closing ambiguous registry cases.
+
+**P2 — strengthen provenance/CI after substantive findings exist.** Artifact hashing, broader experimental CI, and automated integrity checks are valuable, but they are secondary to producing additional closed evidence chains.
+
+**P3 — maintenance surface.** CONTRIBUTING, CITATION, cross-links, and similar repository ergonomics remain useful maintenance work, but they do not demonstrate that the method works.
+
+### Highest-value elements to preserve
+
+- Phase 1 versus Track 3 boundary.
+- Queue/interconnection versus satellite/physical-method comparison and explicit blind spots.
+- Honest semantics of “100% field accounted”: every defined field has an accounting state; it does not mean every value is known or every facility is verified.
+- Explicit distinction between missing public evidence and evidence of absence.
+- Published closure pilot with terminal adjudications and unresolved items.
+
+
 - [x] Reproducible, sourced large-load baseline across nine North American markets.
 - [x] Ambiguous tier separates unresolved/undisclosed cases from confirmed identities without guessing.
-- [x] Actual processed physical evidence exists: 421 retained derived remote-sensing observations across 68 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
-- [ ] All 93 sites have processed remote-sensing observations. Twenty-five sites currently remain without a retained derived observation.
+- [x] Actual processed physical evidence exists: 423 retained derived remote-sensing observations across 68 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
+- [ ] All 93 Epoch sites have processed remote-sensing observations. Twenty-five sites currently remain without a retained derived observation.
+- [x] Three ambiguous-load closure cases are published: two bounded classifications and one intentionally inconclusive case; two cases have six derived multi-sensor observations each.
 - [x] Claim-level verification vocabulary exists: PASS / FAIL / UNKNOWN / NOT_TESTED.
 - [x] Facility-level vocabulary is defined in the verifier as VERIFIED_PRESENT / VERIFIED_ABSENT / INCONCLUSIVE, with INCONCLUSIVE remaining the default until the facility-wide end-to-end gate is satisfied.
 - [x] Phase 1 versus Track 3 boundary is stated in the main README and public Track 3/Plan A pages.
@@ -63,8 +83,8 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 ## 7. Current reviewer bottom line
 
-**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 421 processed remote-sensing observations, a provenance manifest, claim-level verification machinery, a one-task research queue, and explicit uncertainty semantics.
+**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 423 processed remote-sensing observations, a provenance manifest, claim-level verification machinery, a one-task research queue, and explicit uncertainty semantics.
 
-**Still incomplete:** processing the remaining 25 sites; completing interval power evidence; completing cooling/transformer/service/regulatory research; achieving facility-wide end-to-end verification; automating SHA-256/byte manifests for retained physical derivatives; and independent external review.
+**Still incomplete:** closing more ambiguous cases; processing the remaining 25 Epoch sites; completing interval power evidence; expanding cooling/transformer/service/regulatory research; achieving facility-wide end-to-end verification; automating SHA-256/byte manifests for retained physical derivatives; and independent external review.
 
 **Correct interpretation:** this is a substantially implemented public-evidence contribution to the broader Track 3 problem, not a completed international verification regime and not evidence that covert compute has been comprehensively detected.
