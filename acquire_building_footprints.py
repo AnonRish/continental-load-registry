@@ -16,9 +16,11 @@ from __future__ import annotations
 
 import json
 import math
-import shutil
-import subprocess
+import re
 import sys
+
+import duckdb
+import requests
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -70,39 +72,73 @@ def geometry_area_m2(geom: Any) -> float | None:
         return None
 
 
-def overture_command() -> list[str]:
-    exe = shutil.which("overturemaps")
-    if exe:
-        return [exe]
-    return [sys.executable, "-m", "overturemaps"]
+def latest_overture_release() -> str:
+    fallback = "2026-09-23.1"
+    try:
+        response = requests.get("https://stac.overturemaps.org/catalog.json", timeout=30)
+        response.raise_for_status()
+        payload = response.json()
+        raw = payload.get("latest")
+        if isinstance(raw, str):
+            match = re.search(r"\d{4}-\d{2}-\d{2}\.\d+", raw)
+            if match:
+                return match.group(0)
+        text_blob = json.dumps(payload)
+        candidates = re.findall(r"\d{4}-\d{2}-\d{2}\.\d+", text_blob)
+        if candidates:
+            return sorted(set(candidates))[-1]
+    except Exception:
+        pass
+    return fallback
 
-
-def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str) -> dict[str, Any]:
+def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str, release: str) -> dict[str, Any]:
     eid = str(site["epoch_id"])
     name = str(site["normalized"].get("name") or eid)
     lat = float(coord["lat"])
     lon = float(coord["lon"])
     bbox = bbox_for_site(lat, lon)
-    TMP_DIR.mkdir(parents=True, exist_ok=True)
     tmp_path = TMP_DIR / f"{eid}.geojson"
     final_path = OUT_DIR / f"{eid}.geojson"
 
-    cmd = overture_command() + [
-        "download",
-        f"--bbox={bbox[0]},{bbox[1]},{bbox[2]},{bbox[3]}",
-        "-f", "geojson",
-        "--type", "building",
-        "-o", str(tmp_path),
-    ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=240)
-    if result.returncode != 0:
-        raise RuntimeError(
-            f"Overture download failed for {eid}: "
-            f"{result.stderr[-1800:] or result.stdout[-1800:]}"
+    con = duckdb.connect()
+    try:
+        con.execute("INSTALL httpfs")
+        con.execute("LOAD httpfs")
+        con.execute("INSTALL spatial")
+        con.execute("LOAD spatial")
+        con.execute("SET s3_region='us-west-2'")
+        parquet_glob = (
+            f"s3://overturemaps-us-west-2/release/{release}/"
+            "theme=buildings/type=building/*"
         )
+        query = f"""
+            SELECT id, ST_AsGeoJSON(geometry) AS geometry_json
+            FROM read_parquet('{parquet_glob}', filename=true, hive_partitioning=1)
+            WHERE bbox.xmin <= {bbox[2]}
+              AND bbox.xmax >= {bbox[0]}
+              AND bbox.ymin <= {bbox[3]}
+              AND bbox.ymax >= {bbox[1]}
+        """
+        rows = con.execute(query).fetchall()
+    except Exception as exc:
+        raise RuntimeError(f"Overture GeoParquet query failed for {eid}: {exc}") from exc
+    finally:
+        con.close()
 
-    data = json.loads(tmp_path.read_text(encoding="utf-8"))
-    features = data.get("features") or []
+    features = []
+    for feature_id, geometry_json in rows:
+        try:
+            geometry = json.loads(geometry_json)
+        except Exception:
+            continue
+        if not geometry:
+            continue
+        features.append({
+            "type": "Feature",
+            "id": str(feature_id) if feature_id is not None else None,
+            "geometry": geometry,
+            "properties": {},
+        })
     kept = []
     total_area = 0.0
     for feature in features:
@@ -128,6 +164,7 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str) 
             "footprint_area_m2_webmercator": round(area_m2, 2) if area_m2 is not None else None,
             "source_dataset": "Overture Maps buildings",
             "source_url": "https://docs.overturemaps.org/getting-data/",
+            "source_release": release,
             "source_accessed_on": date_stamp,
             "geometry_role": "current building-footprint polygon",
             "linkage_semantics": "Overlap/proximity only; not evidence that the building hosts AI compute.",
@@ -147,6 +184,7 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str) 
             "dataset": "Overture Maps buildings",
             "url": "https://docs.overturemaps.org/getting-data/",
             "accessed_on": date_stamp,
+            "release": release,
             "site_epoch_id": eid,
             "site_name": name,
             "site_latitude": lat,
@@ -158,7 +196,6 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str) 
         "features": kept,
     }
     save_json(final_path, out)
-    tmp_path.unlink(missing_ok=True)
     return {
         "epoch_id": eid,
         "site_name": name,
@@ -169,10 +206,9 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str) 
         "captured_on": date_stamp,
         "source_dataset": "Overture Maps buildings",
         "source_url": "https://docs.overturemaps.org/getting-data/",
+        "source_release": release,
         "coordinate_precision": coord.get("precision"),
     }
-
-
 def main() -> int:
     registry = load_json(EPOCH_REGISTRY)
     sites = registry["records"]
@@ -186,6 +222,8 @@ def main() -> int:
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     date_stamp = datetime.now(timezone.utc).date().isoformat()
+    release = latest_overture_release()
+    print(f"Overture release: {release}", flush=True)
     results: list[dict[str, Any]] = []
 
     for idx, site in enumerate(sites, start=1):
@@ -206,7 +244,7 @@ def main() -> int:
             print(f"footprints {idx}/93: {site['normalized'].get('name')} -> UNRESOLVED", flush=True)
             continue
         try:
-            result = download_site(site, coord, date_stamp)
+            result = download_site(site, coord, date_stamp, release)
         except Exception as exc:
             result = {
                 "epoch_id": eid,
@@ -231,6 +269,7 @@ def main() -> int:
         "schema_version": 1,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "site_target_count": 93,
+        "source_release": release,
         "sites_with_polygon_files": sum(x.get("status") == "INGESTED_POLYGONIZED" for x in results),
         "total_polygon_count": sum(int(x.get("polygon_count") or 0) for x in results),
         "records": results,
