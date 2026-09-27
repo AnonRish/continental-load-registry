@@ -5,6 +5,9 @@ on:
     paths:
       - "index.html"
       - "track3.html"
+      - "closed-cases.html"
+      - "closed-cases.css"
+      - "CLOSED_CASE_PROTOCOL.md"
       - "plan-a.html"
       - "research.html"
       - "api.html"
@@ -20,6 +23,7 @@ on:
       - "CONTRIBUTING.md"
       - "CITATION.cff"
       - "CITATION.md"
+      - "CLASSIFICATION_AUDIT_2026-09-27.md"
       - "README.md"
       - "llms.txt"
       - "robots.txt"
@@ -294,7 +298,7 @@ jobs:
           import re
           from pathlib import Path
 
-          for html_name in ("index.html", "track3.html", "plan-a.html"):
+          for html_name in ("index.html", "track3.html", "plan-a.html", "closed-cases.html"):
               html = Path(html_name).read_text(encoding="utf-8")
               scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
               for i, script in enumerate(scripts, 1):
@@ -345,6 +349,41 @@ jobs:
                   assert p.exists() and p.stat().st_size > 0, f"queue snapshot missing/empty: {feed['id']}"
           print("PASS: critical public artifacts exist, are non-empty, and parse as JSON")
           PY
+
+      - name: Validate closed-case and strict discovery contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          cases = json.loads(Path("data/track3/ambiguous_case_studies.json").read_text(encoding="utf-8"))
+          strict = json.loads(Path("data/track3/strict_discovery_candidates.json").read_text(encoding="utf-8"))
+
+          assert len(cases["cases"]) == 3
+          for case in cases["cases"]:
+              q = case["queue"]
+              assert str(q["project_type"]).strip().lower() in {"load", "new load facility", "increase load"}
+              assert q.get("classification_basis")
+              assert case.get("unresolved_items")
+
+          ids = [x["queue_id"] for x in strict["candidates"]]
+          assert len(ids) == len(set(ids))
+          assert 4 <= len(ids) <= 5
+          for x in strict["candidates"]:
+              assert x["capacity_mw"] >= 100
+              assert x["load_status"] == "PUBLICLY_CLASSIFIED_LOAD"
+              assert x["identity_gap"]
+              assert x["physical_gap"]
+
+          protocol = Path("CLOSED_CASE_PROTOCOL.md").read_text(encoding="utf-8")
+          assert "Candidate admission gate" in protocol
+          assert "Generation, surplus, transmission" in protocol
+
+          print("PASS: closed-case and strict discovery contracts")
+          PY
+
+      - name: Run closed-case validator
+        run: python validate_ambiguous_case_studies.py
 
       - name: Validate canonical cross-artifact consistency
         run: python validate_cross_artifact_consistency.py
