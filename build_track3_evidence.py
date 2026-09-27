@@ -506,8 +506,8 @@ def refresh_website_completeness_audit(summary: dict[str, Any], evidence_count: 
             "current_core_capacity_gw": core.get("capacity_gw"),
             "broader_known_scope_rows": broad.get("records"),
             "broader_known_scope_capacity_gw": broad.get("capacity_gw"),
-            "project_records": scope.get("project_level_extractions", {}).get("records"),
-            "current_epoch_sites": len(summary.get("epoch_site_count", []) if isinstance(summary.get("epoch_site_count"), list) else summary.get("epoch_site_count", 0) and [0]),
+            "project_records": (scope.get("definitions", {}).get("project_level_extractions", {}) or {}).get("records"),
+            "current_epoch_sites": summary.get("epoch_site_count"),
         })
     s = audit.setdefault("summary", {})
     s["current_epoch_sites"] = summary.get("epoch_site_count")
