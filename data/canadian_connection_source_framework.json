@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "title": "Canadian and non-U.S. Epoch connection-source framework",
+  "canada_epoch_site_count": 0,
+  "note": "The current 93-site Epoch snapshot contains no Canada records. Canadian sources are nevertheless registered for the same site-to-connection matching workflow so future Epoch sites can be resolved without using aggregate capacity as a site match.",
+  "sources": [
+    {
+      "jurisdiction": "British Columbia, Canada",
+      "provider": "BC Hydro",
+      "source_type": "AI/data-center connection application aggregate",
+      "url": "https://app.bchydro.com/accounts-billing/electrical-connections/large-load/emerging-industries-connections.html",
+      "matching_rule": "Use only when the individual application/site/customer is publicly identifiable; aggregate application MW is not a facility match."
+    },
+    {
+      "jurisdiction": "Ontario, Canada",
+      "provider": "IESO",
+      "source_type": "connection application status universe",
+      "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "matching_rule": "Resolve the exact proponent, location, connection point/project identifier and status where public."
+    },
+    {
+      "jurisdiction": "Ontario, Canada",
+      "provider": "Ontario Energy Board",
+      "source_type": "distribution capacity / geospatial context",
+      "url": "https://www.oeb.ca/ontarios-energy-sector/centralized-capacity-information-map",
+      "matching_rule": "Use as grid context; do not treat capacity layers as proof of a specific facility-service match."
+    },
+    {
+      "jurisdiction": "Quebec, Canada",
+      "provider": "Hydro-Québec",
+      "source_type": "data-center sector and connection-policy source",
+      "url": "https://news.hydroquebec.com/news/press-releases/all-quebec/hydro-quebec-proposing-regie-energie-new-rate-large-data-centres-adjustment-rate-cryptographic-use-applied-blockchains.html",
+      "matching_rule": "Resolve named site/project and individual selection/connection evidence before asserting a site match."
+    }
+  ],
+  "non_us_rules": [
+    "Identify the national transmission operator and local distribution network.",
+    "Prefer exact service applications, grid-connection agreements, planning approvals or regulator dockets over sector aggregates.",
+    "Preserve local-language identifiers and raw project names alongside normalized English names.",
+    "Record NO MATCH FOUND where site identity is public but no individual connection record is public."
+  ]
+}
