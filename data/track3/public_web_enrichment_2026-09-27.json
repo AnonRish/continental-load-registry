@@ -1,30 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T07:22:00Z",
+  "generated_at_utc": "2026-09-27T06:26:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 170,
+    "record_count": 179,
     "sites_with_findings": 61,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 1,
+      "PUBLIC_SOURCE_CAPTURED": 178,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "energy_companies": 1,
-      "project": 1,
-      "investment": 1,
-      "owner": 1,
-      "investors": 1,
-      "construction_companies": 1,
-      "cooling": 1,
-      "chip_quantities": 1,
-      "operational_status": 1,
-      "address": 1,
-      "service_or_contract": 1,
-      "users": 1,
-      "regulatory": 1,
-      "capacity_record": 1
+      "energy_companies": 50,
+      "project": 31,
+      "investment": 19,
+      "owner": 10,
+      "investors": 4,
+      "construction_companies": 13,
+      "cooling": 8,
+      "chip_quantities": 5,
+      "operational_status": 7,
+      "address": 6,
+      "service_or_contract": 6,
+      "users": 3,
+      "regulatory": 6,
+      "capacity_record": 11
     }
   },
   "semantics": {
@@ -2741,6 +2741,160 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "evidence_id": "EVID-PWEB-616a94772da014cad2d0"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "project",
+      "value": "Colossus 2",
+      "relationship": "public project identity",
+      "source": "Memphis Business Journal",
+      "source_urls": [
+        "https://www.bizjournals.com/memphis/news/2026/03/03/xai-colossus-2-campus-5414-tulane-building.html"
+      ],
+      "publication_date": "2026-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Project identity; does not establish ownership or external investment.",
+      "evidence_id": "EVID-PWEB-b2cde1389f9da056463b"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "investment",
+      "value": "$659M permit value for a Colossus 2 campus expansion",
+      "relationship": "construction permit value",
+      "source": "Memphis Business Journal",
+      "source_urls": [
+        "https://www.bizjournals.com/memphis/news/2026/03/03/xai-colossus-2-campus-5414-tulane-building.html"
+      ],
+      "publication_date": "2026-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Permit value, not total project capex or investor funding.",
+      "evidence_id": "EVID-PWEB-609e5df08c460cd4e7d1"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "energy_companies",
+      "value": "Tennessee Valley Authority (TVA)",
+      "relationship": "power supplier / 100 MW increase reported in 2026",
+      "source": "Memphis Business Journal",
+      "source_urls": [
+        "https://www.bizjournals.com/memphis/news/2026/08/20/spacexai-power-increase-tva-data-center-colossus-2.html"
+      ],
+      "publication_date": "2026-08-20",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Site-level utility relationship; not a queue ID.",
+      "evidence_id": "EVID-PWEB-cbdf15c10faee7acd98d"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "construction_companies",
+      "value": [
+        "Walbridge",
+        "Clayco",
+        "Ryan Companies",
+        "Angelo Iafrate"
+      ],
+      "relationship": "general contractors for Project Rainier campus build-out",
+      "source": "Measured AI",
+      "source_urls": [
+        "https://measuredai.substack.com/p/aws-new-carlisle-data-center-campus"
+      ],
+      "publication_date": "2026-07-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Four general contractors identified by the cited reconstruction; this is construction-partner evidence, not investor evidence.",
+      "evidence_id": "EVID-PWEB-795cad129f466f0ee91a"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "investment",
+      "value": "Approximately $11B",
+      "relationship": "campus investment",
+      "source": "Amazon / CNBC / KDC",
+      "source_urls": [
+        "https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster",
+        "https://kdc.bussetech.com/sites/aws-new-carlisle/"
+      ],
+      "publication_date": "2025-10-29",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Project investment; not external investor capital.",
+      "evidence_id": "EVID-PWEB-4d19f94f0e7900a83b55"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "chip_quantities",
+      "value": "Nearly 500,000 Trainium2 chips in Project Rainier; Amazon states more than 1 million Trainium2 chips for Anthropic by end-2025",
+      "relationship": "AI accelerator deployment",
+      "source": "Amazon",
+      "source_urls": [
+        "https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster"
+      ],
+      "publication_date": "2025-10-29",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Project Rainier spans multiple U.S. data centers; the nearly-500k figure is project-level, not necessarily all at New Carlisle.",
+      "evidence_id": "EVID-PWEB-d9e3b672caa7ef536e27"
+    },
+    {
+      "site_name": "Microsoft Fairwater Atlanta",
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "field": "construction_companies",
+      "value": [
+        "HITT Contracting",
+        "Clayco",
+        "Brasfield & Gorrie"
+      ],
+      "relationship": "construction partners on Fayetteville Fairwater/main campus",
+      "source": "Measured AI",
+      "source_urls": [
+        "https://measuredai.substack.com/p/microsoft-fairwater-atlanta-data-center"
+      ],
+      "publication_date": "2026-06-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The source identifies HITT on Fairwater DC-1/DC-2/DC-10, Clayco on DC-9, and Brasfield & Gorrie on DC-3/DC-4 plus East Campus site preparation.",
+      "evidence_id": "EVID-PWEB-c7732fdd1e713782cc92"
+    },
+    {
+      "site_name": "Microsoft Fairwater Atlanta",
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "field": "investment",
+      "value": "$3B estimated build-out value for East Campus/ATL2 East DRI filing",
+      "relationship": "campus expansion value",
+      "source": "Measured AI / City of Fayetteville records",
+      "source_urls": [
+        "https://measuredai.substack.com/p/microsoft-fairwater-atlanta-data-center"
+      ],
+      "publication_date": "2026-05-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "East Campus estimate, not total Microsoft investment and not external investor funding.",
+      "evidence_id": "EVID-PWEB-a468cb36b106e4ed306f"
+    },
+    {
+      "site_name": "Microsoft Fairwater Atlanta",
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "field": "operational_status",
+      "value": "Buildings 1-4 operational as of 2026-06-14; additional campus construction ongoing",
+      "relationship": "satellite-derived project status",
+      "source": "Samaritan Research / Epoch AI",
+      "source_urls": [
+        "https://samaritan-research.org/data/data-centers/satellite-explorer/MicrosoftFairwaterFayettevilleGeorgia"
+      ],
+      "publication_date": "2026-06-14",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Status is building-level and based on satellite imagery; not a utility commissioning certificate.",
+      "evidence_id": "EVID-PWEB-29c1cd6454e42d1d2016"
     }
   ]
 }
