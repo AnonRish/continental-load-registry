@@ -43,7 +43,7 @@ A strong pilot contains at least one case that resolves to a data center, one th
 
 ## Current pilot
 
-The repository currently retains three cases:
+The repository currently retains four cases:
 
 - AMB-NYISO-1745 — Pontoon Bridge Road Data Center — data-center identity outcome.
 - AMB-NYISO-1765 — Micron Fab 3 — manufacturing/industrial outcome with a bounded applicant mismatch.
