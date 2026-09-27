@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_on": "2026-09-27",
-  "purpose": "Defensible site targets for the Track 3 ambiguous-load closure pilot.",
+  "purpose": "Three-case end-to-end Track 3 closure pilot drawn from the 141-facility genuinely ambiguous tier.",
   "targets": [
     {
       "case_id": "AMB-NYISO-1765",
@@ -50,31 +50,13 @@
       "address": "197 McKay Road East, Barrie, ON L9J 0E9",
       "latitude": null,
       "longitude": null,
-      "coordinate_precision": "address geocode at acquisition time; retain returned geocoder result",
+      "coordinate_precision": "public address available; automated geocode did not return a defensible coordinate",
       "coordinate_source_urls": [
         "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
         "https://www.minicounsel.ca/scj/2022/6295",
         "https://www.squareyards.ca/sale/on/simcoe/barrie/rural-barrie-southeast/197-mckay-road-east-rd"
       ],
-      "pilot_role": "intentionally unresolved/unknown outcome"
-    },
-    {
-      "case_id": "AMB-IESO-2025-854",
-      "rto": "IESO",
-      "queue_id": "2025-854",
-      "project_name": "CPXP Sarnia Hydrogen Facility",
-      "capacity_mw": 130,
-      "state_province": "ON",
-      "county_or_area": "Lambton",
-      "address": "Sarnia, ON (exact project parcel not publicly established in sources reviewed)",
-      "latitude": null,
-      "longitude": null,
-      "coordinate_precision": "no exact project address established; satellite targeting withheld to avoid false precision",
-      "coordinate_source_urls": [
-        "https://www.canadianptx.com/projects",
-        "https://sndevcorp.ca/cpxp-secures-seed-funding-and-formalizes-development-partnership-with-six-nations-of-the-grand-river-development-corporation-for-100mw-green-hydrogen-project-in-sarnia/"
-      ],
-      "pilot_role": "non-data-center industrial control case"
+      "pilot_role": "deliberately unresolved outcome; tests location/identity stopping rule"
     }
   ]
 }
