@@ -64,67 +64,67 @@
       "track3_element": "Audit large compute owners above threshold T",
       "ai2040_reference": "Covert AI Projects Recommendation #2",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json",
-        "data/track3/research_queue.json"
+        "data/track3/audit_population_protocol.json",
+        "data/track3/entity_resolution.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Add threshold-based audit population, recursive ownership graph, and audit-completion state.",
-      "scope_note": "Threshold T and audit authority are Plan A design parameters, not current public registry facts."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Parameterized threshold audit population protocol with explicit metric definition, entity-resolution, audit states, evidence links and exclusion reasons.",
+      "scope_note": "Threshold T remains a Plan A parameter and is intentionally not hard-coded as a current factual threshold."
     },
     {
       "id": "t3-06",
       "track3_element": "Randomly sample the small-owner tail",
       "ai2040_reference": "Covert AI Projects Recommendation #2 and Appendix B",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/sampling_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Implement reproducible sampling frames, seeds, weighted selection, sampled trace outcomes, and confidence accounting.",
-      "scope_note": "No statistical sampling result is asserted until a population and sampling frame are actually defined."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Deterministic sampling-frame protocol with declared eligibility, seed, stratification, reproducible selection log and outcome fields.",
+      "scope_note": "No sample is claimed until the population and sampling parameters are fixed."
     },
     {
       "id": "t3-07",
       "track3_element": "Physical inspection of current compute",
       "ai2040_reference": "Covert AI Projects Recommendation #2 and Appendix B",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/inspection_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Add inspection records, inspector authority, observed holdings, serial capture, and inspection evidence.",
-      "scope_note": "Physical inspections are outside the current public data pipeline."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Physical-inspection evidence schema and chain-of-custody protocol are implemented for future authorized inspections.",
+      "scope_note": "Current verified public inspection observations: 0."
     },
     {
       "id": "t3-08",
       "track3_element": "Serial-number continuity",
       "ai2040_reference": "Covert AI Projects Appendix B",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/serial_continuity_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Add serial-level inspection and continuity records and flag inconsistent reappearance.",
-      "scope_note": "Serial-level data should only be published where legally and operationally permissible."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Serial continuity lifecycle and transfer-integrity protocol is implemented.",
+      "scope_note": "Current serial-level public inventory is not exposed; no serial continuity claim is asserted."
     },
     {
       "id": "t3-09",
       "track3_element": "Decommissioning and recycling verification",
       "ai2040_reference": "Covert AI Projects Appendix B",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/decommissioning_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Reconcile claimed destruction/recycling against recycler records, serials, witnessed events, and fleet attrition.",
-      "scope_note": "A decommissioning claim is not treated as verified without supporting evidence."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Decommissioning/recycling verification schema and independent-corroboration states are implemented.",
+      "scope_note": "Current independently verified public decommissioning events: 0."
     },
     {
       "id": "t3-10",
       "track3_element": "Untraced compute pool L",
       "ai2040_reference": "Covert AI Projects Appendix B",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/untraced_compute_pool.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Compute and expose a non-negative untraced pool from unresolved sales, transfers, and unverifiable decommissioning.",
-      "scope_note": "The repository does not currently calculate a treaty-certification quantity."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Residual untraced-compute accounting framework is implemented with explicit closure requirements and non-negative residual rule.",
+      "scope_note": "Current value remains UNKNOWN because the public transaction-level inventory chain is not closed."
     },
     {
       "id": "t3-11",
@@ -143,11 +143,11 @@
       "track3_element": "Incentives, amnesty, and buyback disclosures",
       "ai2040_reference": "Covert AI Projects Recommendation #3",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/disclosure_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "contribution": "Add voluntary disclosure, amnesty/buyback event, verification, and resolution records without assuming disclosure validity.",
-      "scope_note": "This is a policy-dependent extension, not an existing data feed."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "contribution": "Voluntary disclosure/amnesty/buyback evidence protocol is implemented with explicit verification states.",
+      "scope_note": "This is a protocol surface; no verified disclosure or buyback events are claimed."
     },
     {
       "id": "t3-13",
