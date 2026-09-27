@@ -29,7 +29,7 @@ The current normalized Epoch layer still has missing public fields for 13 addres
 
 ## Candidate discovery queue
 
-The JSON and CSV files contain 32 externally discovered candidates/programs. They are intentionally not merged into the 93-site canonical Epoch universe until the promotion rules are satisfied. One explicit example, Meta Hyperion, is already in Epoch and is retained only as a corroborating discovery record.
+The JSON and CSV files contain 30 externally discovered candidates/programs. They are intentionally not merged into the 93-site canonical Epoch universe until the promotion rules are satisfied. One explicit example, Meta Hyperion, is already in Epoch and is retained only as a corroborating discovery record.
 
 ## Promotion standard
 
