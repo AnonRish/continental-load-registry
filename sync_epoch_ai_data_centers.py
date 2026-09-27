@@ -534,7 +534,8 @@ def sync() -> None:
                 "latest_timeline": None,
                 "latest_chip_quantities": list(latest_chips.values()),
             }
-            normalized = merge_public_enrichment(normalized, public_enrichment_by_id.get(epoch_id, []))            if latest:
+            normalized = merge_public_enrichment(normalized, public_enrichment_by_id.get(epoch_id, []))
+            if latest:
                 normalized["latest_timeline"] = {k: (numeric(pick(latest, aliases)) if k not in {"data_center","date","construction_status"} else pick(latest, aliases))
                     for k, aliases in TIMELINE_ALIASES.items()}
 
