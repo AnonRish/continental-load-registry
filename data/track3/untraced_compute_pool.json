@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "title": "Untraced compute pool accounting framework",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "definition": "Non-negative residual quantity produced by reconciling sourced accelerator acquisitions/sales/transfers/decommissioning against independently verified physical end-use assignments.",
+  "inputs": [
+    "site_verified_inventory",
+    "organization_sales",
+    "public_transfers",
+    "verified_decommissioning",
+    "unresolved_claims"
+  ],
+  "rules": [
+    "Keep chip units and compute capacity as separate measures.",
+    "Do not subtract speculative transfers.",
+    "Do not count aggregate ownership snapshots as physical site inventories.",
+    "Residual is UNKNOWN when the input population is not closed.",
+    "When inputs are closed, residual must be >= 0."
+  ],
+  "current_snapshot": {
+    "status": "UNKNOWN",
+    "reason": "Current public sources do not form a closed transaction-level inventory chain across all compute owners and sites.",
+    "value": null,
+    "unit": "accelerators"
+  }
+}
