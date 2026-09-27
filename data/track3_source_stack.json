@@ -267,18 +267,29 @@
       "id": "overture-buildings",
       "name": "Overture Maps building footprints",
       "kind": "physical geometry dataset",
-      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "status": "SOURCE_AVAILABLE_ACTIVE_ACQUISITION",
       "updated": "2026-09-27",
       "url": "https://docs.overturemaps.org/guides/buildings/",
-      "role": "Current building/roof footprint geometry used as a separate geometry layer; does not establish AI tenancy or construction date."
+      "role": "Current building/roof footprint geometry used as a separate layer; does not establish AI tenancy or construction date."
+    },
+    {
+      "id": "planetary-computer-stac",
+      "name": "Microsoft Planetary Computer STAC",
+      "kind": "satellite STAC catalog",
+      "status": "SOURCE_AVAILABLE_ACTIVE_FALLBACK",
+      "updated": "2026-09-27",
+      "url": "https://planetarycomputer.microsoft.com/api/stac/v1/",
+      "role": "Anonymous public STAC fallback for Sentinel-2 L2A, Sentinel-1 GRD and Landsat Collection 2 Level-2 assets; observations retain item provenance."
     }
   ],
-  "source_stack_count": 25,
+  "source_stack_count": 26,
   "source_stack_status_counts": {
     "INGESTED": 8,
     "INGESTED_SNAPSHOT": 9,
-    "SOURCE_AVAILABLE_NOT_INGESTED": 6,
+    "SOURCE_AVAILABLE_NOT_INGESTED": 5,
     "INGESTED_PARTIAL": 1,
-    "NOT_INGESTED": 1
+    "NOT_INGESTED": 1,
+    "SOURCE_AVAILABLE_ACTIVE_ACQUISITION": 1,
+    "SOURCE_AVAILABLE_ACTIVE_FALLBACK": 1
   }
 }
