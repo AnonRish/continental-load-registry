@@ -248,7 +248,7 @@ def evidence_domain(ev: dict[str, Any]) -> str:
         return "service_or_contract"
     return "grid_connection"
 
-def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any], power_observations: list[dict[str, Any]] | None = None, cooling_observations: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+def build_evidence_index(evidence: dict[str, Any], registry: dict[str, Any], power_observations: list[dict[str, Any]] | None = None, cooling_observations: list[dict[str, Any]] | None = None, remote_observations: list[dict[str, Any]] | None = None, transformer_events: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
     rows = []
     registry_by_id = {x["epoch_id"]: x for x in registry["records"]}
     for rec in evidence["records"]:
@@ -566,7 +566,9 @@ def main() -> int:
 
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
     observation_queue = build_observation_queue(site_records)
-    evidence_index = build_evidence_index(evidence, reg, power_observations, cooling_observations)
+    evidence_index = build_evidence_index(
+        evidence, reg, power_observations, cooling_observations, remote_observations, transformer_events
+    )
 
     summary = {
         "schema_version": 1,
