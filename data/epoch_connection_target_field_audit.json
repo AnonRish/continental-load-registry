@@ -2,23 +2,23 @@
   "schema_version": 1,
   "generated_on": "2026-09-27",
   "title": "Connection-target ledger field accounting",
-  "purpose": "A self-auditing companion to the 93-site connection-target ledger. Every defined detailed field is explicitly classified as populated or NOT_PUBLICLY_RETAINED; this is accounting completeness, not evidence completeness.",
+  "purpose": "Self-auditing companion to the 93-site connection-target ledger. Every defined detailed field is explicitly classified as populated or NOT_PUBLICLY_RETAINED; accounting completeness is not evidence completeness.",
   "summary": {
     "total_sites": 93,
     "sites_with_jurisdiction": 93,
     "sites_with_connection_status": 93,
-    "sites_with_provider": 67,
+    "sites_with_provider": 75,
     "sites_with_site_evidence": 93,
     "site_specific_queue_ids": 2,
     "detailed_field_count": 16,
     "detailed_fields_total": 1488,
-    "detailed_fields_populated": 188,
+    "detailed_fields_populated": 206,
     "detailed_fields_accounted": 1488,
     "detailed_fields_accounted_pct": 100,
-    "detailed_field_population_pct": 12.6,
+    "detailed_field_population_pct": 13.8,
     "field_population_counts": {
-      "utility_or_service_provider": 67,
-      "utility_type": 8,
+      "utility_or_service_provider": 75,
+      "utility_type": 16,
       "transmission_interconnection_provider": 24,
       "substation": 2,
       "transmission_line": 0,
@@ -32,7 +32,7 @@
       "request_or_study_date": 5,
       "service_or_approval_date": 5,
       "target_in_service_date": 5,
-      "connection_research_notes": 22
+      "connection_research_notes": 24
     },
     "record_published_detail_field_distribution": {
       "1": 55,
@@ -50,14 +50,14 @@
     {
       "key": "utility_or_service_provider",
       "label": "Utility / service provider",
-      "populated_records": 67,
-      "coverage_pct": 72
+      "populated_records": 75,
+      "coverage_pct": 80.6
     },
     {
       "key": "utility_type",
       "label": "Utility type",
-      "populated_records": 8,
-      "coverage_pct": 8.6
+      "populated_records": 16,
+      "coverage_pct": 17.2
     },
     {
       "key": "transmission_interconnection_provider",
@@ -140,15 +140,15 @@
     {
       "key": "connection_research_notes",
       "label": "Connection research notes",
-      "populated_records": 22,
-      "coverage_pct": 23.7
+      "populated_records": 24,
+      "coverage_pct": 25.8
     }
   ],
   "total_field_slots": 1488,
-  "populated_field_slots": 188,
+  "populated_field_slots": 206,
   "accounted_field_slots": 1488,
   "accounted_field_slots_pct": 100,
-  "populated_field_slots_pct": 12.6,
+  "populated_field_slots_pct": 13.8,
   "records": [
     {
       "epoch_id": "EPOCH-c20399471d1c5e4a",
@@ -382,15 +382,13 @@
       "address": "HP79+MP, 81300 Johor Bahru, Johor, Malaysia",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "Malaysia national / utility grid connection process",
-      "provider": null,
+      "provider": "Tenaga Nasional Berhad (TNB)",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 3,
+      "detailed_fields_populated": 5,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "substation",
         "transmission_line",
         "site_specific_queue_id",
@@ -506,15 +504,13 @@
       "state_province": "",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "Malaysia national / utility grid connection process",
-      "provider": null,
+      "provider": "Tenaga Nasional Berhad (TNB)",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 2,
+      "detailed_fields_populated": 5,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "substation",
         "transmission_line",
         "site_specific_queue_id",
@@ -525,8 +521,7 @@
         "contract_ceiling_mw",
         "request_or_study_date",
         "service_or_approval_date",
-        "target_in_service_date",
-        "connection_research_notes"
+        "target_in_service_date"
       ]
     },
     {
@@ -1765,15 +1760,13 @@
       "address": "1401 Meadowville Technology Parkway, Chester, VA",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "PJM",
-      "provider": null,
+      "provider": "Dominion Energy Virginia",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 2,
+      "detailed_fields_populated": 4,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "transmission_interconnection_provider",
         "substation",
         "transmission_line",
@@ -1978,15 +1971,13 @@
       "address": "15000 Lambda Drive, San Antonio, TX 78245",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "ERCOT",
-      "provider": null,
+      "provider": "Karnes Electric Cooperative",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 4,
+      "detailed_fields_populated": 6,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "transmission_interconnection_provider",
         "substation",
         "transmission_line",
@@ -2214,15 +2205,13 @@
       "address": "3545 Wiseman Boulevard, San Antonio, TX 78251",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "ERCOT",
-      "provider": null,
+      "provider": "Karnes Electric Cooperative",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 4,
+      "detailed_fields_populated": 6,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "transmission_interconnection_provider",
         "substation",
         "transmission_line",
@@ -2817,15 +2806,13 @@
       "state_province": "TX",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "ERCOT",
-      "provider": null,
+      "provider": "SB Energy (powered-infrastructure partner; grid utility not separately established)",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 3,
+      "detailed_fields_populated": 5,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "substation",
         "transmission_line",
         "site_specific_queue_id",
@@ -2846,15 +2833,13 @@
       "state_province": "NM",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "WECC / PNM and other New Mexico serving utilities",
-      "provider": null,
+      "provider": "El Paso Electric (regional utility; site-specific service not separately established)",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 3,
+      "detailed_fields_populated": 5,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "substation",
         "transmission_line",
         "site_specific_queue_id",
@@ -2906,15 +2891,13 @@
       "address": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
       "connection_status": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
       "grid_jurisdiction": "UAE transmission / local distribution connection process",
-      "provider": null,
+      "provider": "Emirates Water and Electricity Company (EWEC) (grid-operator context)",
       "site_evidence_count": 1,
       "detailed_fields_total": 16,
-      "detailed_fields_populated": 1,
+      "detailed_fields_populated": 4,
       "detailed_fields_accounted": 16,
       "detailed_fields_accounted_pct": 100,
       "unpopulated_fields": [
-        "utility_or_service_provider",
-        "utility_type",
         "substation",
         "transmission_line",
         "site_specific_queue_id",
@@ -2926,8 +2909,7 @@
         "site_planned_mw",
         "request_or_study_date",
         "service_or_approval_date",
-        "target_in_service_date",
-        "connection_research_notes"
+        "target_in_service_date"
       ]
     },
     {
