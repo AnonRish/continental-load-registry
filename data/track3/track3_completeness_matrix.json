@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Track 3 implementation completeness matrix",
+  "official_basis": [
+    {
+      "source": "AI 2040 Verification Plan — Get Involved",
+      "url": "https://ai-2040.com/supplements/verification-plan/get-involved"
+    },
+    {
+      "source": "AI 2040 Plan A — Covert AI Projects",
+      "url": "https://ai-2040.com/print/covert-ai-projects"
+    }
+  ],
+  "interpretation": "This is a repository implementation inventory, not a certification and not a claim that AI 2040 formally designates this repository as Track 3.",
+  "rows": [
+    {
+      "id": "T3-01",
+      "requirement": "Account for pre-deal AI-relevant compute",
+      "implementation": "Aggregate owner/user/sales snapshots plus public infrastructure layer",
+      "status": "PARTIAL",
+      "evidence": "215 owner-cumulative rows; 160 sales-timeline rows; 11 user snapshots; 93 physical reference sites",
+      "blocking_gap": "No globally exhaustive transaction-level inventory."
+    },
+    {
+      "id": "T3-02",
+      "requirement": "Trace inputs to compute production",
+      "implementation": "Quarterly component and supply-denominator snapshots",
+      "status": "INGESTED_SNAPSHOT",
+      "evidence": "102 chip-component rows; 43 designer rows; 8 quarterly supply-denominator rows",
+      "blocking_gap": "Inputs are estimates/constraints, not complete vendor production declarations."
+    },
+    {
+      "id": "T3-03",
+      "requirement": "Audit accelerator vendor sales",
+      "implementation": "Sales organization/chip-type/timeline snapshots",
+      "status": "INGESTED_SNAPSHOT",
+      "evidence": "36 chip-type sales rows; 12 organization rows; 160 timeline rows",
+      "blocking_gap": "No transaction-level invoices/serials for all vendors."
+    },
+    {
+      "id": "T3-04",
+      "requirement": "Trace sales and resales to physical end use",
+      "implementation": "Entity graph + site evidence + research packets",
+      "status": "PARTIAL",
+      "evidence": "Entity-resolution builder, 93-site evidence layer, strict discovery packets",
+      "blocking_gap": "Public reseller/transfer records are not globally complete."
+    },
+    {
+      "id": "T3-05",
+      "requirement": "Audit owners above threshold T",
+      "implementation": "Parameterized audit population protocol",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "audit_population_protocol.json",
+      "blocking_gap": "T and closed population must be externally fixed."
+    },
+    {
+      "id": "T3-06",
+      "requirement": "Randomly sample small-owner tail",
+      "implementation": "Deterministic sampling protocol + certificate model",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "sampling_protocol.json + track3_certificate.py",
+      "blocking_gap": "No closed audit population/sample results."
+    },
+    {
+      "id": "T3-07",
+      "requirement": "Physically inspect current compute",
+      "implementation": "Inspection schema and chain-of-custody controls",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "inspection_protocol.json",
+      "blocking_gap": "No authorized public inspection observations retained."
+    },
+    {
+      "id": "T3-08",
+      "requirement": "Maintain serial-number continuity",
+      "implementation": "Lifecycle/state machine and continuity rules",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "serial_continuity_protocol.json",
+      "blocking_gap": "No public global serial ledger."
+    },
+    {
+      "id": "T3-09",
+      "requirement": "Verify decommissioning/recycling",
+      "implementation": "Event schema + independent-corroboration states + WEEE source catalog",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "decommissioning_protocol.json",
+      "blocking_gap": "No independently verified compute-specific decommissioning ledger."
+    },
+    {
+      "id": "T3-10",
+      "requirement": "Compute residual untraced pool L",
+      "implementation": "Residual-ledger schema + certificate inputs",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "untraced_compute_pool.json",
+      "blocking_gap": "Transaction-level inputs are not closed."
+    },
+    {
+      "id": "T3-11",
+      "requirement": "Locate remaining unaccounted compute",
+      "implementation": "Optical/TIR/SAR observations, candidate surveillance and physical queues",
+      "status": "PARTIAL",
+      "evidence": "423 retained derived observations across 68/93 sites; detection universe + observation queue",
+      "blocking_gap": "25/93 reference sites have no retained derived remote-sensing observation and covert/non-grid sites remain out of public queue visibility."
+    },
+    {
+      "id": "T3-12",
+      "requirement": "Use incentive/amnesty/buyback disclosures",
+      "implementation": "Disclosure protocol + event schema",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "disclosure_protocol.json",
+      "blocking_gap": "No verified program/event data."
+    },
+    {
+      "id": "T3-13",
+      "requirement": "Discover physical data centers with imagery/intelligence",
+      "implementation": "93-site reference universe + broader queue surveillance + remote sensing",
+      "status": "PARTIAL",
+      "evidence": "93 Epoch sites; outside-Epoch queue surveillance; 423 derived observations",
+      "blocking_gap": "No intelligence-source or global covert-site census; public imagery cannot establish universal absence."
+    },
+    {
+      "id": "T3-14",
+      "requirement": "Power/cooling/infrastructure corroboration",
+      "implementation": "Annual power snapshots, cooling, transformer, substation and transmission evidence",
+      "status": "PARTIAL",
+      "evidence": "6 annual power observations; 2 structured cooling snapshots; 3 transformer events; 90 substation and 113 transmission evidence records",
+      "blocking_gap": "Interval telemetry and exhaustive site-linkage incomplete."
+    },
+    {
+      "id": "T3-15",
+      "requirement": "Independent corroboration",
+      "implementation": "Provenance/conflict layer + explicit independence status",
+      "status": "PARTIAL",
+      "evidence": "Provenance builder and evidence semantics",
+      "blocking_gap": "Independent methodological corroboration not assessed for all 93 sites."
+    },
+    {
+      "id": "T3-16",
+      "requirement": "Global rather than North-America-only coverage",
+      "implementation": "Global supply-chain/source catalog and multinational public-source connectors",
+      "status": "PARTIAL",
+      "evidence": "Global owner/user/sales snapshots + GLEIF/Census/WEEE official source catalog",
+      "blocking_gap": "North American physical registry remains the main site-level universe."
+    },
+    {
+      "id": "T3-17",
+      "requirement": "Certificate bounding covert-project compute",
+      "implementation": "Parameterized tail bound and failure-aware confidence model",
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "evidence": "track3_certificate.py + certificate_model.json",
+      "blocking_gap": "No closed population and verified sample results."
+    }
+  ],
+  "hard_stop": "The repository is not fully Track 3-complete until the blocking gaps involving global transaction accounting, physical inspection, residual L, and comprehensive covert-site detection are materially resolved."
+}
