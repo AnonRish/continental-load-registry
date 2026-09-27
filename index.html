@@ -896,12 +896,12 @@
         </div>
         <div class="grid md:grid-cols-2 gap-3 mt-4">
           <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
-            <div class="flex items-center justify-between gap-3"><strong class="text-sm">Remote sensing</strong><span id="track3RemoteStatus" class="mono text-[10px] uppercase">NOT INGESTED</span></div>
-            <p class="text-xs mt-1" style="color:var(--ink-soft);">TIR/SAR numeric observations and change-detection measurements are specified but are not yet part of the evidence dataset.</p>
+            <div class="flex items-center justify-between gap-3"><strong class="text-sm">Remote sensing</strong><span id="track3RemoteStatus" class="mono text-[10px] uppercase">LOADING</span></div>
+            <p id="track3RemoteDescription" class="text-xs mt-1" style="color:var(--ink-soft);">Loading current optical / TIR / SAR acquisition state.</p>
           </div>
           <div class="rounded-lg p-3" style="background:var(--amber-soft);border:1px solid var(--amber-line);">
-            <div class="flex items-center justify-between gap-3"><strong class="text-sm">Transformer supply chain</strong><span id="track3TransformerStatus" class="mono text-[10px] uppercase">NOT INGESTED</span></div>
-            <p class="text-xs mt-1" style="color:var(--ink-soft);">Large-transformer procurement, delivery, installation, and site-assignment events are specified but are not yet ingested.</p>
+            <div class="flex items-center justify-between gap-3"><strong class="text-sm">Transformer supply chain</strong><span id="track3TransformerStatus" class="mono text-[10px] uppercase">LOADING</span></div>
+            <p id="track3TransformerDescription" class="text-xs mt-1" style="color:var(--ink-soft);">Loading current transformer-event state.</p>
           </div>
         </div>
       </div>
@@ -929,7 +929,7 @@
           </div>
           <div class="flex flex-wrap gap-3">
             <a class="text-xs link-underline" href="data/track3_evidence_schema.json" target="_blank" rel="noopener noreferrer">Open canonical evidence schema</a>
-            <a class="text-xs link-underline" href="data/track3/external_source_snapshots.json" target="_blank" rel="noopener noreferrer">Open external-source audit</a>
+            <a class="text-xs link-underline" href="data/track3/external_source_snapshots.json" target="_blank" rel="noopener noreferrer">Open external-source audit</a><a class="text-xs link-underline" href="data/track3/public_site_dossier.json" target="_blank" rel="noopener noreferrer">Open complete 93-site research dossier</a>
             <a class="text-xs link-underline" href="TRACK3.md" target="_blank" rel="noopener noreferrer">Open Track 3 documentation</a>
           </div>
         </div>
@@ -2486,6 +2486,16 @@ openFacilityFromHash();
       document.getElementById('track3CoolingSnapshots').textContent=Number(domainCounts.cooling?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
       document.getElementById('track3ServiceEvidence').textContent=Number(domainCounts.service_or_contract?.SITE_LEVEL_EVIDENCE||0).toLocaleString()+' / 93';
       document.getElementById('track3TenancyEvidence').textContent=Number(domainCounts.compute_tenancy?.INGESTED_SNAPSHOT||0).toLocaleString()+' / 93';
+const remoteObs=Number(summary.remote_sensing_derived_observation_count||0);
+      const transformerEvents=Number(summary.transformer_event_count||0);
+      document.getElementById('track3RemoteStatus').textContent=remoteObs>0?'INGESTED':'TARGETS READY · NOT YET INGESTED';
+      document.getElementById('track3RemoteDescription').textContent=remoteObs>0
+        ? remoteObs.toLocaleString()+' derived public satellite observations are in the canonical Track 3 evidence graph.'
+        : '93 site-specific optical/TIR/SAR acquisition targets are defined; processed numeric observations are not yet in the canonical evidence graph.';
+      document.getElementById('track3TransformerStatus').textContent=transformerEvents>0?'EVENTS INGESTED':'RESEARCH QUEUE ACTIVE';
+      document.getElementById('track3TransformerDescription').textContent=transformerEvents>0
+        ? transformerEvents.toLocaleString()+' source-backed transformer events are retained; the 93-site research target list remains open.'
+        : 'The 93-site transformer target list is defined; no source-backed events are currently retained.';
       const obsCount=Number(summary.observation_task_count||0);
       document.getElementById('track3ObservationTasks').textContent=obsCount.toLocaleString();
       const breakdown=summary.observation_task_counts_by_domain||{};
