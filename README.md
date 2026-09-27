@@ -47,7 +47,12 @@ aimed at surfacing large requests that lack a confirmed public operator.
   page-load. Prose that quotes a count or a GW figure is filled in from
   that data at load time, so a re-embed cannot leave a stale number behind.
 - `track3.html` -- the public Track 3 Evidence Observatory. It loads the canonical Track 3 site-status, evidence, observation, power/cooling, source-stack, queue/source-universe, Module 1 gate, and external-source status artifacts, with site search, grid-state filtering, per-site evidence inspection, domain coverage accounting, source links, and explicit missingness semantics.
+- `ai-data-center-explorer.html` -- Epoch-style interactive data-center explorer backed by the retained Epoch AI site, timeline, chip-quantity, chiller, and cooling-tower snapshots, with historical date controls and owner-logo mapping.
+- `epoch-queue-vs-satellite.html` -- public comparison of the complementary observation channels: electrical/interconnection intent versus physical/satellite/permit evidence, including the disagreement set and explicit blind spots.
 - `plan-a.html` -- public AI 2040 Plan A Track 3 research bridge. It maps the repository's current evidence and research tasks to the public AI 2040 Track 3 / Covert AI Projects discussion, provides direct AI 2040 reference links, and explains what is implemented, partial, or still design-only.
+- `api.html` + `api/` -- the public machine-readable API surface, including the OpenAPI document and versioned JSON endpoints.
+- `research.html` -- Research Operations Console for the 93-site Track 3 acquisition/research queue.
+- `bulk-download.html` + `data/bulk_download_manifest.json` -- downloadable dataset index and bulk-repository manifest.
 - `PLAN_A.md` -- the repository-level Plan A contribution notes and scope boundary. This is an independent research contribution, not an AI Futures Project publication or certification.
 - `CONTRIBUTING.md` -- evidence-submission protocol for adding reproducible Track 3 records.
 - `CITATION.cff` -- machine-readable repository citation metadata.
@@ -84,7 +89,7 @@ The public research-surface CI is defined in `.github/workflows/validate_public_
   `ground_truth_overrides.json`. Has `--selftest`. See "Investigating the
   ambiguous tier".
 - `ground_truth_overrides.json` (empty template),
-  `ground_truth_overrides.example.json` (a complete, fictional entry) and
+  `ground_truth_overrides_example.json` (a complete, fictional entry) and
   `ambiguous_facilities_dossier.md` (generated from this build's data with
   `--input data/computational_load_estimates_new5.csv`).
 - `data/` -- the retained ingest outputs, source manifest, per-RTO research
@@ -92,6 +97,10 @@ The public research-surface CI is defined in `.github/workflows/validate_public_
   source files are not bundled; where a source snapshot was preserved for the
   build, its SHA-256 is recorded.
 - `requirements.txt` (unchanged: the 2.1 scripts use only the standard library), `LICENSE` (Apache 2.0).
+
+## Related repository: AI 2040 Verification
+
+[`AnonRish/ai-2040-verification`](https://github.com/AnonRish/ai-2040-verification) is a complementary repository testing concrete inference-side and operational verification mechanisms from the AI 2040 Plan A discussion. This registry works at a different evidence layer: public grid/interconnection records, physical-site evidence, Epoch AI cross-references, and accounting/research workflows. The two repositories should not be read as a single verified system; they are separate experimental implementations that can be evaluated together as complementary evidence layers.
 
 ## Epoch AI secondary evidence layer
 
