@@ -24,12 +24,12 @@
       "rto": "AESO",
       "project_name": "Leedale Data Load",
       "capacity_mw": 1864,
-      "county_or_area": "Clearwater County",
-      "poi": "38-Caroline",
+      "county_or_area": "Clearwater County / Caroline",
+      "poi": "Not published in AESO Connection Project List",
       "load_status": "PUBLICLY_CLASSIFIED_LOAD",
-      "identity_gap": "Developer/owner not publicly exposed in retained source surface",
-      "physical_gap": "No defensible site coordinate retained",
-      "research_role": "primary next closure target"
+      "identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "physical_gap": "No defensible facility coordinate retained",
+      "research_role": "primary ambiguity target"
     },
     {
       "case_id": "NEXT-AESO-P3198",
@@ -37,38 +37,12 @@
       "rto": "AESO",
       "project_name": "Lynx Data Load",
       "capacity_mw": 1800,
-      "county_or_area": "Strathcona County",
-      "poi": "33-Fort Saskatchewan",
+      "county_or_area": "Strathcona County / Fort Saskatchewan",
+      "poi": "Not published in AESO Connection Project List",
       "load_status": "PUBLICLY_CLASSIFIED_LOAD",
-      "identity_gap": "Developer/owner not publicly exposed in retained source surface",
-      "physical_gap": "No defensible site coordinate retained",
-      "research_role": "primary next closure target"
-    },
-    {
-      "case_id": "NEXT-NYISO-1743",
-      "queue_id": "1743",
-      "rto": "NYISO",
-      "project_name": "St. Lawrence Infrastructure 2",
-      "capacity_mw": 1935,
-      "county_or_area": "St. Lawrence County",
-      "poi": "NYPA's 230kV Moses Massena 1 and 2",
-      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
-      "identity_gap": "Named interconnecting entity exists; physical campus identity is not established from the queue record alone",
-      "physical_gap": "No defensible site coordinate retained",
-      "research_role": "secondary closure target; public secondary sources already associate it with data-center/AI development"
-    },
-    {
-      "case_id": "NEXT-NYISO-1742",
-      "queue_id": "1742",
-      "rto": "NYISO",
-      "project_name": "St. Lawrence Infrastructure 1",
-      "capacity_mw": 860,
-      "county_or_area": "St. Lawrence County",
-      "poi": "NYPA HA-2, 345kV Transmission Line",
-      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
-      "identity_gap": "Named interconnecting entity exists; physical campus identity is not established from the queue record alone",
-      "physical_gap": "No defensible site coordinate retained",
-      "research_role": "secondary closure target; public secondary sources already associate it with data-center/AI development"
+      "identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "physical_gap": "No defensible facility coordinate retained",
+      "research_role": "primary ambiguity target"
     },
     {
       "case_id": "NEXT-AESO-P3108",
@@ -81,7 +55,33 @@
       "load_status": "PUBLICLY_CLASSIFIED_LOAD",
       "identity_gap": "Developer/owner not exposed in retained public queue surface",
       "physical_gap": "No defensible facility coordinate retained",
-      "research_role": "primary next closure target; generic load-project naming makes end-use/entity resolution more informative than an already-named data-center control"
+      "research_role": "primary ambiguity target; generic title tests whether the workflow can discover end use without an AI/data-center name"
+    },
+    {
+      "case_id": "CONTROL-AESO-P2958",
+      "queue_id": "P2958",
+      "rto": "AESO",
+      "project_name": "Hydrogen Canada MPC Load",
+      "capacity_mw": 320,
+      "county_or_area": "Fort Saskatchewan",
+      "poi": "Not published in AESO Connection Project List",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "physical_gap": "No defensible facility coordinate retained",
+      "research_role": "non-data-center control; tests whether the workflow correctly resolves industrial load rather than forcing a compute interpretation"
+    },
+    {
+      "case_id": "CONTROL-AESO-P2614",
+      "queue_id": "P2614",
+      "rto": "AESO",
+      "project_name": "Dow Fort Sask. Load",
+      "capacity_mw": 231,
+      "county_or_area": "Fort Saskatchewan",
+      "poi": "Not published in AESO Connection Project List",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "physical_gap": "No defensible facility coordinate retained",
+      "research_role": "non-data-center control; tests industrial entity/end-use resolution"
     }
   ],
   "excluded_examples": [
@@ -98,5 +98,14 @@
       "reason": "Current public project-type evidence identifies it as Surplus, so its presence in an unresolved-location worklist does not establish a large-load candidate."
     }
   ],
-  "selection_note": "This is an evidentiary admission set, not a ranking of importance or likelihood of outcome. P2970 remains an alternate explicit Data Load candidate outside the five-case primary queue."
+  "selection_note": "The strict set is split into three primary ambiguity targets and two non-data-center controls. The controls are included to test that the workflow does not interpret every large unresolved load as compute infrastructure. This is not a ranking of hiddenness or expected outcome.",
+  "control_case_ids": [
+    "CONTROL-AESO-P2958",
+    "CONTROL-AESO-P2614"
+  ],
+  "primary_case_ids": [
+    "NEXT-AESO-P3066",
+    "NEXT-AESO-P3198",
+    "NEXT-AESO-P3108"
+  ]
 }
