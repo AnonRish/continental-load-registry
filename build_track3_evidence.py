@@ -27,6 +27,7 @@ POWER_OBSERVATIONS = OUT / "power_observations.json"
 COOLING_OBSERVATIONS = OUT / "cooling_observations.json"
 REMOTE_OBSERVATIONS = OUT / "remote_sensing_observations.json"
 TRANSFORMER_EVENTS = OUT / "transformer_supply_chain_events.json"
+PUBLIC_WEB_ENRICHMENT = OUT / "public_web_enrichment_2026-09-27.json"
 
 SITE_DOMAINS = (
     "site_identity",
@@ -82,9 +83,11 @@ def external_snapshot_available(domain: str) -> bool:
     return all((EPOCH / name).exists() and (EPOCH / name).stat().st_size > 0
                for name in EXTERNAL_SOURCE_FILES[domain])
 
-def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, cooling_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, remote_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, transformer_events_by_site: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
+def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, cooling_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, remote_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, transformer_events_by_site: dict[str, list[dict[str, Any]]] | None = None, manual_public_by_site: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
     ev = rec.get("site_level_connection_evidence") or []
     grid = rec.get("grid_crosswalk") or {}
+    manual_public = (manual_public_by_site or {}).get(str(rec.get("epoch_id")), [])
+    manual_fields = {str(x.get("field") or "") for x in manual_public}
     crosswalk_ev = grid.get("site_level_public_evidence") or {}
     crosswalk_status = str(crosswalk_ev.get("status") or "").lower()
     if domain == "site_identity":
@@ -94,15 +97,15 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         }
     if domain == "construction":
         return {
-            "status": "INGESTED" if rec.get("timeline_record_count", 0) > 0 else "UNKNOWN",
-            "basis": "Epoch AI dated timeline records are retained."
-            if rec.get("timeline_record_count", 0) > 0 else "No retained Epoch timeline rows."
+            "status": "INGESTED" if rec.get("timeline_record_count", 0) > 0 or "construction_companies" in manual_fields else "UNKNOWN",
+            "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
+            if rec.get("timeline_record_count", 0) > 0 or "construction_companies" in manual_fields else "No retained Epoch timeline rows or site-specific construction-company record."
         }
     if domain == "chip_inventory":
         return {
-            "status": "INGESTED" if rec.get("chip_quantity_record_count", 0) > 0 else "UNKNOWN",
-            "basis": "Epoch AI site-level chip-quantity records are retained."
-            if rec.get("chip_quantity_record_count", 0) > 0 else "No retained site-level chip-quantity rows."
+            "status": "INGESTED" if rec.get("chip_quantity_record_count", 0) > 0 or "chip_quantities" in manual_fields else "UNKNOWN",
+            "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
+            if rec.get("chip_quantity_record_count", 0) > 0 or "chip_quantities" in manual_fields else "No retained site-level chip-quantity rows."
         }
     if domain == "service_or_contract":
         types = {"site_specific_service_contract","site_specific_service","site_specific_energy_contract","site_specific_utility_planning","site_specific_behind_the_meter_service_evidence"}
@@ -111,7 +114,7 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         crosswalk_service = bool(
             crosswalk_ev and any(token in crosswalk_status for token in ("service", "contract", "planning", "energy"))
         )
-        if matches or crosswalk_service:
+        if matches or crosswalk_service or "service_or_contract" in manual_fields:
             return {"status":"SITE_LEVEL_EVIDENCE","basis":"A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."}
         return {"status":"NOT_INGESTED","basis":"No site-specific service or energy-contract evidence is currently attached."}
     if domain == "compute_tenancy":
@@ -121,7 +124,7 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         return {"status":"UNKNOWN","basis":"No site-specific compute-tenancy contract has been attached in the current evidence layer."}
     if domain == "regulatory":
         matches = [x for x in ev if "regulatory" in str(x.get("type") or "").lower()]
-        if matches:
+        if matches or "regulatory" in manual_fields:
             return {
                 "status": "INGESTED",
                 "basis": "Site-level regulatory evidence is preserved in the Track 3 evidence layer."
@@ -145,7 +148,7 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "VERIFIED_SITE_SPECIFIC",
                 "basis": "Site-level queue evidence is attached to the Epoch record."
             }
-        if connection_evidence or crosswalk_connection_evidence:
+        if connection_evidence or crosswalk_connection_evidence or "energy_companies" in manual_fields:
             return {
                 "status": "SITE_LEVEL_EVIDENCE",
                 "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
@@ -172,7 +175,7 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         }
     if domain == "cooling":
         observations = (cooling_observations_by_site or {}).get(str(rec.get("epoch_id")), [])
-        if observations:
+        if observations or "cooling" in manual_fields:
             return {
                 "status": "INGESTED_SNAPSHOT",
                 "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
@@ -500,10 +503,17 @@ def main() -> int:
     remote_observations = remote_payload.get("records", [])
     transformer_payload = load_json(TRANSFORMER_EVENTS) if TRANSFORMER_EVENTS.exists() else {"records": []}
     transformer_events = transformer_payload.get("records", [])
+    public_web_payload = load_json(PUBLIC_WEB_ENRICHMENT) if PUBLIC_WEB_ENRICHMENT.exists() else {"records": []}
+    public_web_records = public_web_payload.get("records", [])
     power_by_site: dict[str, list[dict[str, Any]]] = {}
     remote_by_site: dict[str, list[dict[str, Any]]] = {}
     transformer_by_site: dict[str, list[dict[str, Any]]] = {}
     cooling_by_site: dict[str, list[dict[str, Any]]] = {}
+    manual_public_by_site: dict[str, list[dict[str, Any]]] = {}
+    for item in public_web_records:
+        sid = str(item.get("epoch_id") or "")
+        if sid:
+            manual_public_by_site.setdefault(sid, []).append(item)
     for obs in power_observations:
         power_by_site.setdefault(str(obs.get("epoch_id")), []).append(obs)
     for obs in cooling_observations:
@@ -543,11 +553,13 @@ def main() -> int:
                 cooling_by_site,
                 remote_by_site,
                 transformer_by_site,
+                manual_public_by_site,
             )
             domains[domain] = s
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
 
         base_evidence_count = len(ev.get("site_level_evidence") or [])
+        manual_public_evidence_count = len(manual_public_by_site.get(str(rec["epoch_id"]), []))
         crosswalk = crosswalk_by_id.get(str(rec["epoch_id"])) or rec.get("grid_crosswalk") or {}
         crosswalk_evidence_count = 1 if crosswalk.get("site_level_public_evidence") else 0
         site_records.append({
@@ -562,9 +574,61 @@ def main() -> int:
             "current_h100_equivalents": rec.get("normalized", {}).get("current_h100_equivalents"),
             "domains": domains,
             "site_level_evidence_count": base_evidence_count,
+            "public_web_evidence_count": manual_public_evidence_count,
             "crosswalk_public_evidence_count": crosswalk_evidence_count,
-            "combined_site_level_evidence_count": base_evidence_count + crosswalk_evidence_count,
+            "combined_site_level_evidence_count": base_evidence_count + manual_public_evidence_count + crosswalk_evidence_count,
             "next_action": ev.get("next_action"),
+        })
+
+    manual_domain_map = {
+        "project": "site_identity",
+        "address": "site_identity",
+        "owner": "site_identity",
+        "users": "site_identity",
+        "construction_companies": "construction",
+        "energy_companies": "grid_connection",
+        "service_or_contract": "service_or_contract",
+        "regulatory": "regulatory",
+        "cooling": "cooling",
+        "chip_quantities": "chip_inventory",
+        "investment": "site_identity",
+        "investors": "site_identity",
+        "capacity_record": "site_identity",
+        "operational_status": "site_identity",
+    }
+    for item in public_web_records:
+        sid = str(item.get("epoch_id") or "")
+        if sid not in epoch_ids:
+            continue
+        digest = hashlib.sha256(
+            json.dumps(item, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()[:20]
+        evidence_index.append({
+            "evidence_id": "EVID-PWEB-" + digest,
+            "target_type": "epoch_site",
+            "target_id": sid,
+            "target_name": item.get("site_name"),
+            "domain": manual_domain_map.get(str(item.get("field")), "site_identity"),
+            "evidence_type": "public_web_enrichment",
+            "claim_scope": "site_level",
+            "status": "SITE_LEVEL_EVIDENCE",
+            "source_kind": "public web enrichment",
+            "source_name": item.get("source"),
+            "source_url": (item.get("source_urls") or [None])[0],
+            "source_urls": item.get("source_urls") or [],
+            "observed_on": item.get("publication_date"),
+            "captured_on": item.get("capture_date"),
+            "confidence": "public_source_capture",
+            "basis": item.get("scope_note") or "Site-specific public-source fact retained in additive enrichment ledger.",
+            "record_id": item.get("field"),
+            "authority": item.get("source"),
+            "raw_value": item.get("value"),
+            "normalized_value": item.get("value"),
+            "site_specific": True,
+            "independent_of_other_source": None,
+            "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+            "public_field": item.get("field"),
+            "relationship": item.get("relationship"),
         })
 
     pending = [x for x in site_records if x["domains"]["grid_connection"]["status"] == "PENDING_RESEARCH"]
@@ -588,6 +652,8 @@ def main() -> int:
             for priority in sorted({task["priority"] for task in observation_queue})
         },
         "site_level_evidence_site_count": sum(1 for x in site_records if x["site_level_evidence_count"] > 0),
+        "public_web_evidence_record_count": len(public_web_records),
+        "public_web_evidence_site_count": len(manual_public_by_site),
         "combined_site_level_evidence_site_count": sum(
             1 for x in site_records
             if x["combined_site_level_evidence_count"] > 0
