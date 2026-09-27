@@ -242,6 +242,40 @@ section.mb-8{scroll-margin-top:118px}
 @media(max-width:900px){.registry-signal-rail{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:620px){.registry-signal-rail{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:10px}.registry-signal:last-child{grid-column:1/-1}}
 </style>
+
+<style id="CLR-EYECANDY-V4">
+/* Progressive disclosure: preserve the complete record, reduce visual overload. */
+.registry-view-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin-top:8px}
+.registry-tool-btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);border-radius:999px;padding:6px 9px;font:600 9px 'IBM Plex Mono',monospace;cursor:pointer;transition:.18s ease}
+.registry-tool-btn:hover{background:var(--amber-soft);color:var(--ink);border-color:var(--line-strong);transform:translateY(-1px)}
+.registry-tool-btn.primary{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.registry-tool-btn.primary:hover{background:var(--ui-navy);color:#fff}
+.registry-module-index{max-width:1180px;margin:8px auto 10px;padding:0 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.registry-module-index::-webkit-scrollbar{display:none}
+.registry-module-chip{appearance:none;flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);border-radius:999px;padding:6px 9px;font:500 8.5px 'IBM Plex Mono',monospace;cursor:pointer;white-space:nowrap}
+.registry-module-chip:hover,.registry-module-chip[aria-current="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+main > [data-registry-view] .registry-module-toggle{position:absolute;top:11px;right:12px;z-index:5;appearance:none;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(8px);color:var(--ink-soft);border-radius:999px;padding:6px 9px;font:600 8.5px 'IBM Plex Mono',monospace;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.06)}
+main > [data-registry-view] .registry-module-toggle:hover{background:var(--amber-soft);color:var(--ink)}
+main > [data-registry-view].registry-module-collapsed{position:relative;max-height:148px;overflow:hidden;transition:max-height .24s ease,box-shadow .18s ease}
+main > [data-registry-view].registry-module-collapsed:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(180deg,transparent,var(--paper));pointer-events:none}
+main > [data-registry-view].registry-module-open{position:relative}
+main > [data-registry-view].registry-module-open .registry-module-toggle{box-shadow:0 4px 15px rgba(0,0,0,.08)}
+main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix(in srgb,var(--ui-blue) 24%,transparent),0 10px 35px rgba(17,46,91,.08)}
+.registry-module-index-wrap{max-width:1180px;margin:0 auto 3px;padding:0 16px}
+.registry-module-index-caption{font:500 8px/1.3 'IBM Plex Mono',monospace;color:var(--ink-faint);margin:0 0 5px}
+.registry-at-a-glance{max-width:1180px;margin:8px auto 13px;padding:0 16px}
+.registry-glance-card{display:grid;grid-template-columns:1.25fr repeat(4,minmax(0,1fr));gap:8px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--panel);box-shadow:0 10px 28px rgba(12,24,41,.05)}
+.registry-glance-lead{padding:2px 5px}
+.registry-glance-kicker{font:600 8px/1 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--teal)}
+.registry-glance-title{margin-top:4px;font-weight:700;font-size:15px;line-height:1.15;letter-spacing:-.02em}
+.registry-glance-copy{margin-top:4px;font-size:9.5px;line-height:1.45;color:var(--ink-faint)}
+.registry-glance-stat{border:1px solid var(--line);border-radius:9px;padding:9px;background:var(--paper)}
+.registry-glance-stat b{display:block;font:600 17px/1 'IBM Plex Mono',monospace}
+.registry-glance-stat span{display:block;margin-top:4px;font-size:8px;line-height:1.2;color:var(--ink-faint)}
+.registry-glance-stat i{display:block;height:3px;margin-top:7px;border-radius:999px;background:linear-gradient(90deg,var(--teal) var(--fill,50%),var(--line) var(--fill,50%));}
+@media(max-width:900px){.registry-glance-card{grid-template-columns:1fr 1fr 1fr}.registry-glance-lead{grid-column:1/-1}}
+@media(max-width:620px){.registry-glance-card{grid-template-columns:1fr 1fr}.registry-glance-lead{grid-column:1/-1}.registry-glance-title{font-size:14px}}
+
 </head>
 <body class="min-h-screen">\n
 <!-- REGISTRY-UI-V3 -->
@@ -3329,6 +3363,247 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
 </script>
 
 
+
+
+<script id="CLR-EYECANDY-V4-SCRIPT">
+(function(){
+  const main=document.getElementById('main');
+  if(!main) return;
+
+  const primary={
+    overview:null,
+    map:'mapLayerInventory',
+    sites:'queueUniverse',
+    evidence:'physicalVerificationLayer',
+    coverage:'dataUniverseChecklist',
+    method:'methodology'
+  };
+
+  const cleanText=(s)=>(s||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  const labelFor=(el)=>{
+    const h=el.querySelector('h2');
+    return h ? cleanText(h.innerHTML).replace(/&amp;/g,'&').slice(0,52) : (el.id||'Research module');
+  };
+
+  const sections=[...main.querySelectorAll(':scope > [data-registry-view]')].filter(el=>el.tagName==='SECTION');
+  const byView={};
+  sections.forEach(s=>{
+    const v=s.dataset.registryView;
+    (byView[v]??=[]).push(s);
+  });
+
+  function ensureToggle(section){
+    if(section.querySelector(':scope > .registry-module-toggle')) return;
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='registry-module-toggle';
+    btn.setAttribute('aria-expanded','true');
+    btn.textContent='Collapse';
+    btn.addEventListener('click',()=>{
+      const willOpen=section.classList.contains('registry-module-collapsed');
+      if(willOpen){
+        // One-at-a-time keeps research views legible; "Open all" is available in the toolbar.
+        const v=section.dataset.registryView;
+        (byView[v]||[]).forEach(s=>{
+          s.classList.remove('registry-module-open','registry-module-focus');
+          s.classList.add('registry-module-collapsed');
+          const b=s.querySelector(':scope > .registry-module-toggle');
+          if(b){b.textContent='Details';b.setAttribute('aria-expanded','false');}
+        });
+        section.classList.remove('registry-module-collapsed');
+        section.classList.add('registry-module-open','registry-module-focus');
+        btn.textContent='Hide';
+        btn.setAttribute('aria-expanded','true');
+      }else{
+        section.classList.remove('registry-module-open','registry-module-focus');
+        section.classList.add('registry-module-collapsed');
+        btn.textContent='Details';
+        btn.setAttribute('aria-expanded','false');
+      }
+      updateChipState();
+    });
+    section.appendChild(btn);
+  }
+
+  sections.forEach(ensureToggle);
+
+  const intro=document.getElementById('registryViewIntro');
+  if(!intro) return;
+  let moduleIndex=document.getElementById('registryModuleIndex');
+  if(!moduleIndex){
+    const wrap=document.createElement('div');
+    wrap.className='registry-module-index-wrap';
+    wrap.innerHTML='<div class="registry-module-index-caption">RESEARCH MODULES · click a module to open it without scrolling through the whole registry</div>';
+    moduleIndex=document.createElement('div');
+    moduleIndex.id='registryModuleIndex';
+    moduleIndex.className='registry-module-index';
+    moduleIndex.setAttribute('aria-label','Research modules in this view');
+    wrap.appendChild(moduleIndex);
+    intro.insertAdjacentElement('afterend',wrap);
+  }
+
+  let tools=document.getElementById('registryViewTools');
+  if(!tools){
+    tools=document.createElement('div');
+    tools.id='registryViewTools';
+    tools.className='registry-view-tools';
+    tools.innerHTML='<button type="button" class="registry-tool-btn" id="registryCollapseAll">Collapse all</button><button type="button" class="registry-tool-btn primary" id="registryOpenAll">Open all</button>';
+    const kpis=intro.querySelector('.registry-kpis');
+    if(kpis) kpis.insertAdjacentElement('afterend',tools);
+    else intro.appendChild(tools);
+  }
+
+  const glance=document.getElementById('registryAtAGlance')||document.createElement('div');
+  if(!glance.id){
+    glance.id='registryAtAGlance';
+    glance.className='registry-at-a-glance';
+    glance.innerHTML='<div class="registry-glance-card"><div class="registry-glance-lead"><div class="registry-glance-kicker">AT A GLANCE</div><div class="registry-glance-title">One screen for the signal. The evidence stays underneath.</div><div class="registry-glance-copy">Dense tables, source ledgers and research queues remain fully available; the landing view emphasizes the handful of metrics that tell you what the registry currently knows.</div></div><div class="registry-glance-stat"><b id="glanceSites">—</b><span>frontier sites</span><i style="--fill:100%"></i></div><div class="registry-glance-stat"><b id="glanceEvidence">—</b><span>Track 3 evidence records</span><i id="glanceEvidenceBar" style="--fill:70%"></i></div><div class="registry-glance-stat"><b id="glancePhysical">—</b><span>physical observations</span><i id="glancePhysicalBar" style="--fill:70%"></i></div><div class="registry-glance-stat"><b id="glanceOpen">—</b><span>open research cells</span><i id="glanceOpenBar" style="--fill:50%"></i></div></div>';
+    const rail=document.getElementById('registrySignalRail');
+    if(rail) rail.insertAdjacentElement('afterend',glance);
+  }
+
+  function currentView(){
+    return document.body.dataset.registryView || document.documentElement.dataset.registryView || 'overview';
+  }
+
+  function updateChipState(){
+    const v=currentView();
+    [...moduleIndex.children].forEach(ch=>{
+      const id=ch.dataset.target;
+      const s=document.getElementById(id);
+      ch.setAttribute('aria-current', s?.classList.contains('registry-module-open') ? 'true' : 'false');
+    });
+  }
+
+  function rebuildModuleIndex(v){
+    moduleIndex.innerHTML='';
+    const items=byView[v]||[];
+    items.forEach(section=>{
+      const chip=document.createElement('button');
+      chip.type='button';
+      chip.className='registry-module-chip';
+      chip.dataset.target=section.id||'';
+      chip.textContent=labelFor(section);
+      chip.addEventListener('click',()=>{
+        const b=section.querySelector(':scope > .registry-module-toggle');
+        if(b && section.classList.contains('registry-module-collapsed')) b.click();
+        else if(!section.classList.contains('registry-module-open') && b) b.click();
+        requestAnimationFrame(()=>section.scrollIntoView({behavior:'smooth',block:'start'}));
+      });
+      moduleIndex.appendChild(chip);
+    });
+    moduleIndex.parentElement.style.display=items.length?'':'none';
+    updateChipState();
+  }
+
+  function applyView(v){
+    // Overview remains visual and compact. Other tabs use accordion disclosure.
+    const items=byView[v]||[];
+    items.forEach((section,i)=>{
+      const isPrimary=primary[v]===section.id;
+      section.classList.remove('registry-module-focus');
+      if(v==='overview'){
+        section.classList.remove('registry-module-collapsed','registry-module-open');
+        const b=section.querySelector(':scope > .registry-module-toggle');
+        if(b){b.textContent='Collapse';b.setAttribute('aria-expanded','true');}
+      }else if(isPrimary || (i===0 && !primary[v])){
+        section.classList.remove('registry-module-collapsed');
+        section.classList.add('registry-module-open');
+        const b=section.querySelector(':scope > .registry-module-toggle');
+        if(b){b.textContent='Hide';b.setAttribute('aria-expanded','true');}
+      }else{
+        section.classList.remove('registry-module-open');
+        section.classList.add('registry-module-collapsed');
+        const b=section.querySelector(':scope > .registry-module-toggle');
+        if(b){b.textContent='Details';b.setAttribute('aria-expanded','false');}
+      }
+    });
+    rebuildModuleIndex(v);
+  }
+
+  document.getElementById('registryOpenAll')?.addEventListener('click',()=>{
+    const v=currentView();
+    (byView[v]||[]).forEach(s=>{
+      s.classList.remove('registry-module-collapsed');
+      s.classList.add('registry-module-open');
+      const b=s.querySelector(':scope > .registry-module-toggle');
+      if(b){b.textContent='Hide';b.setAttribute('aria-expanded','true');}
+    });
+    updateChipState();
+  });
+  document.getElementById('registryCollapseAll')?.addEventListener('click',()=>{
+    const v=currentView();
+    (byView[v]||[]).forEach(s=>{
+      s.classList.remove('registry-module-open','registry-module-focus');
+      s.classList.add('registry-module-collapsed');
+      const b=s.querySelector(':scope > .registry-module-toggle');
+      if(b){b.textContent='Details';b.setAttribute('aria-expanded','false');}
+    });
+    updateChipState();
+  });
+
+  // Keep the first overview layer visually simple: no collapse controls on the two hero sections.
+  applyView(currentView());
+
+  // Hook the existing view-change event rather than duplicating its tab system.
+  window.addEventListener('registry:viewchange',(e)=>applyView(e.detail?.view||currentView()));
+
+  // Deep links open their target module instead of landing on a collapsed panel.
+  if(location.hash){
+    const target=document.getElementById(location.hash.slice(1));
+    if(target && byView[target.dataset.registryView]?.includes(target)){
+      setTimeout(()=>{
+        applyView(target.dataset.registryView);
+        const b=target.querySelector(':scope > .registry-module-toggle');
+        if(b && target.classList.contains('registry-module-collapsed')) b.click();
+        setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80);
+      },160);
+    }
+  }
+
+  // Compact live counts — use machine-readable artifacts instead of stale hard-coded display numbers.
+  const fmt=(n)=>Number(n||0).toLocaleString();
+  Promise.allSettled([
+    fetch('data/track3/summary.json').then(r=>r.json()),
+    fetch('data/track3/research_backlog_summary.json').then(r=>r.json()),
+    fetch('data/track3/public_web_enrichment_2026-09-27.json').then(r=>r.json())
+  ]).then(rs=>{
+    const summary=rs[0].status==='fulfilled'?rs[0].value:{};
+    const backlog=rs[1].status==='fulfilled'?rs[1].value:{};
+    const web=rs[2].status==='fulfilled'?rs[2].value:{};
+    const evidence=Array.isArray((summary&&summary.records))?summary.records.length:Number(summary.public_web_evidence_record_count||0);
+    // evidence_records is separately loaded by the existing dashboard script; this stays a safe fallback.
+    const physical=Number(summary.remote_sensing_derived_observation_count||0);
+    const sites=Number(summary.epoch_site_count||93);
+    const open=Number(backlog.total_tasks||0);
+    const evidenceEl=document.getElementById('glanceEvidence');
+    if(evidenceEl){
+      fetch('data/track3/evidence_records.json').then(r=>r.json()).then(e=>{
+        const n=Array.isArray(e)?e.length:Number(e.records?.length||e.evidence?.length||evidence||0);
+        evidenceEl.textContent=fmt(n);
+        document.getElementById('deckEvidence')&&(document.getElementById('deckEvidence').textContent=fmt(n));
+        const bar=document.getElementById('glanceEvidenceBar'); if(bar) bar.style.setProperty('--fill',Math.min(100,n/Math.max(1,sites*8)*100)+'%');
+      }).catch(()=>{evidenceEl.textContent=fmt(evidence)});
+    }
+    document.getElementById('glanceSites')&&(document.getElementById('glanceSites').textContent=fmt(sites));
+    document.getElementById('glancePhysical')&&(document.getElementById('glancePhysical').textContent=fmt(physical));
+    document.getElementById('glanceOpen')&&(document.getElementById('glanceOpen').textContent=fmt(open));
+    const pb=document.getElementById('glancePhysicalBar'); if(pb) pb.style.setProperty('--fill',Math.min(100,physical/Math.max(1,sites*6)*100)+'%');
+    const ob=document.getElementById('glanceOpenBar'); if(ob) ob.style.setProperty('--fill',Math.min(100,100-open/Math.max(1,sites*12)*100)+'%');
+
+    const webCount=Array.isArray(web.records)?web.records.length:Number(summary.public_web_evidence_record_count||0);
+    const ws=document.querySelector('[data-signal="web"]');
+    if(ws){
+      ws.querySelector('.registry-signal-v').textContent=fmt(webCount)+' records';
+      const siteCount=Number(summary.public_web_evidence_site_count||0);
+      ws.querySelector('.registry-signal-s').textContent=fmt(siteCount)+' sites enriched';
+    }
+    const ps=document.querySelector('[data-signal="physical"]');
+    if(ps) ps.querySelector('.registry-signal-v').textContent=fmt(physical)+' obs.';
+  }).catch(()=>{});
+
+})();
+</script>
 
 </body>
 </html>
