@@ -9,7 +9,24 @@ SPP, MISO, CAISO, NYISO, and ISO-NE in the U.S., and Canada's IESO and
 AESO -- with an entity-resolution and power-to-compute estimation pass
 aimed at surfacing large requests that lack a confirmed public operator.
 
-## What's in this repository
+### Honest state of Track 3
+
+As of 2026-09-27, the repository has a 93-site Epoch AI reference universe, site-level evidence coverage for all 93 sites, 421 derived remote-sensing observations across 68 sites, and two defensible site-specific queue IDs. Those are evidence-layer results, not 93 facility-wide verifications: the current facility-wide state remains INCONCLUSIVE unless the defined end-to-end Track 3 gates are met, and no absence claim is inferred from a missing public record. The domestic grid registry is best read as a Phase 1 public compute/load-accounting layer that supports the broader Track 3 problem; it is not itself a bilateral U.S.–China verification system.
+
+### Phase 1 vs. Track 3
+
+| Layer | What this repository currently provides | What it does not claim |
+|---|---|---|
+| **Phase 1 / domestic accounting** | Nine North American market/connection sources, large-load records, entity resolution, Epoch cross-reference, site-level utility/service evidence, and public physical observations. | Complete accounting of all AI-relevant compute or all electricity consumption. |
+| **Track 3 / international verification** | A public-data evidence layer, research queue, physical-observation pipeline, source-universe catalog, and machine-readable mapping to the broader Track 3 accounting problem. | A completed bilateral verification regime, treaty inspection capability, or proof that covert facilities have been found. |
+
+### Observation-layer comparison
+
+The repository's queue-vs-satellite comparison explains the complementary signal classes. Interconnection and service records can expose electrical intent or planning before a campus is visibly built; satellite/permit evidence can show physical realization that a queue record may miss. A covert project that expands existing service, uses behind-the-meter/private generation, or otherwise avoids a new publicly visible interconnection can evade the grid signal, which is why queue evidence is not treated as a complete covert-compute detector.
+
+The comparison also documents the relationship to Cankaya's public power/cooling/hardware-signature research and to Epoch's satellite/permit-based data-center methodology without claiming that this registry reproduces or solves either method in full.
+
+# What's in this repository
 
 - `ingest_grid_queues.py` -- extracts, normalizes, and filters the nine
   source registers into one schema (`queue_id`, `rto_region`, `state`,
@@ -104,6 +121,18 @@ The public research-surface CI is defined in `.github/workflows/validate_public_
 ## Related repository: AI 2040 Verification
 
 [`AnonRish/ai-2040-verification`](https://github.com/AnonRish/ai-2040-verification) is a complementary repository testing concrete inference-side and operational verification mechanisms from the AI 2040 Plan A discussion. This registry works at a different evidence layer: public grid/interconnection records, physical-site evidence, Epoch AI cross-references, and accounting/research workflows. The two repositories should not be read as a single verified system; they are separate experimental implementations that can be evaluated together as complementary evidence layers.
+
+## Contributing by role
+
+A Track 3 contribution does not require building the whole system. The repository currently has concrete entry points for:
+
+- **Grid / power systems:** add another connection region, reconcile utility/service records, or extend the MISO/BPA supplemental layers.
+- **Remote sensing / geospatial:** improve scene selection, thermal/SAR/optical processing, coordinate quality, footprint linkage, or physical-change validation.
+- **Data engineering / provenance:** strengthen manifests, hashes, schemas, reconciliation checks, generated-artifact validation, and reproducible refreshes.
+- **Research / policy:** close one research task using the evidence ladder, evaluate the Phase 1 vs. Track 3 boundary, or compare independent evidence sources without collapsing uncertainty.
+- **Verification / security:** audit claim gates, design adversarial tests, or connect this public evidence layer to independently testable verification mechanisms.
+
+Start with research.html, CONTRIBUTING.md, and the open issues labeled good first issue.
 
 ## Epoch AI secondary evidence layer
 
