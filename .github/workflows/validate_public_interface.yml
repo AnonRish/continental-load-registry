@@ -89,7 +89,7 @@ jobs:
           for rto,path in idx["files"].items():
               d=json.loads((root/path).read_text())
               assert d["rto"] == rto
-              assert d["record_count"] == len(d["shards"]) * 40 or d["record_count"] < 40
+              assert d["record_count"] == sum(s["record_count"] for s in d["shards"])
               total += d["record_count"]
           assert total == 1558
           print("PASS: facility-record shards", total)
