@@ -135,7 +135,7 @@ def search_stac(kind: str, collection: str, bbox: list[float], limit: int = 60) 
             )
             rows = list(search.item_collection())
             if rows:
-                return [dict(x) for x in rows]
+                return [x.to_dict() if hasattr(x, "to_dict") else dict(x) for x in rows]
         except Exception as exc:
             errors.append(f"{endpoint} [{collection}]: {exc}")
 
