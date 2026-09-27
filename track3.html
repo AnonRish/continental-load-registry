@@ -933,7 +933,8 @@ load().catch(e=>{document.getElementById('cards').innerHTML='<div class="panel c
   };
   secs.forEach((s,i)=>{
     const h=s.querySelector('h1,h2,h3')?.textContent||'';
-    s.dataset.t3View=view(h,i); s.classList.add('t3-section-shell');
+    const forced = i < 3 ? 'summary' : view(h,i);
+    s.dataset.t3View=forced; s.classList.add('t3-section-shell');
   });
   function set(v){
     secs.forEach(s=>s.classList.toggle('t3-view-hidden',s.dataset.t3View!==v));
