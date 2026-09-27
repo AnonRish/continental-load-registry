@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Data Center Explorer · Continental Load Registry</title>
+<meta name="description" content="Epoch-style global AI data center explorer with map, timeline, company filters, satellite view, facility detail, hardware, power, compute, cost and source provenance.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="observatory-nav.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<style>
+:root{--ink:#16233A;--soft:#566579;--faint:#7D8B9D;--paper:#EEF2ED;--panel:#FBFCFA;--line:#D7DEDA;--strong:#B7C2BC;--amber:#A85E0A;--amber-soft:#F3E3C9;--teal:#33604F;--teal-soft:#DBE9E2;--blue:#2D5D91}
+:root[data-theme=dark]{--ink:#E9EEF3;--soft:#AEBBCB;--faint:#7C8AA0;--paper:#0F1620;--panel:#161F2B;--line:#293445;--strong:#3A4759;--amber:#E3A458;--amber-soft:#3A2E1B;--teal:#7FB69E;--teal-soft:#17332A;--blue:#78A8D6}
+*{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif}button,input,select{font:inherit}a{color:inherit}.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}.soft{color:var(--soft)}.faint{color:var(--faint)}
+.nav{position:sticky;top:0;z-index:100;padding:8px 0;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(16px)}.navin{max-width:1500px;margin:auto;padding:0 18px;display:flex;gap:7px;flex-wrap:wrap}.nav a,.nav button{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 10px;text-decoration:none;font-size:11px;cursor:pointer}
+.wrap{max-width:1500px;margin:auto;padding:0 18px}.hero{padding:28px 0 16px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:var(--faint);font:500 10px 'IBM Plex Mono',monospace}h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:.96;letter-spacing:-.05em;margin:7px 0 10px}.hero p{max-width:1000px;color:var(--soft);line-height:1.6;font-size:13px}
+.toolbar{position:sticky;top:51px;z-index:70;border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--panel) 93%,transparent);backdrop-filter:blur(18px);padding:10px;margin-bottom:12px}.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.metric-tabs,.view-tabs{display:flex;gap:5px;overflow:auto}.tab{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:7px 10px;font-size:10px;cursor:pointer;white-space:nowrap}.tab.active{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.filters{display:grid;grid-template-columns:2.2fr repeat(6,minmax(110px,1fr));gap:7px;margin-top:8px}.filters input,.filters select{min-width:0;width:100%;border:1px solid var(--strong);border-radius:8px;background:var(--panel);color:var(--ink);padding:8px 9px;font-size:10px}
+.statusline{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;font-size:10px;color:var(--soft)}.btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--strong);border-radius:8px;background:var(--panel);color:var(--ink);padding:7px 9px;font-size:10px;cursor:pointer;text-decoration:none}.btn:hover{background:var(--amber-soft)}.btn.primary{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.timeline{margin-top:9px;display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center}.timeline input{width:100%}.timeline label{font:600 10px 'IBM Plex Mono',monospace}.timeline .date{min-width:80px;text-align:right;font:600 10px 'IBM Plex Mono',monospace}
+.stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.stat{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel)}.stat b{display:block;font:600 18px 'IBM Plex Mono',monospace}.stat span{display:block;margin-top:4px;font-size:9px;color:var(--faint);line-height:1.3}
+.panel{border:1px solid var(--line);border-radius:13px;background:var(--panel);padding:13px;margin-top:12px}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,.5fr);gap:10px}.mapbox{height:590px;border:1px solid var(--line);border-radius:10px;overflow:hidden}.side{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:11px;max-height:590px;overflow:auto}
+.side h3{font-size:12px}.legend{display:grid;gap:5px;margin-top:7px}.leg{display:flex;align-items:center;gap:6px;font-size:9px;color:var(--soft)}.swatch{width:10px;height:10px;border-radius:50%;border:1px solid var(--strong)}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:10px}.table{width:100%;min-width:1190px;border-collapse:collapse}.table th,.table td{padding:8px 7px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.table th{position:sticky;top:0;z-index:2;background:var(--panel);font:500 8.5px 'IBM Plex Mono',monospace;text-transform:uppercase;color:var(--soft)}.table td{font-size:10px}.table tbody tr:hover{background:var(--amber-soft)}
+.gridview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:10px}.site-card{border:1px solid var(--line);border-radius:11px;background:var(--paper);overflow:hidden;cursor:pointer}.site-card:hover{border-color:var(--strong);transform:translateY(-1px)}.site-top{padding:10px}.site-name{font-size:12px;font-weight:650}.site-loc{font-size:9px;color:var(--faint);margin-top:3px}.site-mid{padding:9px 10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:6px}.site-metric b{display:block;font:600 13px 'IBM Plex Mono',monospace}.site-metric span{display:block;font-size:8px;color:var(--faint);margin-top:3px}.site-foot{padding:8px 10px;display:flex;justify-content:space-between;gap:5px}.logo{width:27px;height:27px;object-fit:contain;border-radius:7px;border:1px solid var(--line);background:var(--panel);padding:4px}.companyline{display:flex;align-items:center;gap:7px}
+.badge{display:inline-block;border:1px solid var(--strong);border-radius:999px;padding:2px 6px;font:600 7.5px 'IBM Plex Mono',monospace;white-space:nowrap}.good{background:var(--teal-soft);color:var(--teal)}.warn{background:var(--amber-soft);color:var(--amber)}.neutral{color:var(--soft)}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:9px}.pageinfo{font:500 9px 'IBM Plex Mono',monospace;color:var(--faint)}
+.detail{display:none;position:fixed;inset:0;z-index:200;background:rgba(7,14,23,.62);padding:12px;overflow:auto}.detail.open{display:block}.dialog{max-width:1200px;margin:0 auto;border:1px solid var(--strong);border-radius:14px;background:var(--panel);padding:15px;box-shadow:0 35px 100px rgba(0,0,0,.32)}.detailtop{display:flex;justify-content:space-between;gap:10px;align-items:start}.detailtitle{display:flex;gap:9px;align-items:center}.biglogo{width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--paper);object-fit:contain;padding:6px}.detailgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:11px}.dstat{border:1px solid var(--line);border-radius:9px;background:var(--paper);padding:9px}.dstat b{display:block;font:600 17px 'IBM Plex Mono',monospace}.dstat span{display:block;margin-top:4px;font-size:8.5px;color:var(--faint)}
+.detailbody{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}.box{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:11px}.box h3{font-size:11px;margin:0 0 7px}.kv{display:grid;grid-template-columns:150px 1fr;gap:5px;margin:4px 0;font-size:9.5px}.kv dt{color:var(--faint)}.timelinebox{height:220px;border:1px solid var(--line);border-radius:8px;padding:8px;overflow:auto}.event{padding:7px 0;border-bottom:1px solid var(--line)}.event b{font:600 9px 'IBM Plex Mono',monospace}.event p{margin:3px 0 0;font-size:9px;color:var(--soft);line-height:1.4}.detailmap{height:290px;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:8px}.sources a{display:block;font-size:9px;margin:3px 0;word-break:break-word}
+.footer{border-top:1px solid var(--line);margin-top:25px;padding:22px 0 42px;color:var(--faint);font-size:9px;line-height:1.6}
+@media(max-width:1200px){.filters{grid-template-columns:2fr repeat(3,1fr)}.mapwrap{grid-template-columns:1fr}.side{max-height:none}.stats{grid-template-columns:repeat(3,1fr)}.gridview{grid-template-columns:repeat(3,1fr)}.detailgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.wrap{padding-inline:10px}.navin{padding-inline:10px}.filters{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.gridview{grid-template-columns:1fr 1fr}.detailbody{grid-template-columns:1fr}.timeline{grid-template-columns:auto 1fr}.timeline .date{grid-column:2;text-align:left}.detailgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.gridview{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="navin wrap"><a href="index.html">← Main registry</a><a href="global-compute-universe.html">Global DB</a><a href="company-registry.html">Company DB</a><a href="ai-data-center-explorer.html">AI Explorer</a><a href="track3.html">Track 3</a><a href="research.html">Research ops</a><button id="theme">Toggle theme</button></div></div>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">AI infrastructure · interactive explorer</div>
+<h1>Explore the facilities, not just the list.</h1>
+<p>Epoch-style navigation, but with the registry's broader company universe underneath it: map + timeline + company filters + sortable directory + grid/list modes + facility evidence + satellite imagery + direct Google Earth positioning + provenance.</p>
+</section>
+
+<section class="toolbar">
+<div class="statusline"><div class="metric-tabs" id="metricTabs">
+<button class="tab active" data-metric="compute">H100-eq compute</button><button class="tab" data-metric="power">IT power</button><button class="tab" data-metric="cost">Capital cost</button>
+</div><div class="view-tabs"><button class="tab active" id="mapTab">Map</button><button class="tab" id="listTab">List</button><button class="tab" id="gridTab">Grid</button></div><button class="btn" id="saveView">Save view</button><button class="btn" id="resetView">Reset</button></div>
+<div class="filters">
+<input id="q" placeholder="Search facility, company, country, city">
+<select id="company"><option value="">All companies</option></select>
+<select id="country"><option value="">All countries</option></select>
+<select id="status"><option value="">All statuses</option><option>Operational</option><option>Under construction</option><option>Proposed</option><option>Permitted</option><option>Cancelled</option></select>
+<select id="scope"><option value="">All source layers</option><option value="Epoch AI">Epoch AI</option><option value="AI Data Center Index">AI Data Center Index</option><option value="Both">Both / linked</option></select>
+<select id="geo"><option value="">All locations</option><option value="mapped">Mapped only</option><option value="unmapped">No coordinates</option></select>
+<select id="sort"><option value="compute">Largest compute</option><option value="power">Largest power</option><option value="cost">Largest cost</option><option value="alpha">Alphabetical</option><option value="country">Country</option></select>
+</div>
+<div class="timeline"><label>TIME</label><input id="year" type="range" min="2023" max="2030" step="1" value="2026"><div class="date" id="yearLabel">2026</div></div>
+</section>
+
+<section class="stats">
+<div class="stat"><b id="sVisible">—</b><span>visible facilities</span></div>
+<div class="stat"><b id="sCompute">—</b><span>visible H100-eq</span></div>
+<div class="stat"><b id="sPower">—</b><span>visible IT power</span></div>
+<div class="stat"><b id="sCountries">—</b><span>countries</span></div>
+<div class="stat"><b id="sEpoch">93</b><span>Epoch anchor records</span></div>
+<div class="stat"><b id="sRich">—</b><span>facilities with rich evidence</span></div>
+</section>
+
+<section class="panel" id="mapPanel">
+<div class="mapwrap"><div><div id="map" class="mapbox"></div><div class="statusline" style="margin-top:7px"><span id="mapStatus">Satellite-capable map · coordinates only</span><button class="btn" id="satToggle">Satellite basemap</button></div></div>
+<div class="side"><h3>Explorer controls</h3><div class="notice" style="padding:8px;margin-top:7px">Circle size follows the selected metric. Color can be changed by owner, user, country, or source layer.</div>
+<div class="row" style="margin-top:8px"><button class="tab active color-mode" data-color="owner">Owner</button><button class="tab color-mode" data-color="user">User</button><button class="tab color-mode" data-color="country">Country</button><button class="tab color-mode" data-color="source">Source</button></div>
+<div class="legend" id="legend"></div>
+<div style="margin-top:12px"><h3>What you can inspect</h3><div class="soft" style="font-size:10px;line-height:1.55">Current / projected compute · IT power · cost · chip types · users · investors · builders · energy companies · timeline · source links · evidence maturity · satellite basemap · Google Earth positioning · source overlap.</div></div>
+</div></div>
+</section>
+
+<section class="panel" id="resultsPanel" style="display:none">
+<div class="statusline"><div><h2 style="margin:0;font-size:15px" id="resultTitle">Directory</h2><div class="soft" id="resultSub" style="font-size:10px">—</div></div><div class="actions"><button class="btn" id="export">Export CSV</button></div></div>
+<div class="tablewrap"><table class="table"><thead><tr><th>Facility</th><th>Company / owner</th><th>Location</th><th>Compute</th><th>IT power</th><th>Cost</th><th>Status</th><th>Source</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="pager"><button class="btn" id="prev">← Previous</button><span class="pageinfo" id="pageInfo">—</span><button class="btn" id="next">Next →</button></div>
+</section>
+
+<section class="panel" id="gridPanel" style="display:none"><div class="statusline"><div><h2 style="margin:0;font-size:15px">Facility cards</h2><div class="soft" id="gridSub" style="font-size:10px">—</div></div></div><div class="gridview" id="cards"></div></section>
+</main>
+<footer class="wrap footer">This interface follows the public Epoch explorer interaction model—map, time navigation, metric modes, owner/user/country filtering, sorting and facility details—but the underlying universe is federated. Epoch's current public explorer has 93 records and reports 44% estimated global AI-compute coverage; the registry does not treat that as a global facility-count ceiling. Epoch's facility pages use satellite imagery, permits, company disclosures, hardware and cooling models to build detailed site timelines. cite-style-placeholder</footer>
+
+<div class="detail" id="detail"><div class="dialog">
+<div class="detailtop"><div class="detailtitle"><img id="dLogo" class="biglogo" alt="" src=""><div><div class="eyebrow">Facility record</div><h2 id="dName" style="margin:3px 0 2px;font-size:22px">—</h2><div class="soft" id="dLoc" style="font-size:10px">—</div></div></div><div class="row"><button class="btn" id="earth">Google Earth</button><button class="btn" id="close">Close</button></div></div>
+<div class="detailgrid" id="dStats"></div>
+<div class="detailbody">
+<div class="box"><h3>Identity & relationships</h3><div id="dIdentity"></div><div class="detailmap" id="dMap"></div></div>
+<div class="box"><h3>Buildout / timeline</h3><div class="timelinebox" id="dTimeline"></div><div class="row" style="margin-top:7px"><a id="dSource" class="btn" target="_blank" rel="noopener">Primary source</a><a id="dEarth2" class="btn" target="_blank" rel="noopener">Open Earth view</a></div></div>
+</div>
+<div class="detailbody">
+<div class="box"><h3>Hardware & power</h3><div id="dHardware"></div></div>
+<div class="box"><h3>Sources & evidence</h3><div class="sources" id="dSources"></div></div>
+</div>
+</div></div>
+
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;"}[m]));
+const norm=s=>String(s??"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const num=v=>{const n=Number(v);return Number.isFinite(n)?n:null};
+const firstNum=(o,ks)=>{for(const k of ks){const n=num(o?.[k]);if(n!==null)return n}return null};
+const fmt=v=>v==null||v===""?"—":String(v);
+const compact=n=>n==null?"—":new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:2}).format(n);
+const logoMap={microsoft:"microsoft",amazon:"amazon",google:"google",meta:"meta",oracle:"oracle",nvidia:"nvidia",openai:"openai",anthropic:"anthropic",coreweave:"coreweave",xai:"xai",alibaba:"alibabacloud",tencent:"tencent",baidu:"baidu",huawei:"huawei",bytedance:"tiktok",equnix:"equinix",equinix:"equinix",digitalrealty:"digitalrealty",ntt:"ntt",g42:"g42"};
+function logoFor(s){const x=norm(s);let k=Object.keys(logoMap).find(z=>x.includes(z));return k?"https://cdn.simpleicons.org/"+logoMap[k]:"";}
+function earthUrl(lat,lon){return "https://earth.google.com/web/@"+lat+","+lon+",1500a,1500d,35y,0h,0t,0r";}
+let epoch=[], ai=Array.isArray([])?[]:[], all=[], filtered=[],page=0,perPage=50,map,cluster,satellite=false,metric="compute",colorMode="owner",viewMode="map",selected=null,detailMap;
+function sourceLabel(r){return r._epoch&&r._ai?"Both":r._epoch?"Epoch AI":"AI Data Center Index";}
+function statusNorm(s){const x=norm(s);if(x.includes("operat"))return"Operational";if(x.includes("construct"))return"Under construction";if(x.includes("permit"))return"Permitted";if(x.includes("propos")||x.includes("plan")||x.includes("announc"))return"Proposed";if(x.includes("cancel"))return"Cancelled";return s?String(s):"Unknown";}
+function normalizeEpoch(r){
+ const n=r.normalized||r, a=n.latest_timeline||{}, chips=n.latest_chip_quantities||[];
+ const name=n.name||r.epoch_id, owner=(n.owner||"").replace(/ #.*$/,""), users=(n.users||"").replace(/ #.*$/g,""), loc=n.address||"";
+ const lat=firstNum(n,["lat","latitude"])??firstNum(n.raw,["lat","latitude"]),lon=firstNum(n,["lon","longitude"])??firstNum(n.raw,["lon","longitude"]);
+ return {id:r.epoch_id||name,name,owner,users,primaryUser:(users.split(",")[0]||"").trim(),city:"",state:n.region_inferred_from_address||"",country:n.country,address:loc,lat,lon,currentCompute:firstNum(n,["current_h100_equivalents"]),projectedCompute:firstNum(a,["h100_eq"]),currentPower:firstNum(n,["current_power_mw"]),projectedPower:firstNum(a,["it_power_mw"]),currentCost:firstNum(n,["current_total_capital_cost_b_2025"]),projectedCost:firstNum(a,["total_capital_cost_b_2025"]),status:"Operational",project:n.project||name,chipTypes:chips.map(x=>x.chip_type).filter(Boolean),chips,latestTimeline:a,investors:n.investors,builders:n.construction_companies,energy:n.energy_companies,calc:n.calculations_sheet,sources:r.raw?.["Selected Sources"]||"",_epoch:true,_ai:false,timeline:[],confidence:"Epoch AI · source-published"};
+}
+function normalizeAI(v,operators){
+ const r=v.record||v, vs=v.source_variants||[]; const name=r.title||r.name||r.id||"Unnamed facility"; const companies=[...new Set((operators||[]).filter(Boolean))];
+ const loc=r.location||{}; const lat=firstNum(r,["latitude","lat"])??firstNum(loc,["latitude","lat"]),lon=firstNum(r,["longitude","lon","lng"])??firstNum(loc,["longitude","lon","lng"]);
+ const mw=firstNum(r,["megawatts","capacity_mw","capacityMw"]), st=statusNorm(r.status||r.phase||"");
+ return {id:"DCI-"+String(r.id||r.external_id||norm(name)),name,owner:(r.operator||r.developer||companies[0]||""),users:companies.join(", "),primaryUser:companies[0]||"",city:r.city||loc.city||"",state:r.region||r.state_code||"",country:r.country||"",address:r.address||r.location_text||"",lat,lon,currentCompute:firstNum(r,["h100_equivalents","compute_h100e"]),projectedCompute:firstNum(r,["h100_equivalents_projected","compute_h100e_projected"]),currentPower:mw,projectedPower:firstNum(r,["capacity_planned_mw"])??mw,currentCost:firstNum(r,["cost_billion_usd","capital_cost_b"]),projectedCost:firstNum(r,["cost_projected_b"]),status:st,project:r.project||name,chipTypes:r.chips||r.chip_types||[],chips:[],latestTimeline:{date:r.updated||r.last_updated,construction_status:r.status||r.phase},investors:r.investors||"",builders:r.construction_companies||"",energy:r.energy_companies||"",calc:"",sources:(r.sources||[]).map(x=>x.url||x).filter(Boolean),_epoch:false,_ai:true,_raw:r,_variants:vs,timeline:[],confidence:"AI Data Center Index · source-published"};
+}
+function matchEpochToAI(e,a){
+ const atext=norm([a.name,a.city,a.country,a.address].join(" ")), etext=norm([e.name,e.address,e.country].join(" "));
+ if(norm(e.name)===norm(a.name)) return true;
+ const tokens=norm(e.name).split(" ").filter(x=>x.length>3); return tokens.length>0&&tokens.filter(t=>atext.includes(t)).length>=Math.max(1,Math.ceil(tokens.length*.6));
+}
+async function load(){
+ const [ej,oj]=await Promise.all([
+   fetch("data/external/epoch_ai/registry.json",{cache:"no-store"}).then(r=>r.json()),
+   fetch("data/company_operator_universe_2026-09-27.json",{cache:"no-store"}).then(r=>r.json()).catch(()=>null)
+ ]);
+ epoch=(ej.records||[]).map(normalizeEpoch);
+ const uni=oj?.facility_index||[]; const ais=[];
+ for(const f of uni){const vars=f.source_variants||[];const ops=[...new Set(vars.map(x=>x.operator).filter(Boolean))];const rec=vars[0]?.record||{};ais.push(normalizeAI({record:rec,source_variants:vars},ops));}
+ ai=ais;
+ for(const x of ai){const e=epoch.find(y=>matchEpochToAI(y,x)); if(e){Object.assign(x,{_epoch:true,epoch:e,_ai:true});}}
+ all=[...epoch,...ai.filter(x=>!x.epoch)].map(x=>Object.assign(x,{scope:x._epoch&&x._ai?"Both":x._epoch?"Epoch AI":"AI Data Center Index"}));
+ // If source overlap exists, retain one record in the directory and mark it Both.
+ const merged=[]; for(const r of all){if(r.epoch&&r._ai){merged.push(r);continue} if(r._epoch){if(!ai.some(a=>a.epoch===r))merged.push(r)}else merged.push(r);}
+ buildSelectors(); render();
+}
+function buildSelectors(){
+ const companies=[...new Set(all.flatMap(r=>String(r.owner||"").split(",").map(x=>x.replace(/ #.*$/,"").trim()).filter(Boolean)))].sort((a,b)=>a.localeCompare(b));
+ const countries=[...new Set(all.map(r=>r.country).filter(Boolean))].sort();
+ document.getElementById("company").innerHTML="<option value=''>All companies</option>"+companies.map(x=>"<option>"+esc(x)+"</option>").join("");
+ document.getElementById("country").innerHTML="<option value=''>All countries</option>"+countries.map(x=>"<option>"+esc(x)+"</option>").join("");
+}
+function passes(r){
+ const q=norm(document.getElementById("q").value),co=document.getElementById("company").value,cu=document.getElementById("country").value,st=document.getElementById("status").value,sc=document.getElementById("scope").value,g=document.getElementById("geo").value;
+ const text=norm([r.name,r.owner,r.users,r.city,r.state,r.country,r.address].join(" "));
+ if(q&&!text.includes(q))return false;if(co&&!norm(r.owner).includes(norm(co)))return false;if(cu&&r.country!==cu)return false;if(st&&statusNorm(r.status)!==st)return false;if(sc==="Both"&&!(r._epoch&&r._ai))return false;if(sc==="Epoch AI"&&!r._epoch)return false;if(sc==="AI Data Center Index"&&!r._ai)return false;if(g==="mapped"&&(r.lat==null||r.lon==null))return false;if(g==="unmapped"&&(r.lat!=null&&r.lon!=null))return false;return true;
+}
+function val(r){return metric==="compute"?r.currentCompute:metric==="power"?r.currentPower:r.currentCost}
+function apply(){
+ filtered=all.filter(passes);
+ const s=document.getElementById("sort").value;
+ filtered.sort((a,b)=>s==="alpha"?a.name.localeCompare(b.name):s==="country"?String(a.country).localeCompare(String(b.country)):((val(b)||-1)-(val(a)||-1)));
+ page=0; renderStats();renderMap();renderList();renderGrid();renderLegend();
+}
+function render(){apply();}
+function renderStats(){
+ const compute=filtered.reduce((a,r)=>a+(r.currentCompute||0),0),power=filtered.reduce((a,r)=>a+(r.currentPower||0),0);
+ document.getElementById("sVisible").textContent=filtered.length.toLocaleString();
+ document.getElementById("sCompute").textContent=compact(compute);
+ document.getElementById("sPower").textContent=power?compact(power)+" MW":"—";
+ document.getElementById("sCountries").textContent=new Set(filtered.map(r=>r.country).filter(Boolean)).size.toLocaleString();
+ document.getElementById("sRich").textContent=filtered.filter(r=>r._epoch||r.sources?.length||r.chips?.length||r.latestTimeline?.date).length.toLocaleString();
+}
+function mapColor(r){
+ const palettes=["#34699a","#33604f","#a85e0a","#6b4bb5","#a33d69","#447b70","#985f2e","#4f6ea8","#5b7f42","#8b4a62"];
+ const key=colorMode==="owner"?r.owner:colorMode==="user"?r.primaryUser:colorMode==="country"?r.country:r.scope;
+ let h=0;for(let i=0;i<String(key||"").length;i++)h=(h*31+String(key).charCodeAt(i))>>>0;return palettes[h%palettes.length];
+}
+function renderMap(){
+ if(!map){map=L.map("map",{worldCopyJump:true}).setView([25,-20],2);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"© OpenStreetMap contributors"}).addTo(map);cluster=L.markerClusterGroup({chunkedLoading:true});map.addLayer(cluster);}
+ cluster.clearLayers();
+ for(const r of filtered.filter(x=>x.lat!=null&&x.lon!=null)){const radius=Math.max(6,Math.min(28,6+Math.log10(Math.max(1,val(r)||1))*4));const m=L.circleMarker([r.lat,r.lon],{radius,fillColor:mapColor(r),color:"rgba(20,30,45,.35)",weight:1,fillOpacity:.78});m.bindTooltip(esc(r.name),{direction:"top"});m.on("click",()=>openDetail(r));cluster.addLayer(m);}
+}
+function renderLegend(){
+ const key=colorMode==="owner"?"Owner":colorMode==="user"?"Primary user":colorMode==="country"?"Country":"Source layer";
+ const vals=[...new Set(filtered.map(r=>colorMode==="owner"?r.owner:colorMode==="user"?r.primaryUser:colorMode==="country"?r.country:r.scope).filter(Boolean))].slice(0,10);
+ document.getElementById("legend").innerHTML="<div class='faint' style='font:500 8px IBM Plex Mono,monospace'>"+key.toUpperCase()+"</div>"+vals.map(v=>"<div class='leg'><span class='swatch' style='background:"+mapColor({owner:colorMode==='owner'?v:'',primaryUser:colorMode==='user'?v:'',country:colorMode==='country'?v:'',scope:colorMode==='source'?v:''})+"'></span>"+esc(v)+"</div>").join("");
+}
+function statusBadge(r){const s=statusNorm(r.status);return "<span class='badge "+(s==='Operational'?'good':s==='Under construction'||s==='Proposed'?'warn':'neutral')+"'>"+esc(s)+"</span>";}
+function renderList(){
+ const panel=document.getElementById("resultsPanel");panel.style.display=viewMode==="list"?"block":"none";if(viewMode!=="list")return;
+ const total=filtered.length,pages=Math.max(1,Math.ceil(total/perPage));page=Math.min(page,pages-1);const slice=filtered.slice(page*perPage,(page+1)*perPage);
+ document.getElementById("resultSub").textContent=total.toLocaleString()+" matching facilities · sorted by "+document.getElementById("sort").selectedOptions[0].text;
+ document.getElementById("rows").innerHTML=slice.map((r,i)=>"<tr><td><b>"+esc(r.name)+"</b><div class='faint mono'>"+esc(r.id)+"</div></td><td><div class='companyline'>"+(logoFor(r.owner)?'<img class=\"logo\" src=\"'+logoFor(r.owner)+'\" alt=\"\">':'')+"<span>"+esc(r.owner||"Unknown")+"</span></div></td><td>"+esc([r.city,r.state,r.country].filter(Boolean).join(", ")||r.address||"—")+"</td><td>"+(r.currentCompute==null?"—":compact(r.currentCompute))+"</td><td>"+(r.currentPower==null?"—":compact(r.currentPower)+" MW")+"</td><td>"+(r.currentCost==null?"—":"$"+compact(r.currentCost)+"B")+"</td><td>"+statusBadge(r)+"</td><td><span class='badge'>"+esc(r.scope)+"</span>"+(r._epoch&&r._ai?" <span class='badge good'>linked</span>":"")+"</td><td><button class='btn' data-row='"+i+"'>Details</button></td></tr>").join("");
+ document.querySelectorAll("#rows button").forEach((b,i)=>b.addEventListener("click",()=>openDetail(slice[i])));
+ document.getElementById("pageInfo").textContent="Page "+(page+1)+" / "+pages;document.getElementById("prev").disabled=page===0;document.getElementById("next").disabled=page>=pages-1;
+}
+function renderGrid(){
+ const panel=document.getElementById("gridPanel");panel.style.display=viewMode==="grid"?"block":"none";if(viewMode!=="grid")return;
+ const slice=filtered.slice(0,120);
+ document.getElementById("gridSub").textContent=filtered.length.toLocaleString()+" matching facilities · showing "+slice.length+" cards";
+ document.getElementById("cards").innerHTML=slice.map(r=>"<article class='site-card' data-id='"+esc(r.id)+"'><div class='site-top'><div class='companyline'>"+(logoFor(r.owner)?'<img class=\"logo\" src=\"'+logoFor(r.owner)+'\" alt=\"\">':'')+"<div><div class='site-name'>"+esc(r.name)+"</div><div class='site-loc'>"+esc([r.city,r.state,r.country].filter(Boolean).join(", ")||r.address||"")+"</div></div></div></div><div class='site-mid'><div class='site-metric'><b>"+(r.currentCompute==null?"—":compact(r.currentCompute))+"</b><span>H100-eq</span></div><div class='site-metric'><b>"+(r.currentPower==null?"—":compact(r.currentPower)+" MW")+"</b><span>IT power</span></div></div><div class='site-foot'>"+statusBadge(r)+"<span class='badge'>"+esc(r.scope)+"</span></div></article>").join("");
+ document.querySelectorAll(".site-card").forEach(c=>c.addEventListener("click",()=>openDetail(filtered.find(r=>r.id===c.dataset.id))));
+}
+function earth(lat,lon){if(lat==null||lon==null)return null;return earthUrl(lat,lon);}
+function sourceLinks(r){
+ const raw=r.sources;let arr=[];
+ if(Array.isArray(raw))arr=raw;else if(typeof raw==="string"){const m=[...raw.matchAll(/https?:\\/\\/[^\\s)]+/g)];arr=m.map(x=>x[0]);}
+ if(r.calc)arr.push(r.calc);
+ return [...new Set(arr)].filter(Boolean);
+}
+function openDetail(r){
+ selected=r;document.getElementById("detail").classList.add("open");
+ const logo=logoFor(r.owner);const dl=document.getElementById("dLogo");if(logo){dl.src=logo;dl.style.display="block"}else{dl.removeAttribute("src");dl.style.display="none"}
+ document.getElementById("dName").textContent=r.name;document.getElementById("dLoc").textContent=[r.city,r.state,r.country].filter(Boolean).join(", ")||r.address||"Location not established";
+ document.getElementById("dStats").innerHTML=[
+ ["Current compute",r.currentCompute==null?"—":compact(r.currentCompute)+" H100-eq"],["Projected compute",r.projectedCompute==null?"—":compact(r.projectedCompute)+" H100-eq"],["Current IT power",r.currentPower==null?"—":compact(r.currentPower)+" MW"],["Projected IT power",r.projectedPower==null?"—":compact(r.projectedPower)+" MW"],["Current cost",r.currentCost==null?"—":"$"+compact(r.currentCost)+"B"],["Status",statusNorm(r.status)]
+ ].map(x=>"<div class='dstat'><b>"+esc(x[1])+"</b><span>"+esc(x[0])+"</span></div>").join("");
+ document.getElementById("dIdentity").innerHTML=[["Owner",r.owner||"Unknown"],["Primary user",r.primaryUser||"Unknown"],["All users",r.users||"Unknown"],["Project",r.project||"Unknown"],["Investors",r.investors||"Not established"],["Construction",r.builders||"Not established"],["Energy",r.energy||"Not established"],["Evidence maturity",r.confidence||"Not established"],["Source layer",r.scope]].map(x=>"<div class='kv'><dt>"+esc(x[0])+"</dt><dd>"+esc(x[1])+"</dd></div>").join("");
+ const chips=r.chipTypes||[];document.getElementById("dHardware").innerHTML="<div class='kv'><dt>Chip types</dt><dd>"+esc(chips.length?chips.join(", "):"Not established")+"</dd></div><div class='kv'><dt>Hardware records</dt><dd>"+esc((r.chips||[]).length?String((r.chips||[]).length):"No structured chip-quantity rows in this source")+"</dd></div><div class='kv'><dt>Buildout note</dt><dd>"+esc(r.latestTimeline?.construction_status||"No timeline note exposed")+"</dd></div>";
+ const events=[];if(r._epoch&&r.epoch?.latestTimeline?.date)events.push({date:r.epoch.latestTimeline.date,text:r.epoch.latestTimeline.construction_status});else if(r.latestTimeline?.date)events.push({date:r.latestTimeline.date,text:r.latestTimeline.construction_status||"Latest source update"});if(!events.length)events.push({date:"—",text:"No dated buildout event exposed in the loaded source."});
+ document.getElementById("dTimeline").innerHTML=events.map(e=>"<div class='event'><b>"+esc(e.date)+"</b><p>"+esc(e.text)+"</p></div>").join("");
+ const links=sourceLinks(r);document.getElementById("dSources").innerHTML=links.length?links.map(u=>"<a href='"+esc(u)+"' target='_blank' rel='noopener'>"+esc(u)+"</a>").join(""):"<div class='soft' style='font-size:9px'>No source URL exposed in the loaded record.</div>";
+ if(detailMap)detailMap.remove(); if(r.lat!=null&&r.lon!=null){detailMap=L.map("dMap",{zoomControl:true}).setView([r.lat,r.lon],15);L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:19,attribution:"© Esri"}).addTo(detailMap);L.marker([r.lat,r.lon]).addTo(detailMap).bindPopup(esc(r.name)).openPopup();document.getElementById("earth").disabled=false;document.getElementById("earth").onclick=()=>window.open(earth(r.lat,r.lon),"_blank","noopener");document.getElementById("dEarth2").href=earth(r.lat,r.lon);}else{document.getElementById("dMap").innerHTML="<div style='padding:12px;font-size:10px;color:var(--faint)'>No source coordinates available.</div>";document.getElementById("earth").disabled=true;document.getElementById("dEarth2").removeAttribute("href");}
+ document.getElementById("dSource").href=links[0]||"#";
+ setTimeout(()=>detailMap&&detailMap.invalidateSize(),50);
+}
+function setView(v){viewMode=v;document.getElementById("mapPanel").style.display=v==="map"?"block":"none";document.querySelectorAll(".tab").forEach(()=>{});renderList();renderGrid();}
+function saveView(){const state={q:document.getElementById("q").value,company:document.getElementById("company").value,country:document.getElementById("country").value,status:document.getElementById("status").value,scope:document.getElementById("scope").value,geo:document.getElementById("geo").value,sort:document.getElementById("sort").value,metric,colorMode,year:document.getElementById("year").value,viewMode};localStorage.setItem("clr-ai-explorer-view",JSON.stringify(state));}
+function loadView(){try{const s=JSON.parse(localStorage.getItem("clr-ai-explorer-view")||"null");if(!s)return;for(const id of ["q","company","country","status","scope","geo","sort","year"])if(s[id]!=null)document.getElementById(id).value=s[id];metric=s.metric||metric;colorMode=s.colorMode||colorMode;viewMode=s.viewMode||viewMode;}catch(e){}}
+document.querySelectorAll("[data-metric]").forEach(b=>b.addEventListener("click",()=>{metric=b.dataset.metric;document.querySelectorAll("[data-metric]").forEach(x=>x.classList.toggle("active",x===b));apply();}));
+document.querySelectorAll(".color-mode").forEach(b=>b.addEventListener("click",()=>{colorMode=b.dataset.color;document.querySelectorAll(".color-mode").forEach(x=>x.classList.toggle("active",x===b));renderMap();renderLegend();}));
+["q","company","country","status","scope","geo","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="q"?"input":"change",apply));
+document.getElementById("year").addEventListener("input",()=>{document.getElementById("yearLabel").textContent=document.getElementById("year").value;});
+document.getElementById("mapTab").addEventListener("click",()=>setView("map"));document.getElementById("listTab").addEventListener("click",()=>setView("list"));document.getElementById("gridTab").addEventListener("click",()=>setView("grid"));
+document.getElementById("prev").addEventListener("click",()=>{if(page>0){page--;renderList()}});document.getElementById("next").addEventListener("click",()=>{if(page<Math.ceil(filtered.length/perPage)-1){page++;renderList()}});
+document.getElementById("saveView").addEventListener("click",()=>{saveView();document.getElementById("saveView").textContent="Saved ✓";setTimeout(()=>document.getElementById("saveView").textContent="Save view",1000)});
+document.getElementById("resetView").addEventListener("click",()=>{["q","company","country","status","scope","geo"].forEach(id=>document.getElementById(id).value="");document.getElementById("sort").value="compute";document.getElementById("year").value="2026";document.getElementById("yearLabel").textContent="2026";metric="compute";colorMode="owner";document.querySelectorAll("[data-metric]").forEach((x,i)=>x.classList.toggle("active",i===0));document.querySelectorAll(".color-mode").forEach((x,i)=>x.classList.toggle("active",i===0));apply()});
+document.getElementById("satToggle").addEventListener("click",()=>{satellite=!satellite;const layers=map?map._layers:null;if(!map)return;Object.values(layers).forEach(l=>{if(l instanceof L.TileLayer)map.removeLayer(l)});L.tileLayer(satellite?"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}":"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:satellite?"© Esri":"© OpenStreetMap contributors"}).addTo(map);document.getElementById("satToggle").textContent=satellite?"Street basemap":"Satellite basemap";});
+document.getElementById("close").addEventListener("click",()=>document.getElementById("detail").classList.remove("open"));document.getElementById("detail").addEventListener("click",e=>{if(e.target.id==="detail")e.currentTarget.classList.remove("open")});
+document.getElementById("export").addEventListener("click",()=>{const h=["name","owner","primary_user","country","state","city","status","scope","current_h100e","projected_h100e","current_power_mw","projected_power_mw","lat","lon"];const rows=[h,...filtered.map(r=>[r.name,r.owner,r.primaryUser,r.country,r.state,r.city,statusNorm(r.status),r.scope,r.currentCompute,r.projectedCompute,r.currentPower,r.projectedPower,r.lat,r.lon])];const csv=rows.map(a=>a.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="ai-data-center-explorer-view.csv";a.click();});
+document.getElementById("theme").addEventListener("click",()=>{const d=document.documentElement,n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;localStorage.setItem("clr-theme",n)});const theme=localStorage.getItem("clr-theme");if(theme)document.documentElement.dataset.theme=theme;
+loadView();load();
+</script>
+</body>
+</html>
