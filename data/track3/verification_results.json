@@ -2,21 +2,26 @@
   "schema_version": 1,
   "protocol_version": "T3-V1",
   "title": "Track 3 versioned verification results",
-  "generated_at_utc": "2026-09-27T19:39:05.129514+00:00",
-  "source_snapshot_commit": "6b7d3381e572a1bc14c9ce7c81e7ac232f1b6b40",
+  "generated_at_utc": "2026-09-27T22:12:26.256006+00:00",
+  "source_snapshot_commit": "ffad82990a879f4b32822e47ae091529216b3877",
   "semantics": "Claim-level automated verification results; not facility-wide certification.",
   "summary": {
     "facility_count": 93,
     "verification_record_count": 744,
     "status_counts": {
-      "PASS": 355,
+      "PASS": 423,
       "UNKNOWN": 296,
-      "NOT_TESTED": 93
+      "NOT_TESTED": 25
+    },
+    "facility_evidence_state_counts": {
+      "VERIFIED_PRESENT": 0,
+      "VERIFIED_ABSENT": 0,
+      "INCONCLUSIVE": 93
     },
     "pass_only_with_evidence_rule": true,
     "independent_verifier_recorded": false,
     "artifact_attestation_status": "SIGNED_AND_UPLOADED",
-    "attestation_workflow_run_id": "36345122310",
+    "attestation_workflow_run_id": "36354454847",
     "attestation_bundle": "track3-verification-bundle.tar.gz"
   },
   "results": [
@@ -75,10 +80,14 @@
       "verification_id": "VR-EPOCH-c20399471d1c5e4a-REMOTE",
       "facility_id": "EPOCH-c20399471d1c5e4a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260526T164711_R126_T16SBD_20260527T042512",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260603T163841_R126_T16SBD_20260603T213615",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T15SYU_20260926T220409"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-c20399471d1c5e4a-CORR",
@@ -98,7 +107,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -156,10 +165,14 @@
       "verification_id": "VR-EPOCH-d9050b43689ed24c-REMOTE",
       "facility_id": "EPOCH-d9050b43689ed24c",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260108T162651_R040_T16SGC_20260108T200411",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16SGC_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250124T233841_20250124T233906_057593_071876"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-d9050b43689ed24c-CORR",
@@ -179,7 +192,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -239,8 +252,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-45b3c74314eb1f26-CORR",
@@ -260,7 +273,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -318,10 +331,14 @@
       "verification_id": "VR-EPOCH-ea699c935d46e066-REMOTE",
       "facility_id": "EPOCH-ea699c935d46e066",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260130T170541_R069_T15STA_20260130T210220",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260922T165919_R069_T15STA_20260922T223324",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250102T002033_20250102T002058_057258_070B29"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-ea699c935d46e066-CORR",
@@ -341,7 +358,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -403,8 +420,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-8838deed95ffb554-CORR",
@@ -424,7 +441,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -482,10 +499,14 @@
       "verification_id": "VR-EPOCH-2c2e40ddb178da3e-REMOTE",
       "facility_id": "EPOCH-2c2e40ddb178da3e",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260727T170849_R112_T14SMB_20260727T210327",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14SMA_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20251008T004404_20251008T004429_061327_07A6D2"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-2c2e40ddb178da3e-CORR",
@@ -505,7 +526,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -563,10 +584,14 @@
       "verification_id": "VR-EPOCH-f5dc9d7a3f02c2e9-REMOTE",
       "facility_id": "EPOCH-f5dc9d7a3f02c2e9",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260104T164711_R126_T16TDN_20260104T203610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260114T164641_R126_T16TDN_20260114T202710",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T16TDN_20260926T220409"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-f5dc9d7a3f02c2e9-CORR",
@@ -586,7 +611,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -646,8 +671,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-04f65e1aee6c98ab-CORR",
@@ -667,7 +692,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -725,10 +750,14 @@
       "verification_id": "VR-EPOCH-d8b28fdbc55817f9-REMOTE",
       "facility_id": "EPOCH-d8b28fdbc55817f9",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260108T162651_R040_T17TLE_20260108T200411",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T17TLE_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250916T233157_20250916T233222_061020_079A6E"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-d8b28fdbc55817f9-CORR",
@@ -748,7 +777,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -806,10 +835,14 @@
       "verification_id": "VR-EPOCH-5b353d56a567a70b-REMOTE",
       "facility_id": "EPOCH-5b353d56a567a70b",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260103T162559_R040_T17TLE_20260103T200626",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T17TLE_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250916T233157_20250916T233222_061020_079A6E"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-5b353d56a567a70b-CORR",
@@ -829,7 +862,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -889,8 +922,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-83ca909f7eb211c7-CORR",
@@ -910,7 +943,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -970,8 +1003,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-55d4b5e818b5bb2a-CORR",
@@ -991,7 +1024,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1049,10 +1082,14 @@
       "verification_id": "VR-EPOCH-2dadeb4b013bef05-REMOTE",
       "facility_id": "EPOCH-2dadeb4b013bef05",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260526T164711_R126_T16SBD_20260527T042512",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260603T163841_R126_T16SBD_20260603T213615",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T15SYU_20260926T220409"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-2dadeb4b013bef05-CORR",
@@ -1072,7 +1109,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1130,10 +1167,14 @@
       "verification_id": "VR-EPOCH-1c8ee8b0305c6313-REMOTE",
       "facility_id": "EPOCH-1c8ee8b0305c6313",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260602T170851_R112_T15TTF_20260602T221514",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14TQL_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250720T001347_20250720T001423_060160_0779AE"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-1c8ee8b0305c6313-CORR",
@@ -1153,7 +1194,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1211,10 +1252,14 @@
       "verification_id": "VR-EPOCH-ac1ca1cf8df13b3c-REMOTE",
       "facility_id": "EPOCH-ac1ca1cf8df13b3c",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20251229T171629_R112_T14SPB_20251229T222435",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14SPB_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250212T002801_20250212T002826_057856_0722E6"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-ac1ca1cf8df13b3c-CORR",
@@ -1234,7 +1279,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1292,10 +1337,14 @@
       "verification_id": "VR-EPOCH-cc12c3e42b3eaf08-REMOTE",
       "facility_id": "EPOCH-cc12c3e42b3eaf08",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260603T154809_R054_T18SUG_20260603T194014",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18STG_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250128T230702_20250128T230727_057651_071ABD"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-cc12c3e42b3eaf08-CORR",
@@ -1315,7 +1364,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1373,10 +1422,14 @@
       "verification_id": "VR-EPOCH-8358e445402d91c2-REMOTE",
       "facility_id": "EPOCH-8358e445402d91c2",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260523T170851_R112_T15TVK_20260523T221819",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T15TVK_20260525T204939",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T15TVK_20260925T211357"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-8358e445402d91c2-CORR",
@@ -1396,7 +1449,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1456,8 +1509,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-0d287943c30fe239-CORR",
@@ -1477,7 +1530,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1535,10 +1588,14 @@
       "verification_id": "VR-EPOCH-6db3bc2c79843ffd-REMOTE",
       "facility_id": "EPOCH-6db3bc2c79843ffd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260827T154811_R054_T18STJ_20260827T205710",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T17SQC_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250128T230702_20250128T230727_057651_071ABD"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-6db3bc2c79843ffd-CORR",
@@ -1558,7 +1615,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1616,10 +1673,14 @@
       "verification_id": "VR-EPOCH-93a4aa4fa40d40ca-REMOTE",
       "facility_id": "EPOCH-93a4aa4fa40d40ca",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260526T180909_R084_T12SUC_20260526T215406",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260923T180959_R084_T12SUB_20260923T220212",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260205T013227_20260205T013252_006214_00C79F"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-93a4aa4fa40d40ca-CORR",
@@ -1639,7 +1700,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1697,10 +1758,14 @@
       "verification_id": "VR-EPOCH-1ac0959562dee191-REMOTE",
       "facility_id": "EPOCH-1ac0959562dee191",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260526T162829_R083_T16SFH_20260526T202211",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260531T162831_R083_T16SFH_20260531T214512",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260923T162919_R083_T16SEH_20260923T202234"
+      ],
+      "basis": "8 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-1ac0959562dee191-CORR",
@@ -1720,7 +1785,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1780,8 +1845,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-6799460068cbed36-CORR",
@@ -1801,7 +1866,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1859,10 +1924,14 @@
       "verification_id": "VR-EPOCH-bdc85fadae79b6b2-REMOTE",
       "facility_id": "EPOCH-bdc85fadae79b6b2",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260103T162559_R040_T17TLE_20260103T200626",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T17TLE_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260109T232344_20260109T232409_062697_07DC7F"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-bdc85fadae79b6b2-CORR",
@@ -1882,7 +1951,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -1940,10 +2009,14 @@
       "verification_id": "VR-EPOCH-4eeccbee73808216-REMOTE",
       "facility_id": "EPOCH-4eeccbee73808216",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260602T170851_R112_T15TTF_20260602T221514",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14TQL_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250102T002148_20250102T002213_057258_070B29"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-4eeccbee73808216-CORR",
@@ -1963,7 +2036,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2021,10 +2094,14 @@
       "verification_id": "VR-EPOCH-e06bc7faa8b1b187-REMOTE",
       "facility_id": "EPOCH-e06bc7faa8b1b187",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260727T170849_R112_T14TQL_20260727T210327",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14TPL_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250102T002148_20250102T002213_057258_070B29"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-e06bc7faa8b1b187-CORR",
@@ -2044,7 +2121,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2102,10 +2179,14 @@
       "verification_id": "VR-EPOCH-052be5b551cd099b-REMOTE",
       "facility_id": "EPOCH-052be5b551cd099b",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260603T154809_R054_T18SUG_20260603T194014",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18STG_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250128T230702_20250128T230727_057651_071ABD"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-052be5b551cd099b-CORR",
@@ -2125,7 +2206,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2183,10 +2264,14 @@
       "verification_id": "VR-EPOCH-40ccef8ef4236635-REMOTE",
       "facility_id": "EPOCH-40ccef8ef4236635",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260126T190651_R013_T10TFR_20260126T215209",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260925T190831_R013_T10TFR_20260926T011516",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260128T015332_20260128T015357_062961_07E632"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-40ccef8ef4236635-CORR",
@@ -2206,7 +2291,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2264,10 +2349,14 @@
       "verification_id": "VR-EPOCH-02484a65a5dac16d-REMOTE",
       "facility_id": "EPOCH-02484a65a5dac16d",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260603T154809_R054_T18SUG_20260603T194014",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18STG_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250128T230702_20250128T230727_057651_071ABD"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-02484a65a5dac16d-CORR",
@@ -2287,7 +2376,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2345,10 +2434,14 @@
       "verification_id": "VR-EPOCH-0788d9aeb3114553-REMOTE",
       "facility_id": "EPOCH-0788d9aeb3114553",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260103T162559_R040_T16SEA_20260103T201556",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16SEA_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250306T234636_20250306T234701_058191_073093"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-0788d9aeb3114553-CORR",
@@ -2368,7 +2461,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2426,10 +2519,14 @@
       "verification_id": "VR-EPOCH-5de9a1c70a3e2275-REMOTE",
       "facility_id": "EPOCH-5de9a1c70a3e2275",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260522T182909_R027_T11TNJ_20260522T222404",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260926T183821_R027_T11TNJ_20260927T004612",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260518T014352_20260518T014417_002832_004D03"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-5de9a1c70a3e2275-CORR",
@@ -2449,7 +2546,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2507,10 +2604,14 @@
       "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-REMOTE",
       "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260523T170851_R112_T14RPV_20260523T221819",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T14RPV_20260525T205549",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14RPV_20260925T221750"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-CORR",
@@ -2530,7 +2631,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2588,10 +2689,14 @@
       "verification_id": "VR-EPOCH-14cecdb5956daea1-REMOTE",
       "facility_id": "EPOCH-14cecdb5956daea1",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260522T173901_R098_T13TEF_20260522T224017",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260924T175741_R141_T13TEF_20260924T224611",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260208T130915_20260208T130940_063128_07EC85"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-14cecdb5956daea1-CORR",
@@ -2611,7 +2716,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2669,10 +2774,14 @@
       "verification_id": "VR-EPOCH-4a87099a6d1e001f-REMOTE",
       "facility_id": "EPOCH-4a87099a6d1e001f",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260728T163839_R126_T16SBB_20260729T102208",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260802T163841_R126_T16SBB_20260802T213913",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T15SYR_20260926T220409"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-4a87099a6d1e001f-CORR",
@@ -2692,7 +2801,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2752,10 +2861,14 @@
       "verification_id": "VR-EPOCH-27e284efc1b1abc2-REMOTE",
       "facility_id": "EPOCH-27e284efc1b1abc2",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260418T161901_R040_T16SED_20260418T211412",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16SED_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250306T234726_20250306T234751_058191_073093"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-27e284efc1b1abc2-CORR",
@@ -2775,7 +2888,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2835,8 +2948,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-a69e48fd129d0cdb-CORR",
@@ -2856,7 +2969,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2914,10 +3027,14 @@
       "verification_id": "VR-EPOCH-534376160415dc84-REMOTE",
       "facility_id": "EPOCH-534376160415dc84",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260724T171721_R112_T15TVG_20260725T032919",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T15TVF_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250801T001347_20250801T001423_060335_077FB1"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-534376160415dc84-CORR",
@@ -2937,7 +3054,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -2997,10 +3114,14 @@
       "verification_id": "VR-EPOCH-0bb0b996b7c96beb-REMOTE",
       "facility_id": "EPOCH-0bb0b996b7c96beb",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260531T180911_R084_T12TVK_20260531T231310",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T182029_R127_T12TVK_20260926T233146",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260211T133424_20260211T133449_063172_07EE13"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-0bb0b996b7c96beb-CORR",
@@ -3020,7 +3141,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3078,10 +3199,14 @@
       "verification_id": "VR-EPOCH-85492d2b8df586a1-REMOTE",
       "facility_id": "EPOCH-85492d2b8df586a1",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260727T170849_R112_T14SPB_20260727T210327",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14SPA_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250212T002736_20250212T002801_057856_0722E6"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-85492d2b8df586a1-CORR",
@@ -3101,7 +3226,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3161,8 +3286,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-2b89e13933a04725-CORR",
@@ -3182,7 +3307,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3240,10 +3365,14 @@
       "verification_id": "VR-EPOCH-f92e98f4b76a9bcd-REMOTE",
       "facility_id": "EPOCH-f92e98f4b76a9bcd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260727T161831_R040_T17TLE_20260727T212009",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T17SLD_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250916T233157_20250916T233222_061020_079A6E"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-f92e98f4b76a9bcd-CORR",
@@ -3263,7 +3392,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3321,10 +3450,14 @@
       "verification_id": "VR-EPOCH-78f8285078416a9e-REMOTE",
       "facility_id": "EPOCH-78f8285078416a9e",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260727T190831_R013_T10TER_20260728T013814",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T191141_R056_T10TDR_20260926T223308",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260321T020857_20260321T020922_006856_00DDCE"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-78f8285078416a9e-CORR",
@@ -3344,7 +3477,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3402,10 +3535,14 @@
       "verification_id": "VR-EPOCH-a2c9f0846296fe65-REMOTE",
       "facility_id": "EPOCH-a2c9f0846296fe65",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260805T105619_R094_T30UYC_20260805T133053",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260924T110721_R137_T30UXC_20260924T174754",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260702T174853_20260702T174918_003498_006304"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-a2c9f0846296fe65-CORR",
@@ -3425,7 +3562,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3483,10 +3620,14 @@
       "verification_id": "VR-EPOCH-a286a89bd1c1b6e7-REMOTE",
       "facility_id": "EPOCH-a286a89bd1c1b6e7",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260527T032511_R018_T49TFG_20260527T061711",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260601T032529_R018_T49TFG_20260601T054159",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T031539_R118_T49TFG_20260926T070812"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-a286a89bd1c1b6e7-CORR",
@@ -3506,7 +3647,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3564,10 +3705,14 @@
       "verification_id": "VR-EPOCH-785d6e4c34607dd4-REMOTE",
       "facility_id": "EPOCH-785d6e4c34607dd4",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260723T154809_R054_T18STJ_20260723T193902",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T17SQD_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250128T230727_20250128T230752_057651_071ABD"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-785d6e4c34607dd4-CORR",
@@ -3587,7 +3732,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3645,10 +3790,14 @@
       "verification_id": "VR-EPOCH-f1a2bcdd78478bc2-REMOTE",
       "facility_id": "EPOCH-f1a2bcdd78478bc2",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260826T170849_R112_T14SQB_20260826T205416",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14SPA_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250212T002736_20250212T002801_057856_0722E6"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-f1a2bcdd78478bc2-CORR",
@@ -3668,7 +3817,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3726,10 +3875,14 @@
       "verification_id": "VR-EPOCH-4525348d114e3e8e-REMOTE",
       "facility_id": "EPOCH-4525348d114e3e8e",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260602T170851_R112_T15TTF_20260602T221514",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14TQL_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250102T002148_20250102T002213_057258_070B29"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-4525348d114e3e8e-CORR",
@@ -3749,7 +3902,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3809,10 +3962,14 @@
       "verification_id": "VR-EPOCH-d29894d37388a96a-REMOTE",
       "facility_id": "EPOCH-d29894d37388a96a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260131T163521_R083_T16SEF_20260131T203111",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260923T162919_R083_T16SEF_20260923T202234",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20251207T234746_20251207T234811_062216_07C9D9"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-d29894d37388a96a-CORR",
@@ -3832,7 +3989,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3892,10 +4049,14 @@
       "verification_id": "VR-EPOCH-02c050b6b554fadd-REMOTE",
       "facility_id": "EPOCH-02c050b6b554fadd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260115T175711_R141_T13SCU_20260115T210310",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260924T175741_R141_T13SCU_20260924T224611",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20251216T010834_20251216T010859_005470_00AE4A"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-02c050b6b554fadd-CORR",
@@ -3915,7 +4076,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -3973,10 +4134,14 @@
       "verification_id": "VR-EPOCH-768183e4de6062d2-REMOTE",
       "facility_id": "EPOCH-768183e4de6062d2",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260524T172849_R055_T14TNS_20260524T211239",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T173101_R055_T14TNR_20260926T205615",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250926T124337_20250926T124402_061159_07A00F"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-768183e4de6062d2-CORR",
@@ -3996,7 +4161,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4056,10 +4221,14 @@
       "verification_id": "VR-EPOCH-4b5df4f52274f2ba-REMOTE",
       "facility_id": "EPOCH-4b5df4f52274f2ba",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260602T170851_R112_T15TTF_20260602T221514",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14TQL_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250102T002148_20250102T002213_057258_070B29"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-4b5df4f52274f2ba-CORR",
@@ -4079,7 +4248,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4139,8 +4308,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-77e196fc5320fd70-CORR",
@@ -4157,7 +4326,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4215,10 +4384,14 @@
       "verification_id": "VR-EPOCH-2d362a1adb09fddd-REMOTE",
       "facility_id": "EPOCH-2d362a1adb09fddd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260129T155511_R054_T18STG_20260129T193112",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18STG_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250528T230636_20250528T230701_059401_075F8E"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-2d362a1adb09fddd-CORR",
@@ -4238,7 +4411,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4298,8 +4471,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-ea5d1ae5837aba5c-CORR",
@@ -4316,7 +4489,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4374,10 +4547,14 @@
       "verification_id": "VR-EPOCH-03aad260b30bfbe1-REMOTE",
       "facility_id": "EPOCH-03aad260b30bfbe1",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260723T154809_R054_T18TVL_20260723T193902",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18TUL_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250803T225922_20250803T225947_060378_078131"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-03aad260b30bfbe1-CORR",
@@ -4397,7 +4574,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4455,10 +4632,14 @@
       "verification_id": "VR-EPOCH-eb87487504bda8ed-REMOTE",
       "facility_id": "EPOCH-eb87487504bda8ed",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260823T160821_R140_T17SKV_20260823T205905",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16SGD_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250804T233902_20250804T233927_060393_0781B6"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-eb87487504bda8ed-CORR",
@@ -4478,7 +4659,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4536,10 +4717,14 @@
       "verification_id": "VR-EPOCH-7d9b5af0cce16f1c-REMOTE",
       "facility_id": "EPOCH-7d9b5af0cce16f1c",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260505T160901_R140_T17SMT_20260505T211311",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260924T155909_R097_T17SMT_20260924T200659",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20241120T233035_20241120T233100_056645_06F2E4"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-7d9b5af0cce16f1c-CORR",
@@ -4559,7 +4744,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4617,10 +4802,14 @@
       "verification_id": "VR-EPOCH-af62ae3440fe885a-REMOTE",
       "facility_id": "EPOCH-af62ae3440fe885a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260105T025121_R132_T50RPV_20260105T055413",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260110T025009_R132_T50RPV_20260110T062727",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260927T024529_R132_T50RPV_20260927T063555"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-af62ae3440fe885a-CORR",
@@ -4640,7 +4829,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4698,10 +4887,14 @@
       "verification_id": "VR-EPOCH-d1b62579c6be3fe8-REMOTE",
       "facility_id": "EPOCH-d1b62579c6be3fe8",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260517T155819_R097_T17TPJ_20260517T194613",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260924T155909_R097_T17TPJ_20260924T200659",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250116T230818_20250116T230843_057476_0713C9"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-d1b62579c6be3fe8-CORR",
@@ -4721,7 +4914,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4781,8 +4974,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-71d0091a05448224-CORR",
@@ -4802,7 +4995,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4860,10 +5053,14 @@
       "verification_id": "VR-EPOCH-c89a3269719f868a-REMOTE",
       "facility_id": "EPOCH-c89a3269719f868a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260827T154811_R054_T18STJ_20260827T205710",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T17SQC_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250221T230701_20250221T230726_058001_0728CA"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-c89a3269719f868a-CORR",
@@ -4883,7 +5080,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -4941,10 +5138,14 @@
       "verification_id": "VR-EPOCH-29fb769630142638-REMOTE",
       "facility_id": "EPOCH-29fb769630142638",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260517T155819_R097_T17TPJ_20260517T194613",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260924T155909_R097_T17TPJ_20260924T200659",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250116T230818_20250116T230843_057476_0713C9"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-29fb769630142638-CORR",
@@ -4964,7 +5165,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5022,10 +5223,14 @@
       "verification_id": "VR-EPOCH-781cbfae186209ad-REMOTE",
       "facility_id": "EPOCH-781cbfae186209ad",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260727T154711_R011_T18SWJ_20260727T234457",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18SVJ_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20250417T110506_20250417T110539_001932_003CAF"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-781cbfae186209ad-CORR",
@@ -5045,7 +5250,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5103,10 +5308,14 @@
       "verification_id": "VR-EPOCH-f48a533b01898dfd-REMOTE",
       "facility_id": "EPOCH-f48a533b01898dfd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260721T105621_R094_T32VMK_20260721T144959",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T104811_R051_T32VMK_20260926T143817",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260731T170917_20260731T170942_008790_0116BB"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-f48a533b01898dfd-CORR",
@@ -5126,7 +5335,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5186,8 +5395,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-41dea3fb46d2e6a8-CORR",
@@ -5207,7 +5416,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5267,8 +5476,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-827d7832237170bd-CORR",
@@ -5288,7 +5497,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5346,10 +5555,14 @@
       "verification_id": "VR-EPOCH-ee5c7acdbc729ef8-REMOTE",
       "facility_id": "EPOCH-ee5c7acdbc729ef8",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260526T180909_R084_T12SUC_20260526T215406",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260923T180959_R084_T12SUB_20260923T220212",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260205T013227_20260205T013252_006214_00C79F"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-ee5c7acdbc729ef8-CORR",
@@ -5369,7 +5582,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5427,10 +5640,14 @@
       "verification_id": "VR-EPOCH-0355f445ca6cbed4-REMOTE",
       "facility_id": "EPOCH-0355f445ca6cbed4",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260207T171359_R112_T14RNT_20260207T221244",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14RNT_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250430T003515_20250430T003540_058979_075066"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-0355f445ca6cbed4-CORR",
@@ -5450,7 +5667,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5508,10 +5725,14 @@
       "verification_id": "VR-EPOCH-96d37578ca36f86c-REMOTE",
       "facility_id": "EPOCH-96d37578ca36f86c",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260207T172541_R112_T14RNT_20260207T194116",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14RNT_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20251003T003512_20251003T003537_061254_07A3E1"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-96d37578ca36f86c-CORR",
@@ -5531,7 +5752,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5589,10 +5810,14 @@
       "verification_id": "VR-EPOCH-8696ef81d91560a9-REMOTE",
       "facility_id": "EPOCH-8696ef81d91560a9",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260113T162539_R040_T16SFD_20260113T201905",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16SFD_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250112T233907_20250112T233932_057418_071180"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-8696ef81d91560a9-CORR",
@@ -5612,7 +5837,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5672,8 +5897,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-e20c2909085b37fd-CORR",
@@ -5690,7 +5915,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5750,8 +5975,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-8baa344f9717520c-CORR",
@@ -5771,7 +5996,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5829,10 +6054,14 @@
       "verification_id": "VR-EPOCH-495a9afde5e4b96c-REMOTE",
       "facility_id": "EPOCH-495a9afde5e4b96c",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260123T162459_R040_T16SGC_20260123T195809",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16SGC_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250124T233841_20250124T233906_057593_071876"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-495a9afde5e4b96c-CORR",
@@ -5852,7 +6081,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5910,10 +6139,14 @@
       "verification_id": "VR-EPOCH-f1a70be0079d215a-REMOTE",
       "facility_id": "EPOCH-f1a70be0079d215a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260822T131711_R124_T27WVM_20260822T170010",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T132229_R124_T27VVL_20260926T170347",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260805T185807_20260805T185832_008864_011954"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-f1a70be0079d215a-CORR",
@@ -5933,7 +6166,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -5991,8 +6224,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-5b05fa7b682be282-CORR",
@@ -6012,7 +6245,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6068,10 +6301,14 @@
       "verification_id": "VR-EPOCH-7648e1438308fdae-REMOTE",
       "facility_id": "EPOCH-7648e1438308fdae",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260114T155519_R054_T18TUK_20260114T211509",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T155011_R054_T18TUK_20260926T202610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250913T230724_20250913T230749_060976_0798B3"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-7648e1438308fdae-CORR",
@@ -6091,7 +6328,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6147,10 +6384,14 @@
       "verification_id": "VR-EPOCH-65e758d676dc06d6-REMOTE",
       "facility_id": "EPOCH-65e758d676dc06d6",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260130T170541_R069_T15STV_20260130T210220",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260922T165919_R069_T15STV_20260922T223324",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250102T002033_20250102T002058_057258_070B29"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-65e758d676dc06d6-CORR",
@@ -6170,7 +6411,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6226,10 +6467,14 @@
       "verification_id": "VR-EPOCH-4569f5444951b2fd-REMOTE",
       "facility_id": "EPOCH-4569f5444951b2fd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260727T170849_R112_T14SMB_20260727T210327",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14SMA_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20251008T004404_20251008T004429_061327_07A6D2"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-4569f5444951b2fd-CORR",
@@ -6249,7 +6494,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6305,10 +6550,14 @@
       "verification_id": "VR-EPOCH-dadec9d6ef7fca88-REMOTE",
       "facility_id": "EPOCH-dadec9d6ef7fca88",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260617T102559_R108_T33VWH_20260617T142419",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T103019_R108_T33VWH_20260925T145653",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260717T052234_20260717T052259_003709_006A36"
+      ],
+      "basis": "8 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-dadec9d6ef7fca88-CORR",
@@ -6328,7 +6577,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6384,10 +6633,14 @@
       "verification_id": "VR-EPOCH-bbf05f2d8903eccc-REMOTE",
       "facility_id": "EPOCH-bbf05f2d8903eccc",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260728T172901_R055_T14SLD_20260729T113856",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T173101_R055_T14SKD_20260926T205615",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250926T124632_20250926T124657_061159_07A00F"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-bbf05f2d8903eccc-CORR",
@@ -6407,7 +6660,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6463,10 +6716,14 @@
       "verification_id": "VR-EPOCH-2d6a8403fde79650-REMOTE",
       "facility_id": "EPOCH-2d6a8403fde79650",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260726T164841_R026_T15TXG_20260726T214913",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260924T165031_R026_T15TWG_20260924T215615",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250808T000546_20250808T000613_060437_07835B"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-2d6a8403fde79650-CORR",
@@ -6486,7 +6743,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6542,10 +6799,14 @@
       "verification_id": "VR-EPOCH-f340a33a5ef18d4f-REMOTE",
       "facility_id": "EPOCH-f340a33a5ef18d4f",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260121T163611_R083_T16TFL_20260121T203109",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260923T162919_R083_T16TFL_20260923T202234",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250804T234042_20250804T234107_060393_0781B6"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-f340a33a5ef18d4f-CORR",
@@ -6565,7 +6826,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6621,10 +6882,14 @@
       "verification_id": "VR-EPOCH-177c53f92d72ec4a-REMOTE",
       "facility_id": "EPOCH-177c53f92d72ec4a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260826T161831_R040_T17TKG_20260826T211809",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16TGL_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260108T233139_20260108T233208_005819_00BA54"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-177c53f92d72ec4a-CORR",
@@ -6644,7 +6909,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6700,10 +6965,14 @@
       "verification_id": "VR-EPOCH-bbcf0efa8bcebd41-REMOTE",
       "facility_id": "EPOCH-bbcf0efa8bcebd41",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260726T164841_R026_T15SXS_20260726T214913",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260728T163839_R126_T15SXS_20260729T102208",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T15SXR_20260926T220409"
+      ],
+      "basis": "7 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-bbcf0efa8bcebd41-CORR",
@@ -6723,7 +6992,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6781,8 +7050,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-1b7cb9c2b0eb479f-CORR",
@@ -6802,7 +7071,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6860,8 +7129,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-dc6199921ba82b85-CORR",
@@ -6881,7 +7150,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -6939,8 +7208,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-145ed5861bdf2982-CORR",
@@ -6960,7 +7229,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7018,8 +7287,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-e3aa5f34aa5c4a7b-CORR",
@@ -7039,7 +7308,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7097,8 +7366,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-3816121e8d72fe04-CORR",
@@ -7118,7 +7387,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7176,8 +7445,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-b427a75f62d61aae-CORR",
@@ -7197,7 +7466,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7255,8 +7524,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-661288625d17662a-CORR",
@@ -7276,7 +7545,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7334,8 +7603,8 @@
       "claim": "PHYSICAL_REMOTE_SENSING",
       "status": "NOT_TESTED",
       "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-78e7d8474fbdf968-CORR",
@@ -7355,7 +7624,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7411,10 +7680,14 @@
       "verification_id": "VR-EPOCH-d2da66ea035880ce-REMOTE",
       "facility_id": "EPOCH-d2da66ea035880ce",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260726T164841_R026_T15TXG_20260726T214913",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260924T165031_R026_T15TWG_20260924T215615",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250808T000546_20250808T000613_060437_07835B"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-d2da66ea035880ce-CORR",
@@ -7434,7 +7707,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     },
     {
@@ -7490,10 +7763,14 @@
       "verification_id": "VR-EPOCH-4b4d686b6c457a68-REMOTE",
       "facility_id": "EPOCH-4b4d686b6c457a68",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "Current physical layer has zero ingested optical scenes and zero numeric TIR/SAR observations.",
-      "verifier": "automated_status_check"
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260531T180911_R084_T12TVK_20260531T231310",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T182029_R127_T12TVK_20260926T233146",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260211T133424_20260211T133449_063172_07EE13"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-4b4d686b6c457a68-CORR",
@@ -7513,7 +7790,7 @@
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
-      "basis": "No independent verifier record exists and physical remote-sensing is not executed.",
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
       "verifier": "not_independently_assessed"
     }
   ]
