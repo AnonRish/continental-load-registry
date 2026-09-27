@@ -52,7 +52,7 @@ def main() -> int:
         raise SystemExit("FAIL: site_status and site-evidence IDs differ")
     if expected_ids != {x.get("epoch_id") for x in crosswalk["records"]}:
         raise SystemExit("FAIL: site_status and crosswalk IDs differ")
-    grid_counts = {k: sum(1 for x in sites if x.get("domains", {}).get("grid_connection", {}).get("status") == k) for k in ALLOWED}
+    grid_counts = {k: count for k, count in ((k, sum(1 for x in sites if x.get("domains", {}).get("grid_connection", {}).get("status") == k)) for k in ALLOWED) if count}
     if sum(grid_counts.values()) != 93:
         raise SystemExit(f"FAIL: grid-connection status counts do not sum to 93: {grid_counts}")
     if summary.get("domain_status_counts", {}).get("grid_connection") != grid_counts:
