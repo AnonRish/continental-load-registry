@@ -140,7 +140,7 @@ jobs:
           assert len(supp_ids) == len(set(supp_ids))
 
           projects = json.loads((root / "project_level_extractions.json").read_text(encoding="utf-8"))
-          assert projects["record_count"] == len(projects["records"]) == 253
+          assert projects["record_count"] == len(projects["records"]) == 261
           project_ids = [r["id"] for r in projects["records"]]
           assert len(project_ids) == len(set(project_ids))
           for r in projects["records"]:
