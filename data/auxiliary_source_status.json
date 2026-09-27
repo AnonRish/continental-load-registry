@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-27T06:55:00Z",
+  "title": "Auxiliary public source capture and normalization status",
+  "scope": "ERCOT GIS, ISO-NE IRTT public reports, IESO Application Status, AESO Connection Project List",
+  "sources": [
+    {
+      "id": "ERCOT-GIS",
+      "publisher": "ERCOT",
+      "url": "https://www.ercot.com/mp/data-products/data-product-details?id=pg7-200-er",
+      "raw_capture": "data/automation/auxiliary_sources/ercot_gis_source.bin",
+      "normalized_outputs": [
+        "data/ercot_gis_public_records.json",
+        "data/ercot_large_load_candidates.json"
+      ],
+      "current_state": "RAW_CAPTURED_NORMALIZATION_WORKFLOW_ENABLED"
+    },
+    {
+      "id": "ISO-NE",
+      "publisher": "ISO New England",
+      "url": "https://irtt.iso-ne.com/reports/external",
+      "raw_capture": "data/automation/auxiliary_sources/iso_ne_public_queue.html",
+      "normalized_outputs": [
+        "data/iso_ne_public_queue.json"
+      ],
+      "current_state": "RAW_CAPTURED_NORMALIZATION_WORKFLOW_ENABLED"
+    },
+    {
+      "id": "IESO",
+      "publisher": "IESO",
+      "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
+      "raw_capture": "data/automation/auxiliary_sources/ieso_application_status.html",
+      "normalized_outputs": [
+        "data/ieso_public_connection_applications.json"
+      ],
+      "current_state": "RAW_CAPTURED_NORMALIZATION_WORKFLOW_ENABLED"
+    },
+    {
+      "id": "AESO",
+      "publisher": "AESO",
+      "url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
+      "raw_capture": "data/automation/auxiliary_sources/aeso_connection_project_list.xlsx",
+      "normalized_outputs": [
+        "data/aeso_connection_projects.json"
+      ],
+      "current_state": "RAW_CAPTURED_NORMALIZATION_WORKFLOW_ENABLED"
+    }
+  ],
+  "current_queue_layers": [
+    {
+      "id": "CAISO",
+      "title": "CAISO complete public queue",
+      "source_url": "https://www.caiso.com/documents/publicqueuereport.xlsx",
+      "workflow": ".github/workflows/sync_caiso_public_queue.yml",
+      "snapshot": "data/caiso_public_queue.json",
+      "snapshot_present": true,
+      "map_layer": "CAISO full queue",
+      "last_capture": "2026-09-27T06:01:54Z",
+      "record_count": 2278,
+      "records_ge_100mw": 1391
+    },
+    {
+      "id": "MISO",
+      "title": "MISO complete public queue",
+      "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
+      "workflow": ".github/workflows/sync_miso_public_queue.yml",
+      "snapshot": "data/miso_public_queue.json",
+      "snapshot_present": true,
+      "map_layer": "MISO full queue",
+      "unresolved_worklist": "data/miso_unresolved_large_loads.json",
+      "last_capture": "2026-09-27T06:03:46Z",
+      "record_count": 3873,
+      "records_ge_100mw": 2997,
+      "unresolved_ge_100_location": 153
+    },
+    {
+      "id": "SPP",
+      "title": "SPP active public queue",
+      "source_url": "https://opsportal.spp.org/Studies/GenerateActiveCSV",
+      "workflow": ".github/workflows/sync_spp_public_queue.yml",
+      "snapshot": "data/spp_public_queue.json",
+      "snapshot_present": true,
+      "map_layer": "SPP active queue",
+      "last_capture": "2026-09-27T06:03:48Z",
+      "record_count": 3076,
+      "records_ge_100mw": 2332
+    },
+    {
+      "id": "NYISO",
+      "title": "NYISO complete public queue",
+      "source_url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
+      "workflow": ".github/workflows/sync_nyiso_public_queue.yml",
+      "snapshot": "data/nyiso_public_queue.json",
+      "snapshot_present": false,
+      "map_layer": "NYISO full queue"
+    },
+    {
+      "id": "PJM",
+      "title": "PJM complete Cycle Service Request universe",
+      "source_url": "https://www.pjm.com/planning/m/cycle-service-request-status",
+      "workflow": ".github/workflows/sync_pjm_cycle_public_queue.yml",
+      "snapshot": "data/pjm_cycle_public_queue.json",
+      "snapshot_present": true,
+      "map_layer": "PJM cycle queue",
+      "last_capture": "2026-09-27T06:02:15Z",
+      "record_count": 9263,
+      "records_ge_100mw": 2349
+    }
+  ],
+  "adapter_runs": [
+    {
+      "source": "CAISO",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "MISO",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "NYISO",
+      "status": "FAILED",
+      "exit_code": 1
+    },
+    {
+      "source": "PJM",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "SPP",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "Epoch AI",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "Epoch external compute",
+      "status": "SUCCESS",
+      "exit_code": 0
+    },
+    {
+      "source": "ERCOT / ISO-NE / IESO / AESO raw source capture",
+      "status": "SUCCESS",
+      "exit_code": 0
+    }
+  ],
+  "semantics": {
+    "raw_capture": "Raw publisher bytes/HTML are retained before normalization.",
+    "normalization": "Normalization is structural and preserves source rows; it does not imply a facility is an AI data center.",
+    "failure": "A source that fails capture or parsing is shown explicitly rather than represented as zero."
+  }
+}
