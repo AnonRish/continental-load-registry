@@ -210,12 +210,15 @@ def read_window(href: str, lon: float, lat: float, pixels: int) -> tuple[np.ndar
             row, col = src.index(x, y)
             half = pixels // 2
             window = Window(col - half, row - half, pixels, pixels)
-            arr = src.read(
+            masked = src.read(
                 1,
                 window=window,
                 boundless=True,
                 masked=True,
-            ).filled(np.nan).astype("float32")
+            )
+            # NumPy 2.x cannot fill an integer masked array with NaN.
+            # Cast first, then fill, preserving nodata as floating NaN.
+            arr = masked.astype("float32").filled(np.nan)
             scale = float(src.scales[0]) if src.scales else 1.0
             offset = float(src.offsets[0]) if src.offsets else 0.0
             if not math.isfinite(scale) or scale == 0:
