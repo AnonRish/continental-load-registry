@@ -115,7 +115,7 @@ def build() -> dict:
             {"label": "industrial_or_manufacturing", "records": int(groups.get("industrial_or_manufacturing", {}).get("records", 0)), "capacity_gw": round(groups.get("industrial_or_manufacturing", {}).get("capacity_gw", 0), 3)},
             {"label": "other_explicit_load", "records": int(groups.get("other_explicit_load", {}).get("records", 0)), "capacity_gw": round(groups.get("other_explicit_load", {}).get("capacity_gw", 0), 3)}
         ],
-        "strict_admission_rule": "Only records with explicit public evidence that the underlying request is Load, New Load Facility, Increase Load, or equivalent load-side type can enter the strict load-discovery queue.",
+        "strict_admission_rule": "Only records with explicit public evidence that the underlying request is Load, New Load Facility, Increase Load, or equivalent load-side type can enter the strict load-discovery queue. Generation, Surplus, Transmission, Replacement, Upgrade, storage-only, and other non-load records are excluded unless a separate retained source establishes the specific load component under investigation.",
         "current_strict_candidate_count": len(json.loads((ROOT / "data/track3/strict_discovery_candidates.json").read_text(encoding="utf-8")).get("candidates", [])),
         "current_strict_candidate_ids": [
             x.get("queue_id")
