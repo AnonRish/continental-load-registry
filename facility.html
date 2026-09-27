@@ -13,7 +13,7 @@ const qs=new URLSearchParams(location.search),id=qs.get('facility');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>n==null?'—':Number(n).toLocaleString(undefined,{maximumFractionDigits:2});
 async function get(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error(u+' '+r.status);return r.json();}
-function statusClass(s){return ['PASS','INGESTED','VERIFIED_SITE_SPECIFIC'].includes(s)?'good':(['UNKNOWN','NOT_TESTED','NOT_ASSESSED','NOT_INGESTED','PENDING_RESEARCH'].includes(s)?'warn':'');}
+function statusClass(s){return ['PASS','INGESTED','VERIFIED_SITE_SPECIFIC','SITE_LEVEL_EVIDENCE'].includes(s)?'good':(['UNKNOWN','NOT_TESTED','NOT_ASSESSED','NOT_INGESTED','PENDING_RESEARCH','RESEARCHED_NO_PUBLIC_RECORD','SOURCE_AVAILABLE_NOT_INGESTED','RESEARCH_QUEUE'].includes(s)?'warn':'');}
 async function main(){
  if(!id){document.getElementById('app').innerHTML='<div class="panel"><h1>Missing facility identifier</h1><p class="soft">Use facility.html?facility=EPOCH-…</p></div>';return;}
  const [map,sites,evidence,ts,prov,ver,dossier,enrichment]=await Promise.all([
@@ -33,7 +33,7 @@ async function main(){
  const displayUsers=m.users||er.public_users||'NOT DISCLOSED IN RETAINED PUBLIC SOURCES';
  const displayProject=m.project||er.public_program||'NOT CAPTURED IN RETAINED PUBLIC SOURCES';
  document.title=(m.site_name||id)+' · Track 3 Facility';
- let html='<div class="panel"><div class="tools"><span class="status '+statusClass(s.domains?.site_identity?.status)+'">'+esc(s.domains?.site_identity?.status||'—')+'</span><span class="status">'+esc(id)+'</span></div><h1>'+esc(m.site_name)+'</h1><p class="soft">'+esc(m.address||'')+' · '+esc(s.state_province||m.country||'')+'</p><div class="tools"><button class="btn" id="downloadRecord">Download facility record JSON</button><button class="btn" id="downloadCsv">Download facility CSV</button>';
+ let html='<div class="panel"><div class="tools"><span class="status '+statusClass(s.domains?.site_identity?.status)+'">'+esc(s.domains?.site_identity?.status||'—')+'</span><span class="status">'+esc(id)+'</span></div><h1>'+esc(m.site_name)+'</h1><p class="soft">'+esc(displayAddress)+' · '+esc(s.state_province||m.country||'')+'</p><div class="tools"><button class="btn" id="downloadRecord">Download facility record JSON</button><button class="btn" id="downloadCsv">Download facility CSV</button>';
  const sourceUrls=[m.epoch_source_url,m.grid_evidence_url,...es.map(x=>x.source_url)].filter(Boolean);
  if(sourceUrls[0])html+='<button class="btn" data-view-source="'+esc(sourceUrls[0])+'">View source document</button>';
  html+='<a class="btn" href="track3.html#facility-'+encodeURIComponent(id)+'">Open in observatory</a></div></div>';
@@ -41,6 +41,7 @@ async function main(){
  const enrichStatus=er.field_status||{};
  const enrichFields=Object.keys(enrichStatus);
  const capturedFields=enrichFields.filter(k=>enrichStatus[k]==='SOURCE_CAPTURED');
+ const missing=enrichFields.filter(k=>enrichStatus[k]!=='SOURCE_CAPTURED');
  const lt=dr.latest_timeline||{}, chips=dr.latest_chip_quantities||[];
  html+='<div class="grid"><div class="panel"><h2>Facility identity &amp; grid</h2><div class="kvs"><div>Address</div><div>'+esc(displayAddress)+'</div><div>Owner/developer</div><div>'+esc(displayOwner)+'</div><div>Users</div><div>'+esc(displayUsers)+'</div><div>Project</div><div>'+esc(displayProject)+'</div><div>Grid / utility</div><div>'+esc(m.grid_jurisdiction||g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(m.site_queue_id||g.site_specific_queue_id||'NO VERIFIED SITE ID')+'</div><div>IT power</div><div class="mono">'+fmt(m.current_power_mw)+' MW</div><div>H100 eq.</div><div class="mono">'+fmt(m.current_h100_equivalents)+'</div></div></div>';
  html+='<div class="panel"><h2>Verification</h2><table><thead><tr><th>Claim</th><th>Status</th><th>Basis</th></tr></thead><tbody>'+vr.map(x=>'<tr><td>'+esc(x.claim)+'</td><td><span class="status '+statusClass(x.status)+'">'+esc(x.status)+'</span></td><td>'+esc(x.basis||'—')+'</td></tr>').join('')+'</tbody></table></div></div>';
