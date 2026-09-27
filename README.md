@@ -64,7 +64,7 @@ The repository separates three things that should not be conflated:
 
 Machine-readable Plan A mapping is in `data/track3/ai2040_plan_a_mapping.json`; Recommendation / Appendix B traceability is in `data/track3/ai2040_plan_a_traceability.json`; the audit-chain schema is in `data/track3/plan_a_audit_schema.json`; and the complete commit-level CI audit is in `data/ci/commit_audit.json` with a human-readable companion at `CI_AUDIT_2026-09-26.md`.
 
-The repository is an independent research contribution. It is not an AI Futures Project publication, does not speak for AI 2040, and does not certify a verification regime.
+The repository is an independent research contribution. It is not an AI Futures Project publication, does not speak for AI 2040, and does not certify a verification regime. The interconnection core is North America only and should be interpreted as a public-evidence / Phase 1 accounting layer, not as bilateral U.S.–China verification. Public-source coverage can raise the cost of hiding and map the ambiguous middle, but it cannot establish that every covert facility has been found.
 
 The public research-surface CI is defined in `.github/workflows/validate_public_surface.yml` and separately validates the Plan A / Track 3 pages and machine-readable documentation contracts.
 
