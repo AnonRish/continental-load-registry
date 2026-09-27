@@ -187,12 +187,14 @@ jobs:
           checklist_csv = list(csv.DictReader((root / "data_universe_checklist.csv").open("r", encoding="utf-8", newline="")))
           assert len(checklist_csv) == 10
           map_manifest = json.loads((root / "map_layer_manifest.json").read_text(encoding="utf-8"))
-          assert len(map_manifest["layers"]) == 11
+          assert len(map_manifest["layers"]) == 12
           layer_by_id = {x["id"]: x for x in map_manifest["layers"]}
           assert layer_by_id["PROJECT_LEVEL"]["records"] == 253
           assert layer_by_id["PROJECT_LEVEL"]["mapped_records"] == 252
           assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["records"] == 63
           assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["mapped_records"] == 63
+          assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["records"] == 58
+          assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["mapped_records"] is None
           assert layer_by_id["EPOCH_AI"]["records"] == 93
           assert layer_by_id["CONNECTION_TARGETS"]["records"] == 93
           assert layer_by_id["MISO_COMPLETE_QUEUE"]["records"] == 3873
