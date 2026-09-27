@@ -124,8 +124,8 @@ jobs:
           assert d["additional_known_miso"]["records"] == 83
           assert d["expanded_known_scope"]["records"] == 1641
           assert d["expanded_known_scope"]["capacity_gw"] == 397.775
-          assert d["project_level_extractions"]["records"] == 253
-          assert d["project_level_map"]["records"] == 253
+          assert d["project_level_extractions"]["records"] == 271
+          assert d["project_level_map"]["records"] == 271
           assert d["project_level_map"]["mapped_records"] == 252
           assert d["supplemental_evidence_units"]["records"] == 58
           assert d["supplemental_aggregate_map"]["records"] == 63
@@ -175,7 +175,7 @@ jobs:
           manifest = json.loads((root / "market_universe_manifest.json").read_text(encoding="utf-8"))
           assert len(manifest["markets"]) == 10
           g = manifest["global_layers"]
-          assert g["project_level_extractions"]["records"] == 253
+          assert g["project_level_extractions"]["records"] == 271
           assert g["project_level_extractions"]["mapped_records"] == 252
           assert g["supplemental_evidence_units"]["records"] == 58
           assert g["supplemental_aggregate_map"]["records"] == 63
@@ -189,7 +189,7 @@ jobs:
           map_manifest = json.loads((root / "map_layer_manifest.json").read_text(encoding="utf-8"))
           assert len(map_manifest["layers"]) == 12
           layer_by_id = {x["id"]: x for x in map_manifest["layers"]}
-          assert layer_by_id["PROJECT_LEVEL"]["records"] == 253
+          assert layer_by_id["PROJECT_LEVEL"]["records"] == 271
           assert layer_by_id["PROJECT_LEVEL"]["mapped_records"] == 252
           assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["records"] == 63
           assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["mapped_records"] == 63
@@ -204,7 +204,7 @@ jobs:
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records_ge_100mw"] == 2332
 
           project_csv = list(csv.DictReader((root / "project_level_extractions.csv").open("r", encoding="utf-8", newline="")))
-          assert len(project_csv) == 253
+          assert len(project_csv) == 271
           supp_csv = list(csv.DictReader((root / "supplemental_large_load_evidence.csv").open("r", encoding="utf-8", newline="")))
           assert len(supp_csv) == 58
           miso_csv = list(csv.DictReader((root / "miso_unresolved_large_loads.csv").open("r", encoding="utf-8", newline="")))
