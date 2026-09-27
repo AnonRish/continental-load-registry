@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-26",
+  "generated_on": "2026-09-27",
   "title": "Continental registry public-data catalog",
   "purpose": "Single machine-readable index of the registry's public queue, project, site, evidence, map and Track 3 artifacts.",
   "accounting_note": "Counts are dataset-local and are not a sum. A project, evidence item, queue row, target or aggregate footprint may refer to the same physical site or overlapping population.",
@@ -30,7 +30,7 @@
       "path": "data/project_level_extractions.json",
       "name": "Project-level records",
       "type": "project",
-      "record_count": 235,
+      "record_count": 271,
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/project_level_extractions.json"
@@ -39,17 +39,17 @@
       "path": "data/project_level_map.json",
       "name": "Mapped project-level records",
       "type": "map",
-      "record_count": 235,
+      "record_count": 271,
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/project_level_map.json",
-      "map_count": 235
+      "map_count": 271
     },
     {
       "path": "data/supplemental_large_load_evidence.json",
       "name": "Supplemental utility/regulator/planning evidence",
       "type": "evidence",
-      "record_count": 54,
+      "record_count": 61,
       "mapped": false,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/supplemental_large_load_evidence.json"
@@ -58,11 +58,11 @@
       "path": "data/supplemental_aggregate_map.json",
       "name": "Mapped aggregate/historical footprints",
       "type": "map",
-      "record_count": 61,
+      "record_count": 66,
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/supplemental_aggregate_map.json",
-      "map_count": 61
+      "map_count": 66
     },
     {
       "path": "data/caiso_cluster_history.json",
@@ -116,10 +116,11 @@
       "path": "data/epoch_site_evidence_records.json",
       "name": "Discrete Epoch site-level evidence assertions",
       "type": "evidence",
-      "record_count": 102,
+      "record_count": 121,
       "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/epoch_site_evidence_records.json"
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/epoch_site_evidence_records.json",
+      "notes": "Legacy/derived Epoch site-evidence export; the canonical Track 3 evidence graph is data/track3/evidence_records.json with 192 retained evidence records."
     },
     {
       "path": "data/external/epoch_ai/queue_gap_analysis.csv",
@@ -185,6 +186,87 @@
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/physical_verification_layer.csv"
+    },
+    {
+      "path": "data/track3/evidence_records.json",
+      "name": "Canonical Track 3 evidence ledger",
+      "type": "evidence",
+      "record_count": 192,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/evidence_records.json"
+    },
+    {
+      "path": "data/track3/public_site_dossier.json",
+      "name": "Complete 93-site public research dossier",
+      "type": "dossier",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_dossier.json"
+    },
+    {
+      "path": "data/track3/public_site_dossier.csv",
+      "name": "Complete 93-site public research dossier CSV",
+      "type": "dossier_csv",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_dossier.csv"
+    },
+    {
+      "path": "data/track3/remote_sensing_observation_targets.json",
+      "name": "93-site optical/TIR/SAR acquisition targets",
+      "type": "remote_sensing_targets",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/remote_sensing_observation_targets.json"
+    },
+    {
+      "path": "data/track3/remote_sensing_observation_targets.csv",
+      "name": "93-site optical/TIR/SAR acquisition targets CSV",
+      "type": "remote_sensing_targets_csv",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/remote_sensing_observation_targets.csv"
+    },
+    {
+      "path": "data/track3/research_complete_no_public_record.json",
+      "name": "Completed site-specific grid searches with no retained public record",
+      "type": "research_outcome",
+      "record_count": 20,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/research_complete_no_public_record.json"
+    },
+    {
+      "path": "data/track3/transformer_supply_chain_events.json",
+      "name": "Source-backed transformer supply-chain events",
+      "type": "transformer_evidence",
+      "record_count": 3,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/transformer_supply_chain_events.json"
+    },
+    {
+      "path": "data/track3/transformer_event_targets.csv",
+      "name": "93-site transformer research targets",
+      "type": "transformer_targets",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/transformer_event_targets.csv"
+    },
+    {
+      "path": "data/caiso_public_queue.json",
+      "name": "CAISO complete current public queue snapshot",
+      "type": "current_queue",
+      "record_count": 2278,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/caiso_public_queue.json"
     }
   ]
 }
