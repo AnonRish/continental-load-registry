@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-27T06:31:00Z",
+    "generated_at_utc": "2026-09-27T06:43:00Z",
     "epoch_site_count": 93,
     "observation_task_count": 279,
     "observation_task_counts_by_domain": {
@@ -40,8 +40,8 @@
         "SITE_LEVEL_EVIDENCE": 11
       },
       "regulatory": {
-        "NOT_ASSESSED": 85,
-        "INGESTED": 8
+        "INGESTED": 9,
+        "NOT_ASSESSED": 84
       },
       "compute_tenancy": {
         "UNKNOWN": 89,
@@ -88,8 +88,8 @@
       "SOURCE_AVAILABLE_NOT_INGESTED": 5
     },
     "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. RESEARCHED_NO_PUBLIC_RECORD means a site-specific search was performed and no public queue/service record was retained; it is not evidence that service is absent.",
-    "public_web_evidence_record_count": 133,
-    "public_web_evidence_site_count": 57
+    "public_web_evidence_record_count": 153,
+    "public_web_evidence_site_count": 59
   },
   "records": [
     {
@@ -123,8 +123,8 @@
           "basis": "No site-specific service or energy-contract evidence is currently attached."
         },
         "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
+          "status": "INGESTED",
+          "basis": "Site-level regulatory evidence is preserved in the Track 3 public evidence layer."
         },
         "compute_tenancy": {
           "status": "UNKNOWN",
@@ -166,9 +166,9 @@
       },
       "site_level_evidence_count": 1,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 3,
+      "combined_site_level_evidence_count": 5,
       "next_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number.",
-      "public_web_evidence_count": 1
+      "public_web_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-d9050b43689ed24c",
@@ -400,9 +400,9 @@
       },
       "site_level_evidence_count": 1,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 2,
+      "combined_site_level_evidence_count": 6,
       "next_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number.",
-      "public_web_evidence_count": 0
+      "public_web_evidence_count": 4
     },
     {
       "epoch_id": "EPOCH-8838deed95ffb554",
@@ -478,9 +478,9 @@
       },
       "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 5,
+      "combined_site_level_evidence_count": 9,
       "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate.",
-      "public_web_evidence_count": 2
+      "public_web_evidence_count": 6
     },
     {
       "epoch_id": "EPOCH-2c2e40ddb178da3e",
@@ -634,9 +634,9 @@
       },
       "site_level_evidence_count": 1,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 4,
+      "combined_site_level_evidence_count": 5,
       "next_action": "Search Wisconsin PSC, We Energies and MISO records for the Fairwater service/interconnection case and associated generation/transmission filings.",
-      "public_web_evidence_count": 2
+      "public_web_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-04f65e1aee6c98ab",
@@ -790,9 +790,9 @@
       },
       "site_level_evidence_count": 1,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 5,
       "next_action": "Search AEP Ohio, PUCO and PJM records for the site-specific service/interconnection record and reconcile multiple campus/building addresses.",
-      "public_web_evidence_count": 0
+      "public_web_evidence_count": 4
     },
     {
       "epoch_id": "EPOCH-5b353d56a567a70b",
@@ -868,9 +868,9 @@
       },
       "site_level_evidence_count": 1,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 8,
+      "combined_site_level_evidence_count": 10,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_web_evidence_count": 6
+      "public_web_evidence_count": 8
     },
     {
       "epoch_id": "EPOCH-83ca909f7eb211c7",
@@ -1258,9 +1258,9 @@
       },
       "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 4,
+      "combined_site_level_evidence_count": 7,
       "next_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately.",
-      "public_web_evidence_count": 1
+      "public_web_evidence_count": 4
     },
     {
       "epoch_id": "EPOCH-cc12c3e42b3eaf08",
