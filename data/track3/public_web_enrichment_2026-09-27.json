@@ -4,24 +4,24 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 212,
+    "record_count": 222,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 186,
+      "PUBLIC_SOURCE_CAPTURED": 196,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "energy_companies": 53,
+      "energy_companies": 58,
       "project": 31,
       "investment": 19,
       "owner": 10,
       "investors": 4,
-      "construction_companies": 18,
+      "construction_companies": 22,
       "cooling": 8,
       "chip_quantities": 5,
       "operational_status": 7,
       "address": 6,
-      "service_or_contract": 6,
+      "service_or_contract": 7,
       "users": 3,
       "regulatory": 6,
       "capacity_record": 11
@@ -3466,7 +3466,167 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Meta's official Cheyenne announcement says Meta will work with Black Hills Energy to add new resources to the grid, including renewables.",
       "evidence_id": "EVID-PWEB-meta-14cecdb5-ener-5"
+    },
+    {
+      "site_name": "Meta Rosemount",
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "field": "construction_companies",
+      "value": "Mortenson",
+      "relationship": "publicly identified construction partner",
+      "source": "Meta Engineering",
+      "source_urls": [
+        "https://engineering.fb.com/2026/03/30/data-center-engineering/ai-for-american-produced-cement-and-concrete/"
+      ],
+      "publication_date": "2026-03-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's engineering article identifies Mortenson as a partner on the Rosemount data center project.",
+      "evidence_id": "EVID-PWEB-batch2-meta-rosemount-cons-0"
+    },
+    {
+      "site_name": "Meta Rosemount",
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "field": "energy_companies",
+      "value": "Xcel Energy",
+      "relationship": "publicly identified energy partner",
+      "source": "Xcel Energy Stories",
+      "source_urls": [
+        "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
+      ],
+      "publication_date": "2024-03-15",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Xcel's official announcement says it will power Meta's new Rosemount data center and describes its work with Meta on the facility's energy needs.",
+      "evidence_id": "EVID-PWEB-batch2-meta-rosemount-ener-1"
+    },
+    {
+      "site_name": "Meta Bowling Green",
+      "epoch_id": "EPOCH-177c53f92d72ec4a",
+      "field": "construction_companies",
+      "value": "JE Dunn Construction",
+      "relationship": "publicly identified construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+      ],
+      "publication_date": "2025-04-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official Bowling Green announcement points to JE Dunn Construction for construction information and names JE Dunn among local/project partners.",
+      "evidence_id": "EVID-PWEB-batch2-meta-bowling-green-cons-2"
+    },
+    {
+      "site_name": "Meta Bowling Green",
+      "epoch_id": "EPOCH-177c53f92d72ec4a",
+      "field": "energy_companies",
+      "value": "Toledo Edison Company",
+      "relationship": "publicly identified energy partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+      ],
+      "publication_date": "2025-04-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's official announcement says it worked closely with Toledo Edison from the beginning to plan for the site's energy needs.",
+      "evidence_id": "EVID-PWEB-batch2-meta-bowling-green-ener-3"
+    },
+    {
+      "site_name": "Meta Jeffersonville",
+      "epoch_id": "EPOCH-1ac0959562dee191",
+      "field": "energy_companies",
+      "value": "Duke Energy",
+      "relationship": "publicly identified energy partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/wp-content/uploads/2024/10/Indiana-Jeffersonville.pdf"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Meta's Jeffersonville fact sheet says Meta is working with local partners including Duke Energy to meet renewable-energy goals for the data center.",
+      "evidence_id": "EVID-PWEB-batch2-meta-jeffersonville-ener-4"
+    },
+    {
+      "site_name": "Meta Gallatin",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "field": "construction_companies",
+      "value": "DPR Construction",
+      "relationship": "publicly identified general contractor",
+      "source": "DPR Construction",
+      "source_urls": [
+        "https://www.dpr.com/projects/facebook-gallatin-data-center"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DPR's current project page identifies DPR Construction as general contractor for the Meta/Facebook Gallatin data center.",
+      "evidence_id": "EVID-PWEB-batch2-meta-gallatin-cons-5"
+    },
+    {
+      "site_name": "Meta Gallatin",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "field": "energy_companies",
+      "value": "Tennessee Valley Authority",
+      "relationship": "publicly identified energy partner",
+      "source": "DPR Construction",
+      "source_urls": [
+        "https://www.dpr.com/projects/facebook-gallatin-data-center"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DPR's project page says the Gallatin campus is supported by renewable energy through partnerships with the Tennessee Valley Authority.",
+      "evidence_id": "EVID-PWEB-batch2-meta-gallatin-ener-6"
+    },
+    {
+      "site_name": "Meta Aiken",
+      "epoch_id": "EPOCH-7d9b5af0cce16f1c",
+      "field": "construction_companies",
+      "value": "DPR Construction",
+      "relationship": "publicly identified construction partner",
+      "source": "DPR Construction",
+      "source_urls": [
+        "https://www.dpr.com/projects/meta-aiken-data-center-aiken-sc"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DPR's project page identifies the Meta Aiken Data Center as its project/client relationship; the role is retained as a construction partner rather than expanded beyond the source.",
+      "evidence_id": "EVID-PWEB-batch2-meta-aiken-cons-7"
+    },
+    {
+      "site_name": "Microsoft Goodyear",
+      "epoch_id": "EPOCH-93a4aa4fa40d40ca",
+      "field": "energy_companies",
+      "value": "Arizona Public Service (APS)",
+      "relationship": "publicly identified serving utility",
+      "source": "Southern Utah Economic Data Center Registry",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/microsoft-goodyear-az"
+      ],
+      "publication_date": "2026-08-08",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "A secondary facility record identifies APS as the utility for Microsoft's Goodyear campus; retained as secondary source evidence, not a first-party Microsoft statement.",
+      "evidence_id": "EVID-PWEB-batch2-microsoft-goodyear-ener-8"
+    },
+    {
+      "site_name": "CoreWeave Denton TX",
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "field": "service_or_contract",
+      "value": "Denton Municipal Electric (DME) power purchase agreement",
+      "relationship": "site-specific power service contract",
+      "source": "U.S. Securities and Exchange Commission filing",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1839341/000119312526165121/d149019dex992.htm"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "An SEC filing states that power for the Denton Campus is supplied by the City of Denton through DME under a power purchase agreement for total potential campus load of approximately 394 MW; retained as contract/service evidence, separate from Epoch's IT-power figure.",
+      "evidence_id": "EVID-PWEB-batch2-coreweave-denton-tx-serv-9"
     }
   ],
-  "record_count": 212
+  "record_count": 222
 }
