@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "title": "Track 3 physical-source and retained-artifact provenance manifest",
+  "generated_on": "2026-09-27",
+  "scope": "Public physical-evidence acquisition for the 93-site Epoch AI reference universe",
+  "hash_policy": {
+    "raw_source_sha256": "Only populated when raw source bytes are actually retained by the repository. Satellite rasters are intentionally not committed, so a raw-raster SHA-256 is not claimed.",
+    "retained_artifact_integrity": "GitHub exposes Git blob SHA-1 identifiers for retained repository files; these are recorded as repository-integrity locators, not mislabeled as SHA-256.",
+    "scene_level_reproducibility": "Every derived remote-sensing record retains the STAC item URL, scene ID, observation date, source collection, and processing version."
+  },
+  "sources": [
+    {
+      "id": "sentinel-2-optical",
+      "modality": "optical",
+      "publisher": "Copernicus / ESA",
+      "source_url": "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-2",
+      "stac_url": "https://stac.dataspace.copernicus.eu/v1/",
+      "collection": "sentinel-2-l2a",
+      "acquisition_window_start": "2021-01-01",
+      "acquisition_window_end": "2026-09-27",
+      "capture_on": "2026-09-27",
+      "raw_source_retained": false,
+      "raw_source_sha256": null,
+      "status": "INGESTED_DERIVED"
+    },
+    {
+      "id": "sentinel-1-sar",
+      "modality": "SAR",
+      "publisher": "Copernicus / ESA",
+      "source_url": "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-1",
+      "stac_url": "https://stac.dataspace.copernicus.eu/v1/",
+      "collection": "sentinel-1-grd",
+      "acquisition_window_start": "2021-01-01",
+      "acquisition_window_end": "2026-09-27",
+      "capture_on": "2026-09-27",
+      "raw_source_retained": false,
+      "raw_source_sha256": null,
+      "status": "INGESTED_DERIVED"
+    },
+    {
+      "id": "landsat-c2-l2-st",
+      "modality": "TIR",
+      "publisher": "USGS / NASA",
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+      "stac_url": "https://landsatlook.usgs.gov/stac-server/",
+      "collection": "landsat-c2-l2",
+      "acquisition_window_start": "2021-01-01",
+      "acquisition_window_end": "2026-09-27",
+      "capture_on": "2026-09-27",
+      "raw_source_retained": false,
+      "raw_source_sha256": null,
+      "status": "INGESTED_DERIVED"
+    },
+    {
+      "id": "overture-buildings",
+      "modality": "building-footprint",
+      "publisher": "Overture Maps Foundation",
+      "source_url": "https://docs.overturemaps.org/guides/buildings/",
+      "data_access_url": "https://docs.overturemaps.org/getting-data/",
+      "source_release": "2026-09-23.1",
+      "capture_on": "2026-09-27",
+      "raw_source_retained": false,
+      "raw_source_sha256": null,
+      "site_target_count": 93,
+      "polygon_site_count": 68,
+      "polygon_file_count": 68,
+      "status": "INGESTED_POLYGONIZED"
+    }
+  ],
+  "retained_artifacts": [
+    {
+      "path": "data/track3/remote_sensing_observations.json",
+      "role": "Canonical derived scene ledger",
+      "record_count": 421,
+      "git_blob_sha1": "4c0245c14748f4cf404181fb7e471d2b3f3dd026",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "data/track3/remote_sensing_observations.csv",
+      "role": "Flattened derived scene ledger",
+      "record_count": 421,
+      "git_blob_sha1": "d91e0fe824b349f9ce7c23b33d7d8692c6aa5503",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "data/track3/building_footprints_index.json",
+      "role": "93-site footprint acquisition/index manifest",
+      "record_count": 93,
+      "polygon_site_count": 68,
+      "git_blob_sha1": "6f39fc5091c7d31b2a4c61bc4499a2e48a220d05",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "data/physical_verification_layer.json",
+      "role": "Aggregate physical-verification state layer",
+      "git_blob_sha1": "68f97c336170cbd98f811c3f8c127734fca57c16",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "data/track3/physical_site_coordinates.json",
+      "role": "Geocoding/coordinate provenance cache",
+      "git_blob_sha1": "b676fac55a4b50676e06b0513cfdd3d9fd1ff9af",
+      "sha256": null,
+      "bytes": null
+    }
+  ],
+  "acquisition_outputs": {
+    "epoch_site_target_count": 93,
+    "remote_sensing_derived_observation_count": 421,
+    "building_footprint_polygon_site_count": 68,
+    "building_footprint_geojson_file_count": 68
+  },
+  "semantics": "A source scene, building footprint, thermal anomaly, SAR metric, NDVI metric, or geocoded coordinate is an observation layer, not by itself proof of AI compute, ownership, tenancy, or covert activity. Missing source bytes or missing observations are not evidence of absence."
+}
