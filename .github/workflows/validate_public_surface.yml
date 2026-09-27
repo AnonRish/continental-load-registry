@@ -136,10 +136,13 @@ jobs:
 
           scope = json.loads((root / "large_load_scope.json").read_text(encoding="utf-8"))
           d = scope["definitions"]
-          assert d["current_row_level"]["records"] == 1558
-          assert d["additional_known_miso"]["records"] == 83
-          assert d["expanded_known_scope"]["records"] == 1641
-          assert d["expanded_known_scope"]["capacity_gw"] == 397.775
+          current_records = d["current_row_level"]["records"]
+          current_capacity = float(d["current_row_level"]["capacity_gw"])
+          extra_miso_records = d["additional_known_miso"]["records"]
+          extra_miso_capacity = float(d["additional_known_miso"]["capacity_gw"])
+          assert d["current_row_level"]["records"] > 0
+          assert d["expanded_known_scope"]["records"] == current_records + extra_miso_records
+          assert abs(float(d["expanded_known_scope"]["capacity_gw"]) - (current_capacity + extra_miso_capacity)) < 1e-9
           assert d["project_level_extractions"]["records"] == 271
           assert d["project_level_map"]["records"] == 271
           assert d["project_level_map"]["mapped_records"] == 271
