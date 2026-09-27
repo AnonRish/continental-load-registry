@@ -4,10 +4,10 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 204,
+    "record_count": 206,
     "sites_with_findings": 69,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 178,
+      "PUBLIC_SOURCE_CAPTURED": 180,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
@@ -16,7 +16,7 @@
       "investment": 19,
       "owner": 10,
       "investors": 4,
-      "construction_companies": 13,
+      "construction_companies": 15,
       "cooling": 8,
       "chip_quantities": 5,
       "operational_status": 7,
@@ -3332,6 +3332,45 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
       "evidence_id": "EVID-PWEB-789cf694de56ab9dfc06"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "construction_companies",
+      "value": [
+        "Ferguson Enterprises LLC"
+      ],
+      "relationship": "publicly documented construction supplier / lien claimant",
+      "source": "WSMV Action News 5",
+      "source_urls": [
+        "https://www.wsmv.com/2026/09/23/new-lien-filed-against-musk-linked-data-center-memphis/"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "WSMV reported that Ferguson Enterprises LLC filed a lien against MZX Tech LLC for $4.2 million it said was owed for work at Colossus 2; the report describes Ferguson as having provided pipes, pipe valves and fittings. This is a site-specific construction/supply relationship, not a claim that Ferguson is the general contractor.",
+      "evidence_id": "EVID-PWEB-cc2ferguson20260923"
+    },
+    {
+      "site_name": "Microsoft Fairwater Atlanta",
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "field": "construction_companies",
+      "value": [
+        "HITT Contracting",
+        "Clayco",
+        "Brasfield & Gorrie"
+      ],
+      "relationship": "publicly identified construction partners on the Fayetteville data-center campus",
+      "source": "MeasuredAI",
+      "source_urls": [
+        "https://measuredai.substack.com/p/microsoft-fairwater-atlanta-data-center"
+      ],
+      "publication_date": "2026-06-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "MeasuredAI reports HITT Contracting on Fairwater and other Fayetteville buildings, Clayco on Fairwater DC-9, and Brasfield & Gorrie on Fairwater/DC-3/DC-4 and site preparation. Source role is retained as secondary public evidence; it is not treated as an independently verified general-contractor roster.",
+      "evidence_id": "EVID-PWEB-fairwaterbuilders20260927"
     }
-  ]
+  ],
+  "record_count": 206
 }
