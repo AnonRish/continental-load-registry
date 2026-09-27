@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T16:55:00Z",
+  "generated_at_utc": "2026-09-27T17:05:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
@@ -4424,7 +4424,105 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Microsoft identifies Fairwater in Mount Pleasant and reported its first datacenter facility complete and fully operational on June 23, 2026.",
       "evidence_id": "EVID-PWEB-0aedbf17"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "construction_companies",
+      "value": "Darana Hybrid",
+      "relationship": "primary permit-submitting contractor for electrical, mechanical, plumbing and related work",
+      "source": "Measured AI",
+      "source_urls": [
+        "https://measuredai.substack.com/p/xai-colossus-data-center-cluster"
+      ],
+      "publication_date": "2026-06-16",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Measured AI reports Darana Hybrid as a primary permit-submitting contractor for xAI's Memphis Colossus buildings. This is a contractor relationship reported by a secondary research source, not an ownership claim.",
+      "evidence_id": "EVID-PWEB-69578253"
+    },
+    {
+      "site_name": "AWS New Albany",
+      "epoch_id": "EPOCH-bdc85fadae79b6b2",
+      "field": "project",
+      "value": "AWS New Albany Data Center Campus",
+      "relationship": "named campus/project identity",
+      "source": "Compute Institute / City of New Albany permit record",
+      "source_urls": [
+        "https://compute.institute/entities/suffolk-construction",
+        "https://newalbanyohio.org/community-development/project-updates/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Public permit-based research identifies the AWS New Albany Data Center Campus; the project is treated as a named campus identity, not an inference about all New Albany facilities.",
+      "evidence_id": "EVID-PWEB-14825ea4"
+    },
+    {
+      "site_name": "AWS New Albany",
+      "epoch_id": "EPOCH-bdc85fadae79b6b2",
+      "field": "construction_companies",
+      "value": "Suffolk Construction",
+      "relationship": "general contractor",
+      "source": "Compute Institute / City of New Albany permit record",
+      "source_urls": [
+        "https://compute.institute/entities/suffolk-construction",
+        "https://newalbanyohio.org/community-development/project-updates/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Compute Institute's source-backed project role identifies Suffolk Construction as general contractor for the AWS New Albany Data Center Campus and points to City of New Albany permit records.",
+      "evidence_id": "EVID-PWEB-32abdb25"
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "project",
+      "value": "New Albany Data Center",
+      "relationship": "named facility/project identity",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/google-new-albany-oh"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DEPLOY's September 2026 facility record identifies Google's New Albany Data Center as an operating facility. The registry retains this as a facility-level project identity.",
+      "evidence_id": "EVID-PWEB-7265ee7c"
+    },
+    {
+      "site_name": "Google Bristow",
+      "epoch_id": "EPOCH-6db3bc2c79843ffd",
+      "field": "project",
+      "value": "Google Bristow",
+      "relationship": "named facility/project identity",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/google-bristow"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Epoch AI's September 2026 record identifies Google Bristow in Bristow, Virginia as an operational AI data center.",
+      "evidence_id": "EVID-PWEB-8d9f8f3b"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "construction_companies",
+      "value": "DPR Construction",
+      "relationship": "contractor for QTS Richmond 1 Data Center 3 retrofit",
+      "source": "DPR Construction",
+      "source_urls": [
+        "https://www.dpr.com/projects/qts-richmond-data-center"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "DPR's project page identifies its QTS Richmond 1 Data Center 3 project in Sandston and describes the retrofit/buildout scope.",
+      "evidence_id": "EVID-PWEB-1c2efeb8"
     }
   ],
-  "record_count": 270
+  "record_count": 276
 }
