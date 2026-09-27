@@ -94,8 +94,11 @@ def http_fingerprint(url):
     return {"status":"FAILED","error":last}
 
 def source_health(prev):
-    results=[]; failed=[]
+    results=[]; failed=[]; seen_urls=set()
     for s in source_inventory():
+        if s.get("url") and s["url"] in seen_urls:
+            continue
+        if s.get("url"): seen_urls.add(s["url"])
         old=prev.get(s["url"],{}) if s.get("url") else {}
         fp=http_fingerprint(s.get("url"))
         changed=None
@@ -133,9 +136,17 @@ def queue_release_diff():
     if previous:
         removed=[prev_by[k] for k in sorted(set(prev_by)-set(cur_by))]
         changed=[{"id":k,"before":prev_by[k],"after":cur_by[k]} for k in sorted(set(cur_by)&set(prev_by)) if cur_by[k]!=prev_by[k]]
+    by_rto={}
+    for r in current: by_rto.setdefault(r.get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["current"]+=1
+    if previous:
+        prev_rto={}
+        for r in previous["records"]: prev_rto.setdefault(r.get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["current"]+=1
+        for r in added: by_rto.setdefault(r.get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["added"]+=1
+        for r in removed: by_rto.setdefault(r.get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["removed"]+=1
+        for x in changed: by_rto.setdefault(x["after"].get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["changed"]+=1
     snapshot={"schema_version":1,"captured_at_utc":NOW_ISO,"record_count":len(current),"registry_sha256":hashlib.sha256(json.dumps(current,sort_keys=True).encode()).hexdigest(),"records":current}
     snap_path=snap_dir/f"{TODAY}.json"; snap_path.write_text(json.dumps(snapshot,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-    return {"schema_version":1,"generated_at_utc":NOW_ISO,"comparison_basis":previous.get("captured_at_utc") if previous else None,"current_record_count":len(current),"previous_record_count":len(previous["records"]) if previous else None,"added_count":len(added),"removed_count":len(removed),"changed_count":len(changed),"added":added,"removed":removed,"changed":changed,"current_snapshot":str(snap_path.relative_to(ROOT)).replace("\\","/")}
+    return {"schema_version":1,"generated_at_utc":NOW_ISO,"comparison_basis":previous.get("captured_at_utc") if previous else None,"current_record_count":len(current),"previous_record_count":len(previous["records"]) if previous else None,"added_count":len(added),"removed_count":len(removed),"changed_count":len(changed),"by_rto":by_rto,"added":added,"removed":removed,"changed":changed,"current_snapshot":str(snap_path.relative_to(ROOT)).replace("\\","/")}
 
 def duplicate_report(records):
     by_id={}; by_exact={}; by_project={}
