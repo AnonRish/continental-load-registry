@@ -32,7 +32,7 @@ def fetch():
     tables=pd.read_html(io.StringIO(html))
     for df in tables:
         cols={str(c).strip().lower() for c in df.columns}
-        if {"project id","name","state","status"}.issubset(cols):
+        if ("state" in cols and "status" in cols and ("name" in cols or "project name" in cols or "project" in cols)):
             return df.to_csv(index=False).encode(),PAGE
     raise RuntimeError("PJM cycle export could not be located; page has changed or export is JS-only")
 
@@ -43,8 +43,8 @@ def normalize_df(df):
         for n in names:
             if n.lower() in low:return low[n.lower()]
         return None
-    idc=col("Project ID","Queue Number","Queue Pos.")
-    if not idc: raise RuntimeError("PJM export lacks Project ID")
+    idc=col("Project ID","Request ID","Request Number","Queue ID","Queue Number","Queue Pos.","ID")
+
     out=[]
     for i,(_,row) in enumerate(df.iterrows(),1):
         raw={}
@@ -68,9 +68,13 @@ def normalize_df(df):
             try: vals.append(float(v))
             except Exception: pass
         if vals:cap=max(vals)
+        source_id=g("Project ID","Request ID","Request Number","Queue ID","Queue Number","Queue Pos.","ID")
+        derived_key = str(source_id).strip() if source_id not in (None,"") else f"PJM-CSR-ROW-{i:06d}"
         out.append({"source_row_number":i,"normalized":{
-            "queue_id":g("Project ID","Queue Number","Queue Pos."),
-            "project_name":g("Name","Project Name"),
+            "queue_id":source_id,
+            "record_key":derived_key,
+            "queue_id_is_source_field":source_id not in (None,""),
+            "project_name":g("Name","Project Name","Project"),
             "state":g("State"),"status":g("Status"),"transmission_owner":g("TO","Transmission Owner"),
             "mfo":g("MFO"),"mw_energy":g("MW Energy","SP (MW)"),"mw_capacity":g("MW Capacity","WP (MW)"),
             "mw_in_service":g("MW In Service"),"capacity_mw":cap,"fuel":g("Fuel","Type/Fuel","Generation Type"),
