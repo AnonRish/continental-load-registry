@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "generated_on": "2026-09-27",
-  "pilot_scope": "Three cases selected from the 141-facility Genuinely Ambiguous / Unclassified Large Load tier. Closure means each gate reached a terminal evidence state; it does not mean every gate produced a positive observation.",
+  "pilot_scope": "Four cases selected from the 141-record broad Genuinely Ambiguous / Unclassified Large Load research pool. Closure means each declared gate reached a terminal evidence state; it does not mean every gate produced positive evidence or that facility operation was verified.",
   "cases": [
     {
       "case_id": "AMB-NYISO-1765",
@@ -254,6 +254,98 @@
         "Transformer event evidence was not located publicly."
       ],
       "methods_note": "This is a deliberate inconclusive case. The workflow demonstrates that a queue/entity match can be real while the physical and end-use questions remain unresolved; the correct disposition is not to force a data-center or non-data-center label.",
+      "last_verified_on": "2026-09-27"
+    },
+    {
+      "case_id": "AMB-AESO-P3108",
+      "rto": "AESO",
+      "queue_id": "P3108",
+      "project_name": "Wild Rose Power Hub Load",
+      "capacity_mw": 1300,
+      "pilot_role": "generic-name ambiguity target; public identity + physical-site resolution",
+      "initial_registry_classification": "Genuinely Ambiguous / Unclassified Large Load",
+      "adjudication": "CONFIRMED_DATA_CENTER",
+      "closure_state": "CLOSED_WITH_PUBLIC_PROJECT_AND_PHYSICAL_SITE_IDENTITY",
+      "queue": {
+        "status": "FOUND",
+        "source_url": "https://www.interconnection.fyi/project/aeso-p3108",
+        "details": "Public queue mirror identifies P3108 as a 1,300 MW load in Calgary.",
+        "project_type": "Load",
+        "classification_basis": "Public queue/application record explicitly identifies the request as a load-side project."
+      },
+      "entity_resolution": {
+        "status": "RESOLVED",
+        "resolved_entity": "Chinook Development LP",
+        "role": "Developer",
+        "sources": [
+          "https://www.rockyview.ca/build-plan-and-develop/planning/planning-projects-underway/wild-rose-power-hub-area-structure-plan",
+          "https://majorprojects.alberta.ca/details/Wild-Rose-Power-Hub/12207"
+        ]
+      },
+      "location": {
+        "status": "FOUND",
+        "address": "Wild Rose Power Hub Area Structure Plan site, Rocky View County, Alberta",
+        "latitude": 50.943554,
+        "longitude": -113.714161,
+        "precision": "official Rocky View County plan point; subject-site point, not building footprint",
+        "legal_descriptions": [
+          "SW-09-23-27W04",
+          "SE-09-23-27W04",
+          "NE-09-23-27W04"
+        ]
+      },
+      "public_evidence": [
+        {
+          "source": "Rocky View County ASP project page",
+          "url": "https://www.rockyview.ca/build-plan-and-develop/planning/planning-projects-underway/wild-rose-power-hub-area-structure-plan",
+          "what_it_proves": "County page identifies a primarily data-centre project, gives the three legal quarter sections, and gives POINT (-113.714161 50.943554).",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "Alberta Major Projects",
+          "url": "https://majorprojects.alberta.ca/details/Wild-Rose-Power-Hub/12207",
+          "what_it_proves": "Provincial page describes Wild Rose Power Hub as a proposed hyperscale data centre and identifies Chinook Development LP as developer.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "Rocky View County Wild Rose TOR",
+          "url": "https://www.rockyview.ca/Portals/0/Files/BuildingPlanning/Planning/UnderReview/WildRose/Wild-Rose-TOR.pdf",
+          "what_it_proves": "County terms of reference describe the developer-led data-centre ASP and planning process.",
+          "accessed_on": "2026-09-27"
+        },
+        {
+          "source": "AESO-derived public queue mirror",
+          "url": "https://www.interconnection.fyi/project/aeso-p3108",
+          "what_it_proves": "P3108 is a 1,300 MW load-side connection request in Calgary.",
+          "accessed_on": "2026-09-27"
+        }
+      ],
+      "physical_observations": {
+        "status": "FOUND",
+        "derived_observation_count": 6,
+        "scene_ids": [
+          "S2C_MSIL2A_20260726T182921_R027_T12UUB_20260726T234116",
+          "S2A_MSIL2A_20260926T183821_R027_T11UQS_20260927T004612",
+          "S1C_IW_GRDH_1SDV_20250928T012106_20250928T012131_004318_0088FF",
+          "S1C_IW_GRDH_1SDV_20260923T012925_20260923T012950_009568_0130A5",
+          "LC08_L2SP_042025_20260406_02_T1",
+          "LC09_L2SP_042025_20260921_02_T1"
+        ],
+        "quality_note": "Two optical, two SAR and two Landsat-TIR observations were processed. The July 2026 optical scene had 0.04% cloud cover with 262,144 valid pixels; the September optical scene had 95.44% cloud cover with 975 valid pixels. Both SAR windows produced zero valid pixels. TIR observations had 36,864 valid pixels each and deltas of +0.314 K and -0.191 K relative to local background. These are scene observations, not proof of compute operation.",
+        "artifact_path": "data/track3/ambiguous_case_physical_observations.json"
+      },
+      "transformer_check": {
+        "status": "NO_PUBLIC_EVENT_FOUND",
+        "summary": "The closure search did not retain a project-specific transformer procurement/delivery/energization event for the site. This is a search outcome, not evidence that no transformer exists.",
+        "searched_on": "2026-09-27"
+      },
+      "unresolved_items": [
+        "The project is proposed; operational/energized status is not established.",
+        "Queue-side developer field remains unpublished even though the public project developer is resolved independently.",
+        "No project-specific transformer event was retained.",
+        "Remote-sensing SAR windows had zero valid pixels and one optical scene was heavily clouded."
+      ],
+      "methods_note": "The case demonstrates a full public-evidence identity and physical-targeting chain from an initially ambiguous load record to a named proposed data-centre project and processed multi-modal observations. The result does not establish operational AI compute or covert status.",
       "last_verified_on": "2026-09-27"
     }
   ]
