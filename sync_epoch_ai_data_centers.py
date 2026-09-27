@@ -305,6 +305,8 @@ def selftest() -> None:
     assert norm("OpenAI Stargate Abilene, TX") == "openai stargate abilene tx"
     assert tokens("OpenAI Stargate Abilene") >= {"openai", "stargate", "abilene"}
     assert infer_region("5502 Spinks Rd, Abilene, TX 79601", "United States") == "TX"
+    assert infer_region("5475 Cloud Ct, Lincoln, NE 68514", "United States") == "NE"
+    assert infer_region("1600 Pennsylvania Ave NW, Washington, DC 20500", "United States") == "DC"
     rows = [{"id":"1670","rto":"NYISO","st":"NY","co":"Niagara","proj":"Lake Mariner Data II","dev":"Lake Mariner Data LLC","poi":"Kintigh 345kV"}]
     ep = {"name":"Anthropic Lake Mariner","owner":"Anthropic","users":"Anthropic","address":"Barker, NY","country":"United States"}
     assert conservative_matches(ep, rows, {"anthropic lake mariner":{"registry_ids":["1670"],"relationship":"same_phase","match_confidence":"high","match_basis":"Known NYISO Lake Mariner cross-check."}})[0]["queue_id"] == "1670"
