@@ -347,7 +347,7 @@ def merge_public_enrichment(normalized: dict[str, Any], rows: list[dict[str, Any
         scope_note = str(row.get("scope_note") or "").lower()
         relationship = str(row.get("relationship") or "").lower()
         if field == "investors":
-            if "project-specific" in scope_note or "project specific" in scope_note or "financing" in relationship:
+            if ("project-specific" in scope_note or "project specific" in scope_note) and "not project-specific" not in scope_note and "not project specific" not in scope_note:
                 strict_investor.append(row)
             continue
         if field not in safe_fields:
