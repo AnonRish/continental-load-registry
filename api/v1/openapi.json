@@ -63,9 +63,25 @@
         "summary": "Fetch Epoch-to-grid crosswalk",
         "responses": {
           "200": {
+            "description": "Crosswalk CSV"
+          }
+        }
+      }
+    },
+    "/data/external/epoch_ai/crosswalk.json": {
+      "get": {
+        "summary": "Fetch Epoch-to-grid crosswalk JSON",
+        "responses": {
+          "200": {
             "description": "Crosswalk JSON"
           }
         }
+      }
+    },
+    "/api/v1/facilities.csv": {
+      "get": {
+        "summary": "List the 93 Track 3 facilities as CSV",
+        "responses": {"200": {"description": "CSV facility index"}}
       }
     },
     "/data/track3/evidence_records.json": {
