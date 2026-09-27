@@ -38,6 +38,29 @@ The transformer layer now retains source-backed events rather than a zero-record
 
 A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Two selected cooling-equipment snapshots are also retained for Google Arcola and Google Kansas City East; these support physical verification but are not thermal telemetry.
 
+## Facility-level provenance
+
+The facility-level provenance ledger is published at `data/track3/facility_provenance.json` with a row-oriented export at `data/track3/facility_provenance_records.csv` and schema at `data/track3_facility_provenance_schema.json`.
+
+For each of the 93 Epoch facilities, the ledger exposes:
+
+- retained raw Epoch publisher fields and the corresponding normalized values;
+- the source URL and repository raw-source locator;
+- capture/access dates separately from dataset update dates;
+- the exact retained source field/value where the repository actually contains it;
+- the transformation applied by the provenance builder;
+- evidence type and the published confidence label;
+- conservative primary/secondary/unclassified evidence-origin metadata;
+- metadata-derived corroboration across distinct source URLs/names;
+- structured conflict checks without treating different sources as automatically contradictory;
+- latest available verification date;
+- automated audit trail, with no human reviewer invented;
+- Git commit/content-hash information for reproducible historical snapshots.
+
+A missing publication date or source excerpt remains explicitly missing. The ledger does not substitute a dataset update date for a publication date, and it does not claim that a source is independent merely because it is hosted at a different URL.
+
+The rebuild is automated by `.github/workflows/track3_facility_provenance.yml`. Each build can create a new manifest under `data/track3/provenance_snapshots/`, keyed to the build commit.
+
 ## Evidence domains
 
 Each Epoch site receives machine-readable status for site identity, construction history, chip inventory, grid/connection, service/energy contracts, compute tenancy, actual power telemetry, remote sensing, cooling, transformer supply chain, chip ownership, chip users, and chip shipments.
