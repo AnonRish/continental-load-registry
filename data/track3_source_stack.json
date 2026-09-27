@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "generated_on": "2026-09-26",
   "sources": [
     {
@@ -97,24 +97,6 @@
       "capture_on": "2026-09-27"
     },
     {
-      "id": "tir-sar",
-      "name": "Satellite TIR / SAR observations",
-      "kind": "remote sensing",
-      "status": "NOT_INGESTED",
-      "updated": null,
-      "url": null,
-      "role": "Numeric thermal and multi-temporal construction/activity observations."
-    },
-    {
-      "id": "transformer-supply-chain",
-      "name": "HV transformer procurement / delivery records",
-      "kind": "supply-chain evidence",
-      "status": "NOT_INGESTED",
-      "updated": null,
-      "url": null,
-      "role": "Large-transformer order, delivery, installation, and site-assignment evidence."
-    },
-    {
       "id": "north-american-queue-universe",
       "name": "Continental Registry queue/connection universe",
       "kind": "primary and public-record source catalog",
@@ -159,6 +141,133 @@
       "updated": "2024-09-20",
       "url": "https://sustainability.atmeta.com/wp-content/uploads/2024/08/Meta-2024-Responsible-Business-Practices-Report-Index.pdf",
       "role": "Historical annual electricity-consumption observations for named Meta data-center facilities; aggregate annual figures, not interval meter telemetry."
+    },
+    {
+      "id": "sentinel-2-optical",
+      "name": "Copernicus Sentinel-2",
+      "modality": "optical",
+      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "url": "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-2",
+      "role": "Free systematic multispectral imagery for multi-temporal surface/building/campus change detection.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "landsat-oli-optical",
+      "name": "USGS Landsat Collection 2 Level-1 / OLI",
+      "modality": "optical",
+      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data",
+      "role": "Open Landsat optical imagery and scene metadata for long-term site chronology.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "landsat-tirs-thermal",
+      "name": "USGS Landsat Collection 2 Level-2 Surface Temperature / TIRS",
+      "modality": "TIR",
+      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+      "role": "Open surface-temperature products and thermal-band observations.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "sentinel-1-sar",
+      "name": "Copernicus Sentinel-1 SAR",
+      "modality": "SAR",
+      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "url": "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-1",
+      "role": "Open radar observations for cloud-independent construction/change detection.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "usgs-3dep",
+      "name": "USGS 3DEP",
+      "modality": "3D/topography",
+      "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+      "url": "https://www.usgs.gov/the-national-map-data-delivery/gis-data-download",
+      "role": "Public lidar/DEM support for structure/campus geometry; not itself a building-footprint dataset.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "epoch-timelines",
+      "name": "Epoch AI construction timelines",
+      "modality": "construction",
+      "status": "INGESTED",
+      "url": "https://epoch.ai/data/data-centers-documentation/records",
+      "role": "Dated site construction, building, power and progress records for the 93-site Epoch universe.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "epoch-chillers",
+      "name": "Epoch AI data-center chillers",
+      "modality": "cooling",
+      "status": "INGESTED_SNAPSHOT",
+      "url": "https://epoch.ai/data/data_centers/data_center_chillers.csv",
+      "role": "Site-level cooling-equipment evidence where published.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "epoch-cooling-towers",
+      "name": "Epoch AI data-center cooling towers",
+      "modality": "cooling",
+      "status": "INGESTED_SNAPSHOT",
+      "url": "https://epoch.ai/data/data_centers/data_center_cooling_towers.csv",
+      "role": "Site-level cooling-tower evidence where published.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "va-deq-data-centers",
+      "name": "Virginia DEQ issued air permits for data centers",
+      "modality": "permit",
+      "status": "INGESTED",
+      "url": "https://www.deq.virginia.gov/news-info/shortcuts/permits/air/issued-air-permits-for-data-centers",
+      "role": "Individual permit identities and dates; current project layer contains 33 records.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "utility-transmission-projects",
+      "name": "Utility / regulator transmission project filings",
+      "modality": "transmission/substation",
+      "status": "INGESTED_PARTIAL",
+      "url": "https://www.scc.virginia.gov/consumers/public-utility/electricity-faqs/transmission-line-projects/",
+      "role": "Public line/substation project evidence; current project layer contains 90 substation-related and 113 transmission-related evidence records.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "transformer-supply-chain",
+      "name": "HV transformer procurement / delivery / installation evidence",
+      "modality": "transformer",
+      "status": "NOT_INGESTED",
+      "url": null,
+      "role": "Target stream for order, manufacturer, MVA/kV, destination and installation-event evidence.",
+      "kind": "physical verification source",
+      "updated": "2026-09-26"
+    },
+    {
+      "id": "physical-verification-layer",
+      "name": "Continental Registry physical verification layer",
+      "kind": "derived evidence manifest",
+      "status": "INGESTED",
+      "updated": "2026-09-26",
+      "url": "data/physical_verification_layer.json",
+      "role": "93-site physical verification checklist and site states."
     }
-  ]
+  ],
+  "source_stack_count": 24,
+  "source_stack_status_counts": {
+    "INGESTED": 8,
+    "INGESTED_SNAPSHOT": 9,
+    "SOURCE_AVAILABLE_NOT_INGESTED": 5,
+    "INGESTED_PARTIAL": 1,
+    "NOT_INGESTED": 1
+  }
 }
