@@ -580,6 +580,7 @@ def main() -> int:
             "next_action": ev.get("next_action"),
         })
 
+    existing_evidence_ids = {str(x.get("evidence_id")) for x in evidence_index if x.get("evidence_id")}
     manual_domain_map = {
         "project": "site_identity",
         "address": "site_identity",
@@ -600,11 +601,13 @@ def main() -> int:
         sid = str(item.get("epoch_id") or "")
         if sid not in epoch_ids:
             continue
-        digest = hashlib.sha256(
+        eid = str(item.get("evidence_id") or ("EVID-PWEB-" + hashlib.sha256(
             json.dumps(item, sort_keys=True, ensure_ascii=False).encode("utf-8")
-        ).hexdigest()[:20]
+        ).hexdigest()[:20]))
+        if eid in existing_evidence_ids:
+            continue
         evidence_index.append({
-            "evidence_id": "EVID-PWEB-" + digest,
+            "evidence_id": eid,
             "target_type": "epoch_site",
             "target_id": sid,
             "target_name": item.get("site_name"),
