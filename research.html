@@ -124,6 +124,10 @@ function render(){
 }
 function move(delta){page=Math.max(0,page+delta);render();window.scrollTo({top:document.querySelector(".tablewrap").getBoundingClientRect().top+window.scrollY-20,behavior:"smooth"})}
 async function load(){
+ const params=new URLSearchParams(window.location.search);
+ const initialQuery=params.get("q")||"";
+ if(initialQuery){const el=document.getElementById("search");if(el)el.value=initialQuery;}
+
  const [q,w]=await Promise.all([
   fetch("data/track3/research_work_queue.json?v=1",{cache:"no-store"}).then(r=>r.json()),
   fetch("data/track3/research_workflows.json?v=1",{cache:"no-store"}).then(r=>r.json())
