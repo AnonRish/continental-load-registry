@@ -48,6 +48,8 @@ CDSE_STAC = "https://stac.dataspace.copernicus.eu/v1/search"
 USGS_STAC = "https://landsatlook.usgs.gov/stac-server/search"
 MPC_STAC = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
+CENSUS_GEOCODER = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress"
+PHOTON_GEOCODER = "https://photon.komoot.io/api/"
 SESSION = requests.Session()
 SESSION.headers.update({
     "User-Agent": "continental-load-registry/physical-verification (+https://github.com/AnonRish/continental-load-registry)"
@@ -374,6 +376,86 @@ def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str,
         )
     return metrics
 
+def _address_tokens(address: str) -> dict[str, str | None]:
+    text = re.sub(r"\s+", " ", address or "").strip()
+    number = re.search(r"\b(\d{1,7})\b", text)
+    postal_us = re.search(r"\b\d{5}(?:-\d{4})?\b", text)
+    return {"number": number.group(1) if number else None, "postal_us": postal_us.group(0)[:5] if postal_us else None}
+
+
+def _census_geocode(address: str) -> dict[str, Any] | None:
+    """Fallback for numbered U.S. addresses when Nominatim cannot resolve them."""
+    if not re.search(r"\b[A-Z]{2}\s+\d{5}(?:-\d{4})?\b", address.upper()):
+        return None
+    try:
+        data = get_json(CENSUS_GEOCODER, {
+            "address": address,
+            "benchmark": "Public_AR_Current",
+            "format": "json",
+        })
+        matches = (((data or {}).get("result") or {}).get("addressMatches") or [])
+        if not matches:
+            return None
+        hit = matches[0]
+        coords = hit.get("coordinates") or {}
+        if coords.get("x") is None or coords.get("y") is None:
+            return None
+        tokens = _address_tokens(address)
+        matched_addr = str(hit.get("matchedAddress") or "")
+        if tokens["number"] and not re.search(rf"\\b{re.escape(tokens['number'])}\\b", matched_addr):
+            return None
+        return {
+            "lat": float(coords["y"]),
+            "lon": float(coords["x"]),
+            "display_name": matched_addr or None,
+            "geocoder": "U.S. Census Geocoder",
+            "geocode_query": address,
+            "geocode_method": "census-onelineaddress",
+        }
+    except Exception:
+        return None
+
+
+def _photon_geocode(address: str) -> dict[str, Any] | None:
+    """Fallback for numbered addresses; reject city-only/region-only centroids."""
+    tokens = _address_tokens(address)
+    if not tokens["number"]:
+        return None
+    try:
+        data = get_json(PHOTON_GEOCODER, {"q": address, "limit": 5})
+        features = (data or {}).get("features") or []
+        for feature in features:
+            coords = (feature.get("geometry") or {}).get("coordinates") or []
+            props = feature.get("properties") or {}
+            if len(coords) < 2:
+                continue
+            country = str(props.get("country") or "").lower()
+            label = ", ".join(str(x) for x in [
+                props.get("name"), props.get("housenumber"), props.get("street"),
+                props.get("city") or props.get("locality"), props.get("state"),
+                props.get("postcode"), props.get("country"),
+            ] if x)
+            if "united states" in address.lower() and country and country not in {"united states", "usa", "us"}:
+                continue
+            if tokens["number"] and props.get("housenumber") and str(props.get("housenumber")) != tokens["number"]:
+                continue
+            if tokens["postal_us"] and props.get("postcode") and str(props.get("postcode"))[:5] != tokens["postal_us"]:
+                continue
+            if not props.get("housenumber"):
+                continue
+            return {
+                "lat": float(coords[1]),
+                "lon": float(coords[0]),
+                "display_name": label or None,
+                "geocoder": "Photon (Komoot)",
+                "geocode_query": address,
+                "geocode_method": "photon-address",
+            }
+    except Exception:
+        return None
+    return None
+
+
 def geocode(address: str, name: str | None = None, region: str | None = None, country: str | None = None) -> dict[str, Any] | None:
     queries = [q for q in [
         address,
@@ -400,9 +482,19 @@ def geocode(address: str, name: str | None = None, region: str | None = None, co
                 "country_code": (hit.get("address") or {}).get("country_code"),
                 "geocoder": "OpenStreetMap Nominatim",
                 "geocode_query": query,
+                "geocode_method": "nominatim",
             }
         except Exception:
             continue
+
+    # Strict fallbacks: only accept a numbered address match. We never turn a
+    # city/county/state centroid into a facility coordinate.
+    census = _census_geocode(address)
+    if census:
+        return census
+    photon = _photon_geocode(address)
+    if photon:
+        return photon
     return None
 
 def ensure_coordinates(sites: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -463,6 +555,11 @@ def process_site(site: dict[str, Any], coord: dict[str, Any], scenes_per_modalit
     for modality, (kind, collection) in COLLECTIONS.items():
         try:
             items = search_stac(kind, collection, bbox)
+            if modality == "sar":
+                items = [
+                    item for item in items
+                    if asset_href(item.get("assets", {}), ["vv"])[0]
+                ]
             chosen = best_temporal_items(items, scenes_per_modality)
         except Exception as exc:
             output.append({
