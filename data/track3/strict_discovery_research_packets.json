@@ -78,43 +78,6 @@
       ]
     },
     {
-      "case_id": "NEXT-AESO-P2970",
-      "queue_id": "P2970",
-      "rto": "AESO",
-      "project_name": "Beacon Langdon A.I. Hub 2 Load",
-      "capacity_mw": 1400,
-      "public_load_classification": "Load",
-      "geographic_context": "Calgary/Langdon planning context",
-      "current_identity_gap": "Developer/owner not exposed in retained queue surface",
-      "current_physical_gap": "Exact facility parcel/coordinate not retained",
-      "novelty_boundary": "AI wording in the project name does not establish operator, user, hardware, or measured consumption.",
-      "source_ladder": [
-        {
-          "kind": "registry_queue_record",
-          "status": "CANONICAL_PROJECT_RECORD"
-        },
-        {
-          "kind": "municipal_planning",
-          "status": "SEARCH_REQUIRED"
-        },
-        {
-          "kind": "land_permitting",
-          "status": "SEARCH_REQUIRED"
-        },
-        {
-          "kind": "utility_regulator",
-          "status": "SEARCH_REQUIRED"
-        }
-      ],
-      "next_gates": [
-        "entity_resolution",
-        "physical_targeting",
-        "public_record_corroboration",
-        "transformer_or_service_search",
-        "adjudication"
-      ]
-    },
-    {
       "case_id": "NEXT-NYISO-1743",
       "queue_id": "1743",
       "rto": "NYISO",
@@ -177,6 +140,48 @@
         },
         {
           "kind": "utility_transmission_owner",
+          "status": "SEARCH_REQUIRED"
+        }
+      ],
+      "next_gates": [
+        "entity_resolution",
+        "physical_targeting",
+        "public_record_corroboration",
+        "transformer_or_service_search",
+        "adjudication"
+      ]
+    },
+    {
+      "case_id": "NEXT-AESO-P3108",
+      "queue_id": "P3108",
+      "rto": "AESO",
+      "project_name": "Wild Rose Power Hub Load",
+      "capacity_mw": 1300,
+      "public_load_classification": "Load",
+      "geographic_context": "Calgary planning area",
+      "current_identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "current_physical_gap": "No defensible facility coordinate retained",
+      "novelty_boundary": "The project title does not name a data center, operator, or developer; the investigation must establish end use and physical identity from independent records rather than from the name alone.",
+      "source_ladder": [
+        {
+          "kind": "queue_mirror",
+          "status": "CURRENT_PUBLIC_RECORD"
+        },
+        {
+          "kind": "aeso_primary",
+          "url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
+          "status": "PUBLISHER_SNAPSHOT"
+        },
+        {
+          "kind": "municipal_planning",
+          "status": "SEARCH_REQUIRED"
+        },
+        {
+          "kind": "land_permitting",
+          "status": "SEARCH_REQUIRED"
+        },
+        {
+          "kind": "utility_regulator",
           "status": "SEARCH_REQUIRED"
         }
       ],
