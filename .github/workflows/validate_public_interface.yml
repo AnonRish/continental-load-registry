@@ -12,6 +12,13 @@ on:
       - "api/v1/openapi.json"
       - "bulk-download.html"
       - "data/bulk_download_manifest.json"
+      - "data/website_completeness_audit.json"
+      - "data/track3/summary.json"
+      - "data/track3/evidence_records.json"
+      - "data/track3/site_status.json"
+      - "data/track3/observation_queue.json"
+      - "sync_epoch_ai_data_centers.py"
+      - "sync_nyiso_public_queue.py"
       - ".github/workflows/validate_public_interface.yml"
   pull_request:
     paths:
@@ -23,6 +30,13 @@ on:
       - "api/v1/openapi.json"
       - "bulk-download.html"
       - "data/bulk_download_manifest.json"
+      - "data/website_completeness_audit.json"
+      - "data/track3/summary.json"
+      - "data/track3/evidence_records.json"
+      - "data/track3/site_status.json"
+      - "data/track3/observation_queue.json"
+      - "sync_epoch_ai_data_centers.py"
+      - "sync_nyiso_public_queue.py"
       - ".github/workflows/validate_public_interface.yml"
   workflow_dispatch:
 
