@@ -4,8 +4,8 @@
   "title": "Project-level map overlay",
   "purpose": "Plot project-level public evidence using public county, zone, town or site-area geography.",
   "accounting": "Supplemental evidence overlay; not additional core queue rows. Map coordinates are display geometry. The source's state field is retained separately and is not silently completed.",
-  "record_count": 252,
-  "mapped_count": 252,
+  "record_count": 253,
+  "mapped_count": 253,
   "records": [
     {
       "id": "VIRGINIA-DEQ-74150-3",
@@ -8630,6 +8630,33 @@
       "source_scope": "Current Data Center Permits Tracker",
       "capture_date": "2026-09-26",
       "notes": "Named ERCOT data-center interconnection project. Secondary source; likely overlaps ERCOT queue data and is therefore non-additive."
+    },
+    {
+      "id": "ALABAMA-POWER-WOOSTOR-CONTRACT-2026",
+      "project_name": "Woostor LLC — Alabama Power electric-service contract",
+      "rto": "ALABAMA POWER",
+      "st": "AL",
+      "co": "Alabama, US",
+      "mw": null,
+      "status": "public utility contract record",
+      "provider": "Alabama Power",
+      "customer_or_developer": "Woostor LLC",
+      "source_url": "https://www.psc.alabama.gov/ElecOrders/Orders/2025/Dec/ALABAMA%20POWER%20WOOSTOR%20LLC.pdf",
+      "precision": "state jurisdiction centroid — no project location published",
+      "lat": 32.8067,
+      "lon": -86.7911,
+      "evidence_type": "utility_large_load_contract_record",
+      "jurisdiction": "Alabama, US",
+      "location": "Alabama, US",
+      "county_or_zone": null,
+      "queue_id": null,
+      "permit_number": null,
+      "poi_substation": null,
+      "capacity_claims": [],
+      "source_authority": "Alabama Public Service Commission / Alabama Power",
+      "source_scope": "Public electric-service contract record",
+      "capture_date": "2026-09-26",
+      "notes": "The public record identifies the customer/contract but does not publish a usable project site address. The map uses a state-jurisdiction display point only; this is not a facility location."
     }
   ]
 }
