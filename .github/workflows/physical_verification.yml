@@ -1,0 +1,85 @@
+name: Build Physical Verification Layer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "acquire_physical_verification.py"
+      - "data/external/epoch_ai/registry.json"
+      - "data/physical_verification_layer.json"
+      - "data/track3_source_stack.json"
+      - "data/track3_evidence_schema.json"
+  workflow_dispatch:
+  schedule:
+    - cron: "15 4 * * 0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: physical-verification-main
+  cancel-in-progress: true
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install acquisition dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests numpy rasterio
+
+      - name: Acquire public physical observations
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 3 --workers 3
+
+      - name: Validate generated physical artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("data")
+          physical = json.loads((root / "physical_verification_layer.json").read_text(encoding="utf-8"))
+          coords = json.loads((root / "track3" / "physical_site_coordinates.json").read_text(encoding="utf-8"))
+          obs = json.loads((root / "track3" / "remote_sensing_observations.json").read_text(encoding="utf-8"))
+          tx = json.loads((root / "track3" / "transformer_supply_chain_events.json").read_text(encoding="utf-8"))
+
+          assert len(physical["site_records"]) == 93
+          assert len(coords["records"]) == 93
+          assert obs["site_count_target"] == 93
+          assert tx["target_count"] == 93
+          assert tx["record_count"] == len(tx["records"]) == 0
+          print("PASS: physical verification artifact contracts")
+          print("derived observations:", obs["derived_observation_count"])
+          print("transformer events:", tx["record_count"])
+          PY
+
+      - name: Validate Python syntax
+        run: python -m py_compile acquire_physical_verification.py
+
+      - name: Commit updated artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/physical_verification_layer.json data/physical_verification_layer.csv \
+            data/track3/physical_site_coordinates.json \
+            data/track3/remote_sensing_observations.json data/track3/remote_sensing_observations.csv \
+            data/track3/transformer_supply_chain_events.json data/track3/transformer_event_targets.csv \
+            data/track3_source_stack.json data/track3_evidence_schema.json
+          if git diff --cached --quiet; then
+            echo "No physical-verification data changes."
+            exit 0
+          fi
+          git commit -m "Refresh physical verification observations"
+          git push
