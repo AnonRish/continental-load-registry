@@ -1051,11 +1051,24 @@
           "source_kind": "official Google facility disclosure",
           "confidence": "high",
           "basis": "Google's Waltham Cross facility page says Google selected Shell Energy Europe Limited as its 24/7 Carbon-Free Energy Manager in the UK and describes the arrangement as contributing to grid stability and the energy transition. This is energy-contract evidence, not a utility interconnection record."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.datacenters.google/locations/waltham-cross/"
+          ],
+          "source_url": "https://www.datacenters.google/locations/waltham-cross/",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "Google's public facility disclosure documents the Shell Energy Europe 24/7 carbon-free energy management agreement, but the retained public source set does not expose a site-specific transmission/distribution queue or service identifier.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "site_level_evidence_status": "evidence_found",
       "next_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier.",
-      "site_level_evidence_count": 1
+      "site_level_evidence_count": 2
     },
     {
       "epoch_id": "EPOCH-a286a89bd1c1b6e7",
@@ -1580,11 +1593,24 @@
           "source_kind": "public reporting of commercial agreement",
           "confidence": "medium",
           "basis": "Public reporting describes the five-year Microsoft-Nebius AI infrastructure agreement tied to the Vineland, New Jersey facility."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.pjm.com/planning/service-requests"
+          ],
+          "source_url": "https://www.pjm.com/planning/service-requests",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "The retained public source set establishes the Vineland site and commercial Microsoft-Nebius compute agreement, but does not expose an exact PJM queue or local utility service identifier tied to the Epoch facility record.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "site_level_evidence_status": "evidence_found",
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
-      "site_level_evidence_count": 2
+      "site_level_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-f48a533b01898dfd",
@@ -1867,11 +1893,24 @@
           "basis": "xAI occupies part of a multi-tenant QTS building; utility capacity should not be attributed wholesale to xAI.",
           "alternatives_rejected": [],
           "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://wattstreet.net/state/ga/"
+          ],
+          "source_url": "https://wattstreet.net/state/ga/",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "The retained public source set establishes the Atlanta QTS/xAI site and Georgia grid jurisdiction, but does not retain an exact site-specific queue or service identifier.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "site_level_evidence_status": "evidence_found",
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
-      "site_level_evidence_count": 1
+      "site_level_evidence_count": 2
     },
     {
       "epoch_id": "EPOCH-f1a70be0079d215a",
@@ -2011,11 +2050,24 @@
           "source_kind": "company announcement",
           "confidence": "high",
           "basis": "Crusoe publicly identifies the adjacent 900 MW Abilene AI-factory campus, two buildings and an onsite power plant supporting Microsoft AI infrastructure."
+        },
+        {
+          "type": "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE",
+          "record_name": "NO MATCH FOUND — site-specific queue / service record",
+          "source_urls": [
+            "https://www.ercot.com/services/rq/large-load-integration"
+          ],
+          "source_url": "https://www.ercot.com/services/rq/large-load-integration",
+          "source_kind": "documented public-source search outcome",
+          "confidence": "documented_search_result",
+          "basis": "Crusoe publicly identifies the 900 MW AI-factory expansion and its onsite power plant, but the retained public source set does not expose an exact ERCOT queue/service identifier tied to this expansion record.",
+          "alternatives_rejected": [],
+          "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
         }
       ],
       "site_level_evidence_status": "evidence_found",
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
-      "site_level_evidence_count": 2
+      "site_level_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-dadec9d6ef7fca88",
