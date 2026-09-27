@@ -111,7 +111,25 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </div></header>
 
 <main class="wrap">
-<section class="section"><div id="cards" class="grid cards"></div></section>
+<section class="section"><div id="cards" class="grid cards"></div></section><section class="section panel" style="padding:16px">
+<div style="display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap">
+<div><h2>Full Track 3 coverage matrix</h2><p id="t3CompletenessMeta" class="soft small">Loading the current implementation inventory…</p></div>
+<div class="tools"><a class="btn" href="data/track3/track3_completeness_matrix.json">Machine-readable matrix</a><a class="btn" href="TRACK3_COMPLETE_COVERAGE.md">Reviewer view</a></div>
+</div>
+<div id="t3CoverageStats" class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px"></div>
+<div class="scroll" style="margin-top:12px"><table class="matrix"><thead><tr><th>Track 3 element</th><th>Status</th><th>Repository evidence</th><th>Blocking gap</th></tr></thead><tbody id="t3CoverageBody"></tbody></table></div>
+</section>
+
+<section class="section panel" style="padding:16px">
+<div style="display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap">
+<div><h2>Global compute-accounting bridge</h2><p id="globalAccountingMeta" class="soft small">Loading retained publisher snapshots…</p></div>
+<div class="tools"><a class="btn" href="data/track3/global_compute_supply_chain.json">Supply-chain ledger</a><a class="btn" href="track3_certificate.py">Certificate model</a><a class="btn" href="data/track3/untraced_compute_pool.json">Untraced pool</a></div>
+</div>
+<div id="globalAccountingStats" class="grid" style="grid-template-columns:repeat(5,minmax(0,1fr));margin-top:12px"></div>
+<div class="track3-matrix-note" style="margin-top:12px"><strong>Critical boundary:</strong> aggregate owner/sales/component snapshots are real evidence layers, but they do not constitute the transaction-level chain required for a numerical covert-compute certificate. The residual untraced pool remains <span class="mono">UNKNOWN</span> until that chain is closed.</div>
+</section>
+
+
 <section class="section panel" style="padding:16px"><div class="goodbox" style="padding:12px"><strong>New empirical closure layer:</strong> Three cases from the registry's 141-facility genuinely ambiguous tier now have published queue/entity/location/public-record/physical/transformer adjudications. Two have bounded classifications; one remains <span class="mono">INCONCLUSIVE_AFTER_SEARCH</span> because a defensible physical coordinate could not be established. <a href="ambiguous-case-studies.html">Open the case studies →</a></div></section>
 <section class="section panel" style="padding:16px">
 <div style="display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap">
@@ -918,6 +936,31 @@ load().catch(e=>{document.getElementById('cards').innerHTML='<div class="panel c
     var re=document.getElementById('enrichmentRows');
     if(re)re.innerHTML=rows.map(function(x){return '<tr><td class="mono">'+esc(x[0])+'</td><td class="mono">'+esc(x[1]===null?'See individual Epoch record':String(x[1])+' / 93')+'</td><td class="small">'+esc(fieldMeaning)+'</td></tr>';}).join('');
   }).catch(function(err){set('enrichmentMeta','Enrichment bridge unavailable: '+err.message);});
+})();
+</script>
+
+<script>
+(async()=>{
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const cls=s=>String(s||'').toLowerCase().includes('implemented')||String(s||'').startsWith('ingested')?'good':String(s||'').includes('partial')?'warn':'neutral';
+  try{
+    const d=await fetch('data/track3/track3_completeness_matrix.json?cb=20260927',{cache:'no-store'}).then(r=>r.json());
+    const rows=d.rows||[];
+    const counts={};
+    rows.forEach(x=>counts[x.status]=(counts[x.status]||0)+1);
+    document.getElementById('t3CompletenessMeta').textContent=rows.length+' tracked elements · '+Object.entries(counts).map(([k,v])=>v+' '+k.replaceAll('_',' ').toLowerCase()).join(' · ');
+    document.getElementById('t3CoverageStats').innerHTML=Object.entries(counts).map(([k,v])=>'<div class="card"><div class="num">'+v+'</div><div class="label">'+esc(k.replaceAll('_',' '))+'</div></div>').join('');
+    document.getElementById('t3CoverageBody').innerHTML=rows.map(x=>'<tr><td><strong>'+esc(x.requirement)+'</strong><div class="faint tiny">'+esc(x.id)+'</div></td><td><span class="status '+cls(x.status)+'">'+esc(x.status)+'</span></td><td class="details">'+esc(x.evidence)+'</td><td class="details">'+esc(x.blocking_gap)+'</td></tr>').join('');
+  }catch(e){document.getElementById('t3CompletenessMeta').textContent='Coverage matrix failed to load: '+e.message}
+  try{
+    const d=await fetch('data/track3/global_compute_supply_chain.json?cb=20260927',{cache:'no-store'}).then(r=>r.json());
+    const x=d.current||{};
+    document.getElementById('globalAccountingMeta').textContent='Retained public publisher snapshots · transaction-level global closure remains UNKNOWN';
+    const stats=[
+      ['215','owner cumulative rows'],[String(x.sales_timeline_rows||0),'sales timeline rows'],[String(x.component_by_chip_rows||0),'component rows'],[String(x.user_year_end_rows||0),'user snapshots'],[String(x.distinct_chip_types||25),'chip types in sales timeline']
+    ];
+    document.getElementById('globalAccountingStats').innerHTML=stats.map(z=>'<div class="card"><div class="num">'+esc(z[0])+'</div><div class="label">'+esc(z[1])+'</div></div>').join('');
+  }catch(e){document.getElementById('globalAccountingMeta').textContent='Global accounting layer failed to load: '+e.message}
 })();
 </script>
 <script src="observatory-nav.js" defer></script>
