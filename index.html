@@ -383,10 +383,11 @@
         <a href="data/epoch_site_evidence_records.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download evidence CSV</a>
       </div>
     </div>
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl">68</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Discrete site-level evidence assertions</p></div>
-      <div class="p-4"><p class="mono text-xl">59 / 93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites with at least one assertion</p></div>
-      <div class="p-4"><p class="mono text-xl">34</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites still requiring site-specific search</p></div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">102</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Discrete site-level evidence assertions</p></div>
+      <div class="p-4"><p class="mono text-xl">68 / 93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites with at least one evidence assertion</p></div>
+      <div class="p-4"><p class="mono text-xl">25</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Explicit NO MATCH FOUND</p></div>
+      <div class="p-4"><p class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites still requiring site-specific search</p></div>
     </div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Evidence confidence and source type are retained item-by-item. A source assertion that identifies a utility relationship, contract, facility or planning record is not silently promoted to a formal interconnection queue ID.</p>
   </section>
@@ -432,9 +433,9 @@
     </div>
     <div id="targetLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading connection targets…</div>
     <div class="scroll-x mt-4">
-      <table class="w-full text-xs min-w-[1100px]">
-        <thead><tr><th class="px-3 py-2">Epoch ID</th><th class="px-3 py-2">Site</th><th class="px-3 py-2">State / country</th><th class="px-3 py-2">Grid jurisdiction</th><th class="px-3 py-2">Research state</th><th class="px-3 py-2">Evidence items</th><th class="px-3 py-2">Queue ID</th><th class="px-3 py-2">Next action</th></tr></thead>
-        <tbody id="targetLedgerBody"><tr><td colspan="8" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
+      <table class="w-full text-xs min-w-[1500px]">
+        <thead><tr><th class="px-3 py-2">Epoch ID</th><th class="px-3 py-2">Site</th><th class="px-3 py-2">State / country</th><th class="px-3 py-2">Grid jurisdiction</th><th class="px-3 py-2">Match status</th><th class="px-3 py-2">Utility / provider</th><th class="px-3 py-2">Substation / POI</th><th class="px-3 py-2">Queue ID</th><th class="px-3 py-2">Service / approved MW</th><th class="px-3 py-2">Evidence items</th><th class="px-3 py-2">Next action</th></tr></thead>
+        <tbody id="targetLedgerBody"><tr><td colspan="11" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading…</td></tr></tbody>
       </table>
     </div>
     <div class="flex items-center justify-between gap-3 mt-4 text-xs">
@@ -448,11 +449,11 @@
   <section id="completeSiteEvidenceLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
       <div>
-        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">68 discrete evidence assertions</p>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">102 discrete evidence assertions</p>
         <h2 class="font-serif-display text-xl mt-1">Complete site-evidence ledger</h2>
         <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Browse every preserved Track 3 site-level utility, facility, contract or planning assertion underlying the Epoch connection-target layer. Multiple assertions can refer to the same physical campus.</p>
       </div>
-      <input id="siteEvidenceSearch" type="search" placeholder="Search 68 evidence assertions" class="text-sm px-3 py-2 rounded-md w-[270px]" />
+      <input id="siteEvidenceSearch" type="search" placeholder="Search 102 evidence assertions" class="text-sm px-3 py-2 rounded-md w-[270px]" />
     </div>
     <div id="siteEvidenceLedgerStatus" class="text-xs mt-4" style="color:var(--ink-faint);">Loading site evidence…</div>
     <div class="scroll-x mt-4">
