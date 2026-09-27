@@ -1,26 +1,29 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:08:30Z",
+  "generated_at_utc": "2026-09-27T06:12:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 65,
-    "sites_with_findings": 38,
+    "record_count": 98,
+    "sites_with_findings": 46,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 65
+      "PUBLIC_SOURCE_CAPTURED": 98
     },
     "field_counts": {
-      "energy_companies": 24,
-      "project": 15,
-      "investment": 4,
-      "owner": 3,
-      "investors": 3,
-      "construction_companies": 7,
-      "cooling": 2,
+      "energy_companies": 35,
+      "project": 18,
+      "investment": 7,
+      "owner": 6,
+      "investors": 4,
+      "construction_companies": 10,
+      "cooling": 4,
       "chip_quantities": 1,
       "operational_status": 1,
-      "address": 1,
-      "service_or_contract": 4
+      "address": 4,
+      "service_or_contract": 4,
+      "users": 2,
+      "regulatory": 1,
+      "capacity_record": 1
     }
   },
   "semantics": {
@@ -1011,6 +1014,486 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Epoch describes the site as likely part of the Anthropic–Amazon Project Rainier collaboration."
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "owner",
+      "value": "Quality Investment Properties Richmond, LLC / QTS Data Centers",
+      "relationship": "site operator / project entity",
+      "source": "QTS; SUE Data Centers",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-1/",
+        "https://suedatacenters.org/data-centers/qts-richmond-1-dc1-ric1-white-oak-technology-park-va"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "energy_companies",
+      "value": "Dominion Energy Virginia",
+      "relationship": "serving utility / grid",
+      "source": "SUE Data Centers; Dominion Energy",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/qts-richmond-1-dc1-ric1-white-oak-technology-park-va",
+        "https://www.dominionenergy.com/-/media/content/about/power-line-projects/white-oak/pdfs/application-volume-3of3-part1of2-2023-white-oak.pdf"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "address",
+      "value": "6000 Technology Blvd, Sandston, VA 23150; additional RIC1 buildings at 3560/3540/3520 Portugee Rd",
+      "relationship": "facility addresses",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-1/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 2",
+      "epoch_id": "EPOCH-052be5b551cd099b",
+      "field": "owner",
+      "value": "QTS Data Centers",
+      "relationship": "site operator",
+      "source": "QTS; DEPLOY",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-2/",
+        "https://registry.deploy.report/datacenters/facilities/qts-richmond-2-sandston-va"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 2",
+      "epoch_id": "EPOCH-052be5b551cd099b",
+      "field": "energy_companies",
+      "value": "Dominion Energy",
+      "relationship": "energy partner / serving utility",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 2",
+      "epoch_id": "EPOCH-052be5b551cd099b",
+      "field": "address",
+      "value": "6030–6070 Technology Blvd, Sandston, VA 23150",
+      "relationship": "facility addresses",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-2/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 3",
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "field": "owner",
+      "value": "QTS Data Centers",
+      "relationship": "site operator",
+      "source": "QTS; DEPLOY",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-3/",
+        "https://registry.deploy.report/datacenters/facilities/qts-richmond-3-sandston-va"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 3",
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "field": "energy_companies",
+      "value": "Dominion Energy Virginia",
+      "relationship": "serving utility / grid",
+      "source": "Dominion Energy; public utility registry",
+      "source_urls": [
+        "https://www.dominionenergy.com/-/media/content/about/power-line-projects/white-oak/pdfs/application-volume-3of3-part1of2-2023-white-oak.pdf"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "QTS Richmond 3",
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "field": "address",
+      "value": "3525, 3529, 3535, 3539, 3543 Portugee Road, Sandston, VA 23150",
+      "relationship": "facility addresses",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-3/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Bowling Green",
+      "epoch_id": "EPOCH-177c53f92d72ec4a",
+      "field": "construction_companies",
+      "value": "JE Dunn Construction",
+      "relationship": "construction partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+      ],
+      "publication_date": "2025-04-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Bowling Green",
+      "epoch_id": "EPOCH-177c53f92d72ec4a",
+      "field": "energy_companies",
+      "value": "Toledo Edison Company",
+      "relationship": "energy planning / utility partner",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+      ],
+      "publication_date": "2025-04-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Huntsville",
+      "epoch_id": "EPOCH-27e284efc1b1abc2",
+      "field": "energy_companies",
+      "value": "Tennessee Valley Authority (TVA)",
+      "relationship": "serving utility / power region",
+      "source": "SUE Data Centers; Meta US locations",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/meta-huntsville-al",
+        "https://datacenters.atmeta.com/us-locations/"
+      ],
+      "publication_date": "2026-09-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Huntsville",
+      "epoch_id": "EPOCH-27e284efc1b1abc2",
+      "field": "investment",
+      "value": "$1.5B+",
+      "relationship": "owner investment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/us-locations/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "project",
+      "value": "Hyperion / Richland Parish Data Center",
+      "relationship": "official project identity",
+      "source": "Meta / public project reporting",
+      "source_urls": [
+        "https://datacenters.atmeta.com/us-locations/",
+        "https://registry.deploy.report/datacenters/facilities/meta-louisiana-richland-parish"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Verify exact canonical site ID against current Epoch record before merging; this record is a public project identity capture."
+    },
+    {
+      "site_name": "Crusoe Abilene Expansion",
+      "epoch_id": "EPOCH-4569f5444951b2fd",
+      "field": "users",
+      "value": "Microsoft",
+      "relationship": "AI infrastructure customer / intended user",
+      "source": "Crusoe",
+      "source_urls": [
+        "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
+      ],
+      "publication_date": "2026-03-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Crusoe Abilene Expansion",
+      "epoch_id": "EPOCH-4569f5444951b2fd",
+      "field": "project",
+      "value": "New 900 MW AI Factory Campus / Abilene expansion",
+      "relationship": "project identity",
+      "source": "Crusoe",
+      "source_urls": [
+        "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
+      ],
+      "publication_date": "2026-03-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Crusoe Abilene Expansion",
+      "epoch_id": "EPOCH-4569f5444951b2fd",
+      "field": "energy_companies",
+      "value": "Crusoe onsite power generation",
+      "relationship": "behind-the-meter power infrastructure",
+      "source": "Crusoe",
+      "source_urls": [
+        "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
+      ],
+      "publication_date": "2026-03-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Crusoe Abilene Expansion",
+      "epoch_id": "EPOCH-4569f5444951b2fd",
+      "field": "cooling",
+      "value": "Closed-loop non-evaporative liquid cooling",
+      "relationship": "site cooling architecture",
+      "source": "Crusoe",
+      "source_urls": [
+        "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
+      ],
+      "publication_date": "2026-03-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "EcoDataCenter 2",
+      "epoch_id": "EPOCH-dadec9d6ef7fca88",
+      "field": "project",
+      "value": "EcoDataCenter 2 / Borlänge development",
+      "relationship": "official site identity",
+      "source": "EcoDataCenter",
+      "source_urls": [
+        "https://ecodatacenter.tech/data-center/ecodatacenter2"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "EcoDataCenter 2",
+      "epoch_id": "EPOCH-dadec9d6ef7fca88",
+      "field": "energy_companies",
+      "value": [
+        "local hydropower",
+        "wind power",
+        "Borlänge Energi"
+      ],
+      "relationship": "renewable energy / heating ecosystem",
+      "source": "EcoDataCenter",
+      "source_urls": [
+        "https://ecodatacenter.tech/data-center/ecodatacenter2"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "EcoDataCenter 2",
+      "epoch_id": "EPOCH-dadec9d6ef7fca88",
+      "field": "regulatory",
+      "value": "All environmental permits approved; construction began September 2025; first phase targeted mid-2027",
+      "relationship": "environmental permitting / construction",
+      "source": "EcoDataCenter",
+      "source_urls": [
+        "https://ecodatacenter.tech/data-center/ecodatacenter2"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "EcoDataCenter 2",
+      "epoch_id": "EPOCH-dadec9d6ef7fca88",
+      "field": "capacity_record",
+      "value": "Up to 600 MW available; 200,000 m² land",
+      "relationship": "developer capacity disclosure",
+      "source": "EcoDataCenter",
+      "source_urls": [
+        "https://ecodatacenter.tech/data-center/ecodatacenter2"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Nscale Keflavik",
+      "epoch_id": "EPOCH-f1a70be0079d215a",
+      "field": "energy_companies",
+      "value": "Icelandic geothermal and hydropower system",
+      "relationship": "renewable power source",
+      "source": "Nscale",
+      "source_urls": [
+        "https://www.nscale.com/ai-infrastructure"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Nscale Keflavik",
+      "epoch_id": "EPOCH-f1a70be0079d215a",
+      "field": "users",
+      "value": "Nscale GPU deployments / Verne Iceland campus",
+      "relationship": "partner-run facility context",
+      "source": "Nscale",
+      "source_urls": [
+        "https://www.nscale.com/ai-infrastructure"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The page states the Keflavik installation is set to host more than 4,600 NVIDIA Blackwell Ultra GPUs across Verne's Icelandic campus in 2026."
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "construction_companies",
+      "value": "Related Digital",
+      "relationship": "campus developer",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/expanding-stargate-to-michigan/"
+      ],
+      "publication_date": "2025-10-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "energy_companies",
+      "value": "DTE Energy",
+      "relationship": "serving utility / power partner",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/expanding-stargate-to-michigan/"
+      ],
+      "publication_date": "2025-10-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "construction_companies",
+      "value": "SB Energy",
+      "relationship": "build-and-operate partner",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-sb-energy-partnership/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "investors",
+      "value": [
+        "OpenAI",
+        "SoftBank Group"
+      ],
+      "relationship": "investment into SB Energy supporting site development",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-sb-energy-partnership/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "OpenAI says each invested $500M in SB Energy; this is platform investment rather than a claim of direct project equity."
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "field": "energy_companies",
+      "value": "WEC Energy Group",
+      "relationship": "power infrastructure / dedicated electricity rate",
+      "source": "OpenAI Stargate Community",
+      "source_urls": [
+        "https://openai.com/index/stargate-community/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "cooling",
+      "value": "Closed-loop cooling system",
+      "relationship": "site cooling architecture",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/expanding-stargate-to-michigan/"
+      ],
+      "publication_date": "2025-10-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "energy_companies",
+      "value": "SB Energy onsite generation and storage; Texas grid modernization",
+      "relationship": "dedicated power development",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-sb-energy-partnership/",
+        "https://openai.com/index/stargate-community/"
+      ],
+      "publication_date": "2025-12-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google Iowa",
+      "epoch_id": null,
+      "field": "investment",
+      "value": "$7B investment to expand Council Bluffs and establish Cedar Rapids campus",
+      "relationship": "state-level Google investment program",
+      "source": "Google",
+      "source_urls": [
+        "https://www.datacenters.google/locations/iowa/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "State-level total; do not allocate the full amount to a single facility."
+    },
+    {
+      "site_name": "Meta Bowling Green",
+      "epoch_id": "EPOCH-177c53f92d72ec4a",
+      "field": "investment",
+      "value": ">$800M",
+      "relationship": "owner investment",
+      "source": "Meta Data Centers",
+      "source_urls": [
+        "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+      ],
+      "publication_date": "2025-04-09",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
     }
   ]
 }
