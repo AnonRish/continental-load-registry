@@ -93,3 +93,15 @@ Epoch IT power, projected IT power, utility service capacity, queue/interconnect
 Each task carries its current state, priority, required fields, site-specific next action, and—where available—the primary grid source URL/type/date plus the existing public source families to search. `data/track3/observation_queue.csv` is the flattened review version, and the JSON includes generated counts by domain and priority so CI can verify that the summary and task list agree.
 
 Completing a task requires attaching the resulting observation or record with source provenance. A task's `NOT_INGESTED`, `SOURCE_AVAILABLE_NOT_INGESTED`, `UNKNOWN`, or `PENDING_RESEARCH` state is not evidence that the underlying facility condition is absent.
+
+
+## Research operations backlog
+
+The dated missing-information sweep is converted into a one-task research queue at `data/track3/research_work_queue.json` and `data/track3/research_work_queue.csv`. The Research Operations Console is published at `research.html` and is driven by the queue. The backlog generator asserts that every effective unresolved publisher field and every open Track 3 domain cell becomes exactly one research task before outputs are written.
+
+- Effective unresolved publisher fields: 333
+- Open Track 3 domain cells: 745
+- Total open research tasks: 1,078
+- Canonical sites represented: 93
+
+The operational playbooks are in `data/track3/research_workflows.json` and `RESEARCH_WORKFLOWS.md`. They specify source ladders, site-specific search query templates, evidence-capture fields, acceptance/rejection rules, result dispositions, and the canonical handoff schema. A public lead or NO_PUBLIC_RECORD outcome is never silently converted into a positive canonical fact.
