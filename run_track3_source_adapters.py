@@ -18,6 +18,7 @@ COMMANDS=[
  ("SPP","sync_spp_public_queue.py --output-dir data"),
  ("Epoch AI","sync_epoch_ai_data_centers.py --sync"),
  ("Epoch external compute","sync_track3_external_sources.py"),
+ ("ERCOT / ISO-NE / IESO / AESO raw source capture","sync_auxiliary_queue_sources.py"),
 ]
 def main():
   rows=[]
