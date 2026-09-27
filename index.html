@@ -420,6 +420,31 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">“FOUND” indicates an authoritative source record exists in the catalog. “PARTIAL” means public evidence exists but the source does not expose a complete site-level universe. Confidential studies, customer agreements and anonymized commission filings remain explicitly non-public where applicable.</p>
   </section>
 
+  <!-- ============ PHYSICAL VERIFICATION ============ -->
+  <section id="physicalVerificationLayer" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div><p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Track 3 · physical verification</p>
+        <h2 class="font-serif-display text-xl mt-1">Physical verification layer</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">Raw remote-sensing measurements are kept separate from public-source physical evidence. Optical/TIR/SAR sources are cataloged as acquisition targets; raw scenes and derived deltas remain explicitly un-ingested. Construction chronology, construction-to-power timelines, permits and selected cooling observations are represented.</p></div>
+      <div class="flex flex-wrap gap-2">
+        <a href="data/physical_verification_layer.json" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open physical layer JSON</a>
+        <a href="data/physical_verification_layer.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download site CSV</a>
+        <a href="https://dataspace.copernicus.eu/explore-data" target="_blank" rel="noopener noreferrer" class="text-sm px-3 py-2 rounded-md border hairline link-underline">Open Copernicus Browser</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
+      <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch sites</p></div>
+      <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction timelines</p></div>
+      <div class="p-4"><p class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction → power timelines</p></div>
+      <div class="p-4"><p class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Cooling snapshot sites</p></div>
+      <div class="p-4"><p class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Raw optical/TIR/SAR scenes</p></div>
+    </div>
+    <div class="scroll-x mt-5"><table class="w-full text-xs min-w-[1250px]"><thead><tr><th class="px-3 py-2">Physical-verification item</th><th class="px-3 py-2">Status</th><th class="px-3 py-2">Current coverage</th><th class="px-3 py-2">Sources</th></tr></thead>
+      <tbody id="physicalVerificationBody"><tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Loading physical verification layer…</td></tr></tbody></table></div>
+    <div class="panel rounded-lg p-4 mt-5"><h3 class="font-serif-display text-base">Raw remote-sensing boundary</h3>
+      <p class="text-xs mt-2" style="color:var(--ink-soft);">Copernicus provides open Sentinel-2 optical and Sentinel-1 SAR data; USGS provides open Landsat Collection 2 thermal/surface-temperature products. The repository now records these acquisition targets, but does not claim a site-level scene download, registration, cloud mask, baseline/observation delta, thermal anomaly or SAR change metric until processed.</p></div>
+  </section>
+
   <!-- ============ COMPLETE PROJECT LEDGER ============ -->
   <section id="completeProjectLedger" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -2583,5 +2608,8 @@ openFacilityFromHash();
 })();
 </script>
 
+<script id="physicalVerificationLayer-js">
+(function(){function escPV(v){const s=v==null?'':String(v);return s.replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+fetch('data/physical_verification_layer.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('physical verification unavailable');return res.json();}).then(function(p){const body=document.getElementById('physicalVerificationBody');const items=Array.isArray(p.checklist)?p.checklist:[];body.innerHTML=items.map(function(x){return '<tr><td class="px-3 py-2 font-medium">'+escPV(x.item)+'</td><td class="px-3 py-2 mono">'+escPV(x.status)+'</td><td class="px-3 py-2" style="color:var(--ink-soft);">'+escPV(x.coverage)+'</td><td class="px-3 py-2 mono">'+escPV((x.primary_sources||[]).join(', ')||'—')+'</td></tr>';}).join('');}).catch(function(err){const body=document.getElementById('physicalVerificationBody');if(body)body.innerHTML='<tr><td colspan="4" class="px-3 py-10 text-center" style="color:var(--ink-faint);">Physical verification layer unavailable: '+escPV(err.message)+'</td></tr>';});})();</script>
 </body>
 </html>
