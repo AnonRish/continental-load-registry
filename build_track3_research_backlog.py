@@ -20,8 +20,8 @@ PUBLISHER_PRIORITY = {
 }
 DOMAIN_PRIORITY = {
     "service_or_contract": "P0", "regulatory": "P0",
-    "power_telemetry": "P0", "independent_corroboration": "P0",
-    "compute_tenancy": "P1", "remote_sensing": "P1",
+    "power_telemetry": "P0", "independent_corroboration": "P0", "grid_connection": "P0",
+    "compute_tenancy": "P1", "chip_inventory": "P1", "remote_sensing": "P1",
     "cooling": "P1", "transformer_supply_chain": "P1",
 }
 
