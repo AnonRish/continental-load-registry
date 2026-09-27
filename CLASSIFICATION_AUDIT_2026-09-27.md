@@ -35,7 +35,7 @@ These four are not presented as a representative sample. They are the next repro
 
 ## Rule for the website
 
-The UI should call the 141 records a **broad ambiguous research pool**. The strict candidate page should use **admitted load candidates**. A broad-pool row never becomes a discovery finding merely because it lacks an identified developer.
+The UI should call the 142 records a **broad ambiguous research pool**. The strict candidate page should use **admitted load candidates**. A broad-pool row never becomes a discovery finding merely because it lacks an identified developer.
 
 ## Sources used for this audit
 
