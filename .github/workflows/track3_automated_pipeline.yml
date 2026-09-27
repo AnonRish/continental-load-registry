@@ -15,6 +15,7 @@ on:
       - "build_facility_provenance.py"
       - "build_time_series_verification.py"
       - "build_track3_verification.py"
+      - "build_public_facility_api.py"
       - "validate_track3_ledger.py"
       - "verify_track3.py"
       - "data/source_manifest.json"
@@ -105,6 +106,9 @@ jobs:
 
       - name: Rebuild time-series verification
         run: python build_time_series_verification.py
+
+      - name: Rebuild public facility API and crosswalk exports
+        run: python build_public_facility_api.py
 
       - name: Rebuild claim-level verification
         run: python build_track3_verification.py
