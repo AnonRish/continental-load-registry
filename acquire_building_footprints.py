@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Acquire current building-footprint polygons around the 93 Epoch AI sites.
 
+Acquisition revision: 2026-09-27-hotfix-1.
+
 The output is deliberately a site-focused vector layer:
 - current polygon geometry is retained as GeoJSON;
 - source/provenance is retained in the site index;
