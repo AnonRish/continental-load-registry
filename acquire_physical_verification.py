@@ -18,6 +18,7 @@ import csv
 import hashlib
 import json
 import math
+import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
