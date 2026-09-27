@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Track 3 · Complete Evidence Registry</title>
 <meta name="description" content="Complete public Track 3 evidence registry for frontier AI compute: site identity, grid connection, service, regulation, construction, power, remote sensing, cooling, transformers, chips, tenancy, provenance and governance.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -24,7 +26,8 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 .kvs{display:grid;grid-template-columns:180px 1fr;gap:5px;font-size:11px}.kvs div:nth-child(odd){color:var(--ink-faint)}
 .detail{display:none;position:fixed;inset:0;background:rgba(10,16,25,.58);z-index:50;padding:16px;overflow:auto}.detail.open{display:block}.dialog{max-width:1180px;margin:0 auto;background:var(--panel);border:1px solid var(--line-strong);border-radius:14px;padding:18px;box-shadow:0 20px 70px rgba(0,0,0,.3)}
 .evidence{padding:11px;border:1px solid var(--line);border-radius:9px;margin-top:7px}.evidence h4{margin:0 0 4px;font-size:12px}.code{white-space:pre-wrap;word-break:break-word;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:10px;font-size:10px}
-.domain-card{border:1px solid var(--line);border-radius:10px;padding:13px}.domain-card h3{font-size:13px;margin:0}.domain-card p{font-size:11px;line-height:1.5;color:var(--ink-soft)}.matrix td,.matrix th{font-size:9.5px}.cell{display:inline-block;padding:3px 4px;border-radius:4px;border:1px solid var(--line);white-space:nowrap}.cell.good{background:var(--teal-soft);color:var(--teal)}.cell.warn{background:var(--amber-soft);color:var(--amber)}.footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0 40px}
+.domain-card{border:1px solid var(--line);border-radius:10px;padding:13px}.domain-card h3{font-size:13px;margin:0}.domain-card p{font-size:11px;line-height:1.5;color:var(--ink-soft)}.matrix td,.matrix th{font-size:9.5px}.cell{display:inline-block;padding:3px 4px;border-radius:4px;border:1px solid var(--line);white-space:nowrap}.cell.good{background:var(--teal-soft);color:var(--teal)}.cell.warn{background:var(--amber-soft);color:var(--amber)}#facilityMap{height:520px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}.map-mini-legend{padding:8px 10px;background:var(--panel);border:1px solid var(--line);border-radius:8px;font-size:10px;color:var(--ink-soft)}
+.footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0 40px}
 </style>
 <!-- TRACK3-PUBLIC-SURFACE-V2 -->
 </head>
@@ -82,7 +85,11 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap">
 <div><h2>93-site Track 3 site explorer</h2><p id="siteMeta" class="soft small">Loading…</p></div>
 <div style="min-width:min(820px,100%)" class="controls">
-<input id="search" placeholder="Search site, ID, owner, user, address, utility, grid, queue ID, project or action…">
+<input id="search" placeholder="Search facility, developer/owner, utility, substation, queue ID, address or project…">
+<select id="siteCountry"><option value="">All countries</option></select>
+<select id="siteProvince"><option value="">All states / provinces</option></select>
+<select id="siteUtility"><option value="">All utilities / grid systems</option></select>
+<select id="siteOwner"><option value="">All developers / owners</option></select>
 <select id="siteState"><option value="">All grid states</option><option value="VERIFIED_SITE_SPECIFIC">VERIFIED_SITE_SPECIFIC</option><option value="SITE_LEVEL_EVIDENCE">SITE_LEVEL_EVIDENCE</option><option value="PENDING_RESEARCH">PENDING_RESEARCH</option></select>
 <select id="siteSort"><option value="power">IT power, descending</option><option value="evidence">evidence count, descending</option><option value="name">site name, A–Z</option></select>
 </div></div>
@@ -360,13 +367,27 @@ function renderMatrix(){
  document.getElementById('matrixMeta').textContent=(D.sites||[]).length+' sites × '+domains.length+' Track 3 domains. Each cell reports the current canonical domain state.';
  document.getElementById('matrixBody').innerHTML=(D.sites||[]).map(r=>'<tr><td><strong>'+esc(r.site_name)+'</strong></td>'+domains.map(d=>{const s=r.domains?.[d]?.status||'UNSET';return '<td><span class="cell '+stClass(s)+'">'+esc(s.replace(/_/g,' '))+'</span></td>'}).join('')+'</tr>').join('');
 }
+function populateSiteFilters(){
+ const rows=D.sites||[];
+ const fill=(id,vals,label)=>{const el=document.getElementById(id),cur=el.value;el.innerHTML='<option value="">'+label+'</option>'+[...new Set(vals.filter(Boolean).map(String))].sort((a,b)=>a.localeCompare(b)).map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');el.value=cur;};
+ fill('siteCountry',rows.map(r=>r.country),'All countries');
+ fill('siteProvince',rows.map(r=>r.state_province),'All states / provinces');
+ fill('siteUtility',rows.flatMap(r=>{const g=r.grid||{},n=r.normalized||{};return [g.jurisdiction,n.energy_companies];}),'All utilities / grid systems');
+ fill('siteOwner',rows.flatMap(r=>{const n=r.normalized||{};return [n.owner,n.users];}),'All developers / owners');
+}
 function renderSites(){
- const q=document.getElementById('search').value.trim().toLowerCase(), f=document.getElementById('siteState').value, sort=document.getElementById('siteSort').value;
+ const q=document.getElementById('search').value.trim().toLowerCase(), f=document.getElementById('siteState').value;
+ const country=document.getElementById('siteCountry').value, province=document.getElementById('siteProvince').value, utility=document.getElementById('siteUtility').value, owner=document.getElementById('siteOwner').value;
+ const sort=document.getElementById('siteSort').value;
  filteredSites=(D.sites||[]).filter(r=>{
-  if(f&&siteGrid(r)!==f)return false;
-  if(!q)return true;
   const g=r.grid||{}, n=r.normalized||{};
-  const hay=[r.site_name,r.epoch_id,r.country,r.state_province,r.next_action,g.jurisdiction,n.name,n.owner,n.users,n.address].join(' ').toLowerCase();
+  if(f&&siteGrid(r)!==f)return false;
+  if(country&&r.country!==country)return false;
+  if(province&&r.state_province!==province)return false;
+  if(utility&&![g.jurisdiction,n.energy_companies].join(' ').toLowerCase().includes(utility.toLowerCase()))return false;
+  if(owner&&![n.owner,n.users].join(' ').toLowerCase().includes(owner.toLowerCase()))return false;
+  if(!q)return true;
+  const hay=[r.site_name,r.epoch_id,r.country,r.state_province,r.next_action,g.jurisdiction,g.site_specific_queue_id,g.site_specific_queue_name,g.poi_substation,n.name,n.owner,n.users,n.address,n.project,n.energy_companies,n.construction_companies].join(' ').toLowerCase();
   return hay.includes(q);
  }).slice().sort((a,b)=>{
   if(sort==='name')return String(a.site_name).localeCompare(String(b.site_name));
@@ -376,10 +397,11 @@ function renderSites(){
  document.getElementById('siteMeta').textContent=filteredSites.length+' of '+(D.sites||[]).length+' sites';
  document.getElementById('siteRows').innerHTML=filteredSites.map(r=>{
   const g=r.grid||{}, st=siteGrid(r);
-  return '<tr><td><strong>'+esc(r.site_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.epoch_id)+'</div></td><td>'+esc([r.state_province,r.country].filter(Boolean).join(' · ')||'—')+'</td><td>'+esc(g.jurisdiction||'—')+'</td><td><span class="status '+stClass(st)+'">'+esc(st)+'</span></td><td class="right mono">'+esc(fmt(r.current_it_power_mw))+'</td><td class="right mono">'+siteEvidence(r)+'</td><td><button class="btn" data-open-site="'+esc(r.epoch_id)+'">Open</button></td></tr>';
+  return '<tr><td><strong>'+esc(r.site_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.epoch_id)+'</div></td><td>'+esc([r.state_province,r.country].filter(Boolean).join(' · ')||'—')+'</td><td>'+esc(g.jurisdiction||'—')+'</td><td><span class="status '+stClass(st)+'">'+esc(st)+'</span></td><td class="right mono">'+esc(fmt(r.current_it_power_mw))+'</td><td class="right mono">'+siteEvidence(r)+'</td><td><a class="btn" href="facility.html?facility='+encodeURIComponent(r.epoch_id)+'">Page</a> <button class="btn" data-open-site="'+esc(r.epoch_id)+'">Open</button></td></tr>';
  }).join('')||'<tr><td colspan="7" class="faint">No matching sites.</td></tr>';
  document.querySelectorAll('[data-open-site]').forEach(b=>b.addEventListener('click',()=>openSite(b.getAttribute('data-open-site'))));
 }
+
 function renderEvidence(){
  const rows=D.evidence||[];
  document.getElementById('evidenceMeta').textContent=rows.length+' retained evidence records. No artificial limit is applied.';
@@ -447,7 +469,26 @@ function renderEntityResolution(){
  const rels=(e.relationships||[]).slice(0,300);
  const names=new Map((e.entities||[]).map(x=>[x.entity_id,x.canonical_name]));
  document.getElementById('entityRels').innerHTML=rels.map(x=>'<tr><td>'+esc(x.relationship_type)+'</td><td>'+esc(names.get(x.from_entity_id)||x.from_entity_id)+'</td><td>'+esc(names.get(x.to_entity_id)||x.to_entity_id)+'</td><td class="mono">'+esc(Number(x.confidence_score).toFixed(2))+'</td><td>'+esc(x.temporal_status)+'</td><td class="small mono">'+esc(x.evidence_id)+'</td></tr>').join('')||'<tr><td colspan="6" class="faint">No relationships.</td></tr>';
+}function renderFacilityMap(){
+ const rows=D.epochMap?.records||[]; if(!rows.length){document.getElementById('facilityMapMeta').textContent='No facility coordinates available.';return;}
+ const map=L.map('facilityMap',{preferCanvas:true,worldCopyJump:false,zoomControl:true,minZoom:2,maxZoom:12}).setView([45,-95],3);
+ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap contributors &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
+ const line=getComputedStyle(document.documentElement).getPropertyValue('--line-strong').trim()||'#667085';
+ const boundaries=[
+  ['https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json',0.8,0.45],
+  ['https://raw.githubusercontent.com/mapbox/mapboxgl-jupyter/master/examples/data/us-states.geojson',1.3,0.9],
+  ['https://raw.githubusercontent.com/wisdomtheif/Canadian_GeoJSON/master/canada_provinces.geojson',1.3,0.9],
+  ['https://raw.githubusercontent.com/open-mexico/mexico-geojson/main/mexicoHigh.json',1.3,0.9]
+ ];
+ boundaries.forEach(x=>fetch(x[0],{cache:'force-cache'}).then(r=>r.ok?r.json():null).then(g=>g&&L.geoJSON(g,{style:{color:line,weight:x[1],opacity:x[2],fill:false},interactive:false}).addTo(map)).catch(()=>{}));
+ rows.forEach(r=>{
+  const st=(D.sites||[]).find(x=>x.epoch_id===r.id), marker=L.circleMarker([Number(r.lat),Number(r.lon)],{radius:7,weight:1.5,fillOpacity:.75});
+  marker.bindPopup('<div style="min-width:220px"><strong>'+esc(r.site_name)+'</strong><div class="mono faint">'+esc(r.id)+'</div><p class="small soft" style="margin:6px 0">'+esc(r.address||'—')+'</p><p class="small">IT power: <span class="mono">'+esc(fmt(r.current_power_mw))+' MW</span><br>Grid: '+esc(r.grid_jurisdiction||'—')+'<br>Status: '+esc(r.grid_status||'—')+'</p><a class="btn" href="facility.html?facility='+encodeURIComponent(r.id)+'">Open facility page</a></div>');
+  marker.addTo(map);
+ });
+ document.getElementById('facilityMapMeta').textContent=rows.length+' facility coordinates; coordinate precision is source-derived and displayed with the site's recorded precision.';
 }
+
 function renderEpoch(){
  const rows=D.epoch?.records||[];
  document.getElementById('epochMeta').textContent=rows.length+' Epoch site records with normalized values, retained raw publisher fields, latest timeline, latest chip quantities and grid crosswalk.';
@@ -526,9 +567,9 @@ async function load(){
  const names=Object.keys(U), vals=await Promise.all(names.map(k=>fetch(U[k],{cache:'no-store'}).then(res=>{if(!res.ok)throw Error(k+' '+res.status);return res.json()})));
  names.forEach((k,i)=>D[k]=vals[i]);
  D.sites=D.sites.records||[];D.evidence=D.evidence.records||[];D.obs=D.obs.tasks||[];D.power=D.power.records||[];D.cooling=D.cooling.records||[];D.sources=D.sources.sources||[];
- renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();renderSites();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();
+ renderCards();renderArchitecture();renderDomains();renderPhysics();renderGovernance();renderSchema();renderStates();renderMatrix();populateSiteFilters();renderSites();renderFacilityMap();renderEvidence();renderObs();renderTimeSeries();renderPhysical();renderEpoch();renderSources();renderProvenance();renderAutomation();renderDetectionVerification();renderEntity();renderEntityResolution();renderGeo();
 }
-document.getElementById('search').addEventListener('input',renderSites);document.getElementById('siteState').addEventListener('change',renderSites);document.getElementById('siteSort').addEventListener('change',renderSites);
+document.getElementById('search').addEventListener('input',renderSites);['siteState','siteSort','siteCountry','siteProvince','siteUtility','siteOwner'].forEach(id=>document.getElementById(id).addEventListener('change',renderSites));
 document.getElementById('close').addEventListener('click',()=>{document.getElementById('detail').classList.remove('open');document.body.style.overflow=''});document.getElementById('detail').addEventListener('click',e=>{if(e.target.id==='detail')document.getElementById('close').click()});
 document.getElementById('theme').addEventListener('click',()=>{const r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark')});
 load().catch(e=>{document.getElementById('cards').innerHTML='<div class="panel card"><strong>Track 3 data could not be loaded.</strong><div class="small soft" style="margin-top:6px">'+esc(e.message)+'</div></div>'});
