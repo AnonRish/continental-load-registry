@@ -335,12 +335,12 @@ def merge_public_enrichment(normalized: dict[str, Any], rows: list[dict[str, Any
         vals = as_values(value)
         if not vals:
             return
+        # Enrichment is additive provenance. It fills an empty canonical field,
+        # but it never rewrites or concatenates an existing Epoch value.
         current = as_values(out.get(field))
         if not current:
             out[field] = vals[0] if len(vals) == 1 else ", ".join(dict.fromkeys(vals))
-        else:
-            combined = list(dict.fromkeys(current + vals))
-            out[field] = combined[0] if len(combined) == 1 else ", ".join(combined)
+
 
     for row in rows:
         field = str(row.get("field") or "").strip()
