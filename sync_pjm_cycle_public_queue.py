@@ -35,6 +35,9 @@ def fetch():
         except requests.RequestException:
             continue
 
+    if not key:
+        key=PUBLIC_BROWSER_KEY_FALLBACK
+
     if key:
         headers={
             "api-subscription-key":key,
