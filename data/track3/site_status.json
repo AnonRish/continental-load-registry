@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-27T06:11:28.392920+00:00",
+    "generated_at_utc": "2026-09-27T06:31:00Z",
     "epoch_site_count": 93,
     "observation_task_count": 279,
     "observation_task_counts_by_domain": {
@@ -36,12 +36,12 @@
         "VERIFIED_SITE_SPECIFIC": 2
       },
       "service_or_contract": {
-        "NOT_INGESTED": 83,
-        "SITE_LEVEL_EVIDENCE": 10
+        "NOT_INGESTED": 82,
+        "SITE_LEVEL_EVIDENCE": 11
       },
       "regulatory": {
-        "NOT_ASSESSED": 86,
-        "INGESTED": 7
+        "NOT_ASSESSED": 85,
+        "INGESTED": 8
       },
       "compute_tenancy": {
         "UNKNOWN": 89,
@@ -88,8 +88,8 @@
       "SOURCE_AVAILABLE_NOT_INGESTED": 5
     },
     "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. RESEARCHED_NO_PUBLIC_RECORD means a site-specific search was performed and no public queue/service record was retained; it is not evidence that service is absent.",
-    "public_web_evidence_record_count": 130,
-    "public_web_evidence_site_count": 56
+    "public_web_evidence_record_count": 133,
+    "public_web_evidence_site_count": 57
   },
   "records": [
     {
@@ -868,9 +868,9 @@
       },
       "site_level_evidence_count": 1,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 6,
+      "combined_site_level_evidence_count": 8,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_web_evidence_count": 4
+      "public_web_evidence_count": 6
     },
     {
       "epoch_id": "EPOCH-83ca909f7eb211c7",
@@ -899,12 +899,12 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific public service/contract record is attached; separate from queue-ID verification."
         },
         "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
+          "status": "INGESTED",
+          "basis": "Site-level regulatory evidence is preserved in the Track 3 public evidence layer."
         },
         "compute_tenancy": {
           "status": "UNKNOWN",
@@ -946,9 +946,9 @@
       },
       "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 3,
+      "combined_site_level_evidence_count": 9,
       "next_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing.",
-      "public_web_evidence_count": 0
+      "public_web_evidence_count": 6
     },
     {
       "epoch_id": "EPOCH-55d4b5e818b5bb2a",
@@ -1212,7 +1212,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific public service/contract record is attached; separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -1622,7 +1622,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -2038,9 +2038,9 @@
       },
       "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 7,
+      "combined_site_level_evidence_count": 6,
       "next_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record.",
-      "public_web_evidence_count": 4
+      "public_web_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-052be5b551cd099b",
@@ -2480,7 +2480,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -4332,7 +4332,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific public service/contract record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific public service/contract record is attached; separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -4976,7 +4976,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -5424,7 +5424,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific public service/contract record is attached; separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -5600,7 +5600,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -5970,7 +5970,7 @@
         },
         "service_or_contract": {
           "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
+          "basis": "A site-specific public service/contract record is attached; separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -6068,7 +6068,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -6770,7 +6770,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -6796,9 +6796,9 @@
       },
       "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 7,
+      "combined_site_level_evidence_count": 5,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_web_evidence_count": 5
+      "public_web_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
@@ -6874,9 +6874,9 @@
       },
       "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 8,
+      "combined_site_level_evidence_count": 6,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
-      "public_web_evidence_count": 5
+      "public_web_evidence_count": 3
     },
     {
       "epoch_id": "EPOCH-3816121e8d72fe04",
@@ -7238,7 +7238,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -7316,7 +7316,7 @@
         },
         "cooling": {
           "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level public cooling-system observation is preserved; this is supporting infrastructure evidence, not direct thermal telemetry."
+          "basis": "A site-level public cooling observation is preserved; supporting infrastructure evidence only."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
