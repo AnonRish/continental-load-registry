@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Track 3-specific detection universe",
-  "generated_at_utc": "2026-09-27T02:49:10.593591+00:00",
+  "generated_at_utc": "2026-09-27T06:01:01.420545+00:00",
   "methodology": {
     "tracked_universe": "93 Epoch AI facility records",
     "expanded_surveillance": "1015 queue/request rows without a conservative direct Epoch project-name match",
@@ -16,7 +16,7 @@
     "ai_compute_candidates": 155,
     "non_ai_industrial_control_group": 79,
     "unknown_large_compute": 781,
-    "documented_absence_search_facilities": 25
+    "documented_absence_search_facilities": 29
   },
   "tracked_facilities": [
     {
@@ -66,7 +66,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -121,7 +121,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -176,7 +176,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -231,7 +231,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -286,7 +286,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -341,7 +341,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -396,7 +396,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -428,7 +428,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -451,7 +451,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -463,7 +463,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/dayone-kempas",
             "authority": "Malaysia national / utility grid system",
             "claim": "Exact site-level utility/connection case was not located in the reviewed public source set.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -516,7 +516,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -571,7 +571,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -589,6 +589,61 @@
         "current_h100_equivalents": 289540.17180394137,
         "current_power_mw": 183,
         "owner": "Google #confident",
+        "users": "",
+        "project": "",
+        "current_chip_types": null
+      },
+      "source_crosscheck": {
+        "epoch": {
+          "status": "MATCH",
+          "source_url": "https://epoch.ai/data/data_centers/data_centers.csv"
+        },
+        "queue_registry": {
+          "status": "NO_SITE_SPECIFIC_QUEUE_ID",
+          "queue_id": null
+        },
+        "retained_site_evidence": {
+          "count": 3
+        },
+        "company_or_regulatory_disclosure_references": {
+          "count": 0,
+          "method": "URL-domain heuristic over retained Epoch Selected Sources list"
+        },
+        "permit_or_planning_references": {
+          "count": 0,
+          "method": "URL/text heuristic over retained Epoch Selected Sources list"
+        },
+        "dc_byte": {
+          "status": "CATALOGED_NOT_INGESTED",
+          "reason": "Commercial source; no facility-level DC Byte export retained in this repository."
+        },
+        "satellite": {
+          "optical": "NOT_INGESTED",
+          "tir": "NOT_INGESTED",
+          "sar": "NOT_INGESTED"
+        },
+        "current_physical_layer": {
+          "optical_scenes": 0,
+          "tir_numeric": 0,
+          "sar_numeric": 0,
+          "transformer_events": 3
+        }
+      },
+      "absence_testing": {
+        "status": "NO_ABSENCE_CLAIM",
+        "search_records": []
+      }
+    },
+    {
+      "facility_id": "EPOCH-55d4b5e818b5bb2a",
+      "facility_name": "DayOne Nusajaya",
+      "classification": "KNOWN_AI_COMPUTE",
+      "classification_scope": "Epoch publisher/derived record only; not physical certification",
+      "entry_reason": "Included because Epoch AI's AI data-center dataset contains a facility-level record. This is a Track 3 research-universe anchor, not proof of current physical AI compute.",
+      "evidence_basis": {
+        "current_h100_equivalents": 281670.4396159676,
+        "current_power_mw": 240,
+        "owner": "",
         "users": "",
         "project": "",
         "current_chip_types": null
@@ -626,62 +681,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
-        }
-      },
-      "absence_testing": {
-        "status": "NO_ABSENCE_CLAIM",
-        "search_records": []
-      }
-    },
-    {
-      "facility_id": "EPOCH-55d4b5e818b5bb2a",
-      "facility_name": "DayOne Nusajaya",
-      "classification": "KNOWN_AI_COMPUTE",
-      "classification_scope": "Epoch publisher/derived record only; not physical certification",
-      "entry_reason": "Included because Epoch AI's AI data-center dataset contains a facility-level record. This is a Track 3 research-universe anchor, not proof of current physical AI compute.",
-      "evidence_basis": {
-        "current_h100_equivalents": 281670.4396159676,
-        "current_power_mw": 240,
-        "owner": "",
-        "users": "",
-        "project": "",
-        "current_chip_types": null
-      },
-      "source_crosscheck": {
-        "epoch": {
-          "status": "MATCH",
-          "source_url": "https://epoch.ai/data/data_centers/data_centers.csv"
-        },
-        "queue_registry": {
-          "status": "NO_SITE_SPECIFIC_QUEUE_ID",
-          "queue_id": null
-        },
-        "retained_site_evidence": {
-          "count": 1
-        },
-        "company_or_regulatory_disclosure_references": {
-          "count": 0,
-          "method": "URL-domain heuristic over retained Epoch Selected Sources list"
-        },
-        "permit_or_planning_references": {
-          "count": 0,
-          "method": "URL/text heuristic over retained Epoch Selected Sources list"
-        },
-        "dc_byte": {
-          "status": "CATALOGED_NOT_INGESTED",
-          "reason": "Commercial source; no facility-level DC Byte export retained in this repository."
-        },
-        "satellite": {
-          "optical": "NOT_INGESTED",
-          "tir": "NOT_INGESTED",
-          "sar": "NOT_INGESTED"
-        },
-        "current_physical_layer": {
-          "optical_scenes": 0,
-          "tir_numeric": 0,
-          "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -693,7 +693,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/dayone-nusajaya",
             "authority": "Malaysia national / utility grid system",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -746,7 +746,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -801,7 +801,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -833,7 +833,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -856,7 +856,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -888,7 +888,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -911,7 +911,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -943,7 +943,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 2,
@@ -966,7 +966,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -998,7 +998,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -1021,7 +1021,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1053,7 +1053,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1076,7 +1076,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1108,7 +1108,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1131,7 +1131,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1186,7 +1186,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1218,7 +1218,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1241,7 +1241,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1296,7 +1296,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1328,7 +1328,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -1351,7 +1351,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1383,7 +1383,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1406,7 +1406,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1438,7 +1438,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1461,7 +1461,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1493,7 +1493,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1516,7 +1516,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1548,7 +1548,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1571,7 +1571,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1603,7 +1603,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 2,
@@ -1626,7 +1626,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1658,7 +1658,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -1681,7 +1681,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1736,7 +1736,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1768,7 +1768,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -1791,7 +1791,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1823,7 +1823,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 2,
@@ -1846,7 +1846,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1878,7 +1878,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -1901,7 +1901,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1956,7 +1956,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -1988,7 +1988,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -2011,7 +2011,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2043,7 +2043,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -2066,7 +2066,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2121,7 +2121,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2133,7 +2133,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/google-midlothian",
             "authority": "Epoch connection research",
             "claim": "Site identity and operation are public; the reviewed evidence does not establish a unique ERCOT queue ID or direct utility service record. Jurisdiction mapping is not promoted to a site match.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -2163,7 +2163,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -2186,7 +2186,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2241,7 +2241,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2253,7 +2253,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/google-lancaster",
             "authority": "Epoch connection research",
             "claim": "A public facility record exists for the exact Lancaster address, but no conservative PJM queue/service identifier was found.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -2283,7 +2283,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -2306,7 +2306,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2338,7 +2338,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -2361,12 +2361,22 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
-        "status": "NO_ABSENCE_CLAIM",
-        "search_records": []
+        "status": "DOCUMENTED_SEARCH_RESULT",
+        "search_records": [
+          {
+            "evidence_id": null,
+            "source_name": null,
+            "source_url": "https://www.datacenters.google/locations/waltham-cross/",
+            "authority": null,
+            "claim": "Google's public facility disclosure documents the Shell Energy Europe 24/7 carbon-free energy management agreement, but the retained public source set does not expose a site-specific transmission/distribution queue or service identifier.",
+            "captured_on": "2026-09-27",
+            "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
+          }
+        ]
       }
     },
     {
@@ -2416,7 +2426,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2428,7 +2438,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/vnet-bayin-ulanqab",
             "authority": "China State Grid / Inner Mongolia provincial grid system",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -2458,7 +2468,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -2481,7 +2491,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2536,7 +2546,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2548,7 +2558,7 @@
             "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021",
             "authority": "Epoch connection research",
             "claim": "The exact TDLR project for the Red Oak facility was reviewed; no utility or ERCOT queue identifier was located in the public record reviewed.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -2601,7 +2611,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2656,7 +2666,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2688,7 +2698,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 2,
@@ -2711,7 +2721,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2743,7 +2753,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -2766,7 +2776,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2798,7 +2808,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -2821,7 +2831,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2876,7 +2886,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2888,7 +2898,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger",
             "authority": "China State Grid / Inner Mongolia provincial grid system",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -2918,7 +2928,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -2941,7 +2951,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -2953,7 +2963,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-chester-va",
             "authority": "Epoch connection research",
             "claim": "Exact address is known; no defensible PJM queue ID or direct utility service case was found in the reviewed public source set.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3006,7 +3016,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3018,7 +3028,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/oracle-batam",
             "authority": "PLN grid connection system",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3048,7 +3058,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -3071,7 +3081,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3103,7 +3113,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -3126,7 +3136,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3158,7 +3168,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -3181,7 +3191,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3236,7 +3246,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3248,7 +3258,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu",
             "authority": "China State Grid / Anhui provincial grid system",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3301,7 +3311,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3356,7 +3366,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3368,7 +3378,7 @@
             "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247",
             "authority": "Epoch connection research",
             "claim": "TDLR confirms the exact SAT40 address and Microsoft ownership. No public ERCOT queue/service ID was identified.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3398,7 +3408,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -3421,7 +3431,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3476,7 +3486,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3508,7 +3518,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -3531,12 +3541,22 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
-        "status": "NO_ABSENCE_CLAIM",
-        "search_records": []
+        "status": "DOCUMENTED_SEARCH_RESULT",
+        "search_records": [
+          {
+            "evidence_id": null,
+            "source_name": null,
+            "source_url": "https://www.pjm.com/planning/service-requests",
+            "authority": null,
+            "claim": "The retained public source set establishes the Vineland site and commercial Microsoft-Nebius compute agreement, but does not expose an exact PJM queue or local utility service identifier tied to the Epoch facility record.",
+            "captured_on": "2026-09-27",
+            "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
+          }
+        ]
       }
     },
     {
@@ -3586,7 +3606,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3598,7 +3618,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway",
             "authority": "Statnett / local distribution network",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3651,7 +3671,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3663,7 +3683,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/nebius-mantsala",
             "authority": "Fingrid / local distribution network",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3716,7 +3736,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3728,7 +3748,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/southgate-melbourne",
             "authority": "AEMO / local network service provider",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3758,7 +3778,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -3781,7 +3801,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3836,7 +3856,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3848,7 +3868,7 @@
             "source_url": "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
             "authority": "Epoch connection research",
             "claim": "Exact address and Microsoft ownership are confirmed across multiple TDLR phase records; no unique electric connection ID was found.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -3901,7 +3921,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -3933,7 +3953,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -3956,7 +3976,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4011,7 +4031,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4023,7 +4043,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei",
             "authority": "China State Grid / Hebei provincial grid system",
             "claim": "Operational; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -4053,7 +4073,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -4076,7 +4096,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4108,7 +4128,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -4131,12 +4151,22 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
-        "status": "NO_ABSENCE_CLAIM",
-        "search_records": []
+        "status": "DOCUMENTED_SEARCH_RESULT",
+        "search_records": [
+          {
+            "evidence_id": null,
+            "source_name": null,
+            "source_url": "https://wattstreet.net/state/ga/",
+            "authority": null,
+            "claim": "The retained public source set establishes the Atlanta QTS/xAI site and Georgia grid jurisdiction, but does not retain an exact site-specific queue or service identifier.",
+            "captured_on": "2026-09-27",
+            "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
+          }
+        ]
       }
     },
     {
@@ -4186,7 +4216,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4198,7 +4228,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/nscale-keflavik",
             "authority": "Landsnet / local distribution network",
             "claim": "Site identity documented; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -4251,7 +4281,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4263,7 +4293,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake",
             "authority": "Epoch connection research",
             "claim": "The closest same-area raw queue candidate, 28INR0119 / 1190 Barber Lake Switch 138kV / 341.8 MW, is a Rabbit Hollow Energy Storage BESS and is rejected as unrelated generation/storage.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -4316,7 +4346,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4371,7 +4401,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4403,7 +4433,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -4426,12 +4456,22 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
-        "status": "NO_ABSENCE_CLAIM",
-        "search_records": []
+        "status": "DOCUMENTED_SEARCH_RESULT",
+        "search_records": [
+          {
+            "evidence_id": null,
+            "source_name": null,
+            "source_url": "https://www.ercot.com/services/rq/large-load-integration",
+            "authority": null,
+            "claim": "Crusoe publicly identifies the 900 MW AI-factory expansion and its onsite power plant, but the retained public source set does not expose an exact ERCOT queue/service identifier tied to this expansion record.",
+            "captured_on": "2026-09-27",
+            "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
+          }
+        ]
       }
     },
     {
@@ -4458,7 +4498,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -4481,7 +4521,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4493,7 +4533,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/ecodatacenter-2",
             "authority": "Svenska kraftnät / local distribution network",
             "claim": "Under construction; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -4546,7 +4586,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4601,7 +4641,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4633,7 +4673,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 2
+          "count": 4
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -4656,7 +4696,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4711,7 +4751,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4743,7 +4783,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 4
         },
         "company_or_regulatory_disclosure_references": {
           "count": 3,
@@ -4766,7 +4806,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4821,7 +4861,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4833,7 +4873,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/microsoft-narvik-norway",
             "authority": "Statnett / local distribution network",
             "claim": "No public utility/queue identifier was found in the reviewed record set.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -4863,7 +4903,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 2,
@@ -4886,7 +4926,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4898,7 +4938,7 @@
             "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
             "authority": "PJM system",
             "claim": "The existing Foxconn substation is site context, not a queue or service record. No site-specific PJM identifier was located.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -4928,7 +4968,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -4951,7 +4991,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -4983,7 +5023,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 3
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -5006,7 +5046,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -5018,7 +5058,7 @@
             "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
             "authority": "ERCOT system",
             "claim": "Same-county raw ERCOT queue rows 26INR0633 and 26INR0630 are 500 MW battery-storage projects and are rejected as unrelated generation/storage.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -5048,7 +5088,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -5071,7 +5111,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -5083,7 +5123,7 @@
             "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
             "authority": "WECC / PNM serving system",
             "claim": "Site and on-site generation plans are public, but no conservative site-to-queue/service identifier was found.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -5136,7 +5176,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -5148,7 +5188,7 @@
             "source_url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
             "authority": "ERCOT system",
             "claim": "Raw ERCOT candidate 26INR0500 is a 206.5 MW BESS at 1442 CFRSW 345kV and is rejected as unrelated storage, despite county-name similarity.",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -5201,7 +5241,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -5213,7 +5253,7 @@
             "source_url": "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-uae",
             "authority": "UAE transmission / local distribution connection process",
             "claim": "Announced/under development; no public site-specific connection case found",
-            "captured_on": "2026-09-26",
+            "captured_on": "2026-09-27",
             "search_scope": "Exact facility/site-specific connection or service record in the cited public source."
           }
         ]
@@ -5243,7 +5283,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 1,
@@ -5266,7 +5306,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -5321,7 +5361,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
@@ -5353,7 +5393,7 @@
           "queue_id": null
         },
         "retained_site_evidence": {
-          "count": 1
+          "count": 2
         },
         "company_or_regulatory_disclosure_references": {
           "count": 0,
@@ -5376,7 +5416,7 @@
           "optical_scenes": 0,
           "tir_numeric": 0,
           "sar_numeric": 0,
-          "transformer_events": 2
+          "transformer_events": 3
         }
       },
       "absence_testing": {
