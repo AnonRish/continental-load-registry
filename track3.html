@@ -55,6 +55,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 @media(max-width:650px){.progress-grid{grid-template-columns:1fr}}
 </style>
 <!-- TRACK3-PUBLIC-SURFACE-V2 -->
+<link rel="stylesheet" href="observatory-nav.css">
 </head>
 <body>
 <header class="hero"><div class="wrap">
@@ -853,5 +854,6 @@ load().catch(e=>{document.getElementById('cards').innerHTML='<div class="panel c
   }).catch(function(err){set('enrichmentMeta','Enrichment bridge unavailable: '+err.message);});
 })();
 </script>
+<script src="observatory-nav.js" defer></script>
 </body>
 </html>
