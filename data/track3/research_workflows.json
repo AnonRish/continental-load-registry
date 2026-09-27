@@ -431,6 +431,59 @@
       ],
       "accept": "Second source has a distinct origin and supports the same site-specific claim.",
       "reject": "Mirror copies, syndicated duplicates, or self-referential reposts."
+    },
+    "grid_connection": {
+      "label": "Grid connection / interconnection",
+      "objective": "Resolve the site-specific public connection record or documented utility/grid relationship, while distinguishing verified queue IDs from site-level evidence and jurisdiction-only context.",
+      "search": [
+        "ISO/RTO/market queue records",
+        "serving utility interconnection and large-load filings",
+        "state/provincial utility regulator dockets",
+        "municipal/development records",
+        "reputable local reporting"
+      ],
+      "queries": [
+        "\"{site}\" interconnection {state}",
+        "\"{site}\" utility queue {state}",
+        "\"{site}\" large load {state}"
+      ],
+      "capture": [
+        "utility/grid system",
+        "queue or project ID if exposed",
+        "connection status",
+        "MW/capacity type",
+        "case/docket ID",
+        "date",
+        "URL/locator"
+      ],
+      "accept": "A public record explicitly identifies the site and its connection/service relationship or queue/project identifier.",
+      "reject": "A jurisdiction-level queue record that cannot be defensibly matched to the site."
+    },
+    "chip_inventory": {
+      "label": "Chip inventory / site hardware",
+      "objective": "Verify site-specific accelerator inventory and chip-type attribution from canonical or primary site records; preserve uncertainty where only estimates exist.",
+      "search": [
+        "Epoch AI site-level chip records",
+        "owner/developer infrastructure disclosures",
+        "supplier/manufacturer statements with site linkage",
+        "planning/permit/project documents",
+        "reputable independent reporting"
+      ],
+      "queries": [
+        "\"{site}\" GPU inventory",
+        "\"{site}\" H100 H200 chips quantity",
+        "\"{site}\" accelerator inventory"
+      ],
+      "capture": [
+        "chip type",
+        "quantity",
+        "measurement/reporting date",
+        "source wording",
+        "site linkage",
+        "URL/locator"
+      ],
+      "accept": "A site-specific chip inventory or clearly attributed estimate is preserved with its source and date.",
+      "reject": "Global chip ownership/users/shipment figures without site allocation."
     }
   }
 }
