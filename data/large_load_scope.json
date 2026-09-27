@@ -3,10 +3,10 @@
   "generated_on": "2026-09-27",
   "definitions": {
     "current_row_level": {
-      "records": 1558,
-      "capacity_gw": 361.875,
+      "records": 1540,
+      "capacity_gw": 358.7181,
       "label": "Current row-level registry",
-      "meaning": "Published facility/request rows retained in REGISTRY_DATA and shown in the main registry table."
+      "meaning": "Published facility/request rows retained in REGISTRY_DATA and shown in the main registry table; reconciled to the current embedded REGISTRY_DATA snapshot."
     },
     "additional_known_miso": {
       "records": 83,
@@ -17,10 +17,10 @@
       "official_source_url": "https://www.misoenergy.org/api/giqueue/getprojects"
     },
     "expanded_known_scope": {
-      "records": 1641,
-      "capacity_gw": 397.775,
+      "records": 1623,
+      "capacity_gw": 394.6181,
       "label": "Expanded known large-load scope",
-      "arithmetic": "1558 + 83 records; 361.875 + 35.9 GW"
+      "arithmetic": "1540 + 83 records; 358.7181 + 35.9 GW"
     },
     "historical_archive": {
       "records": 1802,
@@ -132,7 +132,8 @@
       "markets": 10,
       "file": "data/data_universe_checklist.json",
       "status": "public coverage/status manifest",
-      "additive_to_core_row_level": false
+      "additive_to_core_row_level": false,
+      "generated_note": "Scope counts reconciled to the current embedded registry snapshot on 2026-09-27."
     }
   },
   "accounting_rule": "Do not treat the 83 additional MISO requests or the 1802-record historical snapshot as independent additive facility populations beyond the explicitly defined arithmetic above."
