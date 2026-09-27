@@ -23,11 +23,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Rebuild verification artifacts
+        run: python build_track3_verification.py
       - name: Run verification
         run: python verify_track3.py
       - name: Build audit bundle
         run: |
-          tar -czf track3-verification-bundle.tar.gz             data/track3/detection_universe.json             data/track3/verification_protocol.json             data/track3/absence_testing.json             data/track3/verification_results.json             verify_track3.py
+          tar -czf track3-verification-bundle.tar.gz \
+            data/track3/detection_universe.json \
+            data/track3/verification_protocol.json \
+            data/track3/absence_testing.json \
+            data/track3/verification_results.json \
+            verify_track3.py
       - name: Upload audit bundle
         uses: actions/upload-artifact@v4
         with:
@@ -37,11 +44,10 @@ jobs:
         uses: actions/attest@v4
         with:
           subject-path: track3-verification-bundle.tar.gz
-      - name: Commit verification metadata
+      - name: Commit generated verification artifacts
         run: |
-          python build_track3_verification.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/track3/verification_build_meta.json
-          git diff --cached --quiet || git commit -m "Record Track 3 verification build"
+          git add data/track3/detection_universe.json data/track3/verification_protocol.json data/track3/absence_testing.json data/track3/verification_results.json
+          git diff --cached --quiet || git commit -m "Refresh Track 3 verification results"
           git push
