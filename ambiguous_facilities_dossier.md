@@ -2,7 +2,7 @@
 
 Generated 2026-09-27 by `investigate_ambiguous_loads.py`.
 
-**Read this first.** This is a worklist of leads, not a set of findings. Nothing here was fetched or verified: each search URL points at a public search engine, and results still need a human to read them. "Developer Not Disclosed" is usually a property of what the source register publishes (SPP, MISO, CAISO, ISO-NE and AESO publish no applicant), not evidence about the developer. A facility's label changes only when a researcher records a verified identity with evidence in `ground_truth_overrides.json`.
+**Read this first.** This is a worklist of leads, not a set of findings. Nothing here was fetched or verified: each search URL points at a public search engine, and results still need a human to read them. The broad ambiguity filter is not a load-classification proof: a candidate must pass the strict source-level load-admission gate before it is treated as a load-discovery case. "Developer Not Disclosed" is usually a property of what the source register publishes (SPP, MISO, CAISO, ISO-NE and AESO publish no applicant), not evidence about the developer. A facility's label changes only when a researcher records a verified identity with evidence in `ground_truth_overrides.json`.
 
 ## Scope
 
@@ -30,7 +30,7 @@ Data sources:
 | MISO | 36 | 8.6 | 0 |
 | SPP | 12 | 2.7 | 0 |
 
-**Verified: 0 of 141.** Record confirmed identities in `ground_truth_overrides.json` and re-run.
+**Ground-truth overrides: 0 of 141.** This pool is not a set of confirmed discoveries; promote cases only after strict load-admission review. Record confirmed identities in `ground_truth_overrides.json` and re-run.
 
 ## Ranked summary
 
