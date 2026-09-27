@@ -53,7 +53,7 @@ jobs:
           assert idx["sites_with_polygon_files"] > 0
           assert idx["total_polygon_count"] > 0
           files = [
-              root.parent / Path(record["geometry_file"])
+              Path(record["geometry_file"])
               for record in idx["records"]
               if record.get("geometry_file")
           ]
