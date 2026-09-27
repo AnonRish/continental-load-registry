@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-27",
+  "title": "Strict admitted load-discovery candidates",
+  "broad_pool_size": 141,
+  "definition": "Candidate must have explicit public evidence that the underlying project is a load request and must retain a material unresolved identity, location, or infrastructure question.",
+  "admission_gates": {
+    "explicit_load_type_required": true,
+    "excluded_project_types": ["GENERATION", "SURPLUS", "TRANSMISSION", "REPLACEMENT", "UPGRADE"],
+    "storage_or_hybrid_requires_explicit_load_component": true,
+    "physical_target_must_be_independently_established_before_satellite_interpretation": true,
+    "missing_developer_does_not_equal_discovery": true
+  },
+  "candidates": [
+    {
+      "case_id": "NEXT-AESO-P3066",
+      "queue_id": "P3066",
+      "rto": "AESO",
+      "project_name": "Leedale Data Load",
+      "capacity_mw": 1864,
+      "county_or_area": "Clearwater County",
+      "poi": "38-Caroline",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Developer/owner not publicly exposed in retained source surface",
+      "physical_gap": "No defensible site coordinate retained",
+      "research_role": "primary next closure target"
+    },
+    {
+      "case_id": "NEXT-AESO-P3198",
+      "queue_id": "P3198",
+      "rto": "AESO",
+      "project_name": "Lynx Data Load",
+      "capacity_mw": 1800,
+      "county_or_area": "Strathcona County",
+      "poi": "33-Fort Saskatchewan",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Developer/owner not publicly exposed in retained source surface",
+      "physical_gap": "No defensible site coordinate retained",
+      "research_role": "primary next closure target"
+    },
+    {
+      "case_id": "NEXT-NYISO-1743",
+      "queue_id": "1743",
+      "rto": "NYISO",
+      "project_name": "St. Lawrence Infrastructure 2",
+      "capacity_mw": 1935,
+      "county_or_area": "St. Lawrence County",
+      "poi": "NYPA's 230kV Moses Massena 1 and 2",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Named interconnecting entity exists; physical campus identity is not established from the queue record alone",
+      "physical_gap": "No defensible site coordinate retained",
+      "research_role": "secondary closure target; public secondary sources already associate it with data-center/AI development"
+    },
+    {
+      "case_id": "NEXT-NYISO-1742",
+      "queue_id": "1742",
+      "rto": "NYISO",
+      "project_name": "St. Lawrence Infrastructure 1",
+      "capacity_mw": 860,
+      "county_or_area": "St. Lawrence County",
+      "poi": "NYPA HA-2, 345kV Transmission Line",
+      "load_status": "PUBLICLY_CLASSIFIED_LOAD",
+      "identity_gap": "Named interconnecting entity exists; physical campus identity is not established from the queue record alone",
+      "physical_gap": "No defensible site coordinate retained",
+      "research_role": "secondary closure target; public secondary sources already associate it with data-center/AI development"
+    }
+  ],
+  "excluded_examples": [
+    {
+      "queue_id": "J1490",
+      "reason": "Current public project-type evidence identifies it as Generation, so it fails the strict load-admission gate."
+    },
+    {
+      "queue_id": "S1156",
+      "reason": "Current public project-type evidence identifies it as Surplus, so its presence in an unresolved-location worklist does not establish a large-load candidate."
+    },
+    {
+      "queue_id": "S1157",
+      "reason": "Current public project-type evidence identifies it as Surplus, so its presence in an unresolved-location worklist does not establish a large-load candidate."
+    }
+  ],
+  "selection_note": "This is an evidentiary admission set, not a ranking of importance or likelihood of outcome. It is deliberately separate from the broad 141-row ambiguity pool."
+}
