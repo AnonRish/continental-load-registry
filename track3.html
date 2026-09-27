@@ -221,7 +221,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 </div>
 <div class="scroll" style="margin-top:12px">
 <table>
-<thead><tr><th>Site</th><th>Publisher information still missing</th><th>Open Track 3 domains</th><th>Public research leads found</th><th>Next research action</th><th>Open</th></tr></thead>
+<thead><tr><th>Site</th><th>Publisher information still unresolved</th><th>Open Track 3 domains</th><th>Public research leads found</th><th>Next research action</th><th>Open</th></tr></thead>
 <tbody id="sweepRows"></tbody>
 </table>
 </div>
@@ -505,10 +505,10 @@ function renderSweep(){
    const hay=[r.site_name,r.epoch_id,r.country,r.state_province,(r.missing_publisher_fields||[]).join(' '),(r.remaining_unresolved_publisher_fields||[]).join(' '),(r.open_track3_domains||[]).join(' '),(r.next_research_action||''),JSON.stringify(r.public_research_leads||[])].join(' ').toLowerCase();
    return hay.includes(q);
  });
- document.getElementById('sweepMeta').textContent=filtered.length+' of '+rows.length+' sites shown · '+(d.summary?.total_missing_publisher_fields||0)+' publisher gaps identified · '+(d.summary?.total_public_research_leads||0)+' public research leads across '+(d.summary?.sites_with_public_research_leads||0)+' sites · '+(d.summary?.remaining_unresolved_publisher_fields||0)+' publisher gaps remain unresolved in this sweep.';
+ document.getElementById('sweepMeta').textContent=filtered.length+' of '+rows.length+' sites shown · '+(d.summary?.total_missing_publisher_fields||0)+' dossier gaps · '+(d.summary?.total_public_enrichment_resolved_fields||0)+' public-enrichment field values · '+(d.summary?.total_public_research_leads||0)+' targeted public leads across '+(d.summary?.sites_with_public_research_leads||0)+' sites · '+(d.summary?.effective_unresolved_publisher_fields||0)+' publisher fields remain unresolved after reconciliation.';
  document.getElementById('sweepRows').innerHTML=filtered.map(r=>{
    const leads=(r.public_research_leads||[]).map(x=>'<div style="margin-bottom:5px"><span class="status '+(x.status==='PUBLIC_SOURCE'?'good':'neutral')+'">'+esc(x.status)+'</span> <strong>'+esc(x.field)+'</strong><div class="small soft">'+esc(x.finding)+'</div>'+(x.source_url?'<a class="small" target="_blank" rel="noopener" href="'+esc(x.source_url)+'">source</a>':'<span class="small faint">'+esc(x.source)+'</span>')+'</div>').join('')||'<span class="faint">No new lead captured in targeted sweep.</span>';
-   return '<tr><td><strong>'+esc(r.site_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.epoch_id)+'</div><div class="small faint">'+esc([r.state_province,r.country].filter(Boolean).join(' · '))+'</div></td><td class="small">'+esc((r.remaining_unresolved_publisher_fields||[]).join(', ')||'No remaining publisher-field gap in this field set')+'</td><td class="small">'+esc((r.open_track3_domains||[]).join(', ')||'None')+'</td><td class="small">'+leads+'</td><td class="small">'+esc(r.next_research_action||'No next action recorded.')+'</td><td><a class="btn" href="facility.html?facility='+encodeURIComponent(r.epoch_id)+'">Open</a></td></tr>';
+   return '<tr><td><strong>'+esc(r.site_name)+'</strong><div class="mono faint" style="font-size:9px">'+esc(r.epoch_id)+'</div><div class="small faint">'+esc([r.state_province,r.country].filter(Boolean).join(' · '))+'</div></td><td class="small">'+esc((r.effective_unresolved_publisher_fields||[]).join(', ')||'No unresolved publisher-field gap in this field set')+'</td><td class="small">'+esc((r.open_track3_domains||[]).join(', ')||'None')+'</td><td class="small">'+leads+'</td><td class="small">'+esc(r.next_research_action||'No next action recorded.')+'</td><td><a class="btn" href="facility.html?facility='+encodeURIComponent(r.epoch_id)+'">Open</a></td></tr>';
  }).join('')||'<tr><td colspan="6" class="faint">No sites match this sweep filter.</td></tr>';
 }
 function renderCards(){
