@@ -107,7 +107,7 @@
 <footer class="wrap footer">Epoch AI's current explorer includes directory/list views, owner/user filters, time controls, facility scale statistics, hardware, cooling, satellite imagery and buildout milestones. citeturn433726search0turn433726search1turn433726search2 This page implements an independent, broader company-portfolio interface rather than reproducing Epoch's code or proprietary interface. Company logos are sourced from Simple Icons for identification.</footer>
 
 <script>
-const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;"}[m]));
+const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 const norm=s=>String(s??"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const slugify=s=>String(s??"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const logoMap={microsoft:"microsoft",google:"google",meta:"meta",nvidia:"nvidia",oracle:"oracle","amazon-web-services":"amazonaws",amazon:"amazon",openai:"openai",coreweave:"coreweave",xai:"x","alibaba-cloud":"alibabacloud",tencent:"tencent",baidu:"baidu",huawei:"huawei","ntt-data":"ntt",ntt:"ntt",equinix:"equinix","digital-realty":"digitalrealty","vantage-data-centers":"vantage",g42:"g42"};
