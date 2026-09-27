@@ -223,10 +223,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/automation data/track3 data/external/epoch_ai data/module1_radar_summary.json api/v1/facilities.json api/v1/facilities.csv
-          git add data/track3/entity_resolution.json data/track3/entity_resolution_entities.csv data/track3/entity_resolution_relationships.csv data/track3/entity_resolution_research_queue.csv
-          git add data/track3/facility_provenance.json data/track3/facility_provenance_records.csv
+          git add -A
+          git status --short
           git diff --cached --quiet || git commit -m "Automated Track 3 pipeline refresh"
           git fetch origin main
-          git rebase origin/main
+          git rebase --autostash origin/main
           git push origin HEAD:main
