@@ -21,6 +21,13 @@
 - [ ] Generated artifacts were produced from a documented command/workflow.
 - [ ] I did not commit secrets, private contact information, or unsupported conclusions.
 
+### Canonical research handoff
+For evidence/research contributions, use data/track3/research_submission_schema.json and include:
+- task_id, result_status, site_name, epoch_id, target
+- source_name, source_url, source_kind, record_id_or_locator
+- publication_date, accessed_date, site_specificity, evidence_summary
+- field_or_domain, normalized_value, raw_value, units, temporal_scope, confidence, notes
+
 ### Checks run
 <!-- Replace this line with exact commands and results. -->
 - python validate_track3_ledger.py
