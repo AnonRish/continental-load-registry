@@ -28,6 +28,10 @@ async function main(){
  const siteTs=(ts.site_timelines||[]).find(x=>x.epoch_id===id);
  if(!m||!s){document.getElementById('app').innerHTML='<div class="panel"><h1>Facility not found</h1><p class="soft">'+esc(id)+'</p></div>';return;}
  const n=(s.normalized||{}),g=s.grid||{};
+ const displayAddress=m.address||er.public_address||'NOT CAPTURED IN RETAINED PUBLIC SOURCES';
+ const displayOwner=m.owner||er.public_owner||'NOT DISCLOSED IN RETAINED PUBLIC SOURCES';
+ const displayUsers=m.users||er.public_users||'NOT DISCLOSED IN RETAINED PUBLIC SOURCES';
+ const displayProject=m.project||er.public_program||'NOT CAPTURED IN RETAINED PUBLIC SOURCES';
  document.title=(m.site_name||id)+' · Track 3 Facility';
  let html='<div class="panel"><div class="tools"><span class="status '+statusClass(s.domains?.site_identity?.status)+'">'+esc(s.domains?.site_identity?.status||'—')+'</span><span class="status">'+esc(id)+'</span></div><h1>'+esc(m.site_name)+'</h1><p class="soft">'+esc(m.address||'')+' · '+esc(s.state_province||m.country||'')+'</p><div class="tools"><button class="btn" id="downloadRecord">Download facility record JSON</button><button class="btn" id="downloadCsv">Download facility CSV</button>';
  const sourceUrls=[m.epoch_source_url,m.grid_evidence_url,...es.map(x=>x.source_url)].filter(Boolean);
@@ -38,7 +42,7 @@ async function main(){
  const enrichFields=Object.keys(enrichStatus);
  const capturedFields=enrichFields.filter(k=>enrichStatus[k]==='SOURCE_CAPTURED');
  const lt=dr.latest_timeline||{}, chips=dr.latest_chip_quantities||[];
- html+='<div class="grid"><div class="panel"><h2>Facility identity &amp; grid</h2><div class="kvs"><div>Address</div><div>'+esc(m.address||'NOT CAPTURED IN EPOCH')+'</div><div>Owner/developer</div><div>'+esc(m.owner||'NOT DISCLOSED IN EPOCH')+'</div><div>Users</div><div>'+esc(m.users||'NOT DISCLOSED IN EPOCH')+'</div><div>Project</div><div>'+esc(m.project||'NOT CAPTURED IN EPOCH')+'</div><div>Grid / utility</div><div>'+esc(m.grid_jurisdiction||g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(m.site_queue_id||g.site_specific_queue_id||'NO VERIFIED SITE ID')+'</div><div>IT power</div><div class="mono">'+fmt(m.current_power_mw)+' MW</div><div>H100 eq.</div><div class="mono">'+fmt(m.current_h100_equivalents)+'</div></div></div>';
+ html+='<div class="grid"><div class="panel"><h2>Facility identity &amp; grid</h2><div class="kvs"><div>Address</div><div>'+esc(displayAddress)+'</div><div>Owner/developer</div><div>'+esc(displayOwner)+'</div><div>Users</div><div>'+esc(displayUsers)+'</div><div>Project</div><div>'+esc(displayProject)+'</div><div>Grid / utility</div><div>'+esc(m.grid_jurisdiction||g.jurisdiction||'—')+'</div><div>Queue ID</div><div class="mono">'+esc(m.site_queue_id||g.site_specific_queue_id||'NO VERIFIED SITE ID')+'</div><div>IT power</div><div class="mono">'+fmt(m.current_power_mw)+' MW</div><div>H100 eq.</div><div class="mono">'+fmt(m.current_h100_equivalents)+'</div></div></div>';
  html+='<div class="panel"><h2>Verification</h2><table><thead><tr><th>Claim</th><th>Status</th><th>Basis</th></tr></thead><tbody>'+vr.map(x=>'<tr><td>'+esc(x.claim)+'</td><td><span class="status '+statusClass(x.status)+'">'+esc(x.status)+'</span></td><td>'+esc(x.basis||'—')+'</td></tr>').join('')+'</tbody></table></div></div>';
  html+='<div class="panel"><h2>Public research enrichment</h2><p class="soft small">Additional public-source facts attached to this facility; source-specific numbers remain separate from Epoch IT-power accounting.</p>';
  if(pub.facts) html+='<div class="event"><h3>Researched facts</h3><ul style="margin:6px 0 0 18px">'+pub.facts.map(x=>'<li class="small" style="margin:4px 0">'+esc(x)+'</li>').join('')+'</ul></div>';
