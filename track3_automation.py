@@ -41,6 +41,10 @@ AUTOMATED_ADAPTERS={
  "epoch-chip-users":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_track3_external_sources.py"),
  "epoch-gpu-clusters":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_track3_external_sources.py"),
  "epoch-chip-components":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_track3_external_sources.py"),
+ "epoch-timelines":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_epoch_ai_data_centers.py"),
+ "epoch-chip-quantities":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_epoch_ai_data_centers.py"),
+ "epoch-chillers":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_epoch_ai_data_centers.py"),
+ "epoch-cooling-towers":(".github/workflows/sync_epoch_ai_data_centers.yml","sync_epoch_ai_data_centers.py"),
  "physical-verification-layer":(".github/workflows/physical_verification.yml","module1_physical_radar.py"),
  "overture-buildings":(".github/workflows/track3_building_footprints.yml","build_building_footprints.py"),
 }
