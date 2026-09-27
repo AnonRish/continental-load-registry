@@ -91,7 +91,7 @@ def latest_overture_release() -> str:
         pass
     return fallback
 
-def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str, release: str) -> dict[str, Any]:
+def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str, release: str, con: duckdb.DuckDBPyConnection) -> dict[str, Any]:
     eid = str(site["epoch_id"])
     name = str(site["normalized"].get("name") or eid)
     lat = float(coord["lat"])
@@ -100,13 +100,7 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str, 
     tmp_path = TMP_DIR / f"{eid}.geojson"
     final_path = OUT_DIR / f"{eid}.geojson"
 
-    con = duckdb.connect()
     try:
-        con.execute("INSTALL httpfs")
-        con.execute("LOAD httpfs")
-        con.execute("INSTALL spatial")
-        con.execute("LOAD spatial")
-        con.execute("SET s3_region='us-west-2'")
         parquet_glob = (
             f"s3://overturemaps-us-west-2/release/{release}/"
             "theme=buildings/type=building/*"
@@ -122,8 +116,6 @@ def download_site(site: dict[str, Any], coord: dict[str, Any], date_stamp: str, 
         rows = con.execute(query).fetchall()
     except Exception as exc:
         raise RuntimeError(f"Overture GeoParquet query failed for {eid}: {exc}") from exc
-    finally:
-        con.close()
 
     features = []
     for feature_id, geometry_json in rows:
@@ -225,6 +217,16 @@ def main() -> int:
     release = latest_overture_release()
     print(f"Overture release: {release}", flush=True)
     results: list[dict[str, Any]] = []
+    con = duckdb.connect()
+    try:
+        con.execute("INSTALL httpfs")
+        con.execute("LOAD httpfs")
+        con.execute("INSTALL spatial")
+        con.execute("LOAD spatial")
+        con.execute("SET s3_region='us-west-2'")
+    except Exception as exc:
+        con.close()
+        raise SystemExit(f"DuckDB extension initialization failed: {exc}") from exc
 
     for idx, site in enumerate(sites, start=1):
         eid = str(site["epoch_id"])
@@ -244,7 +246,7 @@ def main() -> int:
             print(f"footprints {idx}/93: {site['normalized'].get('name')} -> UNRESOLVED", flush=True)
             continue
         try:
-            result = download_site(site, coord, date_stamp, release)
+            result = download_site(site, coord, date_stamp, release, con)
         except Exception as exc:
             result = {
                 "epoch_id": eid,
@@ -264,6 +266,8 @@ def main() -> int:
             f"{result['status']} ({result.get('polygon_count', 0)} polygons)",
             flush=True,
         )
+
+    con.close()
 
     save_json(INDEX_JSON, {
         "schema_version": 1,
