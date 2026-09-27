@@ -424,6 +424,19 @@
     <p class="text-xs mt-4" style="color:var(--ink-faint);">“FOUND” indicates an authoritative source record exists in the catalog. “PARTIAL” means public evidence exists but the source does not expose a complete site-level universe. Confidential studies, customer agreements and anonymized commission filings remain explicitly non-public where applicable.</p>
   </section>
 
+  <!-- ============ CURRENT PUBLIC SOURCE CONTEXT ============ -->
+  <section id="currentPublicSourceContext" class="panel rounded-lg p-5 sm:p-6 mb-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+      <div>
+        <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">Dated source-control layer · 2026-09-27</p>
+        <h2 class="font-serif-display text-xl mt-1">Current public market / utility source context</h2>
+        <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">A dated control-plane view of what the principal public connection systems currently publish and what remains source-limited. This does not substitute for row-level records.</p>
+      </div>
+      <a class="text-xs link-underline" href="data/current_public_market_context_2026-09-27.json" target="_blank" rel="noopener noreferrer">Open source-context JSON</a>
+    </div>
+    <div class="scroll-x mt-5"><table class="w-full text-xs min-w-[1200px]"><thead><tr><th>Source</th><th>Current status</th><th>What is public now</th><th>Open source boundary</th></tr></thead><tbody id="currentSourceContextBody"><tr><td colspan="4" class="px-3 py-8 text-center" style="color:var(--ink-faint);">Loading current source context…</td></tr></tbody></table></div>
+  </section>
+
   <!-- ============ PHYSICAL VERIFICATION ============ -->
   <section id="physicalVerificationLayer" class="panel rounded-lg p-5 sm:p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
@@ -2699,6 +2712,15 @@ fetch('data/external/intel_accelerator_enrichment.json?v=1',{cache:'no-store'}).
  var el=document.getElementById('publicEnrichmentCards');
  if(el)el.innerHTML=cards.map(function(x){return '<div class="panel rounded-lg p-2"><div class="mono text-sm">'+escapeHtml(String(x[0]))+'</div><div class="text-[10px] mt-1" style="color:var(--ink-faint);">'+escapeHtml(x[1])+'</div></div>';}).join('');
 }).catch(function(err){var el=document.getElementById('publicEnrichmentMeta');if(el)el.textContent='Public enrichment coverage unavailable: '+err.message;});
+</script>
+<script>
+fetch('data/current_public_market_context_2026-09-27.json?v=1',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('source context unavailable');return r.json();}).then(function(p){
+ var body=document.getElementById('currentSourceContextBody'),rows=p.sources||[];
+ if(body)body.innerHTML=rows.map(function(s){
+   var extra=(s.next_public_release||s.service_request_url)?'See source page for release/tool timing.':'Source-specific row-level disclosure rules apply.';
+   return '<tr><td><strong>'+escapeHtml(s.id)+'</strong><div class="small faint">'+escapeHtml(s.authority)+'</div></td><td><span class="status '+(String(s.status).includes('CURRENT')||String(s.status).includes('ACTIVE')||String(s.status).includes('MONTHLY')?'good':'warn')+'">'+escapeHtml(s.status)+'</span></td><td class="small">'+escapeHtml(s.current_context)+'</td><td class="small">'+escapeHtml(extra)+' <a target="_blank" rel="noopener" href="'+escapeHtml(s.official_url||'#')+'">Source</a></td></tr>';
+ }).join('');
+}).catch(function(e){var b=document.getElementById('currentSourceContextBody');if(b)b.innerHTML='<tr><td colspan="4" class="px-3 py-6" style="color:var(--amber);">Current source context unavailable: '+escapeHtml(e.message)+'</td></tr>';});
 </script>
 </body>
 </html>
