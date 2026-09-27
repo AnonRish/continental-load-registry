@@ -17,7 +17,8 @@ permissions:
   attestations: write
 jobs:
   verify-and-attest:
-    if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
+    # Accept bot commits produced by the upstream Track 3 pipeline, but do not self-trigger from this workflow's own verification commit.
+    if: github.event_name != 'push' || github.actor != 'github-actions[bot]' || !startsWith(github.event.head_commit.message, 'Refresh Track 3 verification results')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
