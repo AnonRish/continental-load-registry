@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:37:30Z",
+  "generated_at_utc": "2026-09-27T07:22:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 157,
-    "sites_with_findings": 59,
+    "record_count": 170,
+    "sites_with_findings": 61,
     "disposition_counts": {
       "PUBLIC_SOURCE_CAPTURED": 1,
       "NO_PUBLIC_VALUE_CAPTURED": 1
@@ -228,7 +228,7 @@
       "epoch_id": "EPOCH-5de9a1c70a3e2275",
       "field": "construction_companies",
       "value": "Hensel Phelps",
-      "relationship": "construction partner",
+      "relationship": "project construction partner",
       "source": "Meta Data Centers",
       "source_urls": [
         "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
@@ -236,14 +236,14 @@
       "publication_date": "2026-09-03",
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "evidence_id": "EVID-PWEB-4f05098c516a3bff1c3a"
+      "evidence_id": "EVID-PWEB-b39753efcc637ce40df6"
     },
     {
       "site_name": "Meta Kuna",
       "epoch_id": "EPOCH-5de9a1c70a3e2275",
       "field": "energy_companies",
       "value": "Idaho Power",
-      "relationship": "electric utility / energy planning",
+      "relationship": "electricity provider / project energy partner",
       "source": "Meta Data Centers",
       "source_urls": [
         "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
@@ -251,7 +251,7 @@
       "publication_date": "2026-09-03",
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "evidence_id": "EVID-PWEB-fbfd355e9cbde2c8d187"
+      "evidence_id": "EVID-PWEB-3e1f152d00937d569de9"
     },
     {
       "site_name": "Meta Gallatin",
@@ -2545,6 +2545,202 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "evidence_id": "EVID-PWEB-dcab430bdfd39c7c3d6a"
+    },
+    {
+      "site_name": "Microsoft Fairwater Atlanta",
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "field": "energy_companies",
+      "value": "Georgia Power",
+      "relationship": "site-level energy partner",
+      "source": "Intel Accelerator / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained public enrichment identifies Georgia Power as site-level energy partner and Southern Company as public grid operator.",
+      "evidence_id": "EVID-PWEB-a064e1f6b86fcbdcfee6"
+    },
+    {
+      "site_name": "Microsoft Fairwater Atlanta",
+      "epoch_id": "EPOCH-d9050b43689ed24c",
+      "field": "project",
+      "value": "Microsoft AI WAN",
+      "relationship": "public program/project identity",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-80a26af30358ed6da35c"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "energy_companies",
+      "value": "Indiana Michigan Power (AEP)",
+      "relationship": "site-level utility relationship for Project Rainier",
+      "source": "Intel Accelerator / Compute Atlas",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-879609a8313f5f511a25"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "project",
+      "value": "Project Rainier",
+      "relationship": "public program identity",
+      "source": "Intel Accelerator",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-30dbba1435ed6df94fd8"
+    },
+    {
+      "site_name": "Amazon Madison Mega Site",
+      "epoch_id": "EPOCH-0d287943c30fe239",
+      "field": "owner",
+      "value": "Amazon Data Services Inc.",
+      "relationship": "facility entity",
+      "source": "Mississippi Department of Environmental Quality",
+      "source_urls": [
+        "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+      ],
+      "publication_date": "2026-09-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-d7a5ccf2b9c6a2e74dc3"
+    },
+    {
+      "site_name": "Amazon Madison Mega Site",
+      "epoch_id": "EPOCH-0d287943c30fe239",
+      "field": "address",
+      "value": "1978 Highway 22, Canton, MS 39046",
+      "relationship": "facility address",
+      "source": "Mississippi Department of Environmental Quality",
+      "source_urls": [
+        "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+      ],
+      "publication_date": "2026-09-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-512f573b6e7da4251a25"
+    },
+    {
+      "site_name": "Amazon Madison Mega Site",
+      "epoch_id": "EPOCH-0d287943c30fe239",
+      "field": "regulatory",
+      "value": "Air-construction permit 1720-00098; public-comment modification dated 2026-08-24",
+      "relationship": "Mississippi environmental permit record",
+      "source": "Mississippi Department of Environmental Quality",
+      "source_urls": [
+        "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+      ],
+      "publication_date": "2026-08-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-28603ca9e8de988b37f7"
+    },
+    {
+      "site_name": "QTS Richmond 1",
+      "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+      "field": "capacity_record",
+      "value": "238 MW; 207-acre campus; six planned facilities; 2.3M sq ft current space",
+      "relationship": "official facility capacity/site-plan disclosure",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-1/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-c7308ef496571866a147"
+    },
+    {
+      "site_name": "QTS Richmond 2",
+      "epoch_id": "EPOCH-052be5b551cd099b",
+      "field": "capacity_record",
+      "value": "180 MW planned on completion; 85 acres; five planned buildings",
+      "relationship": "official facility capacity/site-plan disclosure",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-2/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-b78d6df8303a9f51d4e5"
+    },
+    {
+      "site_name": "QTS Richmond 3",
+      "epoch_id": "EPOCH-02484a65a5dac16d",
+      "field": "capacity_record",
+      "value": "240 MW planned on completion; 221 acres; five Freedom Design buildings",
+      "relationship": "official facility capacity/site-plan disclosure",
+      "source": "QTS",
+      "source_urls": [
+        "https://q.com/data-centers/richmond-3/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-8578a29bcda4eaf2c6a1"
+    },
+    {
+      "site_name": "Meta Rosemount",
+      "epoch_id": "EPOCH-8358e445402d91c2",
+      "field": "energy_companies",
+      "value": "Xcel Energy",
+      "relationship": "serving utility / electricity provider",
+      "source": "Xcel Energy",
+      "source_urls": [
+        "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
+      ],
+      "publication_date": "2025-04-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-ba9548c5fd291ccfe687"
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "energy_companies",
+      "value": "Entergy Louisiana",
+      "relationship": "serving utility",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-b2b91cdfbbff8d4fc343"
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "regulatory",
+      "value": "LPSC docket records associated with Meta Hyperion / Richland Parish data-center expansion",
+      "relationship": "utility/regulatory proceedings",
+      "source": "DEPLOY",
+      "source_urls": [
+        "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-616a94772da014cad2d0"
     }
   ]
 }
