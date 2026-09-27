@@ -13,8 +13,8 @@ on:
     - cron: '31 3 * * 0'
 permissions: {contents: write}
 concurrency:
-  group: facility-provenance-main
-  cancel-in-progress: true
+  group: track3-canonical-writers-main
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
