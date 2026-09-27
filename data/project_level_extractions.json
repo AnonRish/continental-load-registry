@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_on": "2026-09-26",
   "title": "Project-level public large-load and data-center evidence",
-  "record_count": 241,
+  "record_count": 243,
   "purpose": "Move beyond aggregate source units into individually identifiable projects, permits and named utility-customer records whenever the public evidence exposes a discrete entity, location or regulatory record.",
   "accounting": "These records are project/evidence records, not additions to the core 1,558-row table. Multiple dated capacity claims within one project are preserved separately. No MW is inferred from a different unit or missing utility disclosure.",
   "sources": [
@@ -6698,6 +6698,59 @@
       "capture_date": "2026-09-26",
       "source_scope": "SUE Data Centers public facility record",
       "notes": "The source reports a 50 MW plan and says utility connections were approved; it also states VoltCore is the EPC/engineering contractor rather than site owner/operator. This is secondary evidence and remains outside the core queue total."
+    },
+    {
+      "id": "ENTERGY-META-RICHLAND-PARISH-2025",
+      "evidence_type": "utility_named_data_center_service_project",
+      "project_name": "Meta Northeast Louisiana Data Center",
+      "customer_or_developer": "Meta Platforms, Inc.",
+      "utility_or_provider": "Entergy Louisiana",
+      "jurisdiction": "Louisiana, US",
+      "location": "Richland Parish, LA",
+      "county_or_zone": "Richland Parish",
+      "status": "under construction / development",
+      "planned_in_service": "construction through 2030",
+      "capacity_claims": [
+        {
+          "value_mw": 1500,
+          "unit": "MW",
+          "raw_value": "1,500-megawatt data center",
+          "qualifier": "Entergy description of data-center scale",
+          "source_url": "https://www.entergy.com/news/meta-selects-northeast-louisiana-as-site-10-billion-data-center",
+          "capture_date": "2026-09-26"
+        }
+      ],
+      "source_authority": "utility primary source",
+      "source_url": "https://www.entergy.com/news/meta-selects-northeast-louisiana-as-site-10-billion-data-center",
+      "capture_date": "2026-09-26",
+      "source_scope": "Entergy Louisiana project announcement",
+      "notes": "Entergy publicly describes Meta's Northeast Louisiana project as a 1,500 MW data center and says Entergy will add generation to meet growing demand including the data center. No separate queue ID is inferred."
+    },
+    {
+      "id": "ENTERGY-AWS-MADISON-COUNTY-MS-2025",
+      "evidence_type": "utility_named_data_center_service_project",
+      "project_name": "Amazon Web Services Madison County Data Center",
+      "customer_or_developer": "Amazon Web Services",
+      "utility_or_provider": "Entergy Mississippi",
+      "jurisdiction": "Mississippi, US",
+      "location": "Madison County, MS",
+      "county_or_zone": "Madison County",
+      "status": "expansion / development",
+      "capacity_claims": [
+        {
+          "value_mw": 650,
+          "unit": "MW",
+          "raw_value": "650-MW data center project",
+          "qualifier": "Entergy description of project scale",
+          "source_url": "https://www.entergy.com/blog/entergy-welcomed-energy-industry-leaders-new-orleans",
+          "capture_date": "2026-09-26"
+        }
+      ],
+      "source_authority": "utility primary source",
+      "source_url": "https://www.entergy.com/blog/entergy-welcomed-energy-industry-leaders-new-orleans",
+      "capture_date": "2026-09-26",
+      "source_scope": "Entergy corporate/EEI growth article",
+      "notes": "Entergy describes the AWS Madison County project as a 650 MW data center project. This is a utility primary-source statement but the article does not provide a public queue/POI identifier; no such identifier is inferred."
     }
   ]
 }
