@@ -1,30 +1,30 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:22:30Z",
+  "generated_at_utc": "2026-09-27T06:26:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 134,
-    "sites_with_findings": 56,
+    "record_count": 137,
+    "sites_with_findings": 57,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 133,
+      "PUBLIC_SOURCE_CAPTURED": 136,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
       "energy_companies": 42,
       "project": 24,
-      "investment": 12,
+      "investment": 14,
       "owner": 8,
-      "investors": 5,
-      "construction_companies": 13,
+      "investors": 4,
+      "construction_companies": 11,
       "cooling": 8,
       "chip_quantities": 3,
       "operational_status": 3,
       "address": 5,
-      "service_or_contract": 4,
+      "service_or_contract": 5,
       "users": 3,
-      "regulatory": 2,
-      "capacity_record": 2
+      "regulatory": 3,
+      "capacity_record": 4
     }
   },
   "semantics": {
@@ -1453,70 +1453,6 @@
       "evidence_id": "EVID-PWEB-918a8da4fcfca0e02440"
     },
     {
-      "site_name": "OpenAI Stargate Michigan",
-      "epoch_id": "EPOCH-145ed5861bdf2982",
-      "field": "construction_companies",
-      "value": "Related Digital",
-      "relationship": "campus developer",
-      "source": "OpenAI",
-      "source_urls": [
-        "https://openai.com/index/expanding-stargate-to-michigan/"
-      ],
-      "publication_date": "2025-10-01",
-      "capture_date": "2026-09-27",
-      "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "evidence_id": "EVID-PWEB-c49c4d031477c8d91c3a"
-    },
-    {
-      "site_name": "OpenAI Stargate Michigan",
-      "epoch_id": "EPOCH-145ed5861bdf2982",
-      "field": "energy_companies",
-      "value": "DTE Energy",
-      "relationship": "serving utility / power partner",
-      "source": "OpenAI",
-      "source_urls": [
-        "https://openai.com/index/expanding-stargate-to-michigan/"
-      ],
-      "publication_date": "2025-10-01",
-      "capture_date": "2026-09-27",
-      "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "evidence_id": "EVID-PWEB-07885dc5a05cbd2d9518"
-    },
-    {
-      "site_name": "OpenAI Stargate Milam",
-      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
-      "field": "construction_companies",
-      "value": "SB Energy",
-      "relationship": "build-and-operate partner",
-      "source": "OpenAI",
-      "source_urls": [
-        "https://openai.com/index/stargate-sb-energy-partnership/"
-      ],
-      "publication_date": "2025-12-01",
-      "capture_date": "2026-09-27",
-      "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "evidence_id": "EVID-PWEB-7a82b887908451d91c3a"
-    },
-    {
-      "site_name": "OpenAI Stargate Milam",
-      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
-      "field": "investors",
-      "value": [
-        "OpenAI",
-        "SoftBank Group"
-      ],
-      "relationship": "investment into SB Energy supporting site development",
-      "source": "OpenAI",
-      "source_urls": [
-        "https://openai.com/index/stargate-sb-energy-partnership/"
-      ],
-      "publication_date": "2025-12-01",
-      "capture_date": "2026-09-27",
-      "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "scope_note": "OpenAI says each invested $500M in SB Energy; this is platform investment rather than a claim of direct project equity.",
-      "evidence_id": "EVID-PWEB-113273a26f54e20eb433"
-    },
-    {
       "site_name": "OpenAI Stargate Wisconsin",
       "epoch_id": "EPOCH-78e7d8474fbdf968",
       "field": "energy_companies",
@@ -1813,21 +1749,6 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Public development financing context; not project equity investment.",
       "evidence_id": "EVID-PWEB-646cdad7d66b0c235056"
-    },
-    {
-      "site_name": "Google Lincoln",
-      "epoch_id": "EPOCH-e06bc7faa8b1b187",
-      "field": "project",
-      "value": "Google Lincoln data center",
-      "relationship": "official state project identity",
-      "source": "Google",
-      "source_urls": [
-        "https://www.datacenters.google/locations/nebraska/"
-      ],
-      "publication_date": "2026-09-27",
-      "capture_date": "2026-09-27",
-      "disposition": "PUBLIC_SOURCE_CAPTURED",
-      "evidence_id": "EVID-PWEB-e9091efda97e84c00525"
     },
     {
       "site_name": "Google Lincoln",
@@ -2180,6 +2101,129 @@
       "capture_date": "2026-09-27",
       "disposition": "NO_PUBLIC_VALUE_CAPTURED",
       "scope_note": "Retained only as an explicit searched field state; no energy company is inferred."
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "project",
+      "value": "Hyperion / Meta Richland Parish Data Center",
+      "relationship": "current project identity / alias family",
+      "source": "Meta / Louisiana public project record",
+      "source_urls": [
+        "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/",
+        "https://louisianaaihub.com/projects/meta-hyperion"
+      ],
+      "publication_date": "2026-07-13",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Public records identify Hyperion, Meta Richland Parish and the Richland Parish data-center campus as the same tracked project family; separate LLC names in utility proceedings are not automatically collapsed."
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "energy_companies",
+      "value": "Entergy Louisiana",
+      "relationship": "serving utility / power and transmission counterparty",
+      "source": "Louisiana AI Hub public record summary",
+      "source_urls": [
+        "https://louisianaaihub.com/projects/meta-hyperion"
+      ],
+      "publication_date": "2026-07-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "regulatory",
+      "value": [
+        "LPSC U-37425 — Phase 1 generation and transmission service package (Laidley LLC)",
+        "LPSC U-37882 — Project Evest expansion certification"
+      ],
+      "relationship": "utility / regulatory dockets",
+      "source": "Louisiana AI Hub public record summary",
+      "source_urls": [
+        "https://louisianaaihub.com/projects/meta-hyperion"
+      ],
+      "publication_date": "2026-07-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The public profile explicitly keeps Laidley LLC and Project Evest/Evest LLC as source-specific proceedings rather than assuming they are legally identical to Hyperion."
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "capacity_record",
+      "value": "5 GW planned compute/build-out capacity",
+      "relationship": "company-announced current campus scale",
+      "source": "Datacenter Dynamics / Meta public announcement",
+      "source_urls": [
+        "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/"
+      ],
+      "publication_date": "2026-07-13",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Planned compute/build-out scale, not measured electrical load, approved interconnection, generation capacity or energized capacity."
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "investment",
+      "value": "More than $50B current announced project scope; more than $1B local infrastructure investment to date",
+      "relationship": "owner/project capital disclosure",
+      "source": "Datacenter Dynamics / Louisiana AI Hub",
+      "source_urls": [
+        "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/",
+        "https://louisianaaihub.com/projects/meta-hyperion"
+      ],
+      "publication_date": "2026-07-13",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Current announced project scope and separately reported local infrastructure investment; not added together and not treated as external financing."
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "service_or_contract",
+      "value": "Phase 1 generation and transmission service package approved under LPSC docket U-37425; Project Evest expansion package U-37882 remains a separate proceeding",
+      "relationship": "utility service agreement context",
+      "source": "Louisiana AI Hub public record summary",
+      "source_urls": [
+        "https://louisianaaihub.com/projects/meta-hyperion"
+      ],
+      "publication_date": "2026-07-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED"
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "investment",
+      "value": "Reported $600M investment",
+      "relationship": "facility investment",
+      "source": "SUE Data Centers",
+      "source_urls": [
+        "https://suedatacenters.org/data-centers/google-new-albany-oh"
+      ],
+      "publication_date": "2026-07-26",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Third-party reported facility investment; not a Google-disclosed project capex figure in the cited page."
+    },
+    {
+      "site_name": "Google New Albany",
+      "epoch_id": "EPOCH-5b353d56a567a70b",
+      "field": "capacity_record",
+      "value": "600 MW campus utility-feed figure reported by Data Center Search",
+      "relationship": "third-party facility capacity context",
+      "source": "Data Center Search",
+      "source_urls": [
+        "https://datacentersearch.org/sites/google-new-albany"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Third-party modeled/compiled campus figure; not treated as official utility-deliverable capacity or measured IT load."
     }
   ]
 }
