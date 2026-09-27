@@ -27,6 +27,7 @@ from typing import Any
 import numpy as np
 import requests
 import rasterio
+import planetary_computer
 from rasterio.windows import Window
 from rasterio.warp import transform as warp_transform
 
@@ -52,10 +53,12 @@ SESSION.headers.update({
 RANGE_START = "2021-01-01T00:00:00Z"
 RANGE_END = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+# Planetary Computer exposes public STAC metadata and signed HTTPS COG assets.
+# Landsat C2 L2 is the collection that carries both reflectance and TIRS surface-temperature assets.
 COLLECTIONS = {
-    "optical": ("cdse", "sentinel-2-l2a"),
-    "sar": ("cdse", "sentinel-1-grd"),
-    "tir": ("usgs", "landsat-c2l2-st"),
+    "optical": ("mpc", "sentinel-2-l2a"),
+    "sar": ("mpc", "sentinel-1-grd"),
+    "tir": ("mpc", "landsat-c2-l2"),
 }
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -105,28 +108,34 @@ def bbox_for_site(lat: float, lon: float, radius_deg: float = 0.02) -> list[floa
         min(90.0, lat + radius_deg),
     ]
 
-def search_stac(kind: str, collection: str, bbox: list[float], limit: int = 80) -> list[dict[str, Any]]:
+def search_stac(kind: str, collection: str, bbox: list[float], limit: int = 60) -> list[dict[str, Any]]:
     payload = {
         "collections": [collection],
         "bbox": bbox,
         "datetime": f"{RANGE_START}/{RANGE_END}",
         "limit": limit,
     }
-    endpoint = CDSE_STAC if kind == "cdse" else USGS_STAC
-    primary = list(post_json(endpoint, payload).get("features", []))
-    if primary:
-        return primary
-
-    fallback_collection = {
-        "sentinel-2-l2a": "sentinel-2-l2a",
-        "sentinel-1-grd": "sentinel-1-grd",
-        "landsat-c2l2-st": "landsat-c2-l2",
-    }.get(collection)
-    if not fallback_collection:
-        return primary
-    fallback_payload = dict(payload)
-    fallback_payload["collections"] = [fallback_collection]
-    return list(post_json(MPC_STAC, fallback_payload).get("features", []))
+    # Use Planetary Computer first because its STAC items expose public HTTPS COG assets
+    # that can be read by rasterio after SAS signing. Keep the agency-native catalogs as
+    # fallbacks for discovery only; source-backed metrics are computed from readable COGs.
+    attempts = [
+        (MPC_STAC, payload),
+    ]
+    if kind == "cdse":
+        attempts.append((CDSE_STAC, payload))
+    elif kind == "usgs":
+        attempts.append((USGS_STAC, payload))
+    errors: list[str] = []
+    for endpoint, request_payload in attempts:
+        try:
+            rows = list(post_json(endpoint, request_payload).get("features", []))
+            if rows:
+                return rows
+        except Exception as exc:
+            errors.append(f"{endpoint}: {exc}")
+    if errors:
+        raise RuntimeError(" ; ".join(errors))
+    return []
 
 def best_temporal_items(items: list[dict[str, Any]], count: int = 3) -> list[dict[str, Any]]:
     unique = {str(x.get("id")): x for x in items if x.get("id")}
@@ -317,28 +326,36 @@ def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str,
         )
     return metrics
 
-def geocode(address: str) -> dict[str, Any] | None:
-    try:
-        data = get_json(NOMINATIM, {
-            "q": address,
-            "format": "jsonv2",
-            "limit": 1,
-            "addressdetails": 1,
-        })
-        if not data:
-            return None
-        hit = data[0]
-        return {
-            "lat": float(hit["lat"]),
-            "lon": float(hit["lon"]),
-            "display_name": hit.get("display_name"),
-            "osm_type": hit.get("osm_type"),
-            "osm_id": hit.get("osm_id"),
-            "country_code": (hit.get("address") or {}).get("country_code"),
-            "geocoder": "OpenStreetMap Nominatim",
-        }
-    except Exception:
-        return None
+def geocode(address: str, name: str | None = None, region: str | None = None, country: str | None = None) -> dict[str, Any] | None:
+    queries = [q for q in [
+        address,
+        ", ".join(x for x in [name, region, country] if x),
+        ", ".join(x for x in [name, country] if x),
+    ] if q]
+    for query in queries:
+        try:
+            data = get_json(NOMINATIM, {
+                "q": query,
+                "format": "jsonv2",
+                "limit": 1,
+                "addressdetails": 1,
+            })
+            if not data:
+                continue
+            hit = data[0]
+            return {
+                "lat": float(hit["lat"]),
+                "lon": float(hit["lon"]),
+                "display_name": hit.get("display_name"),
+                "osm_type": hit.get("osm_type"),
+                "osm_id": hit.get("osm_id"),
+                "country_code": (hit.get("address") or {}).get("country_code"),
+                "geocoder": "OpenStreetMap Nominatim",
+                "geocode_query": query,
+            }
+        except Exception:
+            continue
+    return None
 
 def ensure_coordinates(sites: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     cache = load_json(SITE_COORDS) if SITE_COORDS.exists() else {"records": []}
@@ -364,7 +381,12 @@ def ensure_coordinates(sites: list[dict[str, Any]]) -> dict[str, dict[str, Any]]
         if address not in seen_addresses:
             time.sleep(1.05)
             seen_addresses.add(address)
-        hit = geocode(address)
+        hit = geocode(
+            address,
+            str(site["normalized"].get("name") or "").strip() or None,
+            str(site["normalized"].get("region_inferred_from_address") or site["normalized"].get("state_province") or "").strip() or None,
+            str(site["normalized"].get("country") or "").strip() or None,
+        )
         record = {
             "epoch_id": eid,
             "site_name": site["normalized"].get("name"),
@@ -398,9 +420,29 @@ def process_site(site: dict[str, Any], coord: dict[str, Any], scenes_per_modalit
             output.append({
                 "epoch_id": site["epoch_id"],
                 "site_name": site["normalized"].get("name"),
+                "address": site["normalized"].get("address"),
+                "latitude": lat,
+                "longitude": lon,
+                "coordinate_precision": coord.get("precision"),
                 "modality": modality,
                 "status": "SOURCE_QUERY_FAILED",
                 "error": str(exc),
+            })
+            continue
+        if not chosen:
+            output.append({
+                "epoch_id": site["epoch_id"],
+                "site_name": site["normalized"].get("name"),
+                "address": site["normalized"].get("address"),
+                "latitude": lat,
+                "longitude": lon,
+                "coordinate_precision": coord.get("precision"),
+                "modality": modality,
+                "sensor": collection,
+                "status": "NO_SCENES_FOUND",
+                "source_catalog": MPC_STAC if kind == "mpc" else (CDSE_STAC if kind == "cdse" else USGS_STAC),
+                "source_collection": collection,
+                "search_bbox": bbox,
             })
             continue
         previous_metrics: dict[str, Any] | None = None
@@ -427,12 +469,12 @@ def process_site(site: dict[str, Any], coord: dict[str, Any], scenes_per_modalit
                     "scene_id": item.get("id"),
                     "observed_on": parse_dt(item).date().isoformat(),
                     "stac_item_url": next((x.get("href") for x in item.get("links", []) if x.get("rel") == "self"), None),
-                    "source_catalog": CDSE_STAC if kind == "cdse" else USGS_STAC,
+                    "source_catalog": MPC_STAC if kind == "mpc" else (CDSE_STAC if kind == "cdse" else USGS_STAC),
                     "source_collection": collection,
                     "cloud_cover_pct": item.get("properties", {}).get("eo:cloud_cover"),
                     "metrics": metrics,
                     "comparison_to_previous": {},
-                    "status": "INGESTED_DERIVED" if any(x.get("status") == "INGESTED_DERIVED" for x in observations) else "SOURCE_AVAILABLE_NOT_INGESTED",
+                    "status": "INGESTED_DERIVED",
                     "quality_flag": "RAW_COG_WINDOW_PROCESSED",
                     "processing_version": "physical-verification-v1",
                 }
@@ -455,7 +497,7 @@ def process_site(site: dict[str, Any], coord: dict[str, Any], scenes_per_modalit
                     "scene_id": item.get("id"),
                     "observed_on": parse_dt(item).date().isoformat(),
                     "stac_item_url": next((x.get("href") for x in item.get("links", []) if x.get("rel") == "self"), None),
-                    "source_catalog": CDSE_STAC if kind == "cdse" else USGS_STAC,
+                    "source_catalog": MPC_STAC if kind == "mpc" else (CDSE_STAC if kind == "cdse" else USGS_STAC),
                     "source_collection": collection,
                     "status": "SCENE_READ_FAILED",
                     "error": str(exc),
