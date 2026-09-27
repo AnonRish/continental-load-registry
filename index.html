@@ -3272,16 +3272,19 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
   const nums={
     deckSites:'data/track3/summary.json',deckEvidence:'data/track3/summary.json',deckPhysical:'data/track3/summary.json'
   };
-  fetch('data/track3/summary.json').then(r=>r.json()).then(s=>{
+  fetch('data/track3/summary.json').then(r=>r.json()).then(async s=>{
     if(document.getElementById('deckSites')) document.getElementById('deckSites').textContent=s.epoch_site_count ?? 93;
-    if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=
-      s.track3_evidence_record_count ?? s.evidence_record_count ?? 396;
     if(document.getElementById('deckPhysical')) document.getElementById('deckPhysical').textContent=s.remote_sensing_derived_observation_count ?? 0;
+    try{
+      const e=await fetch('data/track3/evidence_records.json').then(r=>r.json());
+      const n=Array.isArray(e)?e.length:(e.records?.length??e.evidence?.length??0);
+      if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=n.toLocaleString();
+    }catch{}
   }).catch(()=>{});
   fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
-    const broad=s.broader_known_total_gw ?? s.broader_scope_total_gw ?? 397.775;
-    document.getElementById('deckRecords').textContent=(s.broader_known_record_count ?? 1641).toLocaleString();
-    document.getElementById('deckGW').textContent=Number(broad).toFixed(1);
+    const broad=s.expanded_known_scope ?? {};
+    document.getElementById('deckRecords').textContent=Number(broad.records ?? 1641).toLocaleString();
+    document.getElementById('deckGW').textContent=Number(broad.capacity_gw ?? 397.775).toFixed(1);
   }).catch(()=>{});
 })();
 </script>
