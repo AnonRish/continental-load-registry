@@ -126,16 +126,16 @@ jobs:
           assert d["expanded_known_scope"]["capacity_gw"] == 397.775
           assert d["project_level_extractions"]["records"] == 271
           assert d["project_level_map"]["records"] == 271
-          assert d["project_level_map"]["mapped_records"] == 252
-          assert d["supplemental_evidence_units"]["records"] == 58
+          assert d["project_level_map"]["mapped_records"] == 271
+          assert d["supplemental_evidence_units"]["records"] == 61
           assert d["supplemental_aggregate_map"]["records"] == 63
           assert d["supplemental_aggregate_map"]["mapped_records"] == 63
           assert d["caiso_historical_cluster_series"]["records"] == 435
           assert d["caiso_historical_cluster_series"]["capacity_gw"] == 121.204
 
           supplemental = json.loads((root / "supplemental_large_load_evidence.json").read_text(encoding="utf-8"))
-          assert len(supplemental["records"]) == 58
-          assert supplemental["record_count"] == 58
+          assert len(supplemental["records"]) == 61
+          assert supplemental["record_count"] == 61
           supp_ids = [r["id"] for r in supplemental["records"]]
           assert len(supp_ids) == len(set(supp_ids))
 
@@ -176,8 +176,8 @@ jobs:
           assert len(manifest["markets"]) == 10
           g = manifest["global_layers"]
           assert g["project_level_extractions"]["records"] == 271
-          assert g["project_level_extractions"]["mapped_records"] == 252
-          assert g["supplemental_evidence_units"]["records"] == 58
+          assert g["project_level_extractions"]["mapped_records"] == 271
+          assert g["supplemental_evidence_units"]["records"] == 61
           assert g["supplemental_aggregate_map"]["records"] == 63
           assert g["supplemental_aggregate_map"]["mapped_records"] == 63
 
@@ -190,10 +190,10 @@ jobs:
           assert len(map_manifest["layers"]) == 12
           layer_by_id = {x["id"]: x for x in map_manifest["layers"]}
           assert layer_by_id["PROJECT_LEVEL"]["records"] == 271
-          assert layer_by_id["PROJECT_LEVEL"]["mapped_records"] == 252
+          assert layer_by_id["PROJECT_LEVEL"]["mapped_records"] == 271
           assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["records"] == 63
           assert layer_by_id["SUPPLEMENTAL_AGGREGATES"]["mapped_records"] == 63
-          assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["records"] == 58
+          assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["records"] == 61
           assert layer_by_id["SUPPLEMENTAL_EVIDENCE"]["mapped_records"] is None
           assert layer_by_id["EPOCH_AI"]["records"] == 93
           assert layer_by_id["CONNECTION_TARGETS"]["records"] == 93
@@ -206,7 +206,7 @@ jobs:
           project_csv = list(csv.DictReader((root / "project_level_extractions.csv").open("r", encoding="utf-8", newline="")))
           assert len(project_csv) == 271
           supp_csv = list(csv.DictReader((root / "supplemental_large_load_evidence.csv").open("r", encoding="utf-8", newline="")))
-          assert len(supp_csv) == 58
+          assert len(supp_csv) == 61
           miso_csv = list(csv.DictReader((root / "miso_unresolved_large_loads.csv").open("r", encoding="utf-8", newline="")))
           assert len(miso_csv) == 153
           manifest_csv = list(csv.DictReader((root / "market_universe_manifest.csv").open("r", encoding="utf-8", newline="")))
@@ -259,10 +259,10 @@ jobs:
           assert "Browse all 241 extracted project-level records" in html
           assert 'placeholder="Search 241 project records"' in html
           assert re.search(r'<p class="mono text-xl">250</p><p class="text-xs mt-1" style="color:var\(--ink-faint\);">Project-level records', html)
-          assert "The project-level layer has grown to **253 records**" in readme
-          assert "252 mapped project records" in readme
+          assert "The project-level layer has grown to **271 records**" in readme
+          assert "271 mapped project records" in readme
           assert "data/map_layer_manifest.json" in readme or "map layer manifest" in readme.lower()
-          assert "The supplemental evidence file now contains **58 source/evidence units**" in readme
+          assert "The supplemental evidence file now contains **61 source/evidence units**" in readme
           print("PASS: website / README project universe references")
 
       - name: Validate inline JavaScript
