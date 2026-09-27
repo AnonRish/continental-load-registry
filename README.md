@@ -177,9 +177,35 @@ The project-level dataset now includes **60 BPA large-load request records** wit
 
 The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
 
-The project-level layer has grown to **250 records** and 249 of the 250 project-level records have map geometry in `data/project_level_map.json`. A separate `data/supplemental_aggregate_map.json` adds **62 geographic footprints** for utility/regulatory aggregates; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
+The project-level layer has grown to **250 records**, with **249 mapped project records**. The only intentionally unlocated project-level record is the **Woostor LLC Alabama Power contract**, because the public contract evidence reviewed does not identify a site. A separate `data/supplemental_aggregate_map.json` adds **62 geographic evidence footprints**; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
 
-The project-level layer has grown to **250 records**: 33 Virginia DEQ permit identities, 60 BPA large-load request records, 28 AESO data-load projects, 12 NYISO load-project site records, six current IESO load applications, eight AEP named projects, two EEI-listed projects, two ISO-NE forecast project records, and three additional named utility-service/contract/distribution records. The AESO 28 rows now have project IDs, project names, planning-area/town identities and public DTS/contract-capacity values; the commercial customer remains undisclosed in the public source and is not guessed.
+The 250 project records have one canonical `evidence_type` each. Current counts are:
+
+- `environmental_permit_record`: 33
+- `named_utility_load_project`: 8
+- `named_large_load_project_from_industry_list`: 2
+- `named_utility_contract_project`: 1
+- `named_utility_service_project`: 1
+- `named_distribution_connection_project`: 1
+- `aeso_data_load_project_record`: 28
+- `ieso_load_application_record`: 6
+- `nyiso_load_project_site_record`: 12
+- `secondary_large_load_request_record`: 60
+- `iso_ne_forecast_large_load_project`: 2
+- `utility_data_center_forecast_project_record`: 28
+- `utility_data_center_service_project`: 9
+- `nyiso_gold_book_large_load_record`: 31
+- `utility_named_data_center_project`: 1
+- `caiso_large_load_interconnection_project`: 14
+- `utility_named_data_center_service_project`: 5
+- `utility_service_project_secondary_capacity`: 3
+- `utility_data_center_service_area_record`: 1
+- `utility_named_large_load_transmission_project`: 1
+- `utility_large_load_contract_record`: 3
+
+Those counts sum to exactly 250. They are evidence-source classifications, not facility categories. The canonical JSON record and its cited sources remain authoritative for every individual record.
+
+The interactive map overlays **249 mapped project-level records** and separately represents the unlocated Woostor contract through a labeled Alabama regional evidence footprint. `data/map_layer_manifest.json` is the machine-readable inventory of every map overlay and its geometry/accounting treatment.
 
 PJM large-load history is cataloged in `data/pjm_large_load_submission_history.json` with **28 public 2025–2026 LAS material entries**, preserving the utility submission/document trail without treating documents as facility rows.
 
