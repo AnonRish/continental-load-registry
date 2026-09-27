@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Deterministically rebuild Track 3 detection, absence testing and verification results."""
+"""Deterministically rebuild Track 3 detection, absence testing and verification results.
+
+CI rebuild trigger: source-driven verification pipeline.
+"""
 from __future__ import annotations
 import json, os, re
 from datetime import datetime, timezone
