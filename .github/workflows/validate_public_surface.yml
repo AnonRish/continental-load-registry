@@ -256,7 +256,7 @@ jobs:
           assert 'placeholder="Search 241 project records"' in html
           assert re.search(r'<p class="mono text-xl">250</p><p class="text-xs mt-1" style="color:var\(--ink-faint\);">Project-level records', html)
           assert "The project-level layer has grown to **253 records**" in readme
-          assert "all 241 are mapped" in readme or "249" in readme
+          assert "252 mapped project records" in readme
           assert "data/map_layer_manifest.json" in readme or "map layer manifest" in readme.lower()
           assert "The supplemental evidence file now contains **58 source/evidence units**" in readme
           print("PASS: website / README project universe references")
