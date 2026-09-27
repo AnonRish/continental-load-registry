@@ -88,90 +88,6 @@
       ]
     },
     {
-      "case_id": "NEXT-NYISO-1743",
-      "queue_id": "1743",
-      "rto": "NYISO",
-      "project_name": "St. Lawrence Infrastructure 2",
-      "capacity_mw": 1935,
-      "public_load_classification": "Load",
-      "geographic_context": "St. Lawrence County / Moses Massena POI",
-      "current_identity_gap": "Physical campus identity is not established from queue record alone",
-      "current_physical_gap": "No defensible facility coordinate retained",
-      "novelty_boundary": "Secondary public sources already associate the project with data-center/AI development; closure target is the physical/entity/infrastructure chain.",
-      "source_ladder": [
-        {
-          "kind": "nyiso_primary",
-          "url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
-          "status": "PUBLISHER_SNAPSHOT"
-        },
-        {
-          "kind": "queue_mirror",
-          "url": "https://www.interconnection.fyi/project/nyiso-1743",
-          "status": "CURRENT_PUBLIC_RECORD"
-        },
-        {
-          "kind": "regulatory_large_load_report",
-          "url": "https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf",
-          "status": "REGULATORY_CONTEXT"
-        },
-        {
-          "kind": "county_planning",
-          "url": "https://www.stlawco.gov/sites/default/files/Planning/Trainings/LGC%202025%20Planning%20%26%20Zoning%20Presentation%20-%20Final.pdf",
-          "status": "COUNTY_CONTEXT"
-        }
-      ],
-      "next_gates": [
-        "entity_resolution",
-        "physical_targeting",
-        "public_record_corroboration",
-        "transformer_or_service_search",
-        "adjudication"
-      ]
-    },
-    {
-      "case_id": "NEXT-NYISO-1742",
-      "queue_id": "1742",
-      "rto": "NYISO",
-      "project_name": "St. Lawrence Infrastructure 1",
-      "capacity_mw": 860,
-      "public_load_classification": "Load",
-      "geographic_context": "St. Lawrence County / HA-2 POI",
-      "current_identity_gap": "Physical campus identity is not established from queue record alone",
-      "current_physical_gap": "No defensible facility coordinate retained",
-      "novelty_boundary": "Secondary public sources already associate the project with data-center development; closure should test the physical/entity/infrastructure chain rather than count the label as discovery.",
-      "source_ladder": [
-        {
-          "kind": "nyiso_primary",
-          "url": "https://www.nyiso.com/documents/20142/1407078/NYISO-Interconnection-Queue.xlsx",
-          "status": "PUBLISHER_SNAPSHOT"
-        },
-        {
-          "kind": "regulatory_large_load_report",
-          "status": "REGULATORY_CONTEXT"
-        },
-        {
-          "kind": "queue_mirror",
-          "status": "CURRENT_PUBLIC_RECORD"
-        },
-        {
-          "kind": "county_planning",
-          "url": "https://www.stlawco.gov/sites/default/files/Planning/Trainings/LGC%202025%20Planning%20%26%20Zoning%20Presentation%20-%20Final.pdf",
-          "status": "COUNTY_CONTEXT"
-        },
-        {
-          "kind": "utility_transmission_owner",
-          "status": "SEARCH_REQUIRED"
-        }
-      ],
-      "next_gates": [
-        "entity_resolution",
-        "physical_targeting",
-        "public_record_corroboration",
-        "transformer_or_service_search",
-        "adjudication"
-      ]
-    },
-    {
       "case_id": "NEXT-AESO-P3108",
       "queue_id": "P3108",
       "rto": "AESO",
@@ -212,6 +128,83 @@
         "transformer_or_service_search",
         "adjudication"
       ]
+    },
+    {
+      "case_id": "CONTROL-AESO-P2958",
+      "queue_id": "P2958",
+      "rto": "AESO",
+      "project_name": "Hydrogen Canada MPC Load",
+      "capacity_mw": 320,
+      "public_load_classification": "Load",
+      "geographic_context": "Fort Saskatchewan planning context",
+      "current_identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "current_physical_gap": "No defensible facility coordinate retained",
+      "novelty_boundary": "The project is explicitly labeled Industrial Load in the retained AESO record; it is a control case, not an assertion of hidden compute.",
+      "source_ladder": [
+        {
+          "kind": "aeso_primary",
+          "url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
+          "status": "PUBLISHER_SNAPSHOT"
+        },
+        {
+          "kind": "queue_mirror",
+          "status": "CURRENT_PUBLIC_RECORD"
+        },
+        {
+          "kind": "municipal_planning",
+          "status": "SEARCH_REQUIRED"
+        },
+        {
+          "kind": "utility_regulator",
+          "status": "SEARCH_REQUIRED"
+        }
+      ],
+      "next_gates": [
+        "entity_resolution",
+        "physical_targeting",
+        "public_record_corroboration",
+        "transformer_or_service_search",
+        "adjudication"
+      ]
+    },
+    {
+      "case_id": "CONTROL-AESO-P2614",
+      "queue_id": "P2614",
+      "rto": "AESO",
+      "project_name": "Dow Fort Sask. Load",
+      "capacity_mw": 231,
+      "public_load_classification": "Industrial Load",
+      "geographic_context": "Fort Saskatchewan planning context",
+      "current_identity_gap": "Developer/owner not exposed in retained public queue surface",
+      "current_physical_gap": "No defensible facility coordinate retained",
+      "novelty_boundary": "The retained AESO record labels this as Industrial Load; the control tests entity and physical resolution without treating a large load as AI by default.",
+      "source_ladder": [
+        {
+          "kind": "aeso_primary",
+          "url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
+          "status": "PUBLISHER_SNAPSHOT"
+        },
+        {
+          "kind": "queue_mirror",
+          "status": "CURRENT_PUBLIC_RECORD"
+        },
+        {
+          "kind": "municipal_planning",
+          "status": "SEARCH_REQUIRED"
+        },
+        {
+          "kind": "utility_regulator",
+          "status": "SEARCH_REQUIRED"
+        }
+      ],
+      "next_gates": [
+        "entity_resolution",
+        "physical_targeting",
+        "public_record_corroboration",
+        "transformer_or_service_search",
+        "adjudication"
+      ]
     }
-  ]
+  ],
+  "selection_note": "Five-case queue: three primary ambiguity targets plus two explicit industrial-load controls. Controls are included to test classification discipline and avoid treating unresolved large loads as compute by default."
 }
