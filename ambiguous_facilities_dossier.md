@@ -25,12 +25,12 @@ Data sources:
 | RTO | Facilities | GW | Verified |
 |---|---:|---:|---:|
 | AESO | 30 | 20.4 | 0 |
-| NYISO | 38 | 13.5 | 2 |
+| NYISO | 38 | 13.5 | 0 |
 | IESO | 25 | 8.7 | 0 |
 | MISO | 36 | 8.6 | 0 |
 | SPP | 12 | 2.7 | 0 |
 
-**Verified: 2 of 141** (0.9 GW) — 1 × Confirmed Data Center Campus; 1 × Confirmed Industrial Park / Manufacturing.
+**Verified: 0 of 141.** Record confirmed identities in `ground_truth_overrides.json` and re-run.
 
 ## Ranked summary
 
@@ -60,7 +60,7 @@ All facilities, by capacity.
 | 20 | IESO | 2025-848 | 695 | ON · West zone | EPC/PUC TransCo TS - Phase 1A | Under Study | — |
 | 21 | MISO | S1156 | 632 | TX | (no project name published) | Active | — |
 | 22 | MISO | S1161 | 625 | AR | (no project name published) | Active | — |
-| 23 | NYISO | 1765 | 606 | NY · Onondaga | Micron Fab 3 | Active | Confirmed Industrial Park / Manufacturing |
+| 23 | NYISO | 1765 | 606 | NY · Onondaga | Micron Fab 3 | Active | — |
 | 24 | NYISO | 1627 | 576 | NY · Onondaga | Micron Fab 2 | Facilities Study | — |
 | 25 | IESO | 2025-863 | 550 | ON · West zone | Essex Transmission - Phase 1B | Under Study | — |
 | 26 | MISO | S1157 | 534 | TX | (no project name published) | Active | — |
@@ -105,7 +105,7 @@ All facilities, by capacity.
 | 65 | IESO | 2026-871 | 250 | ON · Toronto zone | Creekside Industrial Load | Under Study | — |
 | 66 | NYISO | 1670 | 250 | NY · Niagara | Lake Mariner Data II | Under Study | — |
 | 67 | NYISO | 1732 | 250 | NY · Niagara | Wulf Compute Data Center II | Under Study | — |
-| 68 | NYISO | 1745 | 250 | NY · St Lawrence | Pontoon Bridge Road Data Center | Under Study | Confirmed Data Center Campus |
+| 68 | NYISO | 1745 | 250 | NY · St Lawrence | Pontoon Bridge Road Data Center | Under Study | — |
 | 69 | NYISO | 1752 | 250 | NY · Broome | Broome County Tech Park | Under Study | — |
 | 70 | SPP | GEN-2025-SR10 | 238 | OK · Konawa | (no project name published) | Under Study | — |
 | 71 | NYISO | 1728 | 233 | NY · St Lawrence | Arsenal Data Site 250 | Under Study | — |
@@ -643,16 +643,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 
 ### 23. NYISO 1765 — Micron Fab 3 · 606 MW · NY
 
-> **VERIFIED — Confirmed Industrial Park / Manufacturing**
-> Confirmed by Track 3 closure review on 2026-09-27.
-> Operator: Micron New York Semiconductor Manufacturing LLC
->
-> 1. https://www.micron.com/content/dam/micron/global/public/corporate/us-expansion/new-york/micron-ny-smp-01-dam-jpa-v2.pdf (accessed 2026-09-27)
-> 2. https://www.nist.gov/document/micron-ny-feis-final (accessed 2026-09-27)
-> 3. https://dec.ny.gov/news/environmental-notice-bulletin/2025-11-05/public-notice/town-of-clay-micron-new-york-semiconductor-manufacturing-llc (accessed 2026-09-27)
->
-> Notes: Queue record is named Micron Fab 3 but its applicant field is Eldo Varghese. The bounded conclusion is that the named project maps to Micron's semiconductor manufacturing campus; the applicant-field mismatch remains unresolved.
-
 | | |
 |---|---|
 | Status (as published) | Active |
@@ -660,7 +650,7 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | National Grid - Clay Substation |
 | Location field | county field "Onondaga", New York |
 
-<details><summary>Search leads (facility already verified)</summary>
+**Search leads** (nothing below has been fetched or verified)
 
 | Lead | Query (click to search) |
 |---|---|
@@ -670,8 +660,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Environmental / regulator · Utility-commission / siting filings | [`site:dps.ny.gov ("Micron Fab 3" OR "Eldo Varghese") New York`](https://www.google.com/search?q=site%3Adps.ny.gov+%28%22Micron+Fab+3%22+OR+%22Eldo+Varghese%22%29+New+York) |
 | Substation · Substation / point of interconnection | [`"National Grid - Clay Substation" (substation OR interconnection OR "facilities study" OR "system impact study") New York`](https://www.google.com/search?q=%22National+Grid+-+Clay+Substation%22+%28substation+OR+interconnection+OR+%22facilities+study%22+OR+%22system+impact+study%22%29+New+York) |
 | Substation · RTO / ISO documents | [`site:nyiso.com ("Q#1765" OR Q1765 OR "Queue #1765" OR 1765 OR "Micron Fab 3")`](https://www.google.com/search?q=site%3Anyiso.com+%28%22Q%231765%22+OR+Q1765+OR+%22Queue+%231765%22+OR+1765+OR+%22Micron+Fab+3%22%29) |
-
-</details>
 
 ### 24. NYISO 1627 — Micron Fab 2 · 576 MW · NY
 
@@ -1535,16 +1523,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 
 ### 68. NYISO 1745 — Pontoon Bridge Road Data Center · 250 MW · NY
 
-> **VERIFIED — Confirmed Data Center Campus**
-> Confirmed by Track 3 closure review on 2026-09-27.
-> Operator: American Data Center Partners LLC
->
-> 1. https://suedatacenters.org/data-centers/pontoon-bridge-road-massena-ny (accessed 2026-09-27)
-> 2. https://www.nysrc.org/wp-content/uploads/2026/02/9.1-DER-Report-Feb-2026-for-NYSRC-Exec-Committee-Final-Attachment-9.1.pdf (accessed 2026-09-27)
-> 3. https://www.stlawco.gov/sites/default/files/RealProperty/2026%20Sales/Sales%20for%20Website%201-1-26%20to%203-2-2026.pdf (accessed 2026-09-27)
->
-> Notes: Public sources independently associate the queue project with 466 Pontoon Bridge Road and American Data Center Partners LLC. The site record remains proposed; the classification is not an operational claim.
-
 | | |
 |---|---|
 | Status (as published) | Under Study |
@@ -1552,7 +1530,7 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Point of interconnection | Haverstock-Adirondack 345kV transmission lines |
 | Location field | county field "St Lawrence", New York |
 
-<details><summary>Search leads (facility already verified)</summary>
+**Search leads** (nothing below has been fetched or verified)
 
 | Lead | Query (click to search) |
 |---|---|
@@ -1562,8 +1540,6 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 | Environmental / regulator · Utility-commission / siting filings | [`site:dps.ny.gov ("Pontoon Bridge Road Data Center" OR "American Data Center Partners") New York`](https://www.google.com/search?q=site%3Adps.ny.gov+%28%22Pontoon+Bridge+Road+Data+Center%22+OR+%22American+Data+Center+Partners%22%29+New+York) |
 | Substation · Substation / point of interconnection | [`"Haverstock-Adirondack 345kV transmission lines" (substation OR interconnection OR "facilities study" OR "system impact study") New York`](https://www.google.com/search?q=%22Haverstock-Adirondack+345kV+transmission+lines%22+%28substation+OR+interconnection+OR+%22facilities+study%22+OR+%22system+impact+study%22%29+New+York) |
 | Substation · RTO / ISO documents | [`site:nyiso.com ("Q#1745" OR Q1745 OR "Queue #1745" OR 1745 OR "Pontoon Bridge Road Data Center")`](https://www.google.com/search?q=site%3Anyiso.com+%28%22Q%231745%22+OR+Q1745+OR+%22Queue+%231745%22+OR+1745+OR+%22Pontoon+Bridge+Road+Data+Center%22%29) |
-
-</details>
 
 ### 69. NYISO 1752 — Broome County Tech Park · 250 MW · NY
 
@@ -3023,6 +2999,4 @@ Federal filings: FERC eLibrary <https://elibrary.ferc.gov/> (interconnection agr
 
 ## Overrides audit
 
-- Applied to a facility in this dossier: 2
-- Match a registry record that this run's filter excludes: 0
-- Match nothing in the loaded registry (check the RTO and queue_id): 0
+No overrides were loaded.
