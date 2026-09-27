@@ -4,8 +4,8 @@
   "title": "Project-level map overlay",
   "purpose": "Plot project-level public evidence using public county, zone, town or site-area geography.",
   "accounting": "Supplemental evidence overlay; not additional core queue rows. Map coordinates are display geometry. The source's state field is retained separately and is not silently completed.",
-  "record_count": 249,
-  "mapped_count": 249,
+  "record_count": 252,
+  "mapped_count": 252,
   "records": [
     {
       "id": "VIRGINIA-DEQ-74150-3",
@@ -8528,6 +8528,108 @@
       "source_scope": "Entergy corporate/EEI growth article",
       "capture_date": "2026-09-26",
       "notes": "Entergy describes the AWS Madison County project as a 650 MW data center project. This is a utility primary-source statement but the article does not provide a public queue/POI identifier; no such identifier is inferred."
+    },
+    {
+      "id": "ERCOT-30INR0031-CALDWELL-2026",
+      "project_name": "Caldwell County Energy Center",
+      "rto": "ERCOT",
+      "st": "TX",
+      "co": "Caldwell County",
+      "mw": 1500,
+      "status": "SS Completed, FIS Started, No IA",
+      "provider": "ERCOT",
+      "customer_or_developer": "Caldwell County Energy Center, LLC",
+      "source_url": "https://savrn.com/data-center-permits-tracker",
+      "precision": "county seat display point",
+      "lat": 29.8849,
+      "lon": -97.6697,
+      "evidence_type": "secondary_data_center_interconnection_project",
+      "jurisdiction": "Texas, US",
+      "location": "Caldwell County, TX",
+      "county_or_zone": "Caldwell County",
+      "queue_id": "30INR0031",
+      "poi_substation": null,
+      "status_detail": "SS Completed, FIS Started, No IA",
+      "capacity_claims": [
+        {
+          "value_mw": 1500,
+          "unit": "MW",
+          "raw_value": "1,500 MW",
+          "qualifier": "public facility tracker interconnection capacity"
+        }
+      ],
+      "source_authority": "secondary public facility/permit tracker",
+      "source_scope": "Current Data Center Permits Tracker",
+      "capture_date": "2026-09-26",
+      "notes": "Named ERCOT data-center interconnection project. Treat as secondary facility evidence and potentially overlapping with the core ERCOT queue row; not added to core totals."
+    },
+    {
+      "id": "ERCOT-33INR0005-BULLOCK-2026",
+      "project_name": "Bullock Data Center",
+      "rto": "ERCOT",
+      "st": "TX",
+      "co": "Hill County",
+      "mw": 1400,
+      "status": "SS Completed, FIS Started, No IA",
+      "provider": "ERCOT",
+      "customer_or_developer": "Bullock Data Center, LLC",
+      "source_url": "https://savrn.com/data-center-permits-tracker",
+      "precision": "county seat display point",
+      "lat": 32.0109,
+      "lon": -97.13,
+      "evidence_type": "secondary_data_center_interconnection_project",
+      "jurisdiction": "Texas, US",
+      "location": "Hill County, TX",
+      "county_or_zone": "Hill County",
+      "queue_id": "33INR0005",
+      "poi_substation": null,
+      "status_detail": "SS Completed, FIS Started, No IA",
+      "capacity_claims": [
+        {
+          "value_mw": 1400,
+          "unit": "MW",
+          "raw_value": "1,400 MW",
+          "qualifier": "public facility tracker interconnection capacity"
+        }
+      ],
+      "source_authority": "secondary public facility/permit tracker",
+      "source_scope": "Current Data Center Permits Tracker",
+      "capture_date": "2026-09-26",
+      "notes": "Named ERCOT data-center interconnection project. Secondary source; likely overlaps ERCOT queue data and is therefore non-additive."
+    },
+    {
+      "id": "ERCOT-33INR0006-LIBERTY-2026",
+      "project_name": "Liberty Thermal Energy Center / Liberty Data Center I",
+      "rto": "ERCOT",
+      "st": "TX",
+      "co": "Hill County",
+      "mw": 1400,
+      "status": "SS Completed, FIS Started, No IA",
+      "provider": "ERCOT",
+      "customer_or_developer": "Liberty Data Center I, LLC",
+      "source_url": "https://savrn.com/data-center-permits-tracker",
+      "precision": "county seat display point",
+      "lat": 32.0109,
+      "lon": -97.13,
+      "evidence_type": "secondary_data_center_interconnection_project",
+      "jurisdiction": "Texas, US",
+      "location": "Hill County, TX",
+      "county_or_zone": "Hill County",
+      "queue_id": "33INR0006",
+      "poi_substation": null,
+      "status_detail": "SS Completed, FIS Started, No IA",
+      "capacity_claims": [
+        {
+          "value_mw": 1400,
+          "unit": "MW",
+          "raw_value": "1,400 MW",
+          "qualifier": "public facility tracker interconnection capacity"
+        }
+      ],
+      "source_authority": "secondary public facility/permit tracker",
+      "source_scope": "Current Data Center Permits Tracker",
+      "capture_date": "2026-09-26",
+      "notes": "Named ERCOT data-center interconnection project. Secondary source; likely overlaps ERCOT queue data and is therefore non-additive."
     }
   ]
 }
