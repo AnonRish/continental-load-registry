@@ -139,7 +139,28 @@ def build_normalized_auxiliary_artifacts(capture_manifest):
                 (DATA/f"{name}.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False,default=json_value)+"\n",encoding="utf-8")
                 outputs.append(str((DATA/f"{name}.json").relative_to(ROOT)))
             except Exception as exc:
-                item["normalization_error"]=str(exc)
+                if sid=="IESO":
+                    # Preserve the captured official HTML and publish an explicit parse-blocked
+                    # envelope. This is a source-format limitation, not a zero-row claim.
+                    name="ieso_public_connection_applications"
+                    obj={
+                        "schema_version":1,
+                        "title":"IESO public application status — captured, parser blocked",
+                        "source_url":SOURCES[sid]["url"],
+                        "captured_at":captured,
+                        "status":"PARSE_BLOCKED",
+                        "record_count":0,
+                        "rows":[],
+                        "raw_capture":item.get("path"),
+                        "parse_error":str(exc),
+                        "semantics":"Official page captured successfully, but automated HTML-table extraction did not expose the application grid. Zero rows here means 'not parsed', not 'no applications'. Retry with a browser-rendered/API adapter before using row-level IESO application data."
+                    }
+                    (DATA/f"{name}.json").write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+                    item["normalization_status"]="PARSE_BLOCKED"
+                    item["parse_blocked_error"]=str(exc)
+                    outputs.append(str((DATA/f"{name}.json").relative_to(ROOT)))
+                else:
+                    item["normalization_error"]=str(exc)
         elif sid=="AESO":
             try:
                 sheets=pd.read_excel(io.BytesIO(source_path.read_bytes()),sheet_name=None)
