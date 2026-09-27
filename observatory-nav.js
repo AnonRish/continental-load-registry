@@ -49,12 +49,14 @@
   function init(){
     const old=document.querySelector('[data-observatory-nav]');
     if(old)old.remove();
+    progress();
+    if(isIndex)return; // index.html has its own sticky command-deck navigation; avoid duplicate nav chrome.
     const wrap=document.createElement('div');wrap.className='obs-nav-wrap';wrap.setAttribute('data-observatory-nav','');
     const nav=document.createElement('nav');nav.className='obs-nav';nav.setAttribute('aria-label','Registry sections');
     wrap.appendChild(nav);
     const insertAfter=document.querySelector('.visual-hero, header.hero, .hero, header');
     if(insertAfter)insertAfter.insertAdjacentElement('afterend',wrap);
-    render();progress();initSectionObserver();
+    render();initSectionObserver();
     document.querySelectorAll('.obs-tab[href*="#"]').forEach(function(a){
       a.addEventListener('click',function(){
         setTimeout(function(){render()},0);
