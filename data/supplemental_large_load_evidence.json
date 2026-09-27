@@ -9,7 +9,7 @@
       "id": "MISO-UNLOCATED-2026-09-19",
       "jurisdiction": "US / MISO",
       "provider": "MISO",
-      "evidence_type": "unlocated_live_large_load_requests",
+      "evidence_type": "unlocated_live_ge_100mw_requests",
       "record_count": 83,
       "capacity_mw": 35900,
       "threshold_mw": 100,
@@ -17,7 +17,7 @@
       "additive_to_core_row_level": true,
       "granularity": "request aggregate",
       "source_url": "https://www.misoenergy.org/api/giqueue/getprojects",
-      "notes": "Live >=100 MW requests omitted from the row-level registry because the public source lacked required state/location fields. No geography is invented."
+      "notes": "Live >=100 MW public MISO queue requests preserved outside the core because the captured public response lacked required state/location fields. This record does not by itself establish that every request is a data-center load."
     },
     {
       "id": "DOMINION-LARGE-LOAD-QUEUE-2025-12-31",
