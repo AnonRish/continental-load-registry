@@ -120,7 +120,7 @@
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/epoch_site_evidence_records.json",
-      "notes": "Legacy/derived Epoch site-evidence export; the canonical Track 3 evidence graph is data/track3/evidence_records.json with 192 retained evidence records."
+      "notes": "Legacy/derived Epoch site-evidence export; canonical Track 3 evidence is data/track3/evidence_records.json. Counts are dataset-local."
     },
     {
       "path": "data/external/epoch_ai/queue_gap_analysis.csv",
@@ -191,7 +191,7 @@
       "path": "data/track3/evidence_records.json",
       "name": "Canonical Track 3 evidence ledger",
       "type": "evidence",
-      "record_count": 192,
+      "record_count": 156,
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/evidence_records.json"
@@ -267,6 +267,25 @@
       "mapped": true,
       "additive_to_core_row_level": false,
       "public_page": "https://anonrish.github.io/continental-load-registry/data/caiso_public_queue.json"
+    },
+    {
+      "path": "data/external/intel_accelerator_enrichment.json",
+      "name": "93-site public project enrichment bridge",
+      "type": "enrichment",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/intel_accelerator_enrichment.json",
+      "notes": "Independent public-source enrichment for program, owner, users, address, EPC, energy partners and grid-operator fields. Blank values carry explicit status and are not interpreted as absence."
+    },
+    {
+      "path": "data/external/intel_accelerator_enrichment.csv",
+      "name": "93-site public project enrichment CSV",
+      "type": "enrichment_csv",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/intel_accelerator_enrichment.csv"
     }
   ]
 }
