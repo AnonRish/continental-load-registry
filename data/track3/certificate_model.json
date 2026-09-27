@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "title": "Track 3 covert-compute certificate model",
+  "status": "FRAMEWORK_IMPLEMENTED",
+  "basis": "Implements a transparent sampling-bound model corresponding to the public AI 2040 Appendix B logic; it does not produce a treaty certificate by itself.",
+  "inputs": [
+    "tail_compute_units",
+    "sample_size_n",
+    "observed_failures_k",
+    "confidence_delta"
+  ],
+  "zero_failure_bound": "For a zero-failure sample, the reference upper-bound form is approximately D <= (tail/n) * ln(1/delta), subject to the model's sampling assumptions.",
+  "failure_model": "When failures are observed, compute an upper confidence bound on the failure proportion using an explicit one-sided binomial calculation and multiply by the tail population.",
+  "outputs": [
+    "upper_bound_compute_units",
+    "failure_rate_upper_bound",
+    "assumptions",
+    "population_hash",
+    "sample_seed",
+    "verification_run_id"
+  ],
+  "limitations": [
+    "Independence and sampling-frame assumptions matter.",
+    "Finite-population corrections are not automatically applied.",
+    "The model requires a genuinely closed tail population to support a real certificate.",
+    "It does not validate source data, ownership claims, or physical inspections."
+  ]
+}
