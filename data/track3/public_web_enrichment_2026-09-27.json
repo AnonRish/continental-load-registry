@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T06:26:00Z",
+  "generated_at_utc": "2026-09-27T06:29:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 179,
-    "sites_with_findings": 61,
+    "record_count": 204,
+    "sites_with_findings": 69,
     "disposition_counts": {
       "PUBLIC_SOURCE_CAPTURED": 178,
       "NO_PUBLIC_VALUE_CAPTURED": 1
@@ -2895,6 +2895,443 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Status is building-level and based on satellite imagery; not a utility commissioning certificate.",
       "evidence_id": "EVID-PWEB-29c1cd6454e42d1d2016"
+    },
+    {
+      "site_name": "Colossus 2",
+      "epoch_id": "EPOCH-c20399471d1c5e4a",
+      "field": "energy_companies",
+      "value": "Tennessee Valley Authority",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.interconnection.fyi/data-center/project/xai-colossus-2-ff09d693"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-2f4d691df92304f27a57"
+    },
+    {
+      "site_name": "OpenAI Stargate Abilene",
+      "epoch_id": "EPOCH-2c2e40ddb178da3e",
+      "field": "construction_companies",
+      "value": [
+        "Mortenson"
+      ],
+      "relationship": "publicly identified construction/EPC partners",
+      "source": "Intel Accelerator enrichment",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.interconnection.fyi/data-center/project/openai-stargate-abilene-82570d68"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source.",
+      "evidence_id": "EVID-PWEB-4819cf2363085445cc92"
+    },
+    {
+      "site_name": "Google Mesa",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "field": "energy_companies",
+      "value": "Arizona Public Service",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.datacenter.fyi/public-record/google-aa4275ee"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-9773e9baed56ba10e192"
+    },
+    {
+      "site_name": "CoreWeave Denton TX",
+      "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+      "field": "energy_companies",
+      "value": "Denton Municipal Electric",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://registry.deploy.report/datacenters/core-scientific-coreweave-denton-texas"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-fa81133e8072cc22215f"
+    },
+    {
+      "site_name": "Amazon Madison Mega Site",
+      "epoch_id": "EPOCH-0d287943c30fe239",
+      "field": "energy_companies",
+      "value": "Canton Municipal Utilities",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.datacenter.fyi/public-record/amazon-madison-mega-site-4fb34373"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-38e148f5006fbe5d8328"
+    },
+    {
+      "site_name": "Google Kansas City East",
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "field": "energy_companies",
+      "value": "Evergy",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://efis.psc.mo.gov/Document/Display/795136"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-4017ce9949a584e3d8c1"
+    },
+    {
+      "site_name": "AWS New Albany",
+      "epoch_id": "EPOCH-bdc85fadae79b6b2",
+      "field": "energy_companies",
+      "value": "AEP Ohio / PJM",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://datacentersexposed.com/facilities/amazon-new-albany-2"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-1e60cbc16128019de192"
+    },
+    {
+      "site_name": "Google Lincoln",
+      "epoch_id": "EPOCH-e06bc7faa8b1b187",
+      "field": "energy_companies",
+      "value": "Lincoln Electric System",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.les.com/sites/default/files/bd-min-dec-2023.pdf"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-8e6beb926a943e143517"
+    },
+    {
+      "site_name": "Google The Dalles",
+      "epoch_id": "EPOCH-40ccef8ef4236635",
+      "field": "energy_companies",
+      "value": "Northern Wasco County PUD / BPA",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://registry.deploy.report/datacenters/facilities/google-the-dalles-or"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-3d510e20286cc58846b9"
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-0788d9aeb3114553",
+      "field": "energy_companies",
+      "value": "Alabama Power Company",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://datacenters.atmeta.com/asset/montgomery-data-center-info-sheet/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-47184f25514ea7620179"
+    },
+    {
+      "site_name": "Meta Montgomery",
+      "epoch_id": "EPOCH-0788d9aeb3114553",
+      "field": "construction_companies",
+      "value": [
+        "Hensel Phelps"
+      ],
+      "relationship": "publicly identified construction/EPC partners",
+      "source": "Intel Accelerator enrichment",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://datacenters.atmeta.com/asset/montgomery-data-center-info-sheet/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source.",
+      "evidence_id": "EVID-PWEB-77afb80162a975f14ae3"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "energy_companies",
+      "value": "Heart of Texas Electric Cooperative",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-38f0055531893ec9cddb"
+    },
+    {
+      "site_name": "Meta Temple",
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "field": "construction_companies",
+      "value": [
+        "JE Dunn"
+      ],
+      "relationship": "publicly identified construction/EPC partners",
+      "source": "Intel Accelerator enrichment",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source.",
+      "evidence_id": "EVID-PWEB-10b0607f3dad66febaef"
+    },
+    {
+      "site_name": "Microsoft Project Osmium",
+      "epoch_id": "EPOCH-534376160415dc84",
+      "field": "energy_companies",
+      "value": "MISO",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://cdn.misoenergy.org/NEW%20LOAD%20ANNOUNCEMENTS%20IN%20MISO%20REGIONS%2012062024684954.pdf"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-497cf015b7ceea5d8328"
+    },
+    {
+      "site_name": "Meta Eagle Mountain",
+      "epoch_id": "EPOCH-0bb0b996b7c96beb",
+      "field": "construction_companies",
+      "value": [
+        "Mortenson"
+      ],
+      "relationship": "publicly identified construction/EPC partners",
+      "source": "Intel Accelerator enrichment",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://registry.deploy.report/datacenters/meta-eagle-mountain-utah"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source.",
+      "evidence_id": "EVID-PWEB-10bf34d334ad7615d205"
+    },
+    {
+      "site_name": "Google Storey County",
+      "epoch_id": "EPOCH-2b89e13933a04725",
+      "field": "energy_companies",
+      "value": "NV Energy",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://edocs.puc.state.or.us/efdocs/HTB/um2377htb339000027.pdf"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-070497b47a7822d8bc39"
+    },
+    {
+      "site_name": "Google Arcola",
+      "epoch_id": "EPOCH-785d6e4c34607dd4",
+      "field": "energy_companies",
+      "value": "Dominion Energy",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://suedatacenters.org/data-centers/google-arcola-loudoun-va"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-b378464290342284bc39"
+    },
+    {
+      "site_name": "AWS Berwick",
+      "epoch_id": "EPOCH-03aad260b30bfbe1",
+      "field": "energy_companies",
+      "value": "PPL Electric Utilities / Talen Energy",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.sec.gov/Archives/edgar/data/1622536/000162828025038626/tln-20250630.htm"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-580a09a75a50aee3d6ac"
+    },
+    {
+      "site_name": "CoreWeave Marble NC",
+      "epoch_id": "EPOCH-eb87487504bda8ed",
+      "field": "energy_companies",
+      "value": "Duke Energy",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.jain.com/analysis/projects/core-scientific-marble/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-635ccf065252b11abc39"
+    },
+    {
+      "site_name": "Goodnight",
+      "epoch_id": "EPOCH-bbf05f2d8903eccc",
+      "field": "construction_companies",
+      "value": [
+        "Crusoe",
+        "Hoffman"
+      ],
+      "relationship": "publicly identified construction/EPC partners",
+      "source": "Intel Accelerator enrichment",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://www.gridtracker.io/example-report"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source.",
+      "evidence_id": "EVID-PWEB-9d4f16bc8a564ffae5bc"
+    },
+    {
+      "site_name": "Meta Hyperion",
+      "epoch_id": "EPOCH-bbcf0efa8bcebd41",
+      "field": "construction_companies",
+      "value": [
+        "Mortenson"
+      ],
+      "relationship": "publicly identified construction/EPC partners",
+      "source": "Intel Accelerator enrichment",
+      "source_urls": [
+        "https://intelaccelerator.com/projects"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source.",
+      "evidence_id": "EVID-PWEB-08f39c6ac0492d0ed98d"
+    },
+    {
+      "site_name": "OpenAI Stargate Lordstown",
+      "epoch_id": "EPOCH-dc6199921ba82b85",
+      "field": "energy_companies",
+      "value": "FirstEnergy / Ohio Edison",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://suedatacenters.org/data-centers/stargate-lordstown-oh"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-bdba98a68e7e13ec7a57"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "energy_companies",
+      "value": "SB Energy powered infrastructure",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://openai.com/index/stargate-sb-energy-partnership/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-654c2737b82c17bf3de8"
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "field": "energy_companies",
+      "value": "WEC Energy Group",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://openai.com/index/stargate-community/"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-4d755f77871171f668b4"
+    },
+    {
+      "site_name": "QTS Eagle Mountain",
+      "epoch_id": "EPOCH-4b4d686b6c457a68",
+      "field": "energy_companies",
+      "value": "Rocky Mountain Power",
+      "relationship": "publicly identified grid operator / energy infrastructure relationship",
+      "source": "Intel Accelerator enrichment / Interconnection.fyi",
+      "source_urls": [
+        "https://intelaccelerator.com/projects",
+        "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed.",
+      "evidence_id": "EVID-PWEB-789cf694de56ab9dfc06"
     }
   ]
 }
