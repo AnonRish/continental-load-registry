@@ -27,11 +27,11 @@
     ],
     "total_public_enrichment_resolved_fields": 398,
     "total_targeted_publicly_resolved_fields": 14,
-    "effective_unresolved_publisher_fields": 289,
+    "effective_unresolved_publisher_fields": 283,
     "effective_unresolved_field_counts": {
-      "project": 55,
-      "investors": 83,
-      "construction_companies": 78,
+      "investors": 80,
+      "construction_companies": 76,
+      "project": 54,
       "users": 24,
       "address": 11,
       "chip_quantities": 10,
@@ -39,7 +39,7 @@
       "owner": 1
     },
     "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
-    "public_web_enrichment_records": 166,
+    "public_web_enrichment_records": 175,
     "public_web_enrichment_sites": 61,
     "researched_no_public_record_grid_cells": 18
   },
@@ -125,20 +125,23 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies",
+        "regulatory",
+        "project",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
-        "project",
         "investors",
         "construction_companies"
       ],
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -154,9 +157,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -273,15 +276,17 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies",
+        "investment",
+        "operational_status"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies",
         "project"
       ],
       "effective_unresolved_publisher_fields": [
-        "investors",
-        "construction_companies"
+        "investors"
       ],
       "publisher_field_reconciliation": {
         "project": {
@@ -298,9 +303,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": false,
@@ -419,15 +424,16 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies",
         "project"
       ],
       "effective_unresolved_publisher_fields": [
-        "investors",
-        "construction_companies"
+        "investors"
       ],
       "publisher_field_reconciliation": {
         "project": {
@@ -444,9 +450,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
@@ -565,7 +571,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies"
@@ -577,9 +585,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -699,7 +707,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies",
+        "capacity_record",
+        "operational_status"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -720,9 +731,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": false,
@@ -971,7 +982,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -1101,12 +1113,13 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investors",
+        "energy_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
         "project",
-        "investors",
         "construction_companies",
         "users"
       ],
@@ -1119,9 +1132,9 @@
         },
         "investors": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "construction_companies": {
           "dossier_missing": true,
@@ -1131,9 +1144,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": true,
@@ -1233,7 +1246,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "capacity_record",
+        "operational_status"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -1243,9 +1259,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -1368,7 +1384,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investment",
+        "capacity_record",
+        "operational_status"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -1510,7 +1529,13 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "energy_companies",
+        "regulatory",
+        "capacity_record",
+        "investment",
+        "service_or_contract"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -1521,9 +1546,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -1539,9 +1564,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -1642,7 +1667,8 @@
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -1673,9 +1699,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": true,
@@ -2068,7 +2094,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "service_or_contract",
+        "energy_companies",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -2078,9 +2107,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -2096,9 +2125,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -2222,7 +2251,8 @@
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
-        "address"
+        "address",
+        "capacity_record"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -2375,7 +2405,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies"
@@ -2387,9 +2418,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -2530,7 +2561,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "regulatory"
       ],
       "targeted_publicly_resolved_fields": [
         "owner",
@@ -2804,7 +2836,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "operational_status",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -2949,7 +2983,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -2959,9 +2995,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -3222,7 +3258,8 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -3252,9 +3289,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -3359,7 +3396,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -3369,9 +3407,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -3491,7 +3529,9 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "operational_status"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -3503,9 +3543,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -3640,7 +3680,8 @@
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
-        "address"
+        "address",
+        "capacity_record"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -3933,7 +3974,8 @@
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
-        "address"
+        "address",
+        "capacity_record"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -4068,7 +4110,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -4077,9 +4121,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -4095,9 +4139,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -4223,7 +4267,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -4245,9 +4290,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": false,
@@ -4363,7 +4408,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -4391,9 +4438,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -4506,7 +4553,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -4528,9 +4576,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
@@ -4772,7 +4820,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -5320,7 +5369,8 @@
         "energy_companies",
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -5331,9 +5381,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -5454,7 +5504,8 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "users",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -5484,9 +5535,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -5857,7 +5908,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -5879,9 +5931,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": false,
@@ -6255,7 +6307,8 @@
         "energy_companies",
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -6266,9 +6319,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -6383,7 +6436,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -6392,9 +6446,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": false,
@@ -6531,7 +6585,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [
         "project"
@@ -6543,7 +6599,7 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": true,
           "status": "PUBLIC_VALUE_OR_LEAD"
         },
@@ -6961,7 +7017,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -7219,7 +7276,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -7616,7 +7674,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "service_or_contract"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -8692,7 +8751,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "construction_companies",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -8702,9 +8764,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -8714,9 +8776,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
@@ -9240,7 +9302,11 @@
         "energy_companies",
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "regulatory",
+        "investment",
+        "construction_companies"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -9250,9 +9316,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -9262,9 +9328,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
@@ -9514,7 +9580,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "service_or_contract"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -9786,25 +9853,28 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "energy_companies",
+        "investors",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
-        "investors",
         "construction_companies"
       ],
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "construction_companies": {
           "dossier_missing": true,
@@ -9814,9 +9884,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -10058,7 +10128,9 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies",
+        "users"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies"
@@ -10089,7 +10161,7 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": true,
           "status": "PUBLIC_VALUE_OR_LEAD"
         },
@@ -10101,9 +10173,9 @@
         },
         "users": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "address": {
           "dossier_missing": false,
@@ -10452,7 +10524,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "service_or_contract"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -10577,7 +10650,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "energy_companies",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -10586,9 +10662,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": false,
@@ -10604,9 +10680,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -10710,7 +10786,11 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "energy_companies",
+        "regulatory",
+        "capacity_record"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -10720,9 +10800,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -10738,9 +10818,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -10981,7 +11061,8 @@
         "energy_companies",
         "owner",
         "users",
-        "address"
+        "address",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -10992,9 +11073,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": true,
@@ -11116,7 +11197,8 @@
         "energy_companies",
         "owner",
         "users",
-        "address"
+        "address",
+        "project"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -11126,9 +11208,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": false,
@@ -11257,7 +11339,9 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "construction_companies",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -11279,9 +11363,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": false,
@@ -11526,7 +11610,9 @@
       "public_enrichment_resolved_fields": [
         "owner",
         "users",
-        "chip_quantities"
+        "chip_quantities",
+        "project",
+        "capacity_record"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -11537,9 +11623,9 @@
       "publisher_field_reconciliation": {
         "project": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "investors": {
           "dossier_missing": false,
@@ -11804,7 +11890,9 @@
         "project",
         "energy_companies",
         "owner",
-        "users"
+        "users",
+        "construction_companies",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies"
@@ -11829,9 +11917,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
@@ -11957,13 +12045,15 @@
       "public_enrichment_resolved_fields": [
         "project",
         "owner",
-        "users"
+        "users",
+        "construction_companies",
+        "investors",
+        "energy_companies"
       ],
       "targeted_publicly_resolved_fields": [
         "project"
       ],
       "effective_unresolved_publisher_fields": [
-        "investors",
         "address",
         "chip_quantities"
       ],
@@ -11976,21 +12066,21 @@
         },
         "investors": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -12352,7 +12442,8 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investors"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -12368,9 +12459,9 @@
         },
         "investors": {
           "dossier_missing": false,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "construction_companies": {
           "dossier_missing": true,
@@ -12501,7 +12592,8 @@
       "public_enrichment_resolved_fields": [
         "project",
         "owner",
-        "users"
+        "users",
+        "energy_companies"
       ],
       "targeted_publicly_resolved_fields": [
         "energy_companies"
@@ -12533,7 +12625,7 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": true,
           "status": "PUBLIC_VALUE_OR_LEAD"
         },
@@ -12640,7 +12732,9 @@
         "energy_companies",
         "owner",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "investment",
+        "cooling"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -12775,7 +12869,10 @@
         "owner",
         "users",
         "address",
-        "chip_quantities"
+        "chip_quantities",
+        "energy_companies",
+        "cooling",
+        "investment"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
@@ -12804,9 +12901,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": true,
