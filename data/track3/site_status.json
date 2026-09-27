@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-27T03:22:25.629592+00:00",
+    "generated_at_utc": "2026-09-27T03:23:19.223889+00:00",
     "epoch_site_count": 93,
     "observation_task_count": 279,
     "observation_task_counts_by_domain": {
@@ -17,7 +17,7 @@
     "site_level_evidence_site_count": 93,
     "combined_site_level_evidence_site_count": 93,
     "site_specific_queue_id_count": 2,
-    "pending_grid_connection_research_count": 21,
+    "pending_grid_connection_research_count": 20,
     "domain_status_counts": {
       "site_identity": {
         "INGESTED": 93
@@ -30,21 +30,21 @@
         "UNKNOWN": 10
       },
       "grid_connection": {
-        "SITE_LEVEL_EVIDENCE": 70,
-        "PENDING_RESEARCH": 21,
+        "SITE_LEVEL_EVIDENCE": 71,
+        "PENDING_RESEARCH": 20,
         "VERIFIED_SITE_SPECIFIC": 2
       },
       "service_or_contract": {
-        "NOT_INGESTED": 86,
-        "SITE_LEVEL_EVIDENCE": 7
+        "NOT_INGESTED": 85,
+        "SITE_LEVEL_EVIDENCE": 8
       },
       "regulatory": {
         "NOT_ASSESSED": 88,
         "INGESTED": 5
       },
       "compute_tenancy": {
-        "UNKNOWN": 92,
-        "INGESTED_SNAPSHOT": 1
+        "UNKNOWN": 89,
+        "INGESTED_SNAPSHOT": 4
       },
       "power_telemetry": {
         "NOT_INGESTED": 87,
@@ -700,9 +700,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -1008,9 +1008,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -1202,8 +1202,8 @@
           "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
         },
         "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -1239,9 +1239,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 2,
+      "combined_site_level_evidence_count": 3,
       "next_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately."
     },
     {
@@ -2009,9 +2009,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 2,
+      "combined_site_level_evidence_count": 3,
       "next_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record."
     },
     {
@@ -4051,8 +4051,8 @@
           "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
         },
         "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4088,9 +4088,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -4242,9 +4242,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 2,
+      "combined_site_level_evidence_count": 3,
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
@@ -4821,8 +4821,8 @@
           "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
         },
         "compute_tenancy": {
-          "status": "UNKNOWN",
-          "basis": "No site-specific compute-tenancy contract has been attached in the current evidence layer."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."
         },
         "power_telemetry": {
           "status": "NOT_INGESTED",
@@ -4858,9 +4858,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
@@ -5397,9 +5397,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
@@ -5502,12 +5502,12 @@
           "basis": "Epoch AI site-level chip-quantity records are retained."
         },
         "grid_connection": {
-          "status": "PENDING_RESEARCH",
-          "basis": "No site-level connection/service evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -5551,9 +5551,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
@@ -6013,9 +6013,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
@@ -6090,9 +6090,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 2,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -6783,9 +6783,9 @@
           "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
       },
-      "site_level_evidence_count": 1,
+      "site_level_evidence_count": 2,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 2,
+      "combined_site_level_evidence_count": 3,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
