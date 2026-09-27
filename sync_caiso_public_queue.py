@@ -16,7 +16,7 @@ from typing import Any
 import pandas as pd
 import requests
 
-SOURCE_URL = "http://www.caiso.com/PublishedDocuments/PublicQueueReport.xlsx"
+SOURCE_URL = "https://www.caiso.com/documents/publicqueuereport.xlsx"
 SHEETS = {
     "Grid GenerationQueue": "active",
     "Completed Generation Projects": "completed",
@@ -148,7 +148,7 @@ def build(payload: bytes) -> dict[str, Any]:
         "title": "CAISO complete public interconnection queue",
         "source_url": SOURCE_URL,
         "captured_at": captured_at,
-        "source_note": "Official CAISO Public Queue Report workbook. The source contains current active, completed and withdrawn interconnection-request sheets. Rows are preserved with original source fields and a normalized subset.",
+        "source_note": "Official CAISO Public Queue Report workbook (current HTTPS endpoint). The source contains current active, completed and withdrawn interconnection-request sheets. Rows are preserved with original source fields and a normalized subset.",
         "accounting": "Separate generator-interconnection universe; not added to the conservative large-load core total. Coordinates are derived only in the browser from the published county/state fields.",
         "sheet_counts": sheet_counts,
         "record_count": len(records),
