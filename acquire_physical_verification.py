@@ -28,6 +28,7 @@ import numpy as np
 import requests
 import rasterio
 import planetary_computer
+from pystac_client import Client
 from rasterio.windows import Window
 from rasterio.warp import transform as warp_transform
 
@@ -109,32 +110,53 @@ def bbox_for_site(lat: float, lon: float, radius_deg: float = 0.02) -> list[floa
     ]
 
 def search_stac(kind: str, collection: str, bbox: list[float], limit: int = 60) -> list[dict[str, Any]]:
+    # Prefer pystac-client because it handles the STAC search contract and pagination
+    # correctly. The raw HTTP path remains as a fallback for catalog compatibility.
+    endpoints = [
+        MPC_STAC.replace("/search", ""),
+    ]
+    if kind == "cdse":
+        endpoints.append(CDSE_STAC.replace("/search", ""))
+    elif kind == "usgs":
+        endpoints.append(USGS_STAC.replace("/search", ""))
+    # AWS Earth Search is a public fallback for Sentinel imagery.
+    if collection in {"sentinel-2-l2a", "sentinel-1-grd"}:
+        endpoints.append("https://earth-search.aws.element84.com/v1")
+
+    errors: list[str] = []
+    for endpoint in endpoints:
+        try:
+            catalog = Client.open(endpoint)
+            search = catalog.search(
+                collections=[collection],
+                bbox=bbox,
+                datetime=f"{RANGE_START}/{RANGE_END}",
+                max_items=limit,
+            )
+            rows = list(search.item_collection())
+            if rows:
+                return [dict(x) for x in rows]
+        except Exception as exc:
+            errors.append(f"{endpoint} [{collection}]: {exc}")
+
+    # Raw POST fallback.
     payload = {
         "collections": [collection],
         "bbox": bbox,
         "datetime": f"{RANGE_START}/{RANGE_END}",
         "limit": limit,
     }
-    # Use Planetary Computer first because its STAC items expose public HTTPS COG assets
-    # that can be read by rasterio after SAS signing. Keep the agency-native catalogs as
-    # fallbacks for discovery only; source-backed metrics are computed from readable COGs.
-    attempts = [
-        (MPC_STAC, payload),
-    ]
-    if kind == "cdse":
-        attempts.append((CDSE_STAC, payload))
-    elif kind == "usgs":
-        attempts.append((USGS_STAC, payload))
-    errors: list[str] = []
-    for endpoint, request_payload in attempts:
+    for endpoint in endpoints:
+        search_url = endpoint.rstrip("/") + "/search"
         try:
-            rows = list(post_json(endpoint, request_payload).get("features", []))
+            rows = list(post_json(search_url, payload).get("features", []))
             if rows:
                 return rows
         except Exception as exc:
-            errors.append(f"{endpoint}: {exc}")
+            errors.append(f"{search_url} [{collection}]: {exc}")
+
     if errors:
-        raise RuntimeError(" ; ".join(errors))
+        raise RuntimeError(" ; ".join(errors[-8:]))
     return []
 
 def best_temporal_items(items: list[dict[str, Any]], count: int = 3) -> list[dict[str, Any]]:
