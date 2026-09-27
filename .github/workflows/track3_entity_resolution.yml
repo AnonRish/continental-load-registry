@@ -63,6 +63,11 @@ jobs:
             exit 0
           fi
           git commit -m "Refresh Track 3 entity resolution graph"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git merge -X ours origin/main --no-edit
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" -eq 3 ]; then exit 1; fi
+          done
