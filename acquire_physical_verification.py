@@ -29,6 +29,7 @@ import requests
 import rasterio
 import planetary_computer
 from pystac_client import Client
+from rasterio.crs import CRS
 from rasterio.windows import Window
 from rasterio.warp import transform as warp_transform
 
@@ -195,7 +196,7 @@ def asset_href(assets: dict[str, Any], candidates: list[str]) -> tuple[str | Non
         pass
     return href, key
 
-def read_window(href: str, lon: float, lat: float, pixels: int) -> tuple[np.ndarray, dict[str, Any]]:
+def read_window(href: str, lon: float, lat: float, pixels: int, crs_hint: str | int | None = None) -> tuple[np.ndarray, dict[str, Any]]:
     env = {
         "GDAL_DISABLE_READDIR_ON_OPEN": "EMPTY_DIR",
         "CPL_VSIL_CURL_ALLOWED_EXTENSIONS": ".tif,.TIF,.tiff,.TIFF,.jp2,.JP2",
@@ -205,7 +206,12 @@ def read_window(href: str, lon: float, lat: float, pixels: int) -> tuple[np.ndar
     }
     with rasterio.Env(**env):
         with rasterio.open(href) as src:
-            xs, ys = warp_transform("EPSG:4326", src.crs, [lon], [lat])
+            target_crs = src.crs
+            if target_crs is None and crs_hint is not None:
+                target_crs = CRS.from_user_input(crs_hint)
+            if target_crs is None:
+                raise RuntimeError("Raster asset has no embedded CRS and STAC projection metadata is missing")
+            xs, ys = warp_transform("EPSG:4326", target_crs, [lon], [lat])
             x, y = xs[0], ys[0]
             row, col = src.index(x, y)
             half = pixels // 2
@@ -227,7 +233,7 @@ def read_window(href: str, lon: float, lat: float, pixels: int) -> tuple[np.ndar
                 offset = 0.0
             arr = arr * scale + offset
             return arr, {
-                "crs": str(src.crs),
+                "crs": str(target_crs),
                 "resolution": [float(v) for v in src.res],
                 "scale": scale,
                 "offset": offset,
@@ -272,7 +278,12 @@ def scene_metrics_optical(item: dict[str, Any], lat: float, lon: float) -> dict[
     valid = np.isfinite(red) & np.isfinite(nir)
     if scl_href:
         scl, _ = read_window(scl_href, lon, lat, 512)
-        valid &= ~np.isin(scl.astype("int16"), [0, 1, 3, 8, 9, 10, 11])
+        scl_data = np.isfinite(scl) & (scl != 0)
+        if np.any(scl_data):
+            # Apply the scene-classification mask only where the SCL asset
+            # actually contains classified pixels. An all-zero SCL window
+            # is a no-data window and should not erase otherwise valid bands.
+            valid &= ~np.isin(scl.astype("int16"), [0, 1, 3, 8, 9, 10, 11])
     ndvi = np.full(red.shape, np.nan, dtype="float32")
     denom = nir + red
     good = valid & (np.abs(denom) > 1e-6)
@@ -326,7 +337,10 @@ def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str,
     vh_href, vh_key = asset_href(assets, ["vh"])
     if not vv_href:
         raise RuntimeError("Sentinel-1 item lacks VV asset")
-    vv, vv_meta = read_window(vv_href, lon, lat, 512)
+    projection = item.get("properties", {}).get("proj:epsg")
+    if projection is not None and isinstance(projection, int):
+        projection = f"EPSG:{projection}"
+    vv, vv_meta = read_window(vv_href, lon, lat, 512, crs_hint=projection)
     vv = db_values(vv)
     metrics = {
         "vv_db_median": robust_median(vv),
@@ -338,7 +352,7 @@ def scene_metrics_sar(item: dict[str, Any], lat: float, lon: float) -> dict[str,
         "backscatter_note": "Sentinel-1 GRD detected amplitude is converted to dB with 20*log10(amplitude).",
     }
     if vh_href:
-        vh, _ = read_window(vh_href, lon, lat, 512)
+        vh, _ = read_window(vh_href, lon, lat, 512, crs_hint=projection)
         vh = db_values(vh)
         metrics["vh_db_median"] = robust_median(vh)
         metrics["vh_db_p10"] = pct(vh, 10)
