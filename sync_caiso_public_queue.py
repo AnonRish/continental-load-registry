@@ -1,3 +1,4 @@
+# Last refreshed by full-registry completion pass: trigger live CAISO snapshot sync.
 #!/usr/bin/env python3
 """Download and normalize CAISO's complete public interconnection queue workbook.
 
