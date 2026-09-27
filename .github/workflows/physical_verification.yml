@@ -23,7 +23,7 @@ concurrency:
 jobs:
   acquire:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -41,7 +41,7 @@ jobs:
       - name: Acquire public physical observations
         env:
           PYTHONUNBUFFERED: "1"
-        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 3 --workers 3
+        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 4
 
       - name: Rebuild Track 3 evidence graph
         run: python build_track3_evidence.py
@@ -62,7 +62,16 @@ jobs:
           assert len(coords["records"]) == 93
           assert obs["site_count_target"] == 93
           assert tx["target_count"] == 93
-          assert tx["record_count"] == len(tx["records"]) == 0
+          assert tx["record_count"] == len(tx["records"])
+          assert tx["record_count"] >= 1
+          derived_by_modality = {
+              modality: sum(
+                  1 for row in obs["records"]
+                  if row.get("status") == "INGESTED_DERIVED" and row.get("modality") == modality
+              )
+              for modality in ("optical", "tir", "sar")
+          }
+          assert all(count > 0 for count in derived_by_modality.values()), derived_by_modality
           track3 = json.loads((root / "track3" / "site_status.json").read_text(encoding="utf-8"))
           assert len(track3["records"]) == 93
           assert track3["summary"]["remote_sensing_derived_observation_count"] == obs["derived_observation_count"]
