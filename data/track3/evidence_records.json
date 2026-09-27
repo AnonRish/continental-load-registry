@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "record_count": 796,
+  "record_count": 798,
   "records": [
     {
       "evidence_id": "EVID-965d5929a63b58845c8a",
@@ -25566,6 +25566,66 @@
       "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
       "public_field": "operational_efficiency",
       "relationship": "published facility efficiency metric"
+    },
+    {
+      "evidence_id": "EVID-PWEB-9c5213bb",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-c20399471d1c5e4a",
+      "target_name": "Colossus 2",
+      "domain": "service_or_contract",
+      "evidence_type": "public_web_enrichment",
+      "claim_scope": "site_level",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "source_kind": "public web enrichment",
+      "source_name": "Daily Memphian; Yahoo Finance / Memphis Commercial Appeal",
+      "source_url": "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva",
+      "source_urls": [
+        "https://dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva",
+        "https://finance.yahoo.com/energy/articles/tva-board-approves-agreement-spacexai-234602682.html"
+      ],
+      "observed_on": "2026-08-20",
+      "captured_on": "2026-09-27",
+      "confidence": "public_source_capture",
+      "basis": "TVA Board approval on August 20, 2026 covered a load request greater than 100 MW for MZX Tech LLC. The cited reporting ties the request to SpaceXAI's Colossus II campus spanning the Memphis/Southaven area. This is a service/load-request record, not interval telemetry.",
+      "record_id": "service_or_contract",
+      "authority": "Daily Memphian; Yahoo Finance / Memphis Commercial Appeal",
+      "raw_value": "Tennessee Valley Authority (TVA) direct electric service agreement / load request greater than 100 MW for MZX Tech LLC",
+      "normalized_value": "Tennessee Valley Authority (TVA) direct electric service agreement / load request greater than 100 MW for MZX Tech LLC",
+      "site_specific": true,
+      "independent_of_other_source": null,
+      "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+      "public_field": "service_or_contract",
+      "relationship": "site-specific electric service / large-load request"
+    },
+    {
+      "evidence_id": "EVID-PWEB-5d41ec59",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-c20399471d1c5e4a",
+      "target_name": "Colossus 2",
+      "domain": "site_identity",
+      "evidence_type": "public_web_enrichment",
+      "claim_scope": "site_level",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "source_kind": "public web enrichment",
+      "source_name": "Reuters (reporting Bloomberg); Bloomberg",
+      "source_url": "https://www.reuters.com/business/musks-xai-nears-20-billion-capital-raise-tied-nvidia-chips-2025-10-07/",
+      "source_urls": [
+        "https://www.reuters.com/business/musks-xai-nears-20-billion-capital-raise-tied-nvidia-chips-2025-10-07/",
+        "https://news.bloomberglaw.com/antitrust/musks-xai-nears-20-billion-capital-raise-tied-to-nvidia-chips"
+      ],
+      "observed_on": "2025-10-07",
+      "captured_on": "2026-09-27",
+      "confidence": "public_source_capture",
+      "basis": "Reported financing structure included an SPV intended to buy NVIDIA processors and rent them to xAI for use in Colossus 2; Reuters reported NVIDIA would invest in the financing. This is a project-linked financing relationship, not a claim that NVIDIA owns Colossus 2.",
+      "record_id": "investors",
+      "authority": "Reuters (reporting Bloomberg); Bloomberg",
+      "raw_value": "NVIDIA",
+      "normalized_value": "NVIDIA",
+      "site_specific": true,
+      "independent_of_other_source": null,
+      "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+      "public_field": "investors",
+      "relationship": "reported project-linked equity participant in financing tied to Colossus 2"
     }
   ]
 }
