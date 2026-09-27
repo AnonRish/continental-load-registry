@@ -39,7 +39,7 @@ jobs:
 
       - name: Acquire physical observations
         run: |
-          python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 1 --workers 6
+          python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 6
 
       - name: Validate real observations
         run: |
