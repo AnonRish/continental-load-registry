@@ -68,6 +68,33 @@ jobs:
       - name: Refresh source manifest capture metadata
         run: python refresh_source_manifest.py
 
+      - name: Validate normalized auxiliary source artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=Path("data/automation/auxiliary_sources/manifest.json")
+          assert manifest.exists() and manifest.stat().st_size>0
+          obj=json.loads(manifest.read_text(encoding="utf-8"))
+          assert obj.get("source_count")==4
+          assert obj.get("failed_count")==0, obj
+          expected={
+            "ERCOT-GIS":["data/ercot_gis_public_records.json","data/ercot_large_load_candidates.json"],
+            "ISO-NE":["data/iso_ne_public_queue.json"],
+            "IESO":["data/ieso_public_connection_applications.json"],
+            "AESO":["data/aeso_connection_projects.json"],
+          }
+          for sid,paths in expected.items():
+              entry=next(x for x in obj["sources"] if x["source_id"]==sid)
+              assert entry["status"]=="RAW_CAPTURED", entry
+              assert not entry.get("normalization_error"), entry
+              for path in paths:
+                  p=Path(path)
+                  assert p.exists() and p.stat().st_size>0, path
+                  json.loads(p.read_text(encoding="utf-8"))
+          print("PASS: ERCOT/ISO-NE/IESO/AESO raw captures normalized and parseable")
+          PY
+
       - name: Rebuild canonical evidence layer
         run: python build_track3_evidence.py
 
