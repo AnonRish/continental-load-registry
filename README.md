@@ -70,8 +70,8 @@ The public research-surface CI is defined in `.github/workflows/validate_public_
 
 
 - `.github/workflows/monthly_registry_update.yml` -- refreshes the registry
-  from the live feeds on the 1st of every month, 06:00 UTC, or on demand, and
-  commits the result to `main`. See "Automated monthly refresh".
+  from the live feeds daily at 06:00 UTC, or on demand, and commits the result
+  to `main`. The filename is retained for compatibility; the workflow is daily.
 - `data/archive/registry_snapshot_2026-09-24.csv` -- preserved 1,802-record
   publication snapshot from September 24, 2026. It is intentionally separate
   from the current registry so superseded queue rows remain auditable without
@@ -313,13 +313,13 @@ bottom of `index.html`), and both PDF files are now present in the repository
 root with those exact filenames.
 Place both files, with those exact names, in the same directory as
 `index.html` (the repository root) before deploying, or the two Download
-buttons will 404. The monthly workflow fails if either link stops being marked
+buttons will 404. The daily workflow fails if either link stops being marked
 `available: true` in `index.html`, and raises a warning if either PDF is not in
 the repository root.
 
-## Automated monthly refresh
+## Automated daily refresh
 
-`.github/workflows/monthly_registry_update.yml` runs at 06:00 UTC on the 1st of
+`.github/workflows/monthly_registry_update.yml` runs at 06:00 UTC every day, or on demand.
 every month and on demand (Actions tab, *Monthly Registry Update*, Run
 workflow; tick `dry_run` to execute everything without committing). It checks
 out the repo, sets up Python 3.12 with a pip cache, installs
