@@ -1590,7 +1590,7 @@ function normalizeLookupPayload(payload){
   payload.records.forEach(rec => researchRecordCache.set(rec.record_id, rec));
   return payload;
 }
-const researchRecordIndexCache = new Map();
+const researchRecordIndexCacheUIV3 = new Map();
 const RECORD_STORAGE_VERSION = '2';
 
 async function fetchResearchJson(url){
@@ -1600,11 +1600,11 @@ async function fetchResearchJson(url){
 }
 async function loadResearchRecord(r){
   if(researchRecordCache.has(r.id)) return researchRecordCache.get(r.id);
-  let rtoIndex = researchRecordIndexCache.get(r.rto);
+  let rtoIndex = researchRecordIndexCacheUIV3.get(r.rto);
   if(!rtoIndex){
     rtoIndex = await fetchResearchJson('data/facility_records/'+encodeURIComponent(r.rto)+'/index.json');
     if(!rtoIndex || rtoIndex.schema_version !== 2 || !rtoIndex.lookup) throw new Error('Invalid research-record index');
-    researchRecordIndexCache.set(r.rto, rtoIndex);
+    researchRecordIndexCacheUIV3.set(r.rto, rtoIndex);
   }
   const shardPath = rtoIndex.lookup[r.id];
   if(!shardPath) throw new Error('Facility record not found in RTO index');
