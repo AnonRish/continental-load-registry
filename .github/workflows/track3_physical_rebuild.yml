@@ -60,17 +60,20 @@ jobs:
           print("PASS:", counts, "transformer_events=", tx["record_count"])
           PY
 
+      - name: Build physical-coordinate coverage audit
+        run: python build_track3_geo_audit.py
+
       - name: Rebuild Track 3 graph
         run: python build_track3_evidence.py
 
       - name: Validate Python syntax
-        run: python -m py_compile acquire_physical_verification.py apply_track3_coordinate_overrides.py build_track3_evidence.py
+        run: python -m py_compile acquire_physical_verification.py apply_track3_coordinate_overrides.py build_track3_geo_audit.py build_track3_evidence.py
 
       - name: Commit physical artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data/physical_verification_layer.json data/track3_evidence_schema.json \
+          git add -A data/physical_verification_layer.json data/track3_evidence_schema.json data/track3/geo_coverage_audit_2026-09-27.json \
             data/track3/physical_site_coordinates.json data/track3/remote_sensing_observations.json \
             data/track3/remote_sensing_observations.csv data/track3/transformer_supply_chain_events.json \
             data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
