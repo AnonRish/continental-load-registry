@@ -114,14 +114,36 @@ def main() -> int:
     if len(claim_rows) != len(enrichment_rows):
         errors.append("public-web claim layer is not 1:1 with enrichment records")
     claim_ids = [str(x.get("claim_id")) for x in claim_rows]
-    source_ids = [str(x.get("evidence_id")) for x in enrichment_rows]
     if len(claim_ids) != len(set(claim_ids)):
         errors.append("public-web claim IDs are not unique")
-    if source_ids and set(claim_ids) != set(source_ids):
-        errors.append("public-web claim IDs do not reconcile with source enrichment evidence IDs")
+
+    def source_key(x):
+        payload = {
+            "site_name": x.get("site_name"),
+            "field": x.get("field"),
+            "value": x.get("value"),
+            "relationship": x.get("relationship"),
+            "source": x.get("source"),
+            "source_urls": x.get("source_urls") or [],
+            "publication_date": x.get("publication_date"),
+        }
+        import hashlib
+        return hashlib.sha256(json.dumps(payload, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
+
+    enrichment_keys = [source_key(x) for x in enrichment_rows]
+    claim_keys = [source_key(x) for x in claim_rows]
+    if len(enrichment_keys) != len(set(enrichment_keys)):
+        errors.append("public-web enrichment source keys are not unique")
+    if len(claim_keys) != len(set(claim_keys)):
+        errors.append("public-web claim source keys are not unique")
+    if set(enrichment_keys) != set(claim_keys):
+        errors.append("public-web claims do not reconcile 1:1 with enrichment records")
+
     for x in claim_rows:
-        if not x.get("epoch_id") or not x.get("field"):
-            errors.append("public-web claim missing epoch_id or field")
+        if not x.get("claim_id") or not x.get("field"):
+            errors.append("public-web claim missing claim_id or field")
+        if x.get("claim_scope") == "site_level_public_web" and not x.get("epoch_id"):
+            errors.append(f"site-scoped public-web claim {x.get('claim_id')} missing epoch_id")
         if not (x.get("source_urls") or []):
             errors.append(f"public-web claim {x.get('claim_id')} has no retained source URL")
     if public_claims.get("accounting", {}).get("claim_count", 0) < 335:
