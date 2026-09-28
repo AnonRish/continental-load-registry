@@ -106,6 +106,9 @@ jobs:
       - name: Rebuild canonical evidence layer
         run: python build_track3_evidence.py
 
+      - name: Reconcile remote-sensing target states
+        run: python build_remote_sensing_target_status.py
+
       - name: Rebuild public-web claim layer
         run: python build_public_web_claims.py
 
