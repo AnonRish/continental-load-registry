@@ -47,6 +47,7 @@ def main() -> int:
     ambiguous = load("ambiguous_case_studies.json")
     gap = load("coverage_gap_register_2026-09-27.json")
     geo = load("geo_coverage_audit_2026-09-27.json")
+    remote = load("remote_sensing_observations.json")
 
     domain_cells, terminal_cells, open_domain_cells = count_terminal_domain_cells(site_status)
     external_blockers = handoff.get("blockers", [])
@@ -58,6 +59,7 @@ def main() -> int:
     publisher_open = int(pub.get("accounting", {}).get("open_research_cells", 0))
     backlog_publisher = int(backlog.get("publisher_tasks", 0))
     observation_tasks = int(obs.get("task_count", len(obs.get("tasks", []))))
+    remote_sites = len({str(x.get("epoch_id")) for x in remote.get("records", []) if x.get("epoch_id")})
     strict_cases = strict.get("cases", [])
     ambiguous_cases = ambiguous.get("cases", [])
 
@@ -95,7 +97,7 @@ def main() -> int:
         "current_public_evidence": {
             "public_web_evidence_records": int(summary.get("public_web_evidence_record_count", 0)),
             "remote_sensing_derived_observations": int(summary.get("remote_sensing_derived_observation_count", 0)),
-            "remote_sensing_sites_with_derived_observations": int(summary.get("remote_sensing_derived_observation_count", 0) and 92 or 0),
+            "remote_sensing_sites_with_derived_observations": remote_sites,
             "site_specific_queue_ids": int(summary.get("site_specific_queue_id_count", 0)),
             "researched_no_public_record_sites": int(summary.get("research_completed_no_public_record_count", 0)),
             "grid_connection_status_counts": {
