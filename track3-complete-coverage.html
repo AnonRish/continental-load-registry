@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="observatory-nav.css">
 <style>
 :root{--ink:#16233a;--soft:#59697d;--faint:#8a99aa;--paper:#eef2ed;--panel:#fbfcfa;--line:#d6ded9;--teal:#33604f;--teal-soft:#dbe9e2;--amber:#a85e0a;--amber-soft:#f3e3c9}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:IBM Plex Sans,system-ui,sans-serif}.page{max-width:1240px;margin:auto;padding:24px 16px 72px}.k{font:600 9px IBM Plex Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}h1{font-size:clamp(42px,7vw,86px);line-height:.94;letter-spacing:-.055em;margin:10px 0 15px}h1 span{color:var(--teal)}p{color:var(--soft);line-height:1.65}.hero{padding:40px 0 28px}.hero p{max-width:880px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px}.card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:14px}.num{font:700 32px IBM Plex Mono,monospace}.label{margin-top:4px;font-size:10px;color:var(--soft)}.note{padding:13px 14px;border:1px solid #e1bf8b;background:var(--amber-soft);border-radius:12px;color:#7b4b0d;font-size:11px;line-height:1.55;margin-top:15px}.section{border-top:1px solid var(--line);padding:32px 0}.tools{display:flex;gap:7px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);text-decoration:none;color:var(--ink);font:600 9px IBM Plex Mono,monospace}.btn:hover{border-color:#9fb2a8}.scroll{overflow:auto}.matrix{width:100%;border-collapse:collapse;font-size:10.5px}.matrix th,.matrix td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:10px}.matrix th{color:var(--soft);font-size:9px;text-transform:uppercase;letter-spacing:.06em}.pill{display:inline-flex;padding:4px 6px;border:1px solid var(--line);border-radius:999px;font:600 8px IBM Plex Mono,monospace;text-transform:uppercase}.pill.good{background:var(--teal-soft);border-color:#8bb4a3;color:var(--teal)}.pill.warn{background:var(--amber-soft);border-color:#d9a25c;color:var(--amber)}.pill.neutral{color:var(--soft)}.tiny{font-size:9px;color:var(--faint);line-height:1.45;margin-top:3px}.filter{margin:12px 0;display:flex;gap:8px;flex-wrap:wrap}.filter input{min-width:280px;flex:1;padding:9px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font:12px IBM Plex Sans,system-ui,sans-serif;color:var(--ink)}@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}}@media(max-width:520px){.stats{grid-template-columns:1fr}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:IBM Plex Sans,system-ui,sans-serif}.page{max-width:1240px;margin:auto;padding:24px 16px 72px}.k{font:600 9px IBM Plex Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}h1{font-size:clamp(42px,7vw,86px);line-height:.94;letter-spacing:-.055em;margin:10px 0 15px}h1 span{color:var(--teal)}p{color:var(--soft);line-height:1.65}.hero{padding:40px 0 28px}.hero p{max-width:880px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px}.card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:14px}.num{font:700 32px IBM Plex Mono,monospace}.label{margin-top:4px;font-size:10px;color:var(--soft)}.note{padding:13px 14px;border:1px solid #e1bf8b;background:var(--amber-soft);border-radius:12px;color:#7b4b0d;font-size:11px;line-height:1.55;margin-top:15px}.section{border-top:1px solid var(--line);padding:32px 0}.tools{display:flex;gap:7px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);text-decoration:none;color:var(--ink);font:600 9px IBM Plex Mono,monospace}.btn:hover{border-color:#9fb2a8}.scroll{overflow:auto}.matrix{width:100%;border-collapse:collapse;font-size:10.5px}.matrix th,.matrix td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:10px}.matrix th{color:var(--soft);font-size:9px;text-transform:uppercase;letter-spacing:.06em}.pill{display:inline-flex;padding:4px 6px;border:1px solid var(--line);border-radius:999px;font:600 8px IBM Plex Mono,monospace;text-transform:uppercase}.pill.good{background:var(--teal-soft);border-color:#8bb4a3;color:var(--teal)}.pill.warn{background:var(--amber-soft);border-color:#d9a25c;color:var(--amber)}.pill.neutral{color:var(--soft)}.tiny{font-size:9px;color:var(--faint);line-height:1.45;margin-top:3px}.mono{font-family:IBM Plex Mono,monospace}.meter{display:inline-block;width:72px;height:5px;border-radius:99px;background:#e3e9e5;overflow:hidden;vertical-align:middle}.meter i{display:block;height:100%;background:var(--teal)}.filter{margin:12px 0;display:flex;gap:8px;flex-wrap:wrap}.filter input{min-width:280px;flex:1;padding:9px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font:12px IBM Plex Sans,system-ui,sans-serif;color:var(--ink)}@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}}@media(max-width:520px){.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -33,6 +33,10 @@
 <div class="filter"><input id="gapFilter" placeholder="Search site, domain, country, status, or next action"></div>
 <div class="scroll"><table class="matrix"><thead><tr><th>Domain</th><th>Resolved</th><th>Open</th><th>Coverage</th><th>Current states</th></tr></thead><tbody id="domainRows"></tbody></table></div>
 <div class="tools" style="margin-top:12px"><a class="btn" href="data/track3/coverage_gap_register_2026-09-27.json">Download gap register</a></div>
+<details style="margin-top:14px"><summary class="k" style="cursor:pointer">OPEN SITE CELLS · 93-site detail</summary>
+<div class="filter" style="margin-top:12px"><input id="siteFilter" placeholder="Search site, country, power, or open domain"></div>
+<div class="scroll"><table class="matrix"><thead><tr><th>Site</th><th>Location</th><th>Power</th><th>Open domains</th></tr></thead><tbody id="siteRows"></tbody></table></div>
+</details>
 </section>
 <section class="section">
 <div class="k">STRICT DISCOVERY PILOT</div>
@@ -94,12 +98,26 @@ try{
  document.getElementById('gapFilter').addEventListener('input',renderGaps);
 }catch(e){document.getElementById('domainRows').innerHTML='<tr><td colspan="5">Gap register unavailable: '+esc(e.message)+'</td></tr>'}
 try{
+ const g=await fetch('data/track3/coverage_gap_register_2026-09-27.json?cb=20260927',{cache:'no-store'}).then(r=>r.json());
+ const siteRows=g.sites||[];
+ function renderSites(){
+  const q=(document.getElementById('siteFilter').value||'').toLowerCase();
+  const f=siteRows.filter(x=>JSON.stringify(x).toLowerCase().includes(q));
+  document.getElementById('siteRows').innerHTML=f.map(x=>{
+   const open=(x.open_domains||[]).map(d=>d.replaceAll('_',' ')).join(' · ')||'None';
+   return '<tr><td><strong>'+esc(x.site_name)+'</strong><div class="tiny">'+esc(x.epoch_id)+'</div></td><td>'+esc([x.country,x.state_province].filter(Boolean).join(', ')||'—')+'</td><td class="mono">'+esc(x.current_it_power_mw??'—')+' MW</td><td class="tiny">'+esc(open)+'</td></tr>';
+  }).join('')||'<tr><td colspan="4">No matching site.</td></tr>';
+ }
+ renderSites();
+ document.getElementById('siteFilter').addEventListener('input',renderSites);
+}catch{}
+try{
  const s=await fetch('data/track3/strict_discovery_public_evidence.json?cb=20260927',{cache:'no-store'}).then(r=>r.json());
  const cased=[s,...(s.cases||[])];
  const seen=new Set();
  strictCases=cased.filter(x=>x.case_id&&!seen.has(x.case_id)&&seen.add(x.case_id));
  document.getElementById('strictRows').innerHTML=strictCases.map(x=>{
-  const role=x.research_role||x.current_disposition||'';
+  const role=x.research_role||((x.case_id==='AMB-AESO-P2958'||x.case_id==='AMB-AESO-P2614')?'CONTROL':'PRIMARY TARGET');
   const obs=x.observations||[];
   const state=x.current_disposition||'PUBLIC_PROJECT_IDENTITY_RESOLVED';
   const next=(x.next_gates||[]).slice(0,3).join(' · ')||'—';
