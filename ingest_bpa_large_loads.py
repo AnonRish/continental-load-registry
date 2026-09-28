@@ -413,7 +413,6 @@ def update_manifests(records: list[dict[str, Any]], capture_date: str, source_sh
         if row.get("id") == "BPA":
             row["status"] = "official_row_level_load_snapshot_ingested"
             row["core_rows"] = "0"
-            row["project_records"] = str(count)
             row["source_urls"] = ";".join(bpa["source_urls"])
             row["scope"] = bpa.get("scope", "")
             row["captured"] = capture_date
