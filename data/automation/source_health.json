@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-28T04:14:32.836455+00:00",
+  "generated_at_utc": "2026-09-28T04:31:52.219692+00:00",
   "source_count": 68,
-  "failed_count": 15,
+  "failed_count": 0,
   "sources": [
     {
       "id": "PJM",
@@ -13,8 +13,8 @@
       "workflow": ".github/workflows/sync_pjm_cycle_public_queue.yml",
       "script": "sync_pjm_cycle_public_queue.py",
       "local_file": "pjm_cycle_public_queue.json",
-      "declared_capture_date": "2026-09-28T04:14:16Z",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:37Z",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -28,7 +28,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/pjm_cycle_public_queue.json",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "ERCOT",
@@ -39,8 +40,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "ercot_gis_source.bin",
-      "declared_capture_date": "2026-09-28T04:14:24.633474+00:00",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:44.846152+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -52,9 +53,10 @@
         "sample_sha256": null
       },
       "changed_since_previous_check": false,
-      "local_artifact_present": false,
-      "local_artifact_path": null,
-      "declared_sha256": null
+      "local_artifact_present": true,
+      "local_artifact_path": "data/automation/auxiliary_sources/ercot_gis_source.bin",
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "SPP",
@@ -65,8 +67,8 @@
       "workflow": ".github/workflows/sync_spp_public_queue.yml",
       "script": "sync_spp_public_queue.py",
       "local_file": "spp_public_queue.json",
-      "declared_capture_date": "2026-09-28T04:14:19Z",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:39Z",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -80,7 +82,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/spp_public_queue.json",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "MISO",
@@ -91,8 +94,8 @@
       "workflow": ".github/workflows/sync_miso_public_queue.yml",
       "script": "sync_miso_public_queue.py",
       "local_file": "miso_gi_queue.json",
-      "declared_capture_date": "2026-09-28T04:13:49Z",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:08Z",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -106,7 +109,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "CAISO",
@@ -117,8 +121,8 @@
       "workflow": ".github/workflows/sync_caiso_public_queue.yml",
       "script": "sync_caiso_public_queue.py",
       "local_file": "caiso_cluster15_queue.xlsx",
-      "declared_capture_date": "2026-09-28T04:13:47Z",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:06Z",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -132,7 +136,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "NYISO",
@@ -144,7 +149,7 @@
       "script": "sync_nyiso_public_queue.py",
       "local_file": "nyiso_interconnection_queue.xlsx",
       "declared_capture_date": "2026-09-19T11:42:50-04:00",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 202,
@@ -158,7 +163,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "ISO-NE",
@@ -169,17 +175,20 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "iso_ne_public_queue.html",
-      "declared_capture_date": "2026-09-28T04:14:24.633474+00:00",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:44.846152+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 302,
         "error": "HTTP Error 302: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nFound"
       },
       "changed_since_previous_check": null,
-      "local_artifact_present": false,
-      "local_artifact_path": null,
+      "local_artifact_present": true,
+      "local_artifact_path": "data/automation/auxiliary_sources/iso_ne_public_queue.html",
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_FAILED_RETAINED_SNAPSHOT",
+      "health_note": "The live publisher health check failed, but a repository-retained snapshot/artifact remains available; this is not treated as an ingestion failure."
     },
     {
       "id": "IESO",
@@ -190,8 +199,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "ieso_application_status.html",
-      "declared_capture_date": "2026-09-28T04:14:24.633474+00:00",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:44.846152+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -203,9 +212,10 @@
         "sample_sha256": null
       },
       "changed_since_previous_check": false,
-      "local_artifact_present": false,
-      "local_artifact_path": null,
-      "declared_sha256": null
+      "local_artifact_present": true,
+      "local_artifact_path": "data/automation/auxiliary_sources/ieso_application_status.html",
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "AESO",
@@ -216,8 +226,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "aeso_september_2026_connection_project_list.xlsx",
-      "declared_capture_date": "2026-09-28T04:14:24.633474+00:00",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "declared_capture_date": "2026-09-28T04:31:44.846152+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -231,7 +241,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-data-centers",
@@ -243,7 +254,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-09-24",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -257,7 +268,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-timelines",
@@ -269,7 +281,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-09-24",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -283,7 +295,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-chip-sales",
@@ -295,7 +308,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_sales_chip_types.csv",
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -309,7 +322,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/external/epoch_ai/ai_chip_sales_chip_types.csv",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-chip-owners",
@@ -321,7 +335,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_owners_cumulative_by_designer.csv",
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -335,7 +349,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/external/epoch_ai/ai_chip_owners_cumulative_by_designer.csv",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-chip-users",
@@ -347,7 +362,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_users_year_end_by_lab.csv",
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -361,7 +376,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/external/epoch_ai/ai_chip_users_year_end_by_lab.csv",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-chillers",
@@ -373,7 +389,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -387,7 +403,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-cooling-towers",
@@ -399,7 +416,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -413,7 +430,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "north-american-queue-universe",
@@ -425,7 +443,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "LOCAL_ARTIFACT",
         "path": "QUEUE_REGISTRY_UNIVERSE.md"
@@ -433,7 +451,8 @@
       "changed_since_previous_check": null,
       "local_artifact_present": true,
       "local_artifact_path": "QUEUE_REGISTRY_UNIVERSE.md",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-gpu-clusters",
@@ -445,7 +464,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "gpu_clusters.csv",
       "declared_capture_date": "2026-03-13",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -459,7 +478,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/external/epoch_ai/gpu_clusters.csv",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "epoch-chip-components",
@@ -471,7 +491,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_components_quarterly_by_chip.csv",
       "declared_capture_date": "2026-07-23",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -485,7 +505,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": true,
       "local_artifact_path": "data/external/epoch_ai/ai_chip_components_quarterly_by_chip.csv",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "meta-facility-electricity",
@@ -497,7 +518,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2024-09-20",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -511,7 +532,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "sentinel-2-optical",
@@ -523,7 +545,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -537,7 +559,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "landsat-oli-optical",
@@ -549,13 +572,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data",
-        "etag": "W/\"1790568878-gzip\"",
-        "last_modified": "Mon, 28 Sep 2026 04:14:38 GMT",
+        "etag": "W/\"1790569918-gzip\"",
+        "last_modified": "Mon, 28 Sep 2026 04:31:58 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -563,7 +586,8 @@
       "changed_since_previous_check": true,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "landsat-tirs-thermal",
@@ -575,13 +599,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
-        "etag": "W/\"1790568880-gzip\"",
-        "last_modified": "Mon, 28 Sep 2026 04:14:40 GMT",
+        "etag": "W/\"1790569919-gzip\"",
+        "last_modified": "Mon, 28 Sep 2026 04:31:59 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -589,7 +613,8 @@
       "changed_since_previous_check": true,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "sentinel-1-sar",
@@ -601,7 +626,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -615,7 +640,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "usgs-3dep",
@@ -627,13 +653,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.usgs.gov/the-national-map-data-delivery/gis-data-download",
-        "etag": "W/\"1790568882-gzip\"",
-        "last_modified": "Mon, 28 Sep 2026 04:14:42 GMT",
+        "etag": "W/\"1790569921-gzip\"",
+        "last_modified": "Mon, 28 Sep 2026 04:32:01 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -641,7 +667,8 @@
       "changed_since_previous_check": true,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "va-deq-data-centers",
@@ -653,16 +680,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 403,
         "error": "HTTP Error 403: Forbidden"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "utility-transmission-projects",
@@ -674,7 +704,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -688,7 +718,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "transformer-supply-chain",
@@ -700,14 +731,15 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "NO_URL"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "physical-verification-layer",
@@ -719,7 +751,7 @@
       "script": "module1_physical_radar.py",
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "LOCAL_ARTIFACT",
         "path": "data/physical_verification_layer.json"
@@ -727,7 +759,8 @@
       "changed_since_previous_check": null,
       "local_artifact_present": true,
       "local_artifact_path": "data/physical_verification_layer.json",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "overture-buildings",
@@ -739,7 +772,7 @@
       "script": "build_building_footprints.py",
       "local_file": null,
       "declared_capture_date": "2026-09-27",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -753,7 +786,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "planetary-computer-stac",
@@ -765,7 +799,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-27",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -779,7 +813,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "sentinel-2-stac-ingest",
@@ -791,7 +826,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -805,7 +840,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "landsat-c2l2-st-stac-ingest",
@@ -817,7 +853,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -831,7 +867,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "transformer-event-research-queue",
@@ -843,7 +880,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "LOCAL_ARTIFACT",
         "path": "data/track3/transformer_supply_chain_events.json"
@@ -851,7 +888,8 @@
       "changed_since_previous_check": null,
       "local_artifact_present": true,
       "local_artifact_path": "data/track3/transformer_supply_chain_events.json",
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "ercot_large_load",
@@ -863,7 +901,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -877,7 +915,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "spp_hill",
@@ -889,7 +928,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -903,7 +942,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "miso_gi_queue",
@@ -915,7 +955,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -929,7 +969,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "caiso_interconnection",
@@ -941,7 +982,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -955,7 +996,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "aeso_connection_projects",
@@ -967,7 +1009,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -981,7 +1023,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "bpa_interconnection",
@@ -993,7 +1036,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1007,7 +1050,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "neso_connections_360",
@@ -1019,7 +1063,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1033,7 +1077,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "neso_registers",
@@ -1045,7 +1090,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1059,7 +1104,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "aemo_registration",
@@ -1071,16 +1117,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 403,
         "error": "HTTP Error 403: Forbidden"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "aemo_connections",
@@ -1092,16 +1141,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 403,
         "error": "HTTP Error 403: Forbidden"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "fingrid_connections",
@@ -1113,16 +1165,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 404,
         "error": "HTTP Error 404: Not Found"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "svk_connections",
@@ -1134,7 +1189,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1148,7 +1203,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "statnett_connections",
@@ -1160,16 +1216,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 404,
         "error": "HTTP Error 404: Not Found"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "tnb_connection",
@@ -1181,13 +1240,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.tnb.com.my/",
         "etag": null,
-        "last_modified": "Mon, 28 Sep 2026 04:13:04 GMT",
+        "last_modified": "Mon, 28 Sep 2026 04:28:23 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -1195,7 +1254,8 @@
       "changed_since_previous_check": true,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "ren_connections",
@@ -1207,16 +1267,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 404,
         "error": "HTTP Error 404: Not Found"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "eredes_connections",
@@ -1228,13 +1291,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.e-redes.pt/en",
-        "etag": "W/\"1790568897-gzip\"",
-        "last_modified": "Mon, 28 Sep 2026 04:14:57 GMT",
+        "etag": "W/\"1790569939-gzip\"",
+        "last_modified": "Mon, 28 Sep 2026 04:32:19 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -1242,7 +1305,8 @@
       "changed_since_previous_check": true,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "landsnet_connections",
@@ -1254,7 +1318,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1268,7 +1332,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "pln_connections",
@@ -1280,16 +1345,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": null,
         "error": "<urlopen error [Errno -2] Name or service not known>"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "state_grid_china",
@@ -1301,16 +1369,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": null,
         "error": "<urlopen error [Errno 101] Network is unreachable>"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "ewec_connections",
@@ -1322,16 +1393,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": null,
         "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "ferc_elibrary",
@@ -1343,16 +1417,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 403,
         "error": "HTTP Error 403: Forbidden"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "ferc_rm26_4",
@@ -1364,16 +1441,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 403,
         "error": "HTTP Error 403: Forbidden"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "gridtracker",
@@ -1385,7 +1465,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1399,7 +1479,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "gridtracker_mcp",
@@ -1411,7 +1492,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1425,7 +1506,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "interconnection_fyi",
@@ -1437,7 +1519,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1451,7 +1533,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "wattstreet",
@@ -1463,7 +1546,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1477,7 +1560,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "lbnl_queued_up",
@@ -1489,16 +1573,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 403,
         "error": "HTTP Error 403: Forbidden"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "texas_ai_docket",
@@ -1510,7 +1597,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1524,7 +1611,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "suedatacenters",
@@ -1536,7 +1624,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1550,7 +1638,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "datacenter_fyi",
@@ -1562,7 +1651,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1576,7 +1665,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "deploy_datacenters",
@@ -1588,16 +1678,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 429,
         "error": "HTTP Error 429: Too Many Requests"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "datacenter_index",
@@ -1609,7 +1702,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1623,7 +1716,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     },
     {
       "id": "gridcensus",
@@ -1635,16 +1729,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "FAILED",
+        "http_status": 429,
         "error": "HTTP Error 429: Too Many Requests"
       },
       "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "failure_class": "REMOTE_SOURCE_UNAVAILABLE"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "interconnectionqueue_org",
@@ -1656,7 +1753,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-09-28T04:14:32.836455+00:00",
+      "checked_at_utc": "2026-09-28T04:31:52.219692+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1670,7 +1767,8 @@
       "changed_since_previous_check": false,
       "local_artifact_present": false,
       "local_artifact_path": null,
-      "declared_sha256": null
+      "declared_sha256": null,
+      "health_state": "HEALTHY"
     }
   ]
 }
