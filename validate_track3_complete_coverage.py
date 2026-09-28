@@ -29,6 +29,8 @@ REQUIRED_ARTIFACTS = [
     "TRACK3_COMPLETE_COVERAGE.md",
     "CLOSED_CASE_PROTOCOL.md",
     "track3_certificate.py",
+    "reconcile_track3_public_enrichment.py",
+    "data/track3/coverage_gap_register_2026-09-27.json",
 ]
 
 
@@ -147,8 +149,8 @@ def main() -> int:
             errors.append(f"site-scoped public-web claim {x.get('claim_id')} missing epoch_id")
         if not (x.get("source_urls") or []):
             errors.append(f"public-web claim {x.get('claim_id')} has no retained source URL")
-    if public_claims.get("accounting", {}).get("claim_count", 0) < 335:
-        errors.append("public-web claim layer is missing retained enrichment claims")
+    if public_claims.get("accounting", {}).get("claim_count", 0) < 400:
+        errors.append("public-web claim layer is missing retained enrichment claims at the current 400-record baseline")
 
     leads = load("data/track3/public_research_leads.json")
     lead_rows = leads.get("records", [])
@@ -157,6 +159,16 @@ def main() -> int:
     assert len({x.get("lead_id") for x in lead_rows}) == len(lead_rows)
     assert all(x.get("epoch_id") and x.get("field") and x.get("finding") for x in lead_rows)
     assert all(x.get("status") in {"PUBLIC_LEAD_REVIEW_REQUIRED","RETAINED_SOURCE","PUBLIC_SOURCE"} for x in lead_rows)
+
+    gap_register = load("data/track3/coverage_gap_register_2026-09-27.json")
+    if len(gap_register.get("sites", [])) != 93:
+        errors.append("coverage gap register is not exactly 93 sites")
+    if len(gap_register.get("domain_summary", [])) != 15:
+        errors.append("coverage gap register is not exactly 15 evidence domains")
+    if gap_register.get("summary", {}).get("public_web_enrichment_records") != enrichment.get("record_count"):
+        errors.append("coverage gap register public-enrichment count does not reconcile")
+    if gap_register.get("summary", {}).get("public_web_enrichment_sites") != enrichment.get("accounting", {}).get("site_count"):
+        errors.append("coverage gap register public-enrichment site count does not reconcile")
 
     global_sources = load("data/track3/public_global_source_observations.json")
     if len(global_sources.get("observations", [])) < 6:
