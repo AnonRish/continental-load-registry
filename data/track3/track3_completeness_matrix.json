@@ -99,8 +99,8 @@
       "requirement": "Locate remaining unaccounted compute",
       "implementation": "Optical/TIR/SAR observations, candidate surveillance and physical queues",
       "status": "PARTIAL",
-      "evidence": "423 retained derived observations across 68/93 sites; detection universe + observation queue",
-      "blocking_gap": "Five of 93 reference sites remain without retained site-level coordinates and therefore without physical-observation targeting; covert/non-grid sites remain outside public queue visibility."
+      "evidence": "543 retained derived remote-sensing observations across 88/93 canonical sites; detection universe + observation queue",
+      "blocking_gap": "Five of 93 reference sites remain without retained site-level physical coordinates and therefore cannot be targeted as site-specific observations; covert/non-grid sites remain outside public queue visibility."
     },
     {
       "id": "T3-12",
@@ -115,16 +115,16 @@
       "requirement": "Discover physical data centers with imagery/intelligence",
       "implementation": "93-site reference universe + broader queue surveillance + remote sensing",
       "status": "PARTIAL",
-      "evidence": "93 Epoch sites; outside-Epoch queue surveillance; 423 derived observations",
-      "blocking_gap": "Five of 93 reference sites remain physically unlocated in the canonical coordinate layer; the other 88 have retained optical/TIR/SAR derived observations."
+      "evidence": "93 Epoch reference sites; 543 retained derived observations across 88 sites; outside-Epoch queue surveillance",
+      "blocking_gap": "Five canonical sites still lack retained physical coordinates; global covert-site discovery beyond the public reference universe remains incomplete."
     },
     {
       "id": "T3-14",
       "requirement": "Power/cooling/infrastructure corroboration",
       "implementation": "Annual power snapshots, cooling, transformer, substation and transmission evidence",
       "status": "PARTIAL",
-      "evidence": "6 annual power observations; 2 structured cooling snapshots; 3 transformer events; 90 substation and 113 transmission evidence records",
-      "blocking_gap": "Interval telemetry and exhaustive site-linkage incomplete."
+      "evidence": "6 annual power observations; 2 structured cooling snapshots; 3 transformer events; 90 substation + 113 transmission evidence records",
+      "blocking_gap": "Interval electricity telemetry, broader cooling instrumentation, transformer event coverage, and exhaustive site linkage remain incomplete."
     },
     {
       "id": "T3-15",
@@ -151,5 +151,6 @@
       "blocking_gap": "No closed population and verified sample results."
     }
   ],
-  "hard_stop": "The repository is not fully Track 3-complete until the blocking gaps involving global transaction accounting, physical inspection, residual L, and comprehensive covert-site detection are materially resolved."
+  "hard_stop": "The repository is not fully Track 3-complete until the blocking gaps involving global transaction accounting, physical inspection, residual L, and comprehensive covert-site detection are materially resolved.",
+  "audit_note": "Evidence counts reconciled with data/physical_verification_layer.json on 2026-09-27; prior 423/68 figures were stale."
 }
