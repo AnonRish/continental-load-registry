@@ -449,8 +449,8 @@ jobs:
           from pathlib import Path
           d=json.loads(Path("data/track3/public_research_leads.json").read_text(encoding="utf-8"))
           rows=d["records"]
-          assert d["accounting"]["lead_count"] == len(rows) == 53
-          assert d["accounting"]["site_count"] == 33
+          assert d["accounting"]["lead_count"] == len(rows) == 54
+          assert d["accounting"]["site_count"] == 34
           assert len({x["lead_id"] for x in rows}) == len(rows)
           assert all(x["epoch_id"] and x["field"] and x["finding"] for x in rows)
           assert all(x["status"] in {"PUBLIC_LEAD_REVIEW_REQUIRED","RETAINED_SOURCE","PUBLIC_SOURCE"} for x in rows)
