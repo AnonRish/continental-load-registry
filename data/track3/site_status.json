@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-28T01:26:43.093341+00:00",
+    "generated_at_utc": "2026-09-28T01:29:31.805899+00:00",
     "epoch_site_count": 93,
     "observation_task_count": 191,
     "observation_task_counts_by_domain": {
@@ -15,8 +15,8 @@
       "P1": 93
     },
     "site_level_evidence_site_count": 93,
-    "public_web_evidence_record_count": 335,
-    "public_web_evidence_site_count": 89,
+    "public_web_evidence_record_count": 370,
+    "public_web_evidence_site_count": 93,
     "combined_site_level_evidence_site_count": 93,
     "site_specific_queue_id_count": 2,
     "pending_grid_connection_research_count": 0,
@@ -38,8 +38,8 @@
         "VERIFIED_SITE_SPECIFIC": 2
       },
       "service_or_contract": {
-        "SITE_LEVEL_EVIDENCE": 22,
-        "NOT_INGESTED": 71
+        "SITE_LEVEL_EVIDENCE": 23,
+        "NOT_INGESTED": 70
       },
       "regulatory": {
         "INGESTED": 16,
@@ -58,8 +58,8 @@
         "NOT_INGESTED": 5
       },
       "cooling": {
-        "NOT_INGESTED": 78,
-        "INGESTED_SNAPSHOT": 15
+        "NOT_INGESTED": 75,
+        "INGESTED_SNAPSHOT": 18
       },
       "transformer_supply_chain": {
         "RESEARCH_QUEUE": 92,
@@ -4336,8 +4336,8 @@
           "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -4362,9 +4362,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 0,
+      "public_web_evidence_count": 8,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 9,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -4834,8 +4834,8 @@
           "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -4860,9 +4860,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 0,
+      "public_web_evidence_count": 8,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 9,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
@@ -4892,8 +4892,8 @@
           "basis": "A site-specific queue/connection ID is present in the preserved crosswalk."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "NOT_ASSESSED",
@@ -4918,8 +4918,8 @@
           "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
         },
         "cooling": {
-          "status": "NOT_INGESTED",
-          "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
         },
         "transformer_supply_chain": {
           "status": "RESEARCH_QUEUE",
@@ -4944,9 +4944,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 0,
+      "public_web_evidence_count": 10,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 11,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
@@ -5946,9 +5946,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 0,
+      "public_web_evidence_count": 9,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 1,
+      "combined_site_level_evidence_count": 10,
       "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
