@@ -1,6 +1,6 @@
 # Strict Discovery Research Queue
 
-Updated: 2026-09-27
+Updated: 2026-09-28
 
 ## Purpose
 
@@ -76,6 +76,19 @@ This is a second explicit industrial-load control for entity and physical resolu
 Search sequence: AESO source → Dow/project records → municipal planning/land/permitting → utility/regulator evidence → physical target → transformer/service evidence.
 
 Do not infer: project identity from the company name alone; queue MW is not operating consumption.
+
+## Current five-case closure result
+
+The strict five-case queue is now terminally dispositioned in
+`data/track3/strict_discovery_case_dispositions_2026-09-28.json`.
+
+- **P3066 Leedale Data Load — closed at the public-evidence boundary:** public sources classify the project as a proposed data center/data load, but no defensible project parcel or developer/operator identity was established.
+- **P3198 Lynx Data Load — closed as inconclusive:** the queue and Fort Saskatchewan planning context are established, but no project-specific parcel or developer/operator identity was established.
+- **P3108 Wild Rose Power Hub — closed with public project + physical-site identity:** Rocky View County and Alberta Major Projects identify the proposed data-centre project and site; the 1,300 MW figure remains a connection request rather than measured demand.
+- **P2958 Hydrogen Canada MPC Load — closed as an industrial control context:** public sources identify a Hydrogen Canada blue-hydrogen/ammonia project near Fort Saskatchewan and the queue is classified as Industrial Load, but the exact P2958-to-parcel linkage remains unresolved.
+- **P2614 Dow Fort Sask. Load — closed as an industrial project:** AESO's engineering assessment directly identifies Dow Chemical Canada ULC, a 231 MW requested load, and an Industrial project type.
+
+The closure result is **not** a claim that any of these sites are operational, that their queue MW equals electricity consumption, or that covert compute has been ruled out.
 
 ## Closure output
 
