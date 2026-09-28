@@ -2,108 +2,1839 @@
   "schema_version": 1,
   "generated_on": "2026-09-27",
   "title": "Track 3 coverage gap register",
-  "purpose": "Machine-readable closure register for every canonical site/domain and every unresolved publisher field. Open states are work remaining; they are never interpreted as absence.",
+  "purpose": "Machine-readable closure register for every canonical site/domain and unresolved publisher field.",
   "basis": {
     "canonical_site_count": 93,
     "domain_count": 15,
     "requirement_count": 17,
     "site_status_source": "data/track3/site_status.json",
     "publisher_sweep_source": "data/track3/site_missing_information_sweep_2026-09-27.json",
-    "requirement_source": "data/track3/track3_completeness_matrix.json"
+    "enrichment_source": "data/track3/public_web_enrichment_2026-09-27.json",
+    "matrix_source": "data/track3/track3_completeness_matrix.json"
   },
   "summary": {
-    "schema_version": 1,
-    "generated_at_utc": "2026-09-28T01:03:08.160569+00:00",
-    "epoch_site_count": 93,
-    "observation_task_count": 211,
-    "observation_task_counts_by_domain": {
-      "power_telemetry": 93,
-      "cooling": 93,
-      "remote_sensing": 25
+    "effective_unresolved_publisher_fields": 221,
+    "open_domain_cells": 598,
+    "resolved_domain_cells": 797,
+    "public_web_enrichment_records": 400,
+    "reconciled_field_closures_this_run": 38
+  },
+  "publisher": {
+    "summary": {
+      "schema_version": 1,
+      "generated_on": "2026-09-27",
+      "scope": "All 93 canonical Epoch AI frontier-AI reference sites",
+      "purpose": "Exhaustive gap inventory from canonical Track 3 artifacts plus a targeted live-public-source sweep. Public leads are not silently promoted to canonical evidence.",
+      "sites": 93,
+      "total_missing_publisher_fields": 378,
+      "remaining_unresolved_publisher_fields": 371,
+      "sites_with_public_research_leads": 33,
+      "total_public_research_leads": 53,
+      "open_track3_domain_cells": 711,
+      "publisher_missing_field_counts": {
+        "project": 76,
+        "investors": 83,
+        "construction_companies": 87,
+        "energy_companies": 74,
+        "owner": 10,
+        "users": 25,
+        "address": 13,
+        "chip_quantities": 10
+      },
+      "canonical_sources": [
+        "data/track3/site_status.json",
+        "data/track3/public_site_dossier.json",
+        "data/external/intel_accelerator_enrichment.json"
+      ],
+      "total_public_enrichment_resolved_fields": 399,
+      "total_targeted_publicly_resolved_fields": 14,
+      "effective_unresolved_publisher_fields": 221,
+      "effective_unresolved_field_counts": {
+        "investors": 79,
+        "construction_companies": 64,
+        "users": 21,
+        "project": 23,
+        "chip_quantities": 10,
+        "address": 8,
+        "energy_companies": 15,
+        "owner": 1
+      },
+      "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
+      "public_web_enrichment_records": 400,
+      "public_web_enrichment_sites": 93,
+      "researched_no_public_record_grid_cells": 18,
+      "targeted_publicly_resolved_fields": 28,
+      "reconciliation_updated_on": "2026-09-27"
     },
-    "observation_task_counts_by_priority": {
-      "P0": 118,
-      "P1": 93
-    },
-    "site_level_evidence_site_count": 93,
-    "public_web_evidence_record_count": 335,
-    "public_web_evidence_site_count": 89,
-    "combined_site_level_evidence_site_count": 93,
-    "site_specific_queue_id_count": 2,
-    "pending_grid_connection_research_count": 0,
-    "research_completed_no_public_record_count": 11,
-    "domain_status_counts": {
-      "site_identity": {
-        "INGESTED": 93
+    "tasks": [
+      {
+        "epoch_id": "EPOCH-c20399471d1c5e4a",
+        "site_name": "Colossus 2",
+        "missing_publisher_fields": [],
+        "open_track3_domains": [
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number."
       },
-      "construction": {
-        "INGESTED": 93
+      {
+        "epoch_id": "EPOCH-d9050b43689ed24c",
+        "site_name": "Microsoft Fairwater Atlanta",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Georgia PSC and Georgia Power large-load filings for the Fairwater/QTS Fayetteville campus, including docket records and service/interconnection documentation."
       },
-      "chip_inventory": {
-        "INGESTED": 83,
-        "UNKNOWN": 10
+      {
+        "epoch_id": "EPOCH-45b3c74314eb1f26",
+        "site_name": "Anthropic-Amazon New Carlisle",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case."
       },
-      "grid_connection": {
-        "SITE_LEVEL_EVIDENCE": 80,
-        "RESEARCHED_NO_PUBLIC_RECORD": 11,
-        "VERIFIED_SITE_SPECIFIC": 2
+      {
+        "epoch_id": "EPOCH-ea699c935d46e066",
+        "site_name": "Google Pryor (North)",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number."
       },
-      "service_or_contract": {
-        "SITE_LEVEL_EVIDENCE": 22,
-        "NOT_INGESTED": 71
+      {
+        "epoch_id": "EPOCH-8838deed95ffb554",
+        "site_name": "Meta Prometheus",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate."
       },
-      "regulatory": {
-        "INGESTED": 16,
-        "NOT_ASSESSED": 77
+      {
+        "epoch_id": "EPOCH-2c2e40ddb178da3e",
+        "site_name": "OpenAI Stargate Abilene",
+        "missing_publisher_fields": [],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search ERCOT large-load records, AEP Texas/Oncor service records, TCEQ permits and Taylor County filings for a site-specific case or agreement."
       },
-      "compute_tenancy": {
-        "UNKNOWN": 89,
-        "INGESTED_SNAPSHOT": 4
+      {
+        "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
+        "site_name": "Microsoft Fairwater Wisconsin",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Wisconsin PSC, We Energies and MISO records for the Fairwater service/interconnection case and associated generation/transmission filings."
       },
-      "power_telemetry": {
-        "NOT_INGESTED": 87,
-        "INGESTED_SNAPSHOT": 6
+      {
+        "epoch_id": "EPOCH-04f65e1aee6c98ab",
+        "site_name": "DayOne Kempas",
+        "missing_publisher_fields": [
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
       },
-      "remote_sensing": {
-        "INGESTED_DERIVED": 88,
-        "NOT_INGESTED": 5
+      {
+        "epoch_id": "EPOCH-d8b28fdbc55817f9",
+        "site_name": "Google Columbus",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search AEP Ohio, PUCO and PJM records for the site-specific service/interconnection record and reconcile multiple campus/building addresses."
       },
-      "cooling": {
-        "NOT_INGESTED": 78,
-        "INGESTED_SNAPSHOT": 15
+      {
+        "epoch_id": "EPOCH-5b353d56a567a70b",
+        "site_name": "Google New Albany",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
       },
-      "transformer_supply_chain": {
-        "RESEARCH_QUEUE": 92,
-        "INGESTED": 1
+      {
+        "epoch_id": "EPOCH-83ca909f7eb211c7",
+        "site_name": "Google Mesa",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing."
       },
-      "chip_ownership": {
-        "INGESTED_SNAPSHOT": 93
+      {
+        "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+        "site_name": "DayOne Nusajaya",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
       },
-      "chip_users": {
-        "INGESTED_SNAPSHOT": 93
+      {
+        "epoch_id": "EPOCH-2dadeb4b013bef05",
+        "site_name": "Colossus 1",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search MLGW/TVA filings and Memphis/Shelby regulatory records for the site-specific service agreement, connection upgrade record and any currently applicable capacity figure."
       },
-      "chip_shipments": {
-        "INGESTED_SNAPSHOT": 93
+      {
+        "epoch_id": "EPOCH-1c8ee8b0305c6313",
+        "site_name": "Google Council Bluffs (East)",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search MidAmerican, Iowa Utilities Board and MISO records for a site-specific Google Council Bluffs service/interconnection case."
       },
-      "independent_corroboration": {
-        "NOT_ASSESSED": 93
+      {
+        "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
+        "site_name": "CoreWeave Denton TX",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately."
+      },
+      {
+        "epoch_id": "EPOCH-cc12c3e42b3eaf08",
+        "site_name": "QTS Richmond 1",
+        "missing_publisher_fields": [
+          "investors",
+          "users",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-8358e445402d91c2",
+        "site_name": "Meta Rosemount",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents."
+      },
+      {
+        "epoch_id": "EPOCH-0d287943c30fe239",
+        "site_name": "Amazon Madison Mega Site",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Canton Municipal Utilities, Entergy Mississippi where applicable, Mississippi PSC, Madison County and local permitting records for the specific electrical service/interconnection record."
+      },
+      {
+        "epoch_id": "EPOCH-6db3bc2c79843ffd",
+        "site_name": "Google Bristow",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-93a4aa4fa40d40ca",
+        "site_name": "Microsoft Goodyear",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-1ac0959562dee191",
+        "site_name": "Meta Jeffersonville",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Indiana Michigan Power / Duke Energy Indiana and Indiana Utility Regulatory Commission records for the site's service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-6799460068cbed36",
+        "site_name": "Google Kansas City East",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "address",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record."
+      },
+      {
+        "epoch_id": "EPOCH-bdc85fadae79b6b2",
+        "site_name": "AWS New Albany",
+        "missing_publisher_fields": [
+          "investors",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search AEP Ohio, PUCO, PJM and New Albany/Plain Township permitting records for the electrical service and interconnection record for this campus."
+      },
+      {
+        "epoch_id": "EPOCH-4eeccbee73808216",
+        "site_name": "Google Omaha",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-e06bc7faa8b1b187",
+        "site_name": "Google Lincoln",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record."
+      },
+      {
+        "epoch_id": "EPOCH-052be5b551cd099b",
+        "site_name": "QTS Richmond 2",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-40ccef8ef4236635",
+        "site_name": "Google The Dalles",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Northern Wasco County PUD, BPA and Oregon public records for a specific interconnection/service case or account."
+      },
+      {
+        "epoch_id": "EPOCH-02484a65a5dac16d",
+        "site_name": "QTS Richmond 3",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-0788d9aeb3114553",
+        "site_name": "Meta Montgomery",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-5de9a1c70a3e2275",
+        "site_name": "Meta Kuna",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case."
+      },
+      {
+        "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+        "site_name": "Meta Temple",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-14cecdb5956daea1",
+        "site_name": "Meta Cheyenne",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-4a87099a6d1e001f",
+        "site_name": "Amazon Ridgeland",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Entergy Mississippi, Mississippi Public Service Commission, MISO and Madison/Ridgeland public records for the underlying service or interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-27e284efc1b1abc2",
+        "site_name": "Meta Huntsville",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search TVA, Alabama Public Service Commission, local utility records and SERC-related connection filings for the underlying service or interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-a69e48fd129d0cdb",
+        "site_name": "Coreweave Helios",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-534376160415dc84",
+        "site_name": "Microsoft Project Osmium",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search MidAmerican Energy, MISO, Iowa Utilities Board and local records for the underlying service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-0bb0b996b7c96beb",
+        "site_name": "Meta Eagle Mountain",
+        "missing_publisher_fields": [
+          "project",
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-85492d2b8df586a1",
+        "site_name": "Google Midlothian",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-2b89e13933a04725",
+        "site_name": "Google Storey County",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "address"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-f92e98f4b76a9bcd",
+        "site_name": "Google Lancaster",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-78f8285078416a9e",
+        "site_name": "Meta-QTS Hillsboro 2",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Portland General Electric, BPA, Oregon utility/regulatory records and Hillsboro public records for the underlying service/interconnection case."
+      },
+      {
+        "epoch_id": "EPOCH-a2c9f0846296fe65",
+        "site_name": "Google Waltham Cross",
+        "missing_publisher_fields": [
+          "project",
+          "investors"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier."
+      },
+      {
+        "epoch_id": "EPOCH-a286a89bd1c1b6e7",
+        "site_name": "VNET Bayin Ulanqab",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-785d6e4c34607dd4",
+        "site_name": "Google Arcola",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search Dominion Energy, Virginia SCC, PJM and local Loudoun County records for the exact service/interconnection case, contract, substation or project identifier."
+      },
+      {
+        "epoch_id": "EPOCH-f1a2bcdd78478bc2",
+        "site_name": "Google Red Oak",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-4525348d114e3e8e",
+        "site_name": "Google Papillion",
+        "missing_publisher_fields": [
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-d29894d37388a96a",
+        "site_name": "Meta Gallatin",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-02c050b6b554fadd",
+        "site_name": "Meta Los Lunas",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-768183e4de6062d2",
+        "site_name": "CoreWeave Ellendale ND",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the serving utility, North Dakota regulatory records, MISO/SPP-relevant records and site permitting sources for the electrical service/interconnection record associated with the leased compute capacity."
+      },
+      {
+        "epoch_id": "EPOCH-4b5df4f52274f2ba",
+        "site_name": "Meta Sarpy",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-77e196fc5320fd70",
+        "site_name": "Huawei Horinger",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "energy_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-2d362a1adb09fddd",
+        "site_name": "CoreWeave Chester VA",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-ea5d1ae5837aba5c",
+        "site_name": "Oracle Batam",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "energy_companies",
+          "users",
+          "address"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-03aad260b30bfbe1",
+        "site_name": "AWS Berwick",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-eb87487504bda8ed",
+        "site_name": "CoreWeave Marble NC",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-7d9b5af0cce16f1c",
+        "site_name": "Meta Aiken",
+        "missing_publisher_fields": [
+          "project",
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
+      },
+      {
+        "epoch_id": "EPOCH-af62ae3440fe885a",
+        "site_name": "Huawei Wuhu",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "energy_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-d1b62579c6be3fe8",
+        "site_name": "Core42 Lake Mariner",
+        "missing_publisher_fields": [
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-71d0091a05448224",
+        "site_name": "Microsoft SAT40",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-c89a3269719f868a",
+        "site_name": "STACK Infrastructure NVA02",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-29fb769630142638",
+        "site_name": "Anthropic Lake Mariner",
+        "missing_publisher_fields": [
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-781cbfae186209ad",
+        "site_name": "Microsoft-Nebius New Jersey",
+        "missing_publisher_fields": [
+          "investors",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-f48a533b01898dfd",
+        "site_name": "CoreWeave Norway",
+        "missing_publisher_fields": [
+          "investors",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-41dea3fb46d2e6a8",
+        "site_name": "Nebius Mantsala",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-827d7832237170bd",
+        "site_name": "Southgate Melbourne",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "energy_companies",
+          "address"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-ee5c7acdbc729ef8",
+        "site_name": "Stream Phoenix",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-0355f445ca6cbed4",
+        "site_name": "Microsoft SAT14",
+        "missing_publisher_fields": [
+          "investors",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-96d37578ca36f86c",
+        "site_name": "Vantage TX1",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "owner",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-8696ef81d91560a9",
+        "site_name": "CoreWeave Dalton 1 & 2",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-e20c2909085b37fd",
+        "site_name": "Alibaba Zhangbei",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-8baa344f9717520c",
+        "site_name": "Start Campus Sines Data Campus",
+        "missing_publisher_fields": [
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-495a9afde5e4b96c",
+        "site_name": "xAI QTS Atlanta",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-f1a70be0079d215a",
+        "site_name": "Nscale Keflavik",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-5b05fa7b682be282",
+        "site_name": "Anthropic Barber Lake",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "address"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-7648e1438308fdae",
+        "site_name": "CoreWeave Lancaster Greenfield site",
+        "missing_publisher_fields": [
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-65e758d676dc06d6",
+        "site_name": "CoreWeave Muskogee OK",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-4569f5444951b2fd",
+        "site_name": "Crusoe Abilene Expansion",
+        "missing_publisher_fields": [
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-dadec9d6ef7fca88",
+        "site_name": "EcoDataCenter 2",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-bbf05f2d8903eccc",
+        "site_name": "Goodnight",
+        "missing_publisher_fields": [
+          "project",
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-2d6a8403fde79650",
+        "site_name": "Google Cedar Rapids",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-f340a33a5ef18d4f",
+        "site_name": "Google Fort Wayne",
+        "missing_publisher_fields": [
+          "construction_companies",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-177c53f92d72ec4a",
+        "site_name": "Meta Bowling Green",
+        "missing_publisher_fields": [
+          "project",
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-bbcf0efa8bcebd41",
+        "site_name": "Meta Hyperion",
+        "missing_publisher_fields": [
+          "investors"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+        "site_name": "Microsoft Narvik Norway",
+        "missing_publisher_fields": [
+          "construction_companies",
+          "energy_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-dc6199921ba82b85",
+        "site_name": "OpenAI Stargate Lordstown",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-145ed5861bdf2982",
+        "site_name": "OpenAI Stargate Michigan",
+        "missing_publisher_fields": [
+          "investors",
+          "address",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+        "site_name": "OpenAI Stargate Milam",
+        "missing_publisher_fields": [
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-3816121e8d72fe04",
+        "site_name": "OpenAI Stargate New Mexico",
+        "missing_publisher_fields": [
+          "investors",
+          "address",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-b427a75f62d61aae",
+        "site_name": "OpenAI Stargate Shackelford",
+        "missing_publisher_fields": [
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-661288625d17662a",
+        "site_name": "OpenAI Stargate UAE",
+        "missing_publisher_fields": [
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
+      },
+      {
+        "epoch_id": "EPOCH-78e7d8474fbdf968",
+        "site_name": "OpenAI Stargate Wisconsin",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "address",
+          "chip_quantities"
+        ],
+        "open_track3_domains": [
+          "chip_inventory",
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "cooling",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
+      },
+      {
+        "epoch_id": "EPOCH-d2da66ea035880ce",
+        "site_name": "QTS Cedar Rapids",
+        "missing_publisher_fields": [
+          "investors",
+          "construction_companies",
+          "users"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      },
+      {
+        "epoch_id": "EPOCH-4b4d686b6c457a68",
+        "site_name": "QTS Eagle Mountain",
+        "missing_publisher_fields": [
+          "project",
+          "investors",
+          "construction_companies"
+        ],
+        "open_track3_domains": [
+          "service_or_contract",
+          "regulatory",
+          "compute_tenancy",
+          "power_telemetry",
+          "remote_sensing",
+          "transformer_supply_chain",
+          "independent_corroboration"
+        ],
+        "next_research_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record."
       }
-    },
-    "source_stack_count": 30,
-    "remote_sensing_derived_observation_count": 543,
-    "transformer_event_count": 3,
-    "source_stack_status_counts": {
-      "INGESTED": 8,
-      "INGESTED_DERIVED": 3,
-      "INGESTED_PARTIAL": 1,
-      "INGESTED_SNAPSHOT": 9,
-      "NOT_INGESTED": 1,
-      "RESEARCH_QUEUE": 1,
-      "SOURCE_AVAILABLE_ACTIVE_ACQUISITION": 1,
-      "SOURCE_AVAILABLE_ACTIVE_FALLBACK": 1,
-      "SOURCE_AVAILABLE_NOT_INGESTED": 5
-    },
-    "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. RESEARCHED_NO_PUBLIC_RECORD means a site-specific search was performed and no public queue/service record was retained; it is not evidence that service is absent. Observation-ledger counts are canonical for retained derived remote-sensing observations; raw physical acquisition counts remain separate."
+    ]
   },
   "domain_summary": [
     {
@@ -163,11 +1894,11 @@
     {
       "domain": "service_or_contract",
       "site_count": 93,
-      "resolved_site_count": 22,
-      "open_site_count": 71,
+      "resolved_site_count": 23,
+      "open_site_count": 70,
       "status_counts": {
-        "SITE_LEVEL_EVIDENCE": 22,
-        "NOT_INGESTED": 71
+        "SITE_LEVEL_EVIDENCE": 23,
+        "NOT_INGESTED": 70
       },
       "open_site_ids": [
         "EPOCH-d9050b43689ed24c",
@@ -216,7 +1947,6 @@
         "EPOCH-2d362a1adb09fddd",
         "EPOCH-7d9b5af0cce16f1c",
         "EPOCH-af62ae3440fe885a",
-        "EPOCH-d1b62579c6be3fe8",
         "EPOCH-71d0091a05448224",
         "EPOCH-c89a3269719f868a",
         "EPOCH-f48a533b01898dfd",
@@ -552,11 +2282,11 @@
     {
       "domain": "cooling",
       "site_count": 93,
-      "resolved_site_count": 15,
-      "open_site_count": 78,
+      "resolved_site_count": 18,
+      "open_site_count": 75,
       "status_counts": {
-        "NOT_INGESTED": 78,
-        "INGESTED_SNAPSHOT": 15
+        "NOT_INGESTED": 75,
+        "INGESTED_SNAPSHOT": 18
       },
       "open_site_ids": [
         "EPOCH-c20399471d1c5e4a",
@@ -600,14 +2330,11 @@
         "EPOCH-02c050b6b554fadd",
         "EPOCH-768183e4de6062d2",
         "EPOCH-4b5df4f52274f2ba",
-        "EPOCH-77e196fc5320fd70",
         "EPOCH-2d362a1adb09fddd",
         "EPOCH-ea5d1ae5837aba5c",
         "EPOCH-03aad260b30bfbe1",
         "EPOCH-eb87487504bda8ed",
         "EPOCH-7d9b5af0cce16f1c",
-        "EPOCH-af62ae3440fe885a",
-        "EPOCH-d1b62579c6be3fe8",
         "EPOCH-71d0091a05448224",
         "EPOCH-c89a3269719f868a",
         "EPOCH-29fb769630142638",
@@ -878,1874 +2605,6 @@
       ]
     }
   ],
-  "publisher": {
-    "summary": {
-      "schema_version": 1,
-      "generated_on": "2026-09-27",
-      "scope": "All 93 canonical Epoch AI frontier-AI reference sites",
-      "purpose": "Exhaustive gap inventory from canonical Track 3 artifacts plus a targeted live-public-source sweep. Public leads are not silently promoted to canonical evidence.",
-      "sites": 93,
-      "total_missing_publisher_fields": 378,
-      "remaining_unresolved_publisher_fields": 371,
-      "sites_with_public_research_leads": 33,
-      "total_public_research_leads": 53,
-      "open_track3_domain_cells": 711,
-      "publisher_missing_field_counts": {
-        "project": 76,
-        "investors": 83,
-        "construction_companies": 87,
-        "energy_companies": 74,
-        "owner": 10,
-        "users": 25,
-        "address": 13,
-        "chip_quantities": 10
-      },
-      "canonical_sources": [
-        "data/track3/site_status.json",
-        "data/track3/public_site_dossier.json",
-        "data/external/intel_accelerator_enrichment.json"
-      ],
-      "total_public_enrichment_resolved_fields": 399,
-      "total_targeted_publicly_resolved_fields": 14,
-      "effective_unresolved_publisher_fields": 273,
-      "effective_unresolved_field_counts": {
-        "investors": 79,
-        "construction_companies": 76,
-        "project": 54,
-        "users": 24,
-        "address": 11,
-        "chip_quantities": 10,
-        "energy_companies": 18,
-        "owner": 1
-      },
-      "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
-      "public_web_enrichment_records": 246,
-      "public_web_enrichment_sites": 71,
-      "researched_no_public_record_grid_cells": 18
-    },
-    "tasks": [
-      {
-        "epoch_id": "EPOCH-c20399471d1c5e4a",
-        "site_name": "Colossus 2",
-        "missing_publisher_fields": [
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number."
-      },
-      {
-        "epoch_id": "EPOCH-d9050b43689ed24c",
-        "site_name": "Microsoft Fairwater Atlanta",
-        "missing_publisher_fields": [
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Georgia PSC and Georgia Power large-load filings for the Fairwater/QTS Fayetteville campus, including docket records and service/interconnection documentation."
-      },
-      {
-        "epoch_id": "EPOCH-45b3c74314eb1f26",
-        "site_name": "Anthropic-Amazon New Carlisle",
-        "missing_publisher_fields": [
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-ea699c935d46e066",
-        "site_name": "Google Pryor (North)",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number."
-      },
-      {
-        "epoch_id": "EPOCH-8838deed95ffb554",
-        "site_name": "Meta Prometheus",
-        "missing_publisher_fields": [
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate."
-      },
-      {
-        "epoch_id": "EPOCH-2c2e40ddb178da3e",
-        "site_name": "OpenAI Stargate Abilene",
-        "missing_publisher_fields": [],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search ERCOT large-load records, AEP Texas/Oncor service records, TCEQ permits and Taylor County filings for a site-specific case or agreement."
-      },
-      {
-        "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
-        "site_name": "Microsoft Fairwater Wisconsin",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Wisconsin PSC, We Energies and MISO records for the Fairwater service/interconnection case and associated generation/transmission filings."
-      },
-      {
-        "epoch_id": "EPOCH-04f65e1aee6c98ab",
-        "site_name": "DayOne Kempas",
-        "missing_publisher_fields": [
-          "project",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-d8b28fdbc55817f9",
-        "site_name": "Google Columbus",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search AEP Ohio, PUCO and PJM records for the site-specific service/interconnection record and reconcile multiple campus/building addresses."
-      },
-      {
-        "epoch_id": "EPOCH-5b353d56a567a70b",
-        "site_name": "Google New Albany",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-83ca909f7eb211c7",
-        "site_name": "Google Mesa",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing."
-      },
-      {
-        "epoch_id": "EPOCH-55d4b5e818b5bb2a",
-        "site_name": "DayOne Nusajaya",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users",
-          "address"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-2dadeb4b013bef05",
-        "site_name": "Colossus 1",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search MLGW/TVA filings and Memphis/Shelby regulatory records for the site-specific service agreement, connection upgrade record and any currently applicable capacity figure."
-      },
-      {
-        "epoch_id": "EPOCH-1c8ee8b0305c6313",
-        "site_name": "Google Council Bluffs (East)",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search MidAmerican, Iowa Utilities Board and MISO records for a site-specific Google Council Bluffs service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
-        "site_name": "CoreWeave Denton TX",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately."
-      },
-      {
-        "epoch_id": "EPOCH-cc12c3e42b3eaf08",
-        "site_name": "QTS Richmond 1",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-8358e445402d91c2",
-        "site_name": "Meta Rosemount",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents."
-      },
-      {
-        "epoch_id": "EPOCH-0d287943c30fe239",
-        "site_name": "Amazon Madison Mega Site",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Canton Municipal Utilities, Entergy Mississippi where applicable, Mississippi PSC, Madison County and local permitting records for the specific electrical service/interconnection record."
-      },
-      {
-        "epoch_id": "EPOCH-6db3bc2c79843ffd",
-        "site_name": "Google Bristow",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-93a4aa4fa40d40ca",
-        "site_name": "Microsoft Goodyear",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-1ac0959562dee191",
-        "site_name": "Meta Jeffersonville",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Indiana Michigan Power / Duke Energy Indiana and Indiana Utility Regulatory Commission records for the site's service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-6799460068cbed36",
-        "site_name": "Google Kansas City East",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users",
-          "address",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record."
-      },
-      {
-        "epoch_id": "EPOCH-bdc85fadae79b6b2",
-        "site_name": "AWS New Albany",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search AEP Ohio, PUCO, PJM and New Albany/Plain Township permitting records for the electrical service and interconnection record for this campus."
-      },
-      {
-        "epoch_id": "EPOCH-4eeccbee73808216",
-        "site_name": "Google Omaha",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-e06bc7faa8b1b187",
-        "site_name": "Google Lincoln",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record."
-      },
-      {
-        "epoch_id": "EPOCH-052be5b551cd099b",
-        "site_name": "QTS Richmond 2",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-40ccef8ef4236635",
-        "site_name": "Google The Dalles",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Northern Wasco County PUD, BPA and Oregon public records for a specific interconnection/service case or account."
-      },
-      {
-        "epoch_id": "EPOCH-02484a65a5dac16d",
-        "site_name": "QTS Richmond 3",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-0788d9aeb3114553",
-        "site_name": "Meta Montgomery",
-        "missing_publisher_fields": [
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-5de9a1c70a3e2275",
-        "site_name": "Meta Kuna",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case."
-      },
-      {
-        "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
-        "site_name": "Meta Temple",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-14cecdb5956daea1",
-        "site_name": "Meta Cheyenne",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-4a87099a6d1e001f",
-        "site_name": "Amazon Ridgeland",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Entergy Mississippi, Mississippi Public Service Commission, MISO and Madison/Ridgeland public records for the underlying service or interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-27e284efc1b1abc2",
-        "site_name": "Meta Huntsville",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search TVA, Alabama Public Service Commission, local utility records and SERC-related connection filings for the underlying service or interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-a69e48fd129d0cdb",
-        "site_name": "Coreweave Helios",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-534376160415dc84",
-        "site_name": "Microsoft Project Osmium",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search MidAmerican Energy, MISO, Iowa Utilities Board and local records for the underlying service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-0bb0b996b7c96beb",
-        "site_name": "Meta Eagle Mountain",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-85492d2b8df586a1",
-        "site_name": "Google Midlothian",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-2b89e13933a04725",
-        "site_name": "Google Storey County",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "address"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-f92e98f4b76a9bcd",
-        "site_name": "Google Lancaster",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-78f8285078416a9e",
-        "site_name": "Meta-QTS Hillsboro 2",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Portland General Electric, BPA, Oregon utility/regulatory records and Hillsboro public records for the underlying service/interconnection case."
-      },
-      {
-        "epoch_id": "EPOCH-a2c9f0846296fe65",
-        "site_name": "Google Waltham Cross",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier."
-      },
-      {
-        "epoch_id": "EPOCH-a286a89bd1c1b6e7",
-        "site_name": "VNET Bayin Ulanqab",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-785d6e4c34607dd4",
-        "site_name": "Google Arcola",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search Dominion Energy, Virginia SCC, PJM and local Loudoun County records for the exact service/interconnection case, contract, substation or project identifier."
-      },
-      {
-        "epoch_id": "EPOCH-f1a2bcdd78478bc2",
-        "site_name": "Google Red Oak",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-4525348d114e3e8e",
-        "site_name": "Google Papillion",
-        "missing_publisher_fields": [
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-d29894d37388a96a",
-        "site_name": "Meta Gallatin",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-02c050b6b554fadd",
-        "site_name": "Meta Los Lunas",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-768183e4de6062d2",
-        "site_name": "CoreWeave Ellendale ND",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the serving utility, North Dakota regulatory records, MISO/SPP-relevant records and site permitting sources for the electrical service/interconnection record associated with the leased compute capacity."
-      },
-      {
-        "epoch_id": "EPOCH-4b5df4f52274f2ba",
-        "site_name": "Meta Sarpy",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-77e196fc5320fd70",
-        "site_name": "Huawei Horinger",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-2d362a1adb09fddd",
-        "site_name": "CoreWeave Chester VA",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-ea5d1ae5837aba5c",
-        "site_name": "Oracle Batam",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies",
-          "users",
-          "address"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-03aad260b30bfbe1",
-        "site_name": "AWS Berwick",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-eb87487504bda8ed",
-        "site_name": "CoreWeave Marble NC",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-7d9b5af0cce16f1c",
-        "site_name": "Meta Aiken",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible."
-      },
-      {
-        "epoch_id": "EPOCH-af62ae3440fe885a",
-        "site_name": "Huawei Wuhu",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-d1b62579c6be3fe8",
-        "site_name": "Core42 Lake Mariner",
-        "missing_publisher_fields": [
-          "project",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-71d0091a05448224",
-        "site_name": "Microsoft SAT40",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-c89a3269719f868a",
-        "site_name": "STACK Infrastructure NVA02",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-29fb769630142638",
-        "site_name": "Anthropic Lake Mariner",
-        "missing_publisher_fields": [
-          "project",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-781cbfae186209ad",
-        "site_name": "Microsoft-Nebius New Jersey",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-f48a533b01898dfd",
-        "site_name": "CoreWeave Norway",
-        "missing_publisher_fields": [
-          "investors",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-41dea3fb46d2e6a8",
-        "site_name": "Nebius Mantsala",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-827d7832237170bd",
-        "site_name": "Southgate Melbourne",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies",
-          "users",
-          "address"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-ee5c7acdbc729ef8",
-        "site_name": "Stream Phoenix",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-0355f445ca6cbed4",
-        "site_name": "Microsoft SAT14",
-        "missing_publisher_fields": [
-          "investors",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-96d37578ca36f86c",
-        "site_name": "Vantage TX1",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "owner",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-8696ef81d91560a9",
-        "site_name": "CoreWeave Dalton 1 & 2",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-e20c2909085b37fd",
-        "site_name": "Alibaba Zhangbei",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-8baa344f9717520c",
-        "site_name": "Start Campus Sines Data Campus",
-        "missing_publisher_fields": [
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-495a9afde5e4b96c",
-        "site_name": "xAI QTS Atlanta",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-f1a70be0079d215a",
-        "site_name": "Nscale Keflavik",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-5b05fa7b682be282",
-        "site_name": "Anthropic Barber Lake",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "energy_companies",
-          "address"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-7648e1438308fdae",
-        "site_name": "CoreWeave Lancaster Greenfield site",
-        "missing_publisher_fields": [
-          "project",
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-65e758d676dc06d6",
-        "site_name": "CoreWeave Muskogee OK",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-4569f5444951b2fd",
-        "site_name": "Crusoe Abilene Expansion",
-        "missing_publisher_fields": [
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-dadec9d6ef7fca88",
-        "site_name": "EcoDataCenter 2",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-bbf05f2d8903eccc",
-        "site_name": "Goodnight",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-2d6a8403fde79650",
-        "site_name": "Google Cedar Rapids",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-f340a33a5ef18d4f",
-        "site_name": "Google Fort Wayne",
-        "missing_publisher_fields": [
-          "construction_companies",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-177c53f92d72ec4a",
-        "site_name": "Meta Bowling Green",
-        "missing_publisher_fields": [
-          "project",
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-bbcf0efa8bcebd41",
-        "site_name": "Meta Hyperion",
-        "missing_publisher_fields": [
-          "investors"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
-        "site_name": "Microsoft Narvik Norway",
-        "missing_publisher_fields": [
-          "construction_companies",
-          "energy_companies",
-          "address"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-dc6199921ba82b85",
-        "site_name": "OpenAI Stargate Lordstown",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-145ed5861bdf2982",
-        "site_name": "OpenAI Stargate Michigan",
-        "missing_publisher_fields": [
-          "investors",
-          "address",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
-        "site_name": "OpenAI Stargate Milam",
-        "missing_publisher_fields": [
-          "address",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-3816121e8d72fe04",
-        "site_name": "OpenAI Stargate New Mexico",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "address",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-b427a75f62d61aae",
-        "site_name": "OpenAI Stargate Shackelford",
-        "missing_publisher_fields": [
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-661288625d17662a",
-        "site_name": "OpenAI Stargate UAE",
-        "missing_publisher_fields": [
-          "construction_companies",
-          "energy_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
-      },
-      {
-        "epoch_id": "EPOCH-78e7d8474fbdf968",
-        "site_name": "OpenAI Stargate Wisconsin",
-        "missing_publisher_fields": [
-          "investors",
-          "construction_companies",
-          "address",
-          "chip_quantities"
-        ],
-        "open_track3_domains": [
-          "chip_inventory",
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "cooling",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
-      },
-      {
-        "epoch_id": "EPOCH-d2da66ea035880ce",
-        "site_name": "QTS Cedar Rapids",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies",
-          "users"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-      },
-      {
-        "epoch_id": "EPOCH-4b4d686b6c457a68",
-        "site_name": "QTS Eagle Mountain",
-        "missing_publisher_fields": [
-          "project",
-          "investors",
-          "construction_companies"
-        ],
-        "open_track3_domains": [
-          "service_or_contract",
-          "regulatory",
-          "compute_tenancy",
-          "power_telemetry",
-          "remote_sensing",
-          "transformer_supply_chain",
-          "independent_corroboration"
-        ],
-        "next_research_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record."
-      }
-    ]
-  },
   "sites": [
     {
       "epoch_id": "EPOCH-c20399471d1c5e4a",
@@ -4582,7 +4441,6 @@
         "regulatory",
         "compute_tenancy",
         "power_telemetry",
-        "cooling",
         "transformer_supply_chain",
         "independent_corroboration"
       ],
@@ -4596,7 +4454,7 @@
         "compute_tenancy": "UNKNOWN",
         "power_telemetry": "NOT_INGESTED",
         "remote_sensing": "INGESTED_DERIVED",
-        "cooling": "NOT_INGESTED",
+        "cooling": "INGESTED_SNAPSHOT",
         "transformer_supply_chain": "RESEARCH_QUEUE",
         "chip_ownership": "INGESTED_SNAPSHOT",
         "chip_users": "INGESTED_SNAPSHOT",
@@ -4604,7 +4462,7 @@
         "independent_corroboration": "NOT_ASSESSED"
       },
       "evidence_counts": {
-        "public_web": 0,
+        "public_web": 8,
         "remote_sensing": 6
       }
     },
@@ -4801,7 +4659,6 @@
         "regulatory",
         "compute_tenancy",
         "power_telemetry",
-        "cooling",
         "transformer_supply_chain",
         "independent_corroboration"
       ],
@@ -4815,7 +4672,7 @@
         "compute_tenancy": "UNKNOWN",
         "power_telemetry": "NOT_INGESTED",
         "remote_sensing": "INGESTED_DERIVED",
-        "cooling": "NOT_INGESTED",
+        "cooling": "INGESTED_SNAPSHOT",
         "transformer_supply_chain": "RESEARCH_QUEUE",
         "chip_ownership": "INGESTED_SNAPSHOT",
         "chip_users": "INGESTED_SNAPSHOT",
@@ -4823,7 +4680,7 @@
         "independent_corroboration": "NOT_ASSESSED"
       },
       "evidence_counts": {
-        "public_web": 0,
+        "public_web": 8,
         "remote_sensing": 7
       }
     },
@@ -4834,11 +4691,9 @@
       "state_province": "NY",
       "current_it_power_mw": 58,
       "open_domains": [
-        "service_or_contract",
         "regulatory",
         "compute_tenancy",
         "power_telemetry",
-        "cooling",
         "transformer_supply_chain",
         "independent_corroboration"
       ],
@@ -4847,12 +4702,12 @@
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
         "grid_connection": "VERIFIED_SITE_SPECIFIC",
-        "service_or_contract": "NOT_INGESTED",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "NOT_ASSESSED",
         "compute_tenancy": "UNKNOWN",
         "power_telemetry": "NOT_INGESTED",
         "remote_sensing": "INGESTED_DERIVED",
-        "cooling": "NOT_INGESTED",
+        "cooling": "INGESTED_SNAPSHOT",
         "transformer_supply_chain": "RESEARCH_QUEUE",
         "chip_ownership": "INGESTED_SNAPSHOT",
         "chip_users": "INGESTED_SNAPSHOT",
@@ -4860,7 +4715,7 @@
         "independent_corroboration": "NOT_ASSESSED"
       },
       "evidence_counts": {
-        "public_web": 0,
+        "public_web": 10,
         "remote_sensing": 6
       }
     },
@@ -5296,7 +5151,7 @@
         "independent_corroboration": "NOT_ASSESSED"
       },
       "evidence_counts": {
-        "public_web": 0,
+        "public_web": 9,
         "remote_sensing": 6
       }
     },
@@ -6141,11 +5996,11 @@
     }
   ],
   "closure_rules": [
-    "Do not mark a cell resolved merely because a source URL exists; retain the claim, locator, capture date and source-specific basis.",
+    "Close a publisher-field gap only when a retained source record explicitly supports that field.",
+    "Location without a precise address remains location evidence and does not fabricate an address.",
     "NO_PUBLIC_RECORD is a documented search outcome, not evidence of absence.",
     "Queue capacity is not measured electricity demand.",
     "A physical observation is evidence about the observed scene, not automatic proof of compute.",
-    "A public data-centre identity is not proof of covert status.",
-    "Independent corroboration requires explicit source-independence assessment; two records from the same source family are not independent."
+    "Two records in the same source family are not automatically independent corroboration."
   ]
 }
