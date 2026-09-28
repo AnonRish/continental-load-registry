@@ -38,18 +38,19 @@ The AI Futures material describes Track 3 as verifying the absence of secret com
 ## Current empirical layers
 
 - 93-site Epoch frontier-AI reference universe.
-- 423 retained derived remote-sensing observations across 68 of 93 reference sites in the last committed observation ledger; the current physical-target layer now has 88 of 93 reference-site coordinates resolved for acquisition.
-- 149 optical scene observations, 136 TIR observations, 138 SAR observations.
+- 423 retained derived remote-sensing observations across 68 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 88 of 93 reference-site coordinates resolved for acquisition.
+- 149 optical scene observations, 136 TIR observations, and 138 SAR observations in the current committed ledger.
 - 211 current physical/research observation tasks.
 - 6 site-level annual electricity-consumption snapshots.
-- 2 structured site-level cooling snapshots in the cooling-observation file.
+- 15 site-level cooling snapshots represented in the current site-status layer; the dedicated cooling-observation file contains 2 directly retained equipment snapshots.
 - 3 source-backed transformer event records.
 - 90 substation-related and 113 transmission-related external evidence records.
 - 83 sites with retained chip-inventory records; 10 sites remain unknown.
 - 4 sites with site-specific compute-tenancy snapshots; 89 remain unknown.
-- 17 sites with retained service/contract evidence; 76 remain not ingested.
-- 14 sites with retained site-level regulatory evidence; 79 remain not assessed.
+- 22 sites with retained service/contract evidence; 71 remain not ingested.
+- 16 sites with retained site-level regulatory evidence; 77 remain not assessed.
 - 2 defensible site-specific queue IDs in the 93-site Epoch crosswalk.
+- 335 normalized public-web evidence records in a losslessly reconciled claim layer; 89 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site claims.
 - 88 of 93 reference sites now have retained site-level coordinates, including 20 curated public-source coordinate overrides; five remain unresolved and are blocked from physical interpretation.
 - 141-record broad ambiguous-load research pool totaling 53.8512 GW under the repository's current filter.
 - 68 of those 141 have an explicit retained load-side technology field; 73 require project-type adjudication before strict load-discovery admission.
