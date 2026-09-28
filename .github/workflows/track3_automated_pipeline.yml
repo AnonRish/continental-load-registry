@@ -18,6 +18,8 @@ on:
       - "refresh_source_manifest.py"
       - "build_public_web_claims.py"
       - "data/track3/public_web_claims.json"
+      - "reconcile_track3_public_enrichment.py"
+      - "build_track3_research_backlog.py"
 permissions:
   contents: write
   issues: write
@@ -54,7 +56,9 @@ jobs:
             validate_track3_ledger.py \
             verify_track3.py \
             refresh_source_manifest.py \
-            build_public_web_claims.py
+            build_public_web_claims.py \\
+            reconcile_track3_public_enrichment.py \\
+            build_track3_research_backlog.py
 
       - name: Run automated source adapters
         continue-on-error: true
@@ -118,6 +122,30 @@ jobs:
           assert source_ids==claim_ids
           assert claims.get("accounting",{}).get("claim_count")==len(claims.get("claims",[]))
           print("PASS: public-web claim layer is lossless and 1:1 with enrichment")
+          PY
+
+      - name: Reconcile public enrichment into closure register
+        run: python reconcile_track3_public_enrichment.py
+
+      - name: Rebuild Track 3 research backlog from reconciled gaps
+        run: python build_track3_research_backlog.py
+
+      - name: Validate reconciled coverage artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          sweep=json.loads(Path("data/track3/site_missing_information_sweep_2026-09-27.json").read_text(encoding="utf-8"))
+          enrich=json.loads(Path("data/track3/public_web_enrichment_2026-09-27.json").read_text(encoding="utf-8"))
+          gap=json.loads(Path("data/track3/coverage_gap_register_2026-09-27.json").read_text(encoding="utf-8"))
+          backlog=json.loads(Path("data/track3/research_backlog_summary.json").read_text(encoding="utf-8"))
+          assert len(sweep.get("records", [])) == 93
+          assert len(gap.get("sites", [])) == 93
+          assert gap["summary"]["public_web_enrichment_records"] == len(enrich.get("records", []))
+          assert gap["summary"]["public_web_enrichment_sites"] == 93
+          assert backlog["sites"] == 93
+          assert backlog["total_tasks"] == backlog["publisher_tasks"] + backlog["domain_tasks"]
+          print("PASS: enrichment, gap register, and backlog reconcile")
           PY
 
       - name: Validate canonical Track 3 ledger
