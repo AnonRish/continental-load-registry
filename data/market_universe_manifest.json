@@ -140,7 +140,7 @@
     },
     {
       "id": "BPA",
-      "status": "partial_source_capture_50_live_plus_10_additional_records",
+      "status": "official_row_level_source_linked_refreshable_partial_capture",
       "core_rows": 0,
       "project_records": 60,
       "source_urls": [
@@ -148,9 +148,9 @@
         "https://substationscout.com/large-load-registry/",
         "https://www.wattstreet.net/load-ledger/"
       ],
-      "scope": "Separate BPA transmission/large-load evidence layer. It is not treated as an RTO/ISO queue and is not additive to the nine-market core. Current source accounting reports 457 requests on record / 289 live; the retained row layer covers the 50 largest live rows exposed on the public secondary page plus 10 additional records already in the project-evidence layer.",
+      "scope": "Separate BPA transmission/large-load evidence layer. It is not treated as an RTO/ISO queue and is not additive to the nine-market core. The official BPA interconnection workbook is now the authoritative refresh source. The repository retains a normalized load-request layer and the refresh workflow can expand it to the full published load population whenever the official workbook is reachable; the current committed snapshot remains separately auditable.",
       "captured": "2026-09-23",
-      "notes": "60 row-level BPA request/project records are retained in data/bpa_large_load_registry.json. Values are sourced from retained secondary reproductions; official BPA source family is linked but no raw official snapshot is claimed retained. This is a partial source capture, not a complete 457-row BPA transcription; 35 retained records have display geometry and 25 remain unmapped.",
+      "notes": "60 row-level BPA request/project records are retained in data/bpa_large_load_registry.json. Values are sourced from retained secondary reproductions; official BPA source family is linked but no raw official snapshot is claimed retained. This layer is intentionally non-additive to the nine-market core. Current row coverage, source population counts, and mapped/unmapped geometry are recorded in data/bpa_large_load_registry.json.",
       "row_level_snapshot": "data/bpa_large_load_registry.json"
     }
   ],
