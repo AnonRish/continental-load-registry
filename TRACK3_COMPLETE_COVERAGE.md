@@ -1,6 +1,6 @@
 # Track 3 — Complete Coverage Inventory
 
-Updated: 2026-09-27
+Updated: 2026-09-28
 
 ## Scope
 
@@ -65,11 +65,14 @@ This is a repository-level completeness result, not an international Track 3 ver
 
 ## Closed-case laboratory
 
-The current closed-case set contains:
+The current closed-case laboratory contains four published pilot cases:
 
 - AMB-NYISO-1765 — manufacturing/industrial outcome with bounded applicant mismatch.
 - AMB-NYISO-1745 — data-center identity outcome.
 - AMB-IESO-2026-903 — deliberately inconclusive at the physical-targeting stopping rule.
+- AMB-AESO-P3108 — proposed data-centre identity and physical-site outcome.
+
+The separate strict five-case queue is fully terminally dispositioned in the machine-readable closure register described above.
 
 Every case separates:
 
@@ -79,15 +82,15 @@ A closed case does not require every evidence layer to be positive. It requires 
 
 ## Discovery queue
 
-The strict admitted queue contains five cases:
+The strict admitted queue contains five cases, and all five now have terminal dispositions in `data/track3/strict_discovery_case_dispositions_2026-09-28.json`:
 
-- P3066 — Leedale Data Load
-- P3198 — Lynx Data Load
-- P3108 — Wild Rose Power Hub Load
-- P2958 — Hydrogen Canada MPC Load (industrial control)
-- P2614 — Dow Fort Sask. Load (industrial control)
+- P3066 — Leedale Data Load: proposed data-center label retained; physical identity unresolved.
+- P3198 — Lynx Data Load: inconclusive after the documented public-source stopping rule.
+- P3108 — Wild Rose Power Hub Load: proposed data-centre project and physical planning site resolved.
+- P2958 — Hydrogen Canada MPC Load: industrial control context established; exact queue-to-parcel linkage unresolved.
+- P2614 — Dow Fort Sask. Load: industrial project identity established from AESO primary engineering evidence.
 
-These are not ranked for hiddenness or expected outcome. The first three are ambiguity targets; the last two test whether the workflow correctly resolves large non-data-center loads.
+These are not ranked for hiddenness or expected outcome. Terminal disposition means the declared research gates reached a documented stopping rule; it does not mean operation, measured demand, AI workload, or covert status was proven.
 
 ## Evidence semantics
 
