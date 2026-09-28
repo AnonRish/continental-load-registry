@@ -41,11 +41,12 @@ def replacement_manifest()->dict:
    data=json.loads(path.read_text(encoding="utf-8"))
    entry["record_count"]=len(data.get("records",[])) if count_key=="record_count" else data.get(count_key)
    if extra_key:
-    entry["polygon_site_count"]=data.get(extra_key)
+    entry["polygon_site_count"]=data.get("sites_with_polygon_files",0)
+    entry["polygon_file_count"]=data.get("polygon_file_count",data.get("sites_with_polygon_files",0))
   elif rel.endswith("remote_sensing_observations.csv"):
    # CSV is a flattened export; derive its row count without altering it.
    with path.open("r",encoding="utf-8",newline="") as f:
-    entry["row_count"]=max(0,sum(1 for _ in f)-1)
+    entry["record_count"]=max(0,sum(1 for _ in f)-1)
   elif rel.endswith("physical_verification_layer.json"):
    data=json.loads(path.read_text(encoding="utf-8"))
    entry["site_record_count"]=len(data.get("sites",data.get("records",[])))
