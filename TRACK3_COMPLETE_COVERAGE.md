@@ -58,8 +58,8 @@ This is a repository-level completeness result, not an international Track 3 ver
 - 38 sites with retained service/contract evidence; 55 are explicitly assessment-complete in the current site-status layer.
 - 21 sites with retained site-level regulatory evidence; 72 are explicitly assessment-complete in the current site-status layer.
 - 2 defensible site-specific queue IDs in the 93-site Epoch crosswalk.
-- 452 normalized public-web evidence records in a losslessly reconciled claim layer; 449 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
-- 92 of 93 reference sites now have retained site-level coordinates, including 24 curated public-source coordinate overrides; one remains unresolved and is blocked from site-specific physical interpretation.
+- 454 normalized public-web evidence records in a losslessly reconciled claim layer; 451 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
+- 92 of 93 reference sites now have retained site-level coordinates, including 24 curated public-source coordinate overrides; one remains unresolved and is blocked from site-specific physical interpretation. For OpenAI Stargate UAE, September 11, 2026 Reuters reporting provides an attributed area-level lead near Al Dhafra Air Base, but no canonical parcel or coordinate is promoted.
 - 141-record broad ambiguous-load research pool totaling 53.8512 GW under the repository's current filter.
 - 68 of those 141 have an explicit retained load-side technology field; 73 require project-type adjudication before strict load-discovery admission.
 
