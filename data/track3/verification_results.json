@@ -2,16 +2,16 @@
   "schema_version": 1,
   "protocol_version": "T3-V1",
   "title": "Track 3 versioned verification results",
-  "generated_at_utc": "2026-09-28T00:53:11.123884+00:00",
-  "source_snapshot_commit": "bd733d285c88273cdc088e8df814d3345f5ec8f1",
+  "generated_at_utc": "2026-09-28T01:09:38.458350+00:00",
+  "source_snapshot_commit": "e8eb24a54c76b188d5622c56f5b717d331d0aa18",
   "semantics": "Claim-level automated verification results; not facility-wide certification.",
   "summary": {
     "facility_count": 93,
     "verification_record_count": 744,
     "status_counts": {
-      "PASS": 424,
-      "UNKNOWN": 295,
-      "NOT_TESTED": 25
+      "PASS": 446,
+      "UNKNOWN": 293,
+      "NOT_TESTED": 5
     },
     "facility_evidence_state_counts": {
       "VERIFIED_PRESENT": 0,
@@ -20,7 +20,9 @@
     },
     "pass_only_with_evidence_rule": true,
     "independent_verifier_recorded": false,
-    "artifact_attestation_status": "SIGNED_FOR_PRIOR_SNAPSHOT"
+    "artifact_attestation_status": "SIGNED_AND_UPLOADED",
+    "attestation_workflow_run_id": "36364892892",
+    "attestation_bundle": "track3-verification-bundle.tar.gz"
   },
   "results": [
     {
@@ -248,9 +250,13 @@
       "verification_id": "VR-EPOCH-45b3c74314eb1f26-REMOTE",
       "facility_id": "EPOCH-45b3c74314eb1f26",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260524T163841_R126_T16TEM_20260524T214608",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T16TEM_20260926T220409",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250617T234044_20250617T234109_059693_07698C"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -416,9 +422,13 @@
       "verification_id": "VR-EPOCH-8838deed95ffb554-REMOTE",
       "facility_id": "EPOCH-8838deed95ffb554",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260103T162559_R040_T17TLE_20260103T200626",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T17TLE_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20251209T233220_20251209T233245_062245_07CAFF"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -999,9 +1009,13 @@
       "verification_id": "VR-EPOCH-55d4b5e818b5bb2a-REMOTE",
       "facility_id": "EPOCH-55d4b5e818b5bb2a",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260603T031541_R118_T48NUH_20260603T081610",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T031539_R118_T48NUG_20260926T070338",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250901T112532_20250901T112557_060793_079162"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -1505,9 +1519,13 @@
       "verification_id": "VR-EPOCH-0d287943c30fe239-REMOTE",
       "facility_id": "EPOCH-0d287943c30fe239",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260608T163859_R126_T16SBB_20260608T215632",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T15SYS_20260926T220409",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250128T000255_20250128T000320_057637_071A36"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -1841,9 +1859,13 @@
       "verification_id": "VR-EPOCH-6799460068cbed36-REMOTE",
       "facility_id": "EPOCH-6799460068cbed36",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T15SUD_20260525T205549",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T15SUD_20260925T211357",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250720T001257_20250720T001322_060160_0779AE"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -2944,9 +2966,13 @@
       "verification_id": "VR-EPOCH-a69e48fd129d0cdb-REMOTE",
       "facility_id": "EPOCH-a69e48fd129d0cdb",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260126T172611_R012_T14SLC_20260126T203613",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260923T172031_R012_T14SLC_20260923T221413",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250926T124657_20250926T124722_061159_07A00F"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -3282,9 +3308,13 @@
       "verification_id": "VR-EPOCH-2b89e13933a04725-REMOTE",
       "facility_id": "EPOCH-2b89e13933a04725",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260522T184831_R070_T11SKD_20260523T023713",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260922T184009_R070_T10SGJ_20260923T000345",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260621T135833_20260621T135902_003335_005DA4"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -4304,18 +4334,25 @@
       "verification_id": "VR-EPOCH-77e196fc5320fd70-REMOTE",
       "facility_id": "EPOCH-77e196fc5320fd70",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260526T032151_R118_T49TEF_20260526T064211",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T031539_R118_T49TEF_20260926T070812",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20240914T103100_20240914T103125_055660_06CBD1"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-77e196fc5320fd70-CORR",
       "facility_id": "EPOCH-77e196fc5320fd70",
       "claim": "INDEPENDENT_CORROBORATION",
-      "status": "UNKNOWN",
-      "evidence_refs": [],
-      "basis": "Fewer than two retained site evidence records.",
+      "status": "PASS",
+      "evidence_refs": [
+        null,
+        null
+      ],
+      "basis": "At least two retained site evidence records exist; metadata corroboration does not prove methodological independence.",
       "verifier": "automated_metadata_check"
     },
     {
@@ -4973,9 +5010,13 @@
       "verification_id": "VR-EPOCH-71d0091a05448224-REMOTE",
       "facility_id": "EPOCH-71d0091a05448224",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260522T184831_R070_T11SKD_20260523T023713",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260922T184009_R070_T10SGJ_20260923T000345",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260621T135833_20260621T135902_003335_005DA4"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -5394,9 +5435,13 @@
       "verification_id": "VR-EPOCH-41dea3fb46d2e6a8-REMOTE",
       "facility_id": "EPOCH-41dea3fb46d2e6a8",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260804T095029_R079_T35VMH_20260804T121325",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T094031_R036_T35VLH_20260925T131916",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260802T044922_20260802T044947_003942_007241"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -5896,18 +5941,25 @@
       "verification_id": "VR-EPOCH-e20c2909085b37fd-REMOTE",
       "facility_id": "EPOCH-e20c2909085b37fd",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260107T174629_R098_T13SCR_20260107T224108",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260924T173959_R098_T13SCR_20260924T213337",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260208T131145_20260208T131210_063128_07EC85"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
       "verification_id": "VR-EPOCH-e20c2909085b37fd-CORR",
       "facility_id": "EPOCH-e20c2909085b37fd",
       "claim": "INDEPENDENT_CORROBORATION",
-      "status": "UNKNOWN",
-      "evidence_refs": [],
-      "basis": "Fewer than two retained site evidence records.",
+      "status": "PASS",
+      "evidence_refs": [
+        null,
+        null
+      ],
+      "basis": "At least two retained site evidence records exist; metadata corroboration does not prove methodological independence.",
       "verifier": "automated_metadata_check"
     },
     {
@@ -5974,9 +6026,13 @@
       "verification_id": "VR-EPOCH-8baa344f9717520c-REMOTE",
       "facility_id": "EPOCH-8baa344f9717520c",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260801T112119_R037_T29SNC_20260801T140129",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T112111_R037_T29SMB_20260925T150014",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260602T183422_20260602T183447_003061_005492"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -6223,9 +6279,13 @@
       "verification_id": "VR-EPOCH-5b05fa7b682be282-REMOTE",
       "facility_id": "EPOCH-5b05fa7b682be282",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260730T030521_R075_T50TLL_20260730T081457",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T031539_R118_T50TKL_20260926T070812",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260302T222744_20260302T222809_006591_00D4C0"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7049,9 +7109,13 @@
       "verification_id": "VR-EPOCH-1b7cb9c2b0eb479f-REMOTE",
       "facility_id": "EPOCH-1b7cb9c2b0eb479f",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260825T105619_R094_T33WXS_20260825T132758",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260926T104811_R051_T33WWS_20260926T135857",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260808T053632_20260808T053657_004030_007548"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7128,9 +7192,13 @@
       "verification_id": "VR-EPOCH-dc6199921ba82b85-REMOTE",
       "facility_id": "EPOCH-dc6199921ba82b85",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20251216T161711_R140_T17TNF_20251216T195009",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260917T160859_R140_T17TNF_20260917T195132",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20250923T232415_20250923T232440_061122_079E86"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7207,9 +7275,13 @@
       "verification_id": "VR-EPOCH-145ed5861bdf2982-REMOTE",
       "facility_id": "EPOCH-145ed5861bdf2982",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260727T161831_R040_T17TKG_20260727T212009",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260925T162021_R040_T16TGM_20260925T195353",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260108T233139_20260108T233208_005819_00BA54"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7286,9 +7358,13 @@
       "verification_id": "VR-EPOCH-e3aa5f34aa5c4a7b-REMOTE",
       "facility_id": "EPOCH-e3aa5f34aa5c4a7b",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260112T170721_R069_T14RPV_20260112T223018",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260922T165919_R069_T14RPV_20260922T223324",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20260220T122207_20260220T122242_006439_00CF7C"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7365,9 +7441,13 @@
       "verification_id": "VR-EPOCH-3816121e8d72fe04-REMOTE",
       "facility_id": "EPOCH-3816121e8d72fe04",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260107T174629_R098_T13SCR_20260107T224108",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260924T173959_R098_T13SCR_20260924T213337",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20260208T131145_20260208T131210_063128_07EC85"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7444,9 +7524,13 @@
       "verification_id": "VR-EPOCH-b427a75f62d61aae-REMOTE",
       "facility_id": "EPOCH-b427a75f62d61aae",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260727T170849_R112_T14SMB_20260727T210327",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260925T170949_R112_T14SMA_20260925T221750",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1A_IW_GRDH_1SDV_20251008T004404_20251008T004429_061327_07A6D2"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
@@ -7602,9 +7686,13 @@
       "verification_id": "VR-EPOCH-78e7d8474fbdf968-REMOTE",
       "facility_id": "EPOCH-78e7d8474fbdf968",
       "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "NOT_TESTED",
-      "evidence_refs": [],
-      "basis": "No retained derived remote-sensing observation exists for this site in the current ledger.",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260519T163849_R126_T16TDP_20260519T203015",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260926T163939_R126_T16TDP_20260926T220409",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1C_IW_GRDH_1SDV_20250722T234837_20250722T234906_003340_006BA2"
+      ],
+      "basis": "6 traceable derived remote-sensing observation(s) are retained for this site.",
       "verifier": "automated_physical_observation_check"
     },
     {
