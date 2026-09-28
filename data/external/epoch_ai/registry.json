@@ -4,7 +4,7 @@
   "source": {
     "publisher": "Epoch AI",
     "dataset": "AI data centers",
-    "accessed_on": "2026-09-27",
+    "accessed_on": "2026-09-28",
     "data_centers_updated": "2026-09-24",
     "data_centers_url": "https://epoch.ai/data/data_centers/data_centers.csv",
     "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
@@ -56,8 +56,8 @@
         "selected_sources": null,
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1oZpZ9nTTV6wW0xjc1pPOQmKS7NCyDzuG2HiycC1GqFs/edit?usp=sharing",
         "investors": "",
-        "construction_companies": "Ferguson Enterprises LLC",
-        "energy_companies": "Memphis Light, Gas and Water (MLGW), Tennessee Valley Authority (TVA)",
+        "construction_companies": "Darana Hybrid",
+        "energy_companies": "Tennessee Valley Authority",
         "latest_timeline": {
           "data_center": "Colossus 2",
           "date": "2027-02-25",
@@ -95,6 +95,48 @@
         ],
         "public_enrichment": [
           {
+            "field": "construction_companies",
+            "value": "Darana Hybrid",
+            "relationship": "primary permit-submitting contractor for electrical, mechanical, plumbing and related work",
+            "source": "Measured AI",
+            "source_urls": [
+              "https://measuredai.substack.com/p/xai-colossus-data-center-cluster"
+            ],
+            "publication_date": "2026-06-16",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-69578253",
+            "scope_note": "Measured AI reports Darana Hybrid as a primary permit-submitting contractor for xAI's Memphis Colossus buildings. This is a contractor relationship reported by a secondary research source, not an ownership claim."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Ferguson Enterprises LLC"
+            ],
+            "relationship": "publicly documented construction supplier / lien claimant",
+            "source": "WSMV Action News 5",
+            "source_urls": [
+              "https://www.wsmv.com/2026/09/23/new-lien-filed-against-musk-linked-data-center-memphis/"
+            ],
+            "publication_date": "2026-09-23",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-cc2ferguson20260923",
+            "scope_note": "WSMV reported that Ferguson Enterprises LLC filed a lien against MZX Tech LLC for $4.2 million it said was owed for work at Colossus 2; the report describes Ferguson as having provided pipes, pipe valves and fittings. This is a site-specific construction/supply relationship, not a claim that Ferguson is the general contractor."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Tennessee Valley Authority",
+            "relationship": "publicly identified grid operator / energy infrastructure relationship",
+            "source": "Intel Accelerator enrichment / Interconnection.fyi",
+            "source_urls": [
+              "https://intelaccelerator.com/projects",
+              "https://www.interconnection.fyi/data-center/project/xai-colossus-2-ff09d693"
+            ],
+            "publication_date": null,
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-2f4d691df92304f27a57",
+            "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
             "field": "energy_companies",
             "value": [
               "Memphis Light, Gas and Water (MLGW)",
@@ -110,6 +152,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-77e2e54cbb6719be2a31",
             "scope_note": "xAI states standard operations draw power from MLGW; Daily Memphian reports a site-specific request to TVA for additional direct supply. These are distinct relationships, not a single utility label."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Tennessee Valley Authority (TVA)",
+            "relationship": "power supplier / 100 MW increase reported in 2026",
+            "source": "Memphis Business Journal",
+            "source_urls": [
+              "https://www.bizjournals.com/memphis/news/2026/08/20/spacexai-power-increase-tva-data-center-colossus-2.html"
+            ],
+            "publication_date": "2026-08-20",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-cbdf15c10faee7acd98d",
+            "scope_note": "Site-level utility relationship; not a queue ID."
           },
           {
             "field": "energy_companies",
@@ -137,61 +192,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-b2cde1389f9da056463b",
             "scope_note": "Project identity; does not establish ownership or external investment."
-          },
-          {
-            "field": "energy_companies",
-            "value": "Tennessee Valley Authority (TVA)",
-            "relationship": "power supplier / 100 MW increase reported in 2026",
-            "source": "Memphis Business Journal",
-            "source_urls": [
-              "https://www.bizjournals.com/memphis/news/2026/08/20/spacexai-power-increase-tva-data-center-colossus-2.html"
-            ],
-            "publication_date": "2026-08-20",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-cbdf15c10faee7acd98d",
-            "scope_note": "Site-level utility relationship; not a queue ID."
-          },
-          {
-            "field": "energy_companies",
-            "value": "Tennessee Valley Authority",
-            "relationship": "publicly identified grid operator / energy infrastructure relationship",
-            "source": "Intel Accelerator enrichment / Interconnection.fyi",
-            "source_urls": [
-              "https://intelaccelerator.com/projects",
-              "https://www.interconnection.fyi/data-center/project/xai-colossus-2-ff09d693"
-            ],
-            "publication_date": null,
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-2f4d691df92304f27a57",
-            "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
-          },
-          {
-            "field": "construction_companies",
-            "value": [
-              "Ferguson Enterprises LLC"
-            ],
-            "relationship": "publicly documented construction supplier / lien claimant",
-            "source": "WSMV Action News 5",
-            "source_urls": [
-              "https://www.wsmv.com/2026/09/23/new-lien-filed-against-musk-linked-data-center-memphis/"
-            ],
-            "publication_date": "2026-09-23",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-cc2ferguson20260923",
-            "scope_note": "WSMV reported that Ferguson Enterprises LLC filed a lien against MZX Tech LLC for $4.2 million it said was owed for work at Colossus 2; the report describes Ferguson as having provided pipes, pipe valves and fittings. This is a site-specific construction/supply relationship, not a claim that Ferguson is the general contractor."
-          },
-          {
-            "field": "construction_companies",
-            "value": "Darana Hybrid",
-            "relationship": "primary permit-submitting contractor for electrical, mechanical, plumbing and related work",
-            "source": "Measured AI",
-            "source_urls": [
-              "https://measuredai.substack.com/p/xai-colossus-data-center-cluster"
-            ],
-            "publication_date": "2026-06-16",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-69578253",
-            "scope_note": "Measured AI reports Darana Hybrid as a primary permit-submitting contractor for xAI's Memphis Colossus buildings. This is a contractor relationship reported by a secondary research source, not an ownership claim."
           }
         ]
       },
@@ -221,7 +221,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -275,32 +275,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "energy_companies",
-            "value": "Georgia Power",
-            "relationship": "site-level energy partner",
-            "source": "Intel Accelerator / Interconnection.fyi",
-            "source_urls": [
-              "https://intelaccelerator.com/projects"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-a064e1f6b86fcbdcfee6",
-            "scope_note": "Retained public enrichment identifies Georgia Power as site-level energy partner and Southern Company as public grid operator."
-          },
-          {
-            "field": "project",
-            "value": "Microsoft AI WAN",
-            "relationship": "public program/project identity",
-            "source": "Intel Accelerator",
-            "source_urls": [
-              "https://intelaccelerator.com/projects"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-80a26af30358ed6da35c",
-            "scope_note": null
-          },
-          {
             "field": "construction_companies",
             "value": [
               "HITT Contracting",
@@ -333,6 +307,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-fairwaterbuilders20260927",
             "scope_note": "MeasuredAI reports HITT Contracting on Fairwater and other Fayetteville buildings, Clayco on Fairwater DC-9, and Brasfield & Gorrie on Fairwater/DC-3/DC-4 and site preparation. Source role is retained as secondary public evidence; it is not treated as an independently verified general-contractor roster."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Georgia Power",
+            "relationship": "site-level energy partner",
+            "source": "Intel Accelerator / Interconnection.fyi",
+            "source_urls": [
+              "https://intelaccelerator.com/projects"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-a064e1f6b86fcbdcfee6",
+            "scope_note": "Retained public enrichment identifies Georgia Power as site-level energy partner and Southern Company as public grid operator."
+          },
+          {
+            "field": "project",
+            "value": "Microsoft AI WAN",
+            "relationship": "public program/project identity",
+            "source": "Intel Accelerator",
+            "source_urls": [
+              "https://intelaccelerator.com/projects"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-80a26af30358ed6da35c",
+            "scope_note": null
           }
         ]
       },
@@ -362,7 +362,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -416,6 +416,37 @@
         ],
         "public_enrichment": [
           {
+            "field": "address",
+            "value": "55001 Larrison Blvd., New Carlisle, Indiana 46552",
+            "relationship": "site address",
+            "source": "Indiana Department of Environmental Management",
+            "source_urls": [
+              "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dDocName=83736344&dID=83732301"
+            ],
+            "publication_date": "2025-11-21",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-NC-ADDR-20260927",
+            "scope_note": "Exact address retained in the public environmental permit record."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Walbridge",
+              "Clayco",
+              "Ryan Companies",
+              "Angelo Iafrate"
+            ],
+            "relationship": "general contractors for Project Rainier campus build-out",
+            "source": "Measured AI",
+            "source_urls": [
+              "https://measuredai.substack.com/p/aws-new-carlisle-data-center-campus"
+            ],
+            "publication_date": "2026-07-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-795cad129f466f0ee91a",
+            "scope_note": "Four general contractors identified by the cited reconstruction; this is construction-partner evidence, not investor evidence."
+          },
+          {
             "field": "energy_companies",
             "value": "Indiana Michigan Power (AEP)",
             "relationship": "site-level utility relationship for Project Rainier",
@@ -440,24 +471,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-30dbba1435ed6df94fd8",
             "scope_note": null
-          },
-          {
-            "field": "construction_companies",
-            "value": [
-              "Walbridge",
-              "Clayco",
-              "Ryan Companies",
-              "Angelo Iafrate"
-            ],
-            "relationship": "general contractors for Project Rainier campus build-out",
-            "source": "Measured AI",
-            "source_urls": [
-              "https://measuredai.substack.com/p/aws-new-carlisle-data-center-campus"
-            ],
-            "publication_date": "2026-07-01",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-795cad129f466f0ee91a",
-            "scope_note": "Four general contractors identified by the cited reconstruction; this is construction-partner evidence, not investor evidence."
           }
         ]
       },
@@ -487,7 +500,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -504,7 +517,7 @@
         "region_inferred_from_address": "OK",
         "owner": "Google #confident",
         "users": "Google DeepMind #speculative",
-        "project": "Mayes County Data Center / Google Pryor (MidAmerica) Data Center Campus",
+        "project": "Google Pryor Data Center Campus (Mayes County Expansion)",
         "current_h100_equivalents": 636685.1945426983,
         "current_power_mw": 368,
         "current_total_capital_cost_b_2025": 13.940576,
@@ -550,17 +563,16 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Mayes County Data Center / Google Pryor (MidAmerica) Data Center Campus",
-            "relationship": "campus/project identity",
-            "source": "DEPLOY; Compute Atlas",
+            "field": "energy_companies",
+            "value": "Grand River Dam Authority (GRDA)",
+            "relationship": "serving utility",
+            "source": "DEPLOY",
             "source_urls": [
-              "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok",
-              "https://www.compute-atlas.com/facilities/leeward-mayes-solar-mayes-county-ok"
+              "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
             ],
-            "publication_date": "2026-09-14",
+            "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-ea02e76171e1547b3284",
+            "evidence_id": "EVID-PWEB-e8fec2acd441e5519de9",
             "scope_note": null
           },
           {
@@ -577,19 +589,6 @@
             "scope_note": null
           },
           {
-            "field": "energy_companies",
-            "value": "Grand River Dam Authority (GRDA)",
-            "relationship": "serving utility",
-            "source": "DEPLOY",
-            "source_urls": [
-              "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-e8fec2acd441e5519de9",
-            "scope_note": null
-          },
-          {
             "field": "project",
             "value": "Google Pryor Data Center Campus (Mayes County Expansion)",
             "relationship": "named campus/project identity",
@@ -602,6 +601,20 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-6be6931b",
             "scope_note": "Public records identify Google's Pryor site as the Mayes County expansion/data center campus. This is retained as a campus identity and should not be used to collapse distinct Epoch sub-sites."
+          },
+          {
+            "field": "project",
+            "value": "Mayes County Data Center / Google Pryor (MidAmerica) Data Center Campus",
+            "relationship": "campus/project identity",
+            "source": "DEPLOY; Compute Atlas",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok",
+              "https://www.compute-atlas.com/facilities/leeward-mayes-solar-mayes-county-ok"
+            ],
+            "publication_date": "2026-09-14",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-ea02e76171e1547b3284",
+            "scope_note": null
           }
         ]
       },
@@ -631,7 +644,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -767,7 +780,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -873,7 +886,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -927,19 +940,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Fairwater",
-            "relationship": "data-center project name",
-            "source": "Microsoft",
-            "source_urls": [
-              "https://blogs.microsoft.com/on-the-issues/2025/09/18/made-in-wisconsin-the-worlds-most-powerful-ai-datacenter/"
-            ],
-            "publication_date": "2025-09-18",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-2d7e117a67ffff214f0c",
-            "scope_note": "Microsoft identifies the Mount Pleasant AI data center as Fairwater."
-          },
-          {
             "field": "construction_companies",
             "value": "Walsh Construction",
             "relationship": "general contractor / construction partner",
@@ -978,6 +978,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-0aedbf17",
             "scope_note": "Microsoft identifies Fairwater in Mount Pleasant and reported its first datacenter facility complete and fully operational on June 23, 2026."
+          },
+          {
+            "field": "project",
+            "value": "Fairwater",
+            "relationship": "data-center project name",
+            "source": "Microsoft",
+            "source_urls": [
+              "https://blogs.microsoft.com/on-the-issues/2025/09/18/made-in-wisconsin-the-worlds-most-powerful-ai-datacenter/"
+            ],
+            "publication_date": "2025-09-18",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-2d7e117a67ffff214f0c",
+            "scope_note": "Microsoft identifies the Mount Pleasant AI data center as Fairwater."
           }
         ]
       },
@@ -1007,7 +1020,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1024,7 +1037,7 @@
         "region_inferred_from_address": null,
         "owner": "DayOne Data Centers",
         "users": "",
-        "project": "",
+        "project": "DayOne Kempas Tech Park",
         "current_h100_equivalents": 367547.2460838808,
         "current_power_mw": 322.470096,
         "current_total_capital_cost_b_2025": 12.215812176672001,
@@ -1061,18 +1074,17 @@
         ],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "DayOne Data Centers",
-            "relationship": "developer/operator",
-            "source": "DayOne",
+            "field": "address",
+            "value": "81330, Jalan Kempas Lama, 81300 Johor, Malaysia",
+            "relationship": "facility address",
+            "source": "Data Center Map",
             "source_urls": [
-              "https://dayonedc.com/about-us",
-              "https://dayonedc.com/market/johor"
+              "https://www.datacentermap.com/malaysia/johor-bahru/dayone-kempas-tech-park/"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-c4a41af126be201db2ea",
-            "scope_note": "DayOne describes Kempas Tech Park as its second Malaysia data-center site."
+            "evidence_id": "EVID-PWEB-KEMPAS-ADDR-20260927",
+            "scope_note": "Secondary facility directory publishes the DayOne Kempas Tech Park address; retained as site-location evidence, not a parcel survey."
           },
           {
             "field": "energy_companies",
@@ -1087,6 +1099,33 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-42ad0a0e6c5c92fb2afc",
             "scope_note": "DayOne says it partnered with TNB on green-energy solutions; CGS describes a CRESS deal covering DayOne Johor campuses including Kempas."
+          },
+          {
+            "field": "owner",
+            "value": "DayOne Data Centers",
+            "relationship": "developer/operator",
+            "source": "DayOne",
+            "source_urls": [
+              "https://dayonedc.com/about-us",
+              "https://dayonedc.com/market/johor"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-c4a41af126be201db2ea",
+            "scope_note": "DayOne describes Kempas Tech Park as its second Malaysia data-center site."
+          },
+          {
+            "field": "project",
+            "value": "DayOne Kempas Tech Park",
+            "relationship": "facility/project identity",
+            "source": "Data Center Map",
+            "source_urls": [
+              "https://www.datacentermap.com/malaysia/johor-bahru/dayone-kempas-tech-park/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-KEMPAS-PROJECT-20260927",
+            "scope_note": "Secondary facility directory identifies the site as DayOne Kempas Tech Park and records its address."
           }
         ]
       },
@@ -1116,7 +1155,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1238,7 +1277,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1313,20 +1352,6 @@
             "field": "energy_companies",
             "value": "AEP Ohio",
             "relationship": "serving utility",
-            "source": "DataCentersExposed / Data Center Search",
-            "source_urls": [
-              "https://datacentersexposed.com/facilities/google-new-albany",
-              "https://datacentersearch.org/sites/google-new-albany"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-f07c0bcea8d9b97a5f65",
-            "scope_note": null
-          },
-          {
-            "field": "energy_companies",
-            "value": "AEP Ohio",
-            "relationship": "serving utility",
             "source": "DataCentersExposed / public facility sources",
             "source_urls": [
               "https://datacentersexposed.com/facilities/google-new-albany",
@@ -1335,6 +1360,20 @@
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-27478d5354ef3db3767b",
+            "scope_note": null
+          },
+          {
+            "field": "energy_companies",
+            "value": "AEP Ohio",
+            "relationship": "serving utility",
+            "source": "DataCentersExposed / Data Center Search",
+            "source_urls": [
+              "https://datacentersexposed.com/facilities/google-new-albany",
+              "https://datacentersearch.org/sites/google-new-albany"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-f07c0bcea8d9b97a5f65",
             "scope_note": null
           },
           {
@@ -1378,7 +1417,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1441,20 +1480,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Hyperion / Meta Richland Parish Data Center",
-            "relationship": "current project identity / alias family",
-            "source": "Meta / Louisiana public project record",
-            "source_urls": [
-              "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/",
-              "https://louisianaaihub.com/projects/meta-hyperion"
-            ],
-            "publication_date": "2026-07-13",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-0e651c1533e3e50e69fe",
-            "scope_note": "Public records identify Hyperion, Meta Richland Parish and the Richland Parish data-center campus as the same tracked project family; separate LLC names in utility proceedings are not automatically collapsed."
-          },
-          {
             "field": "energy_companies",
             "value": "Entergy Louisiana",
             "relationship": "serving utility / power and transmission counterparty",
@@ -1465,19 +1490,6 @@
             "publication_date": "2026-07-30",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-490c7dbe650cad862869",
-            "scope_note": null
-          },
-          {
-            "field": "energy_companies",
-            "value": "Entergy Louisiana",
-            "relationship": "serving utility",
-            "source": "DEPLOY",
-            "source_urls": [
-              "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-b2b91cdfbbff8d4fc343",
             "scope_note": null
           },
           {
@@ -1493,6 +1505,33 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-9773e9baed56ba10e192",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Entergy Louisiana",
+            "relationship": "serving utility",
+            "source": "DEPLOY",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/meta-hyperion-richland-parish-la"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-b2b91cdfbbff8d4fc343",
+            "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "Hyperion / Meta Richland Parish Data Center",
+            "relationship": "current project identity / alias family",
+            "source": "Meta / Louisiana public project record",
+            "source_urls": [
+              "https://www.datacenterdynamics.com/en/news/meta-expands-data-center-campus-in-richland-parish-louisiana-to-5gw-will-invest-50bn/",
+              "https://louisianaaihub.com/projects/meta-hyperion"
+            ],
+            "publication_date": "2026-07-13",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-0e651c1533e3e50e69fe",
+            "scope_note": "Public records identify Hyperion, Meta Richland Parish and the Richland Parish data-center campus as the same tracked project family; separate LLC names in utility proceedings are not automatically collapsed."
           }
         ]
       },
@@ -1522,7 +1561,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1585,20 +1624,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "DayOne Data Centers",
-            "relationship": "developer/operator",
-            "source": "DayOne",
-            "source_urls": [
-              "https://dayonedc.com/about-us",
-              "https://dayonedc.com/market/johor"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-dc1661b47803e8a54fd8",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": "Tenaga Nasional Berhad (TNB)",
             "relationship": "green-energy supply partnership",
@@ -1610,6 +1635,20 @@
             "publication_date": "2025-06-12",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-f750a95c94d0f4d8767b",
+            "scope_note": null
+          },
+          {
+            "field": "owner",
+            "value": "DayOne Data Centers",
+            "relationship": "developer/operator",
+            "source": "DayOne",
+            "source_urls": [
+              "https://dayonedc.com/about-us",
+              "https://dayonedc.com/market/johor"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-dc1661b47803e8a54fd8",
             "scope_note": null
           }
         ]
@@ -1640,7 +1679,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1752,7 +1791,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1873,7 +1912,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -1940,19 +1979,6 @@
             "scope_note": null
           },
           {
-            "field": "project",
-            "value": "Denton Campus",
-            "relationship": "official campus/project name",
-            "source": "Core Scientific SEC filing",
-            "source_urls": [
-              "https://content-archive.fast-edgar.com/20260421/AS22R22DZZ2R72ZK22TI2CYLG66BEZ22Z282/d149019dex992.htm"
-            ],
-            "publication_date": "2026-04-21",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-59943ead47a75823b85d",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": "Denton Municipal Electric",
             "relationship": "publicly identified grid operator / energy infrastructure relationship",
@@ -1965,6 +1991,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-fa81133e8072cc22215f",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "project",
+            "value": "Denton Campus",
+            "relationship": "official campus/project name",
+            "source": "Core Scientific SEC filing",
+            "source_urls": [
+              "https://content-archive.fast-edgar.com/20260421/AS22R22DZZ2R72ZK22TI2CYLG66BEZ22Z282/d149019dex992.htm"
+            ],
+            "publication_date": "2026-04-21",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-59943ead47a75823b85d",
+            "scope_note": null
           }
         ]
       },
@@ -1994,7 +2033,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2038,18 +2077,30 @@
         "latest_chip_quantities": [],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "Quality Investment Properties Richmond, LLC / QTS Data Centers",
-            "relationship": "site operator / project entity",
-            "source": "QTS; SUE Data Centers",
+            "field": "address",
+            "value": "6000 Technology Blvd, Sandston, VA 23150; additional RIC1 buildings at 3560/3540/3520 Portugee Rd",
+            "relationship": "facility addresses",
+            "source": "QTS",
             "source_urls": [
-              "https://q.com/data-centers/richmond-1/",
-              "https://suedatacenters.org/data-centers/qts-richmond-1-dc1-ric1-white-oak-technology-park-va"
+              "https://q.com/data-centers/richmond-1/"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-13ae0cd2620e176ffb88",
+            "evidence_id": "EVID-PWEB-cc9d96507cee7b059876",
             "scope_note": null
+          },
+          {
+            "field": "construction_companies",
+            "value": "DPR Construction",
+            "relationship": "contractor for QTS Richmond 1 Data Center 3 retrofit",
+            "source": "DPR Construction",
+            "source_urls": [
+              "https://www.dpr.com/projects/qts-richmond-data-center"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-1c2efeb8",
+            "scope_note": "DPR's project page identifies its QTS Richmond 1 Data Center 3 project in Sandston and describes the retrofit/buildout scope."
           },
           {
             "field": "energy_companies",
@@ -2066,16 +2117,17 @@
             "scope_note": null
           },
           {
-            "field": "address",
-            "value": "6000 Technology Blvd, Sandston, VA 23150; additional RIC1 buildings at 3560/3540/3520 Portugee Rd",
-            "relationship": "facility addresses",
-            "source": "QTS",
+            "field": "owner",
+            "value": "Quality Investment Properties Richmond, LLC / QTS Data Centers",
+            "relationship": "site operator / project entity",
+            "source": "QTS; SUE Data Centers",
             "source_urls": [
-              "https://q.com/data-centers/richmond-1/"
+              "https://q.com/data-centers/richmond-1/",
+              "https://suedatacenters.org/data-centers/qts-richmond-1-dc1-ric1-white-oak-technology-park-va"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-cc9d96507cee7b059876",
+            "evidence_id": "EVID-PWEB-13ae0cd2620e176ffb88",
             "scope_note": null
           },
           {
@@ -2090,19 +2142,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-2fd5cd0a",
             "scope_note": "QTS labels the site Richmond 1 and describes it as a multi-building data center campus. This is a project/campus identity, not an investor record."
-          },
-          {
-            "field": "construction_companies",
-            "value": "DPR Construction",
-            "relationship": "contractor for QTS Richmond 1 Data Center 3 retrofit",
-            "source": "DPR Construction",
-            "source_urls": [
-              "https://www.dpr.com/projects/qts-richmond-data-center"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-1c2efeb8",
-            "scope_note": "DPR's project page identifies its QTS Richmond 1 Data Center 3 project in Sandston and describes the retrofit/buildout scope."
           }
         ]
       },
@@ -2132,7 +2171,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2186,18 +2225,17 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Bigfoot / Jimnist; Meta Rosemount Data Center",
-            "relationship": "project alias / official facility",
-            "source": "City of Rosemount; Meta Data Centers",
+            "field": "construction_companies",
+            "value": "Mortenson",
+            "relationship": "publicly identified construction partner",
+            "source": "Meta Engineering",
             "source_urls": [
-              "https://rosemountmn.gov/progress",
-              "https://datacenters.atmeta.com/asset/rosemount-data-center-info-sheet/"
+              "https://engineering.fb.com/2026/03/30/data-center-engineering/ai-for-american-produced-cement-and-concrete/"
             ],
-            "publication_date": "2026-09-27",
+            "publication_date": "2026-03-30",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-b2e5ab5465559187c934",
-            "scope_note": "City source says the project was previously code-named Bigfoot or Jimnist and identifies Meta as the company."
+            "evidence_id": "EVID-PWEB-batch2-meta-rosemount-cons-0",
+            "scope_note": "Meta's engineering article identifies Mortenson as a partner on the Rosemount data center project."
           },
           {
             "field": "energy_companies",
@@ -2226,19 +2264,6 @@
             "scope_note": null
           },
           {
-            "field": "construction_companies",
-            "value": "Mortenson",
-            "relationship": "publicly identified construction partner",
-            "source": "Meta Engineering",
-            "source_urls": [
-              "https://engineering.fb.com/2026/03/30/data-center-engineering/ai-for-american-produced-cement-and-concrete/"
-            ],
-            "publication_date": "2026-03-30",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-batch2-meta-rosemount-cons-0",
-            "scope_note": "Meta's engineering article identifies Mortenson as a partner on the Rosemount data center project."
-          },
-          {
             "field": "energy_companies",
             "value": "Xcel Energy",
             "relationship": "publicly identified energy partner",
@@ -2250,6 +2275,20 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-batch2-meta-rosemount-ener-1",
             "scope_note": "Xcel's official announcement says it will power Meta's new Rosemount data center and describes its work with Meta on the facility's energy needs."
+          },
+          {
+            "field": "project",
+            "value": "Bigfoot / Jimnist; Meta Rosemount Data Center",
+            "relationship": "project alias / official facility",
+            "source": "City of Rosemount; Meta Data Centers",
+            "source_urls": [
+              "https://rosemountmn.gov/progress",
+              "https://datacenters.atmeta.com/asset/rosemount-data-center-info-sheet/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-b2e5ab5465559187c934",
+            "scope_note": "City source says the project was previously code-named Bigfoot or Jimnist and identifies Meta as the company."
           }
         ]
       },
@@ -2279,7 +2318,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2333,32 +2372,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Project Rainier (site association)",
-            "relationship": "project collaboration identity",
-            "source": "Epoch AI",
-            "source_urls": [
-              "https://epoch.ai/data/ai-data-centers/directory/amazon-madison-mega-site"
-            ],
-            "publication_date": "2026-09-24",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-bc8d17d9ed47f64857de",
-            "scope_note": "Epoch describes the site as likely part of the Anthropic–Amazon Project Rainier collaboration."
-          },
-          {
-            "field": "owner",
-            "value": "Amazon Data Services Inc.",
-            "relationship": "facility entity",
-            "source": "Mississippi Department of Environmental Quality",
-            "source_urls": [
-              "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
-            ],
-            "publication_date": "2026-09-01",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-d7a5ccf2b9c6a2e74dc3",
-            "scope_note": null
-          },
-          {
             "field": "address",
             "value": "1978 Highway 22, Canton, MS 39046",
             "relationship": "facility address",
@@ -2384,6 +2397,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-38e148f5006fbe5d8328",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "owner",
+            "value": "Amazon Data Services Inc.",
+            "relationship": "facility entity",
+            "source": "Mississippi Department of Environmental Quality",
+            "source_urls": [
+              "https://opcgis.deq.state.ms.us/ensearchonline/ai_info.aspx?ai=86219"
+            ],
+            "publication_date": "2026-09-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-d7a5ccf2b9c6a2e74dc3",
+            "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "Project Rainier (site association)",
+            "relationship": "project collaboration identity",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/amazon-madison-mega-site"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-bc8d17d9ed47f64857de",
+            "scope_note": "Epoch describes the site as likely part of the Anthropic–Amazon Project Rainier collaboration."
           }
         ]
       },
@@ -2413,7 +2452,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2494,17 +2533,17 @@
         ],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "Nova Mango Farms LLC",
-            "relationship": "site owner/developer",
+            "field": "address",
+            "value": "13001 Rollins Ford Road, Bristow, VA 20136",
+            "relationship": "public facility address",
             "source": "datacenter.fyi public records",
             "source_urls": [
               "https://www.datacenter.fyi/public-record/google-be69857b"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-2945939337d498413d6a",
-            "scope_note": "This source identifies Nova Mango Farms LLC as owner/developer and Google as operator."
+            "evidence_id": "EVID-PWEB-cf86ce4367f95f0ce329",
+            "scope_note": null
           },
           {
             "field": "energy_companies",
@@ -2520,17 +2559,17 @@
             "scope_note": null
           },
           {
-            "field": "address",
-            "value": "13001 Rollins Ford Road, Bristow, VA 20136",
-            "relationship": "public facility address",
+            "field": "owner",
+            "value": "Nova Mango Farms LLC",
+            "relationship": "site owner/developer",
             "source": "datacenter.fyi public records",
             "source_urls": [
               "https://www.datacenter.fyi/public-record/google-be69857b"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-cf86ce4367f95f0ce329",
-            "scope_note": null
+            "evidence_id": "EVID-PWEB-2945939337d498413d6a",
+            "scope_note": "This source identifies Nova Mango Farms LLC as owner/developer and Google as operator."
           },
           {
             "field": "project",
@@ -2573,7 +2612,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2689,7 +2728,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2743,17 +2782,17 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Meta Jeffersonville Data Center",
-            "relationship": "official facility identity",
-            "source": "Meta Data Centers",
+            "field": "construction_companies",
+            "value": "Turner Construction",
+            "relationship": "general contractor / construction management",
+            "source": "HOCHTIEF / Turner Construction",
             "source_urls": [
-              "https://datacenters.atmeta.com/us-locations/"
+              "https://www.hochtief.com/news-media/press-releases/press-release/hochtief-subsidiary-to-build-hyperscale-data-center-for-meta-in-the-us"
             ],
-            "publication_date": "2026-09-27",
+            "publication_date": "2024-01-26",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-ccbaede46e664f40334f",
-            "scope_note": null
+            "evidence_id": "EVID-PWEB-2b19b137",
+            "scope_note": "HOCHTIEF states Turner was awarded the contract to manage construction of Meta's Jeffersonville data center campus and reports more than 1,250 construction workers at peak."
           },
           {
             "field": "energy_companies",
@@ -2782,17 +2821,17 @@
             "scope_note": "Meta's Jeffersonville fact sheet says Meta is working with local partners including Duke Energy to meet renewable-energy goals for the data center."
           },
           {
-            "field": "construction_companies",
-            "value": "Turner Construction",
-            "relationship": "general contractor / construction management",
-            "source": "HOCHTIEF / Turner Construction",
+            "field": "project",
+            "value": "Meta Jeffersonville Data Center",
+            "relationship": "official facility identity",
+            "source": "Meta Data Centers",
             "source_urls": [
-              "https://www.hochtief.com/news-media/press-releases/press-release/hochtief-subsidiary-to-build-hyperscale-data-center-for-meta-in-the-us"
+              "https://datacenters.atmeta.com/us-locations/"
             ],
-            "publication_date": "2024-01-26",
+            "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-2b19b137",
-            "scope_note": "HOCHTIEF states Turner was awarded the contract to manage construction of Meta's Jeffersonville data center campus and reports more than 1,250 construction workers at peak."
+            "evidence_id": "EVID-PWEB-ccbaede46e664f40334f",
+            "scope_note": null
           }
         ]
       },
@@ -2822,7 +2861,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2907,7 +2946,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -2932,7 +2971,7 @@
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/10uynqa40vg0ycoigE2TRah3aUPEDlMCb-n1w-IdN7sQ/edit?usp=sharing",
         "investors": "",
         "construction_companies": "Suffolk Construction",
-        "energy_companies": "AEP Ohio",
+        "energy_companies": "AEP Ohio / PJM",
         "latest_timeline": {
           "data_center": "AWS New Albany",
           "date": "2027-07-01",
@@ -2988,17 +3027,18 @@
         ],
         "public_enrichment": [
           {
-            "field": "energy_companies",
-            "value": "AEP Ohio",
-            "relationship": "serving utility",
-            "source": "DataCentersExposed",
+            "field": "construction_companies",
+            "value": "Suffolk Construction",
+            "relationship": "general contractor",
+            "source": "Compute Institute / City of New Albany permit record",
             "source_urls": [
-              "https://datacentersexposed.com/facilities/amazon-new-albany-2"
+              "https://compute.institute/entities/suffolk-construction",
+              "https://newalbanyohio.org/community-development/project-updates/"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-6b95f1192066ddaac8b6",
-            "scope_note": null
+            "evidence_id": "EVID-PWEB-32abdb25",
+            "scope_note": "Compute Institute's source-backed project role identifies Suffolk Construction as general contractor for the AWS New Albany Data Center Campus and points to City of New Albany permit records."
           },
           {
             "field": "energy_companies",
@@ -3015,6 +3055,19 @@
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
           },
           {
+            "field": "energy_companies",
+            "value": "AEP Ohio",
+            "relationship": "serving utility",
+            "source": "DataCentersExposed",
+            "source_urls": [
+              "https://datacentersexposed.com/facilities/amazon-new-albany-2"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-6b95f1192066ddaac8b6",
+            "scope_note": null
+          },
+          {
             "field": "project",
             "value": "AWS New Albany Data Center Campus",
             "relationship": "named campus/project identity",
@@ -3027,20 +3080,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-14825ea4",
             "scope_note": "Public permit-based research identifies the AWS New Albany Data Center Campus; the project is treated as a named campus identity, not an inference about all New Albany facilities."
-          },
-          {
-            "field": "construction_companies",
-            "value": "Suffolk Construction",
-            "relationship": "general contractor",
-            "source": "Compute Institute / City of New Albany permit record",
-            "source_urls": [
-              "https://compute.institute/entities/suffolk-construction",
-              "https://newalbanyohio.org/community-development/project-updates/"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-32abdb25",
-            "scope_note": "Compute Institute's source-backed project role identifies Suffolk Construction as general contractor for the AWS New Albany Data Center Campus and points to City of New Albany permit records."
           }
         ]
       },
@@ -3070,7 +3109,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3191,7 +3230,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3254,19 +3293,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Google Lincoln data center",
-            "relationship": "project name",
-            "source": "Google",
-            "source_urls": [
-              "https://www.datacenters.google/locations/nebraska/"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-5e0cf10caad6dc1f4707",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": "Lincoln Electric System",
             "relationship": "publicly identified grid operator / energy infrastructure relationship",
@@ -3279,6 +3305,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-8e6beb926a943e143517",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "project",
+            "value": "Google Lincoln data center",
+            "relationship": "project name",
+            "source": "Google",
+            "source_urls": [
+              "https://www.datacenters.google/locations/nebraska/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-5e0cf10caad6dc1f4707",
+            "scope_note": null
           }
         ]
       },
@@ -3308,7 +3347,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3352,17 +3391,16 @@
         "latest_chip_quantities": [],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "QTS Data Centers",
-            "relationship": "site operator",
-            "source": "QTS; DEPLOY",
+            "field": "address",
+            "value": "6030–6070 Technology Blvd, Sandston, VA 23150",
+            "relationship": "facility addresses",
+            "source": "QTS",
             "source_urls": [
-              "https://q.com/data-centers/richmond-2/",
-              "https://registry.deploy.report/datacenters/facilities/qts-richmond-2-sandston-va"
+              "https://q.com/data-centers/richmond-2/"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-49b077f337887d09731d",
+            "evidence_id": "EVID-PWEB-6ce5532357a6da647531",
             "scope_note": null
           },
           {
@@ -3379,16 +3417,17 @@
             "scope_note": null
           },
           {
-            "field": "address",
-            "value": "6030–6070 Technology Blvd, Sandston, VA 23150",
-            "relationship": "facility addresses",
-            "source": "QTS",
+            "field": "owner",
+            "value": "QTS Data Centers",
+            "relationship": "site operator",
+            "source": "QTS; DEPLOY",
             "source_urls": [
-              "https://q.com/data-centers/richmond-2/"
+              "https://q.com/data-centers/richmond-2/",
+              "https://registry.deploy.report/datacenters/facilities/qts-richmond-2-sandston-va"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-6ce5532357a6da647531",
+            "evidence_id": "EVID-PWEB-49b077f337887d09731d",
             "scope_note": null
           },
           {
@@ -3432,7 +3471,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3554,7 +3593,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3598,17 +3637,16 @@
         "latest_chip_quantities": [],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "QTS Data Centers",
-            "relationship": "site operator",
-            "source": "QTS; DEPLOY",
+            "field": "address",
+            "value": "3525, 3529, 3535, 3539, 3543 Portugee Road, Sandston, VA 23150",
+            "relationship": "facility addresses",
+            "source": "QTS",
             "source_urls": [
-              "https://q.com/data-centers/richmond-3/",
-              "https://registry.deploy.report/datacenters/facilities/qts-richmond-3-sandston-va"
+              "https://q.com/data-centers/richmond-3/"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-1c7f0ba2f2922a46731d",
+            "evidence_id": "EVID-PWEB-526ed33e720c3b8cf6e1",
             "scope_note": null
           },
           {
@@ -3625,16 +3663,17 @@
             "scope_note": null
           },
           {
-            "field": "address",
-            "value": "3525, 3529, 3535, 3539, 3543 Portugee Road, Sandston, VA 23150",
-            "relationship": "facility addresses",
-            "source": "QTS",
+            "field": "owner",
+            "value": "QTS Data Centers",
+            "relationship": "site operator",
+            "source": "QTS; DEPLOY",
             "source_urls": [
-              "https://q.com/data-centers/richmond-3/"
+              "https://q.com/data-centers/richmond-3/",
+              "https://registry.deploy.report/datacenters/facilities/qts-richmond-3-sandston-va"
             ],
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-526ed33e720c3b8cf6e1",
+            "evidence_id": "EVID-PWEB-1c7f0ba2f2922a46731d",
             "scope_note": null
           },
           {
@@ -3678,7 +3717,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3703,7 +3742,7 @@
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1gyeamGR5Oifeomj1gHXQqVYTRfGs9PGBq-YD0IGpKK4/edit?gid=2010365208#gid=2010365208",
         "investors": "",
         "construction_companies": "Hensel Phelps",
-        "energy_companies": "Alabama Power",
+        "energy_companies": "Alabama Power Company",
         "latest_timeline": {
           "data_center": "Meta Montgomery",
           "date": "2027-02-23",
@@ -3731,47 +3770,6 @@
           }
         ],
         "public_enrichment": [
-          {
-            "field": "energy_companies",
-            "value": "Alabama Power",
-            "relationship": "serving utility",
-            "source": "DEPLOY / Alabama PSC public record",
-            "source_urls": [
-              "https://registry.deploy.report/datacenters/facilities/meta-alabama-montgomery",
-              "https://www.pscpublicaccess.alabama.gov/pscpublicaccess/PSC/CommissionMeetingDetailsPage.aspx?meetingId=e818fcfc-459d-49d9-9dc1-0a674ff9164c"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-e056362af8cf21516c12",
-            "scope_note": "Alabama PSC record also identifies Dotier LLC, a Meta subsidiary, in connection with Alabama Power renewable subscription projects for a Montgomery data center."
-          },
-          {
-            "field": "project",
-            "value": "Montgomery Data Center",
-            "relationship": "official project name",
-            "source": "Meta Data Centers",
-            "source_urls": [
-              "https://datacenters.atmeta.com/2025/09/montgomery-were-growing/"
-            ],
-            "publication_date": "2025-09-23",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-94e579a3bb6cf816d187",
-            "scope_note": null
-          },
-          {
-            "field": "energy_companies",
-            "value": "Alabama Power Company",
-            "relationship": "publicly identified grid operator / energy infrastructure relationship",
-            "source": "Intel Accelerator enrichment / Interconnection.fyi",
-            "source_urls": [
-              "https://intelaccelerator.com/projects",
-              "https://datacenters.atmeta.com/asset/montgomery-data-center-info-sheet/"
-            ],
-            "publication_date": null,
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-47184f25514ea7620179",
-            "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
-          },
           {
             "field": "construction_companies",
             "value": [
@@ -3804,6 +3802,20 @@
           {
             "field": "energy_companies",
             "value": "Alabama Power Company",
+            "relationship": "publicly identified grid operator / energy infrastructure relationship",
+            "source": "Intel Accelerator enrichment / Interconnection.fyi",
+            "source_urls": [
+              "https://intelaccelerator.com/projects",
+              "https://datacenters.atmeta.com/asset/montgomery-data-center-info-sheet/"
+            ],
+            "publication_date": null,
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-47184f25514ea7620179",
+            "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Alabama Power Company",
             "relationship": "publicly identified energy partner",
             "source": "Meta Data Centers",
             "source_urls": [
@@ -3813,6 +3825,33 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-batch6-meta-montgomery-ener-0",
             "scope_note": "Meta's Montgomery fact sheet says it is working with local partners including Alabama Power Company to meet its 100% clean and renewable energy goal."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Alabama Power",
+            "relationship": "serving utility",
+            "source": "DEPLOY / Alabama PSC public record",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/meta-alabama-montgomery",
+              "https://www.pscpublicaccess.alabama.gov/pscpublicaccess/PSC/CommissionMeetingDetailsPage.aspx?meetingId=e818fcfc-459d-49d9-9dc1-0a674ff9164c"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-e056362af8cf21516c12",
+            "scope_note": "Alabama PSC record also identifies Dotier LLC, a Meta subsidiary, in connection with Alabama Power renewable subscription projects for a Montgomery data center."
+          },
+          {
+            "field": "project",
+            "value": "Montgomery Data Center",
+            "relationship": "official project name",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2025/09/montgomery-were-growing/"
+            ],
+            "publication_date": "2025-09-23",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-94e579a3bb6cf816d187",
+            "scope_note": null
           }
         ]
       },
@@ -3842,7 +3881,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -3909,17 +3948,33 @@
             "scope_note": null
           },
           {
-            "field": "energy_companies",
-            "value": "Idaho Power",
-            "relationship": "electricity provider / project energy partner",
-            "source": "Meta Data Centers",
+            "field": "construction_companies",
+            "value": "Ralph L. Wadsworth Construction",
+            "relationship": "site-development / mission-critical contractor",
+            "source": "Ralph L. Wadsworth Construction",
             "source_urls": [
-              "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+              "https://www.wadsco.com/mission-critical/"
             ],
-            "publication_date": "2026-09-03",
+            "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-3e1f152d00937d569de9",
-            "scope_note": null
+            "evidence_id": "EVID-PWEB-c0bc87fd",
+            "scope_note": "Wadsworth's official mission-critical project list names Meta – Kuna Data Center Campus in Kuna, Idaho. This is a site-specific contractor relationship."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Hensel Phelps Construction",
+              "Engineered Structures Inc."
+            ],
+            "relationship": "site construction contractors",
+            "source": "Idaho Statesman",
+            "source_urls": [
+              "https://www.idahostatesman.com/news/business/article304464416.html"
+            ],
+            "publication_date": "2025-04-30",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-e545a082",
+            "scope_note": "Meta said it contracted with Hensel Phelps Construction and Engineered Structures Inc. for the Kuna data center. This is a site-specific contractor relationship."
           },
           {
             "field": "construction_companies",
@@ -3933,6 +3988,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-meta-5de9a1c7-cons-2",
             "scope_note": "Meta's official Kuna announcement names Hensel Phelps among the local and project partners; no broader contractor roster is inferred."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Idaho Power",
+            "relationship": "electricity provider / project energy partner",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/"
+            ],
+            "publication_date": "2026-09-03",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-3e1f152d00937d569de9",
+            "scope_note": null
           },
           {
             "field": "energy_companies",
@@ -3973,35 +4041,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-f69619f4",
             "scope_note": "Meta's current U.S. locations material identifies Kuna as a Meta data center location; Wadsworth's mission-critical project list names the Meta Kuna Data Center Campus."
-          },
-          {
-            "field": "construction_companies",
-            "value": "Ralph L. Wadsworth Construction",
-            "relationship": "site-development / mission-critical contractor",
-            "source": "Ralph L. Wadsworth Construction",
-            "source_urls": [
-              "https://www.wadsco.com/mission-critical/"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-c0bc87fd",
-            "scope_note": "Wadsworth's official mission-critical project list names Meta – Kuna Data Center Campus in Kuna, Idaho. This is a site-specific contractor relationship."
-          },
-          {
-            "field": "construction_companies",
-            "value": [
-              "Hensel Phelps Construction",
-              "Engineered Structures Inc."
-            ],
-            "relationship": "site construction contractors",
-            "source": "Idaho Statesman",
-            "source_urls": [
-              "https://www.idahostatesman.com/news/business/article304464416.html"
-            ],
-            "publication_date": "2025-04-30",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-e545a082",
-            "scope_note": "Meta said it contracted with Hensel Phelps Construction and Engineered Structures Inc. for the Kuna data center. This is a site-specific contractor relationship."
           }
         ]
       },
@@ -4031,7 +4070,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4086,6 +4125,22 @@
         "public_enrichment": [
           {
             "field": "construction_companies",
+            "value": [
+              "JE Dunn"
+            ],
+            "relationship": "publicly identified construction/EPC partners",
+            "source": "Intel Accelerator enrichment",
+            "source_urls": [
+              "https://intelaccelerator.com/projects",
+              "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2"
+            ],
+            "publication_date": null,
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-10b0607f3dad66febaef",
+            "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source."
+          },
+          {
+            "field": "construction_companies",
             "value": "JE Dunn",
             "relationship": "construction partner / contractor",
             "source": "Meta Data Centers",
@@ -4096,6 +4151,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-bcad5667f65a4ec900fb",
             "scope_note": "Meta explicitly lists JE Dunn among local partners for the Temple Data Center."
+          },
+          {
+            "field": "construction_companies",
+            "value": "JE Dunn",
+            "relationship": "publicly identified construction partner",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
+            ],
+            "publication_date": "2026-07-22",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-meta-6ff5e1ae-cons-0",
+            "scope_note": "Meta's official Temple announcement names JE Dunn among the project partners; the announcement does not characterize JE Dunn's full contractual role, so this is retained as a named construction/project partner."
           },
           {
             "field": "energy_companies",
@@ -4123,35 +4191,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-38f0055531893ec9cddb",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
-          },
-          {
-            "field": "construction_companies",
-            "value": [
-              "JE Dunn"
-            ],
-            "relationship": "publicly identified construction/EPC partners",
-            "source": "Intel Accelerator enrichment",
-            "source_urls": [
-              "https://intelaccelerator.com/projects",
-              "https://www.interconnection.fyi/data-center/project/meta-temple-f7dc40d2"
-            ],
-            "publication_date": null,
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-10b0607f3dad66febaef",
-            "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source."
-          },
-          {
-            "field": "construction_companies",
-            "value": "JE Dunn",
-            "relationship": "publicly identified construction partner",
-            "source": "Meta Data Centers",
-            "source_urls": [
-              "https://datacenters.atmeta.com/2026/07/temple-we-are-online/"
-            ],
-            "publication_date": "2026-07-22",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-meta-6ff5e1ae-cons-0",
-            "scope_note": "Meta's official Temple announcement names JE Dunn among the project partners; the announcement does not characterize JE Dunn's full contractual role, so this is retained as a named construction/project partner."
           },
           {
             "field": "energy_companies",
@@ -4207,7 +4246,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4261,19 +4300,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "energy_companies",
-            "value": "Black Hills Energy",
-            "relationship": "serving utility",
-            "source": "DEPLOY",
-            "source_urls": [
-              "https://registry.deploy.report/datacenters/facilities/meta-wyoming-cheyenne"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-2d98b9b85d460c609518",
-            "scope_note": null
-          },
-          {
             "field": "construction_companies",
             "value": "Goat Systems LLC",
             "relationship": "commissioning / contractor",
@@ -4288,6 +4314,19 @@
           },
           {
             "field": "construction_companies",
+            "value": "Ralph L. Wadsworth Construction",
+            "relationship": "earthwork and underground utilities subcontractor",
+            "source": "Ralph L. Wadsworth Construction",
+            "source_urls": [
+              "https://www.wadsco.com/mission-critical-data-center/"
+            ],
+            "publication_date": "2025-03-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-a23ed8c8",
+            "scope_note": "Wadsworth says it performed earthwork and underground utilities for the Meta Cheyenne Data Center Campus and participated in preconstruction."
+          },
+          {
+            "field": "construction_companies",
             "value": "Fortis Construction",
             "relationship": "publicly identified construction partner",
             "source": "Meta Data Centers",
@@ -4298,6 +4337,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-meta-14cecdb5-cons-4",
             "scope_note": "Meta's official Cheyenne announcement directs construction information to Fortis Construction and names Fortis Construction among the project partners."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Black Hills Energy",
+            "relationship": "serving utility",
+            "source": "DEPLOY",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/meta-wyoming-cheyenne"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-2d98b9b85d460c609518",
+            "scope_note": null
           },
           {
             "field": "energy_companies",
@@ -4338,19 +4390,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-d4d62ec3",
             "scope_note": "Meta identifies its Cheyenne Data Center as a 715,000-square-foot campus; the current Meta locations page reports a $1.2B investment and 2024 groundbreaking."
-          },
-          {
-            "field": "construction_companies",
-            "value": "Ralph L. Wadsworth Construction",
-            "relationship": "earthwork and underground utilities subcontractor",
-            "source": "Ralph L. Wadsworth Construction",
-            "source_urls": [
-              "https://www.wadsco.com/mission-critical-data-center/"
-            ],
-            "publication_date": "2025-03-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-a23ed8c8",
-            "scope_note": "Wadsworth says it performed earthwork and underground utilities for the Meta Cheyenne Data Center Campus and participated in preconstruction."
           }
         ]
       },
@@ -4380,7 +4419,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4443,19 +4482,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Project Atlas - Infrastructure and Utility Improvements",
-            "relationship": "named site/infrastructure project in Mississippi permit filing",
-            "source": "Mississippi Department of Environmental Quality (LCNOI)",
-            "source_urls": [
-              "https://opc.deq.state.ms.us/get_doc.aspx?dt=pdf&id=1781710"
-            ],
-            "publication_date": "2025-04-30",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-5f8337fa",
-            "scope_note": "The filing identifies Amazon Data Services as owner and names the facility site as Project Atlas - Infrastructure and Utility Improvements at W County Line Road, Ridgeland, MS. This is an associated infrastructure/utility project record, not a claim about the entire data-center campus."
-          },
-          {
             "field": "construction_companies",
             "value": "Hemphill Construction Co. Inc.",
             "relationship": "prime contractor for Project Atlas infrastructure and utility improvements",
@@ -4467,6 +4493,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-3ca9f8d6",
             "scope_note": "The Mississippi filing names Hemphill Construction Co. Inc. as prime contractor and Amazon Data Services as owner for the stated site project at W County Line Road."
+          },
+          {
+            "field": "project",
+            "value": "Project Atlas - Infrastructure and Utility Improvements",
+            "relationship": "named site/infrastructure project in Mississippi permit filing",
+            "source": "Mississippi Department of Environmental Quality (LCNOI)",
+            "source_urls": [
+              "https://opc.deq.state.ms.us/get_doc.aspx?dt=pdf&id=1781710"
+            ],
+            "publication_date": "2025-04-30",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-5f8337fa",
+            "scope_note": "The filing identifies Amazon Data Services as owner and names the facility site as Project Atlas - Infrastructure and Utility Improvements at W County Line Road, Ridgeland, MS. This is an associated infrastructure/utility project record, not a claim about the entire data-center campus."
           }
         ]
       },
@@ -4496,7 +4535,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4591,7 +4630,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4645,19 +4684,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Helios",
-            "relationship": "public project identity",
-            "source": "Galaxy Digital",
-            "source_urls": [
-              "https://www.galaxy.com/newsroom/galaxy-completes-phase-i-of-its-helios-data-center-campus"
-            ],
-            "publication_date": "2026-07-06",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-helios-project-20260927",
-            "scope_note": "Galaxy identifies the Texas campus as Helios."
-          },
-          {
             "field": "construction_companies",
             "value": "HITT Contracting",
             "relationship": "general contractor for Phase II",
@@ -4669,6 +4695,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-helios-hitt-20260927",
             "scope_note": "Galaxy states HITT Contracting is the general contractor for the 260 MW critical-IT Phase II build."
+          },
+          {
+            "field": "owner",
+            "value": "Galaxy Helios I LLC",
+            "relationship": "facility owner named in TDLR filing",
+            "source": "Texas Department of Licensing and Regulation",
+            "source_urls": [
+              "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2025012175"
+            ],
+            "publication_date": "2025-02-18",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-HELIOS-OWNER-20260927",
+            "scope_note": "Legal owner named in primary building filing; tenant field is not assigned in the filing."
+          },
+          {
+            "field": "project",
+            "value": "Helios",
+            "relationship": "public project identity",
+            "source": "Galaxy Digital",
+            "source_urls": [
+              "https://www.galaxy.com/newsroom/galaxy-completes-phase-i-of-its-helios-data-center-campus"
+            ],
+            "publication_date": "2026-07-06",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-helios-project-20260927",
+            "scope_note": "Galaxy identifies the Texas campus as Helios."
           }
         ]
       },
@@ -4698,7 +4750,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4811,7 +4863,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -4866,6 +4918,22 @@
         "public_enrichment": [
           {
             "field": "construction_companies",
+            "value": [
+              "Mortenson"
+            ],
+            "relationship": "publicly identified construction/EPC partners",
+            "source": "Intel Accelerator enrichment",
+            "source_urls": [
+              "https://intelaccelerator.com/projects",
+              "https://registry.deploy.report/datacenters/meta-eagle-mountain-utah"
+            ],
+            "publication_date": null,
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-10bf34d334ad7615d205",
+            "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source."
+          },
+          {
+            "field": "construction_companies",
             "value": "Mortenson",
             "relationship": "construction partner",
             "source": "Intel Accelerator",
@@ -4889,22 +4957,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-13a1ecf699566184c48c",
             "scope_note": "Energy-partner relationship from the enrichment registry; not necessarily the serving utility."
-          },
-          {
-            "field": "construction_companies",
-            "value": [
-              "Mortenson"
-            ],
-            "relationship": "publicly identified construction/EPC partners",
-            "source": "Intel Accelerator enrichment",
-            "source_urls": [
-              "https://intelaccelerator.com/projects",
-              "https://registry.deploy.report/datacenters/meta-eagle-mountain-utah"
-            ],
-            "publication_date": null,
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-10bf34d334ad7615d205",
-            "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source."
           }
         ]
       },
@@ -4934,7 +4986,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5037,7 +5089,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5120,19 +5172,6 @@
           {
             "field": "energy_companies",
             "value": "NV Energy",
-            "relationship": "serving utility",
-            "source": "SUE Data Centers registry",
-            "source_urls": [
-              "https://suedatacenters.org/data-centers/google-storey-county-nv"
-            ],
-            "publication_date": "2026-09-24",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-b146f87d7394baa3ac2d",
-            "scope_note": null
-          },
-          {
-            "field": "energy_companies",
-            "value": "NV Energy",
             "relationship": "publicly identified grid operator / energy infrastructure relationship",
             "source": "Intel Accelerator enrichment / Interconnection.fyi",
             "source_urls": [
@@ -5143,6 +5182,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-070497b47a7822d8bc39",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "energy_companies",
+            "value": "NV Energy",
+            "relationship": "serving utility",
+            "source": "SUE Data Centers registry",
+            "source_urls": [
+              "https://suedatacenters.org/data-centers/google-storey-county-nv"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-b146f87d7394baa3ac2d",
+            "scope_note": null
           }
         ]
       },
@@ -5172,7 +5224,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5288,7 +5340,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5382,7 +5434,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5436,19 +5488,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "energy_companies",
-            "value": "Shell Energy Europe Limited",
-            "relationship": "24/7 carbon-free energy manager",
-            "source": "Google",
-            "source_urls": [
-              "https://www.datacenters.google/locations/waltham-cross/"
-            ],
-            "publication_date": "2025-01-01",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-6590e0f8cda289ba6ef3",
-            "scope_note": "Shell is identified as energy manager for Google's UK clean-energy portfolio, not necessarily the distribution utility."
-          },
-          {
             "field": "construction_companies",
             "value": "250+ companies, majority local; no specific general contractor published",
             "relationship": "construction ecosystem",
@@ -5460,6 +5499,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-8aa79955a5245b527b22",
             "scope_note": "Google says more than 250 companies worked on the facility; it does not identify a single principal contractor on this page."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Shell Energy Europe Limited",
+            "relationship": "24/7 carbon-free energy manager",
+            "source": "Google",
+            "source_urls": [
+              "https://www.datacenters.google/locations/waltham-cross/"
+            ],
+            "publication_date": "2025-01-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-6590e0f8cda289ba6ef3",
+            "scope_note": "Shell is identified as energy manager for Google's UK clean-energy portfolio, not necessarily the distribution utility."
           }
         ]
       },
@@ -5489,7 +5541,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5583,7 +5635,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5687,7 +5739,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5781,7 +5833,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5907,7 +5959,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -5961,18 +6013,17 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Gallatin Data Center",
-            "relationship": "official project name",
-            "source": "Meta Data Centers",
+            "field": "construction_companies",
+            "value": "DPR Construction",
+            "relationship": "publicly identified general contractor",
+            "source": "DPR Construction",
             "source_urls": [
-              "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/",
-              "https://datacenters.atmeta.com/2020/08/hello-gallatin/"
+              "https://www.dpr.com/projects/facebook-gallatin-data-center"
             ],
-            "publication_date": "2024-11-14",
+            "publication_date": null,
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-e6b4671fd01ef088f4cc",
-            "scope_note": null
+            "evidence_id": "EVID-PWEB-batch2-meta-gallatin-cons-5",
+            "scope_note": "DPR's current project page identifies DPR Construction as general contractor for the Meta/Facebook Gallatin data center."
           },
           {
             "field": "energy_companies",
@@ -5992,19 +6043,6 @@
             "scope_note": "Meta states it contracted for 220 MW of new solar energy in Tennessee to support operations in the area and thanks TVA and local partners."
           },
           {
-            "field": "construction_companies",
-            "value": "DPR Construction",
-            "relationship": "publicly identified general contractor",
-            "source": "DPR Construction",
-            "source_urls": [
-              "https://www.dpr.com/projects/facebook-gallatin-data-center"
-            ],
-            "publication_date": null,
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-batch2-meta-gallatin-cons-5",
-            "scope_note": "DPR's current project page identifies DPR Construction as general contractor for the Meta/Facebook Gallatin data center."
-          },
-          {
             "field": "energy_companies",
             "value": "Tennessee Valley Authority",
             "relationship": "publicly identified energy partner",
@@ -6016,6 +6054,20 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-batch2-meta-gallatin-ener-6",
             "scope_note": "DPR's project page says the Gallatin campus is supported by renewable energy through partnerships with the Tennessee Valley Authority."
+          },
+          {
+            "field": "project",
+            "value": "Gallatin Data Center",
+            "relationship": "official project name",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/",
+              "https://datacenters.atmeta.com/2020/08/hello-gallatin/"
+            ],
+            "publication_date": "2024-11-14",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-e6b4671fd01ef088f4cc",
+            "scope_note": null
           }
         ]
       },
@@ -6045,7 +6097,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6139,7 +6191,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6193,19 +6245,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Polaris Forge 1",
-            "relationship": "campus/project identity",
-            "source": "Applied Digital",
-            "source_urls": [
-              "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000048/apld-20260531.htm"
-            ],
-            "publication_date": "2026-05-31",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-ellendale-project-20260927",
-            "scope_note": "Applied Digital identifies Polaris Forge 1 as its flagship Ellendale HPC campus."
-          },
-          {
             "field": "energy_companies",
             "value": "Otter Tail Power",
             "relationship": "serving utility",
@@ -6217,6 +6256,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-ellendale-utility-20260927",
             "scope_note": "DEPLOY identifies Otter Tail Power as the utility for the Ellendale facility; this is a public utility relationship, not a formal queue-ID match."
+          },
+          {
+            "field": "project",
+            "value": "Polaris Forge 1",
+            "relationship": "campus/project identity",
+            "source": "Applied Digital",
+            "source_urls": [
+              "https://ir.applieddigital.com/sec-filings/all-sec-filings/content/0001144879-26-000048/apld-20260531.htm"
+            ],
+            "publication_date": "2026-05-31",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-ellendale-project-20260927",
+            "scope_note": "Applied Digital identifies Polaris Forge 1 as its flagship Ellendale HPC campus."
           }
         ]
       },
@@ -6246,7 +6298,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6341,7 +6393,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6420,7 +6472,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6508,7 +6560,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6596,7 +6648,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6700,7 +6752,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6795,7 +6847,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6889,7 +6941,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -6968,7 +7020,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7047,7 +7099,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [
@@ -7117,17 +7169,17 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "SAT40",
-            "relationship": "registered construction project",
+            "field": "address",
+            "value": "15000 Lambda Drive, San Antonio, TX 78245",
+            "relationship": "site address",
             "source": "Texas Department of Licensing and Regulation",
             "source_urls": [
               "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
             ],
             "publication_date": "2023-03-03",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-sat40-project-20260927",
-            "scope_note": "TDLR project TABS2023013247 is named SAT40 / SAT40 Data Center."
+            "evidence_id": "EVID-PWEB-SAT40-ADDR-20260927",
+            "scope_note": "Exact site address in the primary TDLR project record."
           },
           {
             "field": "address",
@@ -7141,6 +7193,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-sat40-address-20260927",
             "scope_note": "TDLR gives the SAT40 project address."
+          },
+          {
+            "field": "owner",
+            "value": "Microsoft",
+            "relationship": "facility owner named in TDLR filing",
+            "source": "Texas Department of Licensing and Regulation",
+            "source_urls": [
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+            ],
+            "publication_date": "2023-03-03",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-SAT40-OWNER-20260927",
+            "scope_note": "Owner field in the primary TDLR project record."
+          },
+          {
+            "field": "project",
+            "value": "SAT40",
+            "relationship": "registered construction project",
+            "source": "Texas Department of Licensing and Regulation",
+            "source_urls": [
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+            ],
+            "publication_date": "2023-03-03",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-sat40-project-20260927",
+            "scope_note": "TDLR project TABS2023013247 is named SAT40 / SAT40 Data Center."
           }
         ]
       },
@@ -7170,7 +7248,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7224,19 +7302,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "NVA02",
-            "relationship": "campus/project identity",
-            "source": "STACK Infrastructure",
-            "source_urls": [
-              "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-nva02-project-20260927",
-            "scope_note": "STACK identifies the Manassas campus as NVA02."
-          },
-          {
             "field": "energy_companies",
             "value": "Northern Virginia Electric Cooperative (NOVEC)",
             "relationship": "onsite substation infrastructure provider",
@@ -7248,6 +7313,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-nva02-novec-20260927",
             "scope_note": "STACK states NVA02 has two dedicated 300 MW onsite substations from NOVEC; this is infrastructure evidence, not a formal queue-ID match."
+          },
+          {
+            "field": "project",
+            "value": "NVA02",
+            "relationship": "campus/project identity",
+            "source": "STACK Infrastructure",
+            "source_urls": [
+              "https://www.stackinfra.com/locations/americas/northern-virginia/nva02/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-nva02-project-20260927",
+            "scope_note": "STACK identifies the Manassas campus as NVA02."
           }
         ]
       },
@@ -7277,7 +7355,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7371,7 +7449,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [
@@ -7432,6 +7510,19 @@
         ],
         "public_enrichment": [
           {
+            "field": "construction_companies",
+            "value": "Northeast Precast",
+            "relationship": "construction partner",
+            "source": "Northwise Research",
+            "source_urls": [
+              "https://northwiseproject.com/research/nbis-stock-vineland-nj-data-center"
+            ],
+            "publication_date": "2026-09-17",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-nebius-vineland-construction-20260927",
+            "scope_note": "Northwise identifies Northeast Precast as a construction partner; source class remains secondary."
+          },
+          {
             "field": "project",
             "value": "Nebius AI Data Center (Vineland)",
             "relationship": "public project identity",
@@ -7458,19 +7549,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-nebius-vineland-user-20260927",
             "scope_note": "Nebius states dedicated GPU capacity from the new Vineland data center is being delivered to Microsoft."
-          },
-          {
-            "field": "construction_companies",
-            "value": "Northeast Precast",
-            "relationship": "construction partner",
-            "source": "Northwise Research",
-            "source_urls": [
-              "https://northwiseproject.com/research/nbis-stock-vineland-nj-data-center"
-            ],
-            "publication_date": "2026-09-17",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-nebius-vineland-construction-20260927",
-            "scope_note": "Northwise identifies Northeast Precast as a construction partner; source class remains secondary."
           }
         ]
       },
@@ -7500,7 +7578,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7554,19 +7632,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "CoreWeave Norway / Bulk N01 42 MW facility",
-            "relationship": "project/site identity",
-            "source": "Epoch AI / Bulk Infrastructure",
-            "source_urls": [
-              "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
-            ],
-            "publication_date": "2026-09-24",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-6465d4948e59660a731d",
-            "scope_note": null
-          },
-          {
             "field": "construction_companies",
             "value": "Bulk Infrastructure",
             "relationship": "developer/campus partner",
@@ -7578,6 +7643,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-a9a5fa0c211bfa515b3c",
             "scope_note": "Bulk is the infrastructure developer/campus partner in the source set; this is not necessarily a general-contractor designation."
+          },
+          {
+            "field": "project",
+            "value": "CoreWeave Norway / Bulk N01 42 MW facility",
+            "relationship": "project/site identity",
+            "source": "Epoch AI / Bulk Infrastructure",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/coreweave-norway"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-6465d4948e59660a731d",
+            "scope_note": null
           }
         ]
       },
@@ -7607,7 +7685,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7719,7 +7797,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7814,7 +7892,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7908,7 +7986,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -7987,6 +8065,22 @@
             "scope_note": null
           },
           {
+            "field": "construction_companies",
+            "value": "Page Southerland Page (Page)",
+            "relationship": "design firm of record",
+            "source": "TDLR",
+            "source_urls": [
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
+              "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
+            ],
+            "publication_date": "2021-07-06",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-c8ebb1e6ca081f71739a",
+            "scope_note": "This is a design firm, not a general-contractor designation."
+          },
+          {
             "field": "project",
             "value": [
               "SAT14 - Phase 1",
@@ -8006,22 +8100,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-543b4926dd8d2762e3a7",
             "scope_note": null
-          },
-          {
-            "field": "construction_companies",
-            "value": "Page Southerland Page (Page)",
-            "relationship": "design firm of record",
-            "source": "TDLR",
-            "source_urls": [
-              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019142",
-              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019471",
-              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2021019588",
-              "https://www.tdlr.texas.gov/TABS/Projects/TABS2021019686"
-            ],
-            "publication_date": "2021-07-06",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-c8ebb1e6ca081f71739a",
-            "scope_note": "This is a design firm, not a general-contractor designation."
           }
         ]
       },
@@ -8051,7 +8129,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8146,7 +8224,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8225,7 +8303,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8304,7 +8382,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8358,6 +8436,19 @@
         ],
         "public_enrichment": [
           {
+            "field": "energy_companies",
+            "value": "EDP",
+            "relationship": "preferred long-term green-energy partner under MoU",
+            "source": "EDP",
+            "source_urls": [
+              "https://edp.com/en/media/news/start-campus-and-edp-enter-agreement-accelerate-renewable-powered-data-centre"
+            ],
+            "publication_date": "2026-02-25",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-b9a91fdcb57607835f65",
+            "scope_note": null
+          },
+          {
             "field": "project",
             "value": "SINES Data Campus / SIN01–SIN06",
             "relationship": "official campus program",
@@ -8369,19 +8460,6 @@
             "publication_date": "2026-02-25",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-691117595c4f04e02d11",
-            "scope_note": null
-          },
-          {
-            "field": "energy_companies",
-            "value": "EDP",
-            "relationship": "preferred long-term green-energy partner under MoU",
-            "source": "EDP",
-            "source_urls": [
-              "https://edp.com/en/media/news/start-campus-and-edp-enter-agreement-accelerate-renewable-powered-data-centre"
-            ],
-            "publication_date": "2026-02-25",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-b9a91fdcb57607835f65",
             "scope_note": null
           }
         ]
@@ -8412,7 +8490,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8475,19 +8553,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Atlanta 1 DC2",
-            "relationship": "building/project identity",
-            "source": "QTS Data Centers",
-            "source_urls": [
-              "https://q.com/data-centers/atlanta-1/"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-xai-qts-project-20260927",
-            "scope_note": "QTS identifies DC2 at 1025 Jefferson St NW as part of the Atlanta 1 campus."
-          },
-          {
             "field": "address",
             "value": "1025 Jefferson St NW, Atlanta, GA 30318",
             "relationship": "building address",
@@ -8499,6 +8564,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-xai-qts-address-20260927",
             "scope_note": "QTS lists DC2 at 1025 Jefferson St NW; facility tracking ties the same address to xAI's Atlanta cluster."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Georgia Power",
+            "relationship": "campus substation infrastructure provider",
+            "source": "QTS Data Centers",
+            "source_urls": [
+              "https://q.com/data-centers/atlanta-1/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-xai-qts-georgiapower-20260927",
+            "scope_note": "QTS says Atlanta 1 has dedicated onsite, expandable Georgia Power substations; this is campus-level infrastructure evidence, not a metered xAI supply allocation."
+          },
+          {
+            "field": "project",
+            "value": "Atlanta 1 DC2",
+            "relationship": "building/project identity",
+            "source": "QTS Data Centers",
+            "source_urls": [
+              "https://q.com/data-centers/atlanta-1/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-xai-qts-project-20260927",
+            "scope_note": "QTS identifies DC2 at 1025 Jefferson St NW as part of the Atlanta 1 campus."
           },
           {
             "field": "users",
@@ -8513,19 +8604,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-xai-qts-user-20260927",
             "scope_note": "Epoch AI identifies SpaceXAI as the owner and user; GPUQuant identifies xAI compute at the same 1025 Jefferson building."
-          },
-          {
-            "field": "energy_companies",
-            "value": "Georgia Power",
-            "relationship": "campus substation infrastructure provider",
-            "source": "QTS Data Centers",
-            "source_urls": [
-              "https://q.com/data-centers/atlanta-1/"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-xai-qts-georgiapower-20260927",
-            "scope_note": "QTS says Atlanta 1 has dedicated onsite, expandable Georgia Power substations; this is campus-level infrastructure evidence, not a metered xAI supply allocation."
           }
         ]
       },
@@ -8555,7 +8633,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8662,7 +8740,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8756,7 +8834,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8810,19 +8888,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "CoreWeave Lancaster AI data center",
-            "relationship": "public project identity",
-            "source": "CoreWeave",
-            "source_urls": [
-              "https://www.coreweave.com/blog/building-pennsylvania-into-the-mid-atlantic-ai-hub"
-            ],
-            "publication_date": "2025-07-15",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-lancaster-project-20260927",
-            "scope_note": "CoreWeave announced a new Lancaster, Pennsylvania data center, initially 100 MW with potential expansion to 300 MW."
-          },
-          {
             "field": "address",
             "value": "216 Greenfield Road, Lancaster, PA",
             "relationship": "facility address",
@@ -8834,6 +8899,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-lancaster-address-20260927",
             "scope_note": "DEPLOY identifies 216 Greenfield Road, Lancaster, Pennsylvania as the CoreWeave facility address."
+          },
+          {
+            "field": "project",
+            "value": "CoreWeave Lancaster AI data center",
+            "relationship": "public project identity",
+            "source": "CoreWeave",
+            "source_urls": [
+              "https://www.coreweave.com/blog/building-pennsylvania-into-the-mid-atlantic-ai-hub"
+            ],
+            "publication_date": "2025-07-15",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-lancaster-project-20260927",
+            "scope_note": "CoreWeave announced a new Lancaster, Pennsylvania data center, initially 100 MW with potential expansion to 300 MW."
           }
         ]
       },
@@ -8863,7 +8941,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8942,7 +9020,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -8996,16 +9074,16 @@
         ],
         "public_enrichment": [
           {
-            "field": "users",
-            "value": "Microsoft",
-            "relationship": "AI infrastructure customer / intended user",
+            "field": "energy_companies",
+            "value": "Crusoe onsite power generation",
+            "relationship": "behind-the-meter power infrastructure",
             "source": "Crusoe",
             "source_urls": [
               "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
             ],
             "publication_date": "2026-03-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-1a1354a5109b99301d83",
+            "evidence_id": "EVID-PWEB-9466d72bd4facffacd5d",
             "scope_note": null
           },
           {
@@ -9022,16 +9100,16 @@
             "scope_note": null
           },
           {
-            "field": "energy_companies",
-            "value": "Crusoe onsite power generation",
-            "relationship": "behind-the-meter power infrastructure",
+            "field": "users",
+            "value": "Microsoft",
+            "relationship": "AI infrastructure customer / intended user",
             "source": "Crusoe",
             "source_urls": [
               "https://www.crusoe.ai/resources/newsroom/crusoe-announces-new-900-mw-ai-factory-campus-in-abilene-texas-to-support-microsoft-ai-infrastructure"
             ],
             "publication_date": "2026-03-27",
             "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-9466d72bd4facffacd5d",
+            "evidence_id": "EVID-PWEB-1a1354a5109b99301d83",
             "scope_note": null
           }
         ]
@@ -9062,7 +9140,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9116,19 +9194,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "EcoDataCenter 2 / Borlänge development",
-            "relationship": "official site identity",
-            "source": "EcoDataCenter",
-            "source_urls": [
-              "https://ecodatacenter.tech/data-center/ecodatacenter2"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-c6c348872f4f6ae8ac2d",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": [
               "local hydropower",
@@ -9143,6 +9208,19 @@
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-b7ecf20766f12f28af8c",
+            "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "EcoDataCenter 2 / Borlänge development",
+            "relationship": "official site identity",
+            "source": "EcoDataCenter",
+            "source_urls": [
+              "https://ecodatacenter.tech/data-center/ecodatacenter2"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-c6c348872f4f6ae8ac2d",
             "scope_note": null
           }
         ]
@@ -9173,7 +9251,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9280,7 +9358,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9364,7 +9442,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9461,7 +9539,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9526,6 +9604,19 @@
           {
             "field": "construction_companies",
             "value": "JE Dunn Construction",
+            "relationship": "publicly identified construction partner",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
+            ],
+            "publication_date": "2025-04-09",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-batch2-meta-bowling-green-cons-2",
+            "scope_note": "Meta's official Bowling Green announcement points to JE Dunn Construction for construction information and names JE Dunn among local/project partners."
+          },
+          {
+            "field": "construction_companies",
+            "value": "JE Dunn Construction",
             "relationship": "construction partner",
             "source": "Meta Data Centers",
             "source_urls": [
@@ -9548,19 +9639,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-a5e695d82f942fa98fa5",
             "scope_note": null
-          },
-          {
-            "field": "construction_companies",
-            "value": "JE Dunn Construction",
-            "relationship": "publicly identified construction partner",
-            "source": "Meta Data Centers",
-            "source_urls": [
-              "https://datacenters.atmeta.com/2025/04/hello-bowling-green/"
-            ],
-            "publication_date": "2025-04-09",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-batch2-meta-bowling-green-cons-2",
-            "scope_note": "Meta's official Bowling Green announcement points to JE Dunn Construction for construction information and names JE Dunn among local/project partners."
           },
           {
             "field": "energy_companies",
@@ -9603,7 +9681,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9657,20 +9735,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Hyperion / Richland Parish Data Center",
-            "relationship": "official project identity",
-            "source": "Meta / public project reporting",
-            "source_urls": [
-              "https://datacenters.atmeta.com/us-locations/",
-              "https://registry.deploy.report/datacenters/facilities/meta-louisiana-richland-parish"
-            ],
-            "publication_date": "2026-09-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-48844851a898303ec3c1",
-            "scope_note": "Verify exact canonical site ID against current Epoch record before merging; this record is a public project identity capture."
-          },
-          {
             "field": "construction_companies",
             "value": [
               "Mortenson"
@@ -9684,6 +9748,20 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-08f39c6ac0492d0ed98d",
             "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source."
+          },
+          {
+            "field": "project",
+            "value": "Hyperion / Richland Parish Data Center",
+            "relationship": "official project identity",
+            "source": "Meta / public project reporting",
+            "source_urls": [
+              "https://datacenters.atmeta.com/us-locations/",
+              "https://registry.deploy.report/datacenters/facilities/meta-louisiana-richland-parish"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-48844851a898303ec3c1",
+            "scope_note": "Verify exact canonical site ID against current Epoch record before merging; this record is a public project identity capture."
           }
         ]
       },
@@ -9713,7 +9791,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9767,20 +9845,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "users",
-            "value": "Microsoft",
-            "relationship": "customer agreement / AI compute deployment",
-            "source": "Nscale",
-            "source_urls": [
-              "https://www.nscale.com/press-releases/nscale-microsoft-norway",
-              "https://news.microsoft.com/source/emea/features/the-port-town-in-norway-emerging-as-an-ai-hub/"
-            ],
-            "publication_date": "2026-04-14",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-566b0d5ea2c5c0b362c4",
-            "scope_note": null
-          },
-          {
             "field": "project",
             "value": "Nscale Narvik campus / Aker Nscale Northern Norway AI infrastructure",
             "relationship": "project/campus identity",
@@ -9793,6 +9857,20 @@
             "publication_date": "2026-04-14",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-077232319f471c1ff75e",
+            "scope_note": null
+          },
+          {
+            "field": "users",
+            "value": "Microsoft",
+            "relationship": "customer agreement / AI compute deployment",
+            "source": "Nscale",
+            "source_urls": [
+              "https://www.nscale.com/press-releases/nscale-microsoft-norway",
+              "https://news.microsoft.com/source/emea/features/the-port-town-in-norway-emerging-as-an-ai-hub/"
+            ],
+            "publication_date": "2026-04-14",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-566b0d5ea2c5c0b362c4",
             "scope_note": null
           }
         ]
@@ -9823,7 +9901,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -9918,7 +9996,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10016,7 +10094,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10041,7 +10119,7 @@
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1Ngd8mud1gHPmwamHYb7VhfYMZLiS9hfjMlHxdsu6d28/edit?usp=sharing",
         "investors": "",
         "construction_companies": "SB Energy",
-        "energy_companies": "SB Energy onsite generation and storage; Texas grid modernization",
+        "energy_companies": "SB Energy powered infrastructure",
         "latest_timeline": {
           "data_center": "OpenAI Stargate Milam",
           "date": "2028-12-31",
@@ -10074,20 +10152,6 @@
           },
           {
             "field": "energy_companies",
-            "value": "SB Energy onsite generation and storage; Texas grid modernization",
-            "relationship": "dedicated power development",
-            "source": "OpenAI",
-            "source_urls": [
-              "https://openai.com/index/stargate-sb-energy-partnership/",
-              "https://openai.com/index/stargate-community/"
-            ],
-            "publication_date": "2025-12-01",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-cfabf01b2b8c5c4a4bae",
-            "scope_note": null
-          },
-          {
-            "field": "energy_companies",
             "value": "SB Energy powered infrastructure",
             "relationship": "publicly identified grid operator / energy infrastructure relationship",
             "source": "Intel Accelerator enrichment / Interconnection.fyi",
@@ -10099,6 +10163,20 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-654c2737b82c17bf3de8",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "energy_companies",
+            "value": "SB Energy onsite generation and storage; Texas grid modernization",
+            "relationship": "dedicated power development",
+            "source": "OpenAI",
+            "source_urls": [
+              "https://openai.com/index/stargate-sb-energy-partnership/",
+              "https://openai.com/index/stargate-community/"
+            ],
+            "publication_date": "2025-12-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-cfabf01b2b8c5c4a4bae",
+            "scope_note": null
           }
         ]
       },
@@ -10128,7 +10206,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10172,19 +10250,6 @@
         "latest_chip_quantities": [],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Project Jupiter",
-            "relationship": "public project identity",
-            "source": "Oracle",
-            "source_urls": [
-              "https://www.oracle.com/news/announcement/oracle-borderplex-and-bloom-energy-to-power-project-jupiter-with-fuel-cell-technology-2026-04-27/"
-            ],
-            "publication_date": "2026-04-27",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-jupiter-project-20260927",
-            "scope_note": "Oracle identifies Project Jupiter as its AI data center campus in Doña Ana County, New Mexico."
-          },
-          {
             "field": "energy_companies",
             "value": "Bloom Energy",
             "relationship": "onsite fuel-cell power provider",
@@ -10196,6 +10261,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-jupiter-bloom-20260927",
             "scope_note": "Oracle states Project Jupiter will use Bloom Energy fuel cells with up to 2.45 GW of installed fuel-cell capacity; this is an onsite power relationship, not a transmission queue ID."
+          },
+          {
+            "field": "project",
+            "value": "Project Jupiter",
+            "relationship": "public project identity",
+            "source": "Oracle",
+            "source_urls": [
+              "https://www.oracle.com/news/announcement/oracle-borderplex-and-bloom-energy-to-power-project-jupiter-with-fuel-cell-technology-2026-04-27/"
+            ],
+            "publication_date": "2026-04-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-jupiter-project-20260927",
+            "scope_note": "Oracle identifies Project Jupiter as its AI data center campus in Doña Ana County, New Mexico."
           }
         ]
       },
@@ -10225,7 +10303,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10319,7 +10397,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10382,19 +10460,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "project",
-            "value": "Stargate UAE — Abu Dhabi 1 GW cluster; 200 MW expected to go live in 2026",
-            "relationship": "international project/program",
-            "source": "OpenAI",
-            "source_urls": [
-              "https://openai.com/index/introducing-stargate-uae/"
-            ],
-            "publication_date": "2025-05-22",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-46917d45fffa32b8ebfa",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": "UAE energy/infrastructure counterparties not specified in the cited OpenAI announcement",
             "relationship": "negative capture / unresolved utility field",
@@ -10406,6 +10471,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": null,
             "scope_note": "Retained only as an explicit searched field state; no energy company is inferred."
+          },
+          {
+            "field": "project",
+            "value": "Stargate UAE — Abu Dhabi 1 GW cluster; 200 MW expected to go live in 2026",
+            "relationship": "international project/program",
+            "source": "OpenAI",
+            "source_urls": [
+              "https://openai.com/index/introducing-stargate-uae/"
+            ],
+            "publication_date": "2025-05-22",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-46917d45fffa32b8ebfa",
+            "scope_note": null
           }
         ]
       },
@@ -10435,7 +10513,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10481,6 +10559,20 @@
           {
             "field": "energy_companies",
             "value": "WEC Energy Group",
+            "relationship": "publicly identified grid operator / energy infrastructure relationship",
+            "source": "Intel Accelerator enrichment / Interconnection.fyi",
+            "source_urls": [
+              "https://intelaccelerator.com/projects",
+              "https://openai.com/index/stargate-community/"
+            ],
+            "publication_date": null,
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-4d755f77871171f668b4",
+            "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "energy_companies",
+            "value": "WEC Energy Group",
             "relationship": "power infrastructure / dedicated electricity rate context",
             "source": "OpenAI",
             "source_urls": [
@@ -10503,20 +10595,6 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-b2212b1b8c162cfc5c07",
             "scope_note": null
-          },
-          {
-            "field": "energy_companies",
-            "value": "WEC Energy Group",
-            "relationship": "publicly identified grid operator / energy infrastructure relationship",
-            "source": "Intel Accelerator enrichment / Interconnection.fyi",
-            "source_urls": [
-              "https://intelaccelerator.com/projects",
-              "https://openai.com/index/stargate-community/"
-            ],
-            "publication_date": null,
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-4d755f77871171f668b4",
-            "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
           }
         ]
       },
@@ -10546,7 +10624,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10600,20 +10678,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "QTS Cedar Rapids LLC / QTS Data Centers",
-            "relationship": "project entity / developer",
-            "source": "City of Cedar Rapids; Alliant Energy; QTS",
-            "source_urls": [
-              "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
-              "https://q.com/data-centers/cedar-rapids/"
-            ],
-            "publication_date": "2025-02-13",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-b86105021a4ab0941810",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": "Alliant Energy",
             "relationship": "energy partner / grid infrastructure provider",
@@ -10625,6 +10689,20 @@
             "publication_date": "2025-02-13",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-7aa6fce6ea7756332655",
+            "scope_note": null
+          },
+          {
+            "field": "owner",
+            "value": "QTS Cedar Rapids LLC / QTS Data Centers",
+            "relationship": "project entity / developer",
+            "source": "City of Cedar Rapids; Alliant Energy; QTS",
+            "source_urls": [
+              "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
+              "https://q.com/data-centers/cedar-rapids/"
+            ],
+            "publication_date": "2025-02-13",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-b86105021a4ab0941810",
             "scope_note": null
           },
           {
@@ -10668,7 +10746,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
@@ -10722,19 +10800,6 @@
         ],
         "public_enrichment": [
           {
-            "field": "owner",
-            "value": "QTS Data Centers",
-            "relationship": "operator/developer",
-            "source": "DEPLOY",
-            "source_urls": [
-              "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut"
-            ],
-            "publication_date": "2026-09-01",
-            "capture_date": "2026-09-27",
-            "evidence_id": "EVID-PWEB-62d9cbbdd3656b3fc343",
-            "scope_note": null
-          },
-          {
             "field": "energy_companies",
             "value": "Rocky Mountain Power (PacifiCorp)",
             "relationship": "serving utility",
@@ -10761,6 +10826,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-789cf694de56ab9dfc06",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "owner",
+            "value": "QTS Data Centers",
+            "relationship": "operator/developer",
+            "source": "DEPLOY",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/qts-eagle-mountain-eagle-mountain-ut"
+            ],
+            "publication_date": "2026-09-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-62d9cbbdd3656b3fc343",
+            "scope_note": null
           }
         ]
       },
@@ -10790,7 +10868,7 @@
         "dataset_url": "https://epoch.ai/data/data_centers/data_centers.csv",
         "timelines_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
         "chip_quantities_url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
-        "accessed_on": "2026-09-27",
+        "accessed_on": "2026-09-28",
         "license": "Creative Commons Attribution 4.0"
       },
       "registry_crosswalk": [],
