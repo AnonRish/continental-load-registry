@@ -112,8 +112,7 @@ def main() -> int:
         json.dumps(obj["inputs"], sort_keys=True).encode("utf-8")
     ).hexdigest()
 
-    output = json.dumps(obj, indent=2) + "
-"
+    output = json.dumps(obj, indent=2) + "\\n"
     if args.write_json:
         args.write_json.write_text(output, encoding="utf-8")
     print(output, end="")
