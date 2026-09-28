@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-27",
+  "generated_on": "2026-09-28",
   "title": "Track 3 remote-sensing site acquisition target ledger",
   "purpose": "Source-ready target manifest for optical, thermal-infrared and SAR observations covering all 93 Epoch AI frontier-site records. This ledger defines acquisition targets and provenance fields; it does not claim that any imagery has been ingested or measured.",
   "record_count": 93,
@@ -5616,13 +5616,15 @@
         "acquisition_target": "Acquire Sentinel-1 GRD scenes covering the site area and retain acquisition date, orbit/polarization metadata and derived change features."
       },
       "source_specific_notes": [
-        "Coordinates are the repository's displayed site geography and may be state/country centroids rather than exact facility coordinates.",
-        "No imagery measurement is asserted until a source scene is actually acquired and processed.",
-        "Reuters (2026-09-11) reports an area-level lead near Al Dhafra Air Base; the source does not establish a parcel, polygon, or canonical facility coordinate."
+        "Coordinates remain unresolved; no street address is converted to a guessed coordinate.",
+        "Three current public data-center directories independently list the same Al Bihouth / Al Dhafrah address for Stargate UAE.",
+        "Reuters (2026-09-11) separately reports that people familiar with planning place the complex near Al Dhafra Air Base; this remains an area-level lead.",
+        "No imagery measurement is asserted until a source scene is actually acquired and processed."
       ],
       "grid_evidence_url": "",
       "epoch_source_url": "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-uae",
-      "next_action": "Search for a primary or independently corroborated project-specific parcel/site record; the Reuters Al Dhafra area lead may guide acquisition but must not be promoted to a canonical coordinate by itself."
+      "next_action": "Resolve the corroborated Al Bihouth address to a project-specific parcel or independently corroborated geospatial record before assigning latitude/longitude; once resolved, acquire cloud-screened Sentinel-2, Landsat TIRS and Sentinel-1 scenes and retain scene-level provenance.",
+      "address_lead_status": "CORROBORATED_SECONDARY_ADDRESS_NO_PARCEL"
     },
     {
       "epoch_id": "EPOCH-78e7d8474fbdf968",
@@ -5811,5 +5813,5 @@
       "next_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record."
     }
   ],
-  "generated_at_utc": "2026-09-27T23:11:07.131010+00:00"
+  "generated_at_utc": "2026-09-28T13:03:43.808Z"
 }
