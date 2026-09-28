@@ -37,7 +37,7 @@
       "conflict_note": "Secondary coordinate leads are inconsistent and are not treated as authoritative facility parcels; an independent directory states the exact location is not public.",
       "blocking_evidence": [
         "Authoritative parcel/site boundary or equivalent project-specific geospatial record",
-        "Independent corroboration tying the target to the Epoch site identity",
+        "Independent primary or independently corroborated record tying the address to the physical Epoch target",
         "A defensible acquisition target before site-specific physical interpretation is promoted"
       ],
       "promotion_rule": "Promote to RESOLVED only when a primary or independently corroborated project-specific source establishes the physical target.",
@@ -57,7 +57,31 @@
         "publication_date": "2026-09-11",
         "finding": "The original single-site 5 GW Abu Dhabi campus is being reconsidered as a distributed network across the UAE; first-phase construction is reported to continue with modifications. The reporting does not publish a parcel boundary or canonical coordinate.",
         "disposition": "CONTEXT_ONLY_NOT_A_COORDINATE"
-      }
+      },
+      "address_level_secondary_leads": [
+        {
+          "address": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
+          "source": "Interconnection.fyi",
+          "source_url": "https://www.interconnection.fyi/data-center/project/openai-stargate-uae-cf5b737f",
+          "captured_on": "2026-09-28",
+          "finding": "Current public data-center tracker lists this project address and identifies G42 as owner/operator. This is address-level secondary evidence, not a parcel boundary or authoritative geospatial record."
+        },
+        {
+          "address": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
+          "source": "DataCenter.fyi",
+          "source_url": "https://www.datacenter.fyi/public-record/openai-stargate-uae-cf5b737f",
+          "captured_on": "2026-09-28",
+          "finding": "Current public-record page independently lists the same project address and construction status. The page does not publish a verified coordinate or parcel boundary."
+        },
+        {
+          "address": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
+          "source": "AI Infrastructure Atlas",
+          "source_url": "https://aiimpactcalculator.com/infrastructure/openai-stargate-uae-10656b",
+          "captured_on": "2026-09-28",
+          "finding": "Current atlas lists the same address and states that local permitting/community evidence remains under research. This corroborates the address string but does not establish an exact facility parcel."
+        }
+      ],
+      "address_lead_status": "CORROBORATED_SECONDARY_ADDRESS_NO_PARCEL"
     }
   ]
 }
