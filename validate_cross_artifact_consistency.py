@@ -91,10 +91,12 @@ def main() -> None:
     assert len(observation["tasks"]) == summary["observation_task_count"] == sum(summary["observation_task_counts_by_domain"].values())
     assert set(observation["tasks"][0].keys()) >= {"task_id","epoch_id","domain","current_state","priority"}
     assert summary["epoch_site_count"] == 93
-    assert summary["remote_sensing_derived_observation_count"] == 543
+    rs=json.loads((ROOT / "data/track3/remote_sensing_observations.json").read_text(encoding="utf-8"))
+    assert summary["remote_sensing_derived_observation_count"] == rs["derived_observation_count"] == len(rs["records"]) == 547
     assert summary["transformer_event_count"] == 3
-    assert summary["public_web_evidence_record_count"] == 400
-    assert summary["public_web_evidence_site_count"] == 93
+    enrich=load("data/track3/public_web_enrichment_2026-09-27.json")
+    assert summary["public_web_evidence_record_count"] == enrich["record_count"] == 400
+    assert summary["public_web_evidence_site_count"] == enrich["accounting"]["sites_with_findings"] == 93
 
     coverage = load("data/global_ai_datacenter_coverage_2026-09-27.json")
     epoch = coverage["epoch_capture"]
