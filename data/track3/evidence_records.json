@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "record_count": 1209,
+  "record_count": 1148,
   "records": [
     {
       "evidence_id": "EVID-965d5929a63b58845c8a",
@@ -38257,6 +38257,64 @@
       "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
       "public_field": "project",
       "relationship": "public project identity"
+    },
+    {
+      "evidence_id": "EVID-PWEB-GOOGLE-MESA-SERVICE-20260928",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-83ca909f7eb211c7",
+      "target_name": "Google Mesa",
+      "domain": "service_or_contract",
+      "evidence_type": "public_web_enrichment",
+      "claim_scope": "site_level",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "source_kind": "public web enrichment",
+      "source_name": "Data Center FYI / public facility record",
+      "source_url": "https://www.datacenter.fyi/public-record/google-aa4275ee",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/google-aa4275ee"
+      ],
+      "observed_on": "2026-09-27",
+      "captured_on": "2026-09-28",
+      "confidence": "public_source_capture",
+      "basis": "Public facility evidence of utility association; this is not a confidential service contract, interval electricity telemetry, or measured demand.",
+      "record_id": "service_or_contract",
+      "authority": "Data Center FYI / public facility record",
+      "raw_value": "Arizona Public Service is identified in a public Google Mesa facility record as the associated utility/grid relationship.",
+      "normalized_value": "Arizona Public Service is identified in a public Google Mesa facility record as the associated utility/grid relationship.",
+      "site_specific": true,
+      "independent_of_other_source": null,
+      "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+      "public_field": "service_or_contract",
+      "relationship": "publicly identified electric utility / grid relationship"
+    },
+    {
+      "evidence_id": "EVID-PWEB-GOOGLE-MESA-REG-20260928",
+      "target_type": "epoch_site",
+      "target_id": "EPOCH-83ca909f7eb211c7",
+      "target_name": "Google Mesa",
+      "domain": "regulatory",
+      "evidence_type": "public_web_enrichment",
+      "claim_scope": "site_level",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "source_kind": "public web enrichment",
+      "source_name": "City of Mesa",
+      "source_url": "https://mesa.legistar.com/View.ashx?G=6D482A9C-B912-4765-B79B-550C367FA729&GUID=A1C2EC01-F735-4471-A03A-DF8C09D4D8FA&ID=12826393&M=F",
+      "source_urls": [
+        "https://mesa.legistar.com/View.ashx?G=6D482A9C-B912-4765-B79B-550C367FA729&GUID=A1C2EC01-F735-4471-A03A-DF8C09D4D8FA&ID=12826393&M=F"
+      ],
+      "observed_on": "2026-09-27",
+      "captured_on": "2026-09-28",
+      "confidence": "public_source_capture",
+      "basis": "Municipal planning evidence is retained as regulatory/development context; it does not establish an electrical queue ID or measured consumption.",
+      "record_id": "regulatory",
+      "authority": "City of Mesa",
+      "raw_value": "City of Mesa planning records identify the 7232 E Elliot Rd Redhawk/Google campus project in municipal development review.",
+      "normalized_value": "City of Mesa planning records identify the 7232 E Elliot Rd Redhawk/Google campus project in municipal development review.",
+      "site_specific": true,
+      "independent_of_other_source": null,
+      "review_state": "MANUAL_PUBLIC_WEB_CAPTURE",
+      "public_field": "regulatory",
+      "relationship": "municipal planning / development record"
     }
   ]
 }
