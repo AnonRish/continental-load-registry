@@ -202,7 +202,7 @@ jobs:
 
           root = Path("data")
           manifest = json.loads((root / "market_universe_manifest.json").read_text(encoding="utf-8"))
-          assert len(manifest["markets"]) == 10
+          assert len(manifest["markets"]) == 11
           g = manifest["global_layers"]
           assert g["project_level_extractions"]["records"] == 271
           assert g["project_level_extractions"]["mapped_records"] == 271
@@ -211,10 +211,10 @@ jobs:
           assert g["supplemental_aggregate_map"]["mapped_records"] == 66
 
           checklist = json.loads((root / "data_universe_checklist.json").read_text(encoding="utf-8"))
-          assert len(checklist["records"]) == 10
-          assert {x["id"] for x in checklist["records"]} == {"CAISO","MISO","PJM","ERCOT","SPP","NYISO","ISO-NE","AESO","IESO_ON","UTILITIES_OUTSIDE_MARKETS"}
+          assert len(checklist["records"]) == 11
+          assert {x["id"] for x in checklist["records"]} == {"CAISO","MISO","PJM","ERCOT","SPP","NYISO","ISO-NE","AESO","IESO_ON","UTILITIES_OUTSIDE_MARKETS","BPA"}
           checklist_csv = list(csv.DictReader((root / "data_universe_checklist.csv").open("r", encoding="utf-8", newline="")))
-          assert len(checklist_csv) == 10
+          assert len(checklist_csv) == 11
           map_manifest = json.loads((root / "map_layer_manifest.json").read_text(encoding="utf-8"))
           assert len(map_manifest["layers"]) == 12
           layer_by_id = {x["id"]: x for x in map_manifest["layers"]}
@@ -231,6 +231,9 @@ jobs:
           assert layer_by_id["MISO_COMPLETE_QUEUE"]["unresolved_ge_100_location"] == 153
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records"] == 3076
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records_ge_100mw"] == 2332
+          assert layer_by_id["BPA_LARGE_LOAD"]["records"] == 60
+          assert layer_by_id["BPA_LARGE_LOAD"]["mapped_records"] == 35
+          assert layer_by_id["BPA_LARGE_LOAD"]["file"] == "data/bpa_large_load_registry.json"
 
           aggregate_map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
           agg = next(r for r in aggregate_map_csv if r["id"] == "SUPPLEMENTAL_AGGREGATES")
@@ -242,9 +245,14 @@ jobs:
           miso_csv = list(csv.DictReader((root / "miso_unresolved_large_loads.csv").open("r", encoding="utf-8", newline="")))
           assert len(miso_csv) == 153
           manifest_csv = list(csv.DictReader((root / "market_universe_manifest.csv").open("r", encoding="utf-8", newline="")))
-          assert len(manifest_csv) == 10
+          assert len(manifest_csv) == 11
           map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
           assert len(map_csv) == 12
+          bpa_json = json.loads((root / "bpa_large_load_registry.json").read_text(encoding="utf-8"))
+          assert bpa_json["record_count"] == len(bpa_json["records"]) == 60
+          assert bpa_json["mapped_record_count"] == 35
+          bpa_csv = list(csv.DictReader((root / "bpa_large_load_registry.csv").open("r", encoding="utf-8", newline="")))
+          assert len(bpa_csv) == 60
 
           history = json.loads((root / "caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
@@ -338,6 +346,8 @@ jobs:
               "data/track3/facility_provenance.json",
               "data/track3/entity_resolution.json",
               "data/project_level_extractions.json",
+              "data/bpa_large_load_registry.json",
+              "data/bpa_large_load_registry.csv",
               "data/project_level_map.json",
               "data/supplemental_large_load_evidence.json",
               "data/supplemental_aggregate_map.json",
