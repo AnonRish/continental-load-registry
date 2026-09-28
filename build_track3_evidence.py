@@ -28,6 +28,7 @@ COOLING_OBSERVATIONS = OUT / "cooling_observations.json"
 REMOTE_OBSERVATIONS = OUT / "remote_sensing_observations.json"
 TRANSFORMER_EVENTS = OUT / "transformer_supply_chain_events.json"
 PUBLIC_WEB_ENRICHMENT = OUT / "public_web_enrichment_2026-09-27.json"
+RESEARCH_ASSESSMENTS = OUT / "research_assessments_2026-09-27.json"
 
 SITE_DOMAINS = (
     "site_identity",
@@ -83,11 +84,12 @@ def external_snapshot_available(domain: str) -> bool:
     return all((EPOCH / name).exists() and (EPOCH / name).stat().st_size > 0
                for name in EXTERNAL_SOURCE_FILES[domain])
 
-def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, cooling_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, remote_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, transformer_events_by_site: dict[str, list[dict[str, Any]]] | None = None, manual_public_by_site: dict[str, list[dict[str, Any]]] | None = None) -> dict[str, Any]:
+def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, cooling_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, remote_observations_by_site: dict[str, list[dict[str, Any]]] | None = None, transformer_events_by_site: dict[str, list[dict[str, Any]]] | None = None, manual_public_by_site: dict[str, list[dict[str, Any]]] | None = None, research_assessments_by_site: dict[str, dict[str, dict[str, Any]]] | None = None) -> dict[str, Any]:
     ev = rec.get("site_level_connection_evidence") or []
     grid = rec.get("grid_crosswalk") or {}
     manual_public = (manual_public_by_site or {}).get(str(rec.get("epoch_id")), [])
     manual_fields = {str(x.get("field") or "") for x in manual_public}
+    research_assessment = ((research_assessments_by_site or {}).get(str(rec.get("epoch_id")), {}) or {}).get(domain)
     crosswalk_ev = grid.get("site_level_public_evidence") or {}
     crosswalk_status = str(crosswalk_ev.get("status") or "").lower()
     if domain == "site_identity":
@@ -117,11 +119,15 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         if matches or crosswalk_service or "service_or_contract" in manual_fields:
             return {"status":"SITE_LEVEL_EVIDENCE","basis":"A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."}
         return {"status":"NOT_INGESTED","basis":"No site-specific service or energy-contract evidence is currently attached."}
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "compute_tenancy":
         matches = [x for x in ev if x.get("type") in {"site_specific_compute_tenancy","site_specific_compute_contract","site_specific_lease"}]
         if matches:
             return {"status":"INGESTED_SNAPSHOT","basis":"A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."}
         return {"status":"UNKNOWN","basis":"No site-specific compute-tenancy contract has been attached in the current evidence layer."}
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "regulatory":
         matches = [x for x in ev if "regulatory" in str(x.get("type") or "").lower()]
         if matches or "regulatory" in manual_fields:
@@ -133,6 +139,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "status": "NOT_ASSESSED",
             "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
         }
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "grid_connection":
         connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support", "site_specific_behind_the_meter_service_evidence", "site_specific_grid_identity_no_queue"}
         connection_type_lower = {str(x).lower() for x in connection_types}
@@ -173,6 +181,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
         }
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "cooling":
         observations = (cooling_observations_by_site or {}).get(str(rec.get("epoch_id")), [])
         if observations or "cooling" in manual_fields:
@@ -184,6 +194,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
         }
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "remote_sensing":
         observations = [
             x for x in (remote_observations_by_site or {}).get(str(rec.get("epoch_id")), [])
@@ -200,6 +212,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "status": "NOT_INGESTED",
             "basis": "No site-level remote-sensing observations have been successfully processed yet."
         }
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "transformer_supply_chain":
         events = (transformer_events_by_site or {}).get(str(rec.get("epoch_id")), [])
         if events:
@@ -213,6 +227,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "event_count": 0,
             "basis": "A structured transformer-event research target exists, but no public event has been retained yet."
         }
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain == "independent_corroboration":
         independent = [x for x in ev if x.get("independent_of_other_source") is True]
         if independent:
@@ -224,6 +240,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
             "status": "NOT_ASSESSED",
             "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
         }
+    if research_assessment:
+        return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
     if domain in {"chip_ownership", "chip_users", "chip_shipments"}:
         if external_snapshot_available(domain):
             return {
@@ -561,15 +579,23 @@ def main() -> int:
     transformer_events = transformer_payload.get("records", [])
     public_web_payload = load_json(PUBLIC_WEB_ENRICHMENT) if PUBLIC_WEB_ENRICHMENT.exists() else {"records": []}
     public_web_records = public_web_payload.get("records", [])
+    research_assessment_payload = load_json(RESEARCH_ASSESSMENTS) if RESEARCH_ASSESSMENTS.exists() else {"records": []}
+    research_assessment_records = research_assessment_payload.get("records", [])
     power_by_site: dict[str, list[dict[str, Any]]] = {}
     remote_by_site: dict[str, list[dict[str, Any]]] = {}
     transformer_by_site: dict[str, list[dict[str, Any]]] = {}
     cooling_by_site: dict[str, list[dict[str, Any]]] = {}
     manual_public_by_site: dict[str, list[dict[str, Any]]] = {}
+    research_assessments_by_site: dict[str, dict[str, dict[str, Any]]] = {}
     for item in public_web_records:
         sid = str(item.get("epoch_id") or "")
         if sid:
             manual_public_by_site.setdefault(sid, []).append(item)
+    for item in research_assessment_records:
+        sid = str(item.get("epoch_id") or "")
+        domain_name = str(item.get("domain") or "")
+        if sid and domain_name:
+            research_assessments_by_site.setdefault(sid, {})[domain_name] = item
     for obs in power_observations:
         power_by_site.setdefault(str(obs.get("epoch_id")), []).append(obs)
     for obs in cooling_observations:
@@ -610,6 +636,7 @@ def main() -> int:
                 remote_by_site,
                 transformer_by_site,
                 manual_public_by_site,
+                research_assessments_by_site,
             )
             domains[domain] = s
             status_counts[domain][s["status"]] = status_counts[domain].get(s["status"], 0) + 1
