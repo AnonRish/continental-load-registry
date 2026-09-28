@@ -1,3 +1,4 @@
+# Track 3 control-plane health semantics: degraded web access is distinct from hard ingestion failure.
 #!/usr/bin/env python3
 """Unified Track 3 automation/control-plane checks.
 
