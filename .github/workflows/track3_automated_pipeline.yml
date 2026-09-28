@@ -24,6 +24,7 @@ on:
       - "data/track3/public_web_claims.json"
       - "reconcile_track3_public_enrichment.py"
       - "build_track3_research_backlog.py"
+      - "build_track3_engineering_closure.py"
 permissions:
   contents: write
   issues: write
@@ -63,6 +64,7 @@ jobs:
             build_public_web_claims.py \
             reconcile_track3_public_enrichment.py \
             build_track3_research_backlog.py \
+            build_track3_engineering_closure.py \
             refresh_physical_source_manifest.py
 
       - name: Run automated source adapters
@@ -141,6 +143,22 @@ jobs:
 
       - name: Rebuild Track 3 research backlog from reconciled gaps
         run: python build_track3_research_backlog.py
+
+      - name: Build Track 3 engineering closure
+        run: python build_track3_engineering_closure.py
+
+      - name: Validate engineering closure
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("data/track3/engineering_closure_2026-09-28.json")
+          d=json.loads(p.read_text(encoding="utf-8"))
+          assert d["repository_engineering_status"]=="COMPLETE", d
+          assert d["empirical_track3_verification_status"]=="NOT_CLOSED", d
+          assert d["untracked_gap_count"]==0, d
+          print("PASS: Track 3 engineering closure has zero untracked repository gaps")
+          PY
 
       - name: Validate reconciled coverage artifacts
         run: |
