@@ -73,6 +73,10 @@ jobs:
           api=json.loads(Path("api/v1/facilities.json").read_text())
           assert api["record_count"] == len(api["records"]) == 93
           assert len({x["facility_id"] for x in api["records"]}) == 93
+          evidence=json.loads(Path("data/track3/evidence_records.json").read_text(encoding="utf-8"))
+          audit=json.loads(Path("data/website_completeness_audit.json").read_text(encoding="utf-8"))
+          assert evidence["record_count"] == len(evidence["records"])
+          assert audit["summary"]["track3_evidence_records"] == evidence["record_count"]
           openapi=json.loads(Path("api/v1/openapi.json").read_text())
           assert "/api/v1/facilities.json" in openapi["paths"]
           assert "/data/facility_records/{rto}/{shard}.json" in openapi["paths"]
