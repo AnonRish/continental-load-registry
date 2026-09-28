@@ -6,6 +6,7 @@ on:
     paths:
       - "force_track3_refresh.txt"
       - "build_track3_evidence.py"
+      - "rebuild_track3_completeness_matrices.py"
       - "data/track3/research_assessments_2026-09-27.json"
       - ".github/workflows/track3_canonical_refresh.yml"
 
@@ -45,6 +46,7 @@ jobs:
         run: |
           python reconcile_track3_public_enrichment.py
           python build_public_web_claims.py
+          python rebuild_track3_completeness_matrices.py
       - name: Validate refreshed ledgers are populated
         run: |
           python - <<'PY'
