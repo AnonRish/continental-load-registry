@@ -5,6 +5,17 @@ on:
   schedule:
     - cron: "15 10 * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - "data/track3/public_web_enrichment_2026-09-27.json"
+      - "build_track3_evidence.py"
+      - "build_entity_resolution.py"
+      - "build_facility_provenance.py"
+      - "build_time_series_verification.py"
+      - "build_track3_verification.py"
+      - "build_public_facility_api.py"
+      - "run_track3_source_adapters.py"
+      - "refresh_source_manifest.py"
 permissions:
   contents: write
   issues: write
