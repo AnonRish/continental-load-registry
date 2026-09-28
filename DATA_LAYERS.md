@@ -51,7 +51,7 @@ The underlying evidence inventory contains **68 discrete assertions across 59 si
 
 The **271** project records currently include:
 
-- 60 BPA large-load request records
+- 60 BPA large-load request records (a partial BPA transcription: 50 largest live rows exposed by the current public secondary page + 10 additional retained records)
 - 33 Virginia DEQ issued air-permit records
 - 28 AESO Data Load records
 - 12 NYISO Load Project crosswalk records
@@ -90,6 +90,9 @@ The map currently carries:
 The dedicated BPA project layer has **60** normalized request/project records, of which **35** have retained display geometry and **25** remain explicitly unmapped. The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
 
 ## Market completion state
+
+### BPA
+The dedicated BPA layer currently retains **60** row-level request/project records. The current public secondary source reports **457 requests on record** and **289 live requests**, but exposes only the **50 largest live requests** as a row-level table. The repository therefore does **not** claim complete 457-row BPA coverage. The layer records this boundary explicitly; 35 retained records have display geometry and 25 remain unmapped. A complete BPA row-level release requires capture of the underlying authoritative spreadsheet or another public source exposing the remaining rows.
 
 ### CAISO
 Historical Cluster 8-and-prior through Cluster 14 is preserved as **435 projects / 121.204 GW**, with a separately published Cluster 15 energy-only subset of 48 / 14.421 GW. Full row-by-row ingestion of every historical workbook remains incomplete.
