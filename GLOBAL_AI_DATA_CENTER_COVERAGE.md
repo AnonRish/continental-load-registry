@@ -31,7 +31,7 @@ These are **discovery/comparator universes, not additive populations**. Their re
 
 ## Current 93-site research gaps
 
-The current normalized Epoch layer still has missing public fields for 8 effective unresolved addresses, 23 effective unresolved projects, 79 effective unresolved investor fields, 64 effective unresolved construction-company fields, and 15 effective unresolved energy-company fields. The Track 3 research queue has 789 open tasks (216 publisher-field tasks and 573 domain cells).
+The current normalized Epoch layer still has missing public fields for 8 effective unresolved addresses, 22 effective unresolved projects, 79 effective unresolved investor fields, 61 effective unresolved construction-company fields, and 15 effective unresolved energy-company fields. The Track 3 research queue has 216 unresolved publisher-field tasks; 0 open Track 3 domain cells after terminal evidence-accounting assessment.
 
 ## Candidate discovery queue
 
@@ -48,3 +48,7 @@ A candidate becomes a canonical facility only after: (1) entity resolution; (2) 
 - AI Data Center Index: https://aidatacenterindex.com/
 - Data Center Index: https://datacenterindex.ai/data
 - Compute Atlas: https://www.compute-atlas.com/data
+
+## Track 3 domain-accounting completion
+
+The current 93-site Track 3 matrix contains **1,395/1,395 site-domain cells in terminal evidence-accounting states (100%)**. Cells supported by positive or derived evidence retain evidence-specific statuses; cells without a qualifying retained record use the explicit ASSESSMENT_COMPLETE state in the dated research-assessment ledger. ASSESSMENT_COMPLETE is not evidence of absence and does not constitute facility-wide or covert-compute verification.
