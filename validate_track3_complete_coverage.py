@@ -124,7 +124,7 @@ def main() -> int:
 
     domain_matrix = load("data/track3/domain_completeness_matrix_2026-09-27.json")
     dm_rows = domain_matrix.get("records", [])
-    if domain_matrix.get("accounting", {}).get("cells") != len(dm_rows) != 0:
+    if domain_matrix.get("accounting", {}).get("cells") != len(dm_rows):
         errors.append("domain completeness matrix record count does not reconcile")
     if domain_matrix.get("accounting", {}).get("cells") != 1395:
         errors.append("domain completeness matrix is not 93x15")
