@@ -26,7 +26,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] Reproducible, sourced large-load baseline across nine North American markets.
 - [x] Ambiguous tier separates unresolved/undisclosed cases from confirmed identities without guessing.
 - [x] Actual processed physical evidence exists: 575 retained derived remote-sensing observations across 92 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
-- [ ] All 93 Epoch sites have site-specific remote-sensing observations. One site currently remains without a resolved physical target and therefore cannot receive a site-specific observation.
+- [ ] All 93 Epoch sites have site-specific remote-sensing observations. One site remains without a resolved physical target: OpenAI Stargate UAE. September 11, 2026 Reuters reporting now provides an attributed area-level lead near Al Dhafra Air Base, but no canonical parcel/coordinate has been established, so the site-specific observation gate remains open.
 - [x] Four ambiguous-load closure cases are published: three bounded/public-identity outcomes and one intentionally inconclusive case; each locatable case has six derived multi-sensor observations.
 - [x] Claim-level verification vocabulary exists: PASS / FAIL / UNKNOWN / NOT_TESTED.
 - [x] Facility-level vocabulary is defined in the verifier as VERIFIED_PRESENT / VERIFIED_ABSENT / INCONCLUSIVE, with INCONCLUSIVE remaining the default until the facility-wide end-to-end gate is satisfied.
