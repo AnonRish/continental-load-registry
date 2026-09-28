@@ -16,6 +16,8 @@ on:
       - "build_public_facility_api.py"
       - "run_track3_source_adapters.py"
       - "refresh_source_manifest.py"
+      - "build_public_web_claims.py"
+      - "data/track3/public_web_claims.json"
 permissions:
   contents: write
   issues: write
@@ -51,7 +53,8 @@ jobs:
             build_track3_verification.py \
             validate_track3_ledger.py \
             verify_track3.py \
-            refresh_source_manifest.py
+            refresh_source_manifest.py \
+            build_public_web_claims.py
 
       - name: Run automated source adapters
         continue-on-error: true
@@ -97,6 +100,25 @@ jobs:
 
       - name: Rebuild canonical evidence layer
         run: python build_track3_evidence.py
+
+      - name: Rebuild public-web claim layer
+        run: python build_public_web_claims.py
+
+      - name: Validate public-web claim layer
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=json.loads(Path("data/track3/public_web_enrichment_2026-09-27.json").read_text(encoding="utf-8"))
+          claims=json.loads(Path("data/track3/public_web_claims.json").read_text(encoding="utf-8"))
+          source_ids={x.get("evidence_id") for x in src.get("records",[])}
+          claim_ids={x.get("claim_id") for x in claims.get("claims",[])}
+          assert len(source_ids)==len(src.get("records",[]))
+          assert len(claim_ids)==len(claims.get("claims",[]))
+          assert source_ids==claim_ids
+          assert claims.get("accounting",{}).get("claim_count")==len(claims.get("claims",[]))
+          print("PASS: public-web claim layer is lossless and 1:1 with enrichment")
+          PY
 
       - name: Validate canonical Track 3 ledger
         run: python validate_track3_ledger.py
