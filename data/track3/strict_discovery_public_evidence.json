@@ -74,6 +74,20 @@
           "accessed_on": "2026-09-27",
           "what_it_proves": "The Caroline planning area has 1,864 DTS MW across 2 projects and lists P3066 as Data Load; substation/POI context is not a facility coordinate.",
           "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens current AESO connection queue",
+          "url": "https://gridlens.ca/queue",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "The current Connection Project List shows P3066 Leedale Data Load at 1,864 MW DTS, Data Load, Caroline planning area, Stage 2 Assessment, with ISD under review. GridLens states DTS/STS are contract-capacity figures, not current site demand.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "Interconnection.fyi P3066 data-center tracker",
+          "url": "https://www.interconnection.fyi/data-center/project/p3066-leedale-data-load-764c0be1",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "A secondary tracker classifies P3066 as a proposed data center and retains 1,864 MW, but leaves the developer blank. This is classification corroboration, not entity proof.",
+          "evidence_tier": "SECONDARY_FACILITY_TRACKER"
         }
       ],
       "current_disposition": "OPEN_PHYSICAL_AND_ENTITY_RESOLUTION",
@@ -82,7 +96,8 @@
         "POI 38-Caroline is not the facility address",
         "1,864 MW is not measured electricity or IT load",
         "secondary data-center classification is not developer/owner proof"
-      ]
+      ],
+      "last_checked_on": "2026-09-27"
     },
     {
       "case_id": "AMB-AESO-P3198",
@@ -109,6 +124,27 @@
           "accessed_on": "2026-09-27",
           "what_it_proves": "P3198 is one of 45 current Alberta data-load projects and was detected as newly listed in August 2026.",
           "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens current AESO connection queue",
+          "url": "https://gridlens.ca/queue",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "The current Connection Project List shows P3198 Lynx Data Load at 1,800 MW DTS, Data Load, Fort Saskatchewan planning area, Stage 1 Assessment, with ISD under review.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens Opal 439S planning-area record",
+          "url": "https://gridlens.ca/substation/439S",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3198 appears within the Fort Saskatchewan planning-area context associated with Opal 439S; the page does not establish that 439S is the facility's service point.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "GridLens Westwood 422S planning-area record",
+          "url": "https://gridlens.ca/substation/422S",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P3198 also appears in a Fort Saskatchewan planning-area record associated with Westwood 422S; this does not establish a parcel or definitive service assignment.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
         }
       ],
       "current_disposition": "OPEN_PHYSICAL_AND_ENTITY_RESOLUTION",
@@ -117,7 +153,8 @@
         "substation association is not physical-site identity",
         "Data Load is not measured electricity",
         "no developer name is not evidence of concealment"
-      ]
+      ],
+      "last_checked_on": "2026-09-27"
     },
     {
       "case_id": "AMB-AESO-P2958",
@@ -130,13 +167,28 @@
           "accessed_on": "2026-09-27",
           "what_it_proves": "P2958 is a proposed Fort Saskatchewan load facility request associated with the Ft. Sask. Path2Zero materials; the project is explicitly modeled as Industrial in the AESO study scope.",
           "evidence_tier": "OFFICIAL_AESO_PRIMARY"
+        },
+        {
+          "source": "Interconnection.fyi P2958 queue record",
+          "url": "https://www.interconnection.fyi/project/aeso-p2958",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P2958 is an active 320 MW Load request in Strathcona County with POI 33-Fort Saskatchewan; the public page does not expose the developer.",
+          "evidence_tier": "SECONDARY_QUEUE_MIRROR"
+        },
+        {
+          "source": "GridLens Fort Saskatchewan planning-area record",
+          "url": "https://gridlens.ca/substation/422S",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "P2958 is currently shown as a 320 MW Industrial Load in the Fort Saskatchewan planning area at Stage 2 Assessment with ISD under review.",
+          "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
         }
       ],
       "current_disposition": "CONTROL_INDUSTRIAL_LOAD",
       "do_not_infer": [
         "industrial load does not imply compute",
         "connection-study load does not equal measured operating demand"
-      ]
+      ],
+      "last_checked_on": "2026-09-27"
     },
     {
       "case_id": "AMB-AESO-P2614",
@@ -156,6 +208,27 @@
           "accessed_on": "2026-09-27",
           "what_it_proves": "P2614 is listed as a 231 MW Industrial Load in Fort Saskatchewan, Stage 4 / AUC Applications, with ISD 2027-09-01.",
           "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+        },
+        {
+          "source": "AESO Fort Saskatchewan Path2Zero Expansion Connection",
+          "url": "https://aeso.ca/grid/transmission-projects/fort-saskatchewan-path2zero-expansion-connection-2614/",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "AESO identifies Dow Chemical Canada ULC as the applicant for the Fort Saskatchewan Path2Zero Expansion and describes a proposed connection solution using two 240 kV lines to Lamoureux 71S plus substation modifications.",
+          "evidence_tier": "OFFICIAL_AESO_PRIMARY"
+        },
+        {
+          "source": "AESO P2614 proposed transmission development",
+          "url": "https://www.aeso.ca/assets/NIDs-LARA/Attachment-Proposed-Transmission-Development-Fort-Saskatchewan.pdf",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "The proposed-transmission map places the project in the Fort Saskatchewan area and labels the Dow Chemical Fort Saskatchewan 166S/Main Site BLK 80 1199S context; this is infrastructure context, not measured load.",
+          "evidence_tier": "OFFICIAL_AESO_PRIMARY"
+        },
+        {
+          "source": "AESO P2614 cost estimate",
+          "url": "https://www.aeso.ca/assets/NIDs-LARA/Attachment-Cost-Estimate-Fort-Saskatchewan.pdf",
+          "accessed_on": "2026-09-27",
+          "what_it_proves": "The February 28, 2025 service-proposal estimate identifies DOW Fort Saskatchewan Load as AESO project P2614/D.0886 and gives an estimated 2026 in-service date; this is project documentation, not proof of energization.",
+          "evidence_tier": "OFFICIAL_AESO_PRIMARY"
         }
       ],
       "current_disposition": "CONTROL_INDUSTRIAL_LOAD",
@@ -163,8 +236,37 @@
         "project-study capacity is not measured operating demand",
         "industrial classification does not imply compute",
         "transmission modifications are not evidence of current load"
-      ]
+      ],
+      "last_checked_on": "2026-09-27"
     }
   ],
-  "semantics": "Source observations are claim-scoped. Secondary trackers remain secondary and do not overwrite publisher-origin fields. Official AESO study documents establish project-study facts, not independent proof of current operation."
+  "semantics": "Source observations are claim-scoped. Secondary trackers remain secondary and do not overwrite publisher-origin fields. Official AESO study documents establish project-study facts, not independent proof of current operation.",
+  "observations": [
+    {
+      "source": "GridLens current Alberta data-centre queue",
+      "url": "https://gridlens.ca/data-centres",
+      "accessed_on": "2026-09-27",
+      "what_it_proves": "P3108 remains listed as a 1,300 MW Data Load in the Calgary planning area at Stage 2 Assessment, with ISD under review.",
+      "evidence_tier": "SECONDARY_INFRASTRUCTURE_CONTEXT"
+    },
+    {
+      "source": "Alberta Data Centre Watch current project page",
+      "url": "https://albertadatacentrewatch.ca/projects/wild-rose-power-hub/",
+      "accessed_on": "2026-09-27",
+      "what_it_proves": "The current public synthesis reports the Wild Rose Power Hub planning area at about 479 acres, identifies SW/SE/NE 09-23-27W04, and describes a two-stage 1,300 MW AESO request. It explicitly distinguishes developer projections from verified public-record facts.",
+      "evidence_tier": "SECONDARY_PUBLIC_RECORD_SYNTHESIS"
+    }
+  ],
+  "last_checked_on": "2026-09-27",
+  "current_source_audit": {
+    "checked_on": "2026-09-27",
+    "methodology": "Live public-source review of all five strict pilot cases. Secondary trackers are retained as corroboration and do not overwrite publisher-origin classifications.",
+    "findings": [
+      "P3066 remains a large public Data Load; no checked source resolved developer or facility parcel.",
+      "P3198 remains a large public Data Load; planning/substation context exists but no checked source established developer or definitive parcel/service assignment.",
+      "P3108 has official planning identity/parcel context plus retained remote-sensing observations; operation, energization and measured demand remain unproven.",
+      "P2958 remains an explicit Industrial Load control; no compute interpretation is assigned.",
+      "P2614 has official applicant and proposed-transmission linkage to Dow Chemical Canada ULC; industrial-control status is retained."
+    ]
+  }
 }
