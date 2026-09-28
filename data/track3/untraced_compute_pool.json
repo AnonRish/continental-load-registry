@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Untraced compute pool accounting framework",
-  "status": "FRAMEWORK_IMPLEMENTED",
+  "status": "BOUND_ENGINE_IMPLEMENTED",
   "definition": "Non-negative residual quantity produced by reconciling sourced accelerator acquisitions/sales/transfers/decommissioning against independently verified physical end-use assignments.",
   "inputs": [
     "site_verified_inventory",
@@ -19,6 +19,8 @@
   ],
   "current_snapshot": {
     "status": "UNKNOWN",
+    "bound_engine": "track3_bound.py",
+    "bound_engine_status": "ENGINE_AVAILABLE_NOT_CLOSABLE_WITH_CURRENT_PUBLIC_INPUTS",
     "reason": "Current public sources do not form a closed transaction-level inventory chain across all compute owners and sites.",
     "value": null,
     "unit": "accelerators"
