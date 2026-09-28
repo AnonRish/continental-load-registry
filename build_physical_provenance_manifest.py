@@ -68,9 +68,7 @@ def main():
  args=ap.parse_args()
  current=json.loads(MANIFEST.read_text(encoding="utf-8"))
  rebuilt=replacement_manifest()
- same=json.dumps(current,indent=2,ensure_ascii=False)+"
-" == json.dumps(rebuilt,indent=2,ensure_ascii=False)+"
-"
+ same = json.dumps(current,indent=2,ensure_ascii=False) == json.dumps(rebuilt,indent=2,ensure_ascii=False)
  if args.check:
   print("PASS: physical provenance manifest is reproducible." if same else "FAIL: physical provenance manifest is stale.")
   return 0 if same else 1
