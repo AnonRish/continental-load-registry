@@ -32,6 +32,17 @@ The unresolved items that cannot be fabricated or completed solely from public w
 6. Intelligence capable of discovering deliberately concealed facilities outside public-data visibility.
 7. Independent verification governance, access, disputes and enforcement.
 
+## Engineering-closure handoff artifacts
+
+The repository now has explicit machine-readable contracts for the remaining external capabilities:
+
+- `data/track3/external_capability_handoff_2026-09-28.json` — external evidence acceptance contracts.
+- `data/track3/interval_power_telemetry_protocol.json` — interval-meter intake boundary; no site-level telemetry is fabricated.
+- `data/track3/physical_target_leads.json` — lead-only treatment of the unresolved OpenAI Stargate UAE physical target.
+- `validate_track3_release.py` — release-consistency validator.
+
+These artifacts close the software/data contract for what the public repository can define and validate; they do not manufacture the missing external evidence.
+
 ## One explicit site-level physical boundary
 
 OpenAI Stargate UAE remains the one canonical Epoch reference site without a defensible site-specific public physical target in the retained registry evidence. The registry does not fabricate a parcel coordinate. Its physical-observation modalities therefore remain an explicit source-available/unresolved-target state rather than a false observation.
@@ -44,4 +55,4 @@ A publisher health-check failure is not automatically an ingestion failure. The 
 
 Describe this project as **Track 3 research infrastructure / public-evidence accounting**, not as a completed international verification system. That distinction is part of the audit trail.
 
-The machine-readable gate is `data/track3/completion_gate.json`.
+The machine-readable gate is `data/track3/completion_gate.json`. The latest committed public-evidence snapshot is 93 sites, 575 derived remote-sensing observations across 92 sites, 452 public-web evidence records, and 1,395/1,395 terminal site-domain cells.
