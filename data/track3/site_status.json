@@ -7739,12 +7739,12 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "Alliant Energy identifies QTS Cedar Rapids as a new customer and states it is partnering to provide power; later utility materials identify an energy-services agreement with QTS."
         },
         "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
+          "status": "INGESTED",
+          "basis": "Cedar Rapids public records document City Council approval of the QTS development agreement and county approval of a construction laydown use for the campus."
         },
         "compute_tenancy": {
           "status": "UNKNOWN",
@@ -7794,7 +7794,8 @@
       "public_web_evidence_count": 5,
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 8,
-      "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "open_track3_domains": []
     },
     {
       "epoch_id": "EPOCH-4b4d686b6c457a68",
