@@ -48,9 +48,9 @@ This is a repository-level completeness result, not an international Track 3 ver
 - 93-site Epoch frontier-AI reference universe.
 - 575 retained derived remote-sensing observations across 92 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 92 of 93 reference-site coordinates resolved for acquisition. One reference site remains unresolved for site-specific physical targeting.
 - 204 optical observations, 184 TIR observations, and 187 SAR observations in the current committed ledger.
-- 191 current observation-acquisition tasks.
+- 24 current observation-acquisition tasks: 6 P0 power-telemetry tasks and 18 P1 cooling tasks.
 - 6 site-level annual electricity-consumption snapshots.
-- 15 site-level cooling snapshots represented in the current site-status layer; the dedicated cooling-observation file contains 2 directly retained equipment snapshots.
+- 18 site-level cooling snapshots represented in the current site-status layer; the dedicated cooling-observation file contains 2 directly retained equipment snapshots.
 - 3 source-backed transformer event records.
 - 90 substation-related and 113 transmission-related external evidence records.
 - 83 sites with retained chip-inventory records; 10 sites remain unknown.
@@ -58,7 +58,7 @@ This is a repository-level completeness result, not an international Track 3 ver
 - 22 sites with retained service/contract evidence; 71 remain not ingested.
 - 16 sites with retained site-level regulatory evidence; 77 remain not assessed.
 - 2 defensible site-specific queue IDs in the 93-site Epoch crosswalk.
-- 444 normalized public-web evidence records in a losslessly reconciled claim layer; 441 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
+- 452 normalized public-web evidence records in a losslessly reconciled claim layer; 441 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
 - 92 of 93 reference sites now have retained site-level coordinates, including 24 curated public-source coordinate overrides; one remains unresolved and is blocked from site-specific physical interpretation.
 - 141-record broad ambiguous-load research pool totaling 53.8512 GW under the repository's current filter.
 - 68 of those 141 have an explicit retained load-side technology field; 73 require project-type adjudication before strict load-discovery admission.
