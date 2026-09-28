@@ -9,7 +9,7 @@
     "remaining_unresolved_publisher_fields": 371,
     "sites_with_public_research_leads": 33,
     "total_public_research_leads": 53,
-    "open_track3_domain_cells": 579,
+    "open_track3_domain_cells": 578,
     "publisher_missing_field_counts": {
       "project": 76,
       "investors": 83,
@@ -27,10 +27,10 @@
     ],
     "total_public_enrichment_resolved_fields": 399,
     "total_targeted_publicly_resolved_fields": 14,
-    "effective_unresolved_publisher_fields": 217,
+    "effective_unresolved_publisher_fields": 216,
     "effective_unresolved_field_counts": {
       "investors": 79,
-      "construction_companies": 62,
+      "construction_companies": 61,
       "users": 21,
       "project": 22,
       "chip_quantities": 10,
@@ -38,7 +38,7 @@
       "energy_companies": 15
     },
     "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
-    "public_web_enrichment_records": 430,
+    "public_web_enrichment_records": 432,
     "researched_no_public_record_grid_cells": 18,
     "targeted_publicly_resolved_fields": 31,
     "reconciliation_updated_on": "2026-09-27"
@@ -7991,8 +7991,7 @@
         "compute_tenancy",
         "power_telemetry",
         "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
+        "transformer_supply_chain"
       ],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
@@ -8009,7 +8008,7 @@
         "chip_ownership": "INGESTED_SNAPSHOT",
         "chip_users": "INGESTED_SNAPSHOT",
         "chip_shipments": "INGESTED_SNAPSHOT",
-        "independent_corroboration": "NOT_ASSESSED"
+        "independent_corroboration": "ASSESSED"
       },
       "public_research_leads": [
         {
@@ -8023,7 +8022,6 @@
       "remaining_unresolved_publisher_fields": [
         "users",
         "investors",
-        "construction_companies",
         "energy_companies"
       ],
       "retained_public_sources": [
@@ -8047,10 +8045,11 @@
         "chip_quantities",
         "project"
       ],
-      "targeted_publicly_resolved_fields": [],
+      "targeted_publicly_resolved_fields": [
+        "construction_companies"
+      ],
       "effective_unresolved_publisher_fields": [
         "investors",
-        "construction_companies",
         "users"
       ],
       "publisher_field_reconciliation": {
@@ -8068,9 +8067,9 @@
         },
         "construction_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
-          "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "public_enrichment_present": true,
+          "targeted_public_source_resolved": true,
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "energy_companies": {
           "dossier_missing": true,
@@ -12668,5 +12667,5 @@
     }
   ],
   "generated_on": "2026-09-27",
-  "reconciliation_note": " Four previously unrepresented sites were closed against dated Sep. 27 public-source captures; effective unresolved counts were recomputed for those sites only. Effective unresolved publisher counts for the four previously unrepresented enrichment sites are recalculated from the dated 2026-09-27 captures. Public enrichment closure was reconciled again on 2026-09-27 for all sites with new captures; secondary/public values remain distinct from canonical publisher fields until builder acceptance. Three P0 domain cells were closed on 2026-09-27 from official Georgia PSC/Georgia Power and Indiana IURC/I&M site-specific public records; no queue identifier or interval telemetry was inferred. One additional P0 service domain was closed on 2026-09-27 from GRDA's public financial report identifying Google Pryor as an electric-service customer. QTS Cedar Rapids service/regulatory cells and construction-company attribution were updated from official Alliant Energy, Cedar Rapids and Linn County public records on 2026-09-27. Independent corroboration was assessed for four sites on 2026-09-27 using distinct utility, regulator and government sources. QTS Eagle Mountain service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 from QTS, Eagle Mountain City, Utah County and Layton records. Colossus 2 service and independent-corroboration cells were closed on 2026-09-27 using MLGW, TVA and independent local reporting. QTS Eagle Mountain project identity was closed on 2026-09-27 from the official Eagle Mountain City development agreement. Meta Kuna service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 using IPUC, Idaho Power and Meta records. Meta Hyperion service and independent-corroboration cells plus construction-partner attribution were closed on 2026-09-27 using Meta and Entergy records."
+  "reconciliation_note": " Four previously unrepresented sites were closed against dated Sep. 27 public-source captures; effective unresolved counts were recomputed for those sites only. Effective unresolved publisher counts for the four previously unrepresented enrichment sites are recalculated from the dated 2026-09-27 captures. Public enrichment closure was reconciled again on 2026-09-27 for all sites with new captures; secondary/public values remain distinct from canonical publisher fields until builder acceptance. Three P0 domain cells were closed on 2026-09-27 from official Georgia PSC/Georgia Power and Indiana IURC/I&M site-specific public records; no queue identifier or interval telemetry was inferred. One additional P0 service domain was closed on 2026-09-27 from GRDA's public financial report identifying Google Pryor as an electric-service customer. QTS Cedar Rapids service/regulatory cells and construction-company attribution were updated from official Alliant Energy, Cedar Rapids and Linn County public records on 2026-09-27. Independent corroboration was assessed for four sites on 2026-09-27 using distinct utility, regulator and government sources. QTS Eagle Mountain service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 from QTS, Eagle Mountain City, Utah County and Layton records. Colossus 2 service and independent-corroboration cells were closed on 2026-09-27 using MLGW, TVA and independent local reporting. QTS Eagle Mountain project identity was closed on 2026-09-27 from the official Eagle Mountain City development agreement. Meta Kuna service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 using IPUC, Idaho Power and Meta records. Meta Hyperion service and independent-corroboration cells plus construction-partner attribution were closed on 2026-09-27 using Meta and Entergy records. Microsoft SAT40 construction-company attribution and independent corroboration were closed on 2026-09-27 from TDLR and independent San Antonio reporting."
 }
