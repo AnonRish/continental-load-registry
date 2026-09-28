@@ -99,5 +99,16 @@ jobs:
             exit 0
           fi
           git commit -m "Refresh Track 3 verification results"
-          git pull --rebase origin main
-          git push
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase --autostash -X theirs origin/main; then
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+            else
+              git rebase --abort || true
+            fi
+            sleep 3
+          done
+          echo "Unable to publish Track 3 verification results after retries."
+          exit 1
