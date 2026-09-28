@@ -72,6 +72,13 @@ def main() -> None:
     assert scope_cat["expanded_known_record_count"] == 1623
     assert_close(scope_cat["expanded_known_capacity_gw"], 394.6181)
     assert cat["data/track3/evidence_records.json"]["record_count"] == 887
+    assert cat["data/bpa_large_load_registry.json"]["record_count"] == 60
+    assert cat["data/bpa_large_load_registry.csv"]["record_count"] == 60
+    bpa = load("data/bpa_large_load_registry.json")
+    assert bpa["record_count"] == len(bpa["records"]) == 60
+    assert bpa["mapped_record_count"] == 35
+    assert bpa["unmapped_record_count"] == 25
+    assert all(str(x.get("id","")).startswith("BPA-") for x in bpa["records"])
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
     assert cat["data/supplemental_aggregate_map.json"]["record_count"] == 66
