@@ -411,7 +411,8 @@ jobs:
           def source_key(x):
               payload={"site_name":x.get("site_name"),"field":x.get("field"),"value":x.get("value"),
                        "relationship":x.get("relationship"),"source":x.get("source"),
-                       "source_urls":x.get("source_urls") or [],"publication_date":x.get("publication_date")}
+                       "source_urls":x.get("source_urls") or [],"publication_date":x.get("publication_date"),
+                       "source_record_id":x.get("evidence_id") or x.get("source_record_id")}
               return json.dumps(payload,sort_keys=True,ensure_ascii=False,separators=(",",":"))
           assert len({source_key(x) for x in source_records}) == len(source_records)
           assert {source_key(x) for x in source_records} == {source_key(x) for x in claim_rows}
