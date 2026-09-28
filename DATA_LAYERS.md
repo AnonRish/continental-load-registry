@@ -51,7 +51,7 @@ The legacy site-evidence inventory contains **102 discrete assertions across 93 
 
 The **271** project records currently include:
 
-- 60 BPA large-load request records in the current committed snapshot; the layer is now backed by a refresh path to BPA's official InterconnectionQueueOutput.xlsx and preserves the secondary reproduction only as provenance/corroboration
+- BPA large-load request records in the current committed snapshot; the layer is backed by a refresh path to BPA's official InterconnectionQueueOutput.xlsx and preserves the secondary reproduction only as provenance/corroboration
 - 33 Virginia DEQ issued air-permit records
 - 28 AESO Data Load records
 - 12 NYISO Load Project crosswalk records
@@ -87,12 +87,12 @@ The map currently carries:
 - **66** aggregate/historical footprints
 - **93** Epoch AI site observations
 
-The dedicated BPA project layer currently has **60** normalized request/project records, of which **35** have retained display geometry and **25** remain explicitly unmapped. A GitHub Actions refresh now pulls BPA's official load workbook and can replace this partial snapshot with the currently published load-request population without inventing geometry. The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
+The dedicated BPA project layer is a normalized request/project snapshot whose current record and mapped counts are recorded in `data/bpa_large_load_registry.json`. A GitHub Actions refresh pulls BPA's official load workbook and replaces the snapshot when a new source population is published; unsupported geometry remains null. The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
 
 ## Market completion state
 
 ### BPA
-The dedicated BPA layer currently retains **60** row-level request/project records. BPA's public interconnection page links the underlying **InterconnectionQueueOutput.xlsx** workbook, while the current secondary reproduction reports 457 requests on record and 289 live requests as of its September 22, 2026 source update. The repository does not assume that secondary totals remain current: the automated BPA refresh parses the official workbook when reachable and records the actual row population, capture date, SHA-256 and mapped/unmapped counts. Existing display geometry is preserved by request ID; unsupported new geometry remains null.
+BPA's public interconnection page links the underlying **InterconnectionQueueOutput.xlsx** workbook, while a September 2026 secondary reproduction reports its own source totals for context. The repository does not assume those secondary totals remain current: the automated BPA refresh parses the official workbook when reachable and records the actual row population, capture date, SHA-256 and mapped/unmapped counts. Existing display geometry is preserved by request ID; unsupported new geometry remains null.
 
 ### CAISO
 Historical Cluster 8-and-prior through Cluster 14 is preserved as **435 projects / 121.204 GW**, with a separately published Cluster 15 energy-only subset of 48 / 14.421 GW. Full row-by-row ingestion of every historical workbook remains incomplete.
