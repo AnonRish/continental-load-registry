@@ -13,6 +13,7 @@ def main():
     h=load("data/track3/external_capability_handoff_2026-09-28.json")
     p=load("data/track3/interval_power_telemetry_protocol.json")
     leads=load("data/track3/physical_target_leads.json")
+    closure=load("data/track3/engineering_closure_2026-09-28.json")
     checks=[(s.get("epoch_site_count")==93,"summary site count must be 93"),
             (s.get("public_web_evidence_record_count")==454,"summary public-web evidence count must be 454"),
             (s.get("remote_sensing_derived_observation_count")==575,"summary remote-sensing count must be 575"),
@@ -25,11 +26,17 @@ def main():
             (len(h.get("blockers",[]))==7 and {x.get("current_state") for x in h.get("blockers",[])}=={"BLOCKED_EXTERNAL_CAPABILITY"},"external handoff must contain seven explicit blockers"),
             (p.get("current_state",{}).get("site_level_interval_records")==0,"interval telemetry must remain empty at site level"),
             (leads.get("targets",[{}])[0].get("canonical_status")=="UNRESOLVED","unresolved target was not promoted"),
-            (leads.get("targets",[{}])[0].get("current_canonical_coordinate") is None,"unresolved target must not contain canonical coordinates")]
+            (leads.get("targets",[{}])[0].get("current_canonical_coordinate") is None,"unresolved target must not contain canonical coordinates"),
+            (closure.get("repository_engineering_status")=="COMPLETE","repository engineering closure must be COMPLETE"),
+            (closure.get("empirical_track3_verification_status")=="NOT_CLOSED","empirical Track 3 status must remain NOT_CLOSED"),
+            (closure.get("untracked_gap_count")==0,"engineering closure must report zero untracked gaps"),
+            (closure.get("remaining_research_and_acquisition",{}).get("public_publisher_field_tasks_open")==s.get("publisher_research_tasks",214),"closure publisher-task count does not reconcile"),
+            (closure.get("remaining_research_and_acquisition",{}).get("follow_on_observation_tasks")==s.get("observation_task_count",24),"closure observation-task count does not reconcile"),
+            (closure.get("external_capability_blockers",{}).get("count")==7,"closure external-blocker count must be seven")]
     errors += [msg for ok,msg in checks if not ok]
     docs={"TRACK3_ONE_PAGE_SUMMARY.md":["As of 2026-09-28 it retains 575 derived remote-sensing observations across 92 of the 93 Epoch sites","Current engineering closure"],
-          "TRACK3_COMPLETION_GATE.md":["575 derived remote-sensing observations across 92 sites","external_capability_handoff_2026-09-28.json"],
-          "TRACK3_COMPLETE_COVERAGE.md":["Release / external-capability handoff","interval_power_telemetry_protocol.json"],
+          "TRACK3_COMPLETION_GATE.md":["575 derived remote-sensing observations across 92 sites","external_capability_handoff_2026-09-28.json","engineering_closure_2026-09-28.json"],
+          "TRACK3_COMPLETE_COVERAGE.md":["Release / external-capability handoff","interval_power_telemetry_protocol.json","214 open public-source publisher-field research tasks"],
           "STRICT_DISCOVERY_RESEARCH.md":["141-record ambiguity pool"]}
     for path,phrases in docs.items():
         txt=(ROOT/path).read_text(encoding="utf-8")
