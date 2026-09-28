@@ -140,17 +140,18 @@
     },
     {
       "id": "BPA",
-      "status": "official_row_level_source_linked_refreshable_partial_capture",
+      "status": "official_row_level_load_snapshot_ingested",
       "core_rows": 0,
-      "project_records": 60,
+      "project_records": 457,
       "source_urls": [
         "https://www.bpa.gov/energy-and-services/transmission/interconnection",
+        "https://www.bpa.gov/-/media/Aep/transmission-media-documents/InterconnectionQueueOutput.xlsx",
         "https://substationscout.com/large-load-registry/",
         "https://www.wattstreet.net/load-ledger/"
       ],
       "scope": "Separate BPA transmission/large-load evidence layer. It is not treated as an RTO/ISO queue and is not additive to the nine-market core. The official BPA interconnection workbook is now the authoritative refresh source. The repository retains a normalized load-request layer and the refresh workflow can expand it to the full published load population whenever the official workbook is reachable; the current committed snapshot remains separately auditable.",
-      "captured": "2026-09-23",
-      "notes": "60 row-level BPA request/project records are retained in data/bpa_large_load_registry.json. Values are sourced from retained secondary reproductions; official BPA source family is linked but no raw official snapshot is claimed retained. This layer is intentionally non-additive to the nine-market core. Current row coverage, source population counts, and mapped/unmapped geometry are recorded in data/bpa_large_load_registry.json.",
+      "captured": "2026-09-28",
+      "notes": "Official BPA InterconnectionQueueOutput.xlsx load-request snapshot parsed at refresh time: 457 L-series rows (289 non-terminal by published status), 25 with retained display geometry, 432 without display geometry. This layer remains non-additive to the nine-market core.",
       "row_level_snapshot": "data/bpa_large_load_registry.json"
     }
   ],

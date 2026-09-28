@@ -107,13 +107,13 @@
     },
     {
       "id": "BPA",
-      "status": "expanded",
-      "what_is_published": "Dedicated 60-record normalized BPA large-load project layer with request IDs, capacity claims, status, location/POI fields and explicit display-geometry precision; 35 records have retained display geometry and 25 remain unmapped.",
+      "status": "official_row_level_snapshot_ingested",
+      "what_is_published": "Official BPA Line/Load workbook normalized to 457 L-series request rows at 2026-09-28; 25 retain prior display geometry and 432 remain unmapped.",
       "public_layers": [
         "data/bpa_large_load_registry.json",
         "data/bpa_large_load_registry.csv"
       ],
-      "next_blocker": "Acquire/retain an authoritative official BPA row-level snapshot when available; reconcile subsequent BPA source versions without treating requested MW as measured demand or assigning unsupported site identities."
+      "next_blocker": "Refresh against the official workbook as it changes. Do not infer end use from BPA requests; retain request MW as filed and keep unsupported geometry null."
     }
   ],
   "accounting": "Statuses describe public-data coverage, not whether the physical large-load universe itself is complete. No source is promoted to a facility row unless its identity and relevant fields are actually supported."
