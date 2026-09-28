@@ -56,6 +56,12 @@ def main() -> int:
         next_fields = [f for f in old if f not in found]
         removed += len(old) - len(next_fields)
         rec["effective_unresolved_publisher_fields"] = next_fields
+        # Canonical domain state lives in site_status; keep the sweep aligned with it.
+        rec["open_track3_domains"] = [
+            domain
+            for domain, state_counts in site_status.get("summary", {}).get("domain_status_counts", {}).items()
+            if rec.get("domains", {}).get(domain, {}).get("status") in OPEN_STATES
+        ] if rec.get("domains") else rec.get("open_track3_domains", [])
         rec["remaining_unresolved_publisher_fields"] = [
             f for f in (rec.get("remaining_unresolved_publisher_fields") or [])
             if f not in found
