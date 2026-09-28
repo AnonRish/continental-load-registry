@@ -348,7 +348,7 @@ def write_outputs(records: list[dict[str, Any]], source_sha256: str, capture_dat
         "unmapped_record_count": len(records) - len(mapped),
         "records": records,
     }
-    atomic_text(DEFAULT_JSON, json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
+    atomic_text(DEFAULT_JSON, json.dumps(obj, indent=2, ensure_ascii=False, default=str) + "\n")
 
     rows = []
     for r in records:
@@ -406,7 +406,7 @@ def update_manifests(records: list[dict[str, Any]], capture_date: str, source_sh
             "https://www.wattstreet.net/load-ledger/",
         ],
     })
-    atomic_text(MARKET_MANIFEST, json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")
+    atomic_text(MARKET_MANIFEST, json.dumps(manifest, indent=2, ensure_ascii=False, default=str) + "\n")
 
     mm = list(csv.DictReader(MARKET_MANIFEST_CSV.open("r", encoding="utf-8", newline="")))
     for row in mm:
@@ -474,7 +474,7 @@ def update_manifests(records: list[dict[str, Any]], capture_date: str, source_sh
             "Refresh against the official workbook as it changes. Do not infer end use from BPA requests; "
             "retain request MW as filed and keep unsupported geometry null."
         )
-    atomic_text(CHECKLIST, json.dumps(checklist, indent=2, ensure_ascii=False) + "\n")
+    atomic_text(CHECKLIST, json.dumps(checklist, indent=2, ensure_ascii=False, default=str) + "\n")
 
     checklist_csv = list(csv.DictReader(CHECKLIST_CSV.open("r", encoding="utf-8", newline="")))
     for row in checklist_csv:
