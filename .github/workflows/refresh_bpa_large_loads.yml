@@ -48,7 +48,7 @@ jobs:
 
       - name: Show refresh result
         run: |
-          python - <<\x27PY\x27
+          python - <<'PY'
           import json
           from pathlib import Path
           p=json.loads(Path("data/bpa_large_load_registry.json").read_text(encoding="utf-8"))
