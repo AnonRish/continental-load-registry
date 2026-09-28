@@ -11,7 +11,7 @@ The public repository now has:
 - A successful latest Track 3 automated pipeline.
 - Successful latest public-interface validation.
 - Zero failed source adapters in the latest adapter run.
-- 451 retained public-web evidence records.
+- 452 retained public-web evidence records.
 - 575 retained derived remote-sensing observations across 92 reference sites.
 - 2 defensible site-specific queue IDs.
 - Grid state: 88 sites with site-level evidence, 3 documented researched-no-public-record outcomes, and 2 verified site-specific queue IDs.
