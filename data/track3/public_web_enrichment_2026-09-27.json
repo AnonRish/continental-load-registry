@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-28T01:31:00+00:00",
+  "generated_at_utc": "2026-09-28T01:43:00+00:00",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 370,
+    "record_count": 400,
     "sites_with_findings": 93,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 369,
+      "PUBLIC_SOURCE_CAPTURED": 399,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "address": 14,
+      "address": 17,
       "capacity_record": 16,
-      "energy_companies": 82,
-      "owner": 16,
-      "project": 68,
-      "construction_companies": 41,
+      "energy_companies": 83,
+      "owner": 19,
+      "project": 73,
+      "construction_companies": 43,
       "investment": 24,
       "regulatory": 13,
       "investors": 6,
       "cooling": 19,
-      "service_or_contract": 21,
-      "users": 8,
+      "service_or_contract": 23,
+      "users": 12,
       "operational_efficiency": 5,
       "operational_status": 13,
       "chip_quantities": 10,
@@ -31,7 +31,7 @@
       "project_status": 5,
       "construction_status": 1,
       "backup_generation": 1,
-      "location": 5
+      "location": 15
     }
   },
   "semantics": "[object Object] Newly added records are dated public-source captures from the 2026-09-27 gap-closure review; city-level location is labeled location rather than a precise address, and publisher estimates remain estimates.",
@@ -6008,8 +6008,458 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "evidence_id": "EVID-PWEB-MISSING-5b37fd-PROJECT"
+    },
+    {
+      "site_name": "DayOne Nusajaya",
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "field": "address",
+      "value": "3, Lingkaran, Jalan Teknologi Perintis 1, Nusajaya Tech Park, Johor, Malaysia",
+      "relationship": "facility/campus address",
+      "source": "DataCenterMap",
+      "source_urls": [
+        "https://www.datacentermap.com/malaysia/johor-bahru/dayone-gerbang-nusajaya/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-b5bb2a-ADDRESS"
+    },
+    {
+      "site_name": "DayOne Nusajaya",
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "field": "project",
+      "value": "Nusajaya Tech Park (NTP) campus",
+      "relationship": "campus/project identity",
+      "source": "DayOne",
+      "source_urls": [
+        "https://dayonedc.com/market/green-data-center-malaysia"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-b5bb2a-PROJECT"
+    },
+    {
+      "site_name": "Google Kansas City East",
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "field": "location",
+      "value": "Kansas City, Missouri, United States",
+      "relationship": "current public site location",
+      "source": "Google",
+      "source_urls": [
+        "https://datacenters.google/locations/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-cbed36-LOCATION"
+    },
+    {
+      "site_name": "Google Kansas City East",
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "field": "users",
+      "value": "Google DeepMind (likely)",
+      "relationship": "likely primary AI user",
+      "source": "InfraSale",
+      "source_urls": [
+        "https://infrasale.com/marketplace/intelligence/frontier-dcs/43"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-cbed36-USERS"
+    },
+    {
+      "site_name": "Google Storey County",
+      "epoch_id": "EPOCH-2b89e13933a04725",
+      "field": "location",
+      "value": "Storey County, Nevada, United States",
+      "relationship": "current public site location",
+      "source": "Google",
+      "source_urls": [
+        "https://datacenters.google/locations/storey-county-nevada/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-a04725-LOCATION"
+    },
+    {
+      "site_name": "Google Storey County",
+      "epoch_id": "EPOCH-2b89e13933a04725",
+      "field": "owner",
+      "value": "Google",
+      "relationship": "operator/owner",
+      "source": "Google",
+      "source_urls": [
+        "https://datacenters.google/locations/storey-county-nevada/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-a04725-OWNER"
+    },
+    {
+      "site_name": "Oracle Batam",
+      "epoch_id": "EPOCH-ea5d1ae5837aba5c",
+      "field": "location",
+      "value": "Nongsa Digital Park, Batam, Indonesia",
+      "relationship": "publicly identified data-center location",
+      "source": "Bloomberg",
+      "source_urls": [
+        "https://www.bloomberg.com/news/articles/2025-07-10/oracle-said-to-move-ahead-with-cloud-services-plan-in-indonesia"
+      ],
+      "publication_date": "2025-07-10",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-7aba5c-LOCATION"
+    },
+    {
+      "site_name": "Oracle Batam",
+      "epoch_id": "EPOCH-ea5d1ae5837aba5c",
+      "field": "service_or_contract",
+      "value": "Oracle planned to lease DayOne data centers at Nongsa Digital Park for its Indonesian cloud-services operation; public reporting described plots capable of supporting facilities with at least 120 MW.",
+      "relationship": "reported lease / tenancy arrangement",
+      "source": "Bloomberg",
+      "source_urls": [
+        "https://www.bloomberg.com/news/articles/2025-07-10/oracle-said-to-move-ahead-with-cloud-services-plan-in-indonesia"
+      ],
+      "publication_date": "2025-07-10",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-7aba5c-SERVICE_OR_CONTRACT"
+    },
+    {
+      "site_name": "Southgate Melbourne",
+      "epoch_id": "EPOCH-827d7832237170bd",
+      "field": "location",
+      "value": "Melbourne, Victoria, Australia",
+      "relationship": "current public site location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/southgate-melbourne"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-7170bd-LOCATION"
+    },
+    {
+      "site_name": "Southgate Melbourne",
+      "epoch_id": "EPOCH-827d7832237170bd",
+      "field": "users",
+      "value": "NVIDIA DGX Cloud (announced first customer/region access)",
+      "relationship": "announced user/customer relationship",
+      "source": "Firmus",
+      "source_urls": [
+        "https://firmus.co/newsroom/southgate-expansion"
+      ],
+      "publication_date": "2025-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-7170bd-USERS"
+    },
+    {
+      "site_name": "Anthropic Barber Lake",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "field": "location",
+      "value": "Colorado City, Texas, United States",
+      "relationship": "current public site location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-2be282-LOCATION"
+    },
+    {
+      "site_name": "Anthropic Barber Lake",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "field": "owner",
+      "value": "Cipher Mining",
+      "relationship": "facility owner in current Epoch record",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-2be282-OWNER"
+    },
+    {
+      "site_name": "Anthropic Barber Lake",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "field": "users",
+      "value": "Anthropic",
+      "relationship": "announced/identified AI user",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-2be282-USERS"
+    },
+    {
+      "site_name": "Anthropic Barber Lake",
+      "epoch_id": "EPOCH-5b05fa7b682be282",
+      "field": "energy_companies",
+      "value": "Google / Fluidstack power-and-silicon partnership context",
+      "relationship": "energy/silicon financing partnership context",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-2be282-ENERGY_COMPANIES"
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "field": "address",
+      "value": "Nordmoveien 301, 8530 Bjerkvik, Narvik, Norway",
+      "relationship": "contract-defined data center location",
+      "source": "SEC filing",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2110365/000119312526395475/ck0002110365-ex10_19.htm"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-eb479f-ADDRESS"
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "field": "service_or_contract",
+      "value": "A filed contract defines Microsoft GPU services at the data-center facilities on land at Kvandal North, Bjerkvik, Narvik, including tranche-based delivery and service terms.",
+      "relationship": "contract / site-specific GPU hosting arrangement",
+      "source": "SEC filing",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2110365/000119312526395475/ck0002110365-ex10_19.htm"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-eb479f-SERVICE_OR_CONTRACT"
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "field": "location",
+      "value": "Kvandal North, Bjerkvik, Narvik, Norway",
+      "relationship": "contract-defined location",
+      "source": "SEC filing",
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/2110365/000119312526395475/ck0002110365-ex10_19.htm"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-eb479f-LOCATION"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "location",
+      "value": "Saline, Michigan, United States",
+      "relationship": "public project location",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-michigan-data-center/"
+      ],
+      "publication_date": "2026-06-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-df2982-LOCATION"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "project",
+      "value": "The Barn / Stargate Michigan",
+      "relationship": "project identity",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-michigan-data-center/"
+      ],
+      "publication_date": "2026-06-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-df2982-PROJECT"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "construction_companies",
+      "value": "Walbridge",
+      "relationship": "named construction partner",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-michigan-data-center/"
+      ],
+      "publication_date": "2026-06-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-df2982-CONSTRUCTION_COMPANIES"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "address",
+      "value": "4299-2301 County Rd 134, Burlington, Texas 76519, United States",
+      "relationship": "public facility address",
+      "source": "DataCenterMap",
+      "source_urls": [
+        "https://www.datacentermap.com/usa/texas/cameron/stargate-milam-county/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-5c4a7b-ADDRESS"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "location",
+      "value": "Milam County, Texas, United States",
+      "relationship": "public project location",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/five-new-stargate-sites/"
+      ],
+      "publication_date": "2025-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-5c4a7b-LOCATION"
+    },
+    {
+      "site_name": "OpenAI Stargate Milam",
+      "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
+      "field": "project",
+      "value": "Milam County Data Center / Stargate",
+      "relationship": "project identity",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/stargate-sb-energy-partnership/"
+      ],
+      "publication_date": "2026-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-5c4a7b-PROJECT"
+    },
+    {
+      "site_name": "OpenAI Stargate New Mexico",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "field": "location",
+      "value": "Santa Teresa, Doña Ana County, New Mexico, United States",
+      "relationship": "public project location",
+      "source": "Data Center Census",
+      "source_urls": [
+        "https://datacentercensus.com/dc/project-jupiter-dona-ana-county-nm"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-72fe04-LOCATION"
+    },
+    {
+      "site_name": "OpenAI Stargate New Mexico",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "field": "project",
+      "value": "Project Jupiter / Stargate New Mexico",
+      "relationship": "project identity",
+      "source": "Data Center Census",
+      "source_urls": [
+        "https://datacentercensus.com/dc/project-jupiter-dona-ana-county-nm"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-72fe04-PROJECT"
+    },
+    {
+      "site_name": "OpenAI Stargate New Mexico",
+      "epoch_id": "EPOCH-3816121e8d72fe04",
+      "field": "construction_companies",
+      "value": "STACK Infrastructure",
+      "relationship": "developer",
+      "source": "Data Center Census",
+      "source_urls": [
+        "https://datacentercensus.com/dc/project-jupiter-dona-ana-county-nm"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-72fe04-CONSTRUCTION_COMPANIES"
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "field": "location",
+      "value": "Port Washington, Wisconsin, United States",
+      "relationship": "public project location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-bdf968-LOCATION"
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "field": "owner",
+      "value": "Oracle",
+      "relationship": "current owner/developer attribution",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-bdf968-OWNER"
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "field": "users",
+      "value": "OpenAI",
+      "relationship": "current user attribution",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-bdf968-USERS"
+    },
+    {
+      "site_name": "OpenAI Stargate Wisconsin",
+      "epoch_id": "EPOCH-78e7d8474fbdf968",
+      "field": "project",
+      "value": "Stargate",
+      "relationship": "project identity",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-CLOSE-bdf968-PROJECT"
     }
   ],
-  "record_count": 370,
+  "record_count": 400,
   "generated_on": "2026-09-27"
 }
