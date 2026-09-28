@@ -73,11 +73,13 @@ def run_tail_population(
     # Sample recipient proportional to delivered compute, then draw a unit
     # within that recipient. This matches the intended size-weighted tail logic.
     population = []
+    recipient_by_owner = {r.owner_id: r for r in recipients}
     for r in recipients:
         population.extend([r.owner_id] * r.delivered_units)
     rng = random.Random(seed_from_text(seed))
     chosen = rng.sample(range(len(population)), sample_size)
-    outcomes = [audit_recipient(TailRecipient(owner, 1), accounts[owner]) if owner in accounts else TraceOutcome(owner,"FAIL","owner account unavailable") for owner in (population[i] for i in chosen)]
+    owners = [population[i] for i in chosen]
+    outcomes = [audit_recipient(recipient_by_owner[owner], accounts[owner]) if owner in accounts else TraceOutcome(owner,"FAIL","owner account unavailable") for owner in owners]
     failures = sum(o.result == "FAIL" for o in outcomes)
     if failures == 0:
         upper_failure_rate = 1 - delta ** (1.0 / sample_size)
