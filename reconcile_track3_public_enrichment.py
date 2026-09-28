@@ -79,6 +79,21 @@ def main() -> int:
         for field in rec.get("effective_unresolved_publisher_fields", []):
             effective_counts[field] = effective_counts.get(field, 0) + 1
 
+    site_by_id = {str(x.get("epoch_id")): x for x in site_status.get("records", [])}
+    for rec in sweep.get("records", []):
+        sid = str(rec.get("epoch_id") or "")
+        status_rec = site_by_id.get(sid)
+        if not status_rec:
+            continue
+        rec["domain_state_snapshot"] = {
+            domain: status_rec.get("domains", {}).get(domain, {}).get("status", "UNKNOWN")
+            for domain in site_status.get("summary", {}).get("domain_status_counts", {})
+        }
+        rec["open_track3_domains"] = [
+            domain for domain, state in rec["domain_state_snapshot"].items()
+            if state in OPEN_STATES
+        ]
+
     summary = sweep.setdefault("summary", {})
     summary["effective_unresolved_publisher_fields"] = sum(effective_counts.values())
     summary["effective_unresolved_field_counts"] = effective_counts
