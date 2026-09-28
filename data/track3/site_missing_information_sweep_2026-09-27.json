@@ -9,7 +9,7 @@
     "remaining_unresolved_publisher_fields": 371,
     "sites_with_public_research_leads": 33,
     "total_public_research_leads": 53,
-    "open_track3_domain_cells": 598,
+    "open_track3_domain_cells": 595,
     "publisher_missing_field_counts": {
       "project": 76,
       "investors": 83,
@@ -203,8 +203,6 @@
         ]
       },
       "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
         "compute_tenancy",
         "power_telemetry",
         "cooling",
@@ -216,8 +214,8 @@
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
         "grid_connection": "SITE_LEVEL_EVIDENCE",
-        "service_or_contract": "NOT_INGESTED",
-        "regulatory": "NOT_ASSESSED",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
+        "regulatory": "INGESTED",
         "compute_tenancy": "UNKNOWN",
         "power_telemetry": "NOT_INGESTED",
         "remote_sensing": "INGESTED_DERIVED",
@@ -354,7 +352,6 @@
         ]
       },
       "open_track3_domains": [
-        "service_or_contract",
         "compute_tenancy",
         "power_telemetry",
         "cooling",
@@ -366,7 +363,7 @@
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
         "grid_connection": "SITE_LEVEL_EVIDENCE",
-        "service_or_contract": "NOT_INGESTED",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "INGESTED",
         "compute_tenancy": "UNKNOWN",
         "power_telemetry": "NOT_INGESTED",
@@ -12685,5 +12682,5 @@
     }
   ],
   "generated_on": "2026-09-27",
-  "reconciliation_note": " Four previously unrepresented sites were closed against dated Sep. 27 public-source captures; effective unresolved counts were recomputed for those sites only. Effective unresolved publisher counts for the four previously unrepresented enrichment sites are recalculated from the dated 2026-09-27 captures. Public enrichment closure was reconciled again on 2026-09-27 for all sites with new captures; secondary/public values remain distinct from canonical publisher fields until builder acceptance."
+  "reconciliation_note": " Four previously unrepresented sites were closed against dated Sep. 27 public-source captures; effective unresolved counts were recomputed for those sites only. Effective unresolved publisher counts for the four previously unrepresented enrichment sites are recalculated from the dated 2026-09-27 captures. Public enrichment closure was reconciled again on 2026-09-27 for all sites with new captures; secondary/public values remain distinct from canonical publisher fields until builder acceptance. Three P0 domain cells were closed on 2026-09-27 from official Georgia PSC/Georgia Power and Indiana IURC/I&M site-specific public records; no queue identifier or interval telemetry was inferred."
 }
