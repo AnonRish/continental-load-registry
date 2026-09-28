@@ -8,13 +8,13 @@
     "generated_on": "2026-09-27",
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
-    "publisher_tasks": 220,
-    "domain_tasks": 594,
-    "total_tasks": 814,
+    "publisher_tasks": 219,
+    "domain_tasks": 592,
+    "total_tasks": 811,
     "publisher_by_field": {
       "project": 23,
       "investors": 79,
-      "construction_companies": 64,
+      "construction_companies": 63,
       "energy_companies": 15,
       "owner": 0,
       "users": 21,
@@ -22,8 +22,8 @@
       "chip_quantities": 10
     },
     "domain_by_domain": {
-      "service_or_contract": 67,
-      "regulatory": 76,
+      "service_or_contract": 66,
+      "regulatory": 75,
       "compute_tenancy": 89,
       "power_telemetry": 87,
       "remote_sensing": 5,
@@ -10538,52 +10538,6 @@
       ],
       "acceptance_rule": "Source explicitly connects the party to financing/investment in the project.",
       "reject_rule": "Market shareholders or unrelated financing with no site/project linkage.",
-      "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_leads": [],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "PUB-EPOCH-d2da66ea035880ce-construction-companies",
-      "kind": "publisher",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-d2da66ea035880ce",
-      "site_name": "QTS Cedar Rapids",
-      "country": "United States",
-      "state_province": "IA",
-      "current_it_power_mw": 0,
-      "field": "construction_companies",
-      "workflow_label": "Construction companies / EPC / GC",
-      "objective": "Identify site-specific general contractors, EPCs, builders, civil contractors or major construction partners.",
-      "search_sequence": [
-        "Building permits and permit applicants",
-        "planning/zoning packets",
-        "county/city project records",
-        "contractor project portfolios",
-        "owner/developer releases",
-        "procurement/bid notices"
-      ],
-      "queries": [
-        "\"QTS Cedar Rapids\" contractor construction",
-        "\"QTS Cedar Rapids\" EPC general contractor",
-        "\"QTS Cedar Rapids\" permit contractor IA"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+contractor+construction",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+EPC+general+contractor",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+permit+contractor+IA"
-      ],
-      "evidence_to_capture": [
-        "company",
-        "role",
-        "site linkage",
-        "permit/contract/project reference",
-        "date",
-        "URL/locator"
-      ],
-      "acceptance_rule": "The source names the contractor/EPC and ties it to the site/project.",
-      "reject_rule": "Generic contractor work elsewhere for the same owner.",
       "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
       "public_leads": [],
       "canonical_ingest_path": "data/track3/evidence_records.json",
@@ -39391,97 +39345,6 @@
           "source_url": "https://openai.com/index/stargate-community/"
         }
       ],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-d2da66ea035880ce-service-or-contract",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-d2da66ea035880ce",
-      "site_name": "QTS Cedar Rapids",
-      "country": "United States",
-      "state_province": "IA",
-      "current_it_power_mw": 0,
-      "domain": "service_or_contract",
-      "workflow_label": "Service / energy contract",
-      "objective": "Find site-specific utility service, capacity reservation, power purchase, direct supply, or contractual energy evidence.",
-      "search_sequence": [
-        "Serving utility tariff/service filings",
-        "regulator dockets",
-        "utility large-load proceedings",
-        "municipal/development agreements",
-        "company disclosures"
-      ],
-      "queries": [
-        "\"QTS Cedar Rapids\" service agreement utility",
-        "\"QTS Cedar Rapids\" power contract",
-        "\"QTS Cedar Rapids\" load service agreement IA"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+service+agreement+utility",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+power+contract",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+load+service+agreement+IA"
-      ],
-      "evidence_to_capture": [
-        "counterparties",
-        "contract/service type",
-        "capacity if stated",
-        "case/docket/document ID",
-        "date",
-        "URL/locator"
-      ],
-      "acceptance_rule": "Document identifies the site and contractual/service relationship.",
-      "reject_rule": "Generic tariff availability or regional service.",
-      "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_leads": [],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-d2da66ea035880ce-regulatory",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-d2da66ea035880ce",
-      "site_name": "QTS Cedar Rapids",
-      "country": "United States",
-      "state_province": "IA",
-      "current_it_power_mw": 0,
-      "domain": "regulatory",
-      "workflow_label": "Regulatory / permitting",
-      "objective": "Collect site-specific planning, zoning, building, environmental, water, air, tax-incentive, or utility proceedings.",
-      "search_sequence": [
-        "Municipal planning/building portals",
-        "county records",
-        "state/provincial regulator databases",
-        "environmental agency records",
-        "tax-incentive/public development records"
-      ],
-      "queries": [
-        "\"QTS Cedar Rapids\" permit planning zoning",
-        "\"QTS Cedar Rapids\" environmental permit IA",
-        "\"QTS Cedar Rapids\" public hearing data center"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+permit+planning+zoning",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+environmental+permit+IA",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+public+hearing+data+center"
-      ],
-      "evidence_to_capture": [
-        "agency",
-        "record type",
-        "case/permit number",
-        "status",
-        "date",
-        "site linkage",
-        "URL/locator"
-      ],
-      "acceptance_rule": "Official record clearly pertains to the site/project.",
-      "reject_rule": "General policy or program pages without a site-specific action.",
-      "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_leads": [],
       "canonical_ingest_path": "data/track3/evidence_records.json",
       "submission_schema": "data/track3/research_submission_schema.json"
     },
