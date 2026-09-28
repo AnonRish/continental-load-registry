@@ -12,7 +12,7 @@
 h1{font-size:clamp(2rem,4vw,3.6rem);line-height:1;margin:10px 0 12px;letter-spacing:-.04em}h2{margin:0 0 8px;font-size:20px}h3{margin:0 0 6px;font-size:15px}
 a{color:inherit}.tools{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;padding:8px 10px;border:1px solid var(--strong);border-radius:8px;text-decoration:none;background:var(--panel);font-size:12px}.btn:hover{background:var(--amber-soft)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:16px}.hero{padding:12px 0 8px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:10px;color:var(--faint)}
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.card{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px}.metric{font:600 28px/1 ui-monospace,monospace}.card p{margin:6px 0 0;color:var(--soft);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.card{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px}.metric{font:600 28px/1 ui-monospace,monospace}.card p{margin:6px 0 0;color:var(--soft);font-size:12px}
 .steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.step{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--paper)}.step b{display:block;font:600 11px ui-monospace,monospace}.step span{display:block;margin-top:4px;color:var(--soft);font-size:11px}
 .barrow{display:grid;grid-template-columns:220px minmax(120px,1fr) 70px;gap:8px;align-items:center;margin:7px 0}.bar{height:10px;border-radius:999px;background:var(--paper);overflow:hidden}.bar>i{display:block;height:100%;background:var(--amber);border-radius:inherit}.barrow .label{font-size:11px}.count{text-align:right;font:600 11px ui-monospace,monospace}
 .filters{display:grid;grid-template-columns:2fr repeat(4,minmax(150px,1fr));gap:8px}.filters input,.filters select{width:100%;padding:9px;border:1px solid var(--strong);border-radius:8px;background:var(--panel);color:var(--ink)}
@@ -20,7 +20,7 @@ a{color:inherit}.tools{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-f
 .qs a{display:block;margin:2px 0}.action{display:flex;gap:5px;flex-wrap:wrap}.tiny{font-size:10px}.details{margin-top:5px;color:var(--soft);line-height:1.45}
 .notice{padding:11px 12px;border:1px solid var(--strong);border-radius:10px;background:var(--paper);font-size:12px}.notice strong{color:var(--ink)}
 .footer-note{font-size:11px;color:var(--faint);margin-top:14px}
-@media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.barrow{grid-template-columns:170px minmax(100px,1fr) 55px}}
+@media(max-width:1100px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.barrow{grid-template-columns:170px minmax(100px,1fr) 55px}}
 @media(max-width:620px){.cards{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.filters{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="observatory-nav.css">
@@ -67,9 +67,10 @@ a{color:inherit}.tools{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-f
 </section>
 
 <section class="cards" style="margin-top:16px">
-<div class="card"><div id="pubCount" class="metric">—</div><p>effective unresolved publisher fields</p></div>
+<div class="card"><div id="pubCount" class="metric">—</div><p>open public-source publisher fields</p></div>
 <div class="card"><div id="domCount" class="metric">—</div><p>open Track 3 domain cells</p></div>
-<div class="card"><div id="totalCount" class="metric">—</div><p>open research tasks</p></div>
+<div class="card"><div id="totalCount" class="metric">—</div><p>open publisher research tasks</p></div>
+<div class="card"><div id="obsCount" class="metric">—</div><p>follow-on observation tasks</p></div>
 <div class="card"><div id="siteCount" class="metric">—</div><p>canonical sites represented</p></div>
 </section>
 
@@ -189,7 +190,8 @@ async function load(){
  Q=q.tasks||[];
  document.getElementById("pubCount").textContent=q.summary?.publisher_tasks??0;
  document.getElementById("domCount").textContent=q.summary?.domain_tasks??0;
- document.getElementById("totalCount").textContent=q.summary?.total_tasks??Q.length;
+ document.getElementById("totalCount").textContent=q.summary?.publisher_tasks??Q.filter(x=>x.kind==="publisher").length;
+ document.getElementById("obsCount").textContent=q.summary?.follow_on_observation_tasks??0;
  document.getElementById("siteCount").textContent=q.summary?.sites??new Set(Q.map(x=>x.epoch_id)).size;
  document.getElementById("steps").innerHTML=(w.workflow_order||[]).map(x=>'<div class="step"><b>'+esc(x)+'</b><span>'+esc(w.stages?.[x]||"")+'</span></div>').join('');
  setBars("pubBars",q.summary?.publisher_by_field||{});
