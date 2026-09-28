@@ -126,6 +126,7 @@ def main() -> int:
             "source": x.get("source"),
             "source_urls": x.get("source_urls") or [],
             "publication_date": x.get("publication_date"),
+            "source_record_id": x.get("evidence_id") or x.get("source_record_id"),
         }
         import hashlib
         return hashlib.sha256(json.dumps(payload, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
