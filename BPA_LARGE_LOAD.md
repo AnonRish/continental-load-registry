@@ -7,19 +7,22 @@ The repository now ingests the BPA **Line/Load Interconnection** workbook direct
 - Official source page: https://www.bpa.gov/energy-and-services/transmission/interconnection
 - Official workbook: https://www.bpa.gov/-/media/Aep/transmission-media-documents/InterconnectionQueueOutput.xlsx
 - Capture date: **2026-09-28**
-- Parsed population: **457 L-series load-request rows**
-- Non-terminal / live-by-published-status rows: **289**
-- Rows with retained display geometry carried forward by request ID: **25**
-- Rows without retained display geometry: **432**
+- Raw L-series source population: **457 rows**
+- Normalized large-load layer: **128 rows at >=100 MW**
+- Non-terminal / live-by-published-status rows in the normalized layer: **81**
+- Normalized rows with retained display geometry carried forward by request ID: **25**
+- Normalized rows without retained display geometry: **103**
 - Workbook SHA-256: `c98e1dad406d5615a28defffb7cbf5130b17abfe1818223fd2efeb647bbcd208`
 - Downloaded workbook size: **228,486 bytes**
+
+The official workbook contains older/smaller L-series records as well as the >=100 MW load requests. The dedicated Track 3 large-load layer is therefore threshold-filtered: rows below 100 MW are retained only in the raw source-population accounting, not in the normalized large-load record set.
 
 The machine-readable current layer is:
 
 - `data/bpa_large_load_registry.json`
 - `data/bpa_large_load_registry.csv`
 
-The current layer is also indexed in:
+The current thresholded layer is also indexed in:
 
 - `data/market_universe_manifest.json`
 - `data/map_layer_manifest.json`
