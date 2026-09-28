@@ -27,13 +27,21 @@ The AI Futures material describes Track 3 as verifying the absence of secret com
 | Serial-number continuity | Lifecycle state machine + integrity rules | FRAMEWORK_IMPLEMENTED | No global public serial ledger |
 | Decommissioning/recycling | Verification-state protocol + WEEE source catalog | FRAMEWORK_IMPLEMENTED | No independently verified compute-specific ledger |
 | Untraced compute pool L | Residual ledger + certificate model | FRAMEWORK_IMPLEMENTED | Global transaction chain is not closed |
-| Locate remaining unaccounted compute | Optical/TIR/SAR + queue surveillance + case workflows | PARTIAL | Public imagery cannot prove universal absence; 25/93 reference sites lack retained derived observations |
+| Locate remaining unaccounted compute | Optical/TIR/SAR + queue surveillance + case workflows | PARTIAL | Public imagery cannot prove universal absence; 5/93 reference sites lack retained derived observations |
 | Incentive/amnesty/buyback evidence | Disclosure protocol | FRAMEWORK_IMPLEMENTED | No verified program/event dataset |
 | Physical data-center discovery | Epoch reference + broader queue surveillance + public records | PARTIAL | No intelligence corpus or global covert-site census |
 | Power/cooling/infrastructure corroboration | Annual power, cooling, transformer, substation/transmission evidence | PARTIAL | Interval telemetry and exhaustive site linkage are incomplete |
 | Independent corroboration | Provenance/conflict layer | PARTIAL | Independence has not been independently assessed across all sites |
 | Global coverage | Global chip/source layer; North American physical registry | PARTIAL | Site-level physical coverage remains primarily North American |
 | Statistical certificate | Transparent tail-bound calculator | FRAMEWORK_IMPLEMENTED | Requires closed population, defined failures, reproducible sample, validated evidence |
+
+## Terminal site-domain assessment coverage
+
+As of 2026-09-28, the 93-site reference universe has **1,395 of 1,395 defined site/domain cells in a terminal evidence-accounting state (100%)**. The terminal states include positive evidence states such as INGESTED, SITE_LEVEL_EVIDENCE, VERIFIED_SITE_SPECIFIC and INGESTED_DERIVED, plus the explicit **ASSESSMENT_COMPLETE** state for cells where the current public-evidence layer contains no qualifying retained record.
+
+The assessment ledger is data/track3/research_assessments_2026-09-27.json with 573 dated assessment records. **ASSESSMENT_COMPLETE does not mean the underlying condition is absent and does not establish covert-compute absence.** It means the repository has recorded the present evidence ceiling for that cell. New public records, authorized records, or new observations can reopen any assessed cell.
+
+This is a repository-level completeness result, not an international Track 3 verification result. The high-level requirements in the implementation matrix remain partial/framework-implemented where they require transaction-level vendor records, physical inspections, serial continuity, verified recycling, covert-site intelligence, or an independent verification authority.
 
 ## Current empirical layers
 
