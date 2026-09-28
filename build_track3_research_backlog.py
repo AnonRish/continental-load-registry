@@ -105,6 +105,20 @@ def main() -> None:
         for name in domain
     }
 
+    # Observation acquisition tasks are deliberately separate from OPEN domain cells:
+    # an observation task can remain outstanding even when the current public evidence
+    # state is terminal/complete. Keep the distinction machine-readable.
+    observation_path = ROOT / "data/track3/observation_queue.json"
+    observation_payload = json.loads(observation_path.read_text(encoding="utf-8")) if observation_path.exists() else {"tasks": []}
+    observation_tasks = observation_payload.get("tasks", [])
+    observation_by_domain = {}
+    observation_by_priority = {}
+    for task in observation_tasks:
+        d = str(task.get("domain") or "unknown")
+        pr = str(task.get("priority") or "P1")
+        observation_by_domain[d] = observation_by_domain.get(d, 0) + 1
+        observation_by_priority[pr] = observation_by_priority.get(pr, 0) + 1
+
     summary = {
         "schema_version": 1,
         "generated_on": sweep["summary"]["generated_on"],
@@ -113,14 +127,19 @@ def main() -> None:
         "publisher_tasks": len(publisher_tasks),
         "domain_tasks": len(domain_tasks),
         "total_tasks": len(tasks),
+        "follow_on_observation_tasks": len(observation_tasks),
+        "follow_on_observation_by_domain": observation_by_domain,
+        "follow_on_observation_by_priority": observation_by_priority,
+        "follow_on_observation_source": "data/track3/observation_queue.json",
         "publisher_by_field": publisher_counts,
         "domain_by_domain": domain_counts,
         "coverage_assertions": {
             "publisher_tasks_equal_effective_unresolved": len(publisher_tasks) == expected_pub,
             "domain_tasks_equal_open_cells": len(domain_tasks) == expected_dom,
             "all_93_sites_represented": len({r["epoch_id"] for r in sweep["records"]}) == 93,
+            "observation_tasks_explicitly_accounted": len(observation_tasks) == int(observation_payload.get("task_count", len(observation_tasks))),
         },
-        "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence.",
+        "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence. Follow-on observation tasks are acquisition work and do not imply that a domain cell is currently open.",
     }
 
     queue = {
