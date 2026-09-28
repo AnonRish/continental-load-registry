@@ -148,6 +148,27 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         connection_types = {"site_specific_queue", "site_specific_utility_relationship", "site_specific_utility", "site_specific_service", "site_specific_service_contract", "site_specific_power_request", "site_specific_load_request", "site_specific_utility_capacity_record", "site_specific_grid_facility_record", "site_specific_utility_power", "site_specific_facility_utility_relationship", "site_specific_utility_facility_record", "site_specific_utility_planning", "site_specific_utility_service", "site_specific_facility_utility_evidence", "site_specific_regulatory", "site_specific_regulatory_support", "site_specific_behind_the_meter_service_evidence", "site_specific_grid_identity_no_queue"}
         connection_type_lower = {str(x).lower() for x in connection_types}
         connection_evidence = [x for x in ev if str(x.get("type") or "").lower() in connection_type_lower]
+        # Public-web enrichment can supply site-specific electrical evidence even when
+        # no queue ID is public. Only explicit grid/substation/transmission language
+        # qualifies; a generic commercial capacity/lease record does not.
+        public_grid_terms = (
+            "grid", "substation", "transmission", "high-voltage", "110kv", "220kv",
+            "420kv", "132kv", "33kv", "power infrastructure", "electricity supply",
+            "electricity network", "power grid", "directly draws electricity",
+            "direct and redundant connections", "transformer station",
+        )
+        public_grid_evidence = []
+        for item in manual_public:
+            field_name = str(item.get("field") or "").lower()
+            claim_text = " ".join([
+                str(item.get("value") or ""),
+                str(item.get("relationship") or ""),
+                str(item.get("scope_note") or ""),
+            ]).lower()
+            if field_name == "energy_companies" or (
+                field_name == "service_or_contract" and any(term in claim_text for term in public_grid_terms)
+            ):
+                public_grid_evidence.append(item)
         crosswalk_connection_evidence = bool(crosswalk_ev)
         if grid.get("site_specific_queue_id"):
             return {
@@ -159,10 +180,10 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "VERIFIED_SITE_SPECIFIC",
                 "basis": "Site-level queue evidence is attached to the Epoch record."
             }
-        if connection_evidence or crosswalk_connection_evidence or "energy_companies" in manual_fields:
+        if connection_evidence or crosswalk_connection_evidence or public_grid_evidence or "energy_companies" in manual_fields:
             return {
                 "status": "SITE_LEVEL_EVIDENCE",
-                "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
+                "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
             }
         if any(x.get("type") == "NO_MATCH_FOUND_SITE_SPECIFIC_QUEUE_OR_SERVICE" for x in ev):
             return {
