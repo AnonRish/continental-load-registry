@@ -17,7 +17,7 @@ The repository now ingests the BPA **Line/Load Interconnection** workbook direct
 
 The official workbook contains older/smaller L-series records as well as the >=100 MW load requests. The dedicated Track 3 large-load layer is therefore threshold-filtered: rows below 100 MW are retained only in the raw source-population accounting, not in the normalized large-load record set.
 
-The machine-readable current layer is:
+The machine-readable current layer is a **128-row >=100 MW normalized subset** of that raw source population:
 
 - `data/bpa_large_load_registry.json`
 - `data/bpa_large_load_registry.csv`
@@ -60,7 +60,7 @@ A mapped point is display geography, not a claim that the project occupies that 
 
 This layer is **non-additive** to the nine-market core registry.
 
-The 457 BPA rows are not added to the 1,540-row core total or the 1,623-record expanded-known scope. The separate project-level extraction retains its own 60 curated BPA evidence records because that layer is an entity-resolution/public-project evidence dataset, not a complete transcription of the BPA Line/Load workbook.
+The 457 raw L-series BPA rows are not added to the 1,540-row core total or the 1,623-record expanded-known scope. The separate project-level extraction retains its own 60 curated BPA evidence records because that layer is an entity-resolution/public-project evidence dataset, not a complete transcription of the BPA Line/Load workbook.
 
 Keeping these two layers separate prevents a single BPA request from being counted simultaneously as:
 
