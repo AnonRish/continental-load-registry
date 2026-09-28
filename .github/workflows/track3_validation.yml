@@ -74,6 +74,9 @@ jobs:
         run: |
           python validate_track3_ledger.py
 
+      - name: Check physical provenance manifest reproducibility
+        run: python build_physical_provenance_manifest.py --check
+
       - name: Validate physical-source provenance
         run: |
           python validate_physical_provenance.py
