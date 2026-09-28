@@ -115,6 +115,9 @@ jobs:
       - name: Reconcile remote-sensing target states
         run: python build_remote_sensing_target_status.py
 
+      - name: Rebuild physical-coordinate coverage audit
+        run: python build_track3_geo_audit.py
+
       - name: Refresh retained physical-artifact provenance
         run: python refresh_physical_source_manifest.py
 
