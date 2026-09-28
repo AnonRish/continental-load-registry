@@ -22,6 +22,8 @@ on:
       - "STRICT_DISCOVERY_RESEARCH.md"
       - "TRACK3_RELEASE_2026-09-28.md"
       - "validate_track3_release.py"
+      - "build_track3_engineering_closure.py"
+      - "data/track3/engineering_closure_2026-09-28.json"
       - "track3_certificate.py"
       - "data/track3/completion_gate.json"
       - "data/track3/external_capability_handoff_2026-09-28.json"
@@ -63,7 +65,7 @@ jobs:
 
       - name: Compile Python
         run: |
-          python -m py_compile build_track3_evidence.py module1_physical_radar.py validate_track3_ledger.py sync_track3_external_sources.py track3_certificate.py validate_track3_complete_coverage.py validate_track3_release.py
+          python -m py_compile build_track3_evidence.py module1_physical_radar.py validate_track3_ledger.py sync_track3_external_sources.py track3_certificate.py validate_track3_complete_coverage.py validate_track3_release.py build_track3_engineering_closure.py
 
       - name: Self-test Track 3 external source map
         run: python sync_track3_external_sources.py --selftest
