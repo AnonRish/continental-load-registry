@@ -122,6 +122,26 @@ def main() -> int:
     if sweep.get("summary", {}).get("open_track3_domain_cells") != 0:
         errors.append("research sweep still reports open Track 3 domain cells")
 
+    domain_matrix = load("data/track3/domain_completeness_matrix_2026-09-27.json")
+    dm_rows = domain_matrix.get("records", [])
+    if domain_matrix.get("accounting", {}).get("cells") != len(dm_rows) != 0:
+        errors.append("domain completeness matrix record count does not reconcile")
+    if domain_matrix.get("accounting", {}).get("cells") != 1395:
+        errors.append("domain completeness matrix is not 93x15")
+    if domain_matrix.get("accounting", {}).get("open_or_unassessed_cells") != 0:
+        errors.append("domain completeness matrix still contains open cells")
+    if sum(domain_matrix.get("accounting", {}).get("status_counts", {}).values()) != 1395:
+        errors.append("domain completeness matrix status counts do not sum to 1,395")
+
+    publisher_matrix = load("data/track3/publisher_completeness_matrix_2026-09-27.json")
+    pm_rows = publisher_matrix.get("records", [])
+    if publisher_matrix.get("accounting", {}).get("cells") != len(pm_rows):
+        errors.append("publisher completeness matrix record count does not reconcile")
+    if publisher_matrix.get("accounting", {}).get("cells") != 744:
+        errors.append("publisher completeness matrix is not 93x8")
+    if publisher_matrix.get("accounting", {}).get("open_research_cells") != sweep.get("summary", {}).get("effective_unresolved_publisher_fields"):
+        errors.append("publisher completeness matrix open count does not reconcile with sweep")
+
     coord_status = {str(x.get("epoch_id")): x.get("coordinate_status") for x in geo.get("records", [])}
     for x in geo.get("records", []):
         if x.get("coordinate_status") == "RESOLVED":
