@@ -1,27 +1,27 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-28T01:43:00+00:00",
+  "generated_at_utc": "2026-09-28T04:45:00Z",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 400,
+    "record_count": 451,
     "sites_with_findings": 93,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 399,
+      "PUBLIC_SOURCE_CAPTURED": 450,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "address": 17,
-      "capacity_record": 16,
-      "energy_companies": 83,
-      "owner": 19,
-      "project": 73,
-      "construction_companies": 43,
-      "investment": 24,
-      "regulatory": 13,
+      "address": 18,
+      "capacity_record": 15,
+      "energy_companies": 85,
+      "owner": 21,
+      "project": 74,
+      "construction_companies": 50,
+      "investment": 23,
+      "regulatory": 18,
       "investors": 6,
-      "cooling": 19,
-      "service_or_contract": 23,
+      "cooling": 20,
+      "service_or_contract": 41,
       "users": 12,
       "operational_efficiency": 5,
       "operational_status": 13,
@@ -31,7 +31,8 @@
       "project_status": 5,
       "construction_status": 1,
       "backup_generation": 1,
-      "location": 15
+      "location": 15,
+      "independent_corroboration": 16
     }
   },
   "semantics": {
@@ -7225,14 +7226,128 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Municipal planning evidence is retained as regulatory/development context; it does not establish an electrical queue ID or measured consumption.",
       "evidence_id": "EVID-PWEB-GOOGLE-MESA-REG-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-2d362a1adb09fddd",
+      "site_name": "CoreWeave Chester VA",
+      "field": "energy_companies",
+      "value": "Dominion Energy Virginia",
+      "relationship": "reported grid operator for 1401 Meadowville Technology Parkway",
+      "source": "datacenter.fyi",
+      "source_urls": [
+        "https://www.datacenter.fyi/public-record/chirisa-richmond-llc-110bbf11"
+      ],
+      "publication_date": null,
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The facility tracker identifies Dominion Energy Virginia as the grid operator for the exact 1401 Meadowville Technology Parkway address. This is site-level grid-operator evidence, not a utility contract or Epoch queue-ID assertion.",
+      "evidence_id": "EVID-PWEB-GRID-CHESTER-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-a286a89bd1c1b6e7",
+      "site_name": "VNET Bayin Ulanqab",
+      "field": "service_or_contract",
+      "value": "Tsinghua University field-study documentation records a 220kV substation at the VNET data center in Ulanqab; VNET directly draws electricity from high-voltage transmission lines and maintains its own on-site distribution network.",
+      "relationship": "site-specific electrical supply / on-site distribution evidence",
+      "source": "Tsinghua University Department of Electrical Engineering",
+      "source_urls": [
+        "https://www.eea.tsinghua.edu.cn/en/info/1038/3485.htm"
+      ],
+      "publication_date": "2025-08-26",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Site-visit evidence for the VNET data center power system; it does not assert a public queue ID or measured interval demand.",
+      "evidence_id": "EVID-PWEB-GRID-VNET-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "site_name": "Huawei Horinger",
+      "field": "service_or_contract",
+      "value": "Huawei Cloud Horinger data center 220kV substation reached full energization, including the second Sahehan line; the project has three substations and provides dual-circuit high-grade power infrastructure for the data center.",
+      "relationship": "site-specific substation and transmission-line energization",
+      "source": "PowerChina Huilong Company",
+      "source_urls": [
+        "https://hngc.powerchina.cn/col/col1944/art/2026/art_7d1114b6a3164e8dabf7ae451cf8ec1c.html"
+      ],
+      "publication_date": "2026-09-07",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Primary project-contractor disclosure tied to the Horinger Huawei Cloud data center; it establishes site electrical infrastructure but not current interval load.",
+      "evidence_id": "EVID-PWEB-GRID-HORINGER-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "site_name": "Huawei Wuhu",
+      "field": "service_or_contract",
+      "value": "Official environmental filing for the Huawei Cloud East China Wuhu data center documents an external power project from the Qingzhu 220kV substation to the Huawei 220kV substation at the facility boundary, with an approximately 8.43 km route.",
+      "relationship": "site-specific 220kV grid connection infrastructure",
+      "source": "Wuhu Municipal Ecology and Environment Bureau",
+      "source_urls": [
+        "https://sthjj.wuhu.gov.cn/hbyw/hjsp/jsxmhpsp/8569531.html"
+      ],
+      "publication_date": "2024-01-01",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Official environmental approval record for the external 220kV line to the Huawei substation; it is infrastructure evidence, not a queue ID or interval-load measurement.",
+      "evidence_id": "EVID-PWEB-GRID-WUHU-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-f48a533b01898dfd",
+      "site_name": "CoreWeave Norway",
+      "field": "service_or_contract",
+      "value": "Bulk Infrastructure states that CoreWeave uses the N01 Datacenter Campus in Vennesla, which is next to a major transformer station and has direct and redundant connections to multiple hydropower stations; Bulk reports 400 MW secured at the site.",
+      "relationship": "site-specific electrical supply infrastructure for CoreWeave deployment",
+      "source": "Bulk Infrastructure",
+      "source_urls": [
+        "https://bulkinfrastructure.com/newsroom/coreweave-partners-with-bulk-infrastructure"
+      ],
+      "publication_date": "2025-03-14",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Primary CoreWeave/Bulk announcement; 400 MW is campus secured capacity, not measured CoreWeave IT load.",
+      "evidence_id": "EVID-PWEB-GRID-COREWEAVE-NORWAY-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "site_name": "Alibaba Zhangbei",
+      "field": "service_or_contract",
+      "value": "A retained public corporate case record identifies the Alibaba Zhangbei Yun Calculation Center Chahar project 110kV substation engineering work; Epoch imagery also records a large substation visibly connected to transmission lines at the site.",
+      "relationship": "site-specific 110kV substation / transmission infrastructure",
+      "source": "TGOOD / CNINFO filing plus Epoch AI",
+      "source_urls": [
+        "https://static.cninfo.com.cn/finalpage/2025-08-08/1224440344.PDF",
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2025-08-08",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "The corporate case record ties the 110kV substation engineering to Alibaba Zhangbei; Epoch provides the independent site imagery context. No public queue ID or interval demand is asserted.",
+      "evidence_id": "EVID-PWEB-GRID-ALIBABA-ZHANGBEI-20260928"
+    },
+    {
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "site_name": "Microsoft Narvik Norway",
+      "field": "energy_companies",
+      "value": "Nordkraft Industrinett / Statnett",
+      "relationship": "site grid infrastructure and reserved transmission capacity",
+      "source": "Norwegian Water Resources and Energy Directorate (NVE)",
+      "source_urls": [
+        "https://www.nve.no/konsesjon/konsesjonssaker/konsesjonssak?id=22622&type=A",
+        "https://webfileservice.nve.no/API/PublishedFiles/Download/ef898a5b-14a7-4d5e-8dfa-51fc72100e4a/202503343/3450303"
+      ],
+      "publication_date": "2026-03-11",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "NVE records Nordkraft Industrinett's Skoglund substation and 230 MW reserved withdrawal from Statnett's Kvandal substation for Aker Nscale's nearby data-center expansion; this is grid-infrastructure/capacity evidence, not measured demand.",
+      "evidence_id": "EVID-PWEB-GRID-NARVIK-20260928"
     }
   ],
-  "record_count": 444,
-  "generated_on": "2026-09-27",
+  "record_count": 451,
+  "generated_on": "2026-09-28",
   "summary": {
-    "record_count": 444,
+    "record_count": 451,
     "last_reconciled": "2026-09-28"
   },
-  "pipeline_rebuild_marker": "2026-09-28-trigger-after-target-sync",
+  "pipeline_rebuild_marker": "2026-09-28-grid-evidence-refresh-7",
   "post_physical_refresh_marker": "2026-09-28-physical-ledger-refresh-575"
 }
