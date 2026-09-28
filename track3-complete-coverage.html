@@ -26,6 +26,21 @@
 <div class="scroll"><table class="matrix"><thead><tr><th>ID</th><th>Requirement</th><th>Status</th><th>Implementation</th><th>Current evidence</th><th>Blocking gap</th></tr></thead><tbody id="rows"></tbody></table></div>
 </section>
 <section class="section">
+<div class="k">LIVE CLOSURE REGISTER</div>
+<h2>93 sites · 15 evidence domains · every open cell visible</h2>
+<p>The gap register below is the operational backlog, not a claim of missing real-world infrastructure. A cell remains open until the required evidence state is actually retained and classified.</p>
+<div class="stats" id="gapStats"></div>
+<div class="filter"><input id="gapFilter" placeholder="Search site, domain, country, status, or next action"></div>
+<div class="scroll"><table class="matrix"><thead><tr><th>Domain</th><th>Resolved</th><th>Open</th><th>Coverage</th><th>Current states</th></tr></thead><tbody id="domainRows"></tbody></table></div>
+<div class="tools" style="margin-top:12px"><a class="btn" href="data/track3/coverage_gap_register_2026-09-27.json">Download gap register</a></div>
+</section>
+<section class="section">
+<div class="k">STRICT DISCOVERY PILOT</div>
+<h2>Five load candidates, source-audited</h2>
+<p>Three primary ambiguity targets test identity and physical resolution. Two explicit industrial-load controls test that unresolved large loads are not automatically interpreted as compute.</p>
+<div class="scroll"><table class="matrix"><thead><tr><th>Case</th><th>Load</th><th>Role</th><th>Current state</th><th>Next gate</th></tr></thead><tbody id="strictRows"></tbody></table></div>
+</section>
+<section class="section">
 <div class="k">EMPIRICAL BASE</div>
 <div class="stats" id="empirical"></div>
 </section>
@@ -33,7 +48,7 @@
 <script>
 (async()=>{
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let rows=[];
+let rows=[]; let gapRows=[]; let strictCases=[];
 function pill(s){const z=String(s||'');const k=z.includes('PARTIAL')||z.includes('UNKNOWN')?'warn':z.includes('IMPLEMENTED')||z.includes('INGESTED')?'good':'neutral';return '<span class="pill '+k+'">'+esc(z.replaceAll('_',' '))+'</span>'}
 function render(){
  const q=(document.getElementById('filter').value||'').toLowerCase();
@@ -55,6 +70,42 @@ try{
  ].map(x=>'<div class="card"><div class="num">'+esc(x[0])+'</div><div class="label">'+esc(x[1])+'</div></div>').join('');
 }catch{}
 document.getElementById('filter').addEventListener('input',render);
+try{
+ const g=await fetch('data/track3/coverage_gap_register_2026-09-27.json?cb=20260927',{cache:'no-store'}).then(r=>r.json());
+ gapRows=g.domain_summary||[];
+ const openCells=gapRows.reduce((n,x)=>n+x.open_site_count,0);
+ const resolvedCells=gapRows.reduce((n,x)=>n+x.resolved_site_count,0);
+ const sites=(g.sites||[]).length;
+ const unresolvedPublisher=g.publisher?.summary?.effective_unresolved_publisher_fields ?? g.publisher?.summary?.remaining_unresolved_publisher_fields ?? 0;
+ const cov=Math.round((resolvedCells/(resolvedCells+openCells))*1000)/10;
+ document.getElementById('gapStats').innerHTML=[
+  [String(sites),'canonical sites'],[String(gapRows.length),'evidence domains'],[String(resolvedCells),'resolved domain cells'],[String(openCells),'open domain cells'],[String(unresolvedPublisher),'open publisher fields'],[String(cov)+'%','domain-cell coverage']
+ ].map(x=>'<div class="card"><div class="num">'+esc(x[0])+'</div><div class="label">'+esc(x[1])+'</div></div>').join('');
+ function renderGaps(){
+  const q=(document.getElementById('gapFilter').value||'').toLowerCase();
+  const f=gapRows.filter(x=>JSON.stringify(x).toLowerCase().includes(q));
+  document.getElementById('domainRows').innerHTML=f.map(x=>{
+   const total=x.resolved_site_count+x.open_site_count; const pct=total?Math.round(1000*x.resolved_site_count/total)/10:0;
+   const states=Object.entries(x.status_counts||{}).map(([k,v])=>esc(k.replaceAll('_',' '))+': '+v).join(' · ');
+   return '<tr><td><strong>'+esc(x.domain.replaceAll('_',' '))+'</strong></td><td class="mono">'+x.resolved_site_count+'</td><td class="mono">'+x.open_site_count+'</td><td class="mono">'+pct+'%</td><td class="tiny">'+states+'</td></tr>';
+  }).join('')||'<tr><td colspan="5">No matching domain.</td></tr>';
+ }
+ renderGaps();
+ document.getElementById('gapFilter').addEventListener('input',renderGaps);
+}catch(e){document.getElementById('domainRows').innerHTML='<tr><td colspan="5">Gap register unavailable: '+esc(e.message)+'</td></tr>'}
+try{
+ const s=await fetch('data/track3/strict_discovery_public_evidence.json?cb=20260927',{cache:'no-store'}).then(r=>r.json());
+ const cased=[s,...(s.cases||[])];
+ const seen=new Set();
+ strictCases=cased.filter(x=>x.case_id&&!seen.has(x.case_id)&&seen.add(x.case_id));
+ document.getElementById('strictRows').innerHTML=strictCases.map(x=>{
+  const role=x.research_role||x.current_disposition||'';
+  const obs=x.observations||[];
+  const state=x.current_disposition||'PUBLIC_PROJECT_IDENTITY_RESOLVED';
+  const next=(x.next_gates||[]).slice(0,3).join(' · ')||'—';
+  return '<tr><td><strong>'+esc(x.case_id)+'</strong><div class="tiny">'+esc(x.queue_id||'')+'</div></td><td class="mono">'+esc(x.capacity_mw||'—')+' MW</td><td>'+esc(role.replaceAll('_',' '))+'</td><td>'+pill(state)+'</td><td class="tiny">'+esc(next.replaceAll('_',' '))+'<br>'+obs.length+' retained source observations</td></tr>';
+ }).join('');
+}catch(e){document.getElementById('strictRows').innerHTML='<tr><td colspan="5">Strict evidence unavailable: '+esc(e.message)+'</td></tr>'}
 })();
 </script>
 <script src="observatory-nav.js" defer></script>
