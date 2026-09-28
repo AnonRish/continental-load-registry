@@ -201,6 +201,14 @@ def materialize_record(
     old_map = old.get("map_point")
     map_point = old_map if isinstance(old_map, list) and len(old_map) == 2 else None
     map_precision = old.get("map_precision") if map_point else None
+    map_provenance = None
+    if map_point:
+        map_provenance = {
+            "type": "carried_forward_existing_repository_geometry",
+            "source_url": old.get("source_url"),
+            "source_capture_date": old.get("capture_date"),
+            "precision": map_precision,
+        }
 
     raw_fields = {k: v for k, v in row.items() if v not in (None, "")}
     raw_value = str(row.get(cap_key)).strip() if cap_key and row.get(cap_key) not in (None, "") else (
@@ -242,6 +250,7 @@ def materialize_record(
         "source_scope": "BPA InterconnectionQueueOutput.xlsx — Line/Load load requests",
         "map_point": map_point,
         "map_precision": map_precision,
+        "map_provenance": map_provenance,
         "notes": notes,
         "poi_substation": str(poi).strip() if poi not in (None, "") else None,
         "source_provenance": {
@@ -369,6 +378,8 @@ def write_outputs(records: list[dict[str, Any]], source_sha256: str, capture_dat
             "map_lat": r["map_point"][0] if r.get("map_point") else "",
             "map_lon": r["map_point"][1] if r.get("map_point") else "",
             "map_precision": r["map_precision"] or "",
+            "map_source_url": (r.get("map_provenance") or {}).get("source_url") or "",
+            "map_source_capture_date": (r.get("map_provenance") or {}).get("source_capture_date") or "",
             "source_authority": r["source_authority"],
             "source_sheet": r["source_provenance"]["sheet"],
             "source_row": r["source_provenance"]["source_row"],
@@ -525,12 +536,14 @@ def selftest() -> None:
     ws.append(["L0705", "Open Range", 3300, "Adams County", "WA", "RECEIVED", "Substation A", dt.date(2026, 8, 1)])
     ws.append(["L0706", "Test Withdrawn", 200, "Benton County", "WA", "WITHDRAWN", "Substation B", dt.date(2025, 3, 1)])
     buf = io.BytesIO(); wb.save(buf)
-    old = {"L0705": {"map_point": [46.99, -117.16], "map_precision": "county display point"}}
+    old = {"L0705": {"map_point": [46.99, -117.16], "map_precision": "county display point", "source_url": "https://example.invalid/legacy-source", "capture_date": "2026-09-23"}}
     records, sha = parse_workbook_bytes(buf.getvalue(), old, "2026-09-28")
     assert len(records) == 2
     first = next(r for r in records if r["queue_id"] == "L0705")
     assert first["capacity_claims"][0]["value_mw"] == 3300
     assert first["map_point"] == [46.99, -117.16]
+    assert first["map_provenance"]["source_url"] == "https://example.invalid/legacy-source"
+    assert first["map_provenance"]["source_capture_date"] == "2026-09-23"
     assert first["source_provenance"]["sheet"] == "Line and Load"
     assert first["source_provenance"]["source_row"] == 2
     assert sha
