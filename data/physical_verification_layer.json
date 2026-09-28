@@ -18,7 +18,7 @@
       "id": "TIR",
       "item": "TIR thermal imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "184 Landsat ST scene observations processed with local-background thermal metrics.",
+      "coverage": "200 Landsat ST scene observations processed with local-background thermal metrics.",
       "primary_sources": [
         "landsat-tirs-thermal"
       ]
@@ -27,7 +27,7 @@
       "id": "SAR",
       "item": "SAR imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "187 Sentinel-1 GRD scene observations processed with VV/VH backscatter and temporal deltas.",
+      "coverage": "203 Sentinel-1 GRD scene observations processed with VV/VH backscatter and temporal deltas.",
       "primary_sources": [
         "sentinel-1-sar"
       ]
@@ -90,8 +90,8 @@
     {
       "id": "FOOTPRINT",
       "item": "Building footprint / campus expansion chronology",
-      "status": "INGESTED_POLYGONIZED",
-      "coverage": "92 / 93 sites have current polygonized building-footprint geometry (183272 polygons retained). Dated construction chronology remains a separate layer.",
+      "status": "INGESTED_DERIVED_PROXY",
+      "coverage": "92 sites have multi-temporal optical observations for coarse campus-change proxy analysis; polygonized footprints remain separate.",
       "primary_sources": [
         "overture-buildings",
         "epoch-timelines",
@@ -113,8 +113,8 @@
     "tir_sites": 93,
     "sar_sites": 93,
     "raw_optical_scenes_ingested": 204,
-    "raw_tir_numeric_observations": 184,
-    "raw_sar_numeric_observations": 187,
+    "raw_tir_numeric_observations": 200,
+    "raw_sar_numeric_observations": 203,
     "construction_timeline_sites": 93,
     "construction_to_power_sites": 93,
     "building_footprint_raw_change_detection_sites": 92,
@@ -554,8 +554,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -752,8 +752,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1776,8 +1776,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2246,8 +2246,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2998,8 +2998,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3478,8 +3478,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3562,8 +3562,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3844,8 +3844,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -5724,8 +5724,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6100,8 +6100,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6580,8 +6580,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7322,8 +7322,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7426,8 +7426,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7520,8 +7520,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7614,8 +7614,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7698,8 +7698,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7980,8 +7980,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8074,8 +8074,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8084,8 +8084,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8356,8 +8356,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8554,8 +8554,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8825,8 +8825,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
