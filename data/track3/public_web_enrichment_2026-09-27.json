@@ -4,10 +4,10 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 452,
+    "record_count": 454,
     "sites_with_findings": 93,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 451,
+      "PUBLIC_SOURCE_CAPTURED": 453,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
@@ -33,7 +33,8 @@
       "backup_generation": 1,
       "location": 15,
       "independent_corroboration": 16
-    }
+    },
+    "site_count": 93
   },
   "semantics": {
     "record_level": "Each record is an additive, source-specific public-web capture with explicit field and site scope.",
@@ -7359,9 +7360,41 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "The report states TVA approved a greater-than-100-MW load request for MZX Tech LLC, an affiliate of SpaceXAI, and that MZX Tech would become a direct TVA customer; MLGW is the local utility serving Memphis. The exact confidential service-agreement terms and final allocation of load are not asserted.",
       "evidence_id": "EVID-PWEB-CLOSE-c2039947-ENERGY-20260928"
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-661288625d17662a",
+      "field": "physical_target",
+      "value": "Reuters reported on September 11, 2026 that two people familiar with planning confirmed the Stargate UAE complex is near Al Dhafra Air Base.",
+      "relationship": "area-level physical-location lead",
+      "source": "Reuters",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/uae-revises-ai-data-center-plan-after-iranian-attacks-sources-say-2026-09-11/"
+      ],
+      "publication_date": "2026-09-11",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Secondary reporting establishes an area-level lead only. It does not establish a parcel, polygon, or canonical facility coordinate and is not promoted into the physical target.",
+      "evidence_id": "EVID-PWEB-UAE-LOCATION-20260928"
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-661288625d17662a",
+      "field": "construction_status",
+      "value": "Reuters reported that first-phase construction is expected to continue with modifications while the wider 5 GW campus plan is being reconsidered as a distributed network of UAE sites.",
+      "relationship": "current project-status reporting",
+      "source": "Reuters",
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/uae-revises-ai-data-center-plan-after-iranian-attacks-sources-say-2026-09-11/"
+      ],
+      "publication_date": "2026-09-11",
+      "capture_date": "2026-09-28",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Anonymous-source reporting is retained as attributed current context. It is not treated as an official commissioning, energization, or capacity measurement.",
+      "evidence_id": "EVID-PWEB-UAE-STATUS-20260928"
     }
   ],
-  "record_count": 452,
+  "record_count": 454,
   "generated_on": "2026-09-28",
   "summary": {
     "record_count": 452,
