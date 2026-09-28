@@ -9,8 +9,8 @@
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
     "publisher_tasks": 216,
-    "domain_tasks": 0,
-    "total_tasks": 216,
+    "domain_tasks": 2,
+    "total_tasks": 218,
     "publisher_by_field": {
       "project": 22,
       "investors": 79,
@@ -22,8 +22,8 @@
       "chip_quantities": 10
     },
     "domain_by_domain": {
-      "service_or_contract": 0,
-      "regulatory": 0,
+      "service_or_contract": 1,
+      "regulatory": 1,
       "compute_tenancy": 0,
       "power_telemetry": 0,
       "remote_sensing": 0,
@@ -10575,6 +10575,113 @@
       "reject_rule": "Market shareholders or unrelated financing with no site/project linkage.",
       "existing_next_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "public_leads": [],
+      "canonical_ingest_path": "data/track3/evidence_records.json",
+      "submission_schema": "data/track3/research_submission_schema.json"
+    },
+    {
+      "task_id": "DOM-EPOCH-83ca909f7eb211c7-service-or-contract",
+      "kind": "track3_domain",
+      "status": "OPEN",
+      "priority": "P0",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "site_name": "Google Mesa",
+      "country": "United States",
+      "state_province": "AZ",
+      "current_it_power_mw": 183,
+      "domain": "service_or_contract",
+      "workflow_label": "Service / energy contract",
+      "objective": "Find site-specific utility service, capacity reservation, power purchase, direct supply, or contractual energy evidence.",
+      "search_sequence": [
+        "Serving utility tariff/service filings",
+        "regulator dockets",
+        "utility large-load proceedings",
+        "municipal/development agreements",
+        "company disclosures"
+      ],
+      "queries": [
+        "\"Google Mesa\" service agreement utility",
+        "\"Google Mesa\" power contract",
+        "\"Google Mesa\" load service agreement AZ"
+      ],
+      "search_links": [
+        "https://www.google.com/search?q=%22Google+Mesa%22+service+agreement+utility",
+        "https://www.google.com/search?q=%22Google+Mesa%22+power+contract",
+        "https://www.google.com/search?q=%22Google+Mesa%22+load+service+agreement+AZ"
+      ],
+      "evidence_to_capture": [
+        "counterparties",
+        "contract/service type",
+        "capacity if stated",
+        "case/docket/document ID",
+        "date",
+        "URL/locator"
+      ],
+      "acceptance_rule": "Document identifies the site and contractual/service relationship.",
+      "reject_rule": "Generic tariff availability or regional service.",
+      "existing_next_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
+      "public_leads": [
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
+          "finding": "Secondary public records identify APS as the electricity provider for Google Mesa; source-level ingestion is still required.",
+          "source": "DataCenterSearch / public facility records",
+          "source_url": null
+        }
+      ],
+      "canonical_ingest_path": "data/track3/evidence_records.json",
+      "submission_schema": "data/track3/research_submission_schema.json"
+    },
+    {
+      "task_id": "DOM-EPOCH-83ca909f7eb211c7-regulatory",
+      "kind": "track3_domain",
+      "status": "OPEN",
+      "priority": "P0",
+      "epoch_id": "EPOCH-83ca909f7eb211c7",
+      "site_name": "Google Mesa",
+      "country": "United States",
+      "state_province": "AZ",
+      "current_it_power_mw": 183,
+      "domain": "regulatory",
+      "workflow_label": "Regulatory / permitting",
+      "objective": "Collect site-specific planning, zoning, building, environmental, water, air, tax-incentive, or utility proceedings.",
+      "search_sequence": [
+        "Municipal planning/building portals",
+        "county records",
+        "state/provincial regulator databases",
+        "environmental agency records",
+        "tax-incentive/public development records"
+      ],
+      "queries": [
+        "\"Google Mesa\" permit planning zoning",
+        "\"Google Mesa\" environmental permit AZ",
+        "\"Google Mesa\" public hearing data center"
+      ],
+      "search_links": [
+        "https://www.google.com/search?q=%22Google+Mesa%22+permit+planning+zoning",
+        "https://www.google.com/search?q=%22Google+Mesa%22+environmental+permit+AZ",
+        "https://www.google.com/search?q=%22Google+Mesa%22+public+hearing+data+center"
+      ],
+      "evidence_to_capture": [
+        "agency",
+        "record type",
+        "case/permit number",
+        "status",
+        "date",
+        "site linkage",
+        "URL/locator"
+      ],
+      "acceptance_rule": "Official record clearly pertains to the site/project.",
+      "reject_rule": "General policy or program pages without a site-specific action.",
+      "existing_next_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
+      "public_leads": [
+        {
+          "field": "energy_companies",
+          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
+          "finding": "Secondary public records identify APS as the electricity provider for Google Mesa; source-level ingestion is still required.",
+          "source": "DataCenterSearch / public facility records",
+          "source_url": null
+        }
+      ],
       "canonical_ingest_path": "data/track3/evidence_records.json",
       "submission_schema": "data/track3/research_submission_schema.json"
     }
