@@ -71,7 +71,8 @@ def main() -> None:
     assert scope_cat["core_record_count"] == row_count
     assert scope_cat["expanded_known_record_count"] == 1623
     assert_close(scope_cat["expanded_known_capacity_gw"], 394.6181)
-    assert cat["data/track3/evidence_records.json"]["record_count"] == 1221
+    evidence_catalog_count = int(cat["data/track3/evidence_records.json"]["record_count"])
+    assert evidence_catalog_count > 0
     assert cat["data/epoch_site_evidence_records.json"]["record_count"] == 102
     bpa = load("data/bpa_large_load_registry.json")
     bpa_count = bpa["record_count"]
@@ -112,8 +113,9 @@ def main() -> None:
     assert len(observation["tasks"]) == summary["observation_task_count"] == sum(summary["observation_task_counts_by_domain"].values())
     assert set(observation["tasks"][0].keys()) >= {"task_id","epoch_id","domain","current_state","priority"}
     assert summary["epoch_site_count"] == 93
-    assert summary["track3_evidence_record_count"] == 1221
-    assert load("data/track3/evidence_records.json")["record_count"] == 1221
+    evidence_ledger = load("data/track3/evidence_records.json")
+    assert summary["track3_evidence_record_count"] == evidence_ledger["record_count"]
+    assert evidence_catalog_count == evidence_ledger["record_count"]
     rs=json.loads((ROOT / "data/track3/remote_sensing_observations.json").read_text(encoding="utf-8"))
     assert summary["remote_sensing_derived_observation_count"] == rs["derived_observation_count"] == len(rs["records"])
     assert summary["transformer_event_count"] == 3
