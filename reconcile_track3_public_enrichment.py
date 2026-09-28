@@ -60,8 +60,8 @@ def main() -> int:
         rec["open_track3_domains"] = [
             domain
             for domain, state_counts in site_status.get("summary", {}).get("domain_status_counts", {}).items()
-            if rec.get("domains", {}).get(domain, {}).get("status") in OPEN_STATES
-        ] if rec.get("domains") else rec.get("open_track3_domains", [])
+            if rec.get("domain_state_snapshot", {}).get(domain) in OPEN_STATES
+        ] if rec.get("domain_state_snapshot") else rec.get("open_track3_domains", [])
         rec["remaining_unresolved_publisher_fields"] = [
             f for f in (rec.get("remaining_unresolved_publisher_fields") or [])
             if f not in found
