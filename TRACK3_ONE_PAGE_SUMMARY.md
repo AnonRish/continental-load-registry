@@ -10,7 +10,7 @@ Its North American registry currently covers nine organized markets. A separate 
 
 The repository has a reproducible grid-ingestion pipeline with source hashes and filter funnels; conservative entity resolution; facility research records; a 93-site Epoch crosswalk; public site-level utility/service evidence; a structured Track 3 evidence ledger; terminal site/domain accounting; separate research and observation queues; and public API/bulk-download surfaces.
 
-The physical layer is no longer just a design checklist. As of 2026-09-28 it retains 575 derived remote-sensing observations across 92 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. The current physical-target layer has defensible site coordinates for 92 of 93 sites; one site remains unresolved and is not fabricated into a target.
+The physical layer is no longer just a design checklist. As of 2026-09-28 it retains 575 derived remote-sensing observations across 92 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. The current physical-target layer has defensible site coordinates for 92 of 93 sites; one site remains unresolved and is not fabricated into a target. The unresolved site is OpenAI Stargate UAE: September 11, 2026 Reuters reporting adds an area-level lead near Al Dhafra Air Base, but it does not establish a canonical parcel or facility coordinate, so no site-specific observation is claimed there.
 
 The physical observations are intentionally compact: scene/item IDs, dates, source URLs, processing version, and derived metrics are retained rather than full raster archives.
 
