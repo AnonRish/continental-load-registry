@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rebuild/check the retained-artifact section of Track 3 provenance."""
 from __future__ import annotations
-import argparse, hashlib, json
+import argparse, csv, hashlib, json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
@@ -33,7 +33,7 @@ def retained_entry(rel:str)->dict:
         entry["record_count"]=len(data.get("records",[]))
     elif rel.endswith("remote_sensing_observations.csv"):
         with path.open("r",encoding="utf-8",newline="") as f:
-            entry["record_count"]=max(0,sum(1 for _ in f)-1)
+            entry["record_count"]=max(0,sum(1 for _ in csv.reader(f))-1)
     elif rel.endswith("building_footprints_index.json"):
         data=json.loads(path.read_text(encoding="utf-8"))
         entry["record_count"]=len(data.get("records",[]))
@@ -41,7 +41,7 @@ def retained_entry(rel:str)->dict:
         entry["polygon_file_count"]=int(data.get("polygon_file_count",data.get("sites_with_polygon_files",0)))
     elif rel.endswith("physical_verification_layer.json"):
         data=json.loads(path.read_text(encoding="utf-8"))
-        entry["site_record_count"]=len(data.get("sites",data.get("records",[])))
+        entry["site_record_count"]=len(data.get("site_records",data.get("sites",data.get("records",[]))))
     elif rel.endswith("physical_site_coordinates.json"):
         data=json.loads(path.read_text(encoding="utf-8"))
         entry["record_count"]=len(data.get("records",[]))
