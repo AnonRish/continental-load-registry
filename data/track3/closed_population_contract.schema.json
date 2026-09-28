@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Track 3 closed population contract",
+  "type":"object",
+  "required":["population_id","frozen_at","scope","threshold_units","population_complete","sampling_frame_digest","authoritative_sources"],
+  "properties":{
+    "population_id":{"type":"string","minLength":1},
+    "frozen_at":{"type":"string","minLength":1},
+    "scope":{"type":"string","minLength":1},
+    "threshold_units":{"type":"number","minimum":0},
+    "population_complete":{"type":"boolean"},
+    "sampling_frame_digest":{"type":"string","minLength":32},
+    "authoritative_sources":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+    "stable_unit_identifier":{"type":"string"},
+    "serial_continuity_verified":{"type":"boolean"},
+    "physical_inspection_authority":{"type":"boolean"},
+    "independent_audit_authority":{"type":"boolean"}
+  },
+  "additionalProperties":false
+}
