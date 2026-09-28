@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "PROV-72c9a483e7c8",
+  "created_at_utc": "2026-09-28T01:09:51.049970+00:00",
+  "created_from_commit": "72c9a483e7c80c810795f9c7056155ee24e3d59f",
+  "facility_count": 93,
+  "evidence_record_count": 1007,
+  "provenance_artifact_path": "data/track3/facility_provenance.json",
+  "source_artifacts": [
+    {
+      "path": "data/external/epoch_ai/registry.json",
+      "sha256": "3b086ba43ecffd3622cd761fd5cbcaea8648c4ac0d934867bd260127a198a78f"
+    },
+    {
+      "path": "data/track3/evidence_records.json",
+      "sha256": "f58ac2b0df77335433d15d5bac03edd5e6c6f69c7d15c5261e2fc135e563104a"
+    },
+    {
+      "path": "data/track3/site_status.json",
+      "sha256": "46fc25a88aedf4aaa5cfed311cb7f179cb071d51b432e1697513bdb8f430d4bb"
+    },
+    {
+      "path": "data/track3/building_footprints_index.json",
+      "sha256": "248e4a39da776723f6a173dacafd051ffed2590a1975155d23567d760eea8245"
+    },
+    {
+      "path": "data/track3/time_series_verification.json",
+      "sha256": "2f548c45c7f2a6fc929e14888ab412b4beaa8dbe4c3665d930ab1dc4c6774db2"
+    }
+  ],
+  "historical_retention": "Git history plus SHA-256 input hashes. External source documents remain referenced rather than universally archived.",
+  "limitations": [
+    "External source documents are not universally mirrored.",
+    "Publication dates are null when not explicitly captured.",
+    "No human reviewer is asserted by this automated build."
+  ]
+}
