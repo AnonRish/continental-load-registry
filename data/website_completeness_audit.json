@@ -15,10 +15,10 @@
     "transformer_events": 3,
     "public_web_enrichment_records": 400,
     "public_web_enrichment_sites": 93,
-    "publisher_research_tasks": 273,
-    "open_track3_domain_cells": 711,
+    "publisher_research_tasks": 221,
+    "open_track3_domain_cells": 598,
     "public_web_enrichment_site_records": 166,
-    "research_tasks": 984,
+    "research_tasks": 819,
     "physical_optical_sites": 93,
     "physical_tir_sites": 93,
     "physical_sar_sites": 93,
@@ -187,7 +187,7 @@
       "section": "93-site public enrichment bridge",
       "status": "POPULATED",
       "artifact": "data/external/intel_accelerator_enrichment.json",
-      "detail": "Public program/owner/address/energy/EPC/grid fields are source-tracked for all 93 sites."
+      "detail": "Public program/owner/address/energy/EPC/grid fields are source-tracked for all 93 sites; 400 retained public-web enrichment records."
     },
     {
       "section": "Track 3 source stack",
@@ -199,7 +199,7 @@
       "section": "Track 3 research console",
       "status": "POPULATED",
       "artifact": "data/track3/site_status.json + observation_queue.json",
-      "detail": "Search/filter console and acquisition backlog."
+      "detail": "Search/filter console and acquisition backlog; current gap register has 221 effective publisher-field tasks and 598 open domain cells."
     },
     {
       "section": "Methodology",
@@ -221,6 +221,7 @@
     }
   ],
   "notes": {
-    "reconciled_against": "data/track3/evidence_records.json + data/track3/site_status.json + data/track3/public_web_enrichment_2026-09-27.json + data/large_load_scope.json"
+    "reconciled_against": "data/track3/evidence_records.json + data/track3/site_status.json + data/track3/public_web_enrichment_2026-09-27.json + data/track3/large_load_scope.json",
+    "reconciliation_note": "Counts reconciled to the current committed Track 3 summary, remote-sensing observation ledger, public-web enrichment ledger, and coverage gap register on 2026-09-28."
   }
 }
