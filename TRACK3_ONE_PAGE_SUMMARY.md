@@ -10,7 +10,7 @@ Its North American registry currently covers nine organized markets. A separate 
 
 The repository has a reproducible grid-ingestion pipeline with source hashes and filter funnels; conservative entity resolution; facility research records; a 93-site Epoch crosswalk; public site-level utility/service evidence; a structured Track 3 evidence ledger; a one-task research queue; and public API/bulk-download surfaces.
 
-The physical layer is no longer just a design checklist. As of 2026-09-27 it retains 551 retained derived remote-sensing observations across 88 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. It also retains current Overture Maps building footprints for 68 sites.
+The physical layer is no longer just a design checklist. As of 2026-09-28 it retains 575 derived remote-sensing observations across 92 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. The current physical-target layer has defensible site coordinates for 92 of 93 sites; one site remains unresolved and is not fabricated into a target.
 
 The physical observations are intentionally compact: scene/item IDs, dates, source URLs, processing version, and derived metrics are retained rather than full raster archives.
 
@@ -49,7 +49,11 @@ Research / policy: close one site-specific evidence task, test the Phase 1/Track
 
 Verification / security: audit claim gates, design adversarial tests, and connect public physical/accounting evidence to independently testable verification mechanisms.
 
-Start from the Research Operations Console and the repository contribution guide.
+Start from the Research Operations Console, the Track 3 completion gate, and the external-capability handoff. The software/data contract is complete where public evidence permits; the remaining empirical requirements require authorized or non-public capabilities.
+
+## Current engineering closure
+
+The repository now publishes a machine-readable external-capability handoff, an interval-power-telemetry intake protocol, and a physical-target-lead ledger for the one unresolved Epoch reference site. These artifacts turn the remaining gaps into explicit, testable handoff contracts instead of leaving them as prose-only TODOs.
 
 ## Important limits
 
