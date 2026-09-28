@@ -113,6 +113,9 @@ jobs:
       - name: Reconcile remote-sensing target states
         run: python build_remote_sensing_target_status.py
 
+      - name: Refresh retained physical-artifact provenance
+        run: python refresh_physical_source_manifest.py
+
       - name: Rebuild public-web claim layer
         run: python build_public_web_claims.py
 
