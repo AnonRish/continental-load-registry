@@ -65,7 +65,7 @@ jobs:
 
       - name: Compile Python
         run: |
-          python -m py_compile build_track3_evidence.py module1_physical_radar.py validate_track3_ledger.py sync_track3_external_sources.py track3_certificate.py validate_track3_complete_coverage.py validate_track3_release.py build_track3_engineering_closure.py
+          python -m py_compile build_track3_evidence.py module1_physical_radar.py validate_track3_ledger.py sync_track3_external_sources.py track3_certificate.py validate_track3_complete_coverage.py validate_track3_release.py build_track3_engineering_closure.py build_physical_provenance_manifest.py
 
       - name: Self-test Track 3 external source map
         run: python sync_track3_external_sources.py --selftest
