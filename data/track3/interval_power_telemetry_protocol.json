@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-28",
+  "title": "Interval power telemetry intake protocol",
+  "status": "PROTOCOL_IMPLEMENTED_NO_SITE_LEVEL_INTERVAL_TELEMETRY_RETAINED",
+  "purpose": "Define a lossless, source-aware contract for interval electricity telemetry without converting queue or service capacity into synthetic meter data.",
+  "accepted_states": [
+    "NOT_AVAILABLE_PUBLIC",
+    "SOURCE_AVAILABLE_NOT_INGESTED",
+    "SYSTEM_LEVEL_ONLY",
+    "INGESTED_INTERVAL",
+    "AUTHORIZED_INTERVAL",
+    "UNKNOWN"
+  ],
+  "required_fields": [
+    "telemetry_id",
+    "facility_id",
+    "meter_id",
+    "period_start",
+    "period_end",
+    "interval_seconds",
+    "active_power_mw",
+    "energy_mwh",
+    "reactive_power_mvar",
+    "timezone",
+    "meter_boundary",
+    "measurement_method",
+    "measurement_status",
+    "source_type",
+    "source_url",
+    "source_capture_date",
+    "evidence_id",
+    "quality_flags"
+  ],
+  "source_hierarchy": [
+    "Public site-level interval meter or regulator data",
+    "Authorized utility/transmission-provider meter data",
+    "Authorized facility meter data",
+    "System/BA-level load data as context only"
+  ],
+  "rules": [
+    "System-level data cannot be promoted to site-level telemetry.",
+    "Queue/interconnection MW and contracted capacity are not meter observations.",
+    "Annual estimates are not converted into synthetic intervals.",
+    "Every interval retains source, meter boundary, timezone and quality flags.",
+    "Missing intervals are explicit gaps unless separately labeled as estimates.",
+    "Negative, duplicate, overlapping or impossible intervals are rejected or quarantined."
+  ],
+  "current_state": {
+    "site_level_interval_records": 0,
+    "authorized_interval_records": 0,
+    "system_level_context_records": 0,
+    "status": "NO_SITE_LEVEL_INTERVAL_TELEMETRY_RETAINED"
+  },
+  "acceptance_test": "A site-level telemetry record is admissible only when facility identity, meter boundary, interval definition, source provenance and quality semantics are retained."
+}
