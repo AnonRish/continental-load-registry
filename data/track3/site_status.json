@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-28T03:22:57.026334+00:00",
+    "generated_at_utc": "2026-09-28T03:24:37.474035+00:00",
     "epoch_site_count": 93,
     "observation_task_count": 24,
     "observation_task_counts_by_domain": {
@@ -14,7 +14,7 @@
       "P1": 18
     },
     "site_level_evidence_site_count": 93,
-    "public_web_evidence_record_count": 438,
+    "public_web_evidence_record_count": 448,
     "public_web_evidence_site_count": 93,
     "combined_site_level_evidence_site_count": 93,
     "site_specific_queue_id_count": 2,
@@ -37,8 +37,8 @@
         "VERIFIED_SITE_SPECIFIC": 2
       },
       "service_or_contract": {
-        "SITE_LEVEL_EVIDENCE": 31,
-        "ASSESSMENT_COMPLETE": 62
+        "SITE_LEVEL_EVIDENCE": 33,
+        "ASSESSMENT_COMPLETE": 60
       },
       "regulatory": {
         "INGESTED": 21,
@@ -74,8 +74,8 @@
         "INGESTED_SNAPSHOT": 93
       },
       "independent_corroboration": {
-        "ASSESSED": 12,
-        "ASSESSMENT_COMPLETE": 81
+        "ASSESSED": 15,
+        "ASSESSMENT_COMPLETE": 78
       }
     },
     "source_stack_count": 30,
@@ -915,9 +915,8 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-5b353d56a567a70b-service_or_contract"
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "ASSESSMENT_COMPLETE",
@@ -967,15 +966,14 @@
           "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         },
         "independent_corroboration": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-5b353d56a567a70b-independent_corroboration"
+          "status": "ASSESSED",
+          "basis": "A retained public-web corroboration record documents materially independent public sources for this site."
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 9,
+      "public_web_evidence_count": 11,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 11,
+      "combined_site_level_evidence_count": 13,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
@@ -2785,9 +2783,8 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-service_or_contract"
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
         },
         "regulatory": {
           "status": "ASSESSMENT_COMPLETE",
@@ -2836,15 +2833,14 @@
           "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         },
         "independent_corroboration": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-independent_corroboration"
+          "status": "ASSESSED",
+          "basis": "A retained public-web corroboration record documents materially independent public sources for this site."
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 10,
+      "public_web_evidence_count": 13,
       "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 12,
+      "combined_site_level_evidence_count": 15,
       "next_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case."
     },
     {
@@ -4178,15 +4174,14 @@
           "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         },
         "independent_corroboration": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-4525348d114e3e8e-independent_corroboration"
+          "status": "ASSESSED",
+          "basis": "A retained public-web corroboration record documents materially independent public sources for this site."
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 3,
+      "public_web_evidence_count": 5,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 4,
+      "combined_site_level_evidence_count": 6,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
@@ -7470,9 +7465,9 @@
         }
       },
       "site_level_evidence_count": 1,
-      "public_web_evidence_count": 5,
+      "public_web_evidence_count": 8,
       "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 6,
+      "combined_site_level_evidence_count": 9,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
