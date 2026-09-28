@@ -4,7 +4,7 @@
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 316,
+    "record_count": 329,
     "sites_with_findings": 89,
     "disposition_counts": {
       "PUBLIC_SOURCE_CAPTURED": 315,
@@ -14,17 +14,17 @@
       "energy_companies": 82,
       "project": 63,
       "investment": 24,
-      "owner": 10,
-      "investors": 5,
+      "owner": 12,
+      "investors": 6,
       "construction_companies": 41,
-      "cooling": 15,
+      "cooling": 16,
       "chip_quantities": 6,
       "operational_status": 9,
-      "address": 9,
-      "service_or_contract": 14,
+      "address": 11,
+      "service_or_contract": 17,
       "users": 6,
-      "regulatory": 10,
-      "capacity_record": 11,
+      "regulatory": 13,
+      "capacity_record": 12,
       "operational_efficiency": 5,
       "backup_generation": 1,
       "construction_status": 1,
@@ -5177,8 +5177,223 @@
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "Stream identifies PHXA as its Phoenix campus and reports 280 MW at full build.",
       "evidence_id": "EVID-PWEB-stream-phoenix-project-20260927"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "regulatory",
+      "value": "Indiana Part 70 operating permit T141-47750-00642 for Amazon Data Services, Inc., 55001 Larrison Blvd., New Carlisle, Indiana 46552.",
+      "relationship": "site-specific environmental permit",
+      "source": "Indiana Department of Environmental Management",
+      "source_urls": [
+        "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dDocName=83736344&dID=83732301"
+      ],
+      "publication_date": "2025-11-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Government permit record; establishes a site-specific regulated facility record, not current AI compute operation.",
+      "evidence_id": "EVID-PWEB-NC-REG-20260927"
+    },
+    {
+      "site_name": "Anthropic-Amazon New Carlisle",
+      "epoch_id": "EPOCH-45b3c74314eb1f26",
+      "field": "address",
+      "value": "55001 Larrison Blvd., New Carlisle, Indiana 46552",
+      "relationship": "site address",
+      "source": "Indiana Department of Environmental Management",
+      "source_urls": [
+        "https://ecm.idem.in.gov/cs/idcplg?IdcService=GET_FILE&dDocName=83736344&dID=83732301"
+      ],
+      "publication_date": "2025-11-21",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Exact address retained in the public environmental permit record.",
+      "evidence_id": "EVID-PWEB-NC-ADDR-20260927"
+    },
+    {
+      "site_name": "Coreweave Helios",
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "field": "regulatory",
+      "value": "Texas Architectural Barriers Project TABS2025012175 for Helios: new construction of a 136,057-square-foot data center plus 11,400-square-foot water treatment building at 984 County Road 112, Afton, Texas; estimated cost $800 million; review complete.",
+      "relationship": "site-specific building/regulatory record",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2025012175"
+      ],
+      "publication_date": "2025-02-18",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "TDLR primary record; building/regulatory evidence does not establish current energization or AI workload.",
+      "evidence_id": "EVID-PWEB-HELIOS-REG-20260927"
+    },
+    {
+      "site_name": "Coreweave Helios",
+      "epoch_id": "EPOCH-a69e48fd129d0cdb",
+      "field": "owner",
+      "value": "Galaxy Helios I LLC",
+      "relationship": "facility owner named in TDLR filing",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Print/TABS2025012175"
+      ],
+      "publication_date": "2025-02-18",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Legal owner named in primary building filing; tenant field is not assigned in the filing.",
+      "evidence_id": "EVID-PWEB-HELIOS-OWNER-20260927"
+    },
+    {
+      "site_name": "Microsoft SAT40",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "field": "regulatory",
+      "value": "Texas Architectural Barriers Project TABS2023013247: new construction of SAT40 Data Center at 15000 Lambda Drive, San Antonio, Bexar County; 153,227 square feet; estimated cost $175.9 million; review complete.",
+      "relationship": "site-specific building/regulatory record",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "publication_date": "2023-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "TDLR primary record; this closes a regulatory evidence field but is not an interval electricity measurement.",
+      "evidence_id": "EVID-PWEB-SAT40-REG-20260927"
+    },
+    {
+      "site_name": "Microsoft SAT40",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "field": "owner",
+      "value": "Microsoft",
+      "relationship": "facility owner named in TDLR filing",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "publication_date": "2023-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Owner field in the primary TDLR project record.",
+      "evidence_id": "EVID-PWEB-SAT40-OWNER-20260927"
+    },
+    {
+      "site_name": "Microsoft SAT40",
+      "epoch_id": "EPOCH-71d0091a05448224",
+      "field": "address",
+      "value": "15000 Lambda Drive, San Antonio, TX 78245",
+      "relationship": "site address",
+      "source": "Texas Department of Licensing and Regulation",
+      "source_urls": [
+        "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247"
+      ],
+      "publication_date": "2023-03-03",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Exact site address in the primary TDLR project record.",
+      "evidence_id": "EVID-PWEB-SAT40-ADDR-20260927"
+    },
+    {
+      "site_name": "Start Campus Sines Data Campus",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "field": "cooling",
+      "value": "SINES Data Campus uses seawater cooling that repurposes infrastructure from a decommissioned power plant; the operator describes the campus as water-free on the freshwater-use dimension.",
+      "relationship": "site cooling system",
+      "source": "Start Campus",
+      "source_urls": [
+        "https://www.startcampus.pt/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Operator statement about campus cooling architecture; this is infrastructure evidence, not direct thermal telemetry.",
+      "evidence_id": "EVID-PWEB-SINES-COOL-20260927"
+    },
+    {
+      "site_name": "Start Campus Sines Data Campus",
+      "epoch_id": "EPOCH-8baa344f9717520c",
+      "field": "service_or_contract",
+      "value": "Start Campus states the SINES Data Campus has 1.2 GW total campus capacity and describes the campus as powered by 100% renewable energy; the operator previously announced that the additional power allocation was secured through REN.",
+      "relationship": "grid capacity / energy-service context",
+      "source": "Start Campus",
+      "source_urls": [
+        "https://www.startcampus.pt/",
+        "https://www.startcampus.pt/press_release_august_2024_1gw"
+      ],
+      "publication_date": "2024-08-08",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Public operator/grid-allocation evidence is retained separately from interval meter data.",
+      "evidence_id": "EVID-PWEB-SINES-SVC-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate Michigan",
+      "epoch_id": "EPOCH-145ed5861bdf2982",
+      "field": "service_or_contract",
+      "value": "OpenAI states DTE Energy will serve the Stargate Michigan campus using existing excess transmission capacity; any upgrades required for operations are to be funded by the project rather than local ratepayers.",
+      "relationship": "utility service / project-funded grid support",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/expanding-stargate-to-michigan/"
+      ],
+      "publication_date": "2025-10-30",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Company statement about planned utility service; it is not a measured-load or executed service-contract record.",
+      "evidence_id": "EVID-PWEB-MI-SVC-20260927"
+    },
+    {
+      "site_name": "Microsoft Narvik Norway",
+      "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
+      "field": "service_or_contract",
+      "value": "Microsoft identifies the Narvik/Kvandal site as selected for its access to hydropower and transmission infrastructure; public project material reports 230 MW of secured grid capacity for the site.",
+      "relationship": "site grid-capacity context",
+      "source": "Microsoft",
+      "source_urls": [
+        "https://www.microsoft.com/en-us/european-data-centre-region/norway/narvik"
+      ],
+      "publication_date": "2025-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Public project/grid context; exact contract and interval consumption remain unretained.",
+      "evidence_id": "EVID-PWEB-NARVIK-SVC-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-661288625d17662a",
+      "field": "capacity_record",
+      "value": "OpenAI announced a 1 GW Stargate UAE cluster in Abu Dhabi, with 200 MW expected to go live in 2026.",
+      "relationship": "project capacity announcement",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/introducing-stargate-uae/"
+      ],
+      "publication_date": "2025-05-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Announced cluster capacity; not a measured operating-load record.",
+      "evidence_id": "EVID-PWEB-UAE-CAP-20260927"
+    },
+    {
+      "site_name": "OpenAI Stargate UAE",
+      "epoch_id": "EPOCH-661288625d17662a",
+      "field": "investors",
+      "value": [
+        "G42",
+        "Oracle",
+        "NVIDIA",
+        "Cisco",
+        "SoftBank"
+      ],
+      "relationship": "named Stargate UAE partners/investment counterparties",
+      "source": "OpenAI",
+      "source_urls": [
+        "https://openai.com/index/introducing-stargate-uae/"
+      ],
+      "publication_date": "2025-05-22",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "scope_note": "Named partners in the OpenAI announcement; relationship type is retained as published and is not relabeled as equity ownership.",
+      "evidence_id": "EVID-PWEB-UAE-PARTNERS-20260927"
     }
   ],
-  "record_count": 316,
+  "record_count": 329,
   "generated_on": "2026-09-27"
 }
