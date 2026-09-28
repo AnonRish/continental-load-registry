@@ -76,10 +76,20 @@ def main() -> None:
     bpa = load("data/bpa_large_load_registry.json")
     bpa_count = bpa["record_count"]
     bpa_mapped = bpa["mapped_record_count"]
+    bpa_threshold = float(bpa.get("threshold_mw", 0))
+    assert bpa_threshold == 100.0
     assert bpa_count == len(bpa["records"]) > 0
     assert bpa["unmapped_record_count"] == bpa_count - bpa_mapped
     assert bpa_mapped == sum(1 for x in bpa["records"] if isinstance(x.get("map_point"), list) and len(x["map_point"]) == 2)
-    assert all(str(x.get("id","")).startswith("BPA-") for x in bpa["records"])
+    assert all(
+        str(x.get("id","")).startswith("BPA-")
+        and x.get("capacity_claims")
+        and float(x["capacity_claims"][0].get("value_mw", 0)) >= bpa_threshold
+        for x in bpa["records"]
+    )
+    bpa_population = bpa.get("source", {}).get("source_population_accounting", {})
+    assert int(bpa_population.get("eligible_rows_at_threshold_mw", -1)) == bpa_count
+    assert int(bpa_population.get("raw_l_series_rows_on_record", -1)) >= bpa_count
     assert cat["data/bpa_large_load_registry.json"]["record_count"] == bpa_count
     assert cat["data/bpa_large_load_registry.csv"]["record_count"] == bpa_count
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
