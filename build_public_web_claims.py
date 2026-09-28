@@ -24,8 +24,13 @@ def stable_claim_id(x: dict) -> str:
         "source_urls": x.get("source_urls") or [],
         "publication_date": x.get("publication_date"),
     }
-    digest = hashlib.sha256(json.dumps(key, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:20]
-    return "PWEB-SOURCE-" + digest
+    payload = json.dumps(key, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+    # Stable, non-cryptographic FNV-1a digest for unbound source records.
+    h = 1469598103934665603
+    for b in payload.encode("utf-8"):
+        h ^= b
+        h = (h * 1099511628211) & 0xffffffffffffffff
+    return "PWEB-SOURCE-" + f"{h:016x}"
 
 def main() -> int:
     d = json.loads(SRC.read_text(encoding="utf-8"))
