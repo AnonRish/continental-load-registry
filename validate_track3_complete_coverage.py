@@ -259,10 +259,15 @@ def main() -> int:
 
     leads = load("data/track3/public_research_leads.json")
     lead_rows = leads.get("records", [])
-    assert leads.get("accounting", {}).get("lead_count") == len(lead_rows) == 54
-    assert leads.get("accounting", {}).get("site_count") == 34
-    assert len({x.get("lead_id") for x in lead_rows}) == len(lead_rows)
-    assert all(x.get("epoch_id") and x.get("field") and x.get("finding") for x in lead_rows)
+    lead_accounting = leads.get("accounting", {})
+    unique_lead_ids = {x.get("lead_id") for x in lead_rows}
+    unique_lead_sites = {x.get("epoch_id") for x in lead_rows if x.get("epoch_id")}
+    assert isinstance(lead_accounting.get("lead_count"), int)
+    assert lead_accounting.get("lead_count") == len(lead_rows)
+    assert isinstance(lead_accounting.get("site_count"), int)
+    assert lead_accounting.get("site_count") == len(unique_lead_sites)
+    assert len(unique_lead_ids) == len(lead_rows)
+    assert all(x.get("lead_id") and x.get("epoch_id") and x.get("field") and x.get("finding") for x in lead_rows)
     assert all(x.get("status") in {"PUBLIC_LEAD_REVIEW_REQUIRED","RETAINED_SOURCE","PUBLIC_SOURCE"} for x in lead_rows)
 
     gap_register = load("data/track3/coverage_gap_register_2026-09-27.json")
@@ -272,6 +277,10 @@ def main() -> int:
         errors.append("coverage gap register is not exactly 15 evidence domains")
     if gap_register.get("summary", {}).get("public_web_enrichment_records") != enrichment.get("record_count"):
         errors.append("coverage gap register public-enrichment count does not reconcile")
+    if gap_register.get("summary", {}).get("total_public_research_leads") != lead_accounting.get("lead_count"):
+        errors.append("coverage gap register public-research-lead count does not reconcile")
+    if gap_register.get("summary", {}).get("sites_with_public_research_leads") != lead_accounting.get("site_count"):
+        errors.append("coverage gap register public-research-lead site count does not reconcile")
     enrichment_site_count = enrichment.get("accounting", {}).get("site_count")
     if enrichment_site_count is None:
         enrichment_site_count = enrichment.get("accounting", {}).get("sites_with_findings")
