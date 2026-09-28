@@ -5,7 +5,7 @@
 - 93 canonical Epoch reference sites.
 - 1,395 / 1,395 defined site × domain cells in terminal evidence-accounting states.
 - 454 retained public-web evidence records.
-- 575 retained derived remote-sensing observations across 92 sites.
+- 631 retained derived remote-sensing observations across 92 sites.
 - 92 of 93 reference-site physical targets resolved; one remains explicitly unresolved.
 - 4 closed ambiguous-load pilot cases.
 - 5 strict discovery cases with terminal dispositions.
