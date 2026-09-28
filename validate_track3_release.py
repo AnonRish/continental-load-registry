@@ -14,9 +14,9 @@ def main():
     p=load("data/track3/interval_power_telemetry_protocol.json")
     leads=load("data/track3/physical_target_leads.json")
     checks=[(s.get("epoch_site_count")==93,"summary site count must be 93"),
-            (s.get("public_web_evidence_record_count")==452,"summary public-web evidence count must be 452"),
+            (s.get("public_web_evidence_record_count")==454,"summary public-web evidence count must be 454"),
             (s.get("remote_sensing_derived_observation_count")==575,"summary remote-sensing count must be 575"),
-            (g.get("public_evidence_accounting",{}).get("public_web_evidence_records")==452,"completion gate public-web count must be 452"),
+            (g.get("public_evidence_accounting",{}).get("public_web_evidence_records")==454,"completion gate public-web count must be 454"),
             (g.get("public_evidence_accounting",{}).get("remote_sensing_derived_observations")==575,"completion gate remote-sensing count must be 575"),
             (g.get("empirical_track3_verification",{}).get("status")=="NOT_CLOSED","empirical Track 3 status must remain NOT_CLOSED"),
             (g.get("current_public_data_boundaries",{}).get("one_reference_site_without_site_specific_public_physical_target")=="EPOCH-661288625d17662a","unresolved physical target changed"),
@@ -41,6 +41,6 @@ def main():
         [print("ERROR:",e) for e in errors]
         return 1
     print("PASS: Track 3 release consistency checks passed.")
-    print("PASS: 93 sites / 452 public-web records / 575 remote observations / 4 pilot cases / 5 strict cases.")
+    print("PASS: 93 sites / 454 public-web records / 575 remote observations / 4 pilot cases / 5 strict cases.")
     return 0
 if __name__=="__main__": raise SystemExit(main())
