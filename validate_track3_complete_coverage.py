@@ -22,6 +22,7 @@ REQUIRED_ARTIFACTS = [
     "data/track3/disclosure_protocol.json",
     "data/track3/remote_sensing_observation_targets.json",
     "data/track3/remote_sensing_observations.json",
+    "data/track3/geo_coverage_audit_2026-09-27.json",
     "data/track3/observation_queue.json",
     "data/track3/site_status.json",
     "TRACK3_COMPLETE_COVERAGE.md",
@@ -60,6 +61,14 @@ def main() -> int:
     if phys.get("observation_count", 0) < phys.get("derived_observation_count", 0):
         errors.append("remote-sensing derived count exceeds observation count")
 
+    geo = load("data/track3/geo_coverage_audit_2026-09-27.json")
+    if geo.get("scope", {}).get("epoch_reference_sites") != 93:
+        errors.append("physical-coordinate audit scope is not 93")
+    if len(geo.get("records", [])) != 93:
+        errors.append("physical-coordinate audit is not exactly 93 records")
+    if geo.get("summary", {}).get("resolved_sites", -1) + geo.get("summary", {}).get("unresolved_sites", -1) != 93:
+        errors.append("physical-coordinate audit resolved/unresolved counts do not reconcile")
+
     targets = load("data/track3/remote_sensing_observation_targets.json")
     if targets.get("record_count") != 93 or len(targets.get("records", [])) != 93:
         errors.append("remote-sensing target universe is not exactly 93 records")
@@ -69,6 +78,15 @@ def main() -> int:
     sites = load("data/track3/site_status.json")
     if sites.get("summary", {}).get("epoch_site_count") != 93:
         errors.append("site-status epoch universe is not 93")
+
+    coord_status = {str(x.get("epoch_id")): x.get("coordinate_status") for x in geo.get("records", [])}
+    for x in geo.get("records", []):
+        if x.get("coordinate_status") == "RESOLVED":
+            if x.get("latitude") is None or x.get("longitude") is None:
+                errors.append(f"{x.get('epoch_id')}: RESOLVED coordinate lacks lat/lon")
+        elif x.get("coordinate_status") == "UNRESOLVED":
+            if x.get("latitude") is not None or x.get("longitude") is not None:
+                errors.append(f"{x.get('epoch_id')}: UNRESOLVED coordinate contains lat/lon")
 
     accounting = load("data/track3/global_compute_supply_chain.json")
     if accounting.get("current", {}).get("global_transaction_level_closure") != "UNKNOWN":
