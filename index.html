@@ -460,7 +460,7 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
           <button type="button" class="map-mode-btn" data-map-mode="all" aria-pressed="true">All records</button>
           <button type="button" class="map-mode-btn" data-map-mode="ambiguous" aria-pressed="false">Ambiguous</button>
           <button type="button" class="map-mode-btn" data-map-mode="bess" aria-pressed="false">BESS</button>
-          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="misoQueueToggle" aria-pressed="true">MISO full queue</button><button type="button" class="map-mode-btn" id="sppQueueToggle" aria-pressed="true">SPP active queue</button><button type="button" class="map-mode-btn" id="nyisoQueueToggle" aria-pressed="true">NYISO full queue</button><button type="button" class="map-mode-btn" id="pjmQueueToggle" aria-pressed="true">PJM cycle queue</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
+          <button type="button" class="map-mode-btn" data-map-mode="other" aria-pressed="false">Other</button><button type="button" class="map-mode-btn" id="projectEvidenceToggle" aria-pressed="true">Project evidence</button><button type="button" class="map-mode-btn" id="caisoQueueToggle" aria-pressed="true">CAISO full queue</button><button type="button" class="map-mode-btn" id="misoQueueToggle" aria-pressed="true">MISO full queue</button><button type="button" class="map-mode-btn" id="sppQueueToggle" aria-pressed="true">SPP active queue</button><button type="button" class="map-mode-btn" id="nyisoQueueToggle" aria-pressed="true">NYISO full queue</button><button type="button" class="map-mode-btn" id="pjmQueueToggle" aria-pressed="true">PJM cycle queue</button><button type="button" class="map-mode-btn" id="bpaQueueToggle" aria-pressed="true">BPA large-load</button><button type="button" class="map-mode-btn" id="aggregateEvidenceToggle" aria-pressed="true">Aggregate / historical</button><button type="button" class="map-mode-btn" id="epochEvidenceToggle" aria-pressed="true">Epoch AI sites</button><button type="button" class="map-mode-btn" id="connectionTargetsToggle" aria-pressed="true">Connection targets</button>
           <button type="button" class="map-reset-btn" id="mapReset" title="Fit map to the current filtered records">Reset view</button>
         </div>
       </div>
@@ -602,7 +602,7 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
       <div class="p-4"><p class="mono text-xl" id="mapInventoryProjectCount">271</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project records</p></div>
       <div class="p-4"><p class="mono text-xl" id="mapInventoryMappedCount">271</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Project records mapped</p></div>
       <div class="p-4"><p class="mono text-xl" id="mapInventoryAggregateCount">66</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Aggregate/historical footprints</p></div>
-      <div class="p-4"><p class="mono text-xl" id="mapInventoryEpochCount">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch AI site observations</p></div><div class="p-4"><p class="mono text-xl" id="mapInventorySupplementalCount">61</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
+      <div class="p-4"><p class="mono text-xl" id="mapInventoryEpochCount">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Epoch AI site observations</p></div><div class="p-4"><p class="mono text-xl" id="mapInventorySupplementalCount">61</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div><div class="p-4"><p class="mono text-xl" id="mapInventoryBpaCount">60 / 35</p><p class="text-xs mt-1" style="color:var(--ink-faint);">BPA records / mapped</p></div>
     </div>
     <div class="scroll-x mt-5">
       <table class="w-full text-xs min-w-[920px]">
@@ -2052,6 +2052,7 @@ openFacilityFromHash();
   const SPP_QUEUE_COLOR='#7B4F7B';
   const NYISO_QUEUE_COLOR='#4F6B5C';
   const PJM_QUEUE_COLOR='#7A5C38';
+  const BPA_QUEUE_COLOR='#6B4F3A';
   const caisoQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(CAISO_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   let caisoQueueRecords=[];
   let showCaisoQueue=true;
@@ -2064,6 +2065,8 @@ openFacilityFromHash();
   map.addLayer(misoQueueCluster);map.addLayer(sppQueueCluster);map.addLayer(nyisoQueueCluster);
   const pjmQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(PJM_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
   let pjmQueueRecords=[];let showPjmQueue=true;map.addLayer(pjmQueueCluster);
+  const bpaQueueCluster=L.markerClusterGroup({iconCreateFunction:makeClusterIcon(BPA_QUEUE_COLOR),maxClusterRadius:34,spiderfyOnMaxZoom:true,showCoverageOnHover:false,removeOutsideVisibleBounds:true,chunkedLoading:true});
+  let bpaQueueRecords=[];let showBpaQueue=true;map.addLayer(bpaQueueCluster);
   const AGGREGATE_COLOR='#9A6B37';
   const HISTORICAL_COLOR='#6E7D4F';
   const aggregateLayer=L.layerGroup();
@@ -2441,6 +2444,42 @@ openFacilityFromHash();
     const s=layers.find(function(x){return x.id==='SUPPLEMENTAL_EVIDENCE';}); if(s){const x=document.getElementById('mapInventorySupplementalCount');if(x)x.textContent=Number(s.records||0).toLocaleString();}
   }).catch(function(err){console.warn(err);});
 
+  function buildBpaMarker(r){
+    if(!Array.isArray(r.map_point)||r.map_point.length!==2)return null;
+    const lat=Number(r.map_point[0]),lon=Number(r.map_point[1]);
+    if(!Number.isFinite(lat)||!Number.isFinite(lon))return null;
+    const claims=Array.isArray(r.capacity_claims)?r.capacity_claims:[];
+    const mw=Number(claims.length&&claims[0].value_mw);
+    const radius=Number.isFinite(mw)?Math.max(4,Math.min(13,Math.sqrt(Math.max(1,mw))*0.12)):5;
+    const marker=L.circleMarker([lat,lon],{radius:radius,color:BPA_QUEUE_COLOR,weight:1.7,fillColor:BPA_QUEUE_COLOR,fillOpacity:0.36,opacity:0.92});
+    marker.bindTooltip('<span class="mono">BPA · '+escapeHtml(String(r.queue_id||r.id))+' · '+escapeHtml(r.project_name||'large-load request')+'</span>',{sticky:true,direction:'top',opacity:0.96});
+    const claimHtml=claims.length?claims.map(function(x){
+      const value=x.value_mw!=null?String(x.value_mw)+' MW':(x.raw_value||'Reported value');
+      return '<div style="margin-top:4px;">'+escapeHtml(value)+(x.qualifier?' <span style="color:var(--ink-faint);">· '+escapeHtml(x.qualifier)+'</span>':'')+'</div>';
+    }).join(''):'<div style="margin-top:4px;">Not published</div>';
+    marker.bindPopup('<div style="min-width:265px;max-width:350px;">'+
+      '<p style="font-weight:650;font-size:13px;line-height:1.3;">'+escapeHtml(r.project_name||r.id)+'</p>'+
+      '<p class="mono" style="font-size:10.5px;color:var(--ink-faint);margin-top:3px;">'+escapeHtml(String(r.id))+' · BPA large-load request</p>'+
+      '<p style="font-size:11.5px;margin-top:7px;color:var(--ink-soft);">'+escapeHtml(r.location||r.jurisdiction||'Location not published')+'</p>'+
+      '<div style="height:1px;background:var(--line);margin:8px 0;"></div>'+
+      '<table class="mono" style="font-size:11.5px;width:100%;border-collapse:collapse;">'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Queue ID</td><td style="text-align:right;">'+escapeHtml(r.queue_id||'Not published')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;vertical-align:top;">Capacity claims</td><td style="text-align:right;">'+claimHtml+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Status</td><td style="text-align:right;">'+escapeHtml(r.status||'UNKNOWN')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">POI / substation</td><td style="text-align:right;">'+escapeHtml(r.poi_substation||'Not published')+'</td></tr>'+
+      '<tr><td style="color:var(--ink-faint);padding:2px 0;">Source authority</td><td style="text-align:right;">'+escapeHtml(r.source_authority||'Not retained')+'</td></tr>'+
+      '</table>'+
+      '<p style="margin-top:8px;font-size:10.5px;color:var(--amber);">'+escapeHtml(r.map_precision||'display geometry')+'; this is display geometry, not a facility coordinate.</p>'+
+      '<p style="margin-top:6px;font-size:10.5px;color:var(--ink-faint);">Captured '+escapeHtml(r.capture_date||'date not retained')+'. Requested MW are not measured or energized demand.</p>'+
+      (r.source_url?'<a class="text-xs link-underline inline-block mt-2" target="_blank" rel="noopener noreferrer" href="'+escapeHtml(r.source_url)+'">Open retained source</a>':'')+
+      '</div>',{maxWidth:370});
+    return marker;
+  }
+  function updateBpaQueueLayer(){
+    bpaQueueCluster.clearLayers();
+    if(!showBpaQueue)return;
+    bpaQueueRecords.forEach(function(r){const m=buildBpaMarker(r);if(m)bpaQueueCluster.addLayer(m);});
+  }
   function updateCaisoQueueLayer(){
     caisoQueueCluster.clearLayers();
     if(!showCaisoQueue)return;
@@ -2458,8 +2497,15 @@ openFacilityFromHash();
   if(sppQueueToggle)sppQueueToggle.addEventListener('click',function(){showSppQueue=!showSppQueue;sppQueueToggle.setAttribute('aria-pressed',showSppQueue?'true':'false');updateSppQueueLayer();});
   const nyisoQueueToggle=document.getElementById('nyisoQueueToggle');
   if(nyisoQueueToggle)nyisoQueueToggle.addEventListener('click',function(){showNyisoQueue=!showNyisoQueue;nyisoQueueToggle.setAttribute('aria-pressed',showNyisoQueue?'true':'false');updateNyisoQueueLayer();});
+  const bpaQueueToggle=document.getElementById('bpaQueueToggle');
+  if(bpaQueueToggle)bpaQueueToggle.addEventListener('click',function(){showBpaQueue=!showBpaQueue;bpaQueueToggle.setAttribute('aria-pressed',showBpaQueue?'true':'false');updateBpaQueueLayer();});
   const pjmQueueToggle=document.getElementById('pjmQueueToggle');
   if(pjmQueueToggle)pjmQueueToggle.addEventListener('click',function(){showPjmQueue=!showPjmQueue;pjmQueueToggle.setAttribute('aria-pressed',showPjmQueue?'true':'false');updatePjmQueueLayer();});
+  fetch('data/bpa_large_load_registry.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('BPA large-load layer unavailable');return res.json();}).then(function(payload){
+    bpaQueueRecords=Array.isArray(payload.records)?payload.records:[];
+    updateBpaQueueLayer();
+    const b=document.getElementById('bpaQueueToggle');if(b)b.textContent='BPA large-load · '+bpaQueueRecords.length.toLocaleString()+' ('+bpaQueueRecords.filter(function(r){return Array.isArray(r.map_point)&&r.map_point.length===2;}).length.toLocaleString()+' mapped)';
+  }).catch(function(err){const b=document.getElementById('bpaQueueToggle');if(b)b.textContent='BPA large-load · unavailable';console.warn(err);});
   fetch('data/miso_unresolved_large_loads.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('MISO unresolved worklist unavailable');return res.json();}).then(function(payload){const e=document.getElementById('misoUnresolvedCount');if(e)e.textContent=Number(payload.record_count||0).toLocaleString()+' ≥100 MW site-resolution gaps';}).catch(function(err){console.warn(err);});
   fetch('data/queue_layer_status.json?v=1',{cache:'no-store'}).then(function(res){if(!res.ok)throw new Error('queue layer status unavailable');return res.json();}).then(function(payload){
     const el=document.getElementById('queueWideFreshness');
