@@ -22,6 +22,7 @@ on:
       - 'verify_track3.py'
       - '.github/workflows/track3_verification.yml'
 # Serialize verifier runs; generated artifacts are committed back to main.
+# Final verification may be manually re-dispatched after bot-generated pipeline commits.
 concurrency:
   group: track3-canonical-writers-main
   cancel-in-progress: false
