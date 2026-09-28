@@ -1787,11 +1787,11 @@
         "epoch_id": "EPOCH-55d4b5e818b5bb2a",
         "name": "DayOne Nusajaya",
         "country": "Malaysia",
-        "address": "",
+        "address": "3, Lingkaran, Jalan Teknologi Perintis 1, Nusajaya Tech Park, Johor, Malaysia",
         "region_inferred_from_address": null,
         "owner": "DayOne Data Centers",
         "users": "",
-        "project": "",
+        "project": "Nusajaya Tech Park (NTP) campus",
         "current_h100_equivalents": 281670.4396159676,
         "current_power_mw": 240,
         "current_total_capital_cost_b_2025": 9.09168,
@@ -1862,6 +1862,32 @@
             "publication_date": "2026-09-27",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-dc1661b47803e8a54fd8",
+            "scope_note": null
+          },
+          {
+            "field": "address",
+            "value": "3, Lingkaran, Jalan Teknologi Perintis 1, Nusajaya Tech Park, Johor, Malaysia",
+            "relationship": "facility/campus address",
+            "source": "DataCenterMap",
+            "source_urls": [
+              "https://www.datacentermap.com/malaysia/johor-bahru/dayone-gerbang-nusajaya/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-b5bb2a-ADDRESS",
+            "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "Nusajaya Tech Park (NTP) campus",
+            "relationship": "campus/project identity",
+            "source": "DayOne",
+            "source_urls": [
+              "https://dayonedc.com/market/green-data-center-malaysia"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-b5bb2a-PROJECT",
             "scope_note": null
           }
         ]
@@ -3294,7 +3320,7 @@
         "address": "",
         "region_inferred_from_address": null,
         "owner": "Google #confident",
-        "users": "",
+        "users": "Google DeepMind (likely)",
         "project": "",
         "current_h100_equivalents": 202627.5896917635,
         "current_power_mw": 105,
@@ -3334,6 +3360,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-4017ce9949a584e3d8c1",
             "scope_note": "Grid operator relationship is retained separately from a formal queue ID; where the string contains multiple entities, the relationship is reproduced as published rather than decomposed."
+          },
+          {
+            "field": "users",
+            "value": "Google DeepMind (likely)",
+            "relationship": "likely primary AI user",
+            "source": "InfraSale",
+            "source_urls": [
+              "https://infrasale.com/marketplace/intelligence/frontier-dcs/43"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-cbed36-USERS",
+            "scope_note": null
           }
         ]
       },
@@ -5968,6 +6007,19 @@
             "publication_date": "2026-09-24",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-b146f87d7394baa3ac2d",
+            "scope_note": null
+          },
+          {
+            "field": "owner",
+            "value": "Google",
+            "relationship": "operator/owner",
+            "source": "Google",
+            "source_urls": [
+              "https://datacenters.google/locations/storey-county-nevada/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-a04725-OWNER",
             "scope_note": null
           }
         ]
@@ -9171,7 +9223,7 @@
         "address": "",
         "region_inferred_from_address": null,
         "owner": "Firmus #confident",
-        "users": "",
+        "users": "NVIDIA DGX Cloud (announced first customer/region access)",
         "project": "Project Southgate — Melbourne",
         "current_h100_equivalents": 46488.12531581607,
         "current_power_mw": 41,
@@ -9221,6 +9273,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-southgate-project-20260927",
             "scope_note": "Firmus identifies Southgate Melbourne as the first Australian deployment of its multi-site Project Southgate program."
+          },
+          {
+            "field": "users",
+            "value": "NVIDIA DGX Cloud (announced first customer/region access)",
+            "relationship": "announced user/customer relationship",
+            "source": "Firmus",
+            "source_urls": [
+              "https://firmus.co/newsroom/southgate-expansion"
+            ],
+            "publication_date": "2025-01-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-7170bd-USERS",
+            "scope_note": null
           }
         ]
       },
@@ -10330,7 +10395,7 @@
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1sGialfBa0kKKX7Vm8qL_R6Ce3PSzt7NawpAnWolnTVc/edit",
         "investors": "",
         "construction_companies": "",
-        "energy_companies": "",
+        "energy_companies": "Google / Fluidstack power-and-silicon partnership context",
         "latest_timeline": {
           "data_center": "Anthropic Barber Lake",
           "date": "2027-04-30",
@@ -10370,6 +10435,45 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-barberlake-project-20260927",
             "scope_note": "Cipher's September 2026 SEC filing identifies the Barber Lake Facility in Colorado City, Texas and describes an amended lease and updated delivery schedule."
+          },
+          {
+            "field": "owner",
+            "value": "Cipher Mining",
+            "relationship": "facility owner in current Epoch record",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-2be282-OWNER",
+            "scope_note": null
+          },
+          {
+            "field": "users",
+            "value": "Anthropic",
+            "relationship": "announced/identified AI user",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-2be282-USERS",
+            "scope_note": null
+          },
+          {
+            "field": "energy_companies",
+            "value": "Google / Fluidstack power-and-silicon partnership context",
+            "relationship": "energy/silicon financing partnership context",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/anthropic-barber-lake"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-2be282-ENERGY_COMPANIES",
+            "scope_note": null
           }
         ]
       },
@@ -11549,7 +11653,7 @@
         "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
         "name": "Microsoft Narvik Norway",
         "country": "Norway",
-        "address": "",
+        "address": "Nordmoveien 301, 8530 Bjerkvik, Narvik, Norway",
         "region_inferred_from_address": null,
         "owner": "Nscale #likely",
         "users": "Microsoft #likely",
@@ -11616,6 +11720,19 @@
             "publication_date": "2026-04-14",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-566b0d5ea2c5c0b362c4",
+            "scope_note": null
+          },
+          {
+            "field": "address",
+            "value": "Nordmoveien 301, 8530 Bjerkvik, Narvik, Norway",
+            "relationship": "contract-defined data center location",
+            "source": "SEC filing",
+            "source_urls": [
+              "https://www.sec.gov/Archives/edgar/data/2110365/000119312526395475/ck0002110365-ex10_19.htm"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-eb479f-ADDRESS",
             "scope_note": null
           }
         ]
@@ -11846,6 +11963,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-a19f8ae363d3b152a147",
             "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "The Barn / Stargate Michigan",
+            "relationship": "project identity",
+            "source": "OpenAI",
+            "source_urls": [
+              "https://openai.com/index/stargate-michigan-data-center/"
+            ],
+            "publication_date": "2026-06-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-df2982-PROJECT",
+            "scope_note": null
+          },
+          {
+            "field": "construction_companies",
+            "value": "Walbridge",
+            "relationship": "named construction partner",
+            "source": "OpenAI",
+            "source_urls": [
+              "https://openai.com/index/stargate-michigan-data-center/"
+            ],
+            "publication_date": "2026-06-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-df2982-CONSTRUCTION_COMPANIES",
+            "scope_note": null
           }
         ]
       },
@@ -11903,7 +12046,7 @@
         "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
         "name": "OpenAI Stargate Milam",
         "country": "United States",
-        "address": "",
+        "address": "4299-2301 County Rd 134, Burlington, Texas 76519, United States",
         "region_inferred_from_address": null,
         "owner": "Softbank #confident",
         "users": "OpenAI #confident",
@@ -11972,6 +12115,32 @@
             "publication_date": "2025-12-01",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-cfabf01b2b8c5c4a4bae",
+            "scope_note": null
+          },
+          {
+            "field": "address",
+            "value": "4299-2301 County Rd 134, Burlington, Texas 76519, United States",
+            "relationship": "public facility address",
+            "source": "DataCenterMap",
+            "source_urls": [
+              "https://www.datacentermap.com/usa/texas/cameron/stargate-milam-county/"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-5c4a7b-ADDRESS",
+            "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "Milam County Data Center / Stargate",
+            "relationship": "project identity",
+            "source": "OpenAI",
+            "source_urls": [
+              "https://openai.com/index/stargate-sb-energy-partnership/"
+            ],
+            "publication_date": "2026-01-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-5c4a7b-PROJECT",
             "scope_note": null
           }
         ]
@@ -12047,7 +12216,7 @@
         "selected_sources": null,
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1Dd2oXxg3tdBebaWOW-qSj1U1-HZ9zM9LkXseTayWhBM/edit?usp=sharing",
         "investors": "",
-        "construction_companies": "",
+        "construction_companies": "STACK Infrastructure",
         "energy_companies": "Bloom Energy",
         "latest_timeline": {
           "data_center": "OpenAI Stargate New Mexico",
@@ -12091,6 +12260,32 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-jupiter-project-20260927",
             "scope_note": "Oracle identifies Project Jupiter as its AI data center campus in Doña Ana County, New Mexico."
+          },
+          {
+            "field": "project",
+            "value": "Project Jupiter / Stargate New Mexico",
+            "relationship": "project identity",
+            "source": "Data Center Census",
+            "source_urls": [
+              "https://datacentercensus.com/dc/project-jupiter-dona-ana-county-nm"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-72fe04-PROJECT",
+            "scope_note": null
+          },
+          {
+            "field": "construction_companies",
+            "value": "STACK Infrastructure",
+            "relationship": "developer",
+            "source": "Data Center Census",
+            "source_urls": [
+              "https://datacentercensus.com/dc/project-jupiter-dona-ana-county-nm"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-72fe04-CONSTRUCTION_COMPANIES",
+            "scope_note": null
           }
         ]
       },
@@ -12468,6 +12663,45 @@
             "publication_date": "2025-12-01",
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-b2212b1b8c162cfc5c07",
+            "scope_note": null
+          },
+          {
+            "field": "owner",
+            "value": "Oracle",
+            "relationship": "current owner/developer attribution",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-bdf968-OWNER",
+            "scope_note": null
+          },
+          {
+            "field": "users",
+            "value": "OpenAI",
+            "relationship": "current user attribution",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-bdf968-USERS",
+            "scope_note": null
+          },
+          {
+            "field": "project",
+            "value": "Stargate",
+            "relationship": "project identity",
+            "source": "Epoch AI",
+            "source_urls": [
+              "https://epoch.ai/data/ai-data-centers/directory/openai-stargate-wisconsin"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-bdf968-PROJECT",
             "scope_note": null
           }
         ]
