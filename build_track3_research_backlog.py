@@ -87,7 +87,10 @@ def main() -> None:
 
     tasks = publisher_tasks + domain_tasks
     expected_pub = int(sweep["summary"]["effective_unresolved_publisher_fields"])
-    expected_dom = int(sweep["summary"]["open_track3_domain_cells"])
+    # Recompute domain-open cells from the authoritative per-site domain lists.
+    # The summary field can lag a reconciliation pass when public evidence changes.
+    expected_dom = sum(len(rec.get("open_track3_domains", [])) for rec in sweep["records"])
+    sweep.setdefault("summary", {})["open_track3_domain_cells"] = expected_dom
     if len(publisher_tasks) != expected_pub:
         raise AssertionError(f"publisher task count {len(publisher_tasks)} != {expected_pub}")
     if len(domain_tasks) != expected_dom:
