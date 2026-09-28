@@ -142,7 +142,7 @@
       "id": "BPA",
       "status": "official_row_level_load_snapshot_ingested",
       "core_rows": 0,
-      "project_records": 457,
+      "project_records": 128,
       "source_urls": [
         "https://www.bpa.gov/energy-and-services/transmission/interconnection",
         "https://www.bpa.gov/-/media/Aep/transmission-media-documents/InterconnectionQueueOutput.xlsx",
@@ -151,7 +151,7 @@
       ],
       "scope": "Separate BPA transmission/large-load evidence layer. It is not treated as an RTO/ISO queue and is not additive to the nine-market core. The official BPA interconnection workbook is now the authoritative refresh source. The repository retains a normalized load-request layer and the refresh workflow can expand it to the full published load population whenever the official workbook is reachable; the current committed snapshot remains separately auditable.",
       "captured": "2026-09-28",
-      "notes": "Official BPA InterconnectionQueueOutput.xlsx load-request snapshot parsed at refresh time: 457 L-series rows (289 non-terminal by published status), 25 with retained display geometry, 432 without display geometry. This layer remains non-additive to the nine-market core.",
+      "notes": "Official BPA InterconnectionQueueOutput.xlsx load-request snapshot parsed at refresh time: 457 raw L-series rows; 128 rows meet the >=100 MW large-load threshold (81 non-terminal by published status), 25 with retained display geometry, 103 without display geometry. This layer remains non-additive to the nine-market core.",
       "row_level_snapshot": "data/bpa_large_load_registry.json"
     }
   ],
