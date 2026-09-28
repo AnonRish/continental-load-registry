@@ -269,6 +269,11 @@ jobs:
               assert len(source_sha) == 64
               assert all(r.get("source_provenance", {}).get("workbook_sha256") == source_sha for r in bpa_json["records"])
               assert all(r.get("source_url") == official_url for r in bpa_json["records"])
+              mapped_bpa = [r for r in bpa_json["records"] if isinstance(r.get("map_point"), list) and len(r["map_point"]) == 2]
+              assert len(mapped_bpa) == bpa_json["mapped_record_count"]
+              assert all(isinstance(r.get("map_provenance"), dict) for r in mapped_bpa)
+              assert all(r["map_provenance"].get("source_url") for r in mapped_bpa)
+              assert all(r["map_provenance"].get("precision") == r.get("map_precision") for r in mapped_bpa)
           else:
               assert bpa_json["source"].get("raw_official_snapshot_retained") is False
               assert all(r.get("source_provenance") is None or "workbook_sha256" not in r.get("source_provenance", {}) for r in bpa_json["records"])
