@@ -6,63 +6,42 @@
   "accounting_note": "Counts are dataset-local and are not a sum. A project, evidence item, queue row, target or aggregate footprint may refer to the same physical site or overlapping population.",
   "datasets": [
     {
-      "path": "data/large_load_scope.json",
-      "name": "Large-load accounting",
-      "type": "scope",
-      "record_count": 1623,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/large_load_scope.json",
-      "core_record_count": 1540,
-      "expanded_known_record_count": 1623,
-      "expanded_known_capacity_gw": 394.6181
-    },
-    {
-      "path": "data/market_universe_manifest.json",
-      "name": "Market-by-market coverage/disclosure status",
-      "type": "manifest",
-      "record_count": 10,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/market_universe_manifest.json"
-    },
-    {
-      "path": "data/project_level_extractions.json",
-      "name": "Project-level records",
-      "type": "project",
-      "record_count": 271,
+      "path": "ai-data-center-explorer.html",
+      "name": "Epoch-style AI data center explorer",
+      "type": "interface",
+      "record_count": 346,
       "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/project_level_extractions.json"
+      "public_page": "https://anonrish.github.io/continental-load-registry/ai-data-center-explorer.html",
+      "notes": "Interactive explorer over the 93-site Epoch anchor plus 346-facility AI Data Center Index universe; overlap is source-linked and non-additive."
     },
     {
-      "path": "data/project_level_map.json",
-      "name": "Mapped project-level records",
-      "type": "map",
-      "record_count": 271,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/project_level_map.json",
-      "map_count": 271
-    },
-    {
-      "path": "data/supplemental_large_load_evidence.json",
-      "name": "Supplemental utility/regulator/planning evidence",
-      "type": "evidence",
-      "record_count": 61,
+      "path": "company-registry.html",
+      "name": "Company-by-company global data-center registry",
+      "type": "interface",
+      "record_count": 225,
       "mapped": false,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/supplemental_large_load_evidence.json"
+      "public_page": "https://anonrish.github.io/continental-load-registry/company-registry.html",
+      "notes": "Live federated company directory using the current public AI operator universe; company portfolio drill-downs preserve operator/facility relationship semantics and do not claim a complete corporate-building census."
     },
     {
-      "path": "data/supplemental_aggregate_map.json",
-      "name": "Mapped aggregate/historical footprints",
-      "type": "map",
-      "record_count": 66,
+      "path": "data/aeso_connection_projects.json",
+      "name": "AESO parsed connection projects",
+      "type": "public_queue",
+      "record_count": null,
       "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/supplemental_aggregate_map.json",
-      "map_count": 66
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/aeso_connection_projects.json"
+    },
+    {
+      "path": "data/auxiliary_source_status.json",
+      "name": "Auxiliary public-source capture/normalization status",
+      "type": "source_status",
+      "record_count": 4,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/auxiliary_source_status.json"
     },
     {
       "path": "data/caiso_cluster_history.json",
@@ -74,23 +53,33 @@
       "public_page": "https://anonrish.github.io/continental-load-registry/data/caiso_cluster_history.json"
     },
     {
-      "path": "data/pjm_large_load_submission_history.json",
-      "name": "PJM LAS document/evidence history",
-      "type": "document",
-      "record_count": 28,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/pjm_large_load_submission_history.json"
-    },
-    {
-      "path": "data/external/epoch_ai/registry.json",
-      "name": "Canonical Epoch AI frontier-site universe",
-      "type": "site",
-      "record_count": 93,
+      "path": "data/caiso_public_queue.json",
+      "name": "CAISO complete current public queue snapshot",
+      "type": "current_queue",
+      "record_count": 2278,
       "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/epoch_ai/registry.json",
-      "map_count": 93
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/caiso_public_queue.json"
+    },
+    {
+      "path": "data/company_operator_universe_2026-09-27.json",
+      "name": "Company/operator facility snapshot",
+      "type": "company_universe_snapshot",
+      "record_count": 346,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/company_operator_universe_2026-09-27.json",
+      "notes": "Snapshot of 225 public operator portfolios; 530 operator-facility references resolve to 346 unique source facility keys. Source-local and non-additive."
+    },
+    {
+      "path": "data/company_operator_universe_status.json",
+      "name": "Company/operator snapshot status",
+      "type": "company_universe_status",
+      "record_count": 225,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/company_operator_universe_status.json",
+      "notes": "Current snapshot reports 225/225 operators loaded, 530 facility references and 346 unique facility keys."
     },
     {
       "path": "data/epoch_ai_map.json",
@@ -123,281 +112,6 @@
       "notes": "Legacy/derived Epoch site-evidence export; canonical Track 3 evidence is data/track3/evidence_records.json. Counts are dataset-local."
     },
     {
-      "path": "data/external/epoch_ai/queue_gap_analysis.csv",
-      "name": "Epoch-to-grid connection gap analysis",
-      "type": "gap",
-      "record_count": 93,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/epoch_ai/queue_gap_analysis.csv"
-    },
-    {
-      "path": "data/track3/ai2040_plan_a_mapping.json",
-      "name": "AI 2040 Plan A mapping",
-      "type": "traceability",
-      "record_count": null,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/ai2040_plan_a_mapping.json"
-    },
-    {
-      "path": "data/track3/ai2040_plan_a_traceability.json",
-      "name": "Plan A recommendation/traceability table",
-      "type": "traceability",
-      "record_count": null,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/ai2040_plan_a_traceability.json"
-    },
-    {
-      "path": "data/regulatory_utility_evidence.json",
-      "name": "Regulatory / utility evidence checklist",
-      "type": "evidence",
-      "record_count": 24,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/regulatory_utility_evidence.json",
-      "notes": "14 checklist categories and 24 primary source records covering Georgia, Virginia, Texas/ERCOT, Ontario and Alberta; source-family evidence is not automatically a site match."
-    },
-    {
-      "path": "data/regulatory_utility_evidence.csv",
-      "name": "Regulatory / utility source index",
-      "type": "evidence_csv",
-      "record_count": 24,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/regulatory_utility_evidence.csv"
-    },
-    {
-      "path": "data/physical_verification_layer.json",
-      "name": "Track 3 physical verification layer",
-      "type": "physical",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/physical_verification_layer.json",
-      "notes": "11-category physical verification checklist with 93 site records."
-    },
-    {
-      "path": "data/physical_verification_layer.csv",
-      "name": "Track 3 physical verification site CSV",
-      "type": "physical",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/physical_verification_layer.csv"
-    },
-    {
-      "path": "data/track3/evidence_records.json",
-      "name": "Canonical Track 3 evidence ledger",
-      "type": "evidence",
-      "record_count": 868,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/evidence_records.json"
-    },
-    {
-      "path": "data/track3/public_site_dossier.json",
-      "name": "Complete 93-site public research dossier",
-      "type": "dossier",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_dossier.json"
-    },
-    {
-      "path": "data/track3/public_site_dossier.csv",
-      "name": "Complete 93-site public research dossier CSV",
-      "type": "dossier_csv",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_dossier.csv"
-    },
-    {
-      "path": "data/track3/remote_sensing_observation_targets.json",
-      "name": "93-site optical/TIR/SAR acquisition targets",
-      "type": "remote_sensing_targets",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/remote_sensing_observation_targets.json"
-    },
-    {
-      "path": "data/track3/remote_sensing_observation_targets.csv",
-      "name": "93-site optical/TIR/SAR acquisition targets CSV",
-      "type": "remote_sensing_targets_csv",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/remote_sensing_observation_targets.csv"
-    },
-    {
-      "path": "data/track3/research_complete_no_public_record.json",
-      "name": "Completed site-specific grid searches with no retained public record",
-      "type": "research_outcome",
-      "record_count": 20,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/research_complete_no_public_record.json"
-    },
-    {
-      "path": "data/track3/transformer_supply_chain_events.json",
-      "name": "Source-backed transformer supply-chain events",
-      "type": "transformer_evidence",
-      "record_count": 3,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/transformer_supply_chain_events.json"
-    },
-    {
-      "path": "data/track3/transformer_event_targets.csv",
-      "name": "93-site transformer research targets",
-      "type": "transformer_targets",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/transformer_event_targets.csv"
-    },
-    {
-      "path": "data/caiso_public_queue.json",
-      "name": "CAISO complete current public queue snapshot",
-      "type": "current_queue",
-      "record_count": 2278,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/caiso_public_queue.json"
-    },
-    {
-      "path": "data/external/intel_accelerator_enrichment.json",
-      "name": "93-site public project enrichment bridge",
-      "type": "enrichment",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/intel_accelerator_enrichment.json",
-      "notes": "Independent public-source enrichment for program, owner, users, address, EPC, energy partners and grid-operator fields. Blank values carry explicit status and are not interpreted as absence."
-    },
-    {
-      "path": "data/external/intel_accelerator_enrichment.csv",
-      "name": "93-site public project enrichment CSV",
-      "type": "enrichment_csv",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/intel_accelerator_enrichment.csv"
-    },
-    {
-      "path": "data/nyiso_public_queue_status.json",
-      "name": "NYISO official source capture status",
-      "type": "source_status",
-      "record_count": 0,
-      "mapped": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/nyiso_public_queue_status.json",
-      "notes": "Explicit current capture result; no queue rows are fabricated when official workbook retrieval returns a non-XLSX response."
-    },
-    {
-      "path": "data/track3/public_web_enrichment_2026-09-27.json",
-      "name": "Fresh public-web site enrichment ledger",
-      "type": "public_web_enrichment",
-      "record_count": 170,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_enrichment_2026-09-27.json",
-      "notes": "98 additive site-level public findings captured 2026-09-27; source scope and relationship types retained."
-    },
-    {
-      "path": "data/track3/public_web_enrichment_2026-09-27.csv",
-      "name": "Fresh public-web site enrichment CSV",
-      "type": "public_web_enrichment_csv",
-      "record_count": 170,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_enrichment_2026-09-27.csv"
-    },
-    {
-      "path": "data/track3/public_site_enrichment_merged_2026-09-27.json",
-      "name": "Merged 93-site enrichment view",
-      "type": "site_enrichment_view",
-      "record_count": 93,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_enrichment_merged_2026-09-27.json",
-      "notes": "Combines canonical Epoch, existing enrichment bridge and fresh public-web findings without overwriting raw source values."
-    },
-    {
-      "path": "data/track3/publisher_completeness_matrix_2026-09-27.json",
-      "name": "93-site × 8-field publisher completeness matrix",
-      "type": "completeness_matrix",
-      "record_count": 744,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/publisher_completeness_matrix_2026-09-27.json"
-    },
-    {
-      "path": "data/track3/publisher_completeness_matrix_2026-09-27.csv",
-      "name": "Publisher completeness matrix CSV",
-      "type": "completeness_matrix_csv",
-      "record_count": 744,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/publisher_completeness_matrix_2026-09-27.csv"
-    },
-    {
-      "path": "data/track3/domain_completeness_matrix_2026-09-27.json",
-      "name": "93-site × 15-domain Track 3 completeness matrix",
-      "type": "completeness_matrix",
-      "record_count": 1395,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/domain_completeness_matrix_2026-09-27.json"
-    },
-    {
-      "path": "data/track3/domain_completeness_matrix_2026-09-27.csv",
-      "name": "Track 3 domain completeness matrix CSV",
-      "type": "completeness_matrix_csv",
-      "record_count": 1395,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/domain_completeness_matrix_2026-09-27.csv"
-    },
-    {
-      "path": "data/track3/source_document_index.json",
-      "name": "Deduplicated source-document index",
-      "type": "source_index",
-      "record_count": 235,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/source_document_index.json"
-    },
-    {
-      "path": "data/track3/source_document_index.csv",
-      "name": "Source-document index CSV",
-      "type": "source_index_csv",
-      "record_count": 235,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/source_document_index.csv"
-    },
-    {
-      "path": "data/auxiliary_source_status.json",
-      "name": "Auxiliary public-source capture/normalization status",
-      "type": "source_status",
-      "record_count": 4,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/auxiliary_source_status.json"
-    },
-    {
-      "path": "data/ercot_large_load_candidates.json",
-      "name": "ERCOT GIS large-load candidate layer",
-      "type": "current_queue_candidate",
-      "record_count": null,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/ercot_large_load_candidates.json"
-    },
-    {
       "path": "data/ercot_gis_public_records.json",
       "name": "ERCOT GIS complete parsed public records",
       "type": "public_queue",
@@ -407,69 +121,13 @@
       "public_page": "https://anonrish.github.io/continental-load-registry/data/ercot_gis_public_records.json"
     },
     {
-      "path": "data/iso_ne_public_queue.json",
-      "name": "ISO-NE parsed public queue/report tables",
-      "type": "public_queue",
+      "path": "data/ercot_large_load_candidates.json",
+      "name": "ERCOT GIS large-load candidate layer",
+      "type": "current_queue_candidate",
       "record_count": null,
       "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/iso_ne_public_queue.json"
-    },
-    {
-      "path": "data/ieso_public_connection_applications.json",
-      "name": "IESO parsed public connection application tables",
-      "type": "public_queue",
-      "record_count": null,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/ieso_public_connection_applications.json"
-    },
-    {
-      "path": "data/aeso_connection_projects.json",
-      "name": "AESO parsed connection projects",
-      "type": "public_queue",
-      "record_count": null,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/aeso_connection_projects.json"
-    },
-    {
-      "path": "data/global_ai_datacenter_coverage_2026-09-27.json",
-      "name": "Global AI data-center coverage and discovery ledger",
-      "type": "coverage",
-      "record_count": 33,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/global_ai_datacenter_coverage_2026-09-27.json",
-      "notes": "100% mirror of the current 93-record Epoch AI explorer plus 33 external discovery candidates/programs kept separate until entity resolution."
-    },
-    {
-      "path": "data/global_ai_datacenter_coverage_2026-09-27.csv",
-      "name": "Global AI data-center coverage and discovery ledger CSV",
-      "type": "coverage_csv",
-      "record_count": 33,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/global_ai_datacenter_coverage_2026-09-27.csv"
-    },
-    {
-      "path": "global-compute-universe.html",
-      "name": "Global Compute Universe interactive database",
-      "type": "interface",
-      "record_count": null,
-      "mapped": true,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/global-compute-universe.html",
-      "notes": "Federated interface over Epoch AI, Compute Atlas and Data Center Index; source-local populations are non-additive."
-    },
-    {
-      "path": "data/global_compute_universe_sources_2026-09-27.json",
-      "name": "Global compute universe source manifest",
-      "type": "source_manifest",
-      "record_count": 3,
-      "mapped": false,
-      "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/global_compute_universe_sources_2026-09-27.json"
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/ercot_large_load_candidates.json"
     },
     {
       "path": "data/external/compute_atlas/facilities.json",
@@ -492,44 +150,395 @@
       "notes": "CC BY 4.0 free download: 702 counted campuses plus 199 additional tracked rows."
     },
     {
-      "path": "company-registry.html",
-      "name": "Company-by-company global data-center registry",
-      "type": "interface",
-      "record_count": 225,
+      "path": "data/external/epoch_ai/queue_gap_analysis.csv",
+      "name": "Epoch-to-grid connection gap analysis",
+      "type": "gap",
+      "record_count": 93,
       "mapped": false,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/company-registry.html",
-      "notes": "Live federated company directory using the current public AI operator universe; company portfolio drill-downs preserve operator/facility relationship semantics and do not claim a complete corporate-building census."
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/epoch_ai/queue_gap_analysis.csv"
     },
     {
-      "path": "ai-data-center-explorer.html",
-      "name": "Epoch-style AI data center explorer",
-      "type": "interface",
-      "record_count": 346,
+      "path": "data/external/epoch_ai/registry.json",
+      "name": "Canonical Epoch AI frontier-site universe",
+      "type": "site",
+      "record_count": 93,
       "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/ai-data-center-explorer.html",
-      "notes": "Interactive explorer over the 93-site Epoch anchor plus 346-facility AI Data Center Index universe; overlap is source-linked and non-additive."
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/epoch_ai/registry.json",
+      "map_count": 93
     },
     {
-      "path": "data/company_operator_universe_2026-09-27.json",
-      "name": "Company/operator facility snapshot",
-      "type": "company_universe_snapshot",
-      "record_count": 346,
-      "mapped": false,
+      "path": "data/external/intel_accelerator_enrichment.csv",
+      "name": "93-site public project enrichment CSV",
+      "type": "enrichment_csv",
+      "record_count": 93,
+      "mapped": true,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/company_operator_universe_2026-09-27.json",
-      "notes": "Snapshot of 225 public operator portfolios; 530 operator-facility references resolve to 346 unique source facility keys. Source-local and non-additive."
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/intel_accelerator_enrichment.csv"
     },
     {
-      "path": "data/company_operator_universe_status.json",
-      "name": "Company/operator snapshot status",
-      "type": "company_universe_status",
-      "record_count": 225,
+      "path": "data/external/intel_accelerator_enrichment.json",
+      "name": "93-site public project enrichment bridge",
+      "type": "enrichment",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/external/intel_accelerator_enrichment.json",
+      "notes": "Independent public-source enrichment for program, owner, users, address, EPC, energy partners and grid-operator fields. Blank values carry explicit status and are not interpreted as absence."
+    },
+    {
+      "path": "data/global_ai_datacenter_coverage_2026-09-27.csv",
+      "name": "Global AI data-center coverage and discovery ledger CSV",
+      "type": "coverage_csv",
+      "record_count": 33,
       "mapped": false,
       "additive_to_core_row_level": false,
-      "public_page": "https://anonrish.github.io/continental-load-registry/data/company_operator_universe_status.json",
-      "notes": "Current snapshot reports 225/225 operators loaded, 530 facility references and 346 unique facility keys."
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/global_ai_datacenter_coverage_2026-09-27.csv"
+    },
+    {
+      "path": "data/global_ai_datacenter_coverage_2026-09-27.json",
+      "name": "Global AI data-center coverage and discovery ledger",
+      "type": "coverage",
+      "record_count": 33,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/global_ai_datacenter_coverage_2026-09-27.json",
+      "notes": "100% mirror of the current 93-record Epoch AI explorer plus 33 external discovery candidates/programs kept separate until entity resolution."
+    },
+    {
+      "path": "data/global_compute_universe_sources_2026-09-27.json",
+      "name": "Global compute universe source manifest",
+      "type": "source_manifest",
+      "record_count": 3,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/global_compute_universe_sources_2026-09-27.json"
+    },
+    {
+      "path": "data/ieso_public_connection_applications.json",
+      "name": "IESO parsed public connection application tables",
+      "type": "public_queue",
+      "record_count": null,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/ieso_public_connection_applications.json"
+    },
+    {
+      "path": "data/iso_ne_public_queue.json",
+      "name": "ISO-NE parsed public queue/report tables",
+      "type": "public_queue",
+      "record_count": null,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/iso_ne_public_queue.json"
+    },
+    {
+      "path": "data/large_load_scope.json",
+      "name": "Large-load accounting",
+      "type": "scope",
+      "record_count": 1623,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/large_load_scope.json",
+      "core_record_count": 1540,
+      "expanded_known_record_count": 1623,
+      "expanded_known_capacity_gw": 394.6181
+    },
+    {
+      "path": "data/market_universe_manifest.json",
+      "name": "Market-by-market coverage/disclosure status",
+      "type": "manifest",
+      "record_count": 10,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/market_universe_manifest.json"
+    },
+    {
+      "path": "data/nyiso_public_queue_status.json",
+      "name": "NYISO official source capture status",
+      "type": "source_status",
+      "record_count": 0,
+      "mapped": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/nyiso_public_queue_status.json",
+      "notes": "Explicit current capture result; no queue rows are fabricated when official workbook retrieval returns a non-XLSX response."
+    },
+    {
+      "path": "data/physical_verification_layer.csv",
+      "name": "Track 3 physical verification site CSV",
+      "type": "physical",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/physical_verification_layer.csv"
+    },
+    {
+      "path": "data/physical_verification_layer.json",
+      "name": "Track 3 physical verification layer",
+      "type": "physical",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/physical_verification_layer.json",
+      "notes": "11-category physical verification checklist with 93 site records."
+    },
+    {
+      "path": "data/pjm_large_load_submission_history.json",
+      "name": "PJM LAS document/evidence history",
+      "type": "document",
+      "record_count": 28,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/pjm_large_load_submission_history.json"
+    },
+    {
+      "path": "data/project_level_extractions.json",
+      "name": "Project-level records",
+      "type": "project",
+      "record_count": 271,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/project_level_extractions.json"
+    },
+    {
+      "path": "data/project_level_map.json",
+      "name": "Mapped project-level records",
+      "type": "map",
+      "record_count": 271,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/project_level_map.json",
+      "map_count": 271
+    },
+    {
+      "path": "data/regulatory_utility_evidence.csv",
+      "name": "Regulatory / utility source index",
+      "type": "evidence_csv",
+      "record_count": 24,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/regulatory_utility_evidence.csv"
+    },
+    {
+      "path": "data/regulatory_utility_evidence.json",
+      "name": "Regulatory / utility evidence checklist",
+      "type": "evidence",
+      "record_count": 24,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/regulatory_utility_evidence.json",
+      "notes": "14 checklist categories and 24 primary source records covering Georgia, Virginia, Texas/ERCOT, Ontario and Alberta; source-family evidence is not automatically a site match."
+    },
+    {
+      "path": "data/supplemental_aggregate_map.json",
+      "name": "Mapped aggregate/historical footprints",
+      "type": "map",
+      "record_count": 66,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/supplemental_aggregate_map.json",
+      "map_count": 66
+    },
+    {
+      "path": "data/supplemental_large_load_evidence.json",
+      "name": "Supplemental utility/regulator/planning evidence",
+      "type": "evidence",
+      "record_count": 61,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/supplemental_large_load_evidence.json"
+    },
+    {
+      "path": "data/track3/ai2040_plan_a_mapping.json",
+      "name": "AI 2040 Plan A mapping",
+      "type": "traceability",
+      "record_count": null,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/ai2040_plan_a_mapping.json"
+    },
+    {
+      "path": "data/track3/ai2040_plan_a_traceability.json",
+      "name": "Plan A recommendation/traceability table",
+      "type": "traceability",
+      "record_count": null,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/ai2040_plan_a_traceability.json"
+    },
+    {
+      "path": "data/track3/domain_completeness_matrix_2026-09-27.csv",
+      "name": "Track 3 domain completeness matrix CSV",
+      "type": "completeness_matrix_csv",
+      "record_count": 1395,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/domain_completeness_matrix_2026-09-27.csv"
+    },
+    {
+      "path": "data/track3/domain_completeness_matrix_2026-09-27.json",
+      "name": "93-site × 15-domain Track 3 completeness matrix",
+      "type": "completeness_matrix",
+      "record_count": 1395,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/domain_completeness_matrix_2026-09-27.json"
+    },
+    {
+      "path": "data/track3/evidence_records.json",
+      "name": "Canonical Track 3 evidence ledger",
+      "type": "evidence",
+      "record_count": 887,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/evidence_records.json"
+    },
+    {
+      "path": "data/track3/public_site_dossier.csv",
+      "name": "Complete 93-site public research dossier CSV",
+      "type": "dossier_csv",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_dossier.csv"
+    },
+    {
+      "path": "data/track3/public_site_dossier.json",
+      "name": "Complete 93-site public research dossier",
+      "type": "dossier",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_dossier.json"
+    },
+    {
+      "path": "data/track3/public_site_enrichment_merged_2026-09-27.json",
+      "name": "Merged 93-site enrichment view",
+      "type": "site_enrichment_view",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_site_enrichment_merged_2026-09-27.json",
+      "notes": "Combines canonical Epoch, existing enrichment bridge and fresh public-web findings without overwriting raw source values."
+    },
+    {
+      "path": "data/track3/public_web_claims.json",
+      "name": "Normalized Track 3 public-web claim layer",
+      "type": "evidence",
+      "record_count": 335,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_claims.json"
+    },
+    {
+      "path": "data/track3/public_web_enrichment_2026-09-27.csv",
+      "name": "Fresh public-web site enrichment CSV",
+      "type": "public_web_enrichment_csv",
+      "record_count": 170,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_enrichment_2026-09-27.csv"
+    },
+    {
+      "path": "data/track3/public_web_enrichment_2026-09-27.json",
+      "name": "Fresh public-web site enrichment ledger",
+      "type": "public_web_enrichment",
+      "record_count": 170,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/public_web_enrichment_2026-09-27.json",
+      "notes": "98 additive site-level public findings captured 2026-09-27; source scope and relationship types retained."
+    },
+    {
+      "path": "data/track3/publisher_completeness_matrix_2026-09-27.csv",
+      "name": "Publisher completeness matrix CSV",
+      "type": "completeness_matrix_csv",
+      "record_count": 744,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/publisher_completeness_matrix_2026-09-27.csv"
+    },
+    {
+      "path": "data/track3/publisher_completeness_matrix_2026-09-27.json",
+      "name": "93-site × 8-field publisher completeness matrix",
+      "type": "completeness_matrix",
+      "record_count": 744,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/publisher_completeness_matrix_2026-09-27.json"
+    },
+    {
+      "path": "data/track3/remote_sensing_observation_targets.csv",
+      "name": "93-site optical/TIR/SAR acquisition targets CSV",
+      "type": "remote_sensing_targets_csv",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/remote_sensing_observation_targets.csv"
+    },
+    {
+      "path": "data/track3/remote_sensing_observation_targets.json",
+      "name": "93-site optical/TIR/SAR acquisition targets",
+      "type": "remote_sensing_targets",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/remote_sensing_observation_targets.json"
+    },
+    {
+      "path": "data/track3/research_complete_no_public_record.json",
+      "name": "Completed site-specific grid searches with no retained public record",
+      "type": "research_outcome",
+      "record_count": 20,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/research_complete_no_public_record.json"
+    },
+    {
+      "path": "data/track3/source_document_index.csv",
+      "name": "Source-document index CSV",
+      "type": "source_index_csv",
+      "record_count": 235,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/source_document_index.csv"
+    },
+    {
+      "path": "data/track3/source_document_index.json",
+      "name": "Deduplicated source-document index",
+      "type": "source_index",
+      "record_count": 235,
+      "mapped": false,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/source_document_index.json"
+    },
+    {
+      "path": "data/track3/transformer_event_targets.csv",
+      "name": "93-site transformer research targets",
+      "type": "transformer_targets",
+      "record_count": 93,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/transformer_event_targets.csv"
+    },
+    {
+      "path": "data/track3/transformer_supply_chain_events.json",
+      "name": "Source-backed transformer supply-chain events",
+      "type": "transformer_evidence",
+      "record_count": 3,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/data/track3/transformer_supply_chain_events.json"
+    },
+    {
+      "path": "global-compute-universe.html",
+      "name": "Global Compute Universe interactive database",
+      "type": "interface",
+      "record_count": null,
+      "mapped": true,
+      "additive_to_core_row_level": false,
+      "public_page": "https://anonrish.github.io/continental-load-registry/global-compute-universe.html",
+      "notes": "Federated interface over Epoch AI, Compute Atlas and Data Center Index; source-local populations are non-additive."
     }
   ]
 }
