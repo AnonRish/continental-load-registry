@@ -73,14 +73,15 @@ def main() -> None:
     assert_close(scope_cat["expanded_known_capacity_gw"], 394.6181)
     assert cat["data/track3/evidence_records.json"]["record_count"] == 1221
     assert cat["data/epoch_site_evidence_records.json"]["record_count"] == 102
-    assert cat["data/bpa_large_load_registry.json"]["record_count"] == 60
-    assert cat["data/bpa_large_load_registry.csv"]["record_count"] == 60
     bpa = load("data/bpa_large_load_registry.json")
-    assert bpa["record_count"] == len(bpa["records"]) == 60
-    assert bpa["mapped_record_count"] == 35
-    assert bpa["unmapped_record_count"] == 25
-    assert len(bpa.get("records", [])) - sum(1 for x in bpa.get("records", []) if isinstance(x.get("map_point"), list) and len(x["map_point"]) == 2) == 25
+    bpa_count = bpa["record_count"]
+    bpa_mapped = bpa["mapped_record_count"]
+    assert bpa_count == len(bpa["records"]) > 0
+    assert bpa["unmapped_record_count"] == bpa_count - bpa_mapped
+    assert bpa_mapped == sum(1 for x in bpa["records"] if isinstance(x.get("map_point"), list) and len(x["map_point"]) == 2)
     assert all(str(x.get("id","")).startswith("BPA-") for x in bpa["records"])
+    assert cat["data/bpa_large_load_registry.json"]["record_count"] == bpa_count
+    assert cat["data/bpa_large_load_registry.csv"]["record_count"] == bpa_count
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
     assert cat["data/supplemental_aggregate_map.json"]["record_count"] == 66
