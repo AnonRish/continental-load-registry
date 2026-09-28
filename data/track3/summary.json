@@ -2,14 +2,14 @@
   "schema_version": 1,
   "generated_at_utc": "2026-09-28T01:03:08.160569+00:00",
   "epoch_site_count": 93,
-  "observation_task_count": 191,
+  "observation_task_count": 211,
   "observation_task_counts_by_domain": {
-    "cooling": 93,
     "power_telemetry": 93,
-    "remote_sensing": 5
+    "cooling": 93,
+    "remote_sensing": 25
   },
   "observation_task_counts_by_priority": {
-    "P0": 98,
+    "P0": 118,
     "P1": 93
   },
   "site_level_evidence_site_count": 93,
@@ -90,5 +90,5 @@
     "SOURCE_AVAILABLE_ACTIVE_FALLBACK": 1,
     "SOURCE_AVAILABLE_NOT_INGESTED": 5
   },
-  "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. RESEARCHED_NO_PUBLIC_RECORD means a site-specific search was performed and no public queue/service record was retained; it is not evidence that service is absent."
+  "semantics": "PENDING and NOT_INGESTED are explicit states and are never interpreted as evidence of absence. RESEARCHED_NO_PUBLIC_RECORD means a site-specific search was performed and no public queue/service record was retained; it is not evidence that service is absent. Observation counts are sourced from the retained observation_queue and remote_sensing_observations ledgers; raw imagery/scene counts remain separate."
 }
