@@ -39,6 +39,8 @@ The repository now has explicit machine-readable contracts for the remaining ext
 - `data/track3/external_capability_handoff_2026-09-28.json` — external evidence acceptance contracts.
 - `data/track3/interval_power_telemetry_protocol.json` — interval-meter intake boundary; no site-level telemetry is fabricated.
 - `data/track3/physical_target_leads.json` — lead-only treatment of the unresolved OpenAI Stargate UAE physical target.
+- `build_track3_engineering_closure.py` — reproducible engineering-closure builder.
+- `data/track3/engineering_closure_2026-09-28.json` — machine-readable zero-untracked-gap register.
 - `validate_track3_release.py` — release-consistency validator.
 
 These artifacts close the software/data contract for what the public repository can define and validate; they do not manufacture the missing external evidence.
@@ -55,4 +57,4 @@ A publisher health-check failure is not automatically an ingestion failure. The 
 
 Describe this project as **Track 3 research infrastructure / public-evidence accounting**, not as a completed international verification system. That distinction is part of the audit trail.
 
-The machine-readable gate is `data/track3/completion_gate.json`. The latest committed public-evidence snapshot is 93 sites, 575 derived remote-sensing observations across 92 sites, 454 public-web evidence records, and 1,395/1,395 terminal site-domain cells.
+The machine-readable gate is `data/track3/completion_gate.json`; the engineering-closure register is `data/track3/engineering_closure_2026-09-28.json`. The latest committed public-evidence snapshot is 93 sites, 575 derived remote-sensing observations across 92 sites, 454 public-web evidence records, and 1,395/1,395 terminal site-domain cells.
