@@ -88,7 +88,8 @@ def main() -> None:
 
     summary = load("data/track3/summary.json")
     observation = load("data/track3/observation_queue.json")
-    assert len(observation["tasks"]) == summary["observation_task_count"] == 211
+    assert len(observation["tasks"]) == summary["observation_task_count"] == sum(summary["observation_task_counts_by_domain"].values())
+    assert set(observation["tasks"][0].keys()) >= {"task_id","epoch_id","domain","current_state","priority"}
     assert summary["epoch_site_count"] == 93
     assert summary["remote_sensing_derived_observation_count"] == 543
     assert summary["transformer_event_count"] == 3
