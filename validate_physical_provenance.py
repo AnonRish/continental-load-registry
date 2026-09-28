@@ -92,6 +92,41 @@ def main() -> int:
     if not isinstance(physical, dict):
         raise SystemExit("FAIL: physical verification layer is not an object")
 
+    ps = physical.get("summary", {})
+    derived_site_count = len({str(row.get("epoch_id")) for row in derived if row.get("epoch_id")})
+    if ps.get("derived_observation_count") != len(derived):
+        raise SystemExit("FAIL: physical layer derived_observation_count disagrees with observation ledger")
+    if ps.get("derived_observations") is not None and ps.get("derived_observations") != len(derived):
+        raise SystemExit("FAIL: physical layer legacy derived_observations count disagrees with observation ledger")
+    if ps.get("derived_observation_sites") != derived_site_count:
+        raise SystemExit("FAIL: physical layer derived_observation_sites disagrees with observation ledger")
+
+    coord_path = ROOT / "data" / "track3" / "physical_site_coordinates.json"
+    if not coord_path.exists():
+        raise SystemExit("FAIL: physical coordinate provenance file is missing")
+    coord = load(coord_path)
+    coord_rows = coord.get("records", [])
+    if len(coord_rows) != 93:
+        raise SystemExit("FAIL: physical coordinate provenance must contain 93 site records")
+    resolved_coords = {
+        str(row.get("epoch_id"))
+        for row in coord_rows
+        if row.get("lat") is not None and row.get("lon") is not None
+    }
+    if len(resolved_coords) != 92:
+        raise SystemExit("FAIL: expected 92/93 physical site coordinates resolved")
+
+    geo_path = ROOT / "data" / "track3" / "geo_coverage_audit_2026-09-27.json"
+    if geo_path.exists():
+        geo = load(geo_path)
+        g = geo.get("summary", {})
+        if g.get("resolved_sites") != 92 or g.get("unresolved_sites") != 1:
+            raise SystemExit("FAIL: geo coverage summary must reconcile to 92 resolved + 1 unresolved")
+        if g.get("sites_with_any_derived_remote_observation") != derived_site_count:
+            raise SystemExit("FAIL: geo coverage derived-site count disagrees with observation ledger")
+        if g.get("derived_observations_total") != len(derived):
+            raise SystemExit("FAIL: geo coverage observation count disagrees with observation ledger")
+
     for source in sources.values():
         if not source.get("raw_source_retained") and source.get("raw_source_sha256") is not None:
             raise SystemExit(f"FAIL: raw SHA-256 supplied for non-retained source: {source.get('id')}")

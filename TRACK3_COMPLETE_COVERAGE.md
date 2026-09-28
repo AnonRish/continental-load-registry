@@ -27,7 +27,7 @@ The AI Futures material describes Track 3 as verifying the absence of secret com
 | Serial-number continuity | Lifecycle state machine + integrity rules | FRAMEWORK_IMPLEMENTED | No global public serial ledger |
 | Decommissioning/recycling | Verification-state protocol + WEEE source catalog | FRAMEWORK_IMPLEMENTED | No independently verified compute-specific ledger |
 | Untraced compute pool L | Residual ledger + certificate model | FRAMEWORK_IMPLEMENTED | Global transaction chain is not closed |
-| Locate remaining unaccounted compute | Optical/TIR/SAR + queue surveillance + case workflows | PARTIAL | Public imagery cannot prove universal absence; 5/93 reference sites lack retained derived observations |
+| Locate remaining unaccounted compute | Optical/TIR/SAR + queue surveillance + case workflows | PARTIAL | Public imagery cannot prove universal absence; 1/93 reference sites still lacks a resolved public physical target |
 | Incentive/amnesty/buyback evidence | Disclosure protocol | FRAMEWORK_IMPLEMENTED | No verified program/event dataset |
 | Physical data-center discovery | Epoch reference + broader queue surveillance + public records | PARTIAL | No intelligence corpus or global covert-site census |
 | Power/cooling/infrastructure corroboration | Annual power, cooling, transformer, substation/transmission evidence | PARTIAL | Interval telemetry and exhaustive site linkage are incomplete |
@@ -46,8 +46,8 @@ This is a repository-level completeness result, not an international Track 3 ver
 ## Current empirical layers
 
 - 93-site Epoch frontier-AI reference universe.
-- 547 retained derived remote-sensing observations across 88 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 88 of 93 reference-site coordinates resolved for acquisition.
-- 193 optical observations, 176 TIR observations, and 178 SAR observations in the current committed ledger.
+- 575 retained derived remote-sensing observations across 92 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 92 of 93 reference-site coordinates resolved for acquisition. One reference site remains unresolved for site-specific physical targeting.
+- 204 optical observations, 184 TIR observations, and 187 SAR observations in the current committed ledger.
 - 191 current observation-acquisition tasks.
 - 6 site-level annual electricity-consumption snapshots.
 - 15 site-level cooling snapshots represented in the current site-status layer; the dedicated cooling-observation file contains 2 directly retained equipment snapshots.
@@ -58,8 +58,8 @@ This is a repository-level completeness result, not an international Track 3 ver
 - 22 sites with retained service/contract evidence; 71 remain not ingested.
 - 16 sites with retained site-level regulatory evidence; 77 remain not assessed.
 - 2 defensible site-specific queue IDs in the 93-site Epoch crosswalk.
-- 335 normalized public-web evidence records in a losslessly reconciled claim layer; 89 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site claims.
-- 88 of 93 reference sites now have retained site-level coordinates, including 20 curated public-source coordinate overrides; five remain unresolved and are blocked from physical interpretation.
+- 444 normalized public-web evidence records in a losslessly reconciled claim layer; 441 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
+- 92 of 93 reference sites now have retained site-level coordinates, including 24 curated public-source coordinate overrides; one remains unresolved and is blocked from site-specific physical interpretation.
 - 141-record broad ambiguous-load research pool totaling 53.8512 GW under the repository's current filter.
 - 68 of those 141 have an explicit retained load-side technology field; 73 require project-type adjudication before strict load-discovery admission.
 

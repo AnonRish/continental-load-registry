@@ -25,8 +25,8 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 - [x] Reproducible, sourced large-load baseline across nine North American markets.
 - [x] Ambiguous tier separates unresolved/undisclosed cases from confirmed identities without guessing.
-- [x] Actual processed physical evidence exists: 551 retained derived remote-sensing observations across 88 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
-- [ ] All 93 Epoch sites have processed remote-sensing observations. Five sites currently remain without a retained derived observation.
+- [x] Actual processed physical evidence exists: 575 retained derived remote-sensing observations across 92 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
+- [ ] All 93 Epoch sites have site-specific remote-sensing observations. One site currently remains without a resolved physical target and therefore cannot receive a site-specific observation.
 - [x] Three ambiguous-load closure cases are published: two bounded classifications and one intentionally inconclusive case; two cases have six derived multi-sensor observations each.
 - [x] Claim-level verification vocabulary exists: PASS / FAIL / UNKNOWN / NOT_TESTED.
 - [x] Facility-level vocabulary is defined in the verifier as VERIFIED_PRESENT / VERIFIED_ABSENT / INCONCLUSIVE, with INCONCLUSIVE remaining the default until the facility-wide end-to-end gate is satisfied.
@@ -47,7 +47,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] Physical-source provenance manifest exists at data/track3/physical_source_manifest.json.
 - [x] Human-readable physical provenance policy exists at PHYSICAL_SOURCES.md.
 - [x] The physical validator rejects false raw SHA-256 claims when source bytes are not retained.
-- [ ] Per-artifact SHA-256 + byte-count generation for retained physical outputs is not automated yet; tracked as issue #32.
+- [x] Per-artifact SHA-256 + byte-count generation for retained physical outputs is automated by refresh_physical_source_manifest.py and validated by validate_physical_provenance.py.
 - [x] Track 3 public revision is aligned to 2026-09-27.
 - [x] README filename corrected to ground_truth_overrides_example.json.
 - [x] Claim-level verification results have been refreshed against the retained physical observations: 423 PASS, 296 UNKNOWN, 25 NOT_TESTED; facility-wide state is 0 VERIFIED_PRESENT / 0 VERIFIED_ABSENT / 93 INCONCLUSIVE. A subsequent verifier workflow run failed only at the Git push race; the workflow has since been hardened with serialized runs and rebase-before-push.
@@ -89,9 +89,9 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 ## 7. Current reviewer bottom line
 
-**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 551 processed remote-sensing observations across 88 sites, a provenance manifest, claim-level verification machinery, a 216-task publisher-only research queue, and explicit uncertainty semantics. The 93-site × 15-domain Track 3 matrix is now terminally assessed at 1,395/1,395 cells.
+**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 575 processed remote-sensing observations across 92 sites, a provenance manifest, claim-level verification machinery, a 216-task publisher-only research queue, and explicit uncertainty semantics. The 93-site × 15-domain Track 3 matrix is now terminally assessed at 1,395/1,395 cells.
 
-**Still incomplete at the empirical/verification level:** interval power telemetry; additional positive physical observations for the remaining 5 Epoch sites; fuller cooling/transformer/service/regulatory evidence; transaction-level compute accounting; physical inspection; serial continuity and decommissioning/recycling verification; comprehensive covert-site discovery; an independent verification authority; automated SHA-256/byte manifests for retained physical derivatives; and independent external review.
+**Still incomplete at the empirical/verification level:** interval power telemetry; site-specific physical targeting for the remaining 1 unresolved Epoch site; fuller cooling/transformer/service/regulatory evidence; transaction-level compute accounting; physical inspection; serial continuity and decommissioning/recycling verification; comprehensive covert-site discovery; an independent verification authority; automated SHA-256/byte manifests for retained physical derivatives; and independent external review.
 
 **Correct interpretation:** this is a substantially implemented public-evidence contribution to the broader Track 3 problem, not a completed international verification regime and not evidence that covert compute has been comprehensively detected.
 ## 8. Global accounting expansion
