@@ -4,18 +4,18 @@
 
 - 93 canonical Epoch reference sites.
 - 1,395 / 1,395 defined site × domain cells in terminal evidence-accounting states.
-- 452 retained public-web evidence records.
+- 454 retained public-web evidence records.
 - 575 retained derived remote-sensing observations across 92 sites.
 - 92 of 93 reference-site physical targets resolved; one remains explicitly unresolved.
 - 4 closed ambiguous-load pilot cases.
 - 5 strict discovery cases with terminal dispositions.
 - 24 follow-on observation-acquisition tasks: 18 cooling and 6 interval-power-telemetry tasks.
 - 3 source-backed transformer event records.
-- Machine-readable external-capability handoff, interval telemetry contract and unresolved physical-target lead ledger.
+- Machine-readable external-capability handoff, interval telemetry contract, unresolved physical-target lead ledger, and repository engineering-closure register.
 
 ## What complete means here
 
-The software/data/research contract is complete where public evidence permits: schemas, evidence states, provenance boundaries, canonical joins, closure rules, queues, validation, and release consistency are explicit and machine-checkable.
+The software/data/research contract is complete where public evidence permits: schemas, evidence states, provenance boundaries, canonical joins, closure rules, queues, validation, external-capability handoffs, and release consistency are explicit and machine-checkable. The closure register records zero untracked repository gaps while preserving unresolved research and acquisition work.
 
 Empirical Track 3 verification is **not closed**. The remaining blockers require records, access, authority or intelligence that a public GitHub repository cannot manufacture: globally complete transaction-level accelerator accounting; authorized physical inspections; global serial continuity; independently verified decommissioning/recycling; a closed statistical audit population and realized sample; comprehensive covert-site intelligence; and independent verification governance.
 
