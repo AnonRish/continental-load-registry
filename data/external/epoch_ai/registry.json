@@ -956,6 +956,52 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-4819cf2363085445cc92",
             "scope_note": "Retained construction/EPC field from the enrichment registry; contractor role may be EPC, GC, or construction partner depending on source."
+          },
+          {
+            "field": "owner",
+            "value": "Oracle",
+            "relationship": "site owner / hardware owner identified by third-party facility research",
+            "source": "Samaritan Research / Scrutica",
+            "source_urls": [
+              "https://samaritan-research.org/data/data-centers/satellite-explorer/OpenAIStargateAbilene",
+              "https://scrutica.com/facilities/fac-stargate-abilene"
+            ],
+            "publication_date": "2026-09-24",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-ABILENE-OWNER-20260927",
+            "scope_note": "Third-party sources identify Oracle as the owner/hardware owner; retained as public enrichment rather than an independent ownership certification."
+          },
+          {
+            "field": "energy_companies",
+            "value": [
+              "ERCOT",
+              "on-site natural gas generation",
+              "local West Texas wind"
+            ],
+            "relationship": "grid and on-site power supply context",
+            "source": "DEPLOY",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/oracle-abilene-texas"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-ABILENE-POWER-20260927",
+            "scope_note": "DEPLOY describes ERCOT grid connection plus on-site generation; this is not a queue ID or interval telemetry measurement."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Crusoe"
+            ],
+            "relationship": "site construction/development partner",
+            "source": "DEPLOY",
+            "source_urls": [
+              "https://registry.deploy.report/datacenters/facilities/oracle-abilene-texas"
+            ],
+            "publication_date": "2026-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-ABILENE-CONSTRUCTION-20260927",
+            "scope_note": "DEPLOY identifies Crusoe as having built the site; retained as construction/development evidence, not as a complete contractor roster."
           }
         ]
       },
@@ -2627,6 +2673,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-b2e5ab5465559187c934",
             "scope_note": "City source says the project was previously code-named Bigfoot or Jimnist and identifies Meta as the company."
+          },
+          {
+            "field": "construction_companies",
+            "value": "Mortenson",
+            "relationship": "named construction partner",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2024/03/hello-rosemount/"
+            ],
+            "publication_date": "2024-03-14",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-8358e4-CONSTRUCTION-20260927",
+            "scope_note": "Meta states construction information is available from Mortenson and thanks Mortenson among the partners; this does not establish a complete contractor roster."
           }
         ]
       },
@@ -4665,6 +4724,37 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-f69619f4",
             "scope_note": "Meta's current U.S. locations material identifies Kuna as a Meta data center location; Wadsworth's mission-critical project list names the Meta Kuna Data Center Campus."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Hensel Phelps",
+              "Engineered Structures, Inc. (ESI)"
+            ],
+            "relationship": "named construction partners",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2023/10/ramping-up-construction-on-the-kuna-data-center/",
+              "https://datacenters.atmeta.com/2022/02/hello-kuna/"
+            ],
+            "publication_date": "2023-10-12",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-5de9a1-CONSTRUCTION-20260927",
+            "scope_note": "Meta explicitly names Hensel Phelps and ESI as partners; this is not a complete contractor roster."
+          },
+          {
+            "field": "energy_companies",
+            "value": "Idaho Power",
+            "relationship": "electric utility / customer service provider",
+            "source": "Idaho Public Utilities Commission / Idaho Power",
+            "source_urls": [
+              "https://puc.idaho.gov/Fileroom/PublicFiles/Press/20230512Idaho%20Power%20Brisbie%20Press%20Release.pdf",
+              "https://docs.idahopower.com/pdfs/AboutUs/PlanningForFuture/irp/2023/2023-appendix-a-final.pdf"
+            ],
+            "publication_date": "2023-05-11",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-5de9a1-ENERGY-20260927",
+            "scope_note": "Added as a retained public utility relationship; the utility is already present as a non-effective-unresolved field in the sweep."
           }
         ]
       },
@@ -8438,7 +8528,7 @@
         "selected_sources": null,
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1wtryXxH9tEtc3gatXW1GmwtJzZB3uKkSD0Pw-RJBZnY/edit?usp=sharing",
         "investors": "",
-        "construction_companies": "",
+        "construction_companies": "Turner Construction Co.",
         "energy_companies": "",
         "latest_timeline": {
           "data_center": "Microsoft SAT40",
@@ -8527,6 +8617,19 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-sat40-project-20260927",
             "scope_note": "TDLR project TABS2023013247 is named SAT40 / SAT40 Data Center."
+          },
+          {
+            "field": "construction_companies",
+            "value": "Turner Construction Co.",
+            "relationship": "named construction company",
+            "source": "San Antonio Report",
+            "source_urls": [
+              "https://sanantonioreport.org/microsoft-data-centers-san-antonio-region/"
+            ],
+            "publication_date": "2023-09-27",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-71d009-CONSTRUCTION-20260927",
+            "scope_note": "Independent local reporting identifies Turner Construction Co. as builder of SAT40; this is not a complete contractor roster."
           }
         ]
       },
@@ -9624,7 +9727,7 @@
         "country": "United States",
         "address": "14720 Omicron Dr, San Antonio, TX 78245",
         "region_inferred_from_address": "TX",
-        "owner": "",
+        "owner": "VANTAGE DATA CENTERS TX1 LLC",
         "users": "",
         "project": "TX1 / Vantage Data Centers TX1",
         "current_h100_equivalents": 38706.417382516425,
@@ -9675,6 +9778,20 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-vantagetx1-project-20260927",
             "scope_note": "TDLR filings identify Vantage Data Centers TX1 LLC and facilities TX11/TX12 at the San Antonio TX1 campus."
+          },
+          {
+            "field": "owner",
+            "value": "VANTAGE DATA CENTERS TX1 LLC",
+            "relationship": "owner of record for TX12 / TX1 campus construction projects",
+            "source": "Texas Department of Licensing and Regulation",
+            "source_urls": [
+              "https://www.tdlr.texas.gov/TABS/Projects/TABS2026012091",
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2026001234"
+            ],
+            "publication_date": "2026-02-09",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-VANTAGE-OWNER-20260927",
+            "scope_note": "Official TDLR project records identify VANTAGE DATA CENTERS TX1 LLC as the owner for the 96 MW TX12 fit-up and TX1 campus project."
           }
         ]
       },
@@ -11596,6 +11713,23 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-48844851a898303ec3c1",
             "scope_note": "Verify exact canonical site ID against current Epoch record before merging; this record is a public project identity capture."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "DPR Construction",
+              "Turner Construction Company",
+              "Mortenson Construction"
+            ],
+            "relationship": "named general contractors",
+            "source": "Meta Data Centers",
+            "source_urls": [
+              "https://datacenters.atmeta.com/2026/07/deepening-our-investment-in-richland-parish-louisiana/"
+            ],
+            "publication_date": "2026-07-13",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-bbcf0e-CONSTRUCTION-20260927",
+            "scope_note": "Meta identifies these three general contractors; this is not a complete subcontractor roster."
           }
         ]
       },
@@ -12777,7 +12911,7 @@
         "selected_sources": null,
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1zXqoogyqGbmgvdu4vSTepZG3Cy8kMoJjp0n3KaZPkd4/edit?usp=sharing",
         "investors": "",
-        "construction_companies": "",
+        "construction_companies": "Layton Construction Company",
         "energy_companies": "Alliant Energy",
         "latest_timeline": {
           "data_center": "QTS Cedar Rapids",
@@ -12846,6 +12980,21 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-e080e7b4",
             "scope_note": "QTS's official page labels Cedar Rapids, Iowa as a Data Center Campus and states QTS is building it. No contractor is inferred from this source."
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Layton Construction Company"
+            ],
+            "relationship": "named construction contractor / permit applicant for site construction laydown campus",
+            "source": "Linn County",
+            "source_urls": [
+              "https://www.linncountyiowa.gov/DocumentCenter/View/26593/2025-9-137-Approving-Temporary-Use---6004-76th-Ave-Fairfax-Iowa"
+            ],
+            "publication_date": "2025-09-01",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-d2da66-CONSTRUCTION-20260927",
+            "scope_note": "Layton is explicitly the petitioner for a QTS construction laydown campus at 6004 76th Ave.; this does not establish a complete contractor roster for every phase."
           }
         ]
       },
@@ -12913,14 +13062,14 @@
         "region_inferred_from_address": "UT",
         "owner": "QTS Data Centers",
         "users": "Meta #speculative",
-        "project": "",
+        "project": "QTS Data Center Campus",
         "current_h100_equivalents": 0,
         "current_power_mw": 0,
         "current_total_capital_cost_b_2025": 0,
         "selected_sources": null,
         "calculations_sheet": "https://docs.google.com/spreadsheets/d/1pWiTKivojS1IY4tiv0aHM06FugKbLA2qjLJ-5DFoRF4/edit?usp=sharing",
         "investors": "",
-        "construction_companies": "",
+        "construction_companies": "Layton Construction",
         "energy_companies": "Rocky Mountain Power (PacifiCorp)",
         "latest_timeline": {
           "data_center": "QTS Eagle Mountain",
@@ -12989,6 +13138,34 @@
             "capture_date": "2026-09-27",
             "evidence_id": "EVID-PWEB-62d9cbbdd3656b3fc343",
             "scope_note": null
+          },
+          {
+            "field": "construction_companies",
+            "value": [
+              "Layton Construction"
+            ],
+            "relationship": "named construction partner",
+            "source": "QTS Data Centers / Layton Construction",
+            "source_urls": [
+              "https://q.com/news/layton-construction-and-qts-data-centers-celebrate-topping-out-of-data-center-campus-in-eagle-mountain/"
+            ],
+            "publication_date": "2026-04-17",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-4b4d68-CONSTRUCTION-20260927",
+            "scope_note": "QTS and Layton jointly identify Layton in connection with the third-building topping-out; this is not a complete contractor roster."
+          },
+          {
+            "field": "project",
+            "value": "QTS Data Center Campus",
+            "relationship": "project identity used in municipal development agreement",
+            "source": "Eagle Mountain City",
+            "source_urls": [
+              "https://eaglemountain.gov/wp-content/uploads/2025/07/RES-11-2025-Approving-1st-Amendment-QTS-Development-Agreement.pdf"
+            ],
+            "publication_date": "2025-02-04",
+            "capture_date": "2026-09-27",
+            "evidence_id": "EVID-PWEB-CLOSE-4b4d68-PROJECT-20260927",
+            "scope_note": "Official municipal agreement identifies the QTS Data Center Campus / Project and its associated electrical infrastructure."
           }
         ]
       },
