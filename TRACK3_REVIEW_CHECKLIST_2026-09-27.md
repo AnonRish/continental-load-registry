@@ -37,7 +37,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 ### Track 3 domain-accounting closure
 
 - [x] 1,395/1,395 defined site-domain cells are in terminal evidence-accounting states (93 sites × 15 domains).
-- [x] 573 ASSESSMENT_COMPLETE records explicitly document the current public-evidence ceiling for cells without qualifying retained records.
+- [x] 559 ASSESSMENT_COMPLETE records explicitly document the current public-evidence ceiling for cells without qualifying retained records.
 - [x] ASSESSMENT_COMPLETE is explicitly not evidence of absence and can be reopened when new evidence arrives.
 
 ## 2. Provenance and trust
@@ -106,6 +106,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] External-capability handoff is machine-readable at `data/track3/external_capability_handoff_2026-09-28.json`.
 - [x] Interval telemetry intake contract is machine-readable at `data/track3/interval_power_telemetry_protocol.json`.
 - [x] The unresolved Stargate UAE physical-target question has a documented lead-only ledger at `data/track3/physical_target_leads.json`; conflicting secondary coordinates are preserved as leads and are not promoted to a canonical target.
+- [x] Repository engineering closure is machine-checked by `build_track3_engineering_closure.py` and `data/track3/engineering_closure_2026-09-28.json`, with zero untracked defined repository gaps.
 
 - [x] P3108 / Wild Rose Power Hub has a source-backed 1,300 MW load record, public-project identity from provincial/local government records, an official planning point and legal quarter-section set, and six retained multi-modal remote-sensing observations.
 - [x] The five-case strict discovery queue has terminal dispositions for P3066, P3198, P3108, P2958, and P2614, with unresolved physical/identity boundaries explicitly preserved.
