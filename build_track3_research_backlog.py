@@ -106,7 +106,7 @@ def main() -> None:
         "schema_version": 1,
         "generated_on": sweep["summary"]["generated_on"],
         "source_sweep": str(SWEEP.relative_to(ROOT)).replace("\\", "/"),
-        "sites": len({t["epoch_id"] for t in tasks}),
+        "sites": len(sweep["records"]),
         "publisher_tasks": len(publisher_tasks),
         "domain_tasks": len(domain_tasks),
         "total_tasks": len(tasks),
