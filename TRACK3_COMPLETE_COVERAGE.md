@@ -92,6 +92,15 @@ The strict admitted queue contains five cases, and all five now have terminal di
 
 These are not ranked for hiddenness or expected outcome. Terminal disposition means the declared research gates reached a documented stopping rule; it does not mean operation, measured demand, AI workload, or covert status was proven.
 
+## Release / external-capability handoff
+
+The remaining empirical blockers are now represented as explicit machine-readable interfaces:
+
+- `data/track3/external_capability_handoff_2026-09-28.json` defines required evidence, authority, acceptance tests and current state.
+- `data/track3/interval_power_telemetry_protocol.json` defines the interval-meter intake boundary and prevents queue/service capacity from being mislabeled as metered load.
+- `data/track3/physical_target_leads.json` records lead-only candidates for the one unresolved reference-site target without promoting conflicting secondary coordinates into the canonical target set.
+- `validate_track3_release.py` checks release-snapshot consistency and prevents schemas from being mistaken for empirical closure.
+
 ## Evidence semantics
 
 The registry never silently converts:
