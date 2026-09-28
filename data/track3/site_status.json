@@ -6992,8 +6992,8 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "Entergy Louisiana states it will power Meta's Richland Parish data center and has made dedicated grid investments, including the Smalling Substation; later Entergy/Meta agreements continue to document the site-specific power relationship."
         },
         "regulatory": {
           "status": "INGESTED",
@@ -7039,15 +7039,16 @@
           "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         },
         "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
+          "status": "ASSESSED",
+          "basis": "Distinct Meta and Entergy records independently corroborate the Richland Parish data center, its power relationship and its construction program."
         }
       },
       "site_level_evidence_count": 1,
       "public_web_evidence_count": 2,
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 3,
-      "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+      "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "open_track3_domains": []
     },
     {
       "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
