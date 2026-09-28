@@ -321,7 +321,7 @@ On the map, the **Connection targets** toggle overlays all 93 research targets o
 
 The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **271 individually identifiable records** extracted from public source material:
 
-- **60 BPA large-load request records** remain in the separately curated project-level extraction, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed. The broader dedicated BPA official-workbook layer now contains **457 L-series request rows** and is not counted inside the 271-record project extraction.
+- **60 BPA large-load request records** remain in the separately curated project-level extraction, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed. The broader dedicated BPA official-workbook source exposed **457 raw L-series rows**; the dedicated normalized Track 3 large-load layer retains **128 requests at >=100 MW** and is not counted inside the 271-record project extraction.
 - **33 Virginia DEQ issued-air permit records**, with permit number, named site/project, county and issuance date.
 - **28 AESO Data Load projects**, with project IDs, project names, planning-area/town identities and public DTS/contract-capacity values.
 - **12 NYISO Load Project records**, with queue ID, project/developer, MW, county and POI/site information where publicly exposed.
