@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Build normalized claim-level Track 3 artifact from public-web enrichment."""
+# Deterministic Track 3 claim normalization: keep generated claims lossless with the source layer.
 from __future__ import annotations
 import hashlib
 import json
