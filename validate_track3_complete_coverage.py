@@ -149,6 +149,14 @@ def main() -> int:
     if public_claims.get("accounting", {}).get("claim_count", 0) < 335:
         errors.append("public-web claim layer is missing retained enrichment claims")
 
+    leads = load("data/track3/public_research_leads.json")
+    lead_rows = leads.get("records", [])
+    assert leads.get("accounting", {}).get("lead_count") == len(lead_rows) == 53
+    assert leads.get("accounting", {}).get("site_count") == 33
+    assert len({x.get("lead_id") for x in lead_rows}) == len(lead_rows)
+    assert all(x.get("epoch_id") and x.get("field") and x.get("finding") for x in lead_rows)
+    assert all(x.get("status") in {"PUBLIC_LEAD_REVIEW_REQUIRED","RETAINED_SOURCE","PUBLIC_SOURCE"} for x in lead_rows)
+
     global_sources = load("data/track3/public_global_source_observations.json")
     if len(global_sources.get("observations", [])) < 6:
         errors.append("global public source observation inventory is incomplete")
