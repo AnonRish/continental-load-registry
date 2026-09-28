@@ -236,6 +236,13 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "INGESTED",
                 "basis": "At least one attached evidence record is explicitly marked independent of another source."
             }
+        if "independent_corroboration" in manual_fields:
+            return {
+                "status": "ASSESSED",
+                "basis": "A retained public-web corroboration record documents materially independent public sources for this site."
+            }
+        if research_assessment:
+            return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source assessment produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {
             "status": "NOT_ASSESSED",
             "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
