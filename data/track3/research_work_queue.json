@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-28",
+  "generated_on": "2026-09-27",
   "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
   "scope": "93 canonical Epoch AI frontier-AI reference sites",
   "summary": {
@@ -8,14 +8,24 @@
     "generated_on": "2026-09-27",
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
-    "publisher_tasks": 216,
+    "publisher_tasks": 214,
     "domain_tasks": 0,
-    "total_tasks": 216,
+    "total_tasks": 214,
+    "follow_on_observation_tasks": 24,
+    "follow_on_observation_by_domain": {
+      "power_telemetry": 6,
+      "cooling": 18
+    },
+    "follow_on_observation_by_priority": {
+      "P0": 6,
+      "P1": 18
+    },
+    "follow_on_observation_source": "data/track3/observation_queue.json",
     "publisher_by_field": {
       "project": 22,
       "investors": 79,
       "construction_companies": 61,
-      "energy_companies": 15,
+      "energy_companies": 13,
       "owner": 0,
       "users": 21,
       "address": 8,
@@ -36,9 +46,10 @@
     "coverage_assertions": {
       "publisher_tasks_equal_effective_unresolved": true,
       "domain_tasks_equal_open_cells": true,
-      "all_93_sites_represented": true
+      "all_93_sites_represented": true,
+      "observation_tasks_explicitly_accounted": true
     },
-    "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence."
+    "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence. Follow-on observation tasks are acquisition work and do not imply that a domain cell is currently open."
   },
   "workflow_order": [
     "DISCOVER",
@@ -10488,7 +10499,5 @@
       "canonical_ingest_path": "data/track3/evidence_records.json",
       "submission_schema": "data/track3/research_submission_schema.json"
     }
-  ],
-  "publisher_tasks": 214,
-  "total_tasks": 214
+  ]
 }

@@ -1,11 +1,21 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-28",
+  "generated_on": "2026-09-27",
   "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
   "sites": 93,
   "publisher_tasks": 214,
   "domain_tasks": 0,
   "total_tasks": 214,
+  "follow_on_observation_tasks": 24,
+  "follow_on_observation_by_domain": {
+    "power_telemetry": 6,
+    "cooling": 18
+  },
+  "follow_on_observation_by_priority": {
+    "P0": 6,
+    "P1": 18
+  },
+  "follow_on_observation_source": "data/track3/observation_queue.json",
   "publisher_by_field": {
     "project": 22,
     "investors": 79,
@@ -34,15 +44,5 @@
     "all_93_sites_represented": true,
     "observation_tasks_explicitly_accounted": true
   },
-  "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence.",
-  "follow_on_observation_tasks": 24,
-  "follow_on_observation_by_domain": {
-    "cooling": 18,
-    "power_telemetry": 6
-  },
-  "follow_on_observation_by_priority": {
-    "P0": 6,
-    "P1": 18
-  },
-  "follow_on_observation_source": "data/track3/observation_queue.json"
+  "semantics": "OPEN means research remains outstanding. Leads are discovery hints only. NO_PUBLIC_RECORD is a research disposition, not evidence of absence. Follow-on observation tasks are acquisition work and do not imply that a domain cell is currently open."
 }
