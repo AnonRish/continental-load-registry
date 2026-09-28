@@ -72,8 +72,7 @@ def main():
  if args.check:
   print("PASS: physical provenance manifest is reproducible." if same else "FAIL: physical provenance manifest is stale.")
   return 0 if same else 1
- MANIFEST.write_text(json.dumps(rebuilt,indent=2,ensure_ascii=False)+"
-",encoding="utf-8")
+ MANIFEST.write_text(json.dumps(rebuilt,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
  print("WROTE:",MANIFEST)
  return 0
 if __name__=="__main__": raise SystemExit(main())
