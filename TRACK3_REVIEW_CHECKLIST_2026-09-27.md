@@ -48,9 +48,9 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] Human-readable physical provenance policy exists at PHYSICAL_SOURCES.md.
 - [x] The physical validator rejects false raw SHA-256 claims when source bytes are not retained.
 - [x] Per-artifact SHA-256 + byte-count generation for retained physical outputs is automated by refresh_physical_source_manifest.py and validated by validate_physical_provenance.py.
-- [x] Track 3 public revision is aligned to 2026-09-27.
+- [x] Track 3 public revision is aligned to 2026-09-28.
 - [x] README filename corrected to ground_truth_overrides_example.json.
-- [x] Claim-level verification results have been refreshed against the retained physical observations: 423 PASS, 296 UNKNOWN, 25 NOT_TESTED; facility-wide state is 0 VERIFIED_PRESENT / 0 VERIFIED_ABSENT / 93 INCONCLUSIVE. A subsequent verifier workflow run failed only at the Git push race; the workflow has since been hardened with serialized runs and rebase-before-push.
+- [x] Claim-level verification results have been refreshed against the retained physical observations: 450 PASS, 293 UNKNOWN, 1 NOT_TESTED; facility-wide state is 0 VERIFIED_PRESENT / 0 VERIFIED_ABSENT / 93 INCONCLUSIVE. A subsequent verifier workflow run failed only at the Git push race; the workflow has since been hardened with serialized runs and rebase-before-push.
 
 ## 3. Reproducibility and engineering rigor
 
@@ -89,7 +89,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 ## 7. Current reviewer bottom line
 
-**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 575 processed remote-sensing observations across 92 sites, a provenance manifest, claim-level verification machinery, a 216-task publisher-only research queue, and explicit uncertainty semantics. The 93-site × 15-domain Track 3 matrix is now terminally assessed at 1,395/1,395 cells.
+**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 575 processed remote-sensing observations across 92 sites, a provenance manifest, claim-level verification machinery, a 214-task publisher-only research queue and a separate 24-task observation acquisition queue, and explicit uncertainty semantics. The 93-site × 15-domain Track 3 matrix is now terminally assessed at 1,395/1,395 cells.
 
 **Still incomplete at the empirical/verification level:** interval power telemetry; site-specific physical targeting for the remaining 1 unresolved Epoch site; fuller cooling/transformer/service/regulatory evidence; transaction-level compute accounting; physical inspection; serial continuity and decommissioning/recycling verification; comprehensive covert-site discovery; an independent verification authority; automated SHA-256/byte manifests for retained physical derivatives; and independent external review.
 
