@@ -48,7 +48,9 @@ This is a repository-level completeness result, not an international Track 3 ver
 - 93-site Epoch frontier-AI reference universe.
 - 575 retained derived remote-sensing observations across 92 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 92 of 93 reference-site coordinates resolved for acquisition. One reference site remains unresolved for site-specific physical targeting.
 - 204 optical observations, 184 TIR observations, and 187 SAR observations in the current committed ledger.
-- 24 current observation-acquisition tasks: 6 P0 power-telemetry tasks and 18 P1 cooling tasks.
+- 214 open public-source publisher-field research tasks and 0 open site/domain cells after terminal evidence assessment.
+- 24 current follow-on observation-acquisition tasks: 6 P0 power-telemetry tasks and 18 P1 cooling tasks. These remain open acquisitions even where the underlying domain cell is terminally assessed.
+- The machine-readable engineering-closure register reports 0 untracked repository gaps.
 - 6 site-level annual electricity-consumption snapshots.
 - 18 site-level cooling snapshots represented in the current site-status layer; the dedicated cooling-observation file contains 2 directly retained equipment snapshots.
 - 3 source-backed transformer event records.
