@@ -453,14 +453,15 @@ def update_manifests(records: list[dict[str, Any]], capture_date: str, source_sh
     atomic_text(MAP_MANIFEST_CSV, out.getvalue())
 
     cat = load_json(CATALOG)
-    for path in ("data/bpa_large_load_registry.json", "data/bpa_large_load_registry.csv"):
-        if path in cat.get("datasets", {}):
-            cat["datasets"][path]["record_count"] = count
-            cat["datasets"][path]["public_page"] = (
-                f"https://anonrish.github.io/continental-load-registry/{path}"
+    for dataset in cat.get("datasets", []):
+        if dataset.get("path") in ("data/bpa_large_load_registry.json", "data/bpa_large_load_registry.csv"):
+            dataset["record_count"] = count
+            dataset["public_page"] = f"https://anonrish.github.io/continental-load-registry/{dataset['path']}"
+            dataset["notes"] = (
+                f"{count} normalized BPA large-load request rows from the official workbook at the latest refresh. "
+                f"{mapped} retain prior display geometry; {count - mapped} have no retained display geometry."
             )
-    atomic_text(CATALOG, json.dumps(cat, indent=2, ensure_ascii=False) + "\n")
-
+    atomic_text(CATALOG, json.dumps(cat, indent=2, ensure_ascii=False) + "\\n")
     checklist = load_json(CHECKLIST)
     entry = next((x for x in checklist["records"] if x["id"] == "BPA"), None)
     if entry:
