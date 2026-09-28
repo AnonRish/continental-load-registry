@@ -118,6 +118,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         )
         if matches or crosswalk_service or "service_or_contract" in manual_fields:
             return {"status":"SITE_LEVEL_EVIDENCE","basis":"A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."}
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {"status":"NOT_INGESTED","basis":"No site-specific service or energy-contract evidence is currently attached."}
     if research_assessment:
         return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
@@ -125,6 +127,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
         matches = [x for x in ev if x.get("type") in {"site_specific_compute_tenancy","site_specific_compute_contract","site_specific_lease"}]
         if matches:
             return {"status":"INGESTED_SNAPSHOT","basis":"A site-specific compute-tenancy or capacity contract is preserved; this does not establish utility connection or measured load."}
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {"status":"UNKNOWN","basis":"No site-specific compute-tenancy contract has been attached in the current evidence layer."}
     if research_assessment:
         return {"status": research_assessment.get("status", "RESEARCHED_NO_PUBLIC_RECORD"), "basis": research_assessment.get("basis", "A dated targeted public-source sweep produced no qualifying public record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
@@ -135,6 +139,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "INGESTED",
                 "basis": "Site-level regulatory evidence is preserved in the Track 3 evidence layer."
             }
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {
             "status": "NOT_ASSESSED",
             "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
@@ -177,6 +183,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "INGESTED_SNAPSHOT",
                 "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
             }
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest site-level interval measurements."
@@ -190,6 +198,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "status": "INGESTED_SNAPSHOT",
                 "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
             }
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {
             "status": "NOT_INGESTED",
             "basis": "The public repository currently specifies this evidence stream but does not ingest site-level cooling-equipment measurements."
@@ -208,6 +218,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "modalities": sorted({str(x.get("modality")) for x in observations}),
                 "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
             }
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {
             "status": "NOT_INGESTED",
             "basis": "No site-level remote-sensing observations have been successfully processed yet."
@@ -222,6 +234,8 @@ def site_status(rec: dict[str, Any], domain: str, power_observations_by_site: di
                 "event_count": len(events),
                 "basis": "Source-backed HV-transformer procurement, delivery, installation, or assignment events are retained."
             }
+        if research_assessment:
+            return {"status": research_assessment.get("status", "ASSESSMENT_COMPLETE"), "basis": research_assessment.get("basis", "The current public evidence layer has no qualifying retained record for this domain."), "assessment_id": research_assessment.get("assessment_id")}
         return {
             "status": "RESEARCH_QUEUE",
             "event_count": 0,
