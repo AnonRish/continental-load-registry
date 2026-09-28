@@ -71,7 +71,7 @@ def main() -> None:
     assert scope_cat["core_record_count"] == row_count
     assert scope_cat["expanded_known_record_count"] == 1623
     assert_close(scope_cat["expanded_known_capacity_gw"], 394.6181)
-    assert cat["data/track3/evidence_records.json"]["record_count"] == 868
+    assert cat["data/track3/evidence_records.json"]["record_count"] == 887
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
     assert cat["data/supplemental_aggregate_map.json"]["record_count"] == 66
@@ -90,8 +90,8 @@ def main() -> None:
     assert summary["epoch_site_count"] == 93
     assert summary["remote_sensing_derived_observation_count"] == 423
     assert summary["transformer_event_count"] == 3
-    assert summary["public_web_evidence_record_count"] == 316
-    assert summary["public_web_evidence_site_count"] == 88
+    assert summary["public_web_evidence_record_count"] == 335
+    assert summary["public_web_evidence_site_count"] == 89
 
     coverage = load("data/global_ai_datacenter_coverage_2026-09-27.json")
     epoch = coverage["epoch_capture"]
