@@ -8,7 +8,7 @@
       "id": "OPTICAL",
       "item": "Satellite optical imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "196 raw Sentinel-2 COG windows processed; scene provenance and compact metrics are stored, full rasters are not stored in Git.",
+      "coverage": "204 raw Sentinel-2 COG windows processed; scene provenance and compact metrics are stored, full rasters are not stored in Git.",
       "primary_sources": [
         "sentinel-2-optical",
         "landsat-oli-optical"
@@ -18,7 +18,7 @@
       "id": "TIR",
       "item": "TIR thermal imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "176 Landsat ST scene observations processed with local-background thermal metrics.",
+      "coverage": "184 Landsat ST scene observations processed with local-background thermal metrics.",
       "primary_sources": [
         "landsat-tirs-thermal"
       ]
@@ -27,7 +27,7 @@
       "id": "SAR",
       "item": "SAR imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "179 Sentinel-1 GRD scene observations processed with VV/VH backscatter and temporal deltas.",
+      "coverage": "187 Sentinel-1 GRD scene observations processed with VV/VH backscatter and temporal deltas.",
       "primary_sources": [
         "sentinel-1-sar"
       ]
@@ -91,7 +91,7 @@
       "id": "FOOTPRINT",
       "item": "Building footprint / campus expansion chronology",
       "status": "INGESTED_DERIVED_PROXY",
-      "coverage": "88 sites have multi-temporal optical observations for coarse campus-change proxy analysis; polygonized footprints remain separate.",
+      "coverage": "92 sites have multi-temporal optical observations for coarse campus-change proxy analysis; polygonized footprints remain separate.",
       "primary_sources": [
         "overture-buildings",
         "epoch-timelines",
@@ -112,12 +112,12 @@
     "optical_sites": 93,
     "tir_sites": 93,
     "sar_sites": 93,
-    "raw_optical_scenes_ingested": 196,
-    "raw_tir_numeric_observations": 176,
-    "raw_sar_numeric_observations": 179,
+    "raw_optical_scenes_ingested": 204,
+    "raw_tir_numeric_observations": 184,
+    "raw_sar_numeric_observations": 187,
     "construction_timeline_sites": 93,
     "construction_to_power_sites": 93,
-    "building_footprint_raw_change_detection_sites": 88,
+    "building_footprint_raw_change_detection_sites": 92,
     "cooling_sites_with_snapshot": 2,
     "power_sites_with_annual_snapshot": 6,
     "external_permit_records": 33,
@@ -893,8 +893,8 @@
       "country": "Malaysia",
       "state_province": "",
       "address": "HP79+MP, 81300 Johor Bahru, Johor, Malaysia",
-      "lat": null,
-      "lon": null,
+      "lat": 1.5641875,
+      "lon": 103.7193125,
       "current_it_power_mw": 322.470096,
       "construction": {
         "status": "INGESTED",
@@ -909,38 +909,38 @@
         "construction_status": null
       },
       "building_footprint_expansion": {
-        "status": "CHRONOLOGY_INGESTED_NOT_RAW_FOOTPRINT",
-        "basis": "Epoch construction timeline records are ingested; raw optical-derived polygon/change measurements are not yet ingested.",
-        "raw_imagery_status": "NOT_INGESTED"
+        "status": "INGESTED_DERIVED_PROXY",
+        "basis": "Multi-temporal Sentinel-2 windows are processed; NDVI/nonvegetated metrics are a coarse campus-change proxy, not a polygonized building footprint.",
+        "raw_imagery_status": "INGESTED"
       },
       "optical_imagery": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 0,
-        "scene_count": 0,
+        "site_scene_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
       "tir_thermal": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
       "sar": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -978,7 +978,8 @@
         "status": "NOT_INGESTED",
         "site_observation_count": 0
       },
-      "source_precision": "Epoch address/display geometry"
+      "source_precision": "Epoch address/display geometry",
+      "coordinate_precision": "derived from published local Plus Code for site targeting"
     },
     {
       "epoch_id": "EPOCH-d8b28fdbc55817f9",
@@ -1174,8 +1175,8 @@
       "country": "United States",
       "state_province": "",
       "address": "",
-      "lat": null,
-      "lon": null,
+      "lat": 33.3764,
+      "lon": -111.6199,
       "current_it_power_mw": 183,
       "construction": {
         "status": "INGESTED",
@@ -1190,38 +1191,38 @@
         "construction_status": null
       },
       "building_footprint_expansion": {
-        "status": "CHRONOLOGY_INGESTED_NOT_RAW_FOOTPRINT",
-        "basis": "Epoch construction timeline records are ingested; raw optical-derived polygon/change measurements are not yet ingested.",
-        "raw_imagery_status": "NOT_INGESTED"
+        "status": "INGESTED_DERIVED_PROXY",
+        "basis": "Multi-temporal Sentinel-2 windows are processed; NDVI/nonvegetated metrics are a coarse campus-change proxy, not a polygonized building footprint.",
+        "raw_imagery_status": "INGESTED"
       },
       "optical_imagery": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 0,
-        "scene_count": 0,
+        "site_scene_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
       "tir_thermal": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
       "sar": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1259,7 +1260,8 @@
         "status": "NOT_INGESTED",
         "site_observation_count": 0
       },
-      "source_precision": "Epoch address/display geometry"
+      "source_precision": "Epoch address/display geometry",
+      "coordinate_precision": "facility/campus coordinate from secondary facility source, corroborated by municipal address record"
     },
     {
       "epoch_id": "EPOCH-55d4b5e818b5bb2a",
@@ -5121,8 +5123,8 @@
       "country": "Indonesia",
       "state_province": "",
       "address": "",
-      "lat": null,
-      "lon": null,
+      "lat": 1.1854162,
+      "lon": 104.1016656,
       "current_it_power_mw": 72,
       "construction": {
         "status": "INGESTED",
@@ -5137,38 +5139,38 @@
         "construction_status": null
       },
       "building_footprint_expansion": {
-        "status": "CHRONOLOGY_INGESTED_NOT_RAW_FOOTPRINT",
-        "basis": "Epoch construction timeline records are ingested; raw optical-derived polygon/change measurements are not yet ingested.",
-        "raw_imagery_status": "NOT_INGESTED"
+        "status": "INGESTED_DERIVED_PROXY",
+        "basis": "Multi-temporal Sentinel-2 windows are processed; NDVI/nonvegetated metrics are a coarse campus-change proxy, not a polygonized building footprint.",
+        "raw_imagery_status": "INGESTED"
       },
       "optical_imagery": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 0,
-        "scene_count": 0,
+        "site_scene_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
       "tir_thermal": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
       "sar": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -5206,7 +5208,8 @@
         "status": "NOT_INGESTED",
         "site_observation_count": 0
       },
-      "source_precision": "Epoch address/display geometry"
+      "source_precision": "Epoch address/display geometry",
+      "coordinate_precision": "Nongsa Digital Park campus point"
     },
     {
       "epoch_id": "EPOCH-03aad260b30bfbe1",
@@ -6248,8 +6251,8 @@
       "country": "Australia",
       "state_province": "",
       "address": "",
-      "lat": null,
-      "lon": null,
+      "lat": -37.818303,
+      "lon": 144.842294,
       "current_it_power_mw": 41,
       "construction": {
         "status": "INGESTED",
@@ -6264,38 +6267,38 @@
         "construction_status": null
       },
       "building_footprint_expansion": {
-        "status": "CHRONOLOGY_INGESTED_NOT_RAW_FOOTPRINT",
-        "basis": "Epoch construction timeline records are ingested; raw optical-derived polygon/change measurements are not yet ingested.",
-        "raw_imagery_status": "NOT_INGESTED"
+        "status": "INGESTED_DERIVED_PROXY",
+        "basis": "Multi-temporal Sentinel-2 windows are processed; NDVI/nonvegetated metrics are a coarse campus-change proxy, not a polygonized building footprint.",
+        "raw_imagery_status": "INGESTED"
       },
       "optical_imagery": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 0,
-        "scene_count": 0,
+        "site_scene_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
       "tir_thermal": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
       "sar": {
-        "status": "SOURCE_AVAILABLE_NOT_INGESTED",
+        "status": "INGESTED_DERIVED",
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 0,
-        "scene_count": 0,
+        "numeric_observation_count": 2,
+        "scene_count": 2,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -6333,7 +6336,8 @@
         "status": "NOT_INGESTED",
         "site_observation_count": 0
       },
-      "source_precision": "Epoch address/display geometry"
+      "source_precision": "Epoch address/display geometry",
+      "coordinate_precision": "CDC Melbourne BK1 facility proxy"
     },
     {
       "epoch_id": "EPOCH-ee5c7acdbc729ef8",

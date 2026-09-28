@@ -1,11 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "title": "Track 3 physical-source and retained-artifact provenance manifest",
-  "generated_on": "2026-09-27",
+  "generated_on": "2026-09-28",
   "scope": "Public physical-evidence acquisition for the 93-site Epoch AI reference universe",
   "hash_policy": {
     "raw_source_sha256": "Only populated when raw source bytes are actually retained by the repository. Satellite rasters are intentionally not committed, so a raw-raster SHA-256 is not claimed.",
-    "retained_artifact_integrity": "GitHub exposes Git blob SHA-1 identifiers for retained repository files; these are recorded as repository-integrity locators, not mislabeled as SHA-256.",
+    "retained_artifact_integrity": "Repository-retained artifact bytes are SHA-256 hashed and byte-counted on every refresh.",
     "scene_level_reproducibility": "Every derived remote-sensing record retains the STAC item URL, scene ID, observation date, source collection, and processing version."
   },
   "sources": [
@@ -71,49 +71,49 @@
     {
       "path": "data/track3/remote_sensing_observations.json",
       "role": "Canonical derived scene ledger",
-      "record_count": 423,
-      "git_blob_sha1": "4c0245c14748f4cf404181fb7e471d2b3f3dd026",
-      "sha256": null,
-      "bytes": null
+      "sha256": "ced3a08986324b86d8e64e714a963dfd4ab9695fc5c71272f07926f362c5d49d",
+      "bytes": 958006,
+      "record_count": 575
     },
     {
       "path": "data/track3/remote_sensing_observations.csv",
       "role": "Flattened derived scene ledger",
-      "record_count": 423,
-      "git_blob_sha1": "d91e0fe824b349f9ce7c23b33d7d8692c6aa5503",
-      "sha256": null,
-      "bytes": null
+      "sha256": "b8d03c667f062fb7bec9ec3f61803b0041da4ec203ae11026b4bbdcbb75e3ba6",
+      "bytes": 692765,
+      "record_count": 575
     },
     {
       "path": "data/track3/building_footprints_index.json",
       "role": "93-site footprint acquisition/index manifest",
+      "sha256": "1da247c8fc72bd4abb90e799cdc7a3ffa9c7c079bd160feb7034b5122b464d2b",
+      "bytes": 51200,
       "record_count": 93,
-      "polygon_site_count": 68,
-      "git_blob_sha1": "6f39fc5091c7d31b2a4c61bc4499a2e48a220d05",
-      "sha256": null,
-      "bytes": null
+      "polygon_site_count": 88,
+      "polygon_file_count": 88
     },
     {
       "path": "data/physical_verification_layer.json",
       "role": "Aggregate physical-verification state layer",
-      "git_blob_sha1": "68f97c336170cbd98f811c3f8c127734fca57c16",
-      "sha256": null,
-      "bytes": null
+      "sha256": "8f0d1d7dfd56ed2a0377f666c260425027e15dc96dc11d088bf7c64c93af5341",
+      "bytes": 338855,
+      "site_record_count": 93
     },
     {
       "path": "data/track3/physical_site_coordinates.json",
       "role": "Geocoding/coordinate provenance cache",
-      "git_blob_sha1": "b676fac55a4b50676e06b0513cfdd3d9fd1ff9af",
-      "sha256": null,
-      "bytes": null
+      "sha256": "ed70cb3dc5dc515422f024356d4e43c9240e030510e0592dae8d108fc0ce92d2",
+      "bytes": 62916,
+      "record_count": 93
     }
   ],
   "acquisition_outputs": {
     "epoch_site_target_count": 93,
-    "remote_sensing_derived_observation_count": 423,
-    "building_footprint_polygon_site_count": 68,
-    "building_footprint_geojson_file_count": 68
+    "epoch_site_geocoded_count": 92,
+    "epoch_site_unresolved_coordinate_count": 1,
+    "remote_sensing_derived_observation_count": 575,
+    "building_footprint_polygon_site_count": 88,
+    "building_footprint_geojson_file_count": 88
   },
   "semantics": "A source scene, building footprint, thermal anomaly, SAR metric, NDVI metric, or geocoded coordinate is an observation layer, not by itself proof of AI compute, ownership, tenancy, or covert activity. Missing source bytes or missing observations are not evidence of absence.",
-  "last_reconciled_on": "2026-09-27"
+  "last_reconciled_on": "2026-09-28"
 }
