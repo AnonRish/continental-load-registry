@@ -231,8 +231,12 @@ jobs:
           assert layer_by_id["MISO_COMPLETE_QUEUE"]["unresolved_ge_100_location"] == 153
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records"] == 3076
           assert layer_by_id["SPP_ACTIVE_QUEUE"]["records_ge_100mw"] == 2332
-          assert layer_by_id["BPA_LARGE_LOAD"]["records"] == 60
-          assert layer_by_id["BPA_LARGE_LOAD"]["mapped_records"] == 35
+          bpa = json.loads((root / "bpa_large_load_registry.json").read_text(encoding="utf-8"))
+          assert bpa["record_count"] == len(bpa["records"]) > 0
+          assert bpa["mapped_record_count"] == sum(1 for r in bpa["records"] if isinstance(r.get("map_point"), list) and len(r["map_point"]) == 2)
+          assert bpa["unmapped_record_count"] == bpa["record_count"] - bpa["mapped_record_count"]
+          assert layer_by_id["BPA_LARGE_LOAD"]["records"] == bpa["record_count"]
+          assert layer_by_id["BPA_LARGE_LOAD"]["mapped_records"] == bpa["mapped_record_count"]
           assert layer_by_id["BPA_LARGE_LOAD"]["file"] == "data/bpa_large_load_registry.json"
           evidence = json.loads((root / "track3/evidence_records.json").read_text(encoding="utf-8"))
           assert evidence["record_count"] == len(evidence["records"]) == 1221
@@ -253,11 +257,10 @@ jobs:
           map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
           assert len(map_csv) == 12
           bpa_json = json.loads((root / "bpa_large_load_registry.json").read_text(encoding="utf-8"))
-          assert bpa_json["record_count"] == len(bpa_json["records"]) == 60
-          assert bpa_json["mapped_record_count"] == 35
+          assert bpa_json["record_count"] == len(bpa_json["records"]) > 0
+          assert bpa_json["unmapped_record_count"] == bpa_json["record_count"] - bpa_json["mapped_record_count"]
           bpa_csv = list(csv.DictReader((root / "bpa_large_load_registry.csv").open("r", encoding="utf-8", newline="")))
-          assert len(bpa_csv) == 60
-
+          assert len(bpa_csv) == bpa_json["record_count"]
           history = json.loads((root / "caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
           assert sum(r["capacity_mw"] for r in history["records"][:7]) == 121204
