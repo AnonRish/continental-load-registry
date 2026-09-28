@@ -31,7 +31,7 @@ These are **discovery/comparator universes, not additive populations**. Their re
 
 ## Current 93-site research gaps
 
-The current normalized Epoch layer still has missing public fields for 13 addresses, 29 projects, 83 investors, 65 construction-company entries, and 30 energy-company entries. The Track 3 research queue has 984 open tasks (273 publisher-field tasks and 711 domain cells).
+The current normalized Epoch layer still has missing public fields for 8 effective unresolved addresses, 23 effective unresolved projects, 79 effective unresolved investor fields, 64 effective unresolved construction-company fields, and 15 effective unresolved energy-company fields. The Track 3 research queue has 819 open tasks (221 publisher-field tasks and 598 domain cells).
 
 ## Candidate discovery queue
 
