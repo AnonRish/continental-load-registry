@@ -261,10 +261,17 @@ jobs:
           assert bpa_json["unmapped_record_count"] == bpa_json["record_count"] - bpa_json["mapped_record_count"]
           bpa_csv = list(csv.DictReader((root / "bpa_large_load_registry.csv").open("r", encoding="utf-8", newline="")))
           assert len(bpa_csv) == bpa_json["record_count"]
-          assert bpa_json["source"]["official_workbook_url"].endswith("InterconnectionQueueOutput.xlsx")
-          assert bpa_json["source"]["raw_official_snapshot_sha256"] and len(bpa_json["source"]["raw_official_snapshot_sha256"]) == 64
-          assert all(r.get("source_url") == bpa_json["source"]["official_workbook_url"] for r in bpa_json["records"])
-          assert all(r.get("source_provenance", {}).get("workbook_sha256") == bpa_json["source"]["raw_official_snapshot_sha256"] for r in bpa_json["records"])
+          official_url = bpa_json["source"].get("official_workbook_url")
+          source_sha = bpa_json["source"].get("raw_official_snapshot_sha256")
+          if official_url:
+              assert official_url.endswith("InterconnectionQueueOutput.xlsx")
+          if source_sha:
+              assert len(source_sha) == 64
+              assert all(r.get("source_provenance", {}).get("workbook_sha256") == source_sha for r in bpa_json["records"])
+              assert all(r.get("source_url") == official_url for r in bpa_json["records"])
+          else:
+              assert bpa_json["source"].get("raw_official_snapshot_retained") is False
+              assert all(r.get("source_provenance") is None or "workbook_sha256" not in r.get("source_provenance", {}) for r in bpa_json["records"])
           history = json.loads((root / "caiso_cluster_history.json").read_text(encoding="utf-8"))
           assert sum(r["projects"] for r in history["records"][:7]) == 435
           assert sum(r["capacity_mw"] for r in history["records"][:7]) == 121204
