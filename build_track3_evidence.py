@@ -766,6 +766,7 @@ def main() -> int:
             for priority in sorted({task["priority"] for task in observation_queue})
         },
         "site_level_evidence_site_count": sum(1 for x in site_records if x["site_level_evidence_count"] > 0),
+        "track3_evidence_record_count": len(evidence_index),
         "public_web_evidence_record_count": len(public_web_records),
         "public_web_evidence_site_count": len(manual_public_by_site),
         "combined_site_level_evidence_site_count": sum(
