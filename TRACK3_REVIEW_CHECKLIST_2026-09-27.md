@@ -34,6 +34,12 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] Queue-vs-satellite comparison is public and explicitly covers complementary blind spots between electrical intent and physical realization.
 - [x] Evasion case is explicit: a project using existing capacity, behind-the-meter/private generation, or another route that avoids a new public interconnection can evade the grid signal.
 
+### Track 3 domain-accounting closure
+
+- [x] 1,395/1,395 defined site-domain cells are in terminal evidence-accounting states (93 sites × 15 domains).
+- [x] 573 ASSESSMENT_COMPLETE records explicitly document the current public-evidence ceiling for cells without qualifying retained records.
+- [x] ASSESSMENT_COMPLETE is explicitly not evidence of absence and can be reopened when new evidence arrives.
+
 ## 2. Provenance and trust
 
 - [x] Core nine-source hashes, byte counts, capture metadata, and filter funnels are documented in SOURCES.md.
@@ -83,9 +89,9 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 ## 7. Current reviewer bottom line
 
-**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 423 processed remote-sensing observations, a provenance manifest, claim-level verification machinery, a one-task research queue, and explicit uncertainty semantics.
+**Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 551 processed remote-sensing observations across 88 sites, a provenance manifest, claim-level verification machinery, a 216-task publisher-only research queue, and explicit uncertainty semantics. The 93-site × 15-domain Track 3 matrix is now terminally assessed at 1,395/1,395 cells.
 
-**Still incomplete:** closing more ambiguous cases; processing the remaining 25 Epoch sites; completing interval power evidence; expanding cooling/transformer/service/regulatory research; achieving facility-wide end-to-end verification; automating SHA-256/byte manifests for retained physical derivatives; and independent external review.
+**Still incomplete at the empirical/verification level:** interval power telemetry; additional positive physical observations for the remaining 5 Epoch sites; fuller cooling/transformer/service/regulatory evidence; transaction-level compute accounting; physical inspection; serial continuity and decommissioning/recycling verification; comprehensive covert-site discovery; an independent verification authority; automated SHA-256/byte manifests for retained physical derivatives; and independent external review.
 
 **Correct interpretation:** this is a substantially implemented public-evidence contribution to the broader Track 3 problem, not a completed international verification regime and not evidence that covert compute has been comprehensively detected.
 ## 8. Global accounting expansion
