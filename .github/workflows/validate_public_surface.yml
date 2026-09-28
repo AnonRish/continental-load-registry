@@ -330,6 +330,7 @@ jobs:
               "data/track3/remote_sensing_observation_targets.json",
               "data/track3/time_series_verification.json",
               "data/track3/evidence_records.json",
+              "data/track3/public_web_claims.json",
               "data/track3/site_status.json",
               "data/track3/observation_queue.json",
               "data/track3/research_queue.json",
@@ -395,6 +396,18 @@ jobs:
         run: python build_ambiguity_classification_summary.py --check
       - name: Validate complete Track 3 coverage contract
         run: python validate_track3_complete_coverage.py
+
+      - name: Validate normalized public-web claims
+        run: python - <<'PY'
+        import json
+        from pathlib import Path
+        src=json.loads(Path("data/track3/public_web_enrichment_2026-09-27.json").read_text(encoding="utf-8"))
+        claims=json.loads(Path("data/track3/public_web_claims.json").read_text(encoding="utf-8"))
+        assert len(src["records"]) == len(claims["claims"])
+        assert {r["evidence_id"] for r in src["records"]} == {r["claim_id"] for r in claims["claims"]}
+        assert all(r["source_urls"] for r in claims["claims"])
+        print(f"PASS: {len(claims['claims'])} public-web claims")
+        PY
 
       - name: Validate canonical cross-artifact consistency
         run: python validate_cross_artifact_consistency.py
