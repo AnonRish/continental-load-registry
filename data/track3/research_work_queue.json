@@ -9,8 +9,8 @@
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
     "publisher_tasks": 219,
-    "domain_tasks": 592,
-    "total_tasks": 811,
+    "domain_tasks": 588,
+    "total_tasks": 807,
     "publisher_by_field": {
       "project": 23,
       "investors": 79,
@@ -29,7 +29,7 @@
       "remote_sensing": 5,
       "cooling": 75,
       "transformer_supply_chain": 92,
-      "independent_corroboration": 93,
+      "independent_corroboration": 89,
       "grid_connection": 0,
       "chip_inventory": 10
     },
@@ -11224,66 +11224,6 @@
       "submission_schema": "data/track3/research_submission_schema.json"
     },
     {
-      "task_id": "DOM-EPOCH-d9050b43689ed24c-independent-corroboration",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-d9050b43689ed24c",
-      "site_name": "Microsoft Fairwater Atlanta",
-      "country": "United States",
-      "state_province": "GA",
-      "current_it_power_mw": 636,
-      "domain": "independent_corroboration",
-      "workflow_label": "Independent corroboration",
-      "objective": "Attach a materially independent public source corroborating a site-specific claim already supported elsewhere.",
-      "search_sequence": [
-        "Utility/regulator records",
-        "municipal records",
-        "official owner/developer documents",
-        "independent reputable reporting",
-        "independent remote sensing"
-      ],
-      "queries": [
-        "\"Microsoft Fairwater Atlanta\" utility",
-        "\"Microsoft Fairwater Atlanta\" permit",
-        "\"Microsoft Fairwater Atlanta\" construction"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Microsoft+Fairwater+Atlanta%22+utility",
-        "https://www.google.com/search?q=%22Microsoft+Fairwater+Atlanta%22+permit",
-        "https://www.google.com/search?q=%22Microsoft+Fairwater+Atlanta%22+construction"
-      ],
-      "evidence_to_capture": [
-        "claim being corroborated",
-        "second source",
-        "source type",
-        "date",
-        "URL/locator",
-        "what exactly agrees/disagrees"
-      ],
-      "acceptance_rule": "Second source has a distinct origin and supports the same site-specific claim.",
-      "reject_rule": "Mirror copies, syndicated duplicates, or self-referential reposts.",
-      "existing_next_action": "Search Georgia PSC and Georgia Power large-load filings for the Fairwater/QTS Fayetteville campus, including docket records and service/interconnection documentation.",
-      "public_leads": [
-        {
-          "field": "energy_companies",
-          "status": "RETAINED_SOURCE",
-          "finding": "Georgia Power is retained as a site-level energy partner and Southern Company as the public grid operator.",
-          "source": "Intel Accelerator / Interconnection.fyi",
-          "source_url": null
-        },
-        {
-          "field": "project",
-          "status": "RETAINED_SOURCE",
-          "finding": "Microsoft AI WAN is retained as the public program.",
-          "source": "Intel Accelerator",
-          "source_url": null
-        }
-      ],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
       "task_id": "DOM-EPOCH-45b3c74314eb1f26-compute-tenancy",
       "kind": "track3_domain",
       "status": "OPEN",
@@ -11501,66 +11441,6 @@
       ],
       "acceptance_rule": "Event tied to the site or its electrical project.",
       "reject_rule": "Manufacturer product announcement with no site linkage.",
-      "existing_next_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case.",
-      "public_leads": [
-        {
-          "field": "energy_companies",
-          "status": "RETAINED_SOURCE",
-          "finding": "Indiana Michigan Power (AEP) is retained as the site-level utility relationship for Project Rainier.",
-          "source": "Compute Atlas / Intel Accelerator",
-          "source_url": null
-        },
-        {
-          "field": "project",
-          "status": "RETAINED_SOURCE",
-          "finding": "Project Rainier is retained as the program name.",
-          "source": "Intel Accelerator",
-          "source_url": null
-        }
-      ],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-45b3c74314eb1f26-independent-corroboration",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-45b3c74314eb1f26",
-      "site_name": "Anthropic-Amazon New Carlisle",
-      "country": "United States",
-      "state_province": "IN",
-      "current_it_power_mw": 910,
-      "domain": "independent_corroboration",
-      "workflow_label": "Independent corroboration",
-      "objective": "Attach a materially independent public source corroborating a site-specific claim already supported elsewhere.",
-      "search_sequence": [
-        "Utility/regulator records",
-        "municipal records",
-        "official owner/developer documents",
-        "independent reputable reporting",
-        "independent remote sensing"
-      ],
-      "queries": [
-        "\"Anthropic-Amazon New Carlisle\" utility",
-        "\"Anthropic-Amazon New Carlisle\" permit",
-        "\"Anthropic-Amazon New Carlisle\" construction"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Anthropic-Amazon+New+Carlisle%22+utility",
-        "https://www.google.com/search?q=%22Anthropic-Amazon+New+Carlisle%22+permit",
-        "https://www.google.com/search?q=%22Anthropic-Amazon+New+Carlisle%22+construction"
-      ],
-      "evidence_to_capture": [
-        "claim being corroborated",
-        "second source",
-        "source type",
-        "date",
-        "URL/locator",
-        "what exactly agrees/disagrees"
-      ],
-      "acceptance_rule": "Second source has a distinct origin and supports the same site-specific claim.",
-      "reject_rule": "Mirror copies, syndicated duplicates, or self-referential reposts.",
       "existing_next_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case.",
       "public_leads": [
         {
@@ -11832,59 +11712,6 @@
       ],
       "acceptance_rule": "Event tied to the site or its electrical project.",
       "reject_rule": "Manufacturer product announcement with no site linkage.",
-      "existing_next_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number.",
-      "public_leads": [
-        {
-          "field": "energy_companies",
-          "status": "PUBLIC_SOURCE",
-          "finding": "DEPLOY identifies Grand River Dam Authority (GRDA) as supplying Google's Pryor campus.",
-          "source": "DEPLOY",
-          "source_url": "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
-        }
-      ],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-ea699c935d46e066-independent-corroboration",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-ea699c935d46e066",
-      "site_name": "Google Pryor (North)",
-      "country": "United States",
-      "state_province": "OK",
-      "current_it_power_mw": 368,
-      "domain": "independent_corroboration",
-      "workflow_label": "Independent corroboration",
-      "objective": "Attach a materially independent public source corroborating a site-specific claim already supported elsewhere.",
-      "search_sequence": [
-        "Utility/regulator records",
-        "municipal records",
-        "official owner/developer documents",
-        "independent reputable reporting",
-        "independent remote sensing"
-      ],
-      "queries": [
-        "\"Google Pryor (North)\" utility",
-        "\"Google Pryor (North)\" permit",
-        "\"Google Pryor (North)\" construction"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Google+Pryor+%28North%29%22+utility",
-        "https://www.google.com/search?q=%22Google+Pryor+%28North%29%22+permit",
-        "https://www.google.com/search?q=%22Google+Pryor+%28North%29%22+construction"
-      ],
-      "evidence_to_capture": [
-        "claim being corroborated",
-        "second source",
-        "source type",
-        "date",
-        "URL/locator",
-        "what exactly agrees/disagrees"
-      ],
-      "acceptance_rule": "Second source has a distinct origin and supports the same site-specific claim.",
-      "reject_rule": "Mirror copies, syndicated duplicates, or self-referential reposts.",
       "existing_next_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number.",
       "public_leads": [
         {
@@ -39477,51 +39304,6 @@
       ],
       "acceptance_rule": "Event tied to the site or its electrical project.",
       "reject_rule": "Manufacturer product announcement with no site linkage.",
-      "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_leads": [],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-d2da66ea035880ce-independent-corroboration",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P0",
-      "epoch_id": "EPOCH-d2da66ea035880ce",
-      "site_name": "QTS Cedar Rapids",
-      "country": "United States",
-      "state_province": "IA",
-      "current_it_power_mw": 0,
-      "domain": "independent_corroboration",
-      "workflow_label": "Independent corroboration",
-      "objective": "Attach a materially independent public source corroborating a site-specific claim already supported elsewhere.",
-      "search_sequence": [
-        "Utility/regulator records",
-        "municipal records",
-        "official owner/developer documents",
-        "independent reputable reporting",
-        "independent remote sensing"
-      ],
-      "queries": [
-        "\"QTS Cedar Rapids\" utility",
-        "\"QTS Cedar Rapids\" permit",
-        "\"QTS Cedar Rapids\" construction"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+utility",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+permit",
-        "https://www.google.com/search?q=%22QTS+Cedar+Rapids%22+construction"
-      ],
-      "evidence_to_capture": [
-        "claim being corroborated",
-        "second source",
-        "source type",
-        "date",
-        "URL/locator",
-        "what exactly agrees/disagrees"
-      ],
-      "acceptance_rule": "Second source has a distinct origin and supports the same site-specific claim.",
-      "reject_rule": "Mirror copies, syndicated duplicates, or self-referential reposts.",
       "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
       "public_leads": [],
       "canonical_ingest_path": "data/track3/evidence_records.json",
