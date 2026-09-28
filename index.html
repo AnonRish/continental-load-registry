@@ -312,18 +312,18 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
     <div class="registry-kpi"><b id="deckSites">93</b><span>frontier sites</span></div>
     <div class="registry-kpi"><b id="deckRecords">1,623</b><span>known records</span></div>
     <div class="registry-kpi"><b id="deckGW">394.6</b><span>GW broad scope</span></div>
-    <div class="registry-kpi"><b id="deckEvidence">916</b><span>Track 3 evidence</span></div>
-    <div class="registry-kpi"><b id="deckPhysical">408</b><span>physical observations</span></div>
+    <div class="registry-kpi"><b id="deckEvidence">1221</b><span>Track 3 evidence</span></div>
+    <div class="registry-kpi"><b id="deckPhysical">575</b><span>physical observations</span></div>
   </div>
 </div>
 <div class="registry-view-hint" id="registryViewHint">Overview is the visual entry point. Use the tabs above to open the dense research layers.</div>
 
 <div id="registrySignalRail" class="registry-signal-rail" aria-label="Evidence signal rail">
   <div class="registry-signal" data-signal="sites" style="--signal-pct:100%"><div class="registry-signal-k">Sites</div><div class="registry-signal-v">93 / 93</div><div class="registry-signal-s">site identity ingested</div></div>
-  <div class="registry-signal" data-signal="queue" style="--signal-pct:10%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">2 verified</div><div class="registry-signal-s">80 site-level evidence · 11 no-public-record</div></div>
-  <div class="registry-signal" data-signal="physical" style="--signal-pct:73%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">68 / 93</div><div class="registry-signal-s">sites with 408 derived observations</div></div>
+  <div class="registry-signal" data-signal="queue" style="--signal-pct:2.2%"><div class="registry-signal-k">Connection</div><div class="registry-signal-v">2 verified</div><div class="registry-signal-s">93 sites assessed · 3 no-public-record outcomes</div></div>
+  <div class="registry-signal" data-signal="physical" style="--signal-pct:98.9%"><div class="registry-signal-k">Physical</div><div class="registry-signal-v">92 / 93</div><div class="registry-signal-s">sites with 575 derived observations</div></div>
   <div class="registry-signal" data-signal="transformer" style="--signal-pct:1%"><div class="registry-signal-k">Transformers</div><div class="registry-signal-v">3 events</div><div class="registry-signal-s">supply-chain evidence</div></div>
-  <div class="registry-signal" data-signal="web" style="--signal-pct:95%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">316 records</div><div class="registry-signal-s">88 sites enriched</div></div>
+  <div class="registry-signal" data-signal="web" style="--signal-pct:100%"><div class="registry-signal-k">Public web</div><div class="registry-signal-v">454 records</div><div class="registry-signal-s">93 sites enriched</div></div>
 </div>
 
 
@@ -364,14 +364,14 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
     <div class="visual-telemetry-card">
       <div class="flex items-center justify-between gap-3">
         <div><p class="visual-kicker">Live research surface</p><p class="text-sm mt-1" style="font-weight:700;">Grid → site → evidence</p></div>
-        <span class="mono text-[10px]" style="color:#9ed1ff;">REV. 2026-09-27</span>
+        <span class="mono text-[10px]" style="color:#9ed1ff;">REV. 2026-09-28</span>
       </div>
       <div class="visual-scanline mt-4"></div>
       <div class="visual-metric-grid">
         <div class="visual-metric"><b>1,540</b><span>row-level records</span></div>
         <div class="visual-metric"><b>394.6 GW</b><span>known scope</span></div>
         <div class="visual-metric"><b>93</b><span>Epoch sites</span></div>
-        <div class="visual-metric"><b>211</b><span>Track 3 observation tasks</span></div>
+        <div class="visual-metric"><b>24</b><span>Track 3 observation tasks</span></div>
       </div>
       <div class="mt-4 text-[10px]" style="color:rgba(240,246,252,.62);">Missing evidence is surfaced as a research state—not silently converted into absence.</div>
     </div>
@@ -729,8 +729,8 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
       <div class="p-4"><p class="mono text-xl">102</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Discrete site-level evidence assertions</p></div>
-      <div class="p-4"><p class="mono text-xl">68 / 93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites with at least one evidence assertion</p></div>
-      <div class="p-4"><p class="mono text-xl">25</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Explicit NO MATCH FOUND</p></div>
+      <div class="p-4"><p class="mono text-xl">93 / 93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites with at least one evidence assertion</p></div>
+      <div class="p-4"><p class="mono text-xl">3</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Explicit NO PUBLIC RECORD</p></div>
       <div class="p-4"><p class="mono text-xl">0</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Sites still requiring site-specific search</p></div>
     </div>
     <p class="text-xs mt-4" style="color:var(--ink-faint);">Evidence confidence and source type are retained item-by-item. A source assertion that identifies a utility relationship, contract, facility or planning record is not silently promoted to a formal interconnection queue ID.</p>
@@ -815,7 +815,7 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
       <div class="p-4"><p id="physicalConstructionTimelines" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction timelines</p></div>
       <div class="p-4"><p id="physicalPowerTimelines" class="mono text-xl">93</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Construction → power timelines</p></div>
       <div class="p-4"><p id="physicalCoolingSites" class="mono text-xl">2</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Cooling snapshot sites</p></div>
-      <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">408</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
+      <div class="p-4"><p id="physicalSatelliteScenes" class="mono text-xl">575</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Derived satellite observations</p></div>
       <div class="p-4"><p id="physicalTransformerEvents" class="mono text-xl">3</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Transformer events</p></div>
       <div class="p-4"><p id="physicalFootprintPolygons" class="mono text-xl">117,479</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Building polygons</p></div>
     </div>
@@ -3433,16 +3433,16 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
     if(document.getElementById('deckSites')) document.getElementById('deckSites').textContent=sites.toLocaleString();
     if(document.getElementById('deckPhysical')) document.getElementById('deckPhysical').textContent=physical.toLocaleString();
     const siteSignal=document.querySelector('[data-signal="sites"]'); if(siteSignal){siteSignal.querySelector('.registry-signal-v').textContent=sites+' / '+sites;siteSignal.style.setProperty('--signal-pct','100%');}
-    const remoteStatus=s.domain_status_counts?.remote_sensing||{}, physicalSites=Number(remoteStatus.INGESTED_DERIVED ?? 68); const physicalSignal=document.querySelector('[data-signal="physical"]'); if(physicalSignal){physicalSignal.querySelector('.registry-signal-v').textContent=physicalSites+' / '+sites;physicalSignal.querySelector('.registry-signal-s').textContent=physical+' derived observations';physicalSignal.style.setProperty('--signal-pct',(sites?Math.min(100,physicalSites/sites*100):0)+'%');}
-    const q=Number(s.site_specific_queue_id_count ?? 2), noPub=Number(s.research_completed_no_public_record_count ?? 11);
-    const queueSignal=document.querySelector('[data-signal="queue"]'); if(queueSignal){queueSignal.querySelector('.registry-signal-v').textContent=q+' verified';queueSignal.querySelector('.registry-signal-s').textContent=Number(s.site_level_evidence_site_count ?? 80)+' site-level evidence · '+noPub+' no-public-record outcomes';queueSignal.style.setProperty('--signal-pct',(sites?Math.min(100,q/sites*100):0)+'%');}
+    const remoteStatus=s.domain_status_counts?.remote_sensing||{}, physicalSites=Number(remoteStatus.INGESTED_DERIVED ?? 92); const physicalSignal=document.querySelector('[data-signal="physical"]'); if(physicalSignal){physicalSignal.querySelector('.registry-signal-v').textContent=physicalSites+' / '+sites;physicalSignal.querySelector('.registry-signal-s').textContent=physical+' derived observations';physicalSignal.style.setProperty('--signal-pct',(sites?Math.min(100,physicalSites/sites*100):0)+'%');}
+    const q=Number(s.site_specific_queue_id_count ?? 2), noPub=Number(s.research_completed_no_public_record_count ?? 3);
+    const queueSignal=document.querySelector('[data-signal="queue"]'); if(queueSignal){queueSignal.querySelector('.registry-signal-v').textContent=q+' verified';queueSignal.querySelector('.registry-signal-s').textContent=Number(s.site_level_evidence_site_count ?? 93)+' site-level evidence · '+noPub+' no-public-record outcomes';queueSignal.style.setProperty('--signal-pct',(sites?Math.min(100,q/sites*100):0)+'%');}
     const tx=Number(s.transformer_event_count ?? 3), txSignal=document.querySelector('[data-signal="transformer"]'); if(txSignal) txSignal.querySelector('.registry-signal-v').textContent=tx+' events';
     try{
       const e=await fetch('data/track3/evidence_records.json').then(r=>r.json());
       const n=Array.isArray(e)?e.length:(e.records?.length??e.evidence?.length??0);
       if(document.getElementById('deckEvidence')) document.getElementById('deckEvidence').textContent=n.toLocaleString();
-      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 316).toLocaleString()+' records';
-      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 88).toLocaleString()+' sites enriched';
+      const ws=document.querySelector('[data-signal="web"]'); if(ws) ws.querySelector('.registry-signal-v').textContent=Number(s.public_web_evidence_record_count ?? 454).toLocaleString()+' records';
+      if(ws) ws.querySelector('.registry-signal-s').textContent=Number(s.public_web_evidence_site_count ?? 93).toLocaleString()+' sites enriched';
     }catch{}
   }).catch(()=>{});
   fetch('data/large_load_scope.json').then(r=>r.json()).then(s=>{
@@ -3685,7 +3685,7 @@ fetch('data/website_completeness_audit.json?v=1',{cache:'no-store'}).then(functi
     if(metricEls[0]) metricEls[0].textContent=fmt(Number((summary.current_core_registry_rows)||1540));
     if(metricEls[1]) metricEls[1].textContent=(Number((summary.broader_known_scope_capacity_gw))||394.6).toFixed(1)+' GW';
     if(metricEls[2]) metricEls[2].textContent=fmt(sites);
-    if(metricEls[3]) metricEls[3].textContent=fmt(Number(summary.observation_task_count||211));
+    if(metricEls[3]) metricEls[3].textContent=fmt(Number(summary.observation_task_count||24));
     const pb=document.getElementById('glancePhysicalBar'); if(pb) pb.style.setProperty('--fill',Math.min(100,physical/Math.max(1,sites*6)*100)+'%');
     const ob=document.getElementById('glanceOpenBar'); if(ob) ob.style.setProperty('--fill',Math.min(100,100-open/Math.max(1,sites*12)*100)+'%');
 
