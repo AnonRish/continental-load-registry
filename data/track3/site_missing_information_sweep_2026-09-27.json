@@ -27,7 +27,7 @@
     ],
     "total_public_enrichment_resolved_fields": 399,
     "total_targeted_publicly_resolved_fields": 14,
-    "effective_unresolved_publisher_fields": 216,
+    "effective_unresolved_publisher_fields": 214,
     "effective_unresolved_field_counts": {
       "investors": 79,
       "construction_companies": 61,
@@ -35,10 +35,10 @@
       "project": 22,
       "chip_quantities": 10,
       "address": 8,
-      "energy_companies": 15
+      "energy_companies": 13
     },
     "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
-    "public_web_enrichment_records": 444,
+    "public_web_enrichment_records": 451,
     "researched_no_public_record_grid_cells": 18,
     "targeted_publicly_resolved_fields": 31,
     "reconciliation_updated_on": "2026-09-27",
@@ -5938,8 +5938,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -7045,8 +7045,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -7174,7 +7174,7 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
         "service_or_contract": "ASSESSMENT_COMPLETE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "INGESTED_SNAPSHOT",
@@ -7191,8 +7191,7 @@
       "remaining_unresolved_publisher_fields": [
         "project",
         "investors",
-        "construction_companies",
-        "energy_companies"
+        "construction_companies"
       ],
       "retained_public_sources": [
         {
@@ -7206,6 +7205,7 @@
       "public_enrichment_resolved_fields": [
         "address",
         "chip_quantities",
+        "energy_companies",
         "investment",
         "owner",
         "users"
@@ -7214,8 +7214,7 @@
       "effective_unresolved_publisher_fields": [
         "project",
         "investors",
-        "construction_companies",
-        "energy_companies"
+        "construction_companies"
       ],
       "publisher_field_reconciliation": {
         "project": {
@@ -7238,9 +7237,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,
@@ -7840,8 +7839,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -8643,8 +8642,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -9596,8 +9595,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -11487,7 +11486,7 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
         "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
@@ -11502,8 +11501,7 @@
       },
       "public_research_leads": [],
       "remaining_unresolved_publisher_fields": [
-        "construction_companies",
-        "energy_companies"
+        "construction_companies"
       ],
       "retained_public_sources": [
         {
@@ -11518,14 +11516,14 @@
         "address",
         "capacity_record",
         "chip_quantities",
+        "energy_companies",
         "owner",
         "project",
         "users"
       ],
       "targeted_publicly_resolved_fields": [],
       "effective_unresolved_publisher_fields": [
-        "construction_companies",
-        "energy_companies"
+        "construction_companies"
       ],
       "publisher_field_reconciliation": {
         "project": {
@@ -11548,9 +11546,9 @@
         },
         "energy_companies": {
           "dossier_missing": true,
-          "public_enrichment_present": false,
+          "public_enrichment_present": true,
           "targeted_public_source_resolved": false,
-          "status": "UNRESOLVED"
+          "status": "PUBLIC_VALUE_OR_LEAD"
         },
         "owner": {
           "dossier_missing": false,

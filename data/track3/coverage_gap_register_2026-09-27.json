@@ -13,12 +13,12 @@
     "matrix_source": "data/track3/track3_completeness_matrix.json"
   },
   "summary": {
-    "effective_unresolved_publisher_fields": 216,
+    "effective_unresolved_publisher_fields": 214,
     "open_domain_cells": 0,
     "resolved_domain_cells": 1395,
-    "public_web_enrichment_records": 444,
+    "public_web_enrichment_records": 451,
     "public_web_enrichment_sites": 93,
-    "reconciled_field_closures_this_run": 0
+    "reconciled_field_closures_this_run": 2
   },
   "publisher": {
     "summary": {
@@ -49,7 +49,7 @@
       ],
       "total_public_enrichment_resolved_fields": 399,
       "total_targeted_publicly_resolved_fields": 14,
-      "effective_unresolved_publisher_fields": 216,
+      "effective_unresolved_publisher_fields": 214,
       "effective_unresolved_field_counts": {
         "investors": 79,
         "construction_companies": 61,
@@ -57,10 +57,10 @@
         "project": 22,
         "chip_quantities": 10,
         "address": 8,
-        "energy_companies": 15
+        "energy_companies": 13
       },
       "reconciliation_note": "Dossier missing_fields are preserved as historical/dossier gaps. effective_unresolved_publisher_fields subtract public enrichment values and targeted PUBLIC_SOURCE/RETAINED_SOURCE findings; secondary PUBLIC_LEAD_REVIEW_REQUIRED findings remain unresolved until canonical source review.",
-      "public_web_enrichment_records": 444,
+      "public_web_enrichment_records": 451,
       "researched_no_public_record_grid_cells": 18,
       "targeted_publicly_resolved_fields": 31,
       "reconciliation_updated_on": "2026-09-27",
@@ -593,8 +593,7 @@
         "missing_publisher_fields": [
           "project",
           "investors",
-          "construction_companies",
-          "energy_companies"
+          "construction_companies"
         ],
         "open_track3_domains": [],
         "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear."
@@ -930,8 +929,7 @@
         "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
         "site_name": "Microsoft Narvik Norway",
         "missing_publisher_fields": [
-          "construction_companies",
-          "energy_companies"
+          "construction_companies"
         ],
         "open_track3_domains": [],
         "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear."
@@ -1066,8 +1064,8 @@
       "resolved_site_count": 93,
       "open_site_count": 0,
       "status_counts": {
-        "SITE_LEVEL_EVIDENCE": 81,
-        "RESEARCHED_NO_PUBLIC_RECORD": 10,
+        "SITE_LEVEL_EVIDENCE": 88,
+        "RESEARCHED_NO_PUBLIC_RECORD": 3,
         "VERIFIED_SITE_SPECIFIC": 2
       },
       "open_site_ids": []
@@ -1078,8 +1076,8 @@
       "resolved_site_count": 93,
       "open_site_count": 0,
       "status_counts": {
-        "SITE_LEVEL_EVIDENCE": 33,
-        "ASSESSMENT_COMPLETE": 60
+        "SITE_LEVEL_EVIDENCE": 38,
+        "ASSESSMENT_COMPLETE": 55
       },
       "open_site_ids": []
     },
@@ -2421,8 +2419,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -2435,7 +2433,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 1,
+        "public_web": 2,
         "remote_sensing": 7
       }
     },
@@ -2653,8 +2651,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -2667,7 +2665,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 8,
+        "public_web": 9,
         "remote_sensing": 6
       }
     },
@@ -2682,7 +2680,7 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
         "service_or_contract": "ASSESSMENT_COMPLETE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "INGESTED_SNAPSHOT",
@@ -2696,7 +2694,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 1,
+        "public_web": 2,
         "remote_sensing": 6
       }
     },
@@ -2827,8 +2825,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -2841,7 +2839,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 8,
+        "public_web": 9,
         "remote_sensing": 7
       }
     },
@@ -3001,8 +2999,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -3015,7 +3013,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 4,
+        "public_web": 5,
         "remote_sensing": 6
       }
     },
@@ -3204,8 +3202,8 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
-        "service_or_contract": "ASSESSMENT_COMPLETE",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
+        "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
         "power_telemetry": "ASSESSMENT_COMPLETE",
@@ -3218,7 +3216,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 9,
+        "public_web": 10,
         "remote_sensing": 6
       }
     },
@@ -3610,7 +3608,7 @@
         "site_identity": "INGESTED",
         "construction": "INGESTED",
         "chip_inventory": "INGESTED",
-        "grid_connection": "RESEARCHED_NO_PUBLIC_RECORD",
+        "grid_connection": "SITE_LEVEL_EVIDENCE",
         "service_or_contract": "SITE_LEVEL_EVIDENCE",
         "regulatory": "ASSESSMENT_COMPLETE",
         "compute_tenancy": "ASSESSMENT_COMPLETE",
@@ -3624,7 +3622,7 @@
         "independent_corroboration": "ASSESSMENT_COMPLETE"
       },
       "evidence_counts": {
-        "public_web": 7,
+        "public_web": 8,
         "remote_sensing": 6
       }
     },

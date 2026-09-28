@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at_utc": "2026-09-28T03:34:02.055375+00:00",
+  "generated_at_utc": "2026-09-28T04:39:32.375378+00:00",
   "title": "93-site Track 3 domain completeness matrix",
   "scope": "15 Track 3 domains × 93 canonical Epoch AI sites",
   "accounting": {
@@ -9,17 +9,17 @@
     "domains": 15,
     "status_counts": {
       "INGESTED": 291,
-      "SITE_LEVEL_EVIDENCE": 114,
-      "ASSESSMENT_COMPLETE": 568,
-      "INGESTED_DERIVED": 88,
+      "SITE_LEVEL_EVIDENCE": 126,
+      "ASSESSMENT_COMPLETE": 559,
+      "INGESTED_DERIVED": 92,
       "INGESTED_SNAPSHOT": 307,
       "ASSESSED": 15,
-      "RESEARCHED_NO_PUBLIC_RECORD": 10,
+      "RESEARCHED_NO_PUBLIC_RECORD": 3,
       "VERIFIED_SITE_SPECIFIC": 2
     },
     "terminal_cells": 1395,
     "open_or_unassessed_cells": 0,
-    "assessment_complete_cells": 568
+    "assessment_complete_cells": 559
   },
   "records": [
     {
@@ -65,7 +65,7 @@
       "state_province": "TN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -245,7 +245,7 @@
       "state_province": "GA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -425,7 +425,7 @@
       "state_province": "IN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -605,7 +605,7 @@
       "state_province": "OK",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -785,7 +785,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -965,7 +965,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -1145,7 +1145,7 @@
       "state_province": "WI",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -1325,7 +1325,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -1384,11 +1384,11 @@
       "country": "Malaysia",
       "state_province": null,
       "domain": "remote_sensing",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-      "observation_count": null,
+      "status": "INGESTED_DERIVED",
+      "basis": "Public satellite COG windows were processed into site-level observations with scene provenance.",
+      "observation_count": 6,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-04f65e1aee6c98ab-remote_sensing"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-04f65e1aee6c98ab",
@@ -1505,7 +1505,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -1685,7 +1685,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -1865,7 +1865,7 @@
       "state_province": "AZ",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -1924,11 +1924,11 @@
       "country": "United States",
       "state_province": "AZ",
       "domain": "remote_sensing",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-      "observation_count": null,
+      "status": "INGESTED_DERIVED",
+      "basis": "Public satellite COG windows were processed into site-level observations with scene provenance.",
+      "observation_count": 6,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-83ca909f7eb211c7-remote_sensing"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-83ca909f7eb211c7",
@@ -2045,7 +2045,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -2225,7 +2225,7 @@
       "state_province": "TN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -2405,7 +2405,7 @@
       "state_province": "IA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -2585,7 +2585,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -2765,7 +2765,7 @@
       "state_province": "VA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -2945,7 +2945,7 @@
       "state_province": "MN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -3125,7 +3125,7 @@
       "state_province": "MS",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -3305,7 +3305,7 @@
       "state_province": "VA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -3485,7 +3485,7 @@
       "state_province": "AZ",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -3665,7 +3665,7 @@
       "state_province": "IN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -3845,7 +3845,7 @@
       "state_province": "MO",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -4025,7 +4025,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -4205,7 +4205,7 @@
       "state_province": "NE",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -4385,7 +4385,7 @@
       "state_province": "NE",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -4565,7 +4565,7 @@
       "state_province": "VA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -4745,7 +4745,7 @@
       "state_province": "OR",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -4925,7 +4925,7 @@
       "state_province": "VA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -5105,7 +5105,7 @@
       "state_province": "AL",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -5285,7 +5285,7 @@
       "state_province": "ID",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -5465,7 +5465,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -5645,7 +5645,7 @@
       "state_province": "WY",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -5825,7 +5825,7 @@
       "state_province": "MS",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -6005,7 +6005,7 @@
       "state_province": "AL",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -6185,7 +6185,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -6365,7 +6365,7 @@
       "state_province": "IA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -6545,7 +6545,7 @@
       "state_province": "UT",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -6725,7 +6725,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -6905,7 +6905,7 @@
       "state_province": "NV",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -7085,7 +7085,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -7265,7 +7265,7 @@
       "state_province": "OR",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -7445,7 +7445,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -7624,8 +7624,8 @@
       "country": "China",
       "state_province": null,
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -7636,11 +7636,11 @@
       "country": "China",
       "state_province": null,
       "domain": "service_or_contract",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification.",
       "observation_count": null,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-a286a89bd1c1b6e7-service_or_contract"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-a286a89bd1c1b6e7",
@@ -7805,7 +7805,7 @@
       "state_province": "VA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -7985,7 +7985,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -8165,7 +8165,7 @@
       "state_province": "NE",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -8345,7 +8345,7 @@
       "state_province": "TN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -8525,7 +8525,7 @@
       "state_province": "NM",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -8705,7 +8705,7 @@
       "state_province": "ND",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -8885,7 +8885,7 @@
       "state_province": "NE",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -9064,8 +9064,8 @@
       "country": "China",
       "state_province": null,
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -9076,11 +9076,11 @@
       "country": "China",
       "state_province": null,
       "domain": "service_or_contract",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification.",
       "observation_count": null,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-77e196fc5320fd70-service_or_contract"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-77e196fc5320fd70",
@@ -9244,8 +9244,8 @@
       "country": "United States",
       "state_province": "VA",
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -9484,11 +9484,11 @@
       "country": "Indonesia",
       "state_province": null,
       "domain": "remote_sensing",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-      "observation_count": null,
+      "status": "INGESTED_DERIVED",
+      "basis": "Public satellite COG windows were processed into site-level observations with scene provenance.",
+      "observation_count": 6,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-ea5d1ae5837aba5c-remote_sensing"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-ea5d1ae5837aba5c",
@@ -9605,7 +9605,7 @@
       "state_province": "PA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -9785,7 +9785,7 @@
       "state_province": "NC",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -9965,7 +9965,7 @@
       "state_province": "SC",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -10144,8 +10144,8 @@
       "country": "China",
       "state_province": null,
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -10156,11 +10156,11 @@
       "country": "China",
       "state_province": null,
       "domain": "service_or_contract",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification.",
       "observation_count": null,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-af62ae3440fe885a-service_or_contract"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-af62ae3440fe885a",
@@ -10505,7 +10505,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -10685,7 +10685,7 @@
       "state_province": "VA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -11045,7 +11045,7 @@
       "state_province": "NJ",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -11224,8 +11224,8 @@
       "country": "Norway",
       "state_province": null,
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -11236,11 +11236,11 @@
       "country": "Norway",
       "state_province": null,
       "domain": "service_or_contract",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification.",
       "observation_count": null,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-f48a533b01898dfd-service_or_contract"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-f48a533b01898dfd",
@@ -11644,11 +11644,11 @@
       "country": "Australia",
       "state_province": null,
       "domain": "remote_sensing",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-      "observation_count": null,
+      "status": "INGESTED_DERIVED",
+      "basis": "Public satellite COG windows were processed into site-level observations with scene provenance.",
+      "observation_count": 6,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-827d7832237170bd-remote_sensing"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-827d7832237170bd",
@@ -11765,7 +11765,7 @@
       "state_province": "AZ",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -11945,7 +11945,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -12125,7 +12125,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -12305,7 +12305,7 @@
       "state_province": "GA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -12484,8 +12484,8 @@
       "country": "China",
       "state_province": null,
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -12496,11 +12496,11 @@
       "country": "China",
       "state_province": null,
       "domain": "service_or_contract",
-      "status": "ASSESSMENT_COMPLETE",
-      "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification.",
       "observation_count": null,
       "research_task_id": null,
-      "assessment_id": "T3RA-EPOCH-e20c2909085b37fd-service_or_contract"
+      "assessment_id": null
     },
     {
       "epoch_id": "EPOCH-e20c2909085b37fd",
@@ -12665,7 +12665,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -12845,7 +12845,7 @@
       "state_province": "GA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -13025,7 +13025,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -13205,7 +13205,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -13385,7 +13385,7 @@
       "state_province": "PA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -13565,7 +13565,7 @@
       "state_province": "OK",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -13745,7 +13745,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -13925,7 +13925,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -14105,7 +14105,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -14285,7 +14285,7 @@
       "state_province": "IA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -14465,7 +14465,7 @@
       "state_province": "IN",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -14645,7 +14645,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -14825,7 +14825,7 @@
       "state_province": "LA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -15004,8 +15004,8 @@
       "country": "Norway",
       "state_province": null,
       "domain": "grid_connection",
-      "status": "RESEARCHED_NO_PUBLIC_RECORD",
-      "basis": "A documented site-specific search was performed and no public queue/service record was retained. This is a research outcome, not evidence that the site lacks grid service.",
+      "status": "SITE_LEVEL_EVIDENCE",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -15185,7 +15185,7 @@
       "state_province": "OH",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -15365,7 +15365,7 @@
       "state_province": "MI",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -15545,7 +15545,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -15725,7 +15725,7 @@
       "state_province": "NM",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -15905,7 +15905,7 @@
       "state_province": "TX",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -16085,7 +16085,7 @@
       "state_province": null,
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -16265,7 +16265,7 @@
       "state_province": "WI",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -16445,7 +16445,7 @@
       "state_province": "IA",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
@@ -16625,7 +16625,7 @@
       "state_province": "UT",
       "domain": "grid_connection",
       "status": "SITE_LEVEL_EVIDENCE",
-      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted.",
+      "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted.",
       "observation_count": null,
       "research_task_id": null,
       "assessment_id": null
