@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-28",
+  "title": "Strict discovery case dispositions — current five-case closure queue",
+  "scope": "Five strict load-admission cases selected from the broad ambiguous-load pool. A terminal disposition means the declared research gates reached a stopping rule; it does not mean facility operation, compute workload, or covert status was proven.",
+  "semantics": [
+    "Queue/interconnection capacity is not measured electricity draw.",
+    "A public data-center label is not proof of operator, hardware, or AI workload.",
+    "A documented industrial identity is not evidence that no compute exists elsewhere.",
+    "NO_PUBLIC_RECORD and INCONCLUSIVE are terminal evidence-accounting states, not absence claims."
+  ],
+  "cases": [
+    {
+      "case_id": "NEXT-AESO-P3066",
+      "queue_id": "P3066",
+      "rto": "AESO",
+      "project_name": "Leedale Data Load",
+      "capacity_mw": 1864,
+      "disposition": "CONFIRMED_PUBLIC_DATA_CENTER_PROJECT_LABEL_WITH_PHYSICAL_IDENTITY_UNRESOLVED",
+      "closure_state": "CLOSED_AT_PUBLIC_EVIDENCE_BOUNDARY",
+      "evidence": [
+        {
+          "source": "AESO-derived queue mirror",
+          "url": "https://www.interconnection.fyi/project/aeso-p3066",
+          "finding": "P3066 is an active 1,864 MW load request in Clearwater County with POI 38-Caroline."
+        },
+        {
+          "source": "GridLens",
+          "url": "https://gridlens.ca/planning-area/Caroline",
+          "finding": "P3066 is listed as a 1,864 MW Data Load in the Caroline planning area; the page explicitly warns that planning-area totals are not site demand or guaranteed service."
+        },
+        {
+          "source": "DataCenter.fyi",
+          "url": "https://www.datacenter.fyi/public-record/p3066-leedale-data-load-764c0be1",
+          "finding": "The retained public record classifies P3066 as a proposed data center and preserves 1,864 MW power capacity; developer/operator/owner are not exposed."
+        }
+      ],
+      "physical_gate": "NOT_CLOSED",
+      "unresolved": [
+        "No defensible facility parcel/coordinate was established from the reviewed public sources.",
+        "Developer, operator, owner and hyperscaler remain undisclosed in the retained public record.",
+        "No project-specific transformer procurement/delivery/energization event was established.",
+        "The 1,864 MW figure is a connection/project capacity figure, not measured site load or IT power."
+      ],
+      "next_action": "Reopen only when a parcel, permit, land record, utility filing, or equivalent site-specific record closes the physical-targeting gate."
+    },
+    {
+      "case_id": "NEXT-AESO-P3198",
+      "queue_id": "P3198",
+      "rto": "AESO",
+      "project_name": "Lynx Data Load",
+      "capacity_mw": 1800,
+      "disposition": "INCONCLUSIVE_AFTER_SOURCE_UNIVERSE_SEARCH",
+      "closure_state": "CLOSED_AT_STOPPING_RULE",
+      "evidence": [
+        {
+          "source": "GridLens queue",
+          "url": "https://gridlens.ca/queue",
+          "finding": "P3198 is a 1,800 MW Data Load, Stage 1 assessment, with in-service date under review."
+        },
+        {
+          "source": "GridLens Fort Saskatchewan substation context",
+          "url": "https://gridlens.ca/substation/430S",
+          "finding": "P3198 appears in the Fort Saskatchewan planning-area project set; the page does not establish a parcel match for the project."
+        },
+        {
+          "source": "Interconnection.fyi",
+          "url": "https://www.interconnection.fyi/projects/state/AB/strathcona-county",
+          "finding": "P3198 is an active Strathcona County queue project."
+        }
+      ],
+      "physical_gate": "NOT_CLOSED",
+      "unresolved": [
+        "No defensible project parcel or facility coordinate was established.",
+        "Developer/owner/operator identity is not exposed in the reviewed public queue surfaces.",
+        "The Fort Saskatchewan planning/substation association cannot be promoted to a facility-site match.",
+        "No public evidence reviewed establishes compute workload, operation, or energization."
+      ],
+      "next_action": "Reopen on a project-specific land, permit, utility, regulator, or corporate record that identifies the physical project site or developer."
+    },
+    {
+      "case_id": "NEXT-AESO-P3108",
+      "queue_id": "P3108",
+      "rto": "AESO",
+      "project_name": "Wild Rose Power Hub Load",
+      "capacity_mw": 1300,
+      "disposition": "CONFIRMED_PROPOSED_DATA_CENTER_PROJECT",
+      "closure_state": "CLOSED_WITH_PUBLIC_PROJECT_AND_PHYSICAL_SITE_IDENTITY",
+      "evidence": [
+        {
+          "source": "Rocky View County",
+          "url": "https://www.rockyview.ca/build-plan-and-develop/planning/planning-projects-underway/wild-rose-power-hub-area-structure-plan",
+          "finding": "County planning records identify the Wild Rose Power Hub area structure plan and provide the project point and legal quarter sections."
+        },
+        {
+          "source": "Alberta Major Projects",
+          "url": "https://majorprojects.alberta.ca/details/Wild-Rose-Power-Hub/12207",
+          "finding": "Provincial records describe a proposed hyperscale data centre and identify Chinook Development LP as developer."
+        },
+        {
+          "source": "AESO-derived queue mirror",
+          "url": "https://www.interconnection.fyi/project/aeso-p3108",
+          "finding": "P3108 is a 1,300 MW load-side connection request."
+        },
+        {
+          "source": "Alberta Data Centre Watch",
+          "url": "https://albertadatacentrewatch.ca/projects/wild-rose-power-hub/",
+          "finding": "The project remains proposed; the public profile explicitly distinguishes the 1,300 MW connection request from construction approval or operating demand."
+        }
+      ],
+      "physical_gate": "CLOSED_FOR_SITE_TARGETING",
+      "unresolved": [
+        "The project is proposed; operational/energized status is not established.",
+        "No project-specific transformer procurement/delivery/energization event was retained.",
+        "Remote-sensing observations are corroborative physical observations, not compute-use proof."
+      ],
+      "next_action": "Periodic refresh for construction, service, transformer and operating-status evidence."
+    },
+    {
+      "case_id": "CONTROL-AESO-P2958",
+      "queue_id": "P2958",
+      "rto": "AESO",
+      "project_name": "Hydrogen Canada MPC Load",
+      "capacity_mw": 320,
+      "disposition": "INDUSTRIAL_CONTROL_CONTEXT_CONFIRMED",
+      "closure_state": "CLOSED_WITH_CONTROL_BOUNDARY",
+      "evidence": [
+        {
+          "source": "GridLens queue",
+          "url": "https://gridlens.ca/queue",
+          "finding": "P2958 is listed as a 320 MW Industrial Load in the Fort Saskatchewan planning context."
+        },
+        {
+          "source": "Hydrogen Canada / CNW",
+          "url": "https://www.newswire.ca/news-releases/hydrogen-canada-corp-announces-world-scale-blue-hydrogen-ammonia-facility-with-product-bound-for-south-korea-831451417.html",
+          "finding": "Hydrogen Canada Corp publicly described a planned blue hydrogen/ammonia production facility in the Alberta Industrial Heartland near Fort Saskatchewan."
+        },
+        {
+          "source": "Government of Alberta energy outlook",
+          "url": "https://www.aer.ca/data-and-performance-reports/statistical-reports/alberta-energy-outlook-st98/emerging-resources/emerging-resources-hydrogen",
+          "finding": "Alberta's regulator identifies Hydrogen Canada Corp's planned blue hydrogen/ammonia facility in Alberta and describes its industrial production purpose."
+        }
+      ],
+      "physical_gate": "NOT_CLOSED",
+      "unresolved": [
+        "The reviewed public sources do not expose a definitive project-parcel linkage proving that P2958 is the exact Hydrogen Canada facility record.",
+        "No project-specific transformer event was established.",
+        "The control result is classification evidence, not proof that no compute equipment could exist at or near an industrial site."
+      ],
+      "next_action": "Reopen if an official AESO/utility/regulatory or land record directly links P2958 to the Hydrogen Canada facility parcel."
+    },
+    {
+      "case_id": "CONTROL-AESO-P2614",
+      "queue_id": "P2614",
+      "rto": "AESO",
+      "project_name": "Dow Fort Sask. Load",
+      "capacity_mw": 231,
+      "disposition": "CONFIRMED_INDUSTRIAL_PROJECT",
+      "closure_state": "CLOSED_WITH_PRIMARY_ENGINEERING_EVIDENCE",
+      "evidence": [
+        {
+          "source": "AESO Engineering Connection Assessment",
+          "url": "https://www.aeso.ca/assets/NIDs-LARA/Appendix-A-Connection-Assessment-Ft-Sask-Path2Zero.pdf",
+          "finding": "AESO's public study scope identifies Dow Chemical Canada ULC as the market participant requesting system access service for the proposed Dow Fort Sask. Load, with 231 MW requested DTS capacity and project type Industrial."
+        },
+        {
+          "source": "AESO Proposed Transmission Development",
+          "url": "https://www.aeso.ca/assets/NIDs-LARA/Attachment-Proposed-Transmission-Development-Fort-Saskatchewan.pdf",
+          "finding": "AESO's transmission-development material identifies the P2614 project area around Dow Chemical Fort Saskatchewan infrastructure."
+        },
+        {
+          "source": "Alberta Major Projects",
+          "url": "https://majorprojects.alberta.ca/details/Fort-Saskatchewan-Path-to-Zero-Expansion/5535",
+          "finding": "The provincial project record identifies Dow Chemical Canada as developer of the Fort Saskatchewan Path2Zero industrial/chemical expansion."
+        }
+      ],
+      "physical_gate": "CLOSED_FOR_PROJECT_IDENTITY",
+      "unresolved": [
+        "This control establishes an industrial project identity, not a facility-wide absence of compute.",
+        "The queue capacity remains a contract/project quantity, not interval measured demand.",
+        "Transformer event evidence was not required to resolve the industrial identity but remains a separate research domain."
+      ],
+      "next_action": "Periodic refresh for construction, service, transformer and operating-status evidence."
+    }
+  ],
+  "summary": {
+    "strict_case_count": 5,
+    "terminal_disposition_count": 5,
+    "confirmed_or_controlled_count": 3,
+    "inconclusive_count": 1,
+    "public_data_center_project_count": 2,
+    "industrial_control_count": 2,
+    "physical_identity_closed_count": 2,
+    "physical_target_unresolved_count": 3
+  }
+}
