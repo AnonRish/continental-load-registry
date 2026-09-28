@@ -60,6 +60,9 @@ jobs:
           print("PASS:", counts, "transformer_events=", tx["record_count"])
           PY
 
+      - name: Reconcile remote-sensing target states
+        run: python build_remote_sensing_target_status.py
+
       - name: Build physical-coordinate coverage audit
         run: python build_track3_geo_audit.py
 
