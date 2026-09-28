@@ -460,7 +460,7 @@ def update_manifests(records: list[dict[str, Any]], capture_date: str, source_sh
                 f"{count} normalized BPA large-load request rows from the official workbook at the latest refresh. "
                 f"{mapped} retain prior display geometry; {count - mapped} have no retained display geometry."
             )
-    atomic_text(CATALOG, json.dumps(cat, indent=2, ensure_ascii=False) + "\\n")
+    atomic_text(CATALOG, json.dumps(cat, indent=2, ensure_ascii=False) + "\n")
     checklist = load_json(CHECKLIST)
     entry = next((x for x in checklist["records"] if x["id"] == "BPA"), None)
     if entry:
