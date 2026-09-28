@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "title": "Track 3 facility-level evidence/provenance ledger",
-  "generated_at_utc": "2026-09-28T02:47:56.350985+00:00",
+  "generated_at_utc": "2026-09-28T03:22:57.463508+00:00",
   "snapshot": {
-    "source_commit": "763d86d543c955f08b9e76ee499da7783780cd07"
+    "source_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee"
   },
   "semantics": {
     "missing_data": "Null/UNKNOWN means not captured; never evidence of absence.",
@@ -91,7 +91,7 @@
   ],
   "summary": {
     "facility_count": 93,
-    "evidence_record_count": 1139,
+    "evidence_record_count": 1181,
     "field_provenance_items": 1488,
     "facilities_with_selected_external_sources": 93,
     "facilities_with_corrob": 93,
@@ -100,15 +100,15 @@
   "source_artifacts": [
     {
       "path": "data/external/epoch_ai/registry.json",
-      "sha256": "26666e48b2189aff45d14b2b92ca56250cbc09d15d7a097a781f7318cad33153"
+      "sha256": "f8fcbf2769f2ca20c8a8287eb7fba39d2f7df20e70fb16367b734721225b86df"
     },
     {
       "path": "data/track3/evidence_records.json",
-      "sha256": "6c87f40399c809aa0e590da8b5dbfbaa7ba09a923a2abe0259fcb2f25faf2fae"
+      "sha256": "70a2380c7f92d4c06d610a27d78c98cb6652a1e6cdb33871ae6bd9e5135a42da"
     },
     {
       "path": "data/track3/site_status.json",
-      "sha256": "ce661f166a340819ded7232d46d797a51acecdfc467efef9fc2a76ea602f29e9"
+      "sha256": "9ae5ab0b3b3743bb0daa758cd51e072f8dfe1a497b48a78ff10e1d3ca3d37be6"
     },
     {
       "path": "data/track3/building_footprints_index.json",
@@ -116,7 +116,7 @@
     },
     {
       "path": "data/track3/time_series_verification.json",
-      "sha256": "db9a8c87bbdb8a5378d342afe8c84adca4699d916d317d2970372e23d5e6b56a"
+      "sha256": "6c7525a9f34a0409e439075e756921bc2fc2f2e82530d6e6d610dcd626cf0ef8"
     }
   ],
   "facilities": [
@@ -1025,12 +1025,71 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-c20399-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Memphis Light Gas & Water / Tennessee Valley Authority",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.mlgw.com/images/content/files/pdf/XAIJuly2025Statement.pdf",
+              "https://currently.att.yahoo.com/att/tva-board-approves-agreement-spacexai-234602682.html"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-08-20",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "The sources establish utility-service arrangements but do not expose confidential contract terms or a queue identifier.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-c20399-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "MLGW / TVA / Memphis local reporting",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.mlgw.com/images/content/files/pdf/XAIJuly2025Statement.pdf",
+              "https://www.dailymemphian.com/article/65680/spacexai-power-memphis-tennessee-valley-authority-tva",
+              "https://currently.att.yahoo.com/att/tva-board-approves-agreement-spacexai-234602682.html"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-08-20",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Distinct public publishers corroborate the utility relationship; this does not verify every power or capacity figure.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "secondary",
+          "origin_basis": "Source metadata indicates reporting/registry/public-source material.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 18,
-        "distinct_source_name_count": 14,
+        "distinct_source_url_count": 21,
+        "distinct_source_name_count": 16,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -1046,14 +1105,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -1769,12 +1828,97 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-d9050b-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Georgia Public Service Commission / Georgia Power",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/220948/102128"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-01-10",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "This establishes site-specific utility-service planning evidence but does not expose a customer contract number or queue ID.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-d9050b-REGULATORY-20260927",
+          "domain": "regulatory",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Georgia Public Service Commission",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/220948/102128"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "regulatory"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-01-10",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Regulatory evidence is site-specific to QTS Fayetteville/Fairwater service infrastructure; it does not establish every local permit.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-9ed24c-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Government / utility / regulatory records",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/220948/102128",
+              "https://epd.georgia.gov/document/document/28924-narrative/download"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Corroboration is based on distinct public publishers outside the canonical Epoch dataset; it does not mean every Track 3 domain is independently verified.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "primary",
+          "origin_basis": "Source metadata explicitly indicates an official/company/regulatory/filing/permit origin.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 11,
-        "distinct_source_name_count": 11,
+        "distinct_source_url_count": 13,
+        "distinct_source_name_count": 14,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -1790,14 +1934,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -2514,12 +2658,70 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-45b3c7-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Indiana Utility Regulatory Commission / Indiana Michigan Power",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://iurc.portal.in.gov/_entity/sharepointdocumentlocation/12dd9b3a-fcbe-ef11-b8e9-001dd803a96f/bb9c6bba-fd52-45ad-8e64-a444aef13c39?file=46097%20Public%20Exhibit%20No.%201.pdf",
+              "https://www.indianamichiganpower.com/company/news/view?releaseID=10036"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-02-19",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "This establishes site/customer service evidence but does not expose a customer contract number or interconnection queue identifier.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "primary",
+          "origin_basis": "Source metadata explicitly indicates an official/company/regulatory/filing/permit origin.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-eb1f26-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Government / utility / regulatory records",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://iurc.portal.in.gov/_entity/sharepointdocumentlocation/12dd9b3a-fcbe-ef11-b8e9-001dd803a96f/bb9c6bba-fd52-45ad-8e64-a444aef13c39?file=46097%20Public%20Exhibit%20No.%201.pdf",
+              "https://iedc.in.gov/events/news/details/2024/04/25/gov.-holcomb-announces-amazon-web-services-plans-to-invest-11b-to-create-a-new-data-center-campus-in-northern-indiana"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Corroboration is based on distinct public publishers outside the canonical Epoch dataset; it does not mean every Track 3 domain is independently verified.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "primary",
+          "origin_basis": "Source metadata explicitly indicates an official/company/regulatory/filing/permit origin.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 12,
-        "distinct_source_name_count": 10,
+        "distinct_source_url_count": 15,
+        "distinct_source_name_count": 12,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -2535,14 +2737,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -3222,12 +3424,69 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-ea699c-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Grand River Dam Authority",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://grda.com/wp-content/uploads/2024/01/GRDA-CAFR-2017.pdf"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2018-01-01",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Official GRDA evidence establishes the utility service relationship; it does not expose a current contract number or interconnection queue identifier.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-46e066-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Government / utility / regulatory records",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://grda.com/wp-content/uploads/2024/01/GRDA-CAFR-2017.pdf",
+              "https://registry.deploy.report/datacenters/facilities/google-mayes-county-ok"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Corroboration is based on distinct public publishers outside the canonical Epoch dataset; it does not mean every Track 3 domain is independently verified.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "primary",
+          "origin_basis": "Source metadata explicitly indicates an official/company/regulatory/filing/permit origin.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 12,
-        "distinct_source_name_count": 8,
+        "distinct_source_url_count": 13,
+        "distinct_source_name_count": 10,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -3243,14 +3502,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -4035,14 +4294,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -4609,12 +4868,97 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-ABILENE-OWNER-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Samaritan Research / Scrutica",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://samaritan-research.org/data/data-centers/satellite-explorer/OpenAIStargateAbilene",
+              "https://scrutica.com/facilities/fac-stargate-abilene"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "owner"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-24",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Third-party sources identify Oracle as the owner/hardware owner; retained as public enrichment rather than an independent ownership certification.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-ABILENE-POWER-20260927",
+          "domain": "grid_connection",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "DEPLOY",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://registry.deploy.report/datacenters/facilities/oracle-abilene-texas"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "energy_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "DEPLOY describes ERCOT grid connection plus on-site generation; this is not a queue ID or interval telemetry measurement.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-ABILENE-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "DEPLOY",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://registry.deploy.report/datacenters/facilities/oracle-abilene-texas"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "DEPLOY identifies Crusoe as having built the site; retained as construction/development evidence, not as a complete contractor roster.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 9,
-        "distinct_source_name_count": 6,
+        "distinct_source_url_count": 12,
+        "distinct_source_name_count": 8,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -4630,14 +4974,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -5413,14 +5757,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -5963,14 +6307,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -6604,14 +6948,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -7414,14 +7758,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -8085,14 +8429,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -8474,7 +8818,7 @@
           "review_state": "PUBLISHED_RECORD"
         },
         {
-          "evidence_id": "EVID-REMOTE-6059e3ef92ad7913df95",
+          "evidence_id": "EVID-REMOTE-0107681449f041d26c98",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -8502,7 +8846,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-8b9b03ef6ae07d7953cb",
+          "evidence_id": "EVID-REMOTE-96d10d8b9b7285aaaa47",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -8530,7 +8874,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-28be2e22d5bde43f886f",
+          "evidence_id": "EVID-REMOTE-2a853c4a39121fa5ad9a",
           "domain": "remote_sensing",
           "evidence_type": "sar",
           "status": "INGESTED_DERIVED",
@@ -8558,7 +8902,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-c557f5481af9870dd6b7",
+          "evidence_id": "EVID-REMOTE-5f07d4466b1ea91294d4",
           "domain": "remote_sensing",
           "evidence_type": "sar",
           "status": "INGESTED_DERIVED",
@@ -8586,7 +8930,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-b9d570036ec7492aab52",
+          "evidence_id": "EVID-REMOTE-e64e41d1ec07e5d61a21",
           "domain": "remote_sensing",
           "evidence_type": "tir",
           "status": "INGESTED_DERIVED",
@@ -8614,7 +8958,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-4d2f68b6f37cb2948da4",
+          "evidence_id": "EVID-REMOTE-61e1b292de84b132e333",
           "domain": "remote_sensing",
           "evidence_type": "tir",
           "status": "INGESTED_DERIVED",
@@ -8775,14 +9119,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -9445,14 +9789,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -10029,14 +10373,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -10802,14 +11146,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -11612,14 +11956,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -12372,12 +12716,126 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-8358e4-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Xcel Energy",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2024-03-15",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "This establishes the utility relationship and infrastructure work; it does not reproduce confidential service-contract terms.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-8358e4-REGULATORY-20260927",
+          "domain": "regulatory",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "City of Rosemount",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.rosemountmn.gov/progress"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "regulatory"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": null,
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Site-specific municipal approval evidence; not a complete permit inventory.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-8358e4-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Meta Data Centers",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://datacenters.atmeta.com/2024/03/hello-rosemount/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2024-03-14",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Meta states construction information is available from Mortenson and thanks Mortenson among the partners; this does not establish a complete contractor roster.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-8358e4-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Meta Data Centers / Xcel Energy / City of Rosemount",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://datacenters.atmeta.com/2024/03/hello-rosemount/",
+              "https://stories.xcelenergy.com/stories/Building-the-21st-century-economy--Xcel-Energy-to-power-new-Meta-data-center",
+              "https://www.rosemountmn.gov/progress"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2024-03-15",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Distinct public publishers corroborate the facility and utility/development context; this does not establish interval telemetry or complete permitting.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 13,
-        "distinct_source_name_count": 10,
+        "distinct_source_url_count": 15,
+        "distinct_source_name_count": 13,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -12393,14 +12851,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -13110,14 +13568,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -13796,14 +14254,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -14503,14 +14961,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -15294,14 +15752,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -16019,14 +16477,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -16710,14 +17168,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -17350,14 +17808,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -18057,14 +18515,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -18782,14 +19240,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -19395,14 +19853,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -20120,14 +20578,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -20885,14 +21343,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -21817,12 +22275,158 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-5de9a1-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Idaho Public Utilities Commission",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://puc.idaho.gov/case/Details/6792",
+              "https://puc.idaho.gov/Fileroom/PublicFiles/Press/20230512Idaho%20Power%20Brisbie%20Press%20Release.pdf"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2023-05-11",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "The contract exists and was approved; confidential commercial terms are not reproduced.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-5de9a1-REGULATORY-20260927",
+          "domain": "regulatory",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Idaho Public Utilities Commission",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://puc.idaho.gov/case/Details/6792",
+              "https://puc.idaho.gov/Fileroom/PublicFiles/ELEC/IPC/IPCE2142/OrdNotc/20230620Final_Order_No_35820.pdf"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "regulatory"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2023-06-20",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "This is site/customer-specific utility regulation, not a complete building/environmental permit inventory.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-5de9a1-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Meta Data Centers",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://datacenters.atmeta.com/2023/10/ramping-up-construction-on-the-kuna-data-center/",
+              "https://datacenters.atmeta.com/2022/02/hello-kuna/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2023-10-12",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Meta explicitly names Hensel Phelps and ESI as partners; this is not a complete contractor roster.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-5de9a1-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Meta Data Centers / Idaho Power / Idaho Public Utilities Commission",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://datacenters.atmeta.com/2026/09/kuna-we-are-online/",
+              "https://docs.idahopower.com/pdfs/AboutUs/PlanningForFuture/irp/2023/2023-appendix-a-final.pdf",
+              "https://puc.idaho.gov/case/Details/6792"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-03",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Independent sources are distinct publishers; this does not establish interval telemetry or complete site permitting.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-5de9a1-ENERGY-20260927",
+          "domain": "grid_connection",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Idaho Public Utilities Commission / Idaho Power",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://puc.idaho.gov/Fileroom/PublicFiles/Press/20230512Idaho%20Power%20Brisbie%20Press%20Release.pdf",
+              "https://docs.idahopower.com/pdfs/AboutUs/PlanningForFuture/irp/2023/2023-appendix-a-final.pdf"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "energy_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2023-05-11",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Added as a retained public utility relationship; the utility is already present as a non-effective-unresolved field in the sweep.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 10,
-        "distinct_source_name_count": 8,
+        "distinct_source_url_count": 16,
+        "distinct_source_name_count": 11,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -21838,14 +22442,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -22770,14 +23374,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -23561,14 +24165,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -24221,14 +24825,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -24890,14 +25494,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -25607,14 +26211,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -26024,7 +26628,35 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-da10c7d8485cbb68e5b1",
+          "evidence_id": "EVID-REMOTE-f7aa2f7627c5783207e0",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260727T170849_R112_T15TVG_20260727T210327"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2B_MSIL2A_20260727T170849_R112_T15TVG_20260727T210327"
+          },
+          "capture_date": "2026-07-27",
+          "observed_on": "2026-07-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-16c7afec209142a87d23",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -26195,7 +26827,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 9,
+        "distinct_source_url_count": 10,
         "distinct_source_name_count": 6,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -26212,14 +26844,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -26881,14 +27513,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -27493,14 +28125,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -28228,14 +28860,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -28830,14 +29462,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -29414,14 +30046,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -30102,14 +30734,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -30706,14 +31338,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -31309,14 +31941,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -31893,14 +32525,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -32506,14 +33138,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -33260,14 +33892,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -33882,14 +34514,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -34532,14 +35164,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -35163,14 +35795,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -35915,14 +36547,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -36509,14 +37141,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -37001,14 +37633,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -37634,14 +38266,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -38267,14 +38899,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -38851,14 +39483,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -39641,14 +40273,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -40469,14 +41101,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -40703,7 +41335,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-28",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "Turner Construction Co.",
           "transformation": "Whitespace normalization only; no semantic inference.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -41172,12 +41804,69 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-71d009-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "San Antonio Report",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://sanantonioreport.org/microsoft-data-centers-san-antonio-region/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2023-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Independent local reporting identifies Turner Construction Co. as builder of SAT40; this is not a complete contractor roster.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-71d009-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Texas Department of Licensing and Regulation / San Antonio Report",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2023013247",
+              "https://sanantonioreport.org/microsoft-data-centers-san-antonio-region/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2023-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Distinct publishers corroborate project identity and location; this does not verify electrical telemetry or complete site permitting.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 8,
-        "distinct_source_name_count": 6,
+        "distinct_source_url_count": 9,
+        "distinct_source_name_count": 8,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -41193,14 +41882,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -41815,14 +42504,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -42409,14 +43098,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -43148,14 +43837,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -43798,14 +44487,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -44167,6 +44856,34 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
+          "evidence_id": "EVID-REMOTE-c78b6aa0649a99277846",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260806T094031_R036_T35VMH_20260806T125012"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2C_MSIL2A_20260806T094031_R036_T35VMH_20260806T125012"
+          },
+          "capture_date": "2026-08-06",
+          "observed_on": "2026-08-06",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
           "evidence_id": "EVID-REMOTE-a6e065fa7fe55927a25e",
           "domain": "remote_sensing",
           "evidence_type": "optical",
@@ -44183,6 +44900,34 @@
           },
           "capture_date": "2026-09-25",
           "observed_on": "2026-09-25",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
+          "evidence_id": "EVID-REMOTE-6f70cd355f2c123687ad",
+          "domain": "remote_sensing",
+          "evidence_type": "optical",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-2 MSI L2A",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2A_MSIL2A_20260927T094121_R036_T35VLH_20260927T142310"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S2A_MSIL2A_20260927T094121_R036_T35VLH_20260927T142310"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
           "exact_source_field": null,
           "exact_source_value": null,
           "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
@@ -44337,7 +45082,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 8,
+        "distinct_source_url_count": 10,
         "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -44354,14 +45099,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -44866,14 +45611,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -45450,14 +46195,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -46181,14 +46926,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -46287,7 +47032,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-28",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "VANTAGE DATA CENTERS TX1 LLC",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -46784,11 +47529,40 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-VANTAGE-OWNER-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Texas Department of Licensing and Regulation",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.tdlr.texas.gov/TABS/Projects/TABS2026012091",
+              "https://www.tdlr.texas.gov/TABS/Search/Project/TABS2026001234"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "owner"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-02-09",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Official TDLR project records identify VANTAGE DATA CENTERS TX1 LLC as the owner for the 96 MW TX12 fit-up and TX1 campus project.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 10,
+        "distinct_source_url_count": 11,
         "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -46805,14 +47579,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -47409,14 +48183,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -48209,14 +48983,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -48946,14 +49720,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -49625,14 +50399,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -50070,6 +50844,34 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
+          "evidence_id": "EVID-REMOTE-f1ba7108ce40ff2473ff",
+          "domain": "remote_sensing",
+          "evidence_type": "sar",
+          "status": "INGESTED_DERIVED",
+          "source": {
+            "name": "Sentinel-1 GRD",
+            "kind": "public satellite STAC + raw COG processing",
+            "urls": [
+              "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-1-grd/items/S1D_IW_GRDH_1SDV_20260809T075740_20260809T075805_004046_0075D8"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "S1D_IW_GRDH_1SDV_20260809T075740_20260809T075805_004046_0075D8"
+          },
+          "capture_date": "2026-08-09",
+          "observed_on": "2026-08-09",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Compact metrics computed from a raw COG window around the geocoded public site address.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "derived_measurement",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
+        },
+        {
           "evidence_id": "EVID-REMOTE-1ed3b8effee87d3fb84b",
           "domain": "remote_sensing",
           "evidence_type": "sar",
@@ -50212,7 +51014,7 @@
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 8,
+        "distinct_source_url_count": 9,
         "distinct_source_name_count": 5,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
@@ -50229,14 +51031,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -50976,14 +51778,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -51588,14 +52390,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -52182,14 +52984,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -52898,14 +53700,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -53698,14 +54500,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -54313,14 +55115,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -54925,14 +55727,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -55641,14 +56443,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -56357,14 +57159,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -57053,12 +57855,100 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-bbcf0e-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Entergy Louisiana / Meta",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.entergy.com/news/meta-selects-northeast-louisiana-as-site-10-billion-data-center",
+              "https://www.entergy.com/news/entergy-louisiana-breaks-ground-on-key-substation-to-power-data-center-in-richland-parish",
+              "https://datacenters.atmeta.com/2026/07/deepening-our-investment-in-richland-parish-louisiana/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-07-13",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Site-specific utility relationship is public; confidential commercial contract terms are not reproduced.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-bbcf0e-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Meta Data Centers",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://datacenters.atmeta.com/2026/07/deepening-our-investment-in-richland-parish-louisiana/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-07-13",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Meta identifies these three general contractors; this is not a complete subcontractor roster.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-bbcf0e-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Meta Data Centers / Entergy Louisiana",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://datacenters.atmeta.com/2026/07/deepening-our-investment-in-richland-parish-louisiana/",
+              "https://www.entergy.com/news/entergy-louisiana-breaks-ground-on-key-substation-to-power-data-center-in-richland-parish",
+              "https://www.entergy.com/news/entergy-louisiana-supports-metas-new-data-center-with-infrastructure-upgrades-in-richland-parish"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-07-13",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Corroboration uses distinct corporate sources; it does not establish interval telemetry or complete permitting.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 14,
-        "distinct_source_name_count": 9,
+        "distinct_source_url_count": 18,
+        "distinct_source_name_count": 12,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -57074,14 +57964,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -57425,7 +58315,7 @@
           "review_state": "PUBLISHED_RECORD"
         },
         {
-          "evidence_id": "EVID-REMOTE-7dd761a26418f2a730c5",
+          "evidence_id": "EVID-REMOTE-d08c7b26f20022b95e9a",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -57453,7 +58343,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-78b9e0888d0fb4640903",
+          "evidence_id": "EVID-REMOTE-45472abfd75c7b477245",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -57481,7 +58371,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-837e0798fffb4b2b3444",
+          "evidence_id": "EVID-REMOTE-3160cbec199a65e7003f",
           "domain": "remote_sensing",
           "evidence_type": "sar",
           "status": "INGESTED_DERIVED",
@@ -57509,7 +58399,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-6d36c1b47c26af6c42a0",
+          "evidence_id": "EVID-REMOTE-42d62fc62f4313eea4fe",
           "domain": "remote_sensing",
           "evidence_type": "sar",
           "status": "INGESTED_DERIVED",
@@ -57537,7 +58427,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-811aad0372e3c3e6ef35",
+          "evidence_id": "EVID-REMOTE-20ce809033bf688e565f",
           "domain": "remote_sensing",
           "evidence_type": "tir",
           "status": "INGESTED_DERIVED",
@@ -57565,7 +58455,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-e52162699a38fa1f14e9",
+          "evidence_id": "EVID-REMOTE-e52ec12e1b2303d33344",
           "domain": "remote_sensing",
           "evidence_type": "tir",
           "status": "INGESTED_DERIVED",
@@ -57812,14 +58702,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -58407,14 +59297,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -59169,12 +60059,41 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-df2982-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "OpenAI / DEPLOY",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://openai.com/index/expanding-stargate-to-michigan/",
+              "https://registry.deploy.report/datacenters/openai-oracle-stargate-saline-michigan"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Distinct public publishers corroborate the facility identity and utility/program relationship; this does not establish interval telemetry or complete permitting.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 10,
-        "distinct_source_name_count": 6,
+        "distinct_source_url_count": 11,
+        "distinct_source_name_count": 7,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -59190,14 +60109,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -59597,7 +60516,7 @@
           "review_state": "PUBLISHED_CROSSWALK_EVIDENCE"
         },
         {
-          "evidence_id": "EVID-REMOTE-d260883dd2b68270af06",
+          "evidence_id": "EVID-REMOTE-b8dc4e90501394c58774",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -59625,7 +60544,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-3f3a21a428b2d00bb05f",
+          "evidence_id": "EVID-REMOTE-b579996d0181aff00b22",
           "domain": "remote_sensing",
           "evidence_type": "optical",
           "status": "INGESTED_DERIVED",
@@ -59653,7 +60572,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-2bac593a21b1c0824421",
+          "evidence_id": "EVID-REMOTE-c2cedc438087493c3b4e",
           "domain": "remote_sensing",
           "evidence_type": "sar",
           "status": "INGESTED_DERIVED",
@@ -59681,7 +60600,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-eb65d631c486e55748a9",
+          "evidence_id": "EVID-REMOTE-4f01731a96f32215217c",
           "domain": "remote_sensing",
           "evidence_type": "sar",
           "status": "INGESTED_DERIVED",
@@ -59709,7 +60628,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-754bb312085612da45a4",
+          "evidence_id": "EVID-REMOTE-e65573a531ac85c772ff",
           "domain": "remote_sensing",
           "evidence_type": "tir",
           "status": "INGESTED_DERIVED",
@@ -59737,7 +60656,7 @@
           "review_state": "AUTOMATED_PUBLIC_SOURCE_PROCESSING"
         },
         {
-          "evidence_id": "EVID-REMOTE-f9e45d1b948084f0c00c",
+          "evidence_id": "EVID-REMOTE-cee3f009097ea167bf53",
           "domain": "remote_sensing",
           "evidence_type": "tir",
           "status": "INGESTED_DERIVED",
@@ -59982,14 +60901,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -60716,14 +61635,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -61320,14 +62239,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -61830,14 +62749,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -62590,12 +63509,41 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-bdf968-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "OpenAI / DEPLOY",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://openai.com/index/stargate-community/",
+              "https://registry.deploy.report/datacenters/vantage-lighthouse-port-washington-wisconsin"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Distinct public publishers corroborate the facility identity and utility/program relationship; this does not establish interval telemetry or complete permitting.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
         "distinct_source_url_count": 10,
-        "distinct_source_name_count": 8,
+        "distinct_source_name_count": 9,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -62611,14 +63559,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -62845,7 +63793,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-28",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "Layton Construction Company",
           "transformation": "Whitespace normalization only; no semantic inference.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -63336,12 +64284,128 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-d2da66-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Alliant Energy / Iowa utility public materials",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
+              "https://www.cleanenergydistricts.org/data-centers-in-iowa-resource-hub"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-02-13",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Utility-service relationship is established, but confidential contract details are not reproduced.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-d2da66-REGULATORY-20260927",
+          "domain": "regulatory",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "City of Cedar Rapids / Linn County",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.economicdevelopmentcr.com/data-centers",
+              "https://www.linncountyiowa.gov/DocumentCenter/View/26593/2025-9-137-Approving-Temporary-Use---6004-76th-Ave-Fairfax-Iowa"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "regulatory"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-01-28",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "These records establish public approvals relevant to the campus; they are not a complete permit inventory.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-d2da66-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Linn County",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.linncountyiowa.gov/DocumentCenter/View/26593/2025-9-137-Approving-Temporary-Use---6004-76th-Ave-Fairfax-Iowa"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-09-01",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Layton is explicitly the petitioner for a QTS construction laydown campus at 6004 76th Ave.; this does not establish a complete contractor roster for every phase.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-5880ce-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Government / utility / regulatory records",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://www.alliantenergy.com/news/news-center/2025/02/021225-qtsannouncementcr",
+              "https://www.economicdevelopmentcr.com/data-centers",
+              "https://www.linncountyiowa.gov/DocumentCenter/View/26593/2025-9-137-Approving-Temporary-Use---6004-76th-Ave-Fairfax-Iowa"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-09-27",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Corroboration is based on distinct public publishers outside the canonical Epoch dataset; it does not mean every Track 3 domain is independently verified.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "primary",
+          "origin_basis": "Source metadata explicitly indicates an official/company/regulatory/filing/permit origin.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 12,
-        "distinct_source_name_count": 11,
+        "distinct_source_url_count": 15,
+        "distinct_source_name_count": 15,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -63357,14 +64421,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     },
@@ -63527,7 +64591,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-28",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "QTS Data Center Campus",
           "transformation": "Whitespace trimming only; publisher confidence suffixes remain in raw value.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -63591,7 +64655,7 @@
           "source_publication_date": null,
           "capture_date": "2026-09-28",
           "raw_value": "",
-          "normalized_value": "",
+          "normalized_value": "Layton Construction",
           "transformation": "Whitespace normalization only; no semantic inference.",
           "evidence_type": "publisher_dataset_field",
           "confidence": "source-published",
@@ -64034,12 +65098,156 @@
           "origin_basis": "Current repository metadata does not establish primary/secondary status.",
           "site_specific": true,
           "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-4b4d68-SERVICE-20260927",
+          "domain": "service_or_contract",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "QTS Data Centers / Eagle Mountain City",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://q.com/data-centers/eagle-mountain/",
+              "https://eaglemountain.gov/eagle-mountain-economic-development/industrial-development/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "service_or_contract"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-01-01",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "The public sources establish the utility-service relationship and infrastructure responsibility but do not provide a confidential customer contract number.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-4b4d68-REGULATORY-20260927",
+          "domain": "regulatory",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Eagle Mountain City",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://eaglemountain.gov/wp-content/uploads/2025/07/RES-11-2025-Approving-1st-Amendment-QTS-Development-Agreement.pdf"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "regulatory"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-02-04",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "This is site-specific municipal regulatory/development evidence, not a complete permit inventory.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-4b4d68-CONSTRUCTION-20260927",
+          "domain": "construction",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "QTS Data Centers / Layton Construction",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://q.com/news/layton-construction-and-qts-data-centers-celebrate-topping-out-of-data-center-campus-in-eagle-mountain/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "construction_companies"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-04-17",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "QTS and Layton jointly identify Layton in connection with the third-building topping-out; this is not a complete contractor roster.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-4b4d68-INDEPENDENT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Eagle Mountain City / Utah County / QTS Data Centers / Layton Construction",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://eaglemountain.gov/wp-content/uploads/2025/07/RES-11-2025-Approving-1st-Amendment-QTS-Development-Agreement.pdf",
+              "https://www.utahcounty.gov/landrecords/Property.asp?av_serial=387070002002",
+              "https://q.com/data-centers/eagle-mountain/",
+              "https://q.com/news/layton-construction-and-qts-data-centers-celebrate-topping-out-of-data-center-campus-in-eagle-mountain/"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "independent_corroboration"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2026-04-17",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Corroboration uses distinct public publishers outside the canonical Epoch dataset; it does not imply every Track 3 domain is independently verified.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
+        },
+        {
+          "evidence_id": "EVID-PWEB-CLOSE-4b4d68-PROJECT-20260927",
+          "domain": "site_identity",
+          "evidence_type": "public_web_enrichment",
+          "status": "SITE_LEVEL_EVIDENCE",
+          "source": {
+            "name": "Eagle Mountain City",
+            "kind": "public web enrichment",
+            "urls": [
+              "https://eaglemountain.gov/wp-content/uploads/2025/07/RES-11-2025-Approving-1st-Amendment-QTS-Development-Agreement.pdf"
+            ],
+            "publication_date": null,
+            "publication_date_status": "NOT_CAPTURED_IN_CURRENT_REPOSITORY",
+            "record_locator": "project"
+          },
+          "capture_date": "2026-09-27",
+          "observed_on": "2025-02-04",
+          "exact_source_field": null,
+          "exact_source_value": null,
+          "retained_basis": "Official municipal agreement identifies the QTS Data Center Campus / Project and its associated electrical infrastructure.",
+          "transformation": "Existing repository evidence record retained; builder adds provenance metadata only.",
+          "confidence": "public_source_capture",
+          "confidence_semantics": "Published evidence confidence label, not probability.",
+          "evidence_origin": "unclassified",
+          "origin_basis": "Current repository metadata does not establish primary/secondary status.",
+          "site_specific": true,
+          "review_state": "MANUAL_PUBLIC_WEB_CAPTURE"
         }
       ],
       "independent_corroboration": {
         "status": "CORROBORATION_PRESENT",
-        "distinct_source_url_count": 9,
-        "distinct_source_name_count": 9,
+        "distinct_source_url_count": 14,
+        "distinct_source_name_count": 13,
         "method": "Distinct retained source URL/name metadata; this does not prove methodological independence."
       },
       "conflicting_evidence": {
@@ -64055,14 +65263,14 @@
             "actor_type": "automated_builder",
             "actor": "build_facility_provenance.py",
             "human_reviewer": null,
-            "repository_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+            "repository_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
             "review_state": "AUTOMATED"
           }
         ],
         "manual_review_status": "NO_HUMAN_REVIEWER_RECORDED"
       },
       "immutable_snapshot": {
-        "snapshot_commit": "763d86d543c955f08b9e76ee499da7783780cd07",
+        "snapshot_commit": "501dae33650c8338aff90e46a7262a0c1b9b5aee",
         "retention": "Git history plus content-addressed repository blobs; external source documents are not universally archived."
       }
     }
