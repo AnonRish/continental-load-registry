@@ -36,30 +36,33 @@
       "requirement": "Locate remaining unaccounted compute with incentives and aerial imagery.",
       "repo_artifacts": [
         "data/track3/observation_queue.json",
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/remote_sensing_observation_targets.json",
+        "data/track3/remote_sensing_observations.json",
+        "data/track3/disclosure_protocol.json"
       ],
       "status": "PARTIAL",
-      "gap": "The remote-sensing worklist exists; site-level TIR/SAR/optical observations and disclosure programs are not yet ingested."
+      "gap": "The repository has an explicit physical-observation worklist and 575 derived observations across 92 of 93 Epoch sites, plus a disclosure protocol. One reference-site physical target remains unresolved and there is no public dataset of verified incentive/disclosure events."
     },
     {
       "id": "appendix-b-1",
       "reference": "Appendix B §1",
       "requirement": "Starting from verified vendor sales, recursively audit every direct customer above threshold T and continue until unaudited recipients are below T.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/audit_population_protocol.json",
+        "data/track3/entity_resolution.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "Threshold-based recursive audit graph is not implemented as a completed dataset."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "The threshold-based audit population and entity-resolution interfaces are implemented; no closed external audit population or realized audit outcome is claimed."
     },
     {
       "id": "appendix-b-2",
       "reference": "Appendix B §2",
       "requirement": "Add untraceable sales and unverifiable decommissioning to an untraced pool L.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/untraced_compute_pool.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "The repository does not currently calculate certification quantity L."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "The residual untraced-compute pool and closure rules are implemented; its current value remains UNKNOWN because the transaction chain is not closed."
     },
     {
       "id": "appendix-b-3",
@@ -77,60 +80,64 @@
       "reference": "Appendix B §4",
       "requirement": "Randomly sample H100e units from below-threshold deliveries and trace each through resales to physical inspection or failure.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/sampling_protocol.json",
+        "data/track3/serial_continuity_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "Sampling frame, reproducible selection, and trace outcomes are not yet implemented."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "A deterministic sampling and serial-trace protocol is implemented; no realized sample outcome is claimed."
     },
     {
       "id": "appendix-b-5",
       "reference": "Appendix B §5",
       "requirement": "Sample units from the tail proportional to deliveries and audit the selected recipient's account.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/sampling_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "No public tail sampling population or audit result is asserted."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "The sampling-frame and reproducibility contract is implemented; population eligibility and realized outcomes remain external."
     },
     {
       "id": "appendix-b-6",
       "reference": "Appendix B §6",
       "requirement": "Resolve sampled units proportionally between current holdings and onward sales.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/serial_continuity_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "No unit-level proportional trace ledger is implemented."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "The lifecycle/transfer integrity protocol is implemented; no global serial ledger is publicly ingested."
     },
     {
       "id": "appendix-b-7",
       "reference": "Appendix B §7",
       "requirement": "Classify each sample trace as pass or fail and statistically constrain the undetected tail.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/certificate_model.json",
+        "track3_certificate.py"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "No confidence calculation from actual trace outcomes is published."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "The tail-bound certificate calculator is implemented; no empirical certificate is asserted without a closed population and observed sample outcomes."
     },
     {
       "id": "appendix-b-8",
       "reference": "Appendix B §8",
       "requirement": "Use minimal-notice inspections and record serial numbers to prevent borrowed-chip audit evasion.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/inspection_protocol.json",
+        "data/track3/serial_continuity_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "Serial-level physical inspection data are not publicly ingested."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "Inspection and serial-capture protocols are implemented; current authorized physical inspection observations remain zero."
     },
     {
       "id": "appendix-b-9",
       "reference": "Appendix B §9",
       "requirement": "Control post-deal transfers above de minimis and require witnessed destruction or serial-verified recycling.",
       "repo_artifacts": [
-        "data/track3/ai2040_plan_a_mapping.json"
+        "data/track3/decommissioning_protocol.json"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "This repository does not implement a post-deal enforcement authority."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "Post-deal transfer/destruction/recycling verification rules are implemented; no independent enforcement authority or complete public event ledger is claimed."
     }
-  ]
+  ],
+  "updated_on": "2026-09-28"
 }
