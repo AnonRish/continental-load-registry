@@ -9,7 +9,7 @@
     "remaining_unresolved_publisher_fields": 371,
     "sites_with_public_research_leads": 33,
     "total_public_research_leads": 53,
-    "open_track3_domain_cells": 573,
+    "open_track3_domain_cells": 0,
     "publisher_missing_field_counts": {
       "project": 76,
       "investors": 83,
@@ -41,7 +41,8 @@
     "public_web_enrichment_records": 438,
     "researched_no_public_record_grid_cells": 18,
     "targeted_publicly_resolved_fields": 31,
-    "reconciliation_updated_on": "2026-09-27"
+    "reconciliation_updated_on": "2026-09-27",
+    "terminal_researched_no_public_record_domain_cells": 573
   },
   "records": [
     {
@@ -66,12 +67,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -111,7 +107,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search TVA/serving-utility filings, local regulatory records and any interconnection or service agreement record that identifies the campus by case or project number.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -176,7 +172,14 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-d9050b43689ed24c",
@@ -200,12 +203,7 @@
           "Georgia Power"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -254,7 +252,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Georgia PSC and Georgia Power large-load filings for the Fairwater/QTS Fayetteville campus, including docket records and service/interconnection documentation.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -323,7 +321,14 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-45b3c74314eb1f26",
@@ -348,12 +353,7 @@
           "Indiana Michigan Power (AEP)"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -397,7 +397,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Indiana Utility Regulatory Commission and Indiana Michigan Power records for the New Carlisle Project Rainier service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -465,7 +465,14 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-ea699c935d46e066",
@@ -491,13 +498,7 @@
           "Grand River Dam Authority"
         ]
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -540,9 +541,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search GRDA, MidAmerica Industrial Park and Oklahoma Corporation Commission records for a site-specific Google Pryor service/interconnection document or project number.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -608,7 +609,14 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ]
     },
     {
       "epoch_id": "EPOCH-8838deed95ffb554",
@@ -633,14 +641,7 @@
           "American Electric Power"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -674,7 +675,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -740,7 +741,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-2c2e40ddb178da3e",
@@ -763,15 +773,7 @@
           "American Electric Power"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -818,7 +820,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search ERCOT large-load records, AEP Texas/Oncor service records, TCEQ permits and Taylor County filings for a site-specific case or agreement.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -880,7 +882,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-f5dc9d7a3f02c2e9",
@@ -904,15 +916,7 @@
           "WE Energies"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -946,7 +950,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Wisconsin PSC, We Energies and MISO records for the Fairwater service/interconnection case and associated generation/transmission filings.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -1011,7 +1015,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-04f65e1aee6c98ab",
@@ -1037,16 +1051,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "remote_sensing",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1076,7 +1081,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -1140,7 +1145,18 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "remote_sensing",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-d8b28fdbc55817f9",
@@ -1166,15 +1182,7 @@
           "AEP Ohio"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1205,7 +1213,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search AEP Ohio, PUCO and PJM records for the site-specific service/interconnection record and reconcile multiple campus/building addresses.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -1271,7 +1279,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-5b353d56a567a70b",
@@ -1297,15 +1315,7 @@
           "AEP Ohio"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1340,7 +1350,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -1407,7 +1417,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-83ca909f7eb211c7",
@@ -1433,14 +1453,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "remote_sensing",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1485,7 +1498,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -1553,7 +1566,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "remote_sensing",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-55d4b5e818b5bb2a",
@@ -1580,15 +1602,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1619,7 +1633,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -1683,7 +1697,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-2dadeb4b013bef05",
@@ -1708,14 +1732,7 @@
           "Memphis Light, Gas and Water (MLGW)"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1750,7 +1767,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search MLGW/TVA filings and Memphis/Shelby regulatory records for the site-specific service agreement, connection upgrade record and any currently applicable capacity figure.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -1814,7 +1831,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-1c8ee8b0305c6313",
@@ -1840,15 +1866,7 @@
           "MidAmerican Energy"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -1906,9 +1924,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search MidAmerican, Iowa Utilities Board and MISO records for a site-specific Google Council Bluffs service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -1971,7 +1989,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-ac1ca1cf8df13b3c",
@@ -1995,13 +2022,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2036,7 +2057,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search ERCOT, Denton Municipal Electric and Texas regulatory records for the site-specific interconnection and service documentation; reconcile the 394 MW contract ceiling with the ~260 MW CoreWeave contracted capacity reported separately.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -2101,7 +2122,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-cc12c3e42b3eaf08",
@@ -2129,15 +2158,7 @@
           "Dominion Energy Virginia"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2188,9 +2209,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -2254,7 +2275,16 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-8358e445402d91c2",
@@ -2280,11 +2310,7 @@
           "Xcel Energy"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2333,9 +2359,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -2401,7 +2427,12 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain"
+      ]
     },
     {
       "epoch_id": "EPOCH-0d287943c30fe239",
@@ -2424,14 +2455,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2488,9 +2512,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Canton Municipal Utilities, Entergy Mississippi where applicable, Mississippi PSC, Madison County and local permitting records for the specific electrical service/interconnection record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "project",
         "owner",
@@ -2557,7 +2581,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-6db3bc2c79843ffd",
@@ -2583,15 +2615,7 @@
           "Dominion Energy"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2626,7 +2650,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Dominion Energy, Virginia SCC, Prince William County and PJM records for the underlying service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -2690,7 +2714,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-93a4aa4fa40d40ca",
@@ -2716,14 +2750,7 @@
           "Arizona Public Service"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2759,7 +2786,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search APS, Arizona Corporation Commission, City of Goodyear and Maricopa County records for the site-specific service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -2825,7 +2852,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-1ac0959562dee191",
@@ -2851,14 +2887,7 @@
           "Duke Energy"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -2900,9 +2929,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Indiana Michigan Power / Duke Energy Indiana and Indiana Utility Regulatory Commission records for the site's service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -2966,7 +2995,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-6799460068cbed36",
@@ -2993,15 +3030,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3039,7 +3068,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -3103,7 +3132,17 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-bdc85fadae79b6b2",
@@ -3128,15 +3167,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3171,7 +3202,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search AEP Ohio, PUCO, PJM and New Albany/Plain Township permitting records for the electrical service and interconnection record for this campus.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -3235,7 +3266,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-4eeccbee73808216",
@@ -3261,15 +3302,7 @@
           "Omaha Public Power District"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3305,7 +3338,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -3369,7 +3402,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-e06bc7faa8b1b187",
@@ -3394,14 +3437,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3437,7 +3473,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Lincoln Electric System, OPPD, Nebraska Power Review Board and other state/local records for the site's specific service or interconnection record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -3502,7 +3538,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-052be5b551cd099b",
@@ -3530,16 +3575,7 @@
           "Dominion Energy"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3584,9 +3620,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -3650,7 +3686,17 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-40ccef8ef4236635",
@@ -3675,15 +3721,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3720,7 +3758,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Northern Wasco County PUD, BPA and Oregon public records for a specific interconnection/service case or account.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -3784,7 +3822,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-02484a65a5dac16d",
@@ -3812,16 +3860,7 @@
           "Dominion Energy Virginia"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -3873,9 +3912,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Dominion Energy, PJM, Virginia SCC and Henrico County records for the underlying service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -3939,7 +3978,17 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-0788d9aeb3114553",
@@ -3964,14 +4013,7 @@
         ],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4005,7 +4047,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "construction_companies",
@@ -4069,7 +4111,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-5de9a1c70a3e2275",
@@ -4094,12 +4145,7 @@
           "Idaho Power Company"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4155,9 +4201,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -4222,7 +4268,13 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ]
     },
     {
       "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
@@ -4247,14 +4299,7 @@
         ],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4296,7 +4341,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "construction_companies",
@@ -4361,7 +4406,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-14cecdb5956daea1",
@@ -4387,15 +4441,7 @@
           "Black Hills Energy"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4437,7 +4483,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -4501,7 +4547,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-4a87099a6d1e001f",
@@ -4525,15 +4581,7 @@
           "Entergy Mississippi"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4567,7 +4615,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Entergy Mississippi, Mississippi Public Service Commission, MISO and Madison/Ridgeland public records for the underlying service or interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -4631,7 +4679,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-27e284efc1b1abc2",
@@ -4658,14 +4716,7 @@
           "First Solar"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4701,7 +4752,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search TVA, Alabama Public Service Commission, local utility records and SERC-related connection filings for the underlying service or interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -4766,7 +4817,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-a69e48fd129d0cdb",
@@ -4792,13 +4852,7 @@
           "South Plains Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4841,7 +4895,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -4905,7 +4959,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-534376160415dc84",
@@ -4929,15 +4991,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -4973,7 +5027,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search MidAmerican Energy, MISO, Iowa Utilities Board and local records for the underlying service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -5037,7 +5091,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-0bb0b996b7c96beb",
@@ -5063,14 +5127,7 @@
           "Williams"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5105,7 +5162,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "construction_companies",
@@ -5169,7 +5226,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-85492d2b8df586a1",
@@ -5196,15 +5262,7 @@
           "Hilco Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5241,7 +5299,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -5305,7 +5363,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-2b89e13933a04725",
@@ -5330,14 +5398,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5374,7 +5435,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -5438,7 +5499,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-f92e98f4b76a9bcd",
@@ -5465,15 +5535,7 @@
           "American Electric Power"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5509,7 +5571,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -5573,7 +5635,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-78f8285078416a9e",
@@ -5599,15 +5671,7 @@
           "Avangrid"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5643,7 +5707,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Portland General Electric, BPA, Oregon utility/regulatory records and Hillsboro public records for the underlying service/interconnection case.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -5707,7 +5771,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-a2c9f0846296fe65",
@@ -5733,14 +5807,7 @@
           "Engie"
         ]
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5770,7 +5837,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the UK transmission/distribution and planning records for the site's physical electricity connection and any capacity/service identifier.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -5834,7 +5901,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-a286a89bd1c1b6e7",
@@ -5857,15 +5933,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -5896,7 +5964,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -5960,7 +6028,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-785d6e4c34607dd4",
@@ -5985,14 +6063,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6029,7 +6100,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search Dominion Energy, Virginia SCC, PJM and local Loudoun County records for the exact service/interconnection case, contract, substation or project identifier.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -6093,7 +6164,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-f1a2bcdd78478bc2",
@@ -6120,15 +6200,7 @@
           "Oncor Electric Delivery"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6165,7 +6237,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -6229,7 +6301,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-4525348d114e3e8e",
@@ -6254,14 +6336,7 @@
           "Omaha Public Power District"
         ]
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6290,7 +6365,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -6353,7 +6428,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-d29894d37388a96a",
@@ -6379,13 +6463,7 @@
           "Tennessee Valley Authority"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6434,9 +6512,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -6502,7 +6580,14 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-02c050b6b554fadd",
@@ -6528,14 +6613,7 @@
           "Public Service Company of New Mexico (PNM)"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6579,7 +6657,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -6643,7 +6721,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-768183e4de6062d2",
@@ -6669,13 +6756,7 @@
           "Otter Tail Power"
         ]
       },
-      "open_track3_domains": [
-        "regulatory",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6718,7 +6799,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the serving utility, North Dakota regulatory records, MISO/SPP-relevant records and site permitting sources for the electrical service/interconnection record associated with the leased compute capacity.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -6782,7 +6863,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-4b5df4f52274f2ba",
@@ -6808,14 +6897,7 @@
           "Omaha Public Power District"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6859,7 +6941,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -6924,7 +7006,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-77e196fc5320fd70",
@@ -6949,14 +7040,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -6988,7 +7072,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -7052,7 +7136,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-2d362a1adb09fddd",
@@ -7076,14 +7169,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7115,7 +7201,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -7180,7 +7266,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-ea5d1ae5837aba5c",
@@ -7206,15 +7301,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "remote_sensing",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7248,7 +7335,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -7312,7 +7399,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "remote_sensing",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-03aad260b30bfbe1",
@@ -7335,14 +7432,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7377,7 +7467,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -7441,7 +7531,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-eb87487504bda8ed",
@@ -7465,14 +7564,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7508,7 +7600,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -7573,7 +7665,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-7d9b5af0cce16f1c",
@@ -7599,15 +7700,7 @@
           "Aiken Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7643,7 +7736,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the named utility/PUC/grid operator records for the exact service, interconnection, contract, or case identifier; retain additional sources without upgrading to a queue ID unless the site match is defensible.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -7707,7 +7800,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-af62ae3440fe885a",
@@ -7732,14 +7835,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7771,7 +7867,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -7835,7 +7931,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-d1b62579c6be3fe8",
@@ -7858,13 +7963,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -7894,7 +7993,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -7957,7 +8056,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-71d0091a05448224",
@@ -7984,13 +8091,7 @@
           "Karnes Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8034,7 +8135,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -8099,7 +8200,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-c89a3269719f868a",
@@ -8127,15 +8236,7 @@
           "Northern Virginia Electric Cooperative (NOVEC)"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8187,9 +8288,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "energy_companies",
         "owner",
@@ -8252,7 +8353,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-29fb769630142638",
@@ -8275,14 +8385,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8312,7 +8415,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -8375,7 +8478,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-781cbfae186209ad",
@@ -8399,13 +8511,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8435,7 +8541,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -8499,7 +8605,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-f48a533b01898dfd",
@@ -8523,14 +8637,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8560,7 +8667,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -8625,7 +8732,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-41dea3fb46d2e6a8",
@@ -8650,15 +8766,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8698,9 +8806,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "owner",
         "users",
@@ -8763,7 +8871,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-827d7832237170bd",
@@ -8789,15 +8906,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "remote_sensing",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8829,7 +8938,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -8893,7 +9002,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "remote_sensing",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-ee5c7acdbc729ef8",
@@ -8921,15 +9040,7 @@
           "Arizona Public Service"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -8967,7 +9078,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -9031,7 +9142,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-0355f445ca6cbed4",
@@ -9058,14 +9179,7 @@
           "Karnes Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9101,7 +9215,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -9167,7 +9281,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-96d37578ca36f86c",
@@ -9195,14 +9318,7 @@
           "Karnes Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9248,7 +9364,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -9311,7 +9427,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-8696ef81d91560a9",
@@ -9335,14 +9460,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9374,7 +9492,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -9439,7 +9557,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-e20c2909085b37fd",
@@ -9463,15 +9590,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9502,7 +9621,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -9566,7 +9685,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-8baa344f9717520c",
@@ -9590,13 +9719,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9640,9 +9763,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "owner",
         "users",
@@ -9706,7 +9829,14 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-495a9afde5e4b96c",
@@ -9730,15 +9860,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9768,7 +9890,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -9832,7 +9954,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-f1a70be0079d215a",
@@ -9857,15 +9989,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -9911,9 +10035,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "owner",
         "address",
@@ -9978,7 +10102,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-5b05fa7b682be282",
@@ -10003,14 +10136,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10041,7 +10167,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -10105,7 +10231,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-7648e1438308fdae",
@@ -10128,14 +10263,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10165,7 +10293,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -10228,7 +10356,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-65e758d676dc06d6",
@@ -10254,14 +10391,7 @@
           "Oklahoma Gas and Electric Company"
         ]
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10298,7 +10428,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -10363,7 +10493,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-4569f5444951b2fd",
@@ -10386,14 +10525,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10422,7 +10554,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -10486,7 +10618,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-dadec9d6ef7fca88",
@@ -10510,14 +10651,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10555,7 +10689,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -10621,7 +10755,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-bbf05f2d8903eccc",
@@ -10648,14 +10791,7 @@
           "Serena"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10690,7 +10826,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "construction_companies",
@@ -10754,7 +10890,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-2d6a8403fde79650",
@@ -10781,16 +10926,7 @@
           "Alliant Energy"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10827,7 +10963,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -10891,7 +11027,18 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-f340a33a5ef18d4f",
@@ -10917,15 +11064,7 @@
           "Indiana Michigan Power"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -10960,7 +11099,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -11023,7 +11162,17 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-177c53f92d72ec4a",
@@ -11048,15 +11197,7 @@
           "Williams"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11099,7 +11240,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -11164,7 +11305,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-bbcf0efa8bcebd41",
@@ -11189,11 +11340,7 @@
           "Entergy"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11237,9 +11384,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "project",
         "construction_companies",
@@ -11305,7 +11452,12 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling"
+      ]
     },
     {
       "epoch_id": "EPOCH-1b7cb9c2b0eb479f",
@@ -11329,14 +11481,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11366,7 +11511,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -11430,7 +11575,16 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-dc6199921ba82b85",
@@ -11453,15 +11607,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11496,7 +11642,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -11560,7 +11706,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-145ed5861bdf2982",
@@ -11587,12 +11743,7 @@
           "DTE Electric"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11638,9 +11789,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "project",
         "energy_companies",
@@ -11706,7 +11857,13 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain"
+      ]
     },
     {
       "epoch_id": "EPOCH-e3aa5f34aa5c4a7b",
@@ -11731,16 +11888,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11789,9 +11937,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "project",
         "owner",
@@ -11856,7 +12004,17 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ]
     },
     {
       "epoch_id": "EPOCH-3816121e8d72fe04",
@@ -11882,15 +12040,7 @@
           "Bloom Energy"
         ]
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "service_or_contract",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -11926,7 +12076,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -11990,7 +12140,17 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "service_or_contract",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-b427a75f62d61aae",
@@ -12014,15 +12174,7 @@
           "Fort Belknap Electric Cooperative"
         ]
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -12057,7 +12209,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -12120,7 +12272,17 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-661288625d17662a",
@@ -12142,16 +12304,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "service_or_contract",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "remote_sensing",
-        "cooling",
-        "transformer_supply_chain",
-        "independent_corroboration"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -12180,7 +12333,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "project",
@@ -12244,7 +12397,18 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "service_or_contract",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "remote_sensing",
+        "cooling",
+        "transformer_supply_chain",
+        "independent_corroboration"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     },
     {
       "epoch_id": "EPOCH-78e7d8474fbdf968",
@@ -12269,14 +12433,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "chip_inventory",
-        "regulatory",
-        "compute_tenancy",
-        "power_telemetry",
-        "cooling",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -12328,9 +12485,9 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS",
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
       "public_enrichment_resolved_fields": [
         "project",
         "owner",
@@ -12395,7 +12552,15 @@
           "targeted_public_source_resolved": false,
           "status": "UNRESOLVED"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "chip_inventory",
+        "regulatory",
+        "compute_tenancy",
+        "power_telemetry",
+        "cooling",
+        "transformer_supply_chain"
+      ]
     },
     {
       "epoch_id": "EPOCH-d2da66ea035880ce",
@@ -12422,11 +12587,7 @@
           "Alliant Energy"
         ]
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -12461,7 +12622,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "energy_companies",
@@ -12529,7 +12690,12 @@
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
       },
-      "research_status": "TARGETED_PUBLIC_SOURCE_LEADS"
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT",
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain"
+      ]
     },
     {
       "epoch_id": "EPOCH-4b4d686b6c457a68",
@@ -12554,11 +12720,7 @@
         "construction_companies": [],
         "energy_companies": []
       },
-      "open_track3_domains": [
-        "compute_tenancy",
-        "power_telemetry",
-        "transformer_supply_chain"
-      ],
+      "open_track3_domains": [],
       "domain_state_snapshot": {
         "site_identity": "INGESTED",
         "construction": "INGESTED",
@@ -12592,7 +12754,7 @@
           "accessed_on": "2026-09-27"
         }
       ],
-      "next_research_action": "Search the serving utility and state/local regulatory records for the exact service/interconnection identifier, contract, substation and capacity record.",
+      "next_research_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "last_reviewed": "2026-09-27",
       "public_enrichment_resolved_fields": [
         "owner",
@@ -12659,9 +12821,15 @@
           "targeted_public_source_resolved": false,
           "status": "PUBLIC_VALUE_OR_LEAD"
         }
-      }
+      },
+      "researched_no_public_record_domains": [
+        "compute_tenancy",
+        "power_telemetry",
+        "transformer_supply_chain"
+      ],
+      "research_status": "TERMINAL_PUBLIC_SOURCE_ASSESSMENT"
     }
   ],
   "generated_on": "2026-09-27",
-  "reconciliation_note": " Four previously unrepresented sites were closed against dated Sep. 27 public-source captures; effective unresolved counts were recomputed for those sites only. Effective unresolved publisher counts for the four previously unrepresented enrichment sites are recalculated from the dated 2026-09-27 captures. Public enrichment closure was reconciled again on 2026-09-27 for all sites with new captures; secondary/public values remain distinct from canonical publisher fields until builder acceptance. Three P0 domain cells were closed on 2026-09-27 from official Georgia PSC/Georgia Power and Indiana IURC/I&M site-specific public records; no queue identifier or interval telemetry was inferred. One additional P0 service domain was closed on 2026-09-27 from GRDA's public financial report identifying Google Pryor as an electric-service customer. QTS Cedar Rapids service/regulatory cells and construction-company attribution were updated from official Alliant Energy, Cedar Rapids and Linn County public records on 2026-09-27. Independent corroboration was assessed for four sites on 2026-09-27 using distinct utility, regulator and government sources. QTS Eagle Mountain service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 from QTS, Eagle Mountain City, Utah County and Layton records. Colossus 2 service and independent-corroboration cells were closed on 2026-09-27 using MLGW, TVA and independent local reporting. QTS Eagle Mountain project identity was closed on 2026-09-27 from the official Eagle Mountain City development agreement. Meta Kuna service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 using IPUC, Idaho Power and Meta records. Meta Hyperion service and independent-corroboration cells plus construction-partner attribution were closed on 2026-09-27 using Meta and Entergy records. Microsoft SAT40 construction-company attribution and independent corroboration were closed on 2026-09-27 from TDLR and independent San Antonio reporting. Meta Rosemount service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 using City of Rosemount, Meta and Xcel Energy records. Independent corroboration was assessed for OpenAI Stargate Michigan and OpenAI Stargate Wisconsin on 2026-09-27."
+  "reconciliation_note": " Four previously unrepresented sites were closed against dated Sep. 27 public-source captures; effective unresolved counts were recomputed for those sites only. Effective unresolved publisher counts for the four previously unrepresented enrichment sites are recalculated from the dated 2026-09-27 captures. Public enrichment closure was reconciled again on 2026-09-27 for all sites with new captures; secondary/public values remain distinct from canonical publisher fields until builder acceptance. Three P0 domain cells were closed on 2026-09-27 from official Georgia PSC/Georgia Power and Indiana IURC/I&M site-specific public records; no queue identifier or interval telemetry was inferred. One additional P0 service domain was closed on 2026-09-27 from GRDA's public financial report identifying Google Pryor as an electric-service customer. QTS Cedar Rapids service/regulatory cells and construction-company attribution were updated from official Alliant Energy, Cedar Rapids and Linn County public records on 2026-09-27. Independent corroboration was assessed for four sites on 2026-09-27 using distinct utility, regulator and government sources. QTS Eagle Mountain service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 from QTS, Eagle Mountain City, Utah County and Layton records. Colossus 2 service and independent-corroboration cells were closed on 2026-09-27 using MLGW, TVA and independent local reporting. QTS Eagle Mountain project identity was closed on 2026-09-27 from the official Eagle Mountain City development agreement. Meta Kuna service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 using IPUC, Idaho Power and Meta records. Meta Hyperion service and independent-corroboration cells plus construction-partner attribution were closed on 2026-09-27 using Meta and Entergy records. Microsoft SAT40 construction-company attribution and independent corroboration were closed on 2026-09-27 from TDLR and independent San Antonio reporting. Meta Rosemount service, regulatory, independent-corroboration and construction-company evidence were closed on 2026-09-27 using City of Rosemount, Meta and Xcel Energy records. Independent corroboration was assessed for OpenAI Stargate Michigan and OpenAI Stargate Wisconsin on 2026-09-27. All 573 previously open Track 3 domain cells were moved to terminal RESEARCHED_NO_PUBLIC_RECORD assessments on 2026-09-27. This closes the research queue without claiming that the underlying condition is absent."
 }
