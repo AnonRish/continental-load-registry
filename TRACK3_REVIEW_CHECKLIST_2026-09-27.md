@@ -25,8 +25,8 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 - [x] Reproducible, sourced large-load baseline across nine North American markets.
 - [x] Ambiguous tier separates unresolved/undisclosed cases from confirmed identities without guessing.
-- [x] Actual processed physical evidence exists: 423 retained derived remote-sensing observations across 68 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
-- [ ] All 93 Epoch sites have processed remote-sensing observations. Twenty-five sites currently remain without a retained derived observation.
+- [x] Actual processed physical evidence exists: 551 retained derived remote-sensing observations across 88 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
+- [ ] All 93 Epoch sites have processed remote-sensing observations. Five sites currently remain without a retained derived observation.
 - [x] Three ambiguous-load closure cases are published: two bounded classifications and one intentionally inconclusive case; two cases have six derived multi-sensor observations each.
 - [x] Claim-level verification vocabulary exists: PASS / FAIL / UNKNOWN / NOT_TESTED.
 - [x] Facility-level vocabulary is defined in the verifier as VERIFIED_PRESENT / VERIFIED_ABSENT / INCONCLUSIVE, with INCONCLUSIVE remaining the default until the facility-wide end-to-end gate is satisfied.
