@@ -2550,12 +2550,12 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "Idaho Public Utilities Commission Case IPC-E-21-42 concerns Idaho Power's special contract and Tariff Schedule 33 for Brisbie LLC's data center facility in the Kuna area; the Commission approved the energy-services agreement."
         },
         "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
+          "status": "INGESTED",
+          "basis": "IPUC Case IPC-E-21-42 and Orders 35777/35820/35958 provide site/customer-specific regulatory evidence for Brisbie's Kuna data center."
         },
         "compute_tenancy": {
           "status": "UNKNOWN",
@@ -2597,15 +2597,16 @@
           "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         },
         "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
+          "status": "ASSESSED",
+          "basis": "Independent Meta, Idaho Power and Idaho Public Utilities Commission records corroborate the Kuna facility, customer/parent relationship, utility service and construction timeline."
         }
       },
       "site_level_evidence_count": 1,
       "public_web_evidence_count": 12,
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 14,
-      "next_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case."
+      "next_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case.",
+      "open_track3_domains": []
     },
     {
       "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
