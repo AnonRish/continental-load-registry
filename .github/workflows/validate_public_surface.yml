@@ -258,6 +258,15 @@ jobs:
           assert len(map_csv) == 12
           bpa_json = json.loads((root / "bpa_large_load_registry.json").read_text(encoding="utf-8"))
           assert bpa_json["record_count"] == len(bpa_json["records"]) > 0
+          assert float(bpa_json.get("threshold_mw", 0)) == 100.0
+          assert all(
+              r.get("capacity_claims")
+              and float(r["capacity_claims"][0].get("value_mw", 0)) >= float(bpa_json["threshold_mw"])
+              for r in bpa_json["records"]
+          )
+          population = bpa_json.get("source", {}).get("source_population_accounting", {})
+          assert int(population.get("eligible_rows_at_threshold_mw", -1)) == bpa_json["record_count"]
+          assert int(population.get("raw_l_series_rows_on_record", -1)) >= bpa_json["record_count"]
           assert bpa_json["unmapped_record_count"] == bpa_json["record_count"] - bpa_json["mapped_record_count"]
           bpa_csv = list(csv.DictReader((root / "bpa_large_load_registry.csv").open("r", encoding="utf-8", newline="")))
           assert len(bpa_csv) == bpa_json["record_count"]
