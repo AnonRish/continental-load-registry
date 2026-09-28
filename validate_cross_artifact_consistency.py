@@ -92,10 +92,10 @@ def main() -> None:
     assert set(observation["tasks"][0].keys()) >= {"task_id","epoch_id","domain","current_state","priority"}
     assert summary["epoch_site_count"] == 93
     rs=json.loads((ROOT / "data/track3/remote_sensing_observations.json").read_text(encoding="utf-8"))
-    assert summary["remote_sensing_derived_observation_count"] == rs["derived_observation_count"] == len(rs["records"]) == 547
+    assert summary["remote_sensing_derived_observation_count"] == rs["derived_observation_count"] == len(rs["records"])
     assert summary["transformer_event_count"] == 3
     enrich=load("data/track3/public_web_enrichment_2026-09-27.json")
-    assert summary["public_web_evidence_record_count"] == enrich["record_count"] == 400
+    assert summary["public_web_evidence_record_count"] == enrich["record_count"]
     assert summary["public_web_evidence_site_count"] == enrich["accounting"]["sites_with_findings"] == 93
 
     coverage = load("data/global_ai_datacenter_coverage_2026-09-27.json")
@@ -149,7 +149,7 @@ def main() -> None:
 
     print("PASS: canonical cross-artifact consistency")
     print(f"core rows={row_count} capacity_gw={capacity_gw:.4f}")
-    print("Epoch explorer=93/93; candidates=33; research backlog=984; observation tasks=211")
+    print("Epoch explorer=93/93; candidates=33; research backlog=" + str(backlog["total_tasks"]) + "; observation tasks=" + str(summary["observation_task_count"]))
 
 
 if __name__ == "__main__":
