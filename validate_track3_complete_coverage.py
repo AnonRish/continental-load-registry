@@ -101,7 +101,7 @@ def main() -> int:
     ]}):
         errors.append("research assessments reference an unknown site/domain")
     terminal_states = {"INGESTED","INGESTED_DERIVED","INGESTED_SNAPSHOT","SITE_LEVEL_EVIDENCE",
-                       "VERIFIED_SITE_SPECIFIC","RESEARCHED_NO_PUBLIC_RECORD","ASSESSED"}
+                       "VERIFIED_SITE_SPECIFIC","RESEARCHED_NO_PUBLIC_RECORD","ASSESSED","ASSESSMENT_COMPLETE"}
     open_states = {"NOT_INGESTED","NOT_ASSESSED","UNKNOWN","RESEARCH_QUEUE","PENDING_RESEARCH"}
     all_domain_rows = [x.get("domains", {}) for x in sites.get("records", [])]
     open_cells = sum(
