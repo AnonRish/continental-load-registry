@@ -12,6 +12,7 @@ REQUIRED_ARTIFACTS = [
     "data/track3/track3_completeness_matrix.json",
     "data/track3/global_compute_supply_chain.json",
     "data/track3/public_global_source_observations.json",
+    "data/track3/public_web_claims.json",
     "data/track3/certificate_model.json",
     "data/track3/audit_population_protocol.json",
     "data/track3/sampling_protocol.json",
@@ -103,6 +104,12 @@ def main() -> int:
     certificate = load("data/track3/certificate_model.json")
     if certificate.get("status") != "FRAMEWORK_IMPLEMENTED":
         errors.append("certificate model status changed unexpectedly")
+
+    public_claims = load("data/track3/public_web_claims.json")
+    if public_claims.get("accounting", {}).get("claim_count") != len(public_claims.get("claims", [])):
+        errors.append("public-web claim count does not reconcile")
+    if public_claims.get("accounting", {}).get("claim_count", 0) < 335:
+        errors.append("public-web claim layer is missing retained enrichment claims")
 
     global_sources = load("data/track3/public_global_source_observations.json")
     if len(global_sources.get("observations", [])) < 6:
