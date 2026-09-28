@@ -11,7 +11,7 @@ The public repository now has:
 - A successful latest Track 3 automated pipeline.
 - Successful latest public-interface validation.
 - Zero failed source adapters in the latest adapter run.
-- 452 retained public-web evidence records.
+- 454 retained public-web evidence records.
 - 575 retained derived remote-sensing observations across 92 reference sites.
 - 2 defensible site-specific queue IDs.
 - Grid state: 88 sites with site-level evidence, 3 documented researched-no-public-record outcomes, and 2 verified site-specific queue IDs.
@@ -55,4 +55,4 @@ A publisher health-check failure is not automatically an ingestion failure. The 
 
 Describe this project as **Track 3 research infrastructure / public-evidence accounting**, not as a completed international verification system. That distinction is part of the audit trail.
 
-The machine-readable gate is `data/track3/completion_gate.json`. The latest committed public-evidence snapshot is 93 sites, 575 derived remote-sensing observations across 92 sites, 452 public-web evidence records, and 1,395/1,395 terminal site-domain cells.
+The machine-readable gate is `data/track3/completion_gate.json`. The latest committed public-evidence snapshot is 93 sites, 575 derived remote-sensing observations across 92 sites, 454 public-web evidence records, and 1,395/1,395 terminal site-domain cells.
