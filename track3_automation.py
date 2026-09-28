@@ -139,6 +139,7 @@ def source_inventory():
 def http_fingerprint(url):
     if not url: return {"status":"NO_URL"}
     last=None
+    last_code=None
     for method,headers in (("HEAD",{}),("GET",{"Range":"bytes=0-65535"})):
         try:
             req=Request(url,method=method,headers={"User-Agent":UA,**headers})
@@ -147,9 +148,12 @@ def http_fingerprint(url):
                 hdr={k.lower():v for k,v in r.headers.items()}
                 fp={"status":"HEALTHY","http_status":r.status,"final_url":r.geturl(),"etag":hdr.get("etag"),"last_modified":hdr.get("last-modified"),"content_length":hdr.get("content-length"),"content_type":hdr.get("content-type"),"sample_sha256":hashlib.sha256(body).hexdigest() if body else None}
                 return fp
-        except (HTTPError,URLError,TimeoutError,ValueError) as exc:
+        except HTTPError as exc:
             last=str(exc)
-    return {"status":"FAILED","error":last}
+            last_code=getattr(exc,"code",None)
+        except (URLError,TimeoutError,ValueError) as exc:
+            last=str(exc)
+    return {"status":"FAILED","http_status":last_code,"error":last}
 
 def source_health(prev):
     results=[]; failed=[]; seen_urls=set()
@@ -162,7 +166,17 @@ def source_health(prev):
         local_file=s.get("local_file")
         local_candidates=[]
         if local_file:
-            local_candidates += [ROOT/"data"/local_file, ROOT/"data"/"external"/"epoch_ai"/local_file, ROOT/local_file]
+            lp=Path(str(local_file))
+            if lp.is_absolute():
+                local_candidates.append(lp)
+            else:
+                lp_norm=str(lp).replace("\\","/")
+                local_candidates += [
+                    ROOT/lp if lp_norm.startswith("data/") else ROOT/"data"/lp,
+                    ROOT/"data"/"external"/"epoch_ai"/lp,
+                    ROOT/lp,
+                    ROOT/"data"/"automation"/"auxiliary_sources"/lp.name,
+                ]
         if url and not re.match(r"^[A-Za-z][A-Za-z0-9+.-]*://", url):
             local_candidates += [ROOT/url, ROOT/"data"/url]
         local_path=next((p for p in local_candidates if p.exists()),None)
@@ -187,10 +201,31 @@ def source_health(prev):
               "local_artifact_path":str(local_path.relative_to(ROOT)).replace("\\","/") if local_path else None,
               "declared_sha256":None}
         if fp.get("status")=="FAILED":
-            item["failure_class"]="REMOTE_SOURCE_UNAVAILABLE"
-            failed.append(item)
+            code=fp.get("http_status")
+            transient_http={301,302,303,307,308,403,404,408,425,429,500,502,503,504}
+            err=str(fp.get("error") or "").lower()
+            blocked_network=any(token in err for token in (
+                "certificate_verify_failed","network is unreachable","name or service not known",
+                "timed out","redirect error","too many requests","forbidden"
+            ))
+            retained_snapshot=local_path is not None
+            if retained_snapshot:
+                item["health_state"]="DEGRADED"
+                item["failure_class"]="REMOTE_HEALTHCHECK_FAILED_RETAINED_SNAPSHOT"
+                item["health_note"]="The live publisher health check failed, but a repository-retained snapshot/artifact remains available; this is not treated as an ingestion failure."
+            elif s.get("mode") in {"HEALTHCHECK_ONLY","SNAPSHOT_OR_HEALTHCHECK_ONLY"} and (code in transient_http or blocked_network):
+                item["health_state"]="DEGRADED"
+                item["failure_class"]="REMOTE_HEALTHCHECK_DEGRADED"
+                item["health_note"]="The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
+            else:
+                item["health_state"]="HARD_FAILURE"
+                item["failure_class"]="REMOTE_SOURCE_UNAVAILABLE"
+                failed.append(item)
         elif fp.get("status")=="LOCAL_ARTIFACT_MISSING":
+            item["health_state"]="DEGRADED"
             item["failure_class"]="LOCAL_ARTIFACT_MISSING"
+        else:
+            item["health_state"]="HEALTHY"
         results.append(item)
     return results,failed
 
