@@ -106,8 +106,24 @@ def main() -> int:
         errors.append("certificate model status changed unexpectedly")
 
     public_claims = load("data/track3/public_web_claims.json")
-    if public_claims.get("accounting", {}).get("claim_count") != len(public_claims.get("claims", [])):
+    enrichment = load("data/track3/public_web_enrichment_2026-09-27.json")
+    claim_rows = public_claims.get("claims", [])
+    enrichment_rows = enrichment.get("records", [])
+    if public_claims.get("accounting", {}).get("claim_count") != len(claim_rows):
         errors.append("public-web claim count does not reconcile")
+    if len(claim_rows) != len(enrichment_rows):
+        errors.append("public-web claim layer is not 1:1 with enrichment records")
+    claim_ids = [str(x.get("claim_id")) for x in claim_rows]
+    source_ids = [str(x.get("evidence_id")) for x in enrichment_rows]
+    if len(claim_ids) != len(set(claim_ids)):
+        errors.append("public-web claim IDs are not unique")
+    if source_ids and set(claim_ids) != set(source_ids):
+        errors.append("public-web claim IDs do not reconcile with source enrichment evidence IDs")
+    for x in claim_rows:
+        if not x.get("epoch_id") or not x.get("field"):
+            errors.append("public-web claim missing epoch_id or field")
+        if not (x.get("source_urls") or []):
+            errors.append(f"public-web claim {x.get('claim_id')} has no retained source URL")
     if public_claims.get("accounting", {}).get("claim_count", 0) < 335:
         errors.append("public-web claim layer is missing retained enrichment claims")
 
