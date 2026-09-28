@@ -22,7 +22,8 @@
     "user_year_end_rows": 11,
     "user_labs": 5,
     "global_transaction_level_closure": "UNKNOWN",
-    "current_untraced_pool": "UNKNOWN"
+    "current_untraced_pool": "UNKNOWN",
+    "bis_export_accounting_source": "PUBLIC_OFFICIAL_SOURCE"
   },
   "source_layers": [
     {
@@ -106,6 +107,12 @@
       "status": "PUBLIC_OFFICIAL_SOURCE",
       "url": "https://environment.ec.europa.eu/topics/waste-and-recycling/waste-electrical-and-electronic-equipment-weee/implementation-weee-directive_en",
       "role": "Official WEEE collection/reuse/recycling reporting context relevant to decommissioning/attrition modeling."
+    },
+    {
+      "id": "BIS_ADVANCED_COMPUTE_2026",
+      "status": "PUBLIC_OFFICIAL_SOURCE",
+      "url": "https://www.bis.gov/media/documents/bis-guidance-may-31-2026.pdf",
+      "role": "Current U.S. advanced-computing export/end-user/accounting control interface. Useful for tracing controlled-item movements and facility-level accounting requirements, but not a global serial ledger."
     }
   ],
   "chain_model": [
@@ -177,5 +184,6 @@
     "Physical end use requires site evidence or authorized inspection; company-level ownership is not enough.",
     "Decommissioning requires recycler/destruction corroboration or remains in the residual pool."
   ],
-  "public_source_limit": "No public source found in this pass provides a globally exhaustive transaction-level serial-number ledger of all AI accelerators. Therefore a complete numeric global untraced-compute value cannot honestly be filled from public data alone."
+  "public_source_limit": "No public source found in this pass provides a globally exhaustive transaction-level serial-number ledger of all AI accelerators. Therefore a complete numeric global untraced-compute value cannot honestly be filled from public data alone.",
+  "updated_on": "2026-09-27"
 }
