@@ -38,9 +38,9 @@ The AI Futures material describes Track 3 as verifying the absence of secret com
 ## Current empirical layers
 
 - 93-site Epoch frontier-AI reference universe.
-- 423 retained derived remote-sensing observations across 68 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 88 of 93 reference-site coordinates resolved for acquisition.
-- 149 optical scene observations, 136 TIR observations, and 138 SAR observations in the current committed ledger.
-- 211 current physical/research observation tasks.
+- 547 retained derived remote-sensing observations across 88 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 88 of 93 reference-site coordinates resolved for acquisition.
+- 193 optical observations, 176 TIR observations, and 178 SAR observations in the current committed ledger.
+- 191 current observation-acquisition tasks.
 - 6 site-level annual electricity-consumption snapshots.
 - 15 site-level cooling snapshots represented in the current site-status layer; the dedicated cooling-observation file contains 2 directly retained equipment snapshots.
 - 3 source-backed transformer event records.
