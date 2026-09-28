@@ -138,6 +138,27 @@ def main() -> int:
     }
     out = TRACK3 / "engineering_closure_2026-09-28.json"
     out.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    # Keep the single machine-readable completion gate synchronized with the
+    # canonical summary instead of hand-maintaining derived observation counts.
+    gate_path = TRACK3 / "completion_gate.json"
+    if gate_path.exists():
+        gate = json.loads(gate_path.read_text(encoding="utf-8"))
+        gate.setdefault("public_evidence_accounting", {})["remote_sensing_derived_observations"] = int(
+            summary.get("remote_sensing_derived_observation_count", 0)
+        )
+        gate.setdefault("public_evidence_accounting", {})["remote_sensing_sites_with_derived_observations"] = remote_sites
+        statement = gate.get("release_statement", "")
+        if statement:
+            import re
+            statement = re.sub(
+                r"\d+ derived remote-sensing observations across 92 sites",
+                f"{summary.get('remote_sensing_derived_observation_count', 0)} derived remote-sensing observations across 92 sites",
+                statement,
+            )
+            gate["release_statement"] = statement
+        gate["generated_on"] = datetime.now(timezone.utc).date().isoformat()
+        gate_path.write_text(json.dumps(gate, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"{payload['repository_engineering_status']}: Track 3 engineering closure; untracked_gap_count={payload['untracked_gap_count']}")
     return 0 if payload["repository_engineering_status"] == "COMPLETE" else 1
 
