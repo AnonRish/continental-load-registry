@@ -8,15 +8,15 @@
     "generated_on": "2026-09-27",
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
-    "publisher_tasks": 221,
+    "publisher_tasks": 220,
     "domain_tasks": 598,
-    "total_tasks": 819,
+    "total_tasks": 818,
     "publisher_by_field": {
       "project": 23,
       "investors": 79,
       "construction_companies": 64,
       "energy_companies": 15,
-      "owner": 1,
+      "owner": 0,
       "users": 21,
       "address": 8,
       "chip_quantities": 10
@@ -7905,58 +7905,6 @@
       ],
       "acceptance_rule": "The source names the contractor/EPC and ties it to the site/project.",
       "reject_rule": "Generic contractor work elsewhere for the same owner.",
-      "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
-      "public_leads": [
-        {
-          "field": "regulatory",
-          "status": "PUBLIC_SOURCE",
-          "finding": "Texas TDLR identifies Vantage TX1 projects including TABS2026001234 and TABS2026012091, with 96 MW critical IT modules in the cited records.",
-          "source": "Texas Department of Licensing and Regulation",
-          "source_url": null
-        }
-      ],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "PUB-EPOCH-96d37578ca36f86c-owner",
-      "kind": "publisher",
-      "status": "OPEN",
-      "priority": "P1",
-      "epoch_id": "EPOCH-96d37578ca36f86c",
-      "site_name": "Vantage TX1",
-      "country": "United States",
-      "state_province": "TX",
-      "current_it_power_mw": 32,
-      "field": "owner",
-      "workflow_label": "Owner / legal project entity",
-      "objective": "Resolve the current site owner/operator entity at the appropriate legal-entity level.",
-      "search_sequence": [
-        "County assessor/property records",
-        "permit applicant/owner",
-        "SEC subsidiary disclosures",
-        "state corporate registries/GLEIF",
-        "official owner pages"
-      ],
-      "queries": [
-        "\"Vantage TX1\" owner property",
-        "\"Vantage TX1\" LLC owner",
-        "\"Vantage TX1\" parcel owner TX"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Vantage+TX1%22+owner+property",
-        "https://www.google.com/search?q=%22Vantage+TX1%22+LLC+owner",
-        "https://www.google.com/search?q=%22Vantage+TX1%22+parcel+owner+TX"
-      ],
-      "evidence_to_capture": [
-        "legal entity",
-        "role",
-        "parcel/address if public",
-        "record date",
-        "URL/locator"
-      ],
-      "acceptance_rule": "Primary or official public record identifies the entity at the site.",
-      "reject_rule": "Parent company alone when a site-specific legal entity is disclosed.",
       "existing_next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record.",
       "public_leads": [
         {
