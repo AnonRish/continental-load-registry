@@ -203,12 +203,16 @@ def materialize_record(
     map_precision = old.get("map_precision") if map_point else None
     map_provenance = None
     if map_point:
-        map_provenance = {
-            "type": "carried_forward_existing_repository_geometry",
-            "source_url": old.get("source_url"),
-            "source_capture_date": old.get("capture_date"),
-            "precision": map_precision,
-        }
+        existing_provenance = old.get("map_provenance")
+        if isinstance(existing_provenance, dict) and existing_provenance.get("source_url"):
+            map_provenance = existing_provenance
+        else:
+            map_provenance = {
+                "type": "carried_forward_existing_repository_geometry",
+                "source_url": old.get("source_url"),
+                "source_capture_date": old.get("capture_date"),
+                "precision": map_precision,
+            }
 
     raw_fields = {k: v for k, v in row.items() if v not in (None, "")}
     raw_value = str(row.get(cap_key)).strip() if cap_key and row.get(cap_key) not in (None, "") else (
