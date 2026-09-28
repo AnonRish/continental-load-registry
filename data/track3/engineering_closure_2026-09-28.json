@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-28T12:20:00Z",
+  "title": "Track 3 repository engineering closure",
+  "repository_engineering_status": "COMPLETE",
+  "empirical_track3_verification_status": "NOT_CLOSED",
+  "scope": {
+    "canonical_epoch_sites": 93,
+    "defined_site_domain_cells": 1395,
+    "site_domain_terminal_cells": 1395,
+    "site_domain_open_cells": 0,
+    "publisher_field_cells": 744
+  },
+  "current_public_evidence": {
+    "public_web_evidence_records": 454,
+    "remote_sensing_derived_observations": 575,
+    "remote_sensing_sites_with_derived_observations": 92,
+    "site_specific_queue_ids": 2,
+    "researched_no_public_record_sites": 3,
+    "grid_connection_status_counts": {
+      "SITE_LEVEL_EVIDENCE": 88,
+      "RESEARCHED_NO_PUBLIC_RECORD": 3,
+      "VERIFIED_SITE_SPECIFIC": 2
+    }
+  },
+  "remaining_research_and_acquisition": {
+    "public_publisher_field_tasks_open": 214,
+    "open_track3_domain_cells": 0,
+    "follow_on_observation_tasks": 24,
+    "follow_on_observation_by_domain": {
+      "cooling": 18,
+      "power_telemetry": 6
+    },
+    "semantics": "These are explicitly tracked unresolved research/acquisition tasks, not untracked repository gaps and not evidence of absence."
+  },
+  "external_capability_blockers": {
+    "count": 7,
+    "state_set": [
+      "BLOCKED_EXTERNAL_CAPABILITY"
+    ],
+    "register": "data/track3/external_capability_handoff_2026-09-28.json"
+  },
+  "case_laboratory": {
+    "ambiguous_pilot_case_count": 4,
+    "strict_discovery_case_count": 5,
+    "strict_terminal_disposition_count": 5
+  },
+  "closure_checks": {
+    "canonical_sites_93": true,
+    "domain_matrix_93x15": true,
+    "domain_cells_all_terminal": true,
+    "domain_matrix_no_open_cells": true,
+    "publisher_matrix_93x8": true,
+    "publisher_backlog_reconciles": true,
+    "observation_queue_reconciles": true,
+    "coverage_gap_register_93_sites": true,
+    "geo_audit_93_sites": true,
+    "strict_queue_five_terminal_cases": true,
+    "ambiguous_pilot_four_cases": true,
+    "external_blockers_explicitly_accounted": true,
+    "no_untracked_domain_gaps": true,
+    "no_untracked_publisher_gaps": true,
+    "no_untracked_observation_gaps": true
+  },
+  "untracked_gap_count": 0,
+  "authoritative_artifacts": [
+    "data/track3/site_status.json",
+    "data/track3/domain_completeness_matrix_2026-09-27.json",
+    "data/track3/publisher_completeness_matrix_2026-09-27.json",
+    "data/track3/research_backlog_summary.json",
+    "data/track3/observation_queue.json",
+    "data/track3/coverage_gap_register_2026-09-27.json",
+    "data/track3/external_capability_handoff_2026-09-28.json"
+  ],
+  "completion_semantics": "COMPLETE means the repository engineering contract has no untracked defined gaps. It does not mean the empirical Track 3 verification problem is solved. Missing public, privileged, transaction-level, serial-level, inspection, intelligence, or independent-governance evidence remains explicitly unresolved."
+}
