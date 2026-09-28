@@ -176,6 +176,13 @@ def main() -> int:
     }
     claim_rows = public_claims.get("claims", [])
     enrichment_rows = enrichment.get("records", [])
+    if enrichment.get("record_count") != len(enrichment_rows):
+        errors.append("public-web enrichment top-level record_count does not reconcile")
+    if enrichment.get("accounting", {}).get("record_count") != len(enrichment_rows):
+        errors.append("public-web enrichment accounting.record_count does not reconcile")
+    disposition_counts = enrichment.get("accounting", {}).get("disposition_counts", {})
+    if disposition_counts and sum(int(v) for v in disposition_counts.values()) != len(enrichment_rows):
+        errors.append("public-web enrichment disposition counts do not reconcile")
     if public_claims.get("accounting", {}).get("claim_count") != len(claim_rows):
         errors.append("public-web claim count does not reconcile")
     if len(claim_rows) != len(enrichment_rows):
@@ -193,7 +200,7 @@ def main() -> int:
             "source": x.get("source"),
             "source_urls": x.get("source_urls") or [],
             "publication_date": x.get("publication_date"),
-            "source_record_id": x.get("evidence_id") or x.get("source_record_id"),
+            "source_record_id": x.get("evidence_id") or x.get("source_record_id") or None,
         }
         import hashlib
         return hashlib.sha256(json.dumps(payload, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
