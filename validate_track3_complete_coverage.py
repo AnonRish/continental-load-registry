@@ -207,7 +207,10 @@ def main() -> int:
         errors.append("coverage gap register is not exactly 15 evidence domains")
     if gap_register.get("summary", {}).get("public_web_enrichment_records") != enrichment.get("record_count"):
         errors.append("coverage gap register public-enrichment count does not reconcile")
-    if gap_register.get("summary", {}).get("public_web_enrichment_sites") != enrichment.get("accounting", {}).get("site_count"):
+    enrichment_site_count = enrichment.get("accounting", {}).get("site_count")
+    if enrichment_site_count is None:
+        enrichment_site_count = enrichment.get("accounting", {}).get("sites_with_findings")
+    if gap_register.get("summary", {}).get("public_web_enrichment_sites") != enrichment_site_count:
         errors.append("coverage gap register public-enrichment site count does not reconcile")
 
     global_sources = load("data/track3/public_global_source_observations.json")
