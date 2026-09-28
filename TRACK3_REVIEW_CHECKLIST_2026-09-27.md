@@ -6,7 +6,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 ### Priority reorder for reviewer value
 
-**P0 — close cases before widening.** The dominant remaining test is whether the registry can move genuinely ambiguous public load records from queue entry to a defensible disposition. four closure-pilot cases are now published in `ambiguous-case-studies.html` and `data/track3/ambiguous_case_studies.json`: two source-backed bounded classifications and one deliberately inconclusive stopping-rule case.
+**P0 — close cases before widening.** The dominant remaining test is whether the registry can move genuinely ambiguous public load records from queue entry to a defensible disposition. four closure-pilot cases are now published in `ambiguous-case-studies.html` and `data/track3/ambiguous_case_studies.json`; the separate five-case strict discovery queue is now terminally dispositioned in `data/track3/strict_discovery_case_dispositions_2026-09-28.json`.
 
 **P1 — expand the 93-site Epoch layer only after the closure loop is demonstrated.** Epoch is a useful reference/cross-check universe, but those sites are already publicly identified; more breadth there should not displace closing ambiguous registry cases.
 
@@ -104,4 +104,5 @@ This is the current repository-state checklist for reviewing the Continental Lar
 ## 9. Current primary empirical addition
 
 - [x] P3108 / Wild Rose Power Hub has a source-backed 1,300 MW load record, public-project identity from provincial/local government records, an official planning point and legal quarter-section set, and six retained multi-modal remote-sensing observations.
+- [x] The five-case strict discovery queue has terminal dispositions for P3066, P3198, P3108, P2958, and P2614, with unresolved physical/identity boundaries explicitly preserved.
 - [x] The case remains bounded as a proposed project; operation, energization, transformer event and compute workload are not asserted.
