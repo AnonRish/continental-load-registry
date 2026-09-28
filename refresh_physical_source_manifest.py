@@ -38,7 +38,28 @@ def main()->int:
         elif rel.endswith("physical_site_coordinates.json"):
             row["record_count"]=len(coords.get("records",[]))
         retained.append(row)
-    derived_count=sum(1 for x in obs.get("records",[]) if x.get("status")=="INGESTED_DERIVED")
+    derived_rows=[x for x in obs.get("records",[]) if x.get("status")=="INGESTED_DERIVED"]
+    derived_count=len(derived_rows)
+    derived_sites=len({str(x.get("epoch_id")) for x in derived_rows if x.get("epoch_id")})
+    modality_counts={
+        modality:sum(1 for x in derived_rows if str(x.get("modality") or "").lower()==modality)
+        for modality in ("optical","tir","sar")
+    }
+    # Keep the aggregate physical verification layer synchronized with its canonical
+    # scene ledger before hashing/publishing the retained artifacts.
+    physical_summary=physical.setdefault("summary", {})
+    physical_summary["raw_optical_scenes_ingested"]=modality_counts["optical"]
+    physical_summary["raw_tir_numeric_observations"]=modality_counts["tir"]
+    physical_summary["raw_sar_numeric_observations"]=modality_counts["sar"]
+    physical_summary["derived_observation_count"]=derived_count
+    physical_summary["derived_observation_sites"]=derived_sites
+    physical_summary["derived_observations"]=derived_count
+    physical_summary["derived_observation_ledger"]="data/track3/remote_sensing_observations.json"
+    physical_summary["reconciled_on"]=datetime.now(timezone.utc).date().isoformat()
+    (ROOT/"data/physical_verification_layer.json").write_text(
+        json.dumps(physical,indent=2,ensure_ascii=False)+"\n",
+        encoding="utf-8",
+    )
     polygon_sites=int(foot.get("sites_with_polygon_files") or 0)
     target_count=len(coords.get("records",[])); geocoded=sum(1 for x in coords.get("records",[]) if x.get("lat") is not None and x.get("lon") is not None)
     manifest={
