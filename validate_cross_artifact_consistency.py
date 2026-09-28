@@ -72,12 +72,14 @@ def main() -> None:
     assert scope_cat["expanded_known_record_count"] == 1623
     assert_close(scope_cat["expanded_known_capacity_gw"], 394.6181)
     assert cat["data/track3/evidence_records.json"]["record_count"] == 1221
+    assert cat["data/epoch_site_evidence_records.json"]["record_count"] == 102
     assert cat["data/bpa_large_load_registry.json"]["record_count"] == 60
     assert cat["data/bpa_large_load_registry.csv"]["record_count"] == 60
     bpa = load("data/bpa_large_load_registry.json")
     assert bpa["record_count"] == len(bpa["records"]) == 60
     assert bpa["mapped_record_count"] == 35
     assert bpa["unmapped_record_count"] == 25
+    assert len(bpa.get("records", [])) - sum(1 for x in bpa.get("records", []) if isinstance(x.get("map_point"), list) and len(x["map_point"]) == 2) == 25
     assert all(str(x.get("id","")).startswith("BPA-") for x in bpa["records"])
     assert cat["data/project_level_extractions.json"]["record_count"] == 271
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
@@ -85,6 +87,7 @@ def main() -> None:
     assert cat["data/global_compute_universe_sources_2026-09-27.json"]["record_count"] == 3
     assert cat["data/external/compute_atlas/facilities.json"]["record_count"] == 2228
     assert cat["data/external/data_center_index/campuses.json"]["record_count"] == 901
+    assert len(catalog["datasets"]) == 61
 
     backlog = load("data/track3/research_backlog_summary.json")
     sweep = load("data/track3/site_missing_information_sweep_2026-09-27.json")
@@ -98,6 +101,8 @@ def main() -> None:
     assert len(observation["tasks"]) == summary["observation_task_count"] == sum(summary["observation_task_counts_by_domain"].values())
     assert set(observation["tasks"][0].keys()) >= {"task_id","epoch_id","domain","current_state","priority"}
     assert summary["epoch_site_count"] == 93
+    assert summary["track3_evidence_record_count"] == 1221
+    assert load("data/track3/evidence_records.json")["record_count"] == 1221
     rs=json.loads((ROOT / "data/track3/remote_sensing_observations.json").read_text(encoding="utf-8"))
     assert summary["remote_sensing_derived_observation_count"] == rs["derived_observation_count"] == len(rs["records"])
     assert summary["transformer_event_count"] == 3
