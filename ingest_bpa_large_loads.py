@@ -568,7 +568,7 @@ def selftest() -> None:
     ws.title = "Line and Load"
     ws.append(["Request ID", "Project Name", "Requested MW", "County", "State", "Status", "POI", "Request Date"])
     ws.append(["L0705", "Open Range", 3300, "Adams County", "WA", "RECEIVED", "Substation A", dt.date(2026, 8, 1)])
-    ws.append(["L0706", "Test Withdrawn", 200, "Benton County", "WA", "WITHDRAWN", "Substation B", dt.date(2025, 3, 1)])
+    ws.append(["L0706", "Test Below Threshold", 50, "Benton County", "WA", "WITHDRAWN", "Substation B", dt.date(2025, 3, 1)])
     buf = io.BytesIO(); wb.save(buf)
     old = {"L0705": {"map_point": [46.99, -117.16], "map_precision": "county display point", "source_url": "https://example.invalid/legacy-source", "capture_date": "2026-09-23"}}
     records, sha, raw_count = parse_workbook_bytes(buf.getvalue(), old, "2026-09-28")
