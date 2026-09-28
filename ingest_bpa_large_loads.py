@@ -31,6 +31,7 @@ import openpyxl
 import requests
 
 OFFICIAL_XLSX_URL = "https://www.bpa.gov/-/media/Aep/transmission-media-documents/InterconnectionQueueOutput.xlsx"
+MIN_LOAD_MW = 100.0
 DEFAULT_JSON = Path("data/bpa_large_load_registry.json")
 DEFAULT_CSV = Path("data/bpa_large_load_registry.csv")
 MAP_MANIFEST = Path("data/map_layer_manifest.json")
@@ -267,7 +268,11 @@ def materialize_record(
     }
 
 
-def parse_workbook_bytes(data: bytes, old_by_queue: dict[str, dict[str, Any]], capture_date: str) -> tuple[list[dict[str, Any]], str]:
+def parse_workbook_bytes(
+    data: bytes,
+    old_by_queue: dict[str, dict[str, Any]],
+    capture_date: str,
+) -> tuple[list[dict[str, Any]], str, int]:
     sha256 = hashlib.sha256(data).hexdigest()
     wb = openpyxl.load_workbook(io.BytesIO(data), read_only=True, data_only=True)
     by_queue: dict[str, dict[str, Any]] = {}
@@ -299,13 +304,24 @@ def parse_workbook_bytes(data: bytes, old_by_queue: dict[str, dict[str, Any]], c
             if existing is None or score > sum(v not in (None, "", []) for v in existing.values()):
                 by_queue[qid] = record
 
-    records = sorted(by_queue.values(), key=lambda r: (
+    all_records = sorted(by_queue.values(), key=lambda r: (
         -float(r["capacity_claims"][0]["value_mw"]) if r["capacity_claims"] else 0,
         r["queue_id"],
     ))
-    if not records:
+    if not all_records:
         raise RuntimeError("Official BPA workbook was downloaded, but no L-series load-request rows were parsed.")
-    return records, sha256
+
+    records = [
+        r for r in all_records
+        if r.get("capacity_claims")
+        and float(r["capacity_claims"][0]["value_mw"]) >= MIN_LOAD_MW
+    ]
+    if not records:
+        raise RuntimeError(
+            f"Official BPA workbook contained {len(all_records)} L-series rows but none met the "
+            f"{MIN_LOAD_MW:g} MW large-load threshold."
+        )
+    return records, sha256, len(all_records)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -319,7 +335,13 @@ def atomic_text(path: Path, content: str) -> None:
     tmp.replace(path)
 
 
-def write_outputs(records: list[dict[str, Any]], source_sha256: str, capture_date: str, raw_source_bytes: int) -> None:
+def write_outputs(
+    records: list[dict[str, Any]],
+    source_sha256: str,
+    capture_date: str,
+    raw_source_bytes: int,
+    raw_l_series_count: int,
+) -> None:
     mapped = [r for r in records if r.get("map_point")]
     live = [r for r in records if (r.get("status") or "").upper() not in TERMINAL_STATUSES]
 
@@ -328,7 +350,7 @@ def write_outputs(records: list[dict[str, Any]], source_sha256: str, capture_dat
         "generated_on": capture_date,
         "title": "BPA Large-Load Request Registry — normalized official workbook layer",
         "purpose": "Non-additive normalization of BPA Line/Load interconnection request records. Requested MW remain requests-as-filed; existing display geometry is preserved only by matching BPA request ID.",
-        "threshold_mw": 100,
+        "threshold_mw": MIN_LOAD_MW,
         "additive_to_core": False,
         "source": {
             "id": "BPA-LARGE-LOAD",
@@ -348,12 +370,20 @@ def write_outputs(records: list[dict[str, Any]], source_sha256: str, capture_dat
             "raw_source_semantics": "The official workbook linked by BPA is fetched at refresh time. The binary is not committed; SHA-256 is retained to fingerprint the exact downloaded source.",
             "source_population_accounting": {
                 "source_last_updated": capture_date,
+                "raw_l_series_rows_on_record": raw_l_series_count,
+                "eligible_rows_at_threshold_mw": len(records),
+                "threshold_mw": MIN_LOAD_MW,
                 "requests_on_record_at_source": len(records),
                 "live_requests_at_source_computed": len(live),
                 "repository_retained_records": len(records),
                 "repository_retained_live_rows": len(live),
                 "repository_retained_mapped_rows": len(mapped),
-                "coverage_statement": "This is the parsed L-series load-request population exposed by the official BPA workbook at the capture date. It is not presented as a data-center-only population because BPA does not publish an end-use field."
+                "coverage_statement": (
+                    f"The official workbook exposed {raw_l_series_count} L-series rows; this dedicated "
+                    f"large-load layer retains only rows with filed load MW >= {MIN_LOAD_MW:g}. It is not "
+                    "presented as a data-center-only population because BPA does not publish a reliable "
+                    "end-use classification."
+                ),
             },
         },
         "record_count": len(records),
@@ -541,8 +571,9 @@ def selftest() -> None:
     ws.append(["L0706", "Test Withdrawn", 200, "Benton County", "WA", "WITHDRAWN", "Substation B", dt.date(2025, 3, 1)])
     buf = io.BytesIO(); wb.save(buf)
     old = {"L0705": {"map_point": [46.99, -117.16], "map_precision": "county display point", "source_url": "https://example.invalid/legacy-source", "capture_date": "2026-09-23"}}
-    records, sha = parse_workbook_bytes(buf.getvalue(), old, "2026-09-28")
-    assert len(records) == 2
+    records, sha, raw_count = parse_workbook_bytes(buf.getvalue(), old, "2026-09-28")
+    assert raw_count == 2
+    assert len(records) == 1
     first = next(r for r in records if r["queue_id"] == "L0705")
     assert first["capacity_claims"][0]["value_mw"] == 3300
     assert first["map_point"] == [46.99, -117.16]
@@ -551,6 +582,8 @@ def selftest() -> None:
     assert first["source_provenance"]["sheet"] == "Line and Load"
     assert first["source_provenance"]["source_row"] == 2
     assert sha
+    assert first["capacity_claims"][0]["value_mw"] >= MIN_LOAD_MW
+    assert all(r["capacity_claims"] and r["capacity_claims"][0]["value_mw"] >= MIN_LOAD_MW for r in records)
     assert sum((r["status"] or "") not in TERMINAL_STATUSES for r in records) == 1
     print("PASS: BPA workbook parser self-test")
 
@@ -576,8 +609,8 @@ def main() -> None:
         }
 
     data = download(args.url)
-    records, sha256 = parse_workbook_bytes(data, old_by_queue, today)
-    write_outputs(records, sha256, today, len(data))
+    records, sha256, raw_l_series_count = parse_workbook_bytes(data, old_by_queue, today)
+    write_outputs(records, sha256, today, len(data), raw_l_series_count)
     update_manifests(records, today, sha256)
 
     mapped = sum(bool(r.get("map_point")) for r in records)
