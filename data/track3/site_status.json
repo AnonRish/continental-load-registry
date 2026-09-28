@@ -1459,12 +1459,12 @@
           "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or public grid record is attached; no queue ID is asserted."
         },
         "service_or_contract": {
-          "status": "NOT_INGESTED",
-          "basis": "No site-specific service or energy-contract evidence is currently attached."
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "Xcel Energy states it will power Meta's new Rosemount data center and describes the energy upgrades and new transmission lines being built to provide reliable service."
         },
         "regulatory": {
-          "status": "NOT_ASSESSED",
-          "basis": "No site-level regulatory evidence has been separately assessed in the current Track 3 layer."
+          "status": "INGESTED",
+          "basis": "The City of Rosemount states that the City Council approved the Project Bigfoot/Jimnist technology-campus application on 280 acres in UMore Park; the city subsequently identifies the project as Meta's data center."
         },
         "compute_tenancy": {
           "status": "UNKNOWN",
@@ -1506,15 +1506,16 @@
           "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
         },
         "independent_corroboration": {
-          "status": "NOT_ASSESSED",
-          "basis": "Independent corroboration has not yet been assessed as a separate evidence relationship in the public Track 3 layer."
+          "status": "ASSESSED",
+          "basis": "Distinct Meta, Xcel Energy and City of Rosemount records independently corroborate the Rosemount data center, its site-development approval and utility relationship."
         }
       },
       "site_level_evidence_count": 1,
       "public_web_evidence_count": 7,
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 9,
-      "next_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents."
+      "next_action": "Search Minnesota PUC and Xcel Energy records for the site's interconnection/service case and any large-load planning documents.",
+      "open_track3_domains": []
     },
     {
       "epoch_id": "EPOCH-0d287943c30fe239",
