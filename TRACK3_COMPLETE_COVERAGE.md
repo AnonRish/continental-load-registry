@@ -55,10 +55,10 @@ This is a repository-level completeness result, not an international Track 3 ver
 - 90 substation-related and 113 transmission-related external evidence records.
 - 83 sites with retained chip-inventory records; 10 sites remain unknown.
 - 4 sites with site-specific compute-tenancy snapshots; 89 remain unknown.
-- 22 sites with retained service/contract evidence; 71 remain not ingested.
-- 16 sites with retained site-level regulatory evidence; 77 remain not assessed.
+- 38 sites with retained service/contract evidence; 55 are explicitly assessment-complete in the current site-status layer.
+- 21 sites with retained site-level regulatory evidence; 72 are explicitly assessment-complete in the current site-status layer.
 - 2 defensible site-specific queue IDs in the 93-site Epoch crosswalk.
-- 452 normalized public-web evidence records in a losslessly reconciled claim layer; 441 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
+- 452 normalized public-web evidence records in a losslessly reconciled claim layer; 449 are bound to canonical Epoch site IDs and 3 are explicitly state/multi-site/unbound claims.
 - 92 of 93 reference sites now have retained site-level coordinates, including 24 curated public-source coordinate overrides; one remains unresolved and is blocked from site-specific physical interpretation.
 - 141-record broad ambiguous-load research pool totaling 53.8512 GW under the repository's current filter.
 - 68 of those 141 have an explicit retained load-side technology field; 73 require project-type adjudication before strict load-discovery admission.
