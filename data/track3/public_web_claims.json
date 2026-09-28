@@ -1,11 +1,13 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "generated_on": "2026-09-27",
   "title": "Track 3 public-web claim layer",
-  "purpose": "Normalized claim-level representation of the public-web enrichment layer. Each claim retains its source URLs, site scope and uncertainty note; no claim is promoted to measured load, physical identity or compute verification unless its source supports that specific proposition.",
+  "purpose": "Normalized claim-level representation of the public-web enrichment layer. Site-scoped records require an Epoch site ID; state/multi-site and explicit negative-capture records may remain unbound while retaining source provenance.",
   "accounting": {
     "claim_count": 335,
-    "site_count": 90,
+    "site_scoped_claim_count": 332,
+    "unbound_public_claim_count": 3,
+    "site_count": 89,
     "domain_counts": {
       "site_identity": 88,
       "capacity": 12,
@@ -2974,7 +2976,7 @@
       "source_record_id": "EVID-PWEB-UAE-CAP-20260927"
     },
     {
-      "claim_id": "PWEB-CLAIM-0144",
+      "claim_id": "PWEB-SOURCE-f120deffaa93dabb4e24",
       "epoch_id": "EPOCH-661288625d17662a",
       "site_name": "OpenAI Stargate UAE",
       "domain": "grid_connection",
@@ -2990,7 +2992,7 @@
       "disposition": "NO_PUBLIC_VALUE_CAPTURED",
       "scope_note": "Retained only as an explicit searched field state; no energy company is inferred.",
       "claim_scope": "site_level_public_web",
-      "provenance_status": "source_link_retained",
+      "provenance_status": "source_link_retained_no_source_id",
       "source_record_id": null
     },
     {
@@ -6857,7 +6859,7 @@
       "source_record_id": "EVID-PWEB-google-lancaster-user-20260927"
     },
     {
-      "claim_id": "PWEB-CLAIM-0333",
+      "claim_id": "PWEB-SOURCE-86d921594aa4d673f366",
       "epoch_id": null,
       "site_name": "Google Iowa",
       "domain": "financing",
@@ -6872,12 +6874,12 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "State-level total; do not allocate the full amount to a single facility.",
-      "claim_scope": "site_level_public_web",
-      "provenance_status": "source_link_retained",
+      "claim_scope": "state_or_multi_site_public_web",
+      "provenance_status": "source_link_retained_no_source_id",
       "source_record_id": null
     },
     {
-      "claim_id": "PWEB-CLAIM-0334",
+      "claim_id": "PWEB-SOURCE-6a8c1c8310e999c69430",
       "epoch_id": null,
       "site_name": "Google Nebraska",
       "domain": "financing",
@@ -6892,12 +6894,12 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "State-level figure; do not allocate the entire amount to a single facility.",
-      "claim_scope": "site_level_public_web",
-      "provenance_status": "source_link_retained",
+      "claim_scope": "state_or_multi_site_public_web",
+      "provenance_status": "source_link_retained_no_source_id",
       "source_record_id": null
     },
     {
-      "claim_id": "PWEB-CLAIM-0335",
+      "claim_id": "PWEB-SOURCE-5443a01eaca9555bd834",
       "epoch_id": null,
       "site_name": "Google Texas sites",
       "domain": "site_identity",
@@ -6915,8 +6917,8 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "State-level source confirms Midlothian and Red Oak as Google's two current Texas locations.",
-      "claim_scope": "site_level_public_web",
-      "provenance_status": "source_link_retained",
+      "claim_scope": "state_or_multi_site_public_web",
+      "provenance_status": "source_link_retained_no_source_id",
       "source_record_id": null
     }
   ]
