@@ -4,7 +4,7 @@ from track3_tail_audit import *
 def accounts():
     return {
         "A": OwnerAccount("A", 2, 2, 0, True),
-        "B": OwnerAccount("B", 4, 0, 0, True),
+        "B": OwnerAccount("B", 6, 0, 0, True),
     }
 
 def test_weighted_sampling_is_reproducible():
