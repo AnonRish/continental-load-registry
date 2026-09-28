@@ -1,46 +1,40 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-27T17:05:00Z",
+  "generated_at_utc": "2026-09-28T01:31:00+00:00",
   "title": "Public web enrichment capture — 2026-09-27",
   "purpose": "Auditable additive public-source findings discovered after the canonical enrichment build. These records supplement, but do not overwrite, raw Epoch fields or manufacture queue IDs.",
   "accounting": {
-    "record_count": 335,
-    "sites_with_findings": 89,
+    "record_count": 366,
+    "sites_with_findings": 93,
     "disposition_counts": {
-      "PUBLIC_SOURCE_CAPTURED": 334,
+      "PUBLIC_SOURCE_CAPTURED": 365,
       "NO_PUBLIC_VALUE_CAPTURED": 1
     },
     "field_counts": {
-      "address": 12,
-      "capacity_record": 12,
+      "address": 14,
+      "capacity_record": 16,
       "energy_companies": 82,
-      "owner": 12,
-      "project": 64,
+      "owner": 16,
+      "project": 63,
       "construction_companies": 41,
-      "investment": 24,
+      "investment": 22,
       "regulatory": 13,
       "investors": 6,
-      "cooling": 16,
-      "service_or_contract": 20,
-      "users": 6,
+      "cooling": 19,
+      "service_or_contract": 21,
+      "users": 8,
       "operational_efficiency": 5,
-      "operational_status": 9,
-      "chip_quantities": 6,
+      "operational_status": 13,
+      "chip_quantities": 10,
       "capex_record": 1,
       "construction_workforce_record": 1,
-      "project_status": 2,
+      "project_status": 5,
       "construction_status": 1,
       "backup_generation": 1,
-      "location": 1
+      "location": 5
     }
   },
-  "semantics": {
-    "owner_investment_not_external_investor": "Owner investment commitments are retained as investment facts but not relabeled as third-party investors.",
-    "utility_vs_ppa": "Serving utility, grid operator, renewable PPA counterparty, and energy manager are separate relationship types.",
-    "contractor_scope": "Developer/project partner/commissioning contractor is not automatically a general contractor.",
-    "secondary_sources": "Secondary public registries are retained when they provide a concrete site-level linkage; source class remains explicit.",
-    "uncertainty": "A source that does not establish a quantity remains non-quantitative rather than being converted into a numeric estimate."
-  },
+  "semantics": "[object Object] Newly added records are dated public-source captures from the 2026-09-27 gap-closure review; city-level location is labeled location rather than a precise address, and publisher estimates remain estimates.",
   "records": [
     {
       "site_name": "QTS Richmond 3",
@@ -5489,8 +5483,473 @@
       "capture_date": "2026-09-27",
       "disposition": "PUBLIC_SOURCE_CAPTURED",
       "scope_note": "State-level source confirms Midlothian and Red Oak as Google's two current Texas locations."
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "location",
+      "value": "Hohhot, Inner Mongolia, China",
+      "relationship": "current public site location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-LOCATION"
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "owner",
+      "value": "Huawei",
+      "relationship": "current owner",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-OWNER"
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "operational_status",
+      "value": "Operational",
+      "relationship": "current status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-OPERATIONAL_STATUS"
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "capacity_record",
+      "value": "184 MW current IT power; 89k H100-eq estimated compute; $7.0B estimated capital cost",
+      "relationship": "current facility scale snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-CAPACITY_RECORD"
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "chip_quantities",
+      "value": "118k Huawei Ascend 910C",
+      "relationship": "current accelerator estimate",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-CHIP_QUANTITIES"
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "cooling",
+      "value": "29 evaporative cooling towers and 124 air-cooled chillers; 170.7 MW modeled cooling",
+      "relationship": "current cooling-equipment snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-COOLING"
+    },
+    {
+      "site_name": "Huawei Horinger",
+      "epoch_id": "EPOCH-77e196fc5320fd70",
+      "field": "project_status",
+      "value": "Operational phase 1; a later building is under construction as of Aug. 18, 2026; further expansion is projected",
+      "relationship": "dated buildout status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-horinger"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-20fd70-PROJECT_STATUS"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "location",
+      "value": "Wuhu, Anhui, China",
+      "relationship": "current public site location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-LOCATION"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "owner",
+      "value": "Huawei",
+      "relationship": "current owner",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-OWNER"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "operational_status",
+      "value": "Operational",
+      "relationship": "current status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-OPERATIONAL_STATUS"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "capacity_record",
+      "value": "157 MW current IT power; 76k H100-eq estimated compute; $5.9B estimated capital cost",
+      "relationship": "current facility scale snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-CAPACITY_RECORD"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "chip_quantities",
+      "value": "100.7k Huawei Ascend 910C",
+      "relationship": "current accelerator estimate",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-CHIP_QUANTITIES"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "cooling",
+      "value": "59 evaporative cooling towers and 111 air-cooled chillers; 279.7 MW modeled cooling",
+      "relationship": "current cooling-equipment snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-COOLING"
+    },
+    {
+      "site_name": "Huawei Wuhu",
+      "epoch_id": "EPOCH-af62ae3440fe885a",
+      "field": "project_status",
+      "value": "Four buildings operational as of Aug. 6, 2026; additional buildings remain under construction or projected",
+      "relationship": "dated buildout status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/huawei-wuhu"
+      ],
+      "publication_date": "2026-09-23",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-fe885a-PROJECT_STATUS"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "location",
+      "value": "Barker, New York, United States",
+      "relationship": "current public site location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-LOCATION"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "owner",
+      "value": "Core42",
+      "relationship": "current owner",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-OWNER"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "users",
+      "value": "G42 (likely)",
+      "relationship": "current user attribution",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-USERS"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "operational_status",
+      "value": "Operational",
+      "relationship": "current status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-OPERATIONAL_STATUS"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "address",
+      "value": "7725 Lake Rd, 14012 Barker, New York, USA",
+      "relationship": "public facility address",
+      "source": "DataCenterMap",
+      "source_urls": [
+        "https://www.datacentermap.com/usa/new-york/buffalo/core42-lake-mariner-data-center/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-ADDRESS"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "service_or_contract",
+      "value": "TeraWulf announced long-term data-center lease agreements with Core42 for more than 70 MW of turn-key infrastructure at Lake Mariner; the infrastructure was to be released in phases between Q1 and Q3 2025.",
+      "relationship": "site-specific lease / capacity agreement",
+      "source": "G42",
+      "source_urls": [
+        "https://www.g42.ai/resources/news/g42-expands-us-operations-70mw-data-center-infrastructure-agreement-terawulf"
+      ],
+      "publication_date": "2025-01-01",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-SERVICE_OR_CONTRACT"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "capacity_record",
+      "value": "58 MW current IT power; 72k H100-eq estimated compute; 28.5k Nvidia B200 estimate",
+      "relationship": "current facility scale snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-CAPACITY_RECORD"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "chip_quantities",
+      "value": "28.5k Nvidia B200",
+      "relationship": "current accelerator estimate",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-CHIP_QUANTITIES"
+    },
+    {
+      "site_name": "Core42 Lake Mariner",
+      "epoch_id": "EPOCH-d1b62579c6be3fe8",
+      "field": "cooling",
+      "value": "45 Evapco EAW-DD dry coolers; 32.8 MW modeled cooling",
+      "relationship": "current cooling-equipment snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/core42-lake-mariner"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-be3fe8-COOLING"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "location",
+      "value": "Zhangbei, Hebei, China",
+      "relationship": "current public site location",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-LOCATION"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "owner",
+      "value": "Alibaba",
+      "relationship": "current owner",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-OWNER"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "users",
+      "value": "Alibaba (likely)",
+      "relationship": "current user attribution",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-USERS"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "operational_status",
+      "value": "Operational",
+      "relationship": "current status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-OPERATIONAL_STATUS"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "address",
+      "value": "Alibaba Zhangbei Miaotan Data Center, South of Weifang Second Road, Zhangbei County, Zhangjiakou, Hebei, China",
+      "relationship": "certified facility address",
+      "source": "BSI",
+      "source_urls": [
+        "https://www.bsigroup.com/en-ID/products-and-services/assessment-and-certification/validation-and-verification/client-directory-profile/ALIBAB-0047453910-107/"
+      ],
+      "publication_date": "2026-09-27",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-ADDRESS"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "capacity_record",
+      "value": "169 MW current IT power; 32k H100-eq estimated compute; $6.4B estimated capital cost",
+      "relationship": "current facility scale snapshot",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-CAPACITY_RECORD"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "chip_quantities",
+      "value": "213.2k Nvidia H20",
+      "relationship": "current accelerator estimate",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-CHIP_QUANTITIES"
+    },
+    {
+      "site_name": "Alibaba Zhangbei",
+      "epoch_id": "EPOCH-e20c2909085b37fd",
+      "field": "project_status",
+      "value": "Six buildings operational after chiller upgrades as of Jan. 3, 2026; further project status is not reported as active expansion in the current Epoch page",
+      "relationship": "dated buildout status",
+      "source": "Epoch AI",
+      "source_urls": [
+        "https://epoch.ai/data/ai-data-centers/directory/alibaba-zhangbei"
+      ],
+      "publication_date": "2026-09-24",
+      "capture_date": "2026-09-27",
+      "disposition": "PUBLIC_SOURCE_CAPTURED",
+      "evidence_id": "EVID-PWEB-MISSING-5b37fd-PROJECT_STATUS"
     }
   ],
-  "record_count": 335,
+  "record_count": 366,
   "generated_on": "2026-09-27"
 }
