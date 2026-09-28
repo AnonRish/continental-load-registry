@@ -234,6 +234,10 @@ jobs:
           assert layer_by_id["BPA_LARGE_LOAD"]["records"] == 60
           assert layer_by_id["BPA_LARGE_LOAD"]["mapped_records"] == 35
           assert layer_by_id["BPA_LARGE_LOAD"]["file"] == "data/bpa_large_load_registry.json"
+          evidence = json.loads((root / "track3/evidence_records.json").read_text(encoding="utf-8"))
+          assert evidence["record_count"] == len(evidence["records"]) == 1221
+          legacy_epoch_evidence = json.loads((root / "epoch_site_evidence_records.json").read_text(encoding="utf-8"))
+          assert legacy_epoch_evidence["record_count"] == len(legacy_epoch_evidence["records"]) == 102
 
           aggregate_map_csv = list(csv.DictReader((root / "map_layer_manifest.csv").open("r", encoding="utf-8", newline="")))
           agg = next(r for r in aggregate_map_csv if r["id"] == "SUPPLEMENTAL_AGGREGATES")
