@@ -248,7 +248,7 @@ The published dashboard currently contains **1,540 row-level facilities / reques
 
 The project-level dataset now includes **60 BPA large-load request records** with public request identifiers, filed MW, POI text and status where the public cross-check exposes them. These are secondary reproductions of BPA public load-queue rows and remain non-additive.
 
-The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit.
+The repository now includes a machine-readable **market universe manifest** at `data/market_universe_manifest.json` with a CSV companion. It explicitly separates what each operator publishes from what remains a disclosure limit. The dedicated `BPA_LARGE_LOAD.md` source note records the official workbook refresh contract, current fingerprint and geometry/missingness rules.
 
 The project-level layer has grown to **271 records**, with **271 mapped project records**. The only intentionally unlocated project-level record is the **Woostor LLC Alabama Power contract**, because the public contract evidence reviewed does not identify a site. A separate `data/supplemental_aggregate_map.json` adds **66 geographic evidence footprints**; those footprints are shaded on the map and explicitly labeled as non-facility evidence.
 
