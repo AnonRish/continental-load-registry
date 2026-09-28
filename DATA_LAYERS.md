@@ -45,7 +45,7 @@ Current target states:
 
 The target records preserve coordinates from the canonical Epoch map and carry a precision field. A jurisdiction-only or county/city point is not evidence of queue membership.
 
-The legacy site-evidence inventory contains **102 discrete assertions across 93 sites**. The canonical Track 3 evidence ledger is separate and currently contains **1,221 evidence records**. Evidence types include utility relationships, facility records, public contracts, capacity observations and other site-specific source material.
+The legacy site-evidence inventory contains **102 discrete assertions across 93 sites**. The canonical Track 3 evidence ledger is separate and currently contains **1,253 evidence records**. Evidence types include utility relationships, facility records, public contracts, capacity observations and other site-specific source material.
 
 ## Project-level layer
 
