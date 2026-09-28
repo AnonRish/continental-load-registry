@@ -1,4 +1,4 @@
-# Track 3 Reviewer Checklist — 2026-09-27
+# Track 3 Reviewer Checklist — 2026-09-28
 
 This is the current repository-state checklist for reviewing the Continental Large-Load Interconnection & Telemetry Registry as a Track 3 research contribution.
 
@@ -27,7 +27,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] Ambiguous tier separates unresolved/undisclosed cases from confirmed identities without guessing.
 - [x] Actual processed physical evidence exists: 575 retained derived remote-sensing observations across 92 of 93 Epoch sites, with scene IDs, STAC item URLs, dates, collections, and processing metadata.
 - [ ] All 93 Epoch sites have site-specific remote-sensing observations. One site currently remains without a resolved physical target and therefore cannot receive a site-specific observation.
-- [x] Three ambiguous-load closure cases are published: two bounded classifications and one intentionally inconclusive case; two cases have six derived multi-sensor observations each.
+- [x] Four ambiguous-load closure cases are published: three bounded/public-identity outcomes and one intentionally inconclusive case; each locatable case has six derived multi-sensor observations.
 - [x] Claim-level verification vocabulary exists: PASS / FAIL / UNKNOWN / NOT_TESTED.
 - [x] Facility-level vocabulary is defined in the verifier as VERIFIED_PRESENT / VERIFIED_ABSENT / INCONCLUSIVE, with INCONCLUSIVE remaining the default until the facility-wide end-to-end gate is satisfied.
 - [x] Phase 1 versus Track 3 boundary is stated in the main README and public Track 3/Plan A pages.
@@ -91,7 +91,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 
 **Present now:** a real public-data accounting layer, a conservative 93-site Epoch crosswalk, 575 processed remote-sensing observations across 92 sites, a provenance manifest, claim-level verification machinery, a 214-task publisher-only research queue and a separate 24-task observation acquisition queue, and explicit uncertainty semantics. The 93-site × 15-domain Track 3 matrix is now terminally assessed at 1,395/1,395 cells.
 
-**Still incomplete at the empirical/verification level:** interval power telemetry; site-specific physical targeting for the remaining 1 unresolved Epoch site; fuller cooling/transformer/service/regulatory evidence; transaction-level compute accounting; physical inspection; serial continuity and decommissioning/recycling verification; comprehensive covert-site discovery; an independent verification authority; automated SHA-256/byte manifests for retained physical derivatives; and independent external review.
+**Still incomplete at the empirical/verification level:** interval power telemetry; site-specific physical targeting for the remaining 1 unresolved Epoch site; fuller cooling/transformer/service/regulatory evidence; transaction-level compute accounting; physical inspection; serial continuity and decommissioning/recycling verification; comprehensive covert-site discovery; an independent verification authority; and independent external review. Physical artifact hashing is implemented and validated; it is not a substitute for the missing privileged evidence.
 
 **Correct interpretation:** this is a substantially implemented public-evidence contribution to the broader Track 3 problem, not a completed international verification regime and not evidence that covert compute has been comprehensively detected.
 ## 8. Global accounting expansion
@@ -102,6 +102,10 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [ ] Transaction-level global vendor sales, serial continuity, physical inspection, and verified decommissioning remain unavailable in the public repository.
 
 ## 9. Current primary empirical addition
+
+- [x] External-capability handoff is machine-readable at `data/track3/external_capability_handoff_2026-09-28.json`.
+- [x] Interval telemetry intake contract is machine-readable at `data/track3/interval_power_telemetry_protocol.json`.
+- [x] The unresolved Stargate UAE physical-target question has a documented lead-only ledger at `data/track3/physical_target_leads.json`; conflicting secondary coordinates are preserved as leads and are not promoted to a canonical target.
 
 - [x] P3108 / Wild Rose Power Hub has a source-backed 1,300 MW load record, public-project identity from provincial/local government records, an official planning point and legal quarter-section set, and six retained multi-modal remote-sensing observations.
 - [x] The five-case strict discovery queue has terminal dispositions for P3066, P3198, P3108, P2958, and P2614, with unresolved physical/identity boundaries explicitly preserved.
