@@ -313,15 +313,15 @@ These measures are **not summed** into a single "total capacity" because they ha
 
 Every one of the **93 canonical Epoch AI sites** now has a connection-research target record in `data/epoch_connection_research_targets.json` with grid jurisdiction, site-specific queue state, current site IT-power context, evidence count, source trail, coordinates and next research action. The companion `data/epoch_connection_research_targets.csv` is a flat export. The target layer is intentionally separate from verified queue membership: a dashed map target can mean only that the relevant queue/utility system is known.
 
-The canonical Track 3 evidence inventory is preserved in `data/track3/evidence_records.json`; the current build contains **1,218 retained evidence records across the 93-site universe**. A separate public research dossier at `data/track3/public_site_dossier.json` joins Epoch fields, grid crosswalks, public connection evidence, and publisher-field completeness. These assertions can identify utilities, public contracts, facility records or other site-specific evidence without establishing a formal queue ID. They are not additive capacity records.
+The canonical Track 3 evidence inventory is preserved in `data/track3/evidence_records.json`; the current build contains **1,221 retained evidence records across the 93-site universe**. A separate public research dossier at `data/track3/public_site_dossier.json` joins Epoch fields, grid crosswalks, public connection evidence, and publisher-field completeness. These assertions can identify utilities, public contracts, facility records or other site-specific evidence without establishing a formal queue ID. They are not additive capacity records.
 
 On the map, the **Connection targets** toggle overlays all 93 research targets on the same site geometry as the Epoch layer. Target popups show the current grid jurisdiction, research state, queue ID/name where verified, site-specific capacity when known, evidence-item count, source links, and the next action. Geometry precision is carried through from the canonical Epoch map record.
 
 ### Project-level extraction
 
-The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **241 individually identifiable records** extracted from public source material:
+The repository has a dedicated project-level evidence layer at `data/project_level_extractions.json` with a CSV export at `data/project_level_extractions.csv`. It currently contains **271 individually identifiable records** extracted from public source material:
 
-- **60 BPA large-load request records**, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed.
+- **60 BPA large-load request records** remain in the separately curated project-level extraction, including publicly reproduced request IDs, filed MW, point-of-interconnection text and status where exposed. The broader dedicated BPA official-workbook layer now contains **457 L-series request rows** and is not counted inside the 271-record project extraction.
 - **33 Virginia DEQ issued-air permit records**, with permit number, named site/project, county and issuance date.
 - **28 AESO Data Load projects**, with project IDs, project names, planning-area/town identities and public DTS/contract-capacity values.
 - **12 NYISO Load Project records**, with queue ID, project/developer, MW, county and POI/site information where publicly exposed.

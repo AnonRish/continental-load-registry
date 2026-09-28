@@ -73,7 +73,7 @@ The main dashboard map has separate controls for:
 
 - Core row-level queue records
 - Project evidence
-- BPA large-load request layer (35 mapped of 60 records)
+- BPA large-load request layer (current row/mapping counts are read from `data/bpa_large_load_registry.json`)
 - Aggregate / historical footprints
 - Epoch AI site observations
 - Connection research targets
