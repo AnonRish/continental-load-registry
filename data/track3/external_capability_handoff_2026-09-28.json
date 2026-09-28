@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-28",
+  "title": "Track 3 external-capability handoff",
+  "purpose": "Machine-readable acceptance contracts for the empirical capabilities that a public repository cannot manufacture.",
+  "semantics": [
+    "UNKNOWN means required external evidence is unavailable to the public repository.",
+    "A protocol is not an empirical observation.",
+    "Missing public records are not evidence of absence.",
+    "Queue, contract, annual power and interval meter measurements remain distinct."
+  ],
+  "blockers": [
+    {
+      "id": "T3-X1",
+      "name": "Global transaction-level accelerator accounting",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/global_compute_supply_chain.json",
+        "data/track3/entity_resolution.json"
+      ],
+      "missing_evidence": "Globally complete production, sale, resale and transfer records with stable asset identifiers and timestamps.",
+      "required_authority": "Manufacturers, distributors, resellers, owners and competent authorities.",
+      "acceptance_test": "Every in-scope transaction is represented or explicitly excluded with a reason; overlap and duplicate rules are reproducible; provenance is retained."
+    },
+    {
+      "id": "T3-X2",
+      "name": "Authorized physical inspection",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/inspection_protocol.json"
+      ],
+      "missing_evidence": "Lawful inspection observations with authority, access basis, equipment observations and chain of custody.",
+      "required_authority": "Authorized inspectors under an agreed mandate.",
+      "acceptance_test": "Each inspection has immutable ID, authority/access basis, evidence hashes, equipment scope, exceptions and independent review state."
+    },
+    {
+      "id": "T3-X3",
+      "name": "Global serial-number continuity",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/serial_continuity_protocol.json"
+      ],
+      "missing_evidence": "Global asset/serial ledger covering acquisition, transfer, staging, service, decommissioning and final disposition.",
+      "required_authority": "Manufacturers, custodians/owners and verification authority.",
+      "acceptance_test": "No in-scope serial has an unexplained lifecycle transition; concurrent-location conflicts are resolved or explicitly ambiguous."
+    },
+    {
+      "id": "T3-X4",
+      "name": "Verified decommissioning and recycling",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/decommissioning_protocol.json"
+      ],
+      "missing_evidence": "Compute-specific destruction/recycling events independently corroborated to equipment scope.",
+      "required_authority": "Owners, recyclers/destruction providers and independent verifier.",
+      "acceptance_test": "Disposition evidence is linked to equipment scope and independent verification state; unsupported claims remain UNKNOWN."
+    },
+    {
+      "id": "T3-X5",
+      "name": "Closed statistical audit population and realized sample",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/audit_population_protocol.json",
+        "data/track3/sampling_protocol.json",
+        "data/track3/certificate_model.json"
+      ],
+      "missing_evidence": "Externally fixed threshold, closed sampling frame, reproducible random sample and observed failures.",
+      "required_authority": "Agreed verification/audit mechanism.",
+      "acceptance_test": "Population hash, eligibility rule, seed, sample, failure definition, outcomes and calculation reproduce independently."
+    },
+    {
+      "id": "T3-X6",
+      "name": "Comprehensive covert-site intelligence and discovery",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/detection_universe.json",
+        "data/track3/remote_sensing_observations.json"
+      ],
+      "missing_evidence": "Coverage capable of discovering deliberately concealed facilities outside the public-reference universe.",
+      "required_authority": "Lawful intelligence, remote-sensing and investigative partners.",
+      "acceptance_test": "Closed detection universe, acquisition coverage, candidate adjudication, error characterization and audit trail are defined."
+    },
+    {
+      "id": "T3-X7",
+      "name": "Independent verification governance",
+      "current_state": "BLOCKED_EXTERNAL_CAPABILITY",
+      "repository_evidence": [
+        "data/track3/verification_protocol.json",
+        "data/track3/inspection_protocol.json"
+      ],
+      "missing_evidence": "Independent authority, access rights, disputes, confidentiality, enforcement and conflict-of-interest procedures.",
+      "required_authority": "Participating states/institutions under a formal mandate.",
+      "acceptance_test": "Governance instrument defines authority, independence, audit access, dispute path, evidentiary standard, publication and enforcement procedures."
+    }
+  ],
+  "completion_semantics": "The public repository is complete only as engineering/research infrastructure. Empirical closure remains UNKNOWN until these acceptance tests are met with external evidence."
+}
