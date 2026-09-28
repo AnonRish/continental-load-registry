@@ -41,6 +41,10 @@ jobs:
           python build_track3_verification.py
           python build_remote_sensing_target_status.py
           python build_ambiguity_classification_summary.py --write
+      - name: Reconcile public enrichment and build claim layer
+        run: |
+          python reconcile_track3_public_enrichment.py
+          python build_public_web_claims.py
       - name: Validate refreshed ledgers are populated
         run: |
           python - <<'PY'
