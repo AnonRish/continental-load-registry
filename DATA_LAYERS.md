@@ -24,12 +24,12 @@ Everything below is a separate evidence or research layer unless explicitly stat
 | `data/project_level_extractions.json` | **271** | Individual project / permit / service / queue evidence | Yes | No |
 | `data/project_level_map.json` | **271** | Individual mapped project records | Yes | No |
 | `data/epoch_connection_research_targets.json` | **93** | One target per canonical Epoch site | Yes | No |
-| `data/epoch_site_evidence_records.json` | **68** | Discrete site-level evidence assertions across 59 sites | Via target popups | No |
+| `data/epoch_site_evidence_records.json` | **102** | Discrete site-level evidence assertions across 93 sites | Via target popups | No |
 | `data/supplemental_large_load_evidence.json` | **61** | Utility / regulator / planning / process evidence units | Yes when mappable | Only the designated 83 MISO layer is additive |
 | `data/supplemental_aggregate_map.json` | **66** | Aggregate / historical geographic footprints | Yes | No |
 | `data/caiso_cluster_history.json` | **435** historical projects in C8-and-prior through C14 series | Historical generator queue population | Yes, footprints | No |
 | `data/pjm_large_load_submission_history.json` | **28** | Public LAS document/evidence entries | Document layer | No |
-| `data/public_data_catalog.json` | **15** datasets | Dataset catalog | — | — |
+| `data/public_data_catalog.json` | **61** datasets | Dataset catalog | — | — |
 
 ## Epoch connection-research layer
 
@@ -45,7 +45,7 @@ Current target states:
 
 The target records preserve coordinates from the canonical Epoch map and carry a precision field. A jurisdiction-only or county/city point is not evidence of queue membership.
 
-The underlying evidence inventory contains **68 discrete assertions across 59 sites**. Evidence types include utility relationships, facility records, public contracts, capacity observations and other site-specific source material.
+The legacy site-evidence inventory contains **102 discrete assertions across 93 sites**. The canonical Track 3 evidence ledger is separate and currently contains **1,221 evidence records**. Evidence types include utility relationships, facility records, public contracts, capacity observations and other site-specific source material.
 
 ## Project-level layer
 
