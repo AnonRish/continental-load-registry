@@ -1,6 +1,6 @@
 # Data Layers — Continental Large-Load / Track 3 Registry
 
-Updated: 2026-09-27
+Updated: 2026-09-28
 
 ## Accounting rule
 
@@ -20,7 +20,7 @@ Everything below is a separate evidence or research layer unless explicitly stat
 |---|---:|---|---|---|
 | `data/registry_raw.csv` | 751 retained raw rows | Source-field extract | Indirect | No |
 | `data/large_load_scope.json` | — | Accounting | — | — |
-| `data/market_universe_manifest.json` | 10 market/source families | Coverage manifest | — | — |
+| `data/market_universe_manifest.json` | 11 market/source families | Coverage manifest | — | — |
 | `data/project_level_extractions.json` | **271** | Individual project / permit / service / queue evidence | Yes | No |
 | `data/project_level_map.json` | **271** | Individual mapped project records | Yes | No |
 | `data/epoch_connection_research_targets.json` | **93** | One target per canonical Epoch site | Yes | No |
@@ -73,6 +73,7 @@ The main dashboard map has separate controls for:
 
 - Core row-level queue records
 - Project evidence
+- BPA large-load request layer (35 mapped of 60 records)
 - Aggregate / historical footprints
 - Epoch AI site observations
 - Connection research targets
@@ -86,7 +87,7 @@ The map currently carries:
 - **66** aggregate/historical footprints
 - **93** Epoch AI site observations
 
-The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
+The dedicated BPA project layer has **60** normalized request/project records, of which **35** have retained display geometry and **25** remain explicitly unmapped. The current MISO public response has **83 additional >=100 MW requests totaling 35.9 GW** without sufficient public location fields for a defensible site point. Those records are intentionally **not pinned** to an invented location.
 
 ## Market completion state
 
