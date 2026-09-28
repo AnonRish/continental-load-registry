@@ -59,6 +59,7 @@ jobs:
             build_public_web_claims.py \
             reconcile_track3_public_enrichment.py \
             build_track3_research_backlog.py
+            refresh_physical_source_manifest.py
 
       - name: Run automated source adapters
         continue-on-error: true
@@ -115,7 +116,8 @@ jobs:
           from pathlib import Path
           src=json.loads(Path("data/track3/public_web_enrichment_2026-09-27.json").read_text(encoding="utf-8"))
           claims=json.loads(Path("data/track3/public_web_claims.json").read_text(encoding="utf-8"))
-          source_ids={x.get("evidence_id") for x in src.get("records",[])}
+          from build_public_web_claims import stable_claim_id
+          source_ids={stable_claim_id(x) for x in src.get("records",[])}
           claim_ids={x.get("claim_id") for x in claims.get("claims",[])}
           assert len(source_ids)==len(src.get("records",[]))
           assert len(claim_ids)==len(claims.get("claims",[]))

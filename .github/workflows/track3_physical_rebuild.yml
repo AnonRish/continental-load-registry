@@ -66,6 +66,9 @@ jobs:
       - name: Rebuild Track 3 graph
         run: python build_track3_evidence.py
 
+      - name: Refresh physical provenance manifest
+        run: python refresh_physical_source_manifest.py
+
       - name: Validate Python syntax
         run: python -m py_compile acquire_physical_verification.py apply_track3_coordinate_overrides.py build_track3_geo_audit.py build_track3_evidence.py
 
@@ -77,7 +80,8 @@ jobs:
             data/track3/physical_site_coordinates.json data/track3/remote_sensing_observations.json \
             data/track3/remote_sensing_observations.csv data/track3/transformer_supply_chain_events.json \
             data/track3/transformer_supply_chain_events.csv data/track3/transformer_event_targets.csv \
-            data/track3/site_status.json data/track3/evidence_records.json data/track3/summary.json
+            data/track3/site_status.json data/track3/evidence_records.json data/track3/summary.json \
+            data/track3/physical_source_manifest.json
           if git diff --cached --quiet; then
             echo "No physical artifact changes."
             exit 0

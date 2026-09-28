@@ -169,6 +169,11 @@ def main() -> int:
 
     public_claims = load("data/track3/public_web_claims.json")
     enrichment = load("data/track3/public_web_enrichment_2026-09-27.json")
+    epoch_registry = load("data/external/epoch_ai/registry.json")
+    canonical_site_names = {
+        str(x.get("epoch_id")): str((x.get("normalized") or {}).get("name") or "")
+        for x in epoch_registry.get("records", [])
+    }
     claim_rows = public_claims.get("claims", [])
     enrichment_rows = enrichment.get("records", [])
     if public_claims.get("accounting", {}).get("claim_count") != len(claim_rows):
@@ -202,7 +207,25 @@ def main() -> int:
     if set(enrichment_keys) != set(claim_keys):
         errors.append("public-web claims do not reconcile 1:1 with enrichment records")
 
+    for x in enrichment_rows:
+        eid = str(x.get("epoch_id") or "")
+        site_name = str(x.get("site_name") or "")
+        canonical = canonical_site_names.get(eid)
+        if eid and site_name and canonical and site_name != canonical:
+            errors.append(
+                f"public-web enrichment site_name mismatch for {eid}: "
+                f"{site_name!r} != canonical {canonical!r}"
+            )
+
     for x in claim_rows:
+        eid = str(x.get("epoch_id") or "")
+        site_name = str(x.get("site_name") or "")
+        canonical = canonical_site_names.get(eid)
+        if eid and site_name and canonical and site_name != canonical:
+            errors.append(
+                f"public-web claim site_name mismatch for {eid}: "
+                f"{site_name!r} != canonical {canonical!r}"
+            )
         if not x.get("claim_id") or not x.get("field"):
             errors.append("public-web claim missing claim_id or field")
         if x.get("claim_scope") == "site_level_public_web" and not x.get("epoch_id"):

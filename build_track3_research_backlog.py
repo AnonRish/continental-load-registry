@@ -148,6 +148,25 @@ def main() -> None:
     OUT_JSON.write_text(json.dumps(queue, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     OUT_SUMMARY.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    # Keep the public completeness audit synchronized with this authoritative backlog.
+    audit_path = ROOT / "data" / "website_completeness_audit.json"
+    if audit_path.exists():
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        audit.setdefault("summary", {}).update({
+            "publisher_research_tasks": len(publisher_tasks),
+            "open_track3_domain_cells": len(domain_tasks),
+            "research_tasks": len(tasks),
+        })
+        for section in audit.get("sections", []):
+            if section.get("section") == "Track 3 research console":
+                section["detail"] = (
+                    "Search/filter console and acquisition backlog; current gap register has "
+                    f"{len(publisher_tasks)} effective publisher-field tasks and "
+                    f"{len(domain_tasks)} open domain cells."
+                )
+        audit["generated_on"] = summary["generated_on"]
+        audit_path.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
     print(
         "PASS: built research backlog",
         f"publisher={len(publisher_tasks)}",

@@ -65,10 +65,23 @@ def main() -> int:
         "data/track3/remote_sensing_observations.csv",
         "data/track3/building_footprints_index.json",
         "data/physical_verification_layer.json",
+        "data/track3/physical_site_coordinates.json",
     }
     missing_artifacts = required - set(retained)
     if missing_artifacts:
         raise SystemExit(f"FAIL: manifest missing retained artifacts: {sorted(missing_artifacts)}")
+
+    import hashlib
+    for rel, entry in retained.items():
+        path = ROOT / rel
+        if not path.exists() or path.stat().st_size == 0:
+            raise SystemExit(f"FAIL: retained manifest artifact missing/empty: {rel}")
+        if entry.get("bytes") is not None and int(entry["bytes"]) != path.stat().st_size:
+            raise SystemExit(f"FAIL: retained artifact byte count disagrees: {rel}")
+        if entry.get("sha256"):
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if digest != entry["sha256"]:
+                raise SystemExit(f"FAIL: retained artifact SHA-256 disagrees: {rel}")
 
     outputs = manifest.get("acquisition_outputs", {})
     if outputs.get("remote_sensing_derived_observation_count") != len(derived):
