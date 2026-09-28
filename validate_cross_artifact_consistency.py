@@ -80,18 +80,20 @@ def main() -> None:
     assert cat["data/external/data_center_index/campuses.json"]["record_count"] == 901
 
     backlog = load("data/track3/research_backlog_summary.json")
-    assert backlog["publisher_tasks"] == 273
-    assert backlog["domain_tasks"] == 711
-    assert backlog["total_tasks"] == 984
+    sweep = load("data/track3/site_missing_information_sweep_2026-09-27.json")
+    assert backlog["publisher_tasks"] == sweep["summary"]["effective_unresolved_publisher_fields"]
+    assert backlog["domain_tasks"] == sweep["summary"]["open_track3_domain_cells"]
+    assert backlog["total_tasks"] == backlog["publisher_tasks"] + backlog["domain_tasks"]
+    assert backlog["sites"] == 93
 
     summary = load("data/track3/summary.json")
     observation = load("data/track3/observation_queue.json")
     assert len(observation["tasks"]) == summary["observation_task_count"] == 211
     assert summary["epoch_site_count"] == 93
-    assert summary["remote_sensing_derived_observation_count"] == 423
+    assert summary["remote_sensing_derived_observation_count"] == 543
     assert summary["transformer_event_count"] == 3
-    assert summary["public_web_evidence_record_count"] == 335
-    assert summary["public_web_evidence_site_count"] == 89
+    assert summary["public_web_evidence_record_count"] == 400
+    assert summary["public_web_evidence_site_count"] == 93
 
     coverage = load("data/global_ai_datacenter_coverage_2026-09-27.json")
     epoch = coverage["epoch_capture"]
