@@ -103,7 +103,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <a class="btn" href="api.html">Public API</a><a class="btn" href="bulk-download.html">Bulk downloads</a>
 <a class="btn" href="data/module1_radar_summary.json">Module 1 audit</a>
 </div>
-<div class="mono faint" style="font-size:10px;margin-top:18px;text-transform:uppercase;letter-spacing:.08em">Track 3 · complete evidence surface · revision 2026-09-27</div>
+<div class="mono faint" style="font-size:10px;margin-top:18px;text-transform:uppercase;letter-spacing:.08em">Track 3 · complete evidence surface · revision 2026-09-28</div>
 <h1>Track 3 Evidence Registry</h1>
 <div class="notice" style="margin-top:12px"><strong>Honest state:</strong> This is a public evidence layer, not a facility-wide certification system. The current 93-site universe has 547 retained derived remote-sensing observations across 88 sites and two defensible site-specific queue IDs; the closed-case laboratory now contains 4 cases and 18 derived physical observations across 3 defensibly locatable cases; the remaining facility-level state is <b>INCONCLUSIVE</b> until the defined end-to-end evidence gates are met. Missing public records remain research outcomes, not evidence of absence.</div>
 
@@ -416,7 +416,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <section class="section panel" style="padding:16px">
 <h2>Current Track 3 boundary</h2>
 <div class="warnbox" style="padding:12px">
-<div class="small soft">The current repository has a complete 93-site site/grid evidence disposition: 71 sites have site-level grid evidence, 2 have verified site-specific queue IDs, and 20 have explicit researched-no-public-record outcomes. Remote-sensing acquisition targets cover all 93 sites, but the canonical build currently contains 0 processed satellite observations. Three source-backed transformer events are retained, while the 93-site transformer research target list remains open. These are explicit evidence states, not findings about any facility.</div>
+<div class="small soft">The current repository has a complete 93-site site/grid evidence disposition: 81 sites have site-level grid evidence, 2 have verified site-specific queue IDs, and 10 have explicit researched-no-public-record outcomes. Remote-sensing acquisition targets cover all 93 sites, but the canonical build currently contains 551 processed satellite observations across 88 of 93 sites. Three source-backed transformer events are retained; the remaining 92 site-level transformer cells are explicitly assessed as having no qualifying retained public record in the current evidence layer. These are explicit evidence states, not findings about any facility.</div>
 </div>
 </section>
 
@@ -557,7 +557,7 @@ function renderProgressCharts(){
  const svg3='<svg class="chart" viewBox="0 0 380 160" role="img" aria-label="Observed Track 3 timeline events by year"><line class="chart-axis" x1="28" y1="126" x2="354" y2="126"/><line class="chart-gridline" x1="28" y1="34" x2="354" y2="34"/><path class="chart-stroke" d="'+line+'"/>'+pts+'<text class="chart-text" x="28" y="18">449 observed timeline events retained</text><text class="chart-text" x="28" y="157">Year labels count observed/reported events, not predictions.</text></svg>';
  document.getElementById('progressCharts').innerHTML=
  '<div class="chart-card"><div class="chart-title">Grid-state distribution</div><div class="chart-note">'+esc(verified)+' verified · '+esc(evidence)+' site-level evidence · '+esc(noRecord)+' searched with no retained public record.</div>'+svg1+'</div>'+
- '<div class="chart-card"><div class="chart-title">Acquisition completion</div><div class="chart-note">0/93 qualifying interval-power, remote-sensing, and cooling tasks are marked complete by the canonical task queue.</div>'+svg2+
+ '<div class="chart-card"><div class="chart-title">Acquisition completion</div><div class="chart-note">0/93 interval-power telemetry targets have qualifying interval measurements; 88/93 sites have retained remote-sensing observations; 18/93 sites have retained cooling snapshots.</div>'+svg2+
  '<div style="margin-top:8px">'+makeBar('Power snapshots retained (not task completion)',snapshotCounts.power_telemetry,93)+makeBar('Cooling observations retained (not task completion)',snapshotCounts.cooling,93)+'</div></div>'+
  '<div class="chart-card"><div class="chart-title">Observed time progress</div><div class="chart-note">Construction / operational observations retained by year across the 93-site universe.</div>'+svg3+'</div>';
  document.getElementById('progressMeta').textContent='93 canonical sites · '+esc(ts.observed_timeline_event_count||0)+' observed timeline events · '+esc(ts.future_or_predicted_timeline_event_count||0)+' future/predicted rows kept separate · '+esc(obs.length)+' observation-acquisition tasks.';
