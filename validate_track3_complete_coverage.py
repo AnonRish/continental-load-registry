@@ -31,6 +31,7 @@ REQUIRED_ARTIFACTS = [
     "track3_certificate.py",
     "reconcile_track3_public_enrichment.py",
     "data/track3/coverage_gap_register_2026-09-27.json",
+    "data/track3/research_assessments_2026-09-27.json",
 ]
 
 
@@ -81,6 +82,45 @@ def main() -> int:
     sites = load("data/track3/site_status.json")
     if sites.get("summary", {}).get("epoch_site_count") != 93:
         errors.append("site-status epoch universe is not 93")
+
+    assessment = load("data/track3/research_assessments_2026-09-27.json")
+    assessment_rows = assessment.get("records", [])
+    if assessment.get("record_count") != len(assessment_rows):
+        errors.append("research assessment record_count does not match records")
+    assessment_ids = [str(x.get("assessment_id")) for x in assessment_rows]
+    if len(assessment_ids) != len(set(assessment_ids)) or any(not x or x == "None" for x in assessment_ids):
+        errors.append("research assessment IDs are missing or duplicated")
+    site_ids = {str(x.get("epoch_id")) for x in sites.get("records", [])}
+    assessment_pairs = {(str(x.get("epoch_id")), str(x.get("domain"))) for x in assessment_rows}
+    if len(assessment_pairs) != len(assessment_rows):
+        errors.append("research assessments contain duplicate site/domain pairs")
+    if not assessment_pairs.issubset({(sid, domain) for sid in site_ids for domain in [
+        "site_identity","construction","chip_inventory","grid_connection","service_or_contract",
+        "regulatory","compute_tenancy","power_telemetry","remote_sensing","cooling",
+        "transformer_supply_chain","chip_ownership","chip_users","chip_shipments","independent_corroboration"
+    ]}):
+        errors.append("research assessments reference an unknown site/domain")
+    terminal_states = {"INGESTED","INGESTED_DERIVED","INGESTED_SNAPSHOT","SITE_LEVEL_EVIDENCE",
+                       "VERIFIED_SITE_SPECIFIC","RESEARCHED_NO_PUBLIC_RECORD","ASSESSED"}
+    open_states = {"NOT_INGESTED","NOT_ASSESSED","UNKNOWN","RESEARCH_QUEUE","PENDING_RESEARCH"}
+    all_domain_rows = [x.get("domains", {}) for x in sites.get("records", [])]
+    open_cells = sum(
+        1 for domains in all_domain_rows for state in domains.values()
+        if state.get("status") in open_states
+    )
+    nonterminal_cells = sum(
+        1 for domains in all_domain_rows for state in domains.values()
+        if state.get("status") not in terminal_states
+    )
+    if open_cells:
+        errors.append(f"site/domain matrix still contains {open_cells} open cells")
+    if nonterminal_cells:
+        errors.append(f"site/domain matrix contains {nonterminal_cells} non-terminal cells")
+    if len(all_domain_rows) == 93 and sum(len(d) for d in all_domain_rows) != 93 * 15:
+        errors.append("site/domain matrix does not contain exactly 1,395 domain cells")
+    sweep = load("data/track3/site_missing_information_sweep_2026-09-27.json")
+    if sweep.get("summary", {}).get("open_track3_domain_cells") != 0:
+        errors.append("research sweep still reports open Track 3 domain cells")
 
     coord_status = {str(x.get("epoch_id")): x.get("coordinate_status") for x in geo.get("records", [])}
     for x in geo.get("records", []):
