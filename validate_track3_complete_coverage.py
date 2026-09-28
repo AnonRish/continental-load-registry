@@ -32,6 +32,8 @@ REQUIRED_ARTIFACTS = [
     "reconcile_track3_public_enrichment.py",
     "data/track3/coverage_gap_register_2026-09-27.json",
     "data/track3/research_assessments_2026-09-27.json",
+    "data/track3/engineering_closure_2026-09-28.json",
+    "build_track3_engineering_closure.py",
 ]
 
 
@@ -51,6 +53,13 @@ def main() -> int:
         print("\n".join("ERROR: " + e for e in errors))
         return 1
 
+    closure = load("data/track3/engineering_closure_2026-09-28.json")
+    if closure.get("repository_engineering_status") != "COMPLETE":
+        errors.append("engineering closure status is not COMPLETE")
+    if closure.get("empirical_track3_verification_status") != "NOT_CLOSED":
+        errors.append("empirical Track 3 verification must remain NOT_CLOSED")
+    if closure.get("untracked_gap_count") != 0:
+        errors.append("engineering closure reports untracked repository gaps")
     matrix = load("data/track3/track3_completeness_matrix.json")
     rows = matrix.get("rows", [])
     if len(rows) < 17:
@@ -134,6 +143,12 @@ def main() -> int:
         errors.append("domain completeness matrix status counts do not sum to 1,395")
 
     publisher_matrix = load("data/track3/publisher_completeness_matrix_2026-09-27.json")
+    backlog = load("data/track3/research_backlog_summary.json")
+    observations = load("data/track3/observation_queue.json")
+    if closure.get("remaining_research_and_acquisition", {}).get("public_publisher_field_tasks_open") != backlog.get("publisher_tasks"):
+        errors.append("engineering closure publisher backlog does not reconcile")
+    if closure.get("remaining_research_and_acquisition", {}).get("follow_on_observation_tasks") != observations.get("task_count"):
+        errors.append("engineering closure observation queue does not reconcile")
     pm_rows = publisher_matrix.get("records", [])
     if publisher_matrix.get("accounting", {}).get("cells") != len(pm_rows):
         errors.append("publisher completeness matrix record count does not reconcile")
