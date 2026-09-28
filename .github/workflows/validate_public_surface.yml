@@ -331,6 +331,7 @@ jobs:
               "data/track3/time_series_verification.json",
               "data/track3/evidence_records.json",
               "data/track3/public_web_claims.json",
+              "data/track3/public_research_leads.json",
               "data/track3/site_status.json",
               "data/track3/observation_queue.json",
               "data/track3/research_queue.json",
@@ -419,6 +420,21 @@ jobs:
           assert all(x.get("epoch_id") for x in claim_rows if x.get("claim_scope") == "site_level_public_web")
           assert all(x.get("claim_scope") in {"site_level_public_web","state_or_multi_site_public_web"} for x in claim_rows)
           print(f"PASS: {len(claim_rows)} public-web claims")
+          PY
+
+      - name: Validate normalized public research leads
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("data/track3/public_research_leads.json").read_text(encoding="utf-8"))
+          rows=d["records"]
+          assert d["accounting"]["lead_count"] == len(rows) == 53
+          assert d["accounting"]["site_count"] == 33
+          assert len({x["lead_id"] for x in rows}) == len(rows)
+          assert all(x["epoch_id"] and x["field"] and x["finding"] for x in rows)
+          assert all(x["status"] in {"PUBLIC_LEAD_REVIEW_REQUIRED","RETAINED_SOURCE","PUBLIC_SOURCE"} for x in rows)
+          print(f"PASS: {len(rows)} public research leads")
           PY
 
       - name: Validate canonical cross-artifact consistency
