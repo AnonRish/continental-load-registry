@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-09-28T18:11:44.207479+00:00",
+  "generated_at_utc": "2026-09-29T16:33:06.055573+00:00",
   "title": "Track 3 Entity Resolution Layer",
   "semantics": "Confidence is evidence strength, not probability. Name normalization is a reconciliation key, not proof of legal identity. Missing ownership, landowner, colocation and shell-company findings remain unresolved rather than inferred.",
   "stats": {
@@ -3375,7 +3375,7 @@
         "QTS DATA CENTERS LLC",
         "QTS Data Centers"
       ],
-      "source_evidence_count": 7,
+      "source_evidence_count": 6,
       "evidence_strength_max": 0.99
     },
     {
@@ -21508,11 +21508,11 @@
     {
       "entity_id": "ENT-meta-speculative",
       "canonical_name": "Meta #speculative",
-      "entity_type": "compute_user_operator",
+      "entity_type": "owner_operator",
       "name_variants": [
         "Meta #speculative"
       ],
-      "source_evidence_count": 1,
+      "source_evidence_count": 2,
       "evidence_strength_max": 0.9
     },
     {
@@ -45096,7 +45096,7 @@
       "evidence_id": "EPOCH-177c53f92d72ec4a",
       "source": "epoch_ai_registry",
       "source_url": "https://epoch.ai/data/data-centers-documentation/records",
-      "confidence_score": 0.9,
+      "confidence_score": 0.98,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "OBSERVED_OR_REPORTED",
       "notes": "Explicit Epoch owner field."
@@ -45702,7 +45702,7 @@
     {
       "relationship_id": "REL-1776",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
-      "to_entity_id": "ENT-qts-data-centers",
+      "to_entity_id": "ENT-meta-speculative",
       "relationship_type": "SITE_OWNER_OPERATOR",
       "evidence_id": "EPOCH-4b4d686b6c457a68",
       "source": "epoch_ai_registry",
