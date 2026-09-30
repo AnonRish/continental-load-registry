@@ -131,7 +131,7 @@
 </div>
 
 <div style="float: right;min-width:200px">
-    <div style="margin-bottom: 5px;">As of: 9/29/2026</div>
+    <div style="margin-bottom: 5px;">As of: 9/30/2026</div>
     <div style="margin-bottom: 5px;"><a href='/reports/exportpublicqueue' title="Export results" class="export-link"><i style="color: green" class="fa fa-file-excel-o fa-lg"></i> Export to Excel</a></div>
     <div style=""><a href='/reports/exportpublicqueuepdf' onclick="$('#alertDownload').show()" title="Export results" class="export-link"><i style="color: red" class="fa fa-file-pdf-o fa-lg"></i> Export to PDF</a></div>
     <br />
@@ -381,7 +381,7 @@
                                         <td>Oxford</td> 
                                         <td>ME</td> 
                                         <td data-order="639319392000000000">12/4/2026</td> 
-                                        <td data-order="639276192000000000">10/15/2026</td> 
+                                        <td data-order="639291744000000000">11/2/2026</td> 
                                         <td data-order="0"></td> 
                                         <td>Roxbury Substation</td> 
                                         <td>CNR</td> 
@@ -58236,7 +58236,7 @@ Coordinates: 42.78270705350802, -72.51706642321578</td>
                 $('a.export-link').on('click', function (e) {
                     e.preventDefault();
                     var url = $(this).attr('href');
-                    location.href = url + '?ReportDate=' + 639262368000000000 + '&Status=' + GetSelectedItemValue("ddlStatus") + "&Jurisdiction=" + GetSelectedItemValue("ddlJurisdiction");
+                    location.href = url + '?ReportDate=' + 639263232000000000 + '&Status=' + GetSelectedItemValue("ddlStatus") + "&Jurisdiction=" + GetSelectedItemValue("ddlJurisdiction");
                 });
 
                 function GetSelectedItemValue(ddl) {

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Track 3-specific detection universe",
-  "generated_at_utc": "2026-09-30T00:08:50.482527+00:00",
+  "generated_at_utc": "2026-09-30T16:26:25.994206+00:00",
   "methodology": {
     "tracked_universe": "93 Epoch AI facility records",
     "expanded_surveillance": "997 queue/request rows without a conservative direct Epoch project-name match",
@@ -1250,6 +1250,61 @@
       }
     },
     {
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "facility_name": "Meta Temple",
+      "classification": "KNOWN_AI_COMPUTE",
+      "classification_scope": "Epoch publisher/derived record only; not physical certification",
+      "entry_reason": "Included because Epoch AI's AI data-center dataset contains a facility-level record. This is a Track 3 research-universe anchor, not proof of current physical AI compute.",
+      "evidence_basis": {
+        "current_h100_equivalents": 202472.98777125112,
+        "current_power_mw": 178,
+        "owner": "Meta #confident",
+        "users": "Meta #confident",
+        "project": "Temple Data Center",
+        "current_chip_types": null
+      },
+      "source_crosscheck": {
+        "epoch": {
+          "status": "MATCH",
+          "source_url": "https://epoch.ai/data/data_centers/data_centers.csv"
+        },
+        "queue_registry": {
+          "status": "NO_SITE_SPECIFIC_QUEUE_ID",
+          "queue_id": null
+        },
+        "retained_site_evidence": {
+          "count": 23
+        },
+        "company_or_regulatory_disclosure_references": {
+          "count": 0,
+          "method": "URL-domain heuristic over retained Epoch Selected Sources list"
+        },
+        "permit_or_planning_references": {
+          "count": 3,
+          "method": "URL/text heuristic over retained Epoch Selected Sources list"
+        },
+        "dc_byte": {
+          "status": "CATALOGED_NOT_INGESTED",
+          "reason": "Commercial source; no facility-level DC Byte export retained in this repository."
+        },
+        "satellite": {
+          "optical": "INGESTED_DERIVED",
+          "tir": "INGESTED_DERIVED",
+          "sar": "INGESTED_DERIVED"
+        },
+        "current_physical_layer": {
+          "optical_scenes": 5,
+          "tir_numeric": 2,
+          "sar_numeric": 2,
+          "transformer_events": 3
+        }
+      },
+      "absence_testing": {
+        "status": "NO_ABSENCE_CLAIM",
+        "search_records": []
+      }
+    },
+    {
       "facility_id": "EPOCH-bdc85fadae79b6b2",
       "facility_name": "AWS New Albany",
       "classification": "KNOWN_AI_COMPUTE",
@@ -1681,61 +1736,6 @@
           "optical_scenes": 2,
           "tir_numeric": 3,
           "sar_numeric": 4,
-          "transformer_events": 3
-        }
-      },
-      "absence_testing": {
-        "status": "NO_ABSENCE_CLAIM",
-        "search_records": []
-      }
-    },
-    {
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "facility_name": "Meta Temple",
-      "classification": "KNOWN_AI_COMPUTE",
-      "classification_scope": "Epoch publisher/derived record only; not physical certification",
-      "entry_reason": "Included because Epoch AI's AI data-center dataset contains a facility-level record. This is a Track 3 research-universe anchor, not proof of current physical AI compute.",
-      "evidence_basis": {
-        "current_h100_equivalents": 173247.6719844078,
-        "current_power_mw": 152,
-        "owner": "Meta #confident",
-        "users": "Meta #confident",
-        "project": "Temple Data Center",
-        "current_chip_types": null
-      },
-      "source_crosscheck": {
-        "epoch": {
-          "status": "MATCH",
-          "source_url": "https://epoch.ai/data/data_centers/data_centers.csv"
-        },
-        "queue_registry": {
-          "status": "NO_SITE_SPECIFIC_QUEUE_ID",
-          "queue_id": null
-        },
-        "retained_site_evidence": {
-          "count": 23
-        },
-        "company_or_regulatory_disclosure_references": {
-          "count": 0,
-          "method": "URL-domain heuristic over retained Epoch Selected Sources list"
-        },
-        "permit_or_planning_references": {
-          "count": 3,
-          "method": "URL/text heuristic over retained Epoch Selected Sources list"
-        },
-        "dc_byte": {
-          "status": "CATALOGED_NOT_INGESTED",
-          "reason": "Commercial source; no facility-level DC Byte export retained in this repository."
-        },
-        "satellite": {
-          "optical": "INGESTED_DERIVED",
-          "tir": "INGESTED_DERIVED",
-          "sar": "INGESTED_DERIVED"
-        },
-        "current_physical_layer": {
-          "optical_scenes": 5,
-          "tir_numeric": 2,
-          "sar_numeric": 2,
           "transformer_events": 3
         }
       },

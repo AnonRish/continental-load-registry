@@ -2,8 +2,8 @@
   "schema_version": 1,
   "protocol_version": "T3-V1",
   "title": "Track 3 versioned verification results",
-  "generated_at_utc": "2026-09-30T00:08:50.482527+00:00",
-  "source_snapshot_commit": "c0cb3e68cb07b52f6c307c62ec20a4c4a2fe74c4",
+  "generated_at_utc": "2026-09-30T16:26:25.994206+00:00",
+  "source_snapshot_commit": "23a6485f3e06265ea72b0027d9eee19a7d7791f5",
   "semantics": "Claim-level automated verification results; not facility-wide certification.",
   "summary": {
     "facility_count": 93,
@@ -1896,6 +1896,91 @@
       "verifier": "not_independently_assessed"
     },
     {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-UNIVERSE",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "UNIVERSE_ENTRY",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://epoch.ai/data/data_centers/data_centers.csv"
+      ],
+      "basis": "Stable Epoch facility record and declared research-universe inclusion reason are retained.",
+      "verifier": "automated_precondition"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-AI",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "AI_COMPUTE_PUBLISHER_CHECK",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://epoch.ai/data/data_centers/data_centers.csv"
+      ],
+      "basis": "Epoch retains a positive current H100-equivalent field; publisher/derived check only.",
+      "verifier": "automated_publisher_check"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-SITE",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "SITE_IDENTITY",
+      "status": "PASS",
+      "evidence_refs": [
+        "Epoch:EPOCH-6ff5e1aeb6f0c7e3"
+      ],
+      "basis": "Stable Epoch ID, facility name and site-level record retained.",
+      "verifier": "automated_identity_check"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-GRID",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "GRID_CONNECTION",
+      "status": "UNKNOWN",
+      "evidence_refs": [],
+      "basis": "No site-specific queue ID retained; jurisdiction-only/generic utility evidence is not promoted to PASS.",
+      "verifier": "automated_connection_check"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-POWER",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "POWER_OBSERVATION",
+      "status": "UNKNOWN",
+      "evidence_refs": [],
+      "basis": "No site-specific electricity observation record is retained.",
+      "verifier": "automated_power_check"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-REMOTE",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "PHYSICAL_REMOTE_SENSING",
+      "status": "PASS",
+      "evidence_refs": [
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260523T170851_R112_T14RPV_20260523T221819",
+        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T14RPV_20260525T205549",
+        "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2C_14RPV_20260530_1_L2A"
+      ],
+      "basis": "9 traceable derived remote-sensing observation(s) are retained for this site.",
+      "verifier": "automated_physical_observation_check"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-CORR",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "INDEPENDENT_CORROBORATION",
+      "status": "PASS",
+      "evidence_refs": [
+        null,
+        null
+      ],
+      "basis": "At least two retained site evidence records exist; metadata corroboration does not prove methodological independence.",
+      "verifier": "automated_metadata_check"
+    },
+    {
+      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-END2END",
+      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "claim": "END_TO_END_TRACK3",
+      "status": "UNKNOWN",
+      "evidence_refs": [],
+      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
+      "verifier": "not_independently_assessed"
+    },
+    {
       "verification_id": "VR-EPOCH-bdc85fadae79b6b2-UNIVERSE",
       "facility_id": "EPOCH-bdc85fadae79b6b2",
       "claim": "UNIVERSE_ENTRY",
@@ -2569,91 +2654,6 @@
     {
       "verification_id": "VR-EPOCH-5de9a1c70a3e2275-END2END",
       "facility_id": "EPOCH-5de9a1c70a3e2275",
-      "claim": "END_TO_END_TRACK3",
-      "status": "UNKNOWN",
-      "evidence_refs": [],
-      "basis": "No independent verifier record and no complete physical + electrical + compute/accounting chain sufficient for a facility-wide Track 3 conclusion.",
-      "verifier": "not_independently_assessed"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-UNIVERSE",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "UNIVERSE_ENTRY",
-      "status": "PASS",
-      "evidence_refs": [
-        "https://epoch.ai/data/data_centers/data_centers.csv"
-      ],
-      "basis": "Stable Epoch facility record and declared research-universe inclusion reason are retained.",
-      "verifier": "automated_precondition"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-AI",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "AI_COMPUTE_PUBLISHER_CHECK",
-      "status": "PASS",
-      "evidence_refs": [
-        "https://epoch.ai/data/data_centers/data_centers.csv"
-      ],
-      "basis": "Epoch retains a positive current H100-equivalent field; publisher/derived check only.",
-      "verifier": "automated_publisher_check"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-SITE",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "SITE_IDENTITY",
-      "status": "PASS",
-      "evidence_refs": [
-        "Epoch:EPOCH-6ff5e1aeb6f0c7e3"
-      ],
-      "basis": "Stable Epoch ID, facility name and site-level record retained.",
-      "verifier": "automated_identity_check"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-GRID",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "GRID_CONNECTION",
-      "status": "UNKNOWN",
-      "evidence_refs": [],
-      "basis": "No site-specific queue ID retained; jurisdiction-only/generic utility evidence is not promoted to PASS.",
-      "verifier": "automated_connection_check"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-POWER",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "POWER_OBSERVATION",
-      "status": "UNKNOWN",
-      "evidence_refs": [],
-      "basis": "No site-specific electricity observation record is retained.",
-      "verifier": "automated_power_check"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-REMOTE",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "PHYSICAL_REMOTE_SENSING",
-      "status": "PASS",
-      "evidence_refs": [
-        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2C_MSIL2A_20260523T170851_R112_T14RPV_20260523T221819",
-        "https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a/items/S2B_MSIL2A_20260525T165839_R069_T14RPV_20260525T205549",
-        "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2C_14RPV_20260530_1_L2A"
-      ],
-      "basis": "9 traceable derived remote-sensing observation(s) are retained for this site.",
-      "verifier": "automated_physical_observation_check"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-CORR",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "claim": "INDEPENDENT_CORROBORATION",
-      "status": "PASS",
-      "evidence_refs": [
-        null,
-        null
-      ],
-      "basis": "At least two retained site evidence records exist; metadata corroboration does not prove methodological independence.",
-      "verifier": "automated_metadata_check"
-    },
-    {
-      "verification_id": "VR-EPOCH-6ff5e1aeb6f0c7e3-END2END",
-      "facility_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "claim": "END_TO_END_TRACK3",
       "status": "UNKNOWN",
       "evidence_refs": [],
