@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-29T16:33:06.377112+00:00",
-  "today_utc": "2026-09-29",
+  "generated_on": "2026-09-30T00:08:50.354804+00:00",
+  "today_utc": "2026-09-30",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
@@ -9,8 +9,8 @@
     "timeline_source_row_count": 545,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
-    "observed_timeline_event_count": 449,
-    "future_or_predicted_timeline_event_count": 96,
+    "observed_timeline_event_count": 450,
+    "future_or_predicted_timeline_event_count": 95,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
     "caiso_historical_series_record_count": 8,
@@ -27,7 +27,7 @@
       "id": "MONTHLY_QUARTERLY_MW_CHANGES",
       "item": "Monthly/quarterly MW changes",
       "status": "DERIVED_IRREGULAR_EVENT_SERIES",
-      "coverage": "449 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
+      "coverage": "450 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
     },
     {
       "id": "QUEUE_TO_OPERATION_TIMELINE",
@@ -193,10 +193,10 @@
     },
     {
       "quarter": "2026-Q3",
-      "it_power_delta_mw": 1431.922,
-      "total_power_delta_mw": 1826.31,
-      "building_delta": 17.0,
-      "site_change_event_count": 36
+      "it_power_delta_mw": 1457.922,
+      "total_power_delta_mw": 1859.31,
+      "building_delta": 18.0,
+      "site_change_event_count": 37
     }
   ],
   "annual_electricity_consumption_snapshots": [
@@ -765,7 +765,7 @@
         {
           "date": "2026-06-15",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "The site is estimated to have at least ~830 MW of GPU server power, with at least \"at least 220,000 additional GB300 processors and over 400 additional megawatts of compute power\", corresponding to the \"next phase of expansion\" found in the following [company S-1 filing, page 76](https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm).This estimate is backed up by our cooling and turbine based power production calculations. The cooling calculations suggest there is enough infrastructure to support ~850MW of IT Power. Similarly the energy production calculations support ~900MW of available IT Power. This gives us confidence that the proposed expansion was achieved in time. The roof for building 3 is halfway complete. ",
+          "construction_status": "The site is estimated to have at least ~830 MW of GPU server power, with at least \"at least 220,000 additional GB300 processors and over 400 additional megawatts of compute power\", corresponding to the \"next phase of expansion\" found in the following [company S-1 filing, page 76](https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm). This estimate is backed up by our cooling and turbine based power production calculations. The cooling calculations suggest there is enough infrastructure to support ~850MW of IT Power. Similarly the energy production calculations support ~900MW of available IT Power. This gives us confidence that the proposed expansion was achieved in time. The roof for building 3 is halfway complete. ",
           "buildings_operational": 2.0,
           "it_power_mw": 946.0,
           "total_power_mw": 1276.0,
@@ -4352,10 +4352,10 @@
       "site_name": "Meta Temple",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 6,
-      "future_or_predicted_event_count": 1,
+      "observed_event_count": 7,
+      "future_or_predicted_event_count": 0,
       "first_observed_date": "2022-04-01",
-      "last_observed_date": "2026-02-24",
+      "last_observed_date": "2026-09-30",
       "observed_events": [
         {
           "date": "2022-04-01",
@@ -4452,20 +4452,25 @@
             "delta_total_power_mw": 0.0,
             "delta_buildings_operational": 0.0
           }
-        }
-      ],
-      "future_or_predicted_events": [
+        },
         {
           "date": "2026-09-30",
-          "temporal_status": "FUTURE_OR_PREDICTED",
+          "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Building 3 is operational. Based on the stated completion date in this [regulatory filing](https://www.tdlr.texas.gov/TABS/Search/Project/TABS2026008019)",
           "buildings_operational": 3.0,
           "it_power_mw": 178.0,
           "total_power_mw": 231.0,
           "h100_equivalents": 202472.98777125112,
-          "performance_8bit_ops": 4.00694042799306e+20
+          "performance_8bit_ops": 4.00694042799306e+20,
+          "change_from_previous_observed_event": {
+            "date": "2026-09-30",
+            "delta_it_power_mw": 26.0,
+            "delta_total_power_mw": 33.0,
+            "delta_buildings_operational": 1.0
+          }
         }
       ],
+      "future_or_predicted_events": [],
       "source": {
         "publisher": "Epoch AI",
         "dataset": "AI data centers / data center timelines",
