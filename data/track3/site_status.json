@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-09-30T00:08:48.907774+00:00",
+    "generated_at_utc": "2026-09-30T14:08:20.254271+00:00",
     "epoch_site_count": 93,
     "observation_task_count": 24,
     "observation_task_counts_by_domain": {
@@ -14,7 +14,7 @@
       "P1": 18
     },
     "site_level_evidence_site_count": 93,
-    "track3_evidence_record_count": 1214,
+    "track3_evidence_record_count": 1277,
     "public_web_evidence_record_count": 454,
     "public_web_evidence_site_count": 93,
     "combined_site_level_evidence_site_count": 93,
@@ -2050,6 +2050,93 @@
       "next_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record."
     },
     {
+      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
+      "site_name": "Meta Temple",
+      "country": "United States",
+      "state_province": "TX",
+      "state_province_source": "grid_crosswalk",
+      "epoch_region_inferred_from_address": "TX",
+      "current_it_power_mw": 178,
+      "current_h100_equivalents": 202472.98777125112,
+      "domains": {
+        "site_identity": {
+          "status": "INGESTED",
+          "basis": "Epoch AI site record imported."
+        },
+        "construction": {
+          "status": "INGESTED",
+          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
+        },
+        "chip_inventory": {
+          "status": "INGESTED",
+          "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
+        },
+        "grid_connection": {
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
+        },
+        "service_or_contract": {
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
+        },
+        "regulatory": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-regulatory"
+        },
+        "compute_tenancy": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-compute_tenancy"
+        },
+        "power_telemetry": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-power_telemetry"
+        },
+        "remote_sensing": {
+          "status": "INGESTED_DERIVED",
+          "observation_count": 9,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
+        },
+        "cooling": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
+        },
+        "transformer_supply_chain": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-transformer_supply_chain"
+        },
+        "chip_ownership": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_users": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_shipments": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "independent_corroboration": {
+          "status": "ASSESSED",
+          "basis": "A retained public-web corroboration record documents materially independent public sources for this site."
+        }
+      },
+      "site_level_evidence_count": 1,
+      "public_web_evidence_count": 13,
+      "crosswalk_public_evidence_count": 1,
+      "combined_site_level_evidence_count": 15,
+      "next_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case."
+    },
+    {
       "epoch_id": "EPOCH-bdc85fadae79b6b2",
       "site_name": "AWS New Albany",
       "country": "United States",
@@ -2765,93 +2852,6 @@
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 19,
       "next_action": "Search Idaho Public Utilities Commission and Idaho Power filings for the site-specific large-customer tariff, service agreement, interconnection or planning case."
-    },
-    {
-      "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
-      "site_name": "Meta Temple",
-      "country": "United States",
-      "state_province": "TX",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "TX",
-      "current_it_power_mw": 152,
-      "current_h100_equivalents": 173247.6719844078,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
-        },
-        "grid_connection": {
-          "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
-        },
-        "service_or_contract": {
-          "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "A site-specific service, utility-planning, energy-contract, or public service/contract/planning record is attached; it is kept separate from queue-ID verification."
-        },
-        "regulatory": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-regulatory"
-        },
-        "compute_tenancy": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-compute_tenancy"
-        },
-        "power_telemetry": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-power_telemetry"
-        },
-        "remote_sensing": {
-          "status": "INGESTED_DERIVED",
-          "observation_count": 9,
-          "modalities": [
-            "optical",
-            "sar",
-            "tir"
-          ],
-          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
-        },
-        "cooling": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
-        },
-        "transformer_supply_chain": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6ff5e1aeb6f0c7e3-transformer_supply_chain"
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "ASSESSED",
-          "basis": "A retained public-web corroboration record documents materially independent public sources for this site."
-        }
-      },
-      "site_level_evidence_count": 1,
-      "public_web_evidence_count": 13,
-      "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 15,
-      "next_action": "Search ERCOT, Oncor and Public Utility Commission of Texas records for the Temple site's service/interconnection case."
     },
     {
       "epoch_id": "EPOCH-14cecdb5956daea1",
