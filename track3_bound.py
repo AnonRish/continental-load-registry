@@ -63,6 +63,7 @@ def compute_track3_bound(
     tail_sample_size: int | None = None,
     tail_failures: int | None = None,
     delta: float = 0.05,
+    untraced_pool_units: float | None = None,
 ) -> dict[str, Any]:
     site_results = [site_upper_bound(site) for site in sites]
     unknown_sites = [r for r in site_results if r["status"] != "PASS"]
@@ -91,6 +92,20 @@ def compute_track3_bound(
             "bound_method": "SITE_EVIDENCE_INCOMPLETE",
         }
 
+    if untraced_pool_units is None:
+        return {
+            "schema_version": 1,
+            "status": "UNKNOWN",
+            "claim": "upper bound on untraced compute in the declared closed population",
+            "reason": "untraced pool L was not supplied; the certificate bounds D + L and L cannot be assumed zero",
+            "site_results": site_results,
+            "unknown_site_count": 0,
+            "global_upper_bound_accelerators": None,
+            "bound_method": "UNTRACED_POOL_L_MISSING",
+        }
+    if untraced_pool_units < 0:
+        raise ValueError("untraced_pool_units must be >= 0")
+
     site_bound = sum(float(r["upper_bound_accelerators"]) for r in site_results)
     tail_bound = 0.0
     tail_result = None
@@ -115,6 +130,7 @@ def compute_track3_bound(
             "upper_bound_untraced_compute_units": tail_bound,
         }
 
+    pool = float(untraced_pool_units)
     return {
         "schema_version": 1,
         "status": "PASS",
@@ -123,12 +139,14 @@ def compute_track3_bound(
         "unknown_site_count": 0,
         "site_upper_bound_accelerators": site_bound,
         "tail_sampling": tail_result,
-        "global_upper_bound_accelerators": site_bound + tail_bound,
-        "bound_method": "MAX_INDEPENDENT_SITE_CAPACITY_MINUS_DECLARED_PLUS_OPTIONAL_TAIL_STATISTICAL_BOUND",
+        "untraced_pool_units": pool,
+        "global_upper_bound_accelerators": site_bound + tail_bound + pool,
+        "bound_method": "MAX_INDEPENDENT_SITE_CAPACITY_MINUS_DECLARED_PLUS_OPTIONAL_TAIL_STATISTICAL_BOUND_PLUS_UNTRACED_POOL_L",
         "limitations": [
             "This is an accounting bound, not proof that no covert compute exists.",
             "The bound is only as good as the declared closed population and independence of supplied capacity estimates.",
             "Accelerator counts and compute capacity are intentionally kept as separate quantities.",
+            "L (untraced pool) is added in full: it is a measured quantity that further sampling cannot reduce.",
         ],
     }
 
@@ -146,6 +164,7 @@ def main() -> int:
         tail_sample_size=data.get("tail_sample_size"),
         tail_failures=data.get("tail_failures"),
         delta=float(data.get("delta", 0.05)),
+        untraced_pool_units=data.get("untraced_pool_units"),
     )
     result["input_sha256"] = _sha(data)
     output = json.dumps(result, indent=2, ensure_ascii=False) + "\n"

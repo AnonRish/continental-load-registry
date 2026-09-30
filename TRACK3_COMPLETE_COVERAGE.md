@@ -46,7 +46,7 @@ This is a repository-level completeness result, not an international Track 3 ver
 ## Current empirical layers
 
 - 93-site Epoch frontier-AI reference universe.
-- 575 retained derived remote-sensing observations across 92 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 92 of 93 reference-site coordinates resolved for acquisition. One reference site remains unresolved for site-specific physical targeting.
+- 631 retained derived remote-sensing observations across 92 of 93 reference sites in the current committed observation ledger; the physical-target layer now has 92 of 93 reference-site coordinates resolved for acquisition. One reference site remains unresolved for site-specific physical targeting.
 - 204 optical observations, 184 TIR observations, and 187 SAR observations in the current committed ledger.
 - 214 open public-source publisher-field research tasks and 0 open site/domain cells after terminal evidence assessment.
 - 24 current follow-on observation-acquisition tasks: 6 P0 power-telemetry tasks and 18 P1 cooling tasks. These remain open acquisitions even where the underlying domain cell is terminally assessed.

@@ -16,3 +16,18 @@ cannot hide behind being one legal entity among many.
 A field implementation should replace the example data structures with:
 vendor-sales records, resale/transfer records, inventory records, decommissioning
 records, stable serial identifiers, and independent physical inspection evidence.
+
+## How a sampled unit is resolved
+
+A unit is drawn uniformly from all units recorded as delivered into the tail, then mapped to its recipient by cumulative delivered units, so memory grows with the number of recipients rather than the number of units. Within a recipient, the units it received are split in order into held, sold-onward and attrition units:
+
+| Sampled unit lands in | Outcome |
+|---|---|
+| held inventory (`current_holdings`) | `PASS`: a physical inspection is required |
+| a unit sold onward (`onward_sales`) | `TRACE_FORWARD`: the trace continues at the buyer |
+| an attrition claim (`documented_attrition`) | `FAIL`: the claim is not independently verified |
+| an account that does not reconcile, or a missing account | `FAIL` |
+
+## What the bound treats as a failure
+
+`TRACE_FORWARD` traces have not reached a physically inspected unit, so they count as failures in the bound until they are followed to the end. Following them needs a buyer-to-buyer transfer graph, which this module does not model yet. The reported `upper_failure_rate` is the exact one-sided binomial (Clopper-Pearson) limit from `track3_certificate.one_sided_failure_upper_bound`, computed in log space so it works for samples of 100,000 and more. The finite-population correction is not applied, which makes the bound slightly conservative.

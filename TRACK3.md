@@ -42,8 +42,6 @@ The time-series verification layer is now published at `data/track3/time_series_
 
 The transformer layer now retains source-backed events rather than a zero-record placeholder. Three source-backed transformer events are currently retained, including the Meta Hyperion planned MISO transformer specification and an Entergy-reported transformer transport event; the third record remains source-backed without being treated as installation/energization proof. The layer also publishes a 93-site transformer research target queue. Planned specifications are not installation/energization evidence, and missing transformer events are not evidence of absence.
 
-A separate power-observation layer now contains six company-reported 2023 annual electricity-consumption snapshots for Meta facilities (Eagle Mountain, Los Lunas, New Albany/Meta Prometheus, Sarpy, Gallatin, and Huntsville). These are aggregate annual figures, not interval utility telemetry, so the P0 interval-demand acquisition tasks remain open. Eighteen site-level cooling snapshots are represented in the current site-status layer, with two directly retained equipment snapshots for Google Arcola and Google Kansas City East; these support physical verification but are not thermal telemetry.
-
 ## Facility-level provenance
 
 The facility-level provenance ledger is published at `data/track3/facility_provenance.json` with a row-oriented export at `data/track3/facility_provenance_records.csv` and schema at `data/track3_facility_provenance_schema.json`.

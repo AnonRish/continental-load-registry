@@ -19,6 +19,7 @@ ENRICH = ROOT / "data/track3/public_web_enrichment_2026-09-27.json"
 SITE_STATUS = ROOT / "data/track3/site_status.json"
 MATRIX = ROOT / "data/track3/track3_completeness_matrix.json"
 OUT = ROOT / "data/track3/coverage_gap_register_2026-09-27.json"
+LEADS = ROOT / "data/track3/public_research_leads.json"
 
 PUBLISHER_FIELDS = {
     "project", "investors", "construction_companies", "energy_companies",
@@ -40,6 +41,7 @@ def main() -> int:
     enrich = load(ENRICH)
     site_status = load(SITE_STATUS)
     matrix = load(MATRIX)
+    leads = load(LEADS)
 
     fields_by_site: dict[str, set[str]] = {}
     for row in enrich.get("records", []):
@@ -159,6 +161,7 @@ def main() -> int:
             "publisher_sweep_source": "data/track3/site_missing_information_sweep_2026-09-27.json",
             "enrichment_source": "data/track3/public_web_enrichment_2026-09-27.json",
             "matrix_source": "data/track3/track3_completeness_matrix.json",
+            "public_research_leads_source": "data/track3/public_research_leads.json",
         },
         "summary": {
             "effective_unresolved_publisher_fields": summary["effective_unresolved_publisher_fields"],
@@ -169,6 +172,8 @@ def main() -> int:
                 x.get("epoch_id") for x in enrich.get("records", []) if x.get("epoch_id")
             }),
             "reconciled_field_closures_this_run": removed,
+            "total_public_research_leads": leads.get("accounting", {}).get("lead_count"),
+            "sites_with_public_research_leads": leads.get("accounting", {}).get("site_count"),
         },
         "publisher": {
             "summary": summary,

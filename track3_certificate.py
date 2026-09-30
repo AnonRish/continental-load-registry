@@ -13,13 +13,26 @@ import math
 from pathlib import Path
 
 
+def _log_cdf(k: int, n: int, p: float, log_comb: list[float]) -> float:
+    """log P[X <= k] for X ~ Binomial(n, p), computed in log space."""
+    if p <= 0.0:
+        return 0.0
+    if p >= 1.0:
+        return -math.inf  # k < n here, so the CDF is 0
+    lp, lq = math.log(p), math.log1p(-p)
+    terms = [log_comb[i] + i * lp + (n - i) * lq for i in range(k + 1)]
+    m = max(terms)
+    return m + math.log(sum(math.exp(t - m) for t in terms))
+
+
 def one_sided_failure_upper_bound(k: int, n: int, delta: float) -> float:
     """Return a one-sided binomial upper confidence bound.
 
     For k failures out of n trials, solve for p in:
         P[X <= k | X~Binomial(n,p)] = delta
     using binary search. This is the conservative Clopper-Pearson-style
-    upper bound for the failure probability.
+    upper bound for the failure probability. The CDF is evaluated in log
+    space, so large n (1e5 and up) no longer overflows.
     """
     if n <= 0:
         raise ValueError("n must be > 0")
@@ -31,18 +44,15 @@ def one_sided_failure_upper_bound(k: int, n: int, delta: float) -> float:
     if k == n:
         return 1.0
 
-    def cdf(p: float) -> float:
-        q = 1.0 - p
-        total = 0.0
-        for i in range(k + 1):
-            total += math.comb(n, i) * (p ** i) * (q ** (n - i))
-        return total
+    lg_n1 = math.lgamma(n + 1)
+    log_comb = [lg_n1 - math.lgamma(i + 1) - math.lgamma(n - i + 1) for i in range(k + 1)]
+    log_delta = math.log(delta)
 
     lo, hi = 0.0, 1.0
     for _ in range(100):
         mid = (lo + hi) / 2
         # CDF decreases as p increases.
-        if cdf(mid) > delta:
+        if _log_cdf(k, n, mid, log_comb) > log_delta:
             lo = mid
         else:
             hi = mid

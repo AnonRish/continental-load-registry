@@ -9,6 +9,7 @@ on:
     paths:
       - "data/track3/public_web_enrichment_2026-09-27.json"
       - "build_track3_evidence.py"
+      - "refresh_public_data_catalog_counts.py"
       - "build_entity_resolution.py"
       - "build_facility_provenance.py"
       - "build_time_series_verification.py"
@@ -111,6 +112,8 @@ jobs:
 
       - name: Rebuild canonical evidence layer
         run: python build_track3_evidence.py
+      - name: Refresh derived counts in the public data catalog
+        run: python refresh_public_data_catalog_counts.py
 
       - name: Reconcile remote-sensing target states
         run: python build_remote_sensing_target_status.py

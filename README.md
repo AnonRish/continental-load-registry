@@ -19,7 +19,9 @@ The highest-value empirical layer is now a small closure pilot drawn from the re
 
 See [`closed-cases.html`](closed-cases.html), [`CLOSED_CASE_PROTOCOL.md`](CLOSED_CASE_PROTOCOL.md), [`CLASSIFICATION_AUDIT_2026-09-27.md`](CLASSIFICATION_AUDIT_2026-09-27.md), [`STRICT_DISCOVERY_RESEARCH.md`](STRICT_DISCOVERY_RESEARCH.md), [`data/track3/strict_discovery_candidates.json`](data/track3/strict_discovery_candidates.json), and [`data/track3/ambiguous_case_studies.json`](data/track3/ambiguous_case_studies.json).
 
-The broad 141-record ambiguous pool is now separated from a five-record strict admitted-load research queue. The strict queue requires explicit source-level load classification before a candidate can enter the discovery workflow; missing developer information alone does not qualify as discovery evidence. See `STRICT_DISCOVERY_RESEARCH.md` for the case-by-case source ladder and next gates.\n\n### Phase 1 vs. Track 3
+The broad 141-record ambiguous pool is now separated from a five-record strict admitted-load research queue. The strict queue requires explicit source-level load classification before a candidate can enter the discovery workflow; missing developer information alone does not qualify as discovery evidence. See `STRICT_DISCOVERY_RESEARCH.md` for the case-by-case source ladder and next gates.
+
+### Phase 1 vs. Track 3
 
 | Layer | What this repository currently provides | What it does not claim |
 |---|---|---|
@@ -126,7 +128,7 @@ The public research-surface CI is defined in `.github/workflows/validate_public_
   records, historical snapshot, and `SOURCES.md`. The publisher's original
   source files are not bundled; where a source snapshot was preserved for the
   build, its SHA-256 is recorded.
-- `requirements.txt` (unchanged: the 2.1 scripts use only the standard library), `LICENSE` (Apache 2.0).
+- `requirements.txt` (pandas, requests, pydantic, rapidfuzz, openpyxl, urllib3; the self-tests need them), `LICENSE` (Apache 2.0).
 
 ## Related repository: AI 2040 Verification
 
@@ -370,9 +372,9 @@ the repository root.
 
 ## Automated daily refresh
 
-`.github/workflows/monthly_registry_update.yml` runs at 06:00 UTC every day, or on demand.
-every month and on demand (Actions tab, *Monthly Registry Update*, Run
-workflow; tick `dry_run` to execute everything without committing). It checks
+`.github/workflows/monthly_registry_update.yml` (file name kept for compatibility)
+runs at 06:00 UTC every day and on demand (Actions tab, *Daily Registry Update*,
+Run workflow; tick `dry_run` to execute everything without committing). It checks
 out the repo, sets up Python 3.12 with a pip cache, installs
 `requirements.txt`, runs the self-tests of `ingest_grid_queues.py`,
 `compute_anomaly_detector.py`, `investigate_ambiguous_loads.py` and
@@ -380,7 +382,7 @@ out the repo, sets up Python 3.12 with a pip cache, installs
 gates each RTO, embeds the accepted RTOs into `index.html`, and checks the two
 regulatory PDF links. Then, only on `main` and only if `index.html` or the two
 CSVs in `data/` changed, it commits and pushes as
-`Automated Monthly Registry Sync: [YYYY-MM-DD]`. Logs and the fresh outputs are
+`Automated Daily Registry Sync: [YYYY-MM-DD]`. Logs and the fresh outputs are
 attached to every run for 30 days.
 
 **Live validation status.** A production live-feed run completed successfully on
