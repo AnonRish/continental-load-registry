@@ -50,18 +50,27 @@ def main() -> None:
     assert layers["PROJECT_LEVEL"]["mapped_records"] == 271
     assert layers["EPOCH_AI"]["records"] == 93
     assert layers["CONNECTION_TARGETS"]["records"] == 93
-    assert layers["MISO_COMPLETE_QUEUE"]["records"] == 3873
-    assert layers["SPP_ACTIVE_QUEUE"]["records"] == 3076
-    assert layers["CAISO_COMPLETE_QUEUE"]["records"] == 2278
-    assert layers["PJM_CYCLE_QUEUE"]["records"] == 9263
     assert layers["NYISO_COMPLETE_QUEUE"]["status"].startswith("snapshot not currently present")
 
     queue_status = load("data/queue_layer_status.json")
     feeds = {x["id"]: x for x in queue_status["feeds"]}
-    assert feeds["MISO"]["snapshot_present"] is True and feeds["MISO"]["record_count"] == 3873
-    assert feeds["SPP"]["snapshot_present"] is True and feeds["SPP"]["record_count"] == 3076
-    assert feeds["CAISO"]["snapshot_present"] is True and feeds["CAISO"]["record_count"] == 2278
-    assert feeds["PJM"]["snapshot_present"] is True and feeds["PJM"]["record_count"] == 9263
+    # Queue counts change on every sync, so compare the artifacts with each other and
+    # with the snapshot they describe instead of with a literal.
+    for layer_id, feed_id in (
+        ("MISO_COMPLETE_QUEUE", "MISO"),
+        ("SPP_ACTIVE_QUEUE", "SPP"),
+        ("CAISO_COMPLETE_QUEUE", "CAISO"),
+        ("PJM_CYCLE_QUEUE", "PJM"),
+    ):
+        feed = feeds[feed_id]
+        assert feed["snapshot_present"] is True, f"{feed_id}: snapshot missing"
+        assert layers[layer_id]["records"] == feed["record_count"], (
+            f"{layer_id}: map_layer_manifest says {layers[layer_id]['records']}, "
+            f"queue_layer_status says {feed['record_count']}"
+        )
+        assert load(feed["snapshot"])["record_count"] == feed["record_count"], (
+            f"{feed_id}: queue_layer_status disagrees with {feed['snapshot']}"
+        )
     assert feeds["NYISO"]["snapshot_present"] is False
 
     catalog = load("data/public_data_catalog.json")
@@ -97,9 +106,8 @@ def main() -> None:
     assert cat["data/supplemental_large_load_evidence.json"]["record_count"] == 61
     assert cat["data/supplemental_aggregate_map.json"]["record_count"] == 66
     assert cat["data/global_compute_universe_sources_2026-09-27.json"]["record_count"] == 3
-    assert cat["data/external/compute_atlas/facilities.json"]["record_count"] == 2228
-    assert cat["data/external/data_center_index/campuses.json"]["record_count"] == 901
-    assert len(catalog["datasets"]) == 61
+    missing = [d["path"] for d in catalog["datasets"] if not (ROOT / d["path"]).exists()]
+    assert not missing, f"public_data_catalog.json lists files that are not in the repository: {missing}"
 
     backlog = load("data/track3/research_backlog_summary.json")
     sweep = load("data/track3/site_missing_information_sweep_2026-09-27.json")

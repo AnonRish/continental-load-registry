@@ -23,21 +23,6 @@ def main()->int:
     obs=load(TRACK3/"remote_sensing_observations.json")
     foot=load(TRACK3/"building_footprints_index.json")
     coords=load(TRACK3/"physical_site_coordinates.json")
-    retained=[]
-    for rel,role in REQUIRED:
-        path=ROOT/rel
-        if not path.exists() or path.stat().st_size==0: raise SystemExit(f"FAIL: missing retained physical artifact: {rel}")
-        payload=path.read_bytes()
-        row={"path":rel,"role":role,"sha256":hashlib.sha256(payload).hexdigest(),"bytes":len(payload)}
-        if rel.endswith("remote_sensing_observations.json") or rel.endswith("remote_sensing_observations.csv"):
-            row["record_count"]=sum(1 for x in obs.get("records",[]) if x.get("status")=="INGESTED_DERIVED")
-        elif rel.endswith("building_footprints_index.json"):
-            row["record_count"]=len(foot.get("records",[])); row["polygon_site_count"]=foot.get("sites_with_polygon_files"); row["polygon_file_count"]=foot.get("sites_with_polygon_files")
-        elif rel=="data/physical_verification_layer.json":
-            row["site_record_count"]=len(physical.get("site_records",[]))
-        elif rel.endswith("physical_site_coordinates.json"):
-            row["record_count"]=len(coords.get("records",[]))
-        retained.append(row)
     derived_rows=[x for x in obs.get("records",[]) if x.get("status")=="INGESTED_DERIVED"]
     derived_count=len(derived_rows)
     derived_sites=len({str(x.get("epoch_id")) for x in derived_rows if x.get("epoch_id")})
@@ -60,6 +45,11 @@ def main()->int:
         json.dumps(physical,indent=2,ensure_ascii=False)+"\n",
         encoding="utf-8",
     )
+    retained=[]
+    for rel,role in REQUIRED:
+        path=ROOT/rel
+        if not path.exists() or path.stat().st_size==0: raise SystemExit(f"FAIL: missing retained physical artifact: {rel}")
+        payload=path.read_bytes()
     polygon_sites=int(foot.get("sites_with_polygon_files") or 0)
     target_count=len(coords.get("records",[])); geocoded=sum(1 for x in coords.get("records",[]) if x.get("lat") is not None and x.get("lon") is not None)
     manifest={

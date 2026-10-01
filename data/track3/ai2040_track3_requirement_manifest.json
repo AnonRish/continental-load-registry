@@ -46,7 +46,7 @@
       ],
       "artifact": "data/track3/audit_population_protocol.json",
       "status": "FRAMEWORK_IMPLEMENTED",
-      "proof": "Parameterized threshold population schema",
+      "proof": "Parameterized threshold population schema; track3_audit_chain.py runs the recursive above-T audit on a declared ledger (synthetic example)",
       "missing": "Externally fixed threshold and audit population."
     },
     {
@@ -57,7 +57,7 @@
       ],
       "artifact": "data/track3/sampling_protocol.json",
       "status": "FRAMEWORK_IMPLEMENTED",
-      "proof": "Deterministic frame/seed/sample schema",
+      "proof": "Deterministic frame/seed/sample schema; track3_audit_chain.py samples the tail and resolves each trace proportionally, following onward sales",
       "missing": "Closed tail population and actual sample."
     },
     {
@@ -101,7 +101,7 @@
       ],
       "artifact": "data/track3/untraced_compute_pool.json",
       "status": "FRAMEWORK_IMPLEMENTED",
-      "proof": "Residual accounting schema",
+      "proof": "Residual accounting schema; track3_audit_chain.py computes L from a declared ledger and track3_bound.py adds it to the bound",
       "missing": "Closed transaction inputs."
     },
     {
@@ -134,7 +134,7 @@
       ],
       "artifact": "track3_certificate.py",
       "status": "FRAMEWORK_IMPLEMENTED",
-      "proof": "Failure-aware upper-bound model",
+      "proof": "Failure-aware upper-bound model; track3_audit_chain.py reports D + L end to end on a synthetic closed population",
       "missing": "Closed population, randomized sample, verified audit outcomes."
     },
     {

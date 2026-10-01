@@ -37,6 +37,13 @@ was discussed in.)
    boundary, but it's a real range, not a fact, and should be reported as
    one.
 
+   Caveat on the chip figure: 1,979 TFLOPS is NVIDIA's H100 SXM FP16/BF16
+   peak *with 2:4 structured sparsity* (it equals the dense FP8 peak). Dense
+   FP16/BF16 is 989.5 TFLOPS, which halves every FLOP bound here: at 100 MW
+   the three scenarios land at 0.54x-0.56x of 1e26, not 1.07x-1.13x. The
+   scenarios keep 1,979 because the brief specifies it; the dense figure is
+   reported alongside as a sensitivity (run_flops_90d_*_dense).
+
 3. "EXHIBIT A" / "Regulatory Triage" -> descriptive framing. Packaging
    capacity + an entity-match miss + queue stage as a named "audit exhibit"
    implies a finding of non-compliance from circumstantial signal. If one
@@ -283,34 +290,41 @@ def project_name_keyword_hits(project_name: object) -> list[str]:
 # Physical compute-equivalence model
 # --------------------------------------------------------------------------
 
+# NVIDIA datasheet values for the H100 SXM. The datasheet's 1,979 TFLOPS for FP16/BF16
+# carries a footnote: it is shown with 2:4 structured sparsity and is half that without.
+H100_SXM_FP16_TFLOPS_SPARSE = 1979.0
+H100_SXM_FP16_TFLOPS_DENSE = 989.5
+
+
 @dataclass(frozen=True)
 class ComputeScenario:
     label: str
     pue: float          # total facility power / IT power
     kw_per_rack: float
     gpus_per_rack: int
-    chip_tflops_baseline: float  # dense baseline TFLOPs per chip (H100 SXM FP16/BF16 baseline)
+    chip_tflops_baseline: float  # peak TFLOPs per chip; 1,979 is the H100 SXM FP16/BF16 peak WITH 2:4 sparsity (dense: 989.5)
     mfu: float               # model FLOPs utilization, sustained
 
-    def run_flops(self, capacity_mw: float, run_days: int = 90) -> dict:
+    def run_flops(self, capacity_mw: float, run_days: int = 90, tflops: Optional[float] = None) -> dict:
         p_it_kw = capacity_mw * 1000.0 / self.pue
         racks = p_it_kw / self.kw_per_rack
         gpus = racks * self.gpus_per_rack
         run_seconds = run_days * 86400
-        flops = gpus * (self.chip_tflops_baseline * 1e12) * run_seconds * self.mfu
+        chip_tflops = self.chip_tflops_baseline if tflops is None else tflops
+        flops = gpus * (chip_tflops * 1e12) * run_seconds * self.mfu
         return {"racks": racks, "gpus": gpus, "run_flops": flops}
 
 
 # The REFERENCE scenario reproduces the brief's exact constants (PUE 1.25,
-# 35kW/rack, 8 GPU/rack, H100 SXM 1,979 TFLOPs FP16/BF16 Tensor Core, 40% MFU, 90-day
+# 35kW/rack, 8 GPU/rack, H100 SXM 1,979 TFLOPs FP16/BF16 (the with-sparsity peak), 40% MFU, 90-day
 # run). LOW and HIGH bracket it with assumptions that are each individually
 # defensible for real facilities (older air-cooled halls run lower density
 # and lower sustained utilization; new liquid-cooled halls run denser and
 # higher PUE-efficiency) -- see module docstring for how close together
 # these land at exactly 100MW despite the spread in inputs.
-REFERENCE_SCENARIO = ComputeScenario("reference (as specified)", pue=1.25, kw_per_rack=35.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.40)
-LOW_SCENARIO = ComputeScenario("low (air-cooled, lower utilization)", pue=1.4, kw_per_rack=20.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.25)
-HIGH_SCENARIO = ComputeScenario("high (liquid-cooled, high utilization)", pue=1.15, kw_per_rack=50.0, gpus_per_rack=8, chip_tflops_baseline=1979.0, mfu=0.50)
+REFERENCE_SCENARIO = ComputeScenario("reference (as specified)", pue=1.25, kw_per_rack=35.0, gpus_per_rack=8, chip_tflops_baseline=H100_SXM_FP16_TFLOPS_SPARSE, mfu=0.40)
+LOW_SCENARIO = ComputeScenario("low (air-cooled, lower utilization)", pue=1.4, kw_per_rack=20.0, gpus_per_rack=8, chip_tflops_baseline=H100_SXM_FP16_TFLOPS_SPARSE, mfu=0.25)
+HIGH_SCENARIO = ComputeScenario("high (liquid-cooled, high utilization)", pue=1.15, kw_per_rack=50.0, gpus_per_rack=8, chip_tflops_baseline=H100_SXM_FP16_TFLOPS_SPARSE, mfu=0.50)
 
 FLOP_REPORTING_THRESHOLD = 1.0e26
 
@@ -319,12 +333,20 @@ def compute_range(capacity_mw: float) -> dict:
     low = LOW_SCENARIO.run_flops(capacity_mw)
     ref = REFERENCE_SCENARIO.run_flops(capacity_mw)
     high = HIGH_SCENARIO.run_flops(capacity_mw)
+    dense = {
+        name: scenario.run_flops(capacity_mw, tflops=H100_SXM_FP16_TFLOPS_DENSE)["run_flops"]
+        for name, scenario in (("low", LOW_SCENARIO), ("reference", REFERENCE_SCENARIO), ("high", HIGH_SCENARIO))
+    }
     return {
         "gpus_low": low["gpus"], "gpus_reference": ref["gpus"], "gpus_high": high["gpus"],
         "run_flops_90d_low": low["run_flops"], "run_flops_90d_reference": ref["run_flops"],
         "run_flops_90d_high": high["run_flops"],
         "clears_flop_threshold_all_scenarios": low["run_flops"] >= FLOP_REPORTING_THRESHOLD,
         "clears_flop_threshold_reference": ref["run_flops"] >= FLOP_REPORTING_THRESHOLD,
+        # Sensitivity: the same scenarios at the dense FP16/BF16 peak (half of the 1,979 figure).
+        "run_flops_90d_low_dense": dense["low"], "run_flops_90d_reference_dense": dense["reference"],
+        "run_flops_90d_high_dense": dense["high"],
+        "clears_flop_threshold_all_scenarios_dense": all(v >= FLOP_REPORTING_THRESHOLD for v in dense.values()),
     }
 
 
@@ -652,6 +674,9 @@ def run_selftest() -> bool:
                     r100["run_flops_90d_low"] != r100["run_flops_90d_reference"] != r100["run_flops_90d_high"]))
     checks.append(("100MW clears 1e26 FLOPs in all three scenarios (verifies the brief's claim)",
                     r100["clears_flop_threshold_all_scenarios"] is True))
+    checks.append(("Dense FP16/BF16 sensitivity: 100MW is below 1e26 in every scenario (1,979 is the with-sparsity peak)",
+                    r100["clears_flop_threshold_all_scenarios_dense"] is False
+                    and abs(r100["run_flops_90d_reference_dense"] * 2 - r100["run_flops_90d_reference"]) / r100["run_flops_90d_reference"] < 1e-9))
     r10 = compute_range(10.0)
     checks.append(("10MW does NOT clear 1e26 FLOPs (sanity floor)",
                     r10["clears_flop_threshold_all_scenarios"] is False))

@@ -37,7 +37,9 @@ OUTPUT = ROOT / "data" / "module1_radar_summary.json"
 
 EXPECTED_RTOs = ["PJM", "ERCOT", "SPP", "MISO", "CAISO", "NYISO", "ISO-NE", "IESO", "AESO"]
 THRESHOLD_FLOPS = 1.0e26
+# 1,979 is the H100 SXM FP16/BF16 peak WITH 2:4 sparsity; dense is 989.5 (see dense_sensitivity()).
 H100_TFLOPS = 1979.0
+H100_TFLOPS_DENSE = 989.5
 RUN_SECONDS = 90 * 86400
 
 SCENARIOS = {
@@ -66,12 +68,27 @@ def parse_voltage_kv(poi: Any) -> float | None:
     return max(values) if values else None
 
 
-def compute_scenario(capacity_mw: float, pue: float, rack_kw: float, mfu: float) -> dict[str, float]:
+def compute_scenario(capacity_mw: float, pue: float, rack_kw: float, mfu: float, tflops: float | None = None) -> dict[str, float]:
     it_kw = capacity_mw * 1000.0 / pue
     racks = it_kw / rack_kw
     gpus = racks * 8.0
-    flops = gpus * (H100_TFLOPS * 1.0e12) * RUN_SECONDS * mfu
+    chip_tflops = H100_TFLOPS if tflops is None else tflops
+    flops = gpus * (chip_tflops * 1.0e12) * RUN_SECONDS * mfu
     return {"it_kw": it_kw, "racks": racks, "gpus": gpus, "flops_90d": flops}
+
+
+def dense_sensitivity() -> dict[str, Any]:
+    """The same three scenarios at the dense FP16/BF16 peak instead of the with-sparsity peak."""
+    at_100 = {name: compute_scenario(100.0, tflops=H100_TFLOPS_DENSE, **values)["flops_90d"] for name, values in SCENARIOS.items()}
+    needed = {name: 100.0 * THRESHOLD_FLOPS / flops for name, flops in at_100.items()}
+    return {
+        "chip_tflops": H100_TFLOPS_DENSE,
+        "basis": "H100 SXM FP16/BF16 dense peak; the 1,979 baseline is the same chip with 2:4 structured sparsity",
+        "flops_90d_at_100mw": at_100,
+        "clears_1e26_at_100mw_all_scenarios": all(v >= THRESHOLD_FLOPS for v in at_100.values()),
+        "capacity_mw_needed_to_clear_1e26": needed,
+        "capacity_mw_needed_all_scenarios": max(needed.values()),
+    }
 
 
 def physical_row(row: dict[str, Any]) -> dict[str, Any]:
@@ -195,6 +212,7 @@ def build_summary(rows: list[dict[str, Any]], epoch: dict[str, Any]) -> dict[str
                 "voltage_fail_count": len(voltage_fail),
                 "voltage_unknown_count": len(evaluations) - len(explicit_voltage),
                 "all_scenarios_1e26_pass_count": sum(e["clears_1e26_flops_all_scenarios"] for e in evaluations),
+                "dense_fp16_bf16_sensitivity": dense_sensitivity(),
                 "heat_signature_is_computable_from_capacity": True,
                 "site_specific_cooling_telemetry_ingested": False
             },

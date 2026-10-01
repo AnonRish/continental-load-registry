@@ -49,20 +49,24 @@
       "requirement": "Starting from verified vendor sales, recursively audit every direct customer above threshold T and continue until unaudited recipients are below T.",
       "repo_artifacts": [
         "data/track3/audit_population_protocol.json",
-        "data/track3/entity_resolution.json"
+        "data/track3/entity_resolution.json",
+        "track3_audit_chain.py",
+        "track3_units.py",
+        "data/track3/h100e_conversion.json"
       ],
       "status": "FRAMEWORK_IMPLEMENTED",
-      "gap": "The threshold-based audit population and entity-resolution interfaces are implemented; no closed external audit population or realized audit outcome is claimed."
+      "gap": "The threshold-based audit population and entity-resolution interfaces are implemented; no closed external audit population or realized audit outcome is claimed. track3_audit_chain.py runs the recursive above-T audit on a declared ledger; only a synthetic example exists."
     },
     {
       "id": "appendix-b-2",
       "reference": "Appendix B §2",
       "requirement": "Add untraceable sales and unverifiable decommissioning to an untraced pool L.",
       "repo_artifacts": [
-        "data/track3/untraced_compute_pool.json"
+        "data/track3/untraced_compute_pool.json",
+        "track3_audit_chain.py"
       ],
       "status": "FRAMEWORK_IMPLEMENTED",
-      "gap": "The residual untraced-compute pool and closure rules are implemented; its current value remains UNKNOWN because the transaction chain is not closed."
+      "gap": "The residual untraced-compute pool and closure rules are implemented; its current value remains UNKNOWN because the transaction chain is not closed. track3_audit_chain.py computes L from a declared ledger (unauditable counterparties, unverified decommissioning, unaccounted units, inspection shortfalls); only a synthetic example exists."
     },
     {
       "id": "appendix-b-3",
@@ -70,10 +74,11 @@
       "requirement": "Complete the account so compute is physically verified, added to L, or delivered to a below-threshold recipient.",
       "repo_artifacts": [
         "data/track3/ai2040_plan_a_mapping.json",
-        "data/track3/evidence_records.json"
+        "data/track3/evidence_records.json",
+        "track3_audit_chain.py"
       ],
-      "status": "DESIGN_ONLY",
-      "gap": "End-to-end account reconciliation is not yet present."
+      "status": "FRAMEWORK_IMPLEMENTED",
+      "gap": "Account reconciliation (physically verified, added to L, or delivered to a below-threshold recipient) is implemented in track3_audit_chain.py and exercised on a synthetic closed population; no real transaction ledger is public, so no actual compute is reconciled."
     },
     {
       "id": "appendix-b-4",
@@ -81,7 +86,8 @@
       "requirement": "Randomly sample H100e units from below-threshold deliveries and trace each through resales to physical inspection or failure.",
       "repo_artifacts": [
         "data/track3/sampling_protocol.json",
-        "data/track3/serial_continuity_protocol.json"
+        "data/track3/serial_continuity_protocol.json",
+        "track3_audit_chain.py"
       ],
       "status": "FRAMEWORK_IMPLEMENTED",
       "gap": "A deterministic sampling and serial-trace protocol is implemented; no realized sample outcome is claimed."
@@ -91,7 +97,8 @@
       "reference": "Appendix B §5",
       "requirement": "Sample units from the tail proportional to deliveries and audit the selected recipient's account.",
       "repo_artifacts": [
-        "data/track3/sampling_protocol.json"
+        "data/track3/sampling_protocol.json",
+        "track3_audit_chain.py"
       ],
       "status": "FRAMEWORK_IMPLEMENTED",
       "gap": "The sampling-frame and reproducibility contract is implemented; population eligibility and realized outcomes remain external."
@@ -101,10 +108,11 @@
       "reference": "Appendix B §6",
       "requirement": "Resolve sampled units proportionally between current holdings and onward sales.",
       "repo_artifacts": [
-        "data/track3/serial_continuity_protocol.json"
+        "data/track3/serial_continuity_protocol.json",
+        "track3_audit_chain.py"
       ],
       "status": "FRAMEWORK_IMPLEMENTED",
-      "gap": "The lifecycle/transfer integrity protocol is implemented; no global serial ledger is publicly ingested."
+      "gap": "The lifecycle/transfer integrity protocol is implemented; no global serial ledger is publicly ingested. track3_audit_chain.py resolves each sampled unit in proportion to held, sold-onward and decommissioned units and follows onward sales to the buyer."
     },
     {
       "id": "appendix-b-7",
@@ -112,7 +120,8 @@
       "requirement": "Classify each sample trace as pass or fail and statistically constrain the undetected tail.",
       "repo_artifacts": [
         "data/track3/certificate_model.json",
-        "track3_certificate.py"
+        "track3_certificate.py",
+        "track3_audit_chain.py"
       ],
       "status": "FRAMEWORK_IMPLEMENTED",
       "gap": "The tail-bound certificate calculator is implemented; no empirical certificate is asserted without a closed population and observed sample outcomes."
@@ -139,5 +148,5 @@
       "gap": "Post-deal transfer/destruction/recycling verification rules are implemented; no independent enforcement authority or complete public event ledger is claimed."
     }
   ],
-  "updated_on": "2026-09-28"
+  "updated_on": "2026-09-30"
 }

@@ -32,7 +32,8 @@ def one_sided_failure_upper_bound(k: int, n: int, delta: float) -> float:
         P[X <= k | X~Binomial(n,p)] = delta
     using binary search. This is the conservative Clopper-Pearson-style
     upper bound for the failure probability. The CDF is evaluated in log
-    space, so large n (1e5 and up) no longer overflows.
+    space, so cases where C(n, k) exceeds float range (for example n=100,000
+    with k=100) no longer overflow.
     """
     if n <= 0:
         raise ValueError("n must be > 0")

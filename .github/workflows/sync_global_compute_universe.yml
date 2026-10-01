@@ -52,5 +52,7 @@ jobs:
             echo "No snapshot changes."
           else
             git commit -m "Sync broader compute universe sources"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi

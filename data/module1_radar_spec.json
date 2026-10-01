@@ -13,8 +13,10 @@
       "run_days": 90,
       "threshold_flops": 1e+26,
       "rack_gpu_count": 8,
-      "baseline_chip": "NVIDIA H100 SXM FP16/BF16 Tensor Core",
+      "baseline_chip": "NVIDIA H100 SXM FP16/BF16 Tensor Core (peak with 2:4 structured sparsity)",
       "baseline_chip_tflops": 1979,
+      "baseline_chip_tflops_dense": 989.5,
+      "baseline_chip_basis": "with_sparsity",
       "baseline_chip_source": "https://www.nvidia.com/en-eu/data-center/h100/",
       "scenarios": [
         {

@@ -1312,7 +1312,7 @@ fetch('data/global_ai_datacenter_coverage_2026-09-27.json?v=1',{cache:'no-store'
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 class="font-serif-display text-base">Three-scenario 90-day FLOP bound at 100 MW</h3>
-          <p class="text-xs mt-1" style="color:var(--ink-faint);">The 1,979 TFLOPS baseline is the H100 SXM FP16/BF16 Tensor Core specification; NVIDIA lists 3,958 TFLOPS for FP8, so the registry intentionally keeps 1,979 as the conservative baseline used by this model.</p>
+          <p class="text-xs mt-1" style="color:var(--ink-faint);">The 1,979 TFLOPS baseline is NVIDIA's H100 SXM FP16/BF16 peak <em>with 2:4 structured sparsity</em> (it equals the dense FP8 peak; the FP8 figure of 3,958 is also a with-sparsity number). Dense FP16/BF16 is 989.5 TFLOPS, which halves every bound here: at that figure 100 MW reaches only about 0.54&ndash;0.56&times; of 1e26 in 90 days, and about 187 MW is needed in all three scenarios. The registry keeps 1,979 because the brief specifies it; read these FLOP bounds as an upper range.</p>
         </div>
         <a class="text-xs link-underline" target="_blank" rel="noopener noreferrer" href="https://www.nvidia.com/en-eu/data-center/h100/">NVIDIA H100 specifications</a>
       </div>

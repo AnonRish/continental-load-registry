@@ -56,6 +56,16 @@ on:
       - "data/caiso_cluster_history.json"
       - "data/caiso_cluster_history.csv"
       - ".github/workflows/validate_public_surface.yml"
+  # Bot commits pushed with the default GITHUB_TOKEN do not start push workflows,
+  # so re-run the validators after every workflow that commits data.
+  workflow_run:
+    workflows:
+      - "Track 3 automated data pipeline"
+      - "Sync MISO complete public queue"
+      - "Sync SPP active public queue"
+      - "Sync CAISO complete public queue"
+      - "Sync PJM complete Cycle Service Request universe"
+    types: [completed]
   pull_request:
     paths:
       - "index.html"

@@ -88,10 +88,15 @@ def coerce(key: str, value: Any) -> Any:
         return float(value) if key.startswith(("run_", "entity_")) else int(float(value)) if key.startswith("gpus_") else float(value)
     return value
 
+# 1,979 TFLOPS is the H100 SXM FP16/BF16 peak with 2:4 sparsity (dense: 989.5). Kept so these
+# records match compute_anomaly_detector.py; see the caveat in that module's docstring.
+H100_SXM_FP16_FLOPS_SPARSE = 1979.0e12
+
+
 def compute_range(mw: float) -> dict[str, Any]:
     def run(pue: float, kw_per_rack: float, mfu: float) -> tuple[int, float]:
         gpus = (mw * 1000.0 / pue / kw_per_rack) * 8
-        flops = gpus * 1979.0e12 * (90 * 86400) * mfu
+        flops = gpus * H100_SXM_FP16_FLOPS_SPARSE * (90 * 86400) * mfu
         return round(gpus), flops
     low_gpu, low_flops = run(1.4, 20.0, 0.25)
     high_gpu, high_flops = run(1.15, 50.0, 0.50)

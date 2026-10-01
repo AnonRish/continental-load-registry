@@ -54,5 +54,7 @@ jobs:
             echo "No company snapshot changes."
           else
             git commit -m "Sync company facility universe"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
