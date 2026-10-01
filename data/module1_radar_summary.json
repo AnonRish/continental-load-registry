@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-01T11:56:22.954472+00:00",
+  "generated_at_utc": "2026-10-01T14:24:59.124569+00:00",
   "as_of": "2026-09-26",
   "module": "Module 1: Multi-Modal Physical Radar",
   "registry_record_count": 1534,
@@ -13,6 +13,22 @@
       "voltage_fail_count": 19,
       "voltage_unknown_count": 345,
       "all_scenarios_1e26_pass_count": 1534,
+      "dense_fp16_bf16_sensitivity": {
+        "chip_tflops": 989.5,
+        "basis": "H100 SXM FP16/BF16 dense peak; the 1,979 baseline is the same chip with 2:4 structured sparsity",
+        "flops_90d_at_100mw": {
+          "reference": 5.627868891428572e+25,
+          "conservative": 5.495965714285714e+25,
+          "aggressive": 5.352592695652175e+25
+        },
+        "clears_1e26_at_100mw_all_scenarios": false,
+        "capacity_mw_needed_to_clear_1e26": {
+          "reference": 177.6871528622553,
+          "conservative": 181.95164453094944,
+          "aggressive": 186.82534929517126
+        },
+        "capacity_mw_needed_all_scenarios": 186.82534929517126
+      },
       "heat_signature_is_computable_from_capacity": true,
       "site_specific_cooling_telemetry_ingested": false
     },
