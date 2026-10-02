@@ -2,7 +2,7 @@
   "schema_version": 1,
   "summary": {
     "schema_version": 1,
-    "generated_at_utc": "2026-10-01T14:42:26.231207+00:00",
+    "generated_at_utc": "2026-10-02T14:03:02.585585+00:00",
     "epoch_site_count": 93,
     "observation_task_count": 24,
     "observation_task_counts_by_domain": {
@@ -29,8 +29,9 @@
         "INGESTED": 93
       },
       "chip_inventory": {
-        "INGESTED": 83,
-        "ASSESSMENT_COMPLETE": 10
+        "INGESTED": 82,
+        "ASSESSMENT_COMPLETE": 10,
+        "UNKNOWN": 1
       },
       "grid_connection": {
         "SITE_LEVEL_EVIDENCE": 88,
@@ -532,6 +533,96 @@
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 9,
       "next_action": "Search Ohio Power Siting Board, PUCO, AEP Ohio and PJM for the exact Prometheus service/interconnection cases and reconcile the facility-level 695 MW report with Epoch's 496 MW current IT-power estimate."
+    },
+    {
+      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
+      "site_name": "DayOne Nusajaya",
+      "country": "Malaysia",
+      "state_province": null,
+      "state_province_source": "epoch_address_inference",
+      "epoch_region_inferred_from_address": null,
+      "current_it_power_mw": 473,
+      "current_h100_equivalents": 583836.7862556847,
+      "domains": {
+        "site_identity": {
+          "status": "INGESTED",
+          "basis": "Epoch AI site record imported."
+        },
+        "construction": {
+          "status": "INGESTED",
+          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
+        },
+        "chip_inventory": {
+          "status": "INGESTED",
+          "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
+        },
+        "grid_connection": {
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
+        },
+        "service_or_contract": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-service_or_contract"
+        },
+        "regulatory": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-regulatory"
+        },
+        "compute_tenancy": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-compute_tenancy"
+        },
+        "power_telemetry": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-power_telemetry"
+        },
+        "remote_sensing": {
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
+        },
+        "cooling": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-cooling"
+        },
+        "transformer_supply_chain": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-transformer_supply_chain"
+        },
+        "chip_ownership": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_users": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_shipments": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "independent_corroboration": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-independent_corroboration"
+        }
+      },
+      "site_level_evidence_count": 2,
+      "public_web_evidence_count": 4,
+      "crosswalk_public_evidence_count": 0,
+      "combined_site_level_evidence_count": 6,
+      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-2c2e40ddb178da3e",
@@ -1068,96 +1159,6 @@
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 8,
       "next_action": "Search APS, Arizona Corporation Commission and Mesa permitting records for the underlying service/interconnection filing."
-    },
-    {
-      "epoch_id": "EPOCH-55d4b5e818b5bb2a",
-      "site_name": "DayOne Nusajaya",
-      "country": "Malaysia",
-      "state_province": null,
-      "state_province_source": "epoch_address_inference",
-      "epoch_region_inferred_from_address": null,
-      "current_it_power_mw": 240,
-      "current_h100_equivalents": 281670.4396159676,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
-        },
-        "grid_connection": {
-          "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
-        },
-        "service_or_contract": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-service_or_contract"
-        },
-        "regulatory": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-regulatory"
-        },
-        "compute_tenancy": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-compute_tenancy"
-        },
-        "power_telemetry": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-power_telemetry"
-        },
-        "remote_sensing": {
-          "status": "INGESTED_DERIVED",
-          "observation_count": 6,
-          "modalities": [
-            "optical",
-            "sar",
-            "tir"
-          ],
-          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
-        },
-        "cooling": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-cooling"
-        },
-        "transformer_supply_chain": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-transformer_supply_chain"
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-55d4b5e818b5bb2a-independent_corroboration"
-        }
-      },
-      "site_level_evidence_count": 2,
-      "public_web_evidence_count": 4,
-      "crosswalk_public_evidence_count": 0,
-      "combined_site_level_evidence_count": 6,
-      "next_action": "Re-check primary utility/RTO/regulator sources on the next data refresh; do not infer no connection from a public-record no-match."
     },
     {
       "epoch_id": "EPOCH-2dadeb4b013bef05",
@@ -1958,96 +1959,6 @@
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 8,
       "next_action": "Search Indiana Michigan Power / Duke Energy Indiana and Indiana Utility Regulatory Commission records for the site's service/interconnection case."
-    },
-    {
-      "epoch_id": "EPOCH-6799460068cbed36",
-      "site_name": "Google Kansas City East",
-      "country": "United States",
-      "state_province": "MO",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": null,
-      "current_it_power_mw": 105,
-      "current_h100_equivalents": 202627.5896917635,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
-        },
-        "chip_inventory": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-chip_inventory"
-        },
-        "grid_connection": {
-          "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
-        },
-        "service_or_contract": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-service_or_contract"
-        },
-        "regulatory": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-regulatory"
-        },
-        "compute_tenancy": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-compute_tenancy"
-        },
-        "power_telemetry": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-power_telemetry"
-        },
-        "remote_sensing": {
-          "status": "INGESTED_DERIVED",
-          "observation_count": 7,
-          "modalities": [
-            "optical",
-            "sar",
-            "tir"
-          ],
-          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
-        },
-        "cooling": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
-        },
-        "transformer_supply_chain": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-transformer_supply_chain"
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-6799460068cbed36-independent_corroboration"
-        }
-      },
-      "site_level_evidence_count": 1,
-      "public_web_evidence_count": 5,
-      "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 7,
-      "next_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record."
     },
     {
       "epoch_id": "EPOCH-6ff5e1aeb6f0c7e3",
@@ -4192,94 +4103,6 @@
       "crosswalk_public_evidence_count": 0,
       "combined_site_level_evidence_count": 6,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
-    },
-    {
-      "epoch_id": "EPOCH-d29894d37388a96a",
-      "site_name": "Meta Gallatin",
-      "country": "United States",
-      "state_province": "TN",
-      "state_province_source": "grid_crosswalk",
-      "epoch_region_inferred_from_address": "TN",
-      "current_it_power_mw": 87,
-      "current_h100_equivalents": 99545.22486104093,
-      "domains": {
-        "site_identity": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site record imported."
-        },
-        "construction": {
-          "status": "INGESTED",
-          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
-        },
-        "chip_inventory": {
-          "status": "INGESTED",
-          "basis": "Epoch AI site-level chip-quantity records and/or retained public chip/accelerator evidence are preserved."
-        },
-        "grid_connection": {
-          "status": "SITE_LEVEL_EVIDENCE",
-          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
-        },
-        "service_or_contract": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-service_or_contract"
-        },
-        "regulatory": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-regulatory"
-        },
-        "compute_tenancy": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-compute_tenancy"
-        },
-        "power_telemetry": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
-        },
-        "remote_sensing": {
-          "status": "INGESTED_DERIVED",
-          "observation_count": 6,
-          "modalities": [
-            "optical",
-            "sar",
-            "tir"
-          ],
-          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
-        },
-        "cooling": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
-        },
-        "transformer_supply_chain": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-transformer_supply_chain"
-        },
-        "chip_ownership": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_users": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "chip_shipments": {
-          "status": "INGESTED_SNAPSHOT",
-          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
-        },
-        "independent_corroboration": {
-          "status": "ASSESSMENT_COMPLETE",
-          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
-          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-independent_corroboration"
-        }
-      },
-      "site_level_evidence_count": 1,
-      "public_web_evidence_count": 6,
-      "crosswalk_public_evidence_count": 1,
-      "combined_site_level_evidence_count": 8,
-      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-02c050b6b554fadd",
@@ -7309,6 +7132,96 @@
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
     },
     {
+      "epoch_id": "EPOCH-6799460068cbed36",
+      "site_name": "Google Kansas City East",
+      "country": "United States",
+      "state_province": "MO",
+      "state_province_source": "grid_crosswalk",
+      "epoch_region_inferred_from_address": null,
+      "current_it_power_mw": 0,
+      "current_h100_equivalents": 0,
+      "domains": {
+        "site_identity": {
+          "status": "INGESTED",
+          "basis": "Epoch AI site record imported."
+        },
+        "construction": {
+          "status": "INGESTED",
+          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
+        },
+        "chip_inventory": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-chip_inventory"
+        },
+        "grid_connection": {
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
+        },
+        "service_or_contract": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-service_or_contract"
+        },
+        "regulatory": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-regulatory"
+        },
+        "compute_tenancy": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-compute_tenancy"
+        },
+        "power_telemetry": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-power_telemetry"
+        },
+        "remote_sensing": {
+          "status": "INGESTED_DERIVED",
+          "observation_count": 7,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
+        },
+        "cooling": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
+        },
+        "transformer_supply_chain": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-transformer_supply_chain"
+        },
+        "chip_ownership": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_users": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_shipments": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "independent_corroboration": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-6799460068cbed36-independent_corroboration"
+        }
+      },
+      "site_level_evidence_count": 1,
+      "public_web_evidence_count": 5,
+      "crosswalk_public_evidence_count": 1,
+      "combined_site_level_evidence_count": 7,
+      "next_action": "Search Evergy, Missouri Public Service Commission, Kansas City records and SPP materials for the site's electrical service/interconnection record."
+    },
+    {
       "epoch_id": "EPOCH-177c53f92d72ec4a",
       "site_name": "Meta Bowling Green",
       "country": "United States",
@@ -7397,6 +7310,94 @@
       "crosswalk_public_evidence_count": 1,
       "combined_site_level_evidence_count": 7,
       "next_action": "Retain source-specific evidence; continue searching for a formal queue/case ID where the current evidence is a service/planning/regulatory record."
+    },
+    {
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "site_name": "Meta Gallatin",
+      "country": "United States",
+      "state_province": "TN",
+      "state_province_source": "grid_crosswalk",
+      "epoch_region_inferred_from_address": "TN",
+      "current_it_power_mw": 0,
+      "current_h100_equivalents": 0,
+      "domains": {
+        "site_identity": {
+          "status": "INGESTED",
+          "basis": "Epoch AI site record imported."
+        },
+        "construction": {
+          "status": "INGESTED",
+          "basis": "Epoch AI dated timeline records and/or retained site-specific construction-company evidence are preserved."
+        },
+        "chip_inventory": {
+          "status": "UNKNOWN",
+          "basis": "No retained site-level chip-quantity rows."
+        },
+        "grid_connection": {
+          "status": "SITE_LEVEL_EVIDENCE",
+          "basis": "At least one site-level utility, service, power-request, load-request, regulatory, or explicit public grid/substation/transmission record is attached; no queue ID is asserted."
+        },
+        "service_or_contract": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-service_or_contract"
+        },
+        "regulatory": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-regulatory"
+        },
+        "compute_tenancy": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-compute_tenancy"
+        },
+        "power_telemetry": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-specific annual electricity-consumption observation is preserved. This does not satisfy the separate interval-demand telemetry target."
+        },
+        "remote_sensing": {
+          "status": "INGESTED_DERIVED",
+          "observation_count": 6,
+          "modalities": [
+            "optical",
+            "sar",
+            "tir"
+          ],
+          "basis": "Public satellite COG windows were processed into site-level observations with scene provenance."
+        },
+        "cooling": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "A site-level cooling-equipment observation is preserved. This is supporting infrastructure evidence, not direct thermal telemetry."
+        },
+        "transformer_supply_chain": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-transformer_supply_chain"
+        },
+        "chip_ownership": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_users": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "chip_shipments": {
+          "status": "INGESTED_SNAPSHOT",
+          "basis": "The corresponding Epoch global compute-accounting source is preserved as a raw snapshot; it is not attributed to this site unless a separate site-level linkage exists."
+        },
+        "independent_corroboration": {
+          "status": "ASSESSMENT_COMPLETE",
+          "basis": "The current repository evidence layer contains no retained record that satisfies the acceptance rule for this domain. This is a completeness assessment of the present public-evidence layer, not a claim that the underlying infrastructure or relationship does not exist.",
+          "assessment_id": "T3RA-EPOCH-d29894d37388a96a-independent_corroboration"
+        }
+      },
+      "site_level_evidence_count": 1,
+      "public_web_evidence_count": 6,
+      "crosswalk_public_evidence_count": 1,
+      "combined_site_level_evidence_count": 8,
+      "next_action": "Continue source reconciliation and promote a queue ID only when an exact public identifier is available."
     },
     {
       "epoch_id": "EPOCH-bbcf0efa8bcebd41",
