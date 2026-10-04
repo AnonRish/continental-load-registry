@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-28",
+  "generated_on": "2026-10-04",
   "title": "Track 3 physical verification layer",
   "objective": "Independently verify large computational facilities using physical observations, remote sensing, infrastructure records and construction/power chronology without treating any missing layer as evidence of absence.",
   "checklist": [
@@ -8,7 +8,7 @@
       "id": "OPTICAL",
       "item": "Satellite optical imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "208 raw Sentinel-2 COG windows processed; scene provenance and compact metrics are stored, full rasters are not stored in Git.",
+      "coverage": "391 raw Sentinel-2 COG windows processed; scene provenance and compact metrics are stored, full rasters are not stored in Git.",
       "primary_sources": [
         "sentinel-2-optical",
         "landsat-oli-optical"
@@ -18,7 +18,7 @@
       "id": "TIR",
       "item": "TIR thermal imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "200 Landsat ST scene observations processed with local-background thermal metrics.",
+      "coverage": "317 Landsat ST scene observations processed with local-background thermal metrics.",
       "primary_sources": [
         "landsat-tirs-thermal"
       ]
@@ -27,7 +27,7 @@
       "id": "SAR",
       "item": "SAR imagery",
       "status": "INGESTED_DERIVED",
-      "coverage": "223 Sentinel-1 GRD scene observations processed with VV/VH backscatter and temporal deltas.",
+      "coverage": "323 Sentinel-1 GRD scene observations processed with VV/VH backscatter and temporal deltas.",
       "primary_sources": [
         "sentinel-1-sar"
       ]
@@ -90,8 +90,8 @@
     {
       "id": "FOOTPRINT",
       "item": "Building footprint / campus expansion chronology",
-      "status": "INGESTED_POLYGONIZED",
-      "coverage": "92 / 93 sites have current polygonized building-footprint geometry (183272 polygons retained). Dated construction chronology remains a separate layer.",
+      "status": "INGESTED_DERIVED_PROXY",
+      "coverage": "92 sites have multi-temporal optical observations for coarse campus-change proxy analysis; polygonized footprints remain separate.",
       "primary_sources": [
         "overture-buildings",
         "epoch-timelines",
@@ -112,9 +112,9 @@
     "optical_sites": 93,
     "tir_sites": 93,
     "sar_sites": 93,
-    "raw_optical_scenes_ingested": 208,
-    "raw_tir_numeric_observations": 200,
-    "raw_sar_numeric_observations": 223,
+    "raw_optical_scenes_ingested": 391,
+    "raw_tir_numeric_observations": 317,
+    "raw_sar_numeric_observations": 323,
     "construction_timeline_sites": 93,
     "construction_to_power_sites": 93,
     "building_footprint_raw_change_detection_sites": 92,
@@ -132,12 +132,12 @@
     "transformer_target_site_count": 93,
     "building_footprint_polygon_site_count": 92,
     "building_footprint_polygon_count": 183272,
-    "derived_observation_count": 631,
+    "derived_observation_count": 1031,
     "derived_observation_sites": 92,
     "derived_observation_ledger": "data/track3/remote_sensing_observations.json",
     "derived_observation_semantics": "Derived-observation count is read from the retained remote-sensing observation ledger. It is distinct from raw scene/window counts above and does not imply AI compute.",
-    "reconciled_on": "2026-09-30",
-    "derived_observations": 631
+    "reconciled_on": "2026-10-04",
+    "derived_observations": 1031
   },
   "source_catalog": [
     {
@@ -262,8 +262,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -272,8 +272,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -356,8 +356,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -450,8 +450,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -470,8 +470,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -544,8 +544,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -554,8 +554,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -638,8 +638,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -658,8 +658,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -732,8 +732,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -826,8 +826,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -836,8 +836,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -846,8 +846,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -920,8 +920,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -930,8 +930,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1014,8 +1014,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1034,8 +1034,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1108,8 +1108,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1128,8 +1128,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1202,8 +1202,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 4,
-        "scene_count": 4,
+        "site_scene_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1212,8 +1212,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1222,8 +1222,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1296,8 +1296,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1306,8 +1306,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1390,8 +1390,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1400,8 +1400,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1484,8 +1484,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1494,8 +1494,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1504,8 +1504,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1578,8 +1578,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1588,8 +1588,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1598,8 +1598,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1672,8 +1672,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1766,8 +1766,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1776,8 +1776,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1786,8 +1786,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -1860,8 +1860,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1870,8 +1870,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -1954,8 +1954,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -1964,8 +1964,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2048,8 +2048,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2058,8 +2058,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2068,8 +2068,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -2142,8 +2142,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 4,
-        "scene_count": 4,
+        "site_scene_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2152,8 +2152,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2236,8 +2236,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2246,8 +2246,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2256,8 +2256,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -2330,8 +2330,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2350,8 +2350,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -2424,8 +2424,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2518,8 +2518,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2612,8 +2612,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2706,8 +2706,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2726,8 +2726,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -2800,8 +2800,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2894,8 +2894,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2904,8 +2904,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -2914,8 +2914,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -2988,8 +2988,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -2998,8 +2998,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3008,8 +3008,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3082,8 +3082,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 5,
-        "scene_count": 5,
+        "site_scene_count": 7,
+        "scene_count": 7,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3092,8 +3092,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3102,8 +3102,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3176,8 +3176,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3186,8 +3186,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3196,8 +3196,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3270,8 +3270,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3280,8 +3280,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3364,8 +3364,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3374,8 +3374,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3384,8 +3384,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3458,8 +3458,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3468,8 +3468,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3478,8 +3478,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3552,8 +3552,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3562,8 +3562,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3572,8 +3572,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3646,8 +3646,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3666,8 +3666,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3740,8 +3740,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3750,8 +3750,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3760,8 +3760,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3834,8 +3834,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3844,8 +3844,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -3854,8 +3854,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -3928,8 +3928,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -3948,8 +3948,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4022,8 +4022,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4032,8 +4032,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4042,8 +4042,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4116,8 +4116,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 4,
-        "scene_count": 4,
+        "site_scene_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4126,8 +4126,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4136,8 +4136,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4210,8 +4210,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4220,8 +4220,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4230,8 +4230,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4304,8 +4304,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4314,8 +4314,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4398,8 +4398,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4408,8 +4408,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4418,8 +4418,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4492,8 +4492,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4586,8 +4586,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4596,8 +4596,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4606,8 +4606,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4680,8 +4680,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4690,8 +4690,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4700,8 +4700,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4774,8 +4774,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4784,8 +4784,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -4794,8 +4794,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -4868,8 +4868,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4962,8 +4962,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -4972,8 +4972,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -5056,8 +5056,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5150,8 +5150,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5160,8 +5160,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -5244,8 +5244,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5338,8 +5338,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5358,8 +5358,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -5432,8 +5432,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5452,8 +5452,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -5526,8 +5526,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5620,8 +5620,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5714,8 +5714,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5724,8 +5724,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -5734,8 +5734,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -5808,8 +5808,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5818,8 +5818,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -5902,8 +5902,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -5996,8 +5996,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6006,8 +6006,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6090,8 +6090,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6100,8 +6100,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6110,8 +6110,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -6184,8 +6184,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 4,
-        "scene_count": 4,
+        "site_scene_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6194,8 +6194,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6204,8 +6204,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -6278,8 +6278,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6288,8 +6288,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6372,8 +6372,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6382,8 +6382,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6392,8 +6392,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -6466,8 +6466,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6476,8 +6476,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6560,8 +6560,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6570,8 +6570,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6654,8 +6654,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6664,8 +6664,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -6748,8 +6748,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6768,8 +6768,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -6842,8 +6842,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -6862,8 +6862,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -6936,8 +6936,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7030,8 +7030,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7040,8 +7040,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7050,8 +7050,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7124,8 +7124,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 4,
-        "scene_count": 4,
+        "site_scene_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7134,8 +7134,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7144,8 +7144,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7218,8 +7218,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7312,8 +7312,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7322,8 +7322,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7406,8 +7406,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7500,8 +7500,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 4,
-        "scene_count": 4,
+        "site_scene_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7510,8 +7510,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7520,8 +7520,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 6,
-        "scene_count": 6,
+        "numeric_observation_count": 8,
+        "scene_count": 8,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7594,8 +7594,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7604,8 +7604,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7614,8 +7614,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7688,8 +7688,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7698,8 +7698,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7782,8 +7782,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7792,8 +7792,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7802,8 +7802,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7876,8 +7876,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7886,8 +7886,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7896,8 +7896,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -7970,8 +7970,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 3,
-        "scene_count": 3,
+        "site_scene_count": 5,
+        "scene_count": 5,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -7980,8 +7980,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -7990,8 +7990,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8064,8 +8064,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8074,8 +8074,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8084,8 +8084,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 4,
-        "scene_count": 4,
+        "numeric_observation_count": 6,
+        "scene_count": 6,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8158,8 +8158,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8168,8 +8168,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8178,8 +8178,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8252,8 +8252,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8262,8 +8262,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8272,8 +8272,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8346,8 +8346,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8356,8 +8356,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8366,8 +8366,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8440,8 +8440,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8460,8 +8460,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8534,8 +8534,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8721,8 +8721,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8731,8 +8731,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8741,8 +8741,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 3,
+        "scene_count": 3,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
@@ -8815,8 +8815,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8825,8 +8825,8 @@
         "source_ids": [
           "landsat-tirs-thermal"
         ],
-        "numeric_observation_count": 3,
-        "scene_count": 3,
+        "numeric_observation_count": 5,
+        "scene_count": 5,
         "source": "USGS Landsat Collection 2 Level-2 ST via public STAC",
         "analysis": "Raw COG windows processed into surface-temperature and local-background deltas."
       },
@@ -8909,8 +8909,8 @@
           "sentinel-2-optical",
           "landsat-oli-optical"
         ],
-        "site_scene_count": 2,
-        "scene_count": 2,
+        "site_scene_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-2 L2A via public STAC",
         "analysis": "Raw COG windows processed into NDVI/non-vegetated proxy metrics; full rasters are not stored in Git."
       },
@@ -8929,8 +8929,8 @@
         "source_ids": [
           "sentinel-1-sar"
         ],
-        "numeric_observation_count": 2,
-        "scene_count": 2,
+        "numeric_observation_count": 4,
+        "scene_count": 4,
         "source": "Copernicus Sentinel-1 GRD via public STAC",
         "analysis": "Raw COG VV/VH windows processed into backscatter dB and temporal deltas."
       },
