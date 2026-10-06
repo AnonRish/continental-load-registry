@@ -9,8 +9,8 @@
     "source_sweep": "data/track3/site_missing_information_sweep_2026-09-27.json",
     "sites": 93,
     "publisher_tasks": 214,
-    "domain_tasks": 1,
-    "total_tasks": 215,
+    "domain_tasks": 0,
+    "total_tasks": 214,
     "follow_on_observation_tasks": 24,
     "follow_on_observation_by_domain": {
       "power_telemetry": 6,
@@ -41,7 +41,7 @@
       "transformer_supply_chain": 0,
       "independent_corroboration": 0,
       "grid_connection": 0,
-      "chip_inventory": 1
+      "chip_inventory": 0
     },
     "coverage_assertions": {
       "publisher_tasks_equal_effective_unresolved": true,
@@ -10496,66 +10496,6 @@
       "reject_rule": "Market shareholders or unrelated financing with no site/project linkage.",
       "existing_next_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
       "public_leads": [],
-      "canonical_ingest_path": "data/track3/evidence_records.json",
-      "submission_schema": "data/track3/research_submission_schema.json"
-    },
-    {
-      "task_id": "DOM-EPOCH-d29894d37388a96a-chip-inventory",
-      "kind": "track3_domain",
-      "status": "OPEN",
-      "priority": "P1",
-      "epoch_id": "EPOCH-d29894d37388a96a",
-      "site_name": "Meta Gallatin",
-      "country": "United States",
-      "state_province": "TN",
-      "current_it_power_mw": 87,
-      "domain": "chip_inventory",
-      "workflow_label": "Chip inventory / site hardware",
-      "objective": "Verify site-specific accelerator inventory and chip-type attribution from canonical or primary site records; preserve uncertainty where only estimates exist.",
-      "search_sequence": [
-        "Epoch AI site-level chip records",
-        "owner/developer infrastructure disclosures",
-        "supplier/manufacturer statements with site linkage",
-        "planning/permit/project documents",
-        "reputable independent reporting"
-      ],
-      "queries": [
-        "\"Meta Gallatin\" GPU inventory",
-        "\"Meta Gallatin\" H100 H200 chips quantity",
-        "\"Meta Gallatin\" accelerator inventory"
-      ],
-      "search_links": [
-        "https://www.google.com/search?q=%22Meta+Gallatin%22+GPU+inventory",
-        "https://www.google.com/search?q=%22Meta+Gallatin%22+H100+H200+chips+quantity",
-        "https://www.google.com/search?q=%22Meta+Gallatin%22+accelerator+inventory"
-      ],
-      "evidence_to_capture": [
-        "chip type",
-        "quantity",
-        "measurement/reporting date",
-        "source wording",
-        "site linkage",
-        "URL/locator"
-      ],
-      "acceptance_rule": "A site-specific chip inventory or clearly attributed estimate is preserved with its source and date.",
-      "reject_rule": "Global chip ownership/users/shipment figures without site allocation.",
-      "existing_next_action": "Periodic refresh only: re-run the domain-specific public-source search when new primary records, filings, utility documents, equipment disclosures, or independently retained observations appear.",
-      "public_leads": [
-        {
-          "field": "energy_companies",
-          "status": "PUBLIC_LEAD_REVIEW_REQUIRED",
-          "finding": "Meta's official Gallatin announcement confirms the facility is operating and emphasizes infrastructure and renewable-energy access; the retained announcement does not name a specific utility.",
-          "source": "Meta Data Centers",
-          "source_url": "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
-        },
-        {
-          "field": "project",
-          "status": "PUBLIC_SOURCE",
-          "finding": "Meta's official Gallatin announcement confirms the facility is online and notes a more than $1.5B total investment once fully built out; no external investor is inferred.",
-          "source": "Meta Data Centers",
-          "source_url": "https://datacenters.atmeta.com/2024/11/gallatin-we-are-online/"
-        }
-      ],
       "canonical_ingest_path": "data/track3/evidence_records.json",
       "submission_schema": "data/track3/research_submission_schema.json"
     }
