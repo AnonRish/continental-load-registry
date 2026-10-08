@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-10-07T17:27:25.604846+00:00",
-  "today_utc": "2026-10-07",
+  "generated_on": "2026-10-08T17:25:59.854979+00:00",
+  "today_utc": "2026-10-08",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
     "epoch_site_count": 93,
-    "timeline_source_row_count": 547,
+    "timeline_source_row_count": 548,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
     "observed_timeline_event_count": 452,
-    "future_or_predicted_timeline_event_count": 95,
+    "future_or_predicted_timeline_event_count": 96,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
     "caiso_historical_series_record_count": 8,
@@ -7077,7 +7077,7 @@
       "country": "United States",
       "state_province": null,
       "observed_event_count": 3,
-      "future_or_predicted_event_count": 0,
+      "future_or_predicted_event_count": 1,
       "first_observed_date": "2024-05-30",
       "last_observed_date": "2026-08-07",
       "observed_events": [
@@ -7130,7 +7130,18 @@
           }
         }
       ],
-      "future_or_predicted_events": [],
+      "future_or_predicted_events": [
+        {
+          "date": "2026-11-05",
+          "temporal_status": "FUTURE_OR_PREDICTED",
+          "construction_status": "Building 2 is operational assuming a 3 month lag compared to Building 1. ",
+          "buildings_operational": 2.0,
+          "it_power_mw": 129.0,
+          "total_power_mw": 168.0,
+          "h100_equivalents": 147043.96159676605,
+          "performance_8bit_ops": 2.91e+20
+        }
+      ],
       "source": {
         "publisher": "Epoch AI",
         "dataset": "AI data centers / data center timelines",
