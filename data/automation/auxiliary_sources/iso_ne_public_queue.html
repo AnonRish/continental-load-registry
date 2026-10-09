@@ -131,7 +131,7 @@
 </div>
 
 <div style="float: right;min-width:200px">
-    <div style="margin-bottom: 5px;">As of: 10/8/2026</div>
+    <div style="margin-bottom: 5px;">As of: 10/9/2026</div>
     <div style="margin-bottom: 5px;"><a href='/reports/exportpublicqueue' title="Export results" class="export-link"><i style="color: green" class="fa fa-file-excel-o fa-lg"></i> Export to Excel</a></div>
     <div style=""><a href='/reports/exportpublicqueuepdf' onclick="$('#alertDownload').show()" title="Export results" class="export-link"><i style="color: red" class="fa fa-file-pdf-o fa-lg"></i> Export to PDF</a></div>
     <br />
@@ -58236,7 +58236,7 @@ Coordinates: 42.78270705350802, -72.51706642321578</td>
                 $('a.export-link').on('click', function (e) {
                     e.preventDefault();
                     var url = $(this).attr('href');
-                    location.href = url + '?ReportDate=' + 639270144000000000 + '&Status=' + GetSelectedItemValue("ddlStatus") + "&Jurisdiction=" + GetSelectedItemValue("ddlJurisdiction");
+                    location.href = url + '?ReportDate=' + 639271008000000000 + '&Status=' + GetSelectedItemValue("ddlStatus") + "&Jurisdiction=" + GetSelectedItemValue("ddlJurisdiction");
                 });
 
                 function GetSelectedItemValue(ddl) {
