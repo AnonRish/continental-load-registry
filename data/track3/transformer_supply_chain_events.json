@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-10-04",
+  "generated_on": "2026-10-11",
   "record_count": 3,
   "target_count": 93,
   "status": "INGESTED_SOURCE_BACKED_EVENTS",
@@ -1747,6 +1747,42 @@
       "semantics": "A research target is not a transformer event and does not imply that a transformer exists at the site."
     },
     {
+      "target_id": "TX-TARGET-EPOCH-d29894d37388a96a",
+      "epoch_id": "EPOCH-d29894d37388a96a",
+      "site_name": "Meta Gallatin",
+      "address": "1 Meta Lp, Gallatin, TN 37066",
+      "region": "TN",
+      "status": "RESEARCH_QUEUE",
+      "event_count": 0,
+      "source_families": [
+        "state/provincial utility commission filings",
+        "serving-utility capital-project and procurement filings",
+        "environmental impact statements / permits",
+        "county or municipal construction records",
+        "SEC/company procurement disclosures",
+        "transformer manufacturer or EPC project announcements"
+      ],
+      "search_queries": [
+        "\"Meta Gallatin\" transformer data center",
+        "\"Meta Gallatin\" substation transformer MVA kV",
+        "\"Meta Gallatin\" transformer delivery installation",
+        "\"Meta Gallatin\" utility commission transformer"
+      ],
+      "required_event_fields": [
+        "observed_on",
+        "event_type",
+        "manufacturer",
+        "model",
+        "rating_mva",
+        "primary_kv",
+        "secondary_kv",
+        "buyer",
+        "destination",
+        "source_url"
+      ],
+      "semantics": "A research target is not a transformer event and does not imply that a transformer exists at the site."
+    },
+    {
       "target_id": "TX-TARGET-EPOCH-02c050b6b554fadd",
       "epoch_id": "EPOCH-02c050b6b554fadd",
       "site_name": "Meta Los Lunas",
@@ -2991,42 +3027,6 @@
         "\"Meta Bowling Green\" substation transformer MVA kV",
         "\"Meta Bowling Green\" transformer delivery installation",
         "\"Meta Bowling Green\" utility commission transformer"
-      ],
-      "required_event_fields": [
-        "observed_on",
-        "event_type",
-        "manufacturer",
-        "model",
-        "rating_mva",
-        "primary_kv",
-        "secondary_kv",
-        "buyer",
-        "destination",
-        "source_url"
-      ],
-      "semantics": "A research target is not a transformer event and does not imply that a transformer exists at the site."
-    },
-    {
-      "target_id": "TX-TARGET-EPOCH-d29894d37388a96a",
-      "epoch_id": "EPOCH-d29894d37388a96a",
-      "site_name": "Meta Gallatin",
-      "address": "1 Meta Lp, Gallatin, TN 37066",
-      "region": "TN",
-      "status": "RESEARCH_QUEUE",
-      "event_count": 0,
-      "source_families": [
-        "state/provincial utility commission filings",
-        "serving-utility capital-project and procurement filings",
-        "environmental impact statements / permits",
-        "county or municipal construction records",
-        "SEC/company procurement disclosures",
-        "transformer manufacturer or EPC project announcements"
-      ],
-      "search_queries": [
-        "\"Meta Gallatin\" transformer data center",
-        "\"Meta Gallatin\" substation transformer MVA kV",
-        "\"Meta Gallatin\" transformer delivery installation",
-        "\"Meta Gallatin\" utility commission transformer"
       ],
       "required_event_fields": [
         "observed_on",
