@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-10-18T14:02:46.126451+00:00",
-  "today_utc": "2026-10-18",
+  "generated_on": "2026-10-19T17:00:37.314373+00:00",
+  "today_utc": "2026-10-19",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
@@ -9,8 +9,8 @@
     "timeline_source_row_count": 548,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
-    "observed_timeline_event_count": 452,
-    "future_or_predicted_timeline_event_count": 96,
+    "observed_timeline_event_count": 453,
+    "future_or_predicted_timeline_event_count": 95,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
     "caiso_historical_series_record_count": 8,
@@ -27,7 +27,7 @@
       "id": "MONTHLY_QUARTERLY_MW_CHANGES",
       "item": "Monthly/quarterly MW changes",
       "status": "DERIVED_IRREGULAR_EVENT_SERIES",
-      "coverage": "452 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
+      "coverage": "453 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
     },
     {
       "id": "QUEUE_TO_OPERATION_TIMELINE",
@@ -200,10 +200,10 @@
     },
     {
       "quarter": "2026-Q4",
-      "it_power_delta_mw": 332.222,
-      "total_power_delta_mw": 464.91,
-      "building_delta": 6.0,
-      "site_change_event_count": 2
+      "it_power_delta_mw": 459.222,
+      "total_power_delta_mw": 616.91,
+      "building_delta": 8.0,
+      "site_change_event_count": 3
     }
   ],
   "annual_electricity_consumption_snapshots": [
@@ -907,10 +907,10 @@
       "site_name": "Anthropic-Amazon New Carlisle",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 10,
-      "future_or_predicted_event_count": 2,
+      "observed_event_count": 11,
+      "future_or_predicted_event_count": 1,
       "first_observed_date": "2024-02-09",
-      "last_observed_date": "2026-06-03",
+      "last_observed_date": "2026-10-19",
       "observed_events": [
         {
           "date": "2024-02-09",
@@ -1071,19 +1071,25 @@
             "delta_total_power_mw": 0.0,
             "delta_buildings_operational": 0.0
           }
-        }
-      ],
-      "future_or_predicted_events": [
+        },
         {
           "date": "2026-10-19",
-          "temporal_status": "FUTURE_OR_PREDICTED",
+          "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Buildings 17-18 are operational. This is an estimate based on a rule of thumb of \"operational 5 months after roof is complete\", assuming the roofs took one more month after 2025-12-23. Also added four more months to account for commissioning and adjacent cooling units not being complete yet.",
           "buildings_operational": 18.0,
           "it_power_mw": 1037.0,
           "total_power_mw": 1244.0,
           "h100_equivalents": 818428.4992420415,
-          "performance_8bit_ops": 1.61967e+21
-        },
+          "performance_8bit_ops": 1.61967e+21,
+          "change_from_previous_observed_event": {
+            "date": "2026-10-19",
+            "delta_it_power_mw": 127.0,
+            "delta_total_power_mw": 152.0,
+            "delta_buildings_operational": 2.0
+          }
+        }
+      ],
+      "future_or_predicted_events": [
         {
           "date": "2028-03-17",
           "temporal_status": "FUTURE_OR_PREDICTED",
