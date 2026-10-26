@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-10-25T14:24:34.711652+00:00",
-  "today_utc": "2026-10-25",
+  "generated_on": "2026-10-26T16:49:06.957753+00:00",
+  "today_utc": "2026-10-26",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
@@ -9,8 +9,8 @@
     "timeline_source_row_count": 548,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
-    "observed_timeline_event_count": 453,
-    "future_or_predicted_timeline_event_count": 95,
+    "observed_timeline_event_count": 454,
+    "future_or_predicted_timeline_event_count": 94,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
     "caiso_historical_series_record_count": 8,
@@ -27,7 +27,7 @@
       "id": "MONTHLY_QUARTERLY_MW_CHANGES",
       "item": "Monthly/quarterly MW changes",
       "status": "DERIVED_IRREGULAR_EVENT_SERIES",
-      "coverage": "453 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
+      "coverage": "454 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
     },
     {
       "id": "QUEUE_TO_OPERATION_TIMELINE",
@@ -200,10 +200,10 @@
     },
     {
       "quarter": "2026-Q4",
-      "it_power_delta_mw": 459.222,
-      "total_power_delta_mw": 616.91,
-      "building_delta": 8.0,
-      "site_change_event_count": 3
+      "it_power_delta_mw": 490.222,
+      "total_power_delta_mw": 649.91,
+      "building_delta": 9.0,
+      "site_change_event_count": 4
     }
   ],
   "annual_electricity_consumption_snapshots": [
@@ -6095,10 +6095,10 @@
       "site_name": "Meta Los Lunas",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 2,
-      "future_or_predicted_event_count": 2,
+      "observed_event_count": 3,
+      "future_or_predicted_event_count": 1,
       "first_observed_date": "2024-07-24",
-      "last_observed_date": "2026-03-01",
+      "last_observed_date": "2026-10-26",
       "observed_events": [
         {
           "date": "2024-07-24",
@@ -6131,19 +6131,25 @@
             "delta_total_power_mw": 114.0,
             "delta_buildings_operational": 1.0
           }
-        }
-      ],
-      "future_or_predicted_events": [
+        },
         {
           "date": "2026-10-26",
-          "temporal_status": "FUTURE_OR_PREDICTED",
+          "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Building 2 (a tent like building) is operational. Based on a default estimate of 3 months for fit-out after structural completion in July.",
           "buildings_operational": 2.0,
           "it_power_mw": 118.0,
           "total_power_mw": 147.0,
           "h100_equivalents": 133906.01313794847,
-          "performance_8bit_ops": 2.65e+20
-        },
+          "performance_8bit_ops": 2.65e+20,
+          "change_from_previous_observed_event": {
+            "date": "2026-10-26",
+            "delta_it_power_mw": 31.0,
+            "delta_total_power_mw": 33.0,
+            "delta_buildings_operational": 1.0
+          }
+        }
+      ],
+      "future_or_predicted_events": [
         {
           "date": "2028-01-01",
           "temporal_status": "FUTURE_OR_PREDICTED",
