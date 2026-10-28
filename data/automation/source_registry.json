@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-10-27T15:54:36.355593+00:00",
+  "generated_at_utc": "2026-10-28T16:39:53.839423+00:00",
   "sources": [
     {
       "id": "PJM",
@@ -11,15 +11,15 @@
       "workflow": ".github/workflows/sync_pjm_cycle_public_queue.yml",
       "script": "sync_pjm_cycle_public_queue.py",
       "local_file": "pjm_cycle_public_queue.json",
-      "declared_capture_date": "2026-10-27T15:54:20Z",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:31Z",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.pjm.com/planning/service-requests",
         "etag": null,
         "last_modified": null,
-        "content_length": "50053",
+        "content_length": "47350",
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
       },
@@ -38,8 +38,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "ercot_gis_source.bin",
-      "declared_capture_date": "2026-10-27T15:54:25.782182+00:00",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:45.349292+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -65,19 +65,19 @@
       "workflow": ".github/workflows/sync_spp_public_queue.yml",
       "script": "sync_spp_public_queue.py",
       "local_file": "spp_public_queue.json",
-      "declared_capture_date": "2026-10-27T15:54:22Z",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:34Z",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://opsportal.spp.org/Studies/GIActive",
         "etag": null,
         "last_modified": null,
-        "content_length": "772782",
+        "content_length": "772078",
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
       },
-      "changed_since_previous_check": false,
+      "changed_since_previous_check": true,
       "local_artifact_present": true,
       "local_artifact_path": "data/spp_public_queue.json",
       "declared_sha256": null,
@@ -92,17 +92,17 @@
       "workflow": ".github/workflows/sync_miso_public_queue.yml",
       "script": "sync_miso_public_queue.py",
       "local_file": "miso_gi_queue.json",
-      "declared_capture_date": "2026-10-27T15:53:52Z",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:04Z",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.misoenergy.org/api/giqueue/getprojects",
         "etag": null,
         "last_modified": null,
-        "content_length": "2337444",
+        "content_length": "2337448",
         "content_type": "application/json; charset=utf-8",
-        "sample_sha256": "c6a1ba5b592fbc38792009a2be6a17d70d26ec381cd8650a1192c3c43fec2f92"
+        "sample_sha256": "5ebf44e328c1882d8caf66b915db6e2de36e2f25e92e8cf82f25658b21b2982a"
       },
       "changed_since_previous_check": true,
       "local_artifact_present": false,
@@ -119,8 +119,8 @@
       "workflow": ".github/workflows/sync_caiso_public_queue.yml",
       "script": "sync_caiso_public_queue.py",
       "local_file": "caiso_cluster15_queue.xlsx",
-      "declared_capture_date": "2026-10-27T15:53:50Z",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:02Z",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -147,7 +147,7 @@
       "script": "sync_nyiso_public_queue.py",
       "local_file": "nyiso_interconnection_queue.xlsx",
       "declared_capture_date": "2026-09-19T11:42:50-04:00",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 202,
@@ -173,8 +173,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "iso_ne_public_queue.html",
-      "declared_capture_date": "2026-10-27T15:54:25.782182+00:00",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:45.349292+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 302,
@@ -197,8 +197,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "ieso_application_status.html",
-      "declared_capture_date": "2026-10-27T15:54:25.782182+00:00",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:45.349292+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -224,8 +224,8 @@
       "workflow": ".github/workflows/track3_automated_pipeline.yml",
       "script": "sync_auxiliary_queue_sources.py",
       "local_file": "aeso_september_2026_connection_project_list.xlsx",
-      "declared_capture_date": "2026-10-27T15:54:25.782182+00:00",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "declared_capture_date": "2026-10-28T16:39:45.349292+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -252,7 +252,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-09-24",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -279,7 +279,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-09-24",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -306,7 +306,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_sales_chip_types.csv",
       "declared_capture_date": "2026-10-11",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -333,7 +333,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_owners_cumulative_by_designer.csv",
       "declared_capture_date": "2026-10-11",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -360,7 +360,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_users_year_end_by_lab.csv",
       "declared_capture_date": "2026-10-11",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -387,7 +387,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-10-11",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -414,7 +414,7 @@
       "script": "sync_epoch_ai_data_centers.py",
       "local_file": null,
       "declared_capture_date": "2026-10-11",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -441,7 +441,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "LOCAL_ARTIFACT",
         "path": "QUEUE_REGISTRY_UNIVERSE.md"
@@ -462,7 +462,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "gpu_clusters.csv",
       "declared_capture_date": "2026-03-13",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -489,7 +489,7 @@
       "script": "sync_track3_external_sources.py",
       "local_file": "ai_chip_components_quarterly_by_chip.csv",
       "declared_capture_date": "2026-07-23",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -516,7 +516,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2024-09-20",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -543,13 +543,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-2",
-        "etag": "\"1793112903\"",
-        "last_modified": "Tue, 27 Oct 2026 14:55:03 GMT",
+        "etag": "\"1793196084\"",
+        "last_modified": "Wed, 28 Oct 2026 14:01:24 GMT",
         "content_length": "86748",
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -570,16 +570,16 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
-        "http_status": 206,
+        "http_status": 200,
         "final_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data",
-        "etag": "W/\"1793116511-gzip\"",
-        "last_modified": "Tue, 27 Oct 2026 15:55:11 GMT",
-        "content_length": "20615",
+        "etag": "\"1793205603\"",
+        "last_modified": "Wed, 28 Oct 2026 16:40:03 GMT",
+        "content_length": null,
         "content_type": "text/html; charset=utf-8",
-        "sample_sha256": "bb1187bc73f676e9b64eb21ff740615f903adb968460b21c514ebf9bccc27e9f"
+        "sample_sha256": null
       },
       "changed_since_previous_check": true,
       "local_artifact_present": false,
@@ -597,16 +597,16 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
-        "http_status": 206,
+        "http_status": 200,
         "final_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
-        "etag": "W/\"1793116542-gzip\"",
-        "last_modified": "Tue, 27 Oct 2026 15:55:42 GMT",
-        "content_length": "17857",
+        "etag": "\"1793205605\"",
+        "last_modified": "Wed, 28 Oct 2026 16:40:05 GMT",
+        "content_length": null,
         "content_type": "text/html; charset=utf-8",
-        "sample_sha256": "cc0b212e1a3fdb6cd9c28de688cfea99c211ebac1a2e69d827cdcbebc101e663"
+        "sample_sha256": null
       },
       "changed_since_previous_check": true,
       "local_artifact_present": false,
@@ -624,13 +624,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-1",
-        "etag": "\"1793113181\"",
-        "last_modified": "Tue, 27 Oct 2026 14:59:41 GMT",
+        "etag": "\"1793196059\"",
+        "last_modified": "Wed, 28 Oct 2026 14:00:59 GMT",
         "content_length": "86521",
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -651,13 +651,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.usgs.gov/the-national-map-data-delivery/gis-data-download",
-        "etag": "\"1793116546\"",
-        "last_modified": "Tue, 27 Oct 2026 15:55:46 GMT",
+        "etag": "\"1793205608\"",
+        "last_modified": "Wed, 28 Oct 2026 16:40:08 GMT",
         "content_length": null,
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
@@ -678,7 +678,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 403,
@@ -702,7 +702,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -729,7 +729,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "NO_URL"
       },
@@ -749,7 +749,7 @@
       "script": "module1_physical_radar.py",
       "local_file": null,
       "declared_capture_date": "2026-09-26",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "LOCAL_ARTIFACT",
         "path": "data/physical_verification_layer.json"
@@ -770,13 +770,13 @@
       "script": "build_building_footprints.py",
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://docs.overturemaps.org/guides/buildings/",
-        "etag": "\"6ae0c8b3-8245\"",
-        "last_modified": "Tue, 27 Oct 2026 15:52:19 GMT",
+        "etag": "\"6ae1fa52-8245\"",
+        "last_modified": "Wed, 28 Oct 2026 13:36:18 GMT",
         "content_length": "33349",
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
@@ -797,7 +797,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -824,7 +824,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -851,7 +851,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -878,7 +878,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": "2026-09-28",
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "LOCAL_ARTIFACT",
         "path": "data/track3/transformer_supply_chain_events.json"
@@ -899,7 +899,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -926,7 +926,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -953,7 +953,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -980,7 +980,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1007,18 +1007,18 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.aeso.ca/grid/transmission-projects/connection-project-reporting/",
-        "etag": "\"2a3168d7a82a2b1f0f67c43a32300f5b\"",
+        "etag": "\"4da048fed4549fba6dfc9989e4c8fb2e\"",
         "last_modified": null,
         "content_length": null,
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
       },
-      "changed_since_previous_check": false,
+      "changed_since_previous_check": true,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
@@ -1034,7 +1034,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1061,13 +1061,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.neso.energy/industry-information/connections/connections-360",
         "etag": null,
-        "last_modified": "Tue, 27 Oct 2026 15:55:58 GMT",
+        "last_modified": "Wed, 28 Oct 2026 11:15:11 GMT",
         "content_length": null,
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
@@ -1088,13 +1088,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.neso.energy/industry-information/connections/reports-and-registers",
         "etag": null,
-        "last_modified": "Tue, 27 Oct 2026 15:54:53 GMT",
+        "last_modified": "Wed, 28 Oct 2026 16:40:20 GMT",
         "content_length": null,
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
@@ -1115,7 +1115,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 403,
@@ -1139,7 +1139,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 403,
@@ -1163,7 +1163,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 404,
@@ -1187,22 +1187,19 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
-        "status": "HEALTHY",
-        "http_status": 200,
-        "final_url": "https://www.svk.se/en/grid-development/the-transmission-grid/connecting-to-the-transmission-grid/",
-        "etag": null,
-        "last_modified": null,
-        "content_length": null,
-        "content_type": null,
-        "sample_sha256": null
+        "status": "FAILED",
+        "http_status": 404,
+        "error": "HTTP Error 404: Not Found"
       },
-      "changed_since_previous_check": false,
+      "changed_since_previous_check": null,
       "local_artifact_present": false,
       "local_artifact_path": null,
       "declared_sha256": null,
-      "health_state": "HEALTHY"
+      "health_state": "DEGRADED",
+      "failure_class": "REMOTE_HEALTHCHECK_DEGRADED",
+      "health_note": "The live health check is blocked, rate-limited, redirected, network-inaccessible or otherwise unavailable; no repository data claim is upgraded from this condition."
     },
     {
       "id": "statnett_connections",
@@ -1214,7 +1211,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 404,
@@ -1238,13 +1235,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.tnb.com.my/",
         "etag": null,
-        "last_modified": "Tue, 27 Oct 2026 15:49:12 GMT",
+        "last_modified": "Wed, 28 Oct 2026 16:35:58 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -1265,7 +1262,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 404,
@@ -1289,13 +1286,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://www.e-redes.pt/en",
-        "etag": "W/\"1793116566-gzip\"",
-        "last_modified": "Tue, 27 Oct 2026 15:56:06 GMT",
+        "etag": "W/\"1793205633-gzip\"",
+        "last_modified": "Wed, 28 Oct 2026 16:40:33 GMT",
         "content_length": null,
         "content_type": "text/html; charset=UTF-8",
         "sample_sha256": null
@@ -1316,7 +1313,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1343,7 +1340,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": null,
@@ -1367,7 +1364,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": null,
@@ -1391,7 +1388,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1418,7 +1415,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 403,
@@ -1442,7 +1439,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 403,
@@ -1466,7 +1463,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1493,7 +1490,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1520,7 +1517,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1547,7 +1544,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1574,7 +1571,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 403,
@@ -1598,13 +1595,13 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
         "final_url": "https://texasaidocket.com/",
-        "etag": "\"6ae07461-b8718\"",
-        "last_modified": "Tue, 27 Oct 2026 09:52:33 GMT",
+        "etag": "\"6ae0caf2-b8718\"",
+        "last_modified": "Tue, 27 Oct 2026 16:01:54 GMT",
         "content_length": "755480",
         "content_type": "text/html; charset=utf-8",
         "sample_sha256": null
@@ -1625,7 +1622,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1652,7 +1649,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1679,7 +1676,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 429,
@@ -1703,7 +1700,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
@@ -1730,7 +1727,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "FAILED",
         "http_status": 429,
@@ -1754,7 +1751,7 @@
       "script": null,
       "local_file": null,
       "declared_capture_date": null,
-      "checked_at_utc": "2026-10-27T15:54:36.355593+00:00",
+      "checked_at_utc": "2026-10-28T16:39:53.839423+00:00",
       "fingerprint": {
         "status": "HEALTHY",
         "http_status": 200,
