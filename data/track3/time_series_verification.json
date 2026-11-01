@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-10-31T15:45:56.519181+00:00",
-  "today_utc": "2026-10-31",
+  "generated_on": "2026-11-01T16:49:55.537712+00:00",
+  "today_utc": "2026-11-01",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
@@ -9,8 +9,8 @@
     "timeline_source_row_count": 548,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
-    "observed_timeline_event_count": 455,
-    "future_or_predicted_timeline_event_count": 93,
+    "observed_timeline_event_count": 457,
+    "future_or_predicted_timeline_event_count": 91,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
     "caiso_historical_series_record_count": 8,
@@ -27,7 +27,7 @@
       "id": "MONTHLY_QUARTERLY_MW_CHANGES",
       "item": "Monthly/quarterly MW changes",
       "status": "DERIVED_IRREGULAR_EVENT_SERIES",
-      "coverage": "455 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
+      "coverage": "457 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
     },
     {
       "id": "QUEUE_TO_OPERATION_TIMELINE",
@@ -200,10 +200,10 @@
     },
     {
       "quarter": "2026-Q4",
-      "it_power_delta_mw": 658.222,
-      "total_power_delta_mw": 845.91,
-      "building_delta": 10.0,
-      "site_change_event_count": 5
+      "it_power_delta_mw": 1122.222,
+      "total_power_delta_mw": 1483.91,
+      "building_delta": 15.0,
+      "site_change_event_count": 7
     }
   ],
   "annual_electricity_consumption_snapshots": [
@@ -1505,10 +1505,10 @@
       "site_name": "OpenAI Stargate Abilene",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 8,
-      "future_or_predicted_event_count": 1,
+      "observed_event_count": 9,
+      "future_or_predicted_event_count": 0,
       "first_observed_date": "2024-05-31",
-      "last_observed_date": "2026-07-28",
+      "last_observed_date": "2026-11-01",
       "observed_events": [
         {
           "date": "2024-05-31",
@@ -1637,20 +1637,25 @@
             "delta_total_power_mw": 0.0,
             "delta_buildings_operational": 0.0
           }
-        }
-      ],
-      "future_or_predicted_events": [
+        },
         {
           "date": "2026-11-01",
-          "temporal_status": "FUTURE_OR_PREDICTED",
+          "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Buildings 5-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24.",
           "buildings_operational": 8.0,
           "it_power_mw": 843.0,
           "total_power_mw": 1180.0,
           "h100_equivalents": 1018696.3112683173,
-          "performance_8bit_ops": 2.016e+21
+          "performance_8bit_ops": 2.016e+21,
+          "change_from_previous_observed_event": {
+            "date": "2026-11-01",
+            "delta_it_power_mw": 422.0,
+            "delta_total_power_mw": 590.0,
+            "delta_buildings_operational": 4.0
+          }
         }
       ],
+      "future_or_predicted_events": [],
       "source": {
         "publisher": "Epoch AI",
         "dataset": "AI data centers / data center timelines",
@@ -7165,10 +7170,10 @@
       "site_name": "Huawei Wuhu",
       "country": "China",
       "state_province": null,
-      "observed_event_count": 7,
-      "future_or_predicted_event_count": 3,
+      "observed_event_count": 8,
+      "future_or_predicted_event_count": 2,
       "first_observed_date": "2023-01-01",
-      "last_observed_date": "2026-08-06",
+      "last_observed_date": "2026-11-01",
       "observed_events": [
         {
           "date": "2023-01-01",
@@ -7281,19 +7286,25 @@
             "delta_total_power_mw": 0.0,
             "delta_buildings_operational": 0.0
           }
-        }
-      ],
-      "future_or_predicted_events": [
+        },
         {
           "date": "2026-11-01",
-          "temporal_status": "FUTURE_OR_PREDICTED",
+          "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Five buildings are operational. On the north campus, building 5 is operational assuming a 3-month fit-out post structural completion.",
           "buildings_operational": 5.0,
           "it_power_mw": 199.0,
           "total_power_mw": 229.0,
           "h100_equivalents": 96537.64527539161,
-          "performance_8bit_ops": 1.91048e+20
-        },
+          "performance_8bit_ops": 1.91048e+20,
+          "change_from_previous_observed_event": {
+            "date": "2026-11-01",
+            "delta_it_power_mw": 42.0,
+            "delta_total_power_mw": 48.0,
+            "delta_buildings_operational": 1.0
+          }
+        }
+      ],
+      "future_or_predicted_events": [
         {
           "date": "2026-12-31",
           "temporal_status": "FUTURE_OR_PREDICTED",
