@@ -82,13 +82,13 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0 40px}
  try{
   const d=await fetch('data/track3/ambiguous_case_studies.json').then(r=>r.json());
   const map={
-   AMB-NYISO-1765:['CONFIRMED_MANUFACTURING_OR_INDUSTRIAL','Manufacturing / industrial'],
-   AMB-NYISO-1745:['CONFIRMED_DATA_CENTER','Data center'],
+   'AMB-NYISO-1765':['CONFIRMED_MANUFACTURING_OR_INDUSTRIAL','Manufacturing / industrial'],
+   'AMB-NYISO-1745':['CONFIRMED_DATA_CENTER','Data center'],
    'AMB-IESO-2026-903':['INCONCLUSIVE_AFTER_SEARCH','Inconclusive after search']
   };
   const short={
-   AMB-NYISO-1765:'Micron Fab 3',
-   AMB-NYISO-1745:'Pontoon Bridge Road Data Center',
+   'AMB-NYISO-1765':'Micron Fab 3',
+   'AMB-NYISO-1745':'Pontoon Bridge Road Data Center',
    'AMB-IESO-2026-903':'Project IQ197'
   };
   document.getElementById('matrix').innerHTML=d.cases.map(c=>{
