@@ -6,28 +6,20 @@ import concurrent.futures
 import json
 import re
 import sys
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
-from urllib.request import Request, urlopen
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from polite_fetch import RobotsDisallowed, fetch_json  # noqa: E402
 
 ROOT=Path(__file__).resolve().parents[1]
 API="https://aidatacenterindex.com/api/operators.json"
 BASE="https://aidatacenterindex.com/operators/"
 
 def get_json(url:str, retries:int=3):
-    last=None
-    for attempt in range(retries):
-        try:
-            req=Request(url,headers={"User-Agent":"continental-load-registry-company-sync/1.0"})
-            with urlopen(req,timeout=45) as r:
-                raw=r.read()
-            return json.loads(raw.decode("utf-8"))
-        except Exception as exc:
-            last=exc
-            if attempt+1<retries: time.sleep(1.5*(attempt+1))
-    raise RuntimeError(f"{url}: {last}")
+    # Identifies the project and honours the publisher's robots.txt (see polite_fetch.py).
+    return fetch_json(url, timeout=45, retries=retries)
 
 def slugify(s:str)->str:
     s=str(s or "").lower()
@@ -53,7 +45,12 @@ def load_one(o):
                 "loaded":False,"facility_count_loaded":0,"error":str(exc),"items":[]}
 
 def main():
-    operators_payload=get_json(API)
+    try:
+        operators_payload=get_json(API)
+    except RobotsDisallowed as exc:
+        # Policy skip, not a failure: keep the retained snapshot unchanged.
+        print(f"SKIPPED: {exc}")
+        return 0
     operators=operators_payload if isinstance(operators_payload,list) else operators_payload.get("operators") or operators_payload.get("items") or operators_payload.get("data") or []
     if not operators: raise SystemExit("operator API returned no operators")
 
@@ -105,4 +102,4 @@ def main():
     print(json.dumps(status,indent=2))
 
 if __name__=="__main__":
-    main()
+    sys.exit(main())

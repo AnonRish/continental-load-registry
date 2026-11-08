@@ -1,10 +1,25 @@
 #!/usr/bin/env python3
 """Build the Track 3 facility-level provenance ledger conservatively."""
 from __future__ import annotations
-import csv,json,os,re,hashlib
+import csv,json,os,re,hashlib,subprocess
 from datetime import datetime,timezone
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent; OUT=ROOT/"data"/"track3"; COMMIT=os.getenv("GITHUB_SHA","WORKTREE_UNRESOLVED")
+ROOT=Path(__file__).resolve().parent; OUT=ROOT/"data"/"track3"
+TODAY=datetime.now(timezone.utc).date().isoformat()
+
+
+def resolve_commit() -> str:
+    """GITHUB_SHA in Actions; otherwise the checked-out commit; otherwise an explicit sentinel."""
+    sha = os.getenv("GITHUB_SHA")
+    if sha:
+        return sha
+    try:
+        return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "WORKTREE_UNRESOLVED"
+
+
+COMMIT=resolve_commit()
 def load(p): return json.loads((ROOT/p).read_text(encoding="utf-8"))
 def clean(v):
     if v is None:return None

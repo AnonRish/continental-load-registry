@@ -426,8 +426,88 @@ def download(url: str, dest: Path) -> None:
         shutil.copyfileobj(resp, f)
 
 
+UPSTREAM_DIR = OUT / "upstream"
+DELTA_PATH = OUT / "upstream_delta.json"
+
+
+def epoch_id_for(row: dict[str, Any]) -> str:
+    """Stable site ID: hash of Epoch's Name|Address|Country (unchanged since the first sync)."""
+    key = (str(pick(row, ALIASES["name"]) or "") + "|" + str(pick(row, ALIASES["address"]) or "")
+           + "|" + str(pick(row, ALIASES["country"]) or ""))
+    return "EPOCH-" + hashlib.sha256(key.encode("utf-8")).hexdigest()[:16]
+
+
+def reference_universe_ids() -> list[str]:
+    """The frozen Track 3 reference universe is the curated site-evidence layer.
+
+    Every Track 3 ledger (evidence, physical observations, research queues) is
+    keyed to these sites, so the universe only changes by a deliberate, reviewed
+    re-base -- never because the upstream explorer added or edited a row.
+    """
+    payload = json.loads((OUT / "site_level_connection_evidence.json").read_text(encoding="utf-8"))
+    return [str(r.get("epoch_id") or "") for r in payload.get("records", [])]
+
+
+def read_csv_rows(path: Path) -> tuple[list[str], list[dict[str, str]]]:
+    if not path.exists():
+        return [], []
+    with path.open(encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        return list(reader.fieldnames or []), list(reader)
+
+
+def write_csv_rows(path: Path, header: list[str], rows: list[dict[str, str]]) -> None:
+    # lineterminator="\n" reproduces Epoch's files byte-for-byte for unchanged rows.
+    with path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=header, lineterminator="\n", extrasaction="ignore", restval="")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def split_reference_universe(
+    upstream: list[dict[str, str]], previous: list[dict[str, str]], reference_ids: list[str]
+) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
+    """Return (reference rows, carried-forward rows, upstream rows outside the universe).
+
+    Reference rows keep the order of `reference_ids`, take today's upstream values
+    when the site is still published under the same ID, and otherwise carry the
+    previously retained row forward (flagged, never silently dropped).
+    """
+    up_by_id = {epoch_id_for(r): r for r in upstream}
+    prev_by_id = {epoch_id_for(r): r for r in previous}
+    # Keep the retained file's row order so a refresh only diffs changed values.
+    ordered = [eid for eid in prev_by_id if eid in set(reference_ids)]
+    ordered += [eid for eid in reference_ids if eid not in set(ordered)]
+    reference: list[dict[str, str]] = []
+    carried: list[dict[str, str]] = []
+    for eid in ordered:
+        if eid in up_by_id:
+            reference.append(up_by_id[eid])
+        elif eid in prev_by_id:
+            reference.append(prev_by_id[eid])
+            carried.append(prev_by_id[eid])
+        else:
+            raise RuntimeError(f"reference site {eid} is in neither the upstream download nor the retained snapshot")
+    ref_set = set(reference_ids)
+    added = [r for eid, r in up_by_id.items() if eid not in ref_set]
+    return reference, carried, added
+
+
+def site_summary(row: dict[str, str]) -> dict[str, Any]:
+    return {
+        "epoch_id": epoch_id_for(row),
+        "name": pick(row, ALIASES["name"]),
+        "country": pick(row, ALIASES["country"]),
+        "address": pick(row, ALIASES["address"]),
+        "owner": pick(row, ALIASES["owner"]),
+        "current_power_mw": numeric(pick(row, ALIASES["current_power_mw"])),
+        "current_h100_equivalents": numeric(pick(row, ALIASES["current_h100_eq"])),
+    }
+
+
 def sync() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
+    UPSTREAM_DIR.mkdir(parents=True, exist_ok=True)
     today = date.today().isoformat()
     with tempfile.TemporaryDirectory(prefix="epoch-ai-") as tmp_s:
         tmp = Path(tmp_s)
@@ -436,16 +516,63 @@ def sync() -> None:
         for filename, url in EXTERNAL_URLS.items():
             download(url, tmp / filename)
 
-        centers = load_csv(tmp / "data_centers.csv")
-        timelines = load_csv(tmp / "data_center_timelines.csv")
-        chips = load_csv(tmp / "data_centers_chip_quantities.csv")
-        if len(centers) != 93:
-            raise RuntimeError(f"Epoch AI data_centers.csv row count changed unexpectedly: {len(centers)} (expected 93)")
-        if not centers or not pick(centers[0], ALIASES["name"]):
+        up_centers = load_csv(tmp / "data_centers.csv")
+        up_timelines = load_csv(tmp / "data_center_timelines.csv")
+        up_chips = load_csv(tmp / "data_centers_chip_quantities.csv")
+        if not up_centers or not pick(up_centers[0], ALIASES["name"]):
             raise RuntimeError("Epoch AI data centers dataset has no recognizable Name field")
 
-        for filename in {**URLS, **EXTERNAL_URLS}:
+        # Keep the exact upstream downloads for transparency; they are not the
+        # reference universe the Track 3 ledgers are keyed to.
+        for filename in URLS:
+            shutil.copy2(tmp / filename, UPSTREAM_DIR / filename)
+
+        header, _ = read_csv_rows(tmp / "data_centers.csv")
+        _, previous_centers = read_csv_rows(OUT / "data_centers.csv")
+        _, previous_timelines = read_csv_rows(OUT / "data_center_timelines.csv")
+        _, previous_chips = read_csv_rows(OUT / "data_centers_chip_quantities.csv")
+        reference_ids = reference_universe_ids()
+        centers, carried, added = split_reference_universe(up_centers, previous_centers, reference_ids)
+
+        ref_names = {norm(pick(r, ALIASES["name"])) for r in centers}
+        carried_names = {norm(pick(r, ALIASES["name"])) for r in carried}
+
+        def keep(rows_up, rows_prev, aliases):
+            # Timeline/chip rows are keyed by site name: take upstream rows for every reference
+            # name Epoch still publishes, and retained rows only for names that disappeared.
+            up_names = {norm(pick(r, aliases)) for r in rows_up}
+            return ([r for r in rows_up if norm(pick(r, aliases)) in ref_names]
+                    + [r for r in rows_prev if norm(pick(r, aliases)) in carried_names - up_names])
+
+        timelines = keep(up_timelines, previous_timelines, TIMELINE_ALIASES["data_center"])
+        chips = keep(up_chips, previous_chips, CHIP_ALIASES["data_center"])
+        write_csv_rows(OUT / "data_centers.csv", header, centers)
+        write_csv_rows(OUT / "data_center_timelines.csv", read_csv_rows(tmp / "data_center_timelines.csv")[0], timelines)
+        write_csv_rows(OUT / "data_centers_chip_quantities.csv", read_csv_rows(tmp / "data_centers_chip_quantities.csv")[0], chips)
+        for filename in EXTERNAL_URLS:
             shutil.copy2(tmp / filename, OUT / filename)
+
+        DELTA_PATH.write_text(json.dumps({
+            "schema_version": 1,
+            "checked_on": today,
+            "upstream_url": URLS["data_centers.csv"],
+            "upstream_row_count": len(up_centers),
+            "reference_universe_size": len(reference_ids),
+            "reference_sites_published_upstream": len(reference_ids) - len(carried),
+            "reference_sites_carried_forward": [site_summary(r) for r in carried],
+            "upstream_sites_outside_reference_universe": [
+                {**site_summary(r),
+                 # Same Name as a carried-forward reference site: most likely an upstream edit, not a new site.
+                 "possible_edit_of": next((epoch_id_for(c) for c in carried
+                                           if norm(pick(c, ALIASES["name"])) == norm(pick(r, ALIASES["name"]))), None)}
+                for r in added
+            ],
+            "upstream_sha256": {name: sha256(UPSTREAM_DIR / name) for name in URLS},
+            "policy": ("The Track 3 reference universe is frozen to the curated site-evidence layer. "
+                       "Sites Epoch adds later are listed here as a research queue; they join the "
+                       "universe only through a reviewed re-base. A reference site that Epoch renames, "
+                       "edits or removes keeps its last retained row and is listed as carried forward."),
+        }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
         # Mark the cataloged external source snapshots as ingested only after
         # their bytes have successfully been downloaded and copied.
@@ -617,6 +744,12 @@ def sync() -> None:
             "outside_registry_geographic_scope_epoch_records": sum(1 for r in records if r["registry_crosswalk_status"] == "outside_registry_geographic_scope"),
             "manual_override_count": len(overrides),
             "site_evidence": evidence_summary,
+            "upstream": {
+                "row_count": len(up_centers),
+                "reference_sites_carried_forward": len(carried),
+                "sites_outside_reference_universe": len(added),
+                "delta_report": "data/external/epoch_ai/upstream_delta.json",
+            },
             "raw_files": {name: {"url": {**URLS, **EXTERNAL_URLS}[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in {**URLS, **EXTERNAL_URLS}},
             "external_raw_files": {name: {"url": EXTERNAL_URLS[name], "sha256": sha256(OUT/name), "bytes": (OUT/name).stat().st_size} for name in EXTERNAL_URLS},
             "method": "Raw Epoch rows preserved; normalized fields joined to latest available timeline and chip records; registry matching is conservative and does not overwrite queue facts."
