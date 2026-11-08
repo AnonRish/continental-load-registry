@@ -385,6 +385,28 @@ def _csv_content(text: str) -> list[list[str]]:
     return list(csv.reader(io.StringIO(text)))
 
 
+def rule_website_audit(f: dict, d: Drift) -> dict[str, Any]:
+    audit = load("data/website_completeness_audit.json")
+    scope = load("data/large_load_scope.json")["definitions"]
+    summary = load("data/track3/summary.json")
+    owners = {
+        "current_core_registry_rows": scope["current_row_level"]["records"],
+        "current_core_capacity_gw": scope["current_row_level"]["capacity_gw"],
+        "broader_known_scope_rows": scope["expanded_known_scope"]["records"],
+        "broader_known_scope_capacity_gw": scope["expanded_known_scope"]["capacity_gw"],
+        "project_records": f["projects"],
+        "current_epoch_sites": len(load("data/external/epoch_ai/site_level_connection_evidence.json")["records"]),
+        "track3_evidence_records": summary["track3_evidence_record_count"],
+        "remote_sensing_processed": summary["remote_sensing_derived_observation_count"],
+        "transformer_events": summary["transformer_event_count"],
+        "public_web_enrichment_records": summary["public_web_evidence_record_count"],
+    }
+    for key, value in owners.items():
+        if key in audit["summary"]:
+            d.set(audit["summary"], key, value, "website_completeness_audit.summary")
+    return {"data/website_completeness_audit.json": audit}
+
+
 DOC_COUNTER_RE = re.compile(r"<!--count:([a-z0-9_]+)-->(.*?)<!--/count-->", re.S)
 
 
@@ -399,8 +421,10 @@ def doc_counter_values() -> dict[str, str]:
     values = {
         "registry_rows": n(f["registry_rows"]),
         "registry_gw": f"{f['registry_gw']:,.1f}",
+        "registry_gw3": f"{f['registry_gw']:,.3f}",
         "expanded_rows": n(scope["expanded_known_scope"]["records"]),
         "expanded_gw": f"{float(scope['expanded_known_scope']['capacity_gw']):,.1f}",
+        "expanded_gw3": f"{float(scope['expanded_known_scope']['capacity_gw']):,.3f}",
         "registry_rtos": n(len(f["registry_rows_by_rto"])),
         "epoch_sites": n(len(load("data/external/epoch_ai/site_level_connection_evidence.json")["records"])),
         "project_records": n(f["projects"]),
@@ -416,13 +440,20 @@ def doc_counter_values() -> dict[str, str]:
     }
     for rto, s in f["queues"].items():
         values[f"{rto.lower()}_queue_rows"] = n(s["record_count"])
+        if s.get("records_ge_100mw") is not None:
+            values[f"{rto.lower()}_queue_ge100"] = n(s["records_ge_100mw"])
+    if f["queues"].get("MISO", {}).get("missing_ge_100_location") is not None:
+        values["miso_unresolved_ge100"] = n(f["queues"]["MISO"]["missing_ge_100_location"])
+    radar = load("data/module1_radar_summary.json")
+    values["module1_rows"] = n(radar["registry_record_count"])
+    values["module1_1e26_pass"] = n(radar["domains"]["domain_1_physics"]["all_scenarios_1e26_pass_count"])
     return values
 
 
 def rule_doc_counters(f: dict, d: Drift) -> dict[str, Any]:
     values = doc_counter_values()
     out: dict[str, Any] = {}
-    for path in sorted(list(ROOT.glob("*.md")) + list(ROOT.glob("docs/**/*.md"))):
+    for path in sorted(list(ROOT.glob("*.md")) + list(ROOT.glob("docs/**/*.md")) + list(ROOT.glob("*.html"))):
         rel = path.relative_to(ROOT).as_posix()
         original = path.read_text(encoding="utf-8")
 
@@ -442,7 +473,7 @@ def rule_doc_counters(f: dict, d: Drift) -> dict[str, Any]:
 
 # CSV exports first so the catalog counts the regenerated files; prose counters last.
 RULES = [rule_csv_exports, rule_queue_status, rule_scope, rule_map_manifest, rule_market_manifest, rule_catalog,
-         rule_doc_counters]
+         rule_website_audit, rule_doc_counters]
 
 
 def run_pass(check: bool) -> list[str]:

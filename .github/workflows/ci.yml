@@ -31,6 +31,10 @@ jobs:
         run: pip install -r requirements.txt
       - name: Verify (tests, self-tests, reproducibility and cross-artifact checks)
         run: python verify.py
+      - name: Check the static Tailwind build is current
+        run: |
+          npx -y tailwindcss@3.4.17 -c tailwind.config.js -i assets/tailwind.input.css -o "$RUNNER_TEMP/tailwind.css" --minify
+          cmp assets/tailwind.css "$RUNNER_TEMP/tailwind.css" || { echo "::error::assets/tailwind.css is stale; rebuild it (see CONTRIBUTING.md)"; exit 1; }
       - name: Lint workflows
         run: |
           pip install actionlint-py
