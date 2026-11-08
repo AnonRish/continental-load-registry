@@ -394,6 +394,13 @@ def classify_storage_tier(project_name: object, raw_fuel_technology: object) -> 
     return AMBIGUOUS_LOAD_LABEL
 
 
+COMPUTE_ESTIMATE_FIELDS = (
+    "gpus_estimate_low", "gpus_estimate_reference", "gpus_estimate_high",
+    "run_flops_90d_low", "run_flops_90d_reference", "run_flops_90d_high",
+    "clears_1e26_flops_all_scenarios",
+)
+
+
 def enrich_row(row: "pd.Series", have_optional_columns: bool, have_fuel_column: bool) -> dict:
     entity_category, matched_entity, match_score = classify_entity(row.get("developer_entity"))
 
@@ -454,7 +461,7 @@ def enrich_row(row: "pd.Series", have_optional_columns: bool, have_fuel_column: 
         else "Tier 4: Genuinely Ambiguous / Unclassified Large Load"
     )
 
-    return {
+    out = {
         "queue_id": row.get("queue_id"),
         "rto_region": row.get("rto_region"),
         "state": row.get("state"),
@@ -480,6 +487,12 @@ def enrich_row(row: "pd.Series", have_optional_columns: bool, have_fuel_column: 
         "review_priority": review_priority,
         "review_reason": review_reason,
     }
+    if is_confirmed_storage:
+        # Battery storage is not computational load, so a GPU or FLOP figure for it
+        # would be meaningless: leave every compute estimate empty.
+        for field in COMPUTE_ESTIMATE_FIELDS:
+            out[field] = None
+    return out
 
 
 def enrich_registry(df: pd.DataFrame) -> pd.DataFrame:
@@ -507,6 +520,11 @@ def enrich_registry(df: pd.DataFrame) -> pd.DataFrame:
 
     enriched_rows = [enrich_row(row, have_optional, have_fuel) for _, row in df.iterrows()]
     out = pd.DataFrame(enriched_rows)
+    # Storage rows have no compute estimate; nullable dtypes keep the other rows'
+    # GPU counts as integers (not 1234.0) and the threshold flag as a boolean.
+    for col in ("gpus_estimate_low", "gpus_estimate_reference", "gpus_estimate_high"):
+        out[col] = out[col].astype("Int64")
+    out["clears_1e26_flops_all_scenarios"] = out["clears_1e26_flops_all_scenarios"].astype("boolean")
     out.sort_values(["review_priority", "capacity_mw"], ascending=[False, False], inplace=True)
     return out
 

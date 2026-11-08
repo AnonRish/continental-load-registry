@@ -55,6 +55,30 @@ def _text(v: Any) -> str:
     return "" if v is None or (isinstance(v, float) and pd.isna(v)) else str(v)
 
 
+STORAGE_TIER = "Confirmed Grid-Scale Storage (BESS)"
+
+
+def _int_or_none(v: Any) -> int | None:
+    return None if v is None or pd.isna(v) else int(v)
+
+
+def _float_or_none(v: Any) -> float | None:
+    return None if v is None or pd.isna(v) else float(v)
+
+
+def drop_storage_estimates(rows: list[dict]) -> list[dict]:
+    """Battery storage is not computational load: no row of it may carry a GPU/FLOP figure.
+
+    Applied to every row, including RTOs whose rows are carried over from the page
+    unchanged, so older embedded rows are corrected too.
+    """
+    for r in rows:
+        if r.get("tier") == STORAGE_TIER:
+            r["gpu"] = None
+            r["flops"] = None
+    return rows
+
+
 def rows_from_csvs(raw_path: Path, enriched_path: Path) -> list[dict]:
     raw = pd.read_csv(raw_path, dtype={"queue_id": str})
     enriched = pd.read_csv(enriched_path, dtype={"queue_id": str})
@@ -78,8 +102,8 @@ def rows_from_csvs(raw_path: Path, enriched_path: Path) -> list[dict]:
             ("poi", _text(r["poi_substation"])), ("mw", round(float(r["capacity_mw"]), 1)),
             ("status", _text(r["status"])), ("proj", _text(r["project_name"])),
             ("dev", _text(r["developer_entity_raw"])), ("ent", _text(r["entity_category"])),
-            ("tier", _text(r["load_type_tier"])), ("gpu", int(r["gpus_estimate_reference"])),
-            ("flops", float(r["run_flops_90d_reference"])), ("flag", bool(r["review_priority"])),
+            ("tier", _text(r["load_type_tier"])), ("gpu", _int_or_none(r["gpus_estimate_reference"])),
+            ("flops", _float_or_none(r["run_flops_90d_reference"])), ("flag", bool(r["review_priority"])),
         ]))
     return rows
 
@@ -87,7 +111,7 @@ def rows_from_csvs(raw_path: Path, enriched_path: Path) -> list[dict]:
 def merge_rows(existing: list[dict], new_rows: list[dict]) -> list[dict]:
     replaced = {r["rto"] for r in new_rows}
     kept = [r for r in existing if r["rto"] not in replaced]
-    merged = kept + new_rows
+    merged = drop_storage_estimates(kept + new_rows)
     merged.sort(key=lambda r: (not r["flag"], -r["mw"]))  # stable
     return merged
 

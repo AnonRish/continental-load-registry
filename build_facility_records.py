@@ -93,6 +93,14 @@ def coerce(key: str, value: Any) -> Any:
 H100_SXM_FP16_FLOPS_SPARSE = 1979.0e12
 
 
+STORAGE_TIER = "Confirmed Grid-Scale Storage (BESS)"
+COMPUTE_ESTIMATE_KEYS = (
+    "gpus_estimate_low", "gpus_estimate_reference", "gpus_estimate_high",
+    "run_flops_90d_low", "run_flops_90d_reference", "run_flops_90d_high",
+    "clears_1e26_flops_all_scenarios",
+)
+
+
 def compute_range(mw: float) -> dict[str, Any]:
     def run(pue: float, kw_per_rack: float, mfu: float) -> tuple[int, float]:
         gpus = (mw * 1000.0 / pue / kw_per_rack) * 8
@@ -118,8 +126,13 @@ def load_registry(path: Path) -> list[dict[str, Any]]:
         raise SystemExit(f"no REGISTRY_DATA array found in {path}")
     return json.loads(match.group(1))
 
+# Manifest keys about other layers (daily complete-queue / raw-page captures, retry
+# attempts). They do not describe the bytes a registry row came from.
+NON_ROW_SOURCE_KEYS = {"latest_public_snapshot", "latest_raw_capture", "last_attempt_at", "last_attempt_status"}
+
+
 def source_ref(manifest_entry: dict[str, Any], rto: str, capture_date: str | None = None) -> dict[str, Any]:
-    out = dict(manifest_entry)
+    out = {k: v for k, v in manifest_entry.items() if k not in NON_ROW_SOURCE_KEYS}
     if capture_date:
         out["capture_date"] = capture_date
         out["capture_precision"] = "day"
@@ -134,7 +147,9 @@ def make_record(
     raw_artifact: dict[str, Any] | None,
 ) -> dict[str, Any]:
     mw = float(row["mw"])
-    calc = compute_range(mw)
+    # Battery storage is not computational load: it never gets a GPU/FLOP estimate.
+    is_storage = row.get("tier") == STORAGE_TIER
+    calc = {k: None for k in COMPUTE_ESTIMATE_KEYS} if is_storage else compute_range(mw)
     normalized: dict[str, Any] = {
         "queue_id": row["id"],
         "rto_region": row["rto"],
@@ -156,10 +171,10 @@ def make_record(
         "project_name_keyword_hits": None,
         "reached_ia_stage": None,
         "gpus_estimate_low": calc["gpus_estimate_low"],
-        "gpus_estimate_reference": int(row["gpu"]),
+        "gpus_estimate_reference": None if row.get("gpu") is None else int(row["gpu"]),
         "gpus_estimate_high": calc["gpus_estimate_high"],
         "run_flops_90d_low": calc["run_flops_90d_low"],
-        "run_flops_90d_reference": float(row["flops"]),
+        "run_flops_90d_reference": None if row.get("flops") is None else float(row["flops"]),
         "run_flops_90d_high": calc["run_flops_90d_high"],
         "clears_1e26_flops_all_scenarios": calc["clears_1e26_flops_all_scenarios"],
         "review_priority": bool(row["flag"]),
@@ -190,6 +205,9 @@ def make_record(
         normalized["run_flops_90d_high"] = calc["run_flops_90d_high"]
     if normalized.get("clears_1e26_flops_all_scenarios") is None:
         normalized["clears_1e26_flops_all_scenarios"] = calc["clears_1e26_flops_all_scenarios"]
+    if is_storage:
+        for key in COMPUTE_ESTIMATE_KEYS:
+            normalized[key] = None
     normalized["review_priority"] = bool(row["flag"])
 
     available_normalized = [k for k in NORMALIZED_KEYS if normalized.get(k) is not None]
