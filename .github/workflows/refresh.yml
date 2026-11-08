@@ -306,21 +306,20 @@ jobs:
       if: ${{ steps.g03_s02.outcome == 'success' }}
       shell: python
       run: |
-        import json
+        import json, sys
         from pathlib import Path
-        checks = [
-            ("data/external/compute_atlas/facilities.json", "compute_atlas"),
-            ("data/external/data_center_index/campuses.json", "data_center_index"),
-        ]
-        for path, label in checks:
-            p = Path(path)
-            if not p.exists():
-                raise SystemExit(f"{label}: missing {path}")
-            payload = json.loads(p.read_text(encoding="utf-8"))
-            records = payload.get("facilities") if isinstance(payload, dict) and "facilities" in payload else payload
-            if not isinstance(records, list) or not records:
-                raise SystemExit(f"{label}: no records")
-            print(label, len(records), "records")
+        sys.path.insert(0, 'scripts')
+        from sync_global_compute_sources import records_of
+        status = json.loads(Path('data/global_compute_universe_snapshot_status.json').read_text(encoding='utf-8'))
+        for src in status['sources']:
+            if src['status'] == 'OK':
+                n = len(records_of(json.loads(Path(src['local_snapshot']).read_text(encoding='utf-8'))))
+                assert n == src['record_count'] > 0, src['name']
+                print(src['name'], n, 'records')
+            elif src['status'] == 'SKIPPED_ROBOTS_DISALLOWED':
+                print(src['name'], 'skipped: publisher robots.txt disallows automated access')
+            else:
+                raise SystemExit(f"{src['name']}: {src['status']} {src.get('detail', '')}")
       continue-on-error: true
       timeout-minutes: 30
     - name: '[Company universe] Build company/facility snapshot'
