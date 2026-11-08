@@ -8,9 +8,9 @@ The registry deliberately separates **unique row-level queue records**, **projec
 
 The current additive large-load expansion is:
 
-- Core row-level registry: **1,540 records / 358.7181 GW**
+- Core row-level registry: **<!--count:registry_rows-->1,506<!--/count--> records / <!--count:registry_gw3-->353.673<!--/count--> GW**
 - Additional known MISO records: **83 / 35.9 GW**
-- Expanded known scope: **1,623 records / 394.6181 GW**
+- Expanded known scope: **<!--count:expanded_rows-->1,589<!--/count--> records / <!--count:expanded_gw3-->389.573<!--/count--> GW**
 
 Everything below is a separate evidence or research layer unless explicitly stated otherwise.
 

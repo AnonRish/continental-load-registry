@@ -444,6 +444,9 @@ def doc_counter_values() -> dict[str, str]:
             values[f"{rto.lower()}_queue_ge100"] = n(s["records_ge_100mw"])
     if f["queues"].get("MISO", {}).get("missing_ge_100_location") is not None:
         values["miso_unresolved_ge100"] = n(f["queues"]["MISO"]["missing_ge_100_location"])
+    tiers = [str(r.get("tier", "")) for r in registry_rows()]
+    values["registry_storage_rows"] = n(sum(t.startswith("Confirmed Grid-Scale Storage") for t in tiers))
+    values["registry_ambiguous_rows"] = n(sum(t.startswith("Genuinely Ambiguous") for t in tiers))
     radar = load("data/module1_radar_summary.json")
     values["module1_rows"] = n(radar["registry_record_count"])
     values["module1_1e26_pass"] = n(radar["domains"]["domain_1_physics"]["all_scenarios_1e26_pass_count"])

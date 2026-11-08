@@ -1,6 +1,6 @@
 # Ambiguous large-load facilities — investigative dossier
 
-Generated 2026-09-27 by `scripts/investigate_ambiguous_loads.py`.
+Generated 2026-11-08 by `scripts/investigate_ambiguous_loads.py`.
 
 **Read this first.** This is a worklist of leads, not a set of findings. Nothing here was fetched or verified: each search URL points at a public search engine, and results still need a human to read them. The broad ambiguity filter is not a load-classification proof: a candidate must pass the strict source-level load-admission gate before it is treated as a load-discovery case. "Developer Not Disclosed" is usually a property of what the source register publishes (SPP, MISO, CAISO, ISO-NE and AESO publish no applicant), not evidence about the developer. A facility's label changes only when a researcher records a verified identity with evidence in `ground_truth_overrides.json`.
 
@@ -10,8 +10,8 @@ Filter: `capacity_mw >= 100`, `load_type_tier == "Genuinely Ambiguous / Unclassi
 
 | Filter step | Rows |
 |---|---:|
-| Registry rows loaded | 1,540 |
-| Not in the ambiguous tier | 1,398 |
+| Registry rows loaded | 1,506 |
+| Not in the ambiguous tier | 1,364 |
 | Capacity missing or unreadable | 0 |
 | Below 100 MW | 0 |
 | Developer resolved to a known entity (outside the two categories) | 1 |
@@ -19,8 +19,8 @@ Filter: `capacity_mw >= 100`, `load_type_tier == "Genuinely Ambiguous / Unclassi
 
 Data sources:
 
-- `index.html`: 1,540 rows, AESO, CAISO, ERCOT, IESO, ISO-NE, MISO, NYISO, PJM, SPP
-- `data/computational_load_estimates.csv`: 733 rows, ERCOT, PJM — replaces 733 index.html rows for ERCOT, PJM
+- `index.html`: 1,506 rows, AESO, CAISO, ERCOT, IESO, ISO-NE, MISO, NYISO, PJM, SPP
+- `data/computational_load_estimates.csv`: 699 rows, ERCOT, PJM — replaces 699 index.html rows for ERCOT, PJM
 
 | RTO | Facilities | GW | Verified |
 |---|---:|---:|---:|

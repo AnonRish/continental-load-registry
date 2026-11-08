@@ -126,6 +126,23 @@ Use an issue for a missing source, schema problem, reproducibility problem, or s
 
 ## Quality gate
 
-Before opening a PR, run the relevant self-tests and validation commands documented in the README. A failing generated-artifact check should be fixed rather than worked around.
+Before opening a PR, run:
+
+```bash
+python scripts/refresh_derived_counts.py   # rewrite every copied count from the file that owns it
+python verify.py                           # the same offline checks CI runs
+```
+
+`verify.py` must pass. A failing generated-artifact check should be fixed rather than worked around: if it
+reports drift, regenerate the artifact with its script instead of editing numbers by hand.
+
+If you change Tailwind utility classes in `index.html`, rebuild its static stylesheet (CI checks it):
+
+```bash
+npx -y tailwindcss@3.4.17 -c tailwind.config.js -i assets/tailwind.input.css -o assets/tailwind.css --minify
+```
+
+Figures written in Markdown or HTML prose should use a counter, e.g. `<!--count:registry_rows-->1,506<!--/count-->`;
+`scripts/refresh_derived_counts.py` keeps them current (the available names are in `doc_counter_values()`).
 
 The goal is a registry that another researcher can challenge, reproduce, correct, and extend.
