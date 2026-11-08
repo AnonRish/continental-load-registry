@@ -12,7 +12,7 @@ The public repository now has:
 - Successful latest public-interface validation.
 - Zero failed source adapters in the latest adapter run.
 - 454 retained public-web evidence records.
-- <!--count:remote_sensing_observations-->2,809<!--/count--> retained derived remote-sensing observations across <!--count:remote_sensing_sites-->92<!--/count--> reference sites.
+- <!--count:remote_sensing_observations-->3,222<!--/count--> retained derived remote-sensing observations across <!--count:remote_sensing_sites-->92<!--/count--> reference sites.
 - 2 defensible site-specific queue IDs.
 - Grid state: 88 sites with site-level evidence, 3 documented researched-no-public-record outcomes, and 2 verified site-specific queue IDs.
 - 214 effective publisher-field research tasks remain, plus 24 separate observation-acquisition tasks (18 cooling, 6 power telemetry).
@@ -57,4 +57,4 @@ A publisher health-check failure is not automatically an ingestion failure. The 
 
 Describe this project as **Track 3 research infrastructure / public-evidence accounting**, not as a completed international verification system. That distinction is part of the audit trail.
 
-The machine-readable gate is `data/track3/completion_gate.json`; the engineering-closure register is `data/track3/engineering_closure_2026-09-28.json`. The latest committed public-evidence snapshot is 93 sites, <!--count:remote_sensing_observations-->2,809<!--/count--> derived remote-sensing observations across <!--count:remote_sensing_sites-->92<!--/count--> sites, <!--count:public_web_records-->454<!--/count--> public-web evidence records, and 1,395/1,395 terminal site-domain cells.
+The machine-readable gate is `data/track3/completion_gate.json`; the engineering-closure register is `data/track3/engineering_closure_2026-09-28.json`. The latest committed public-evidence snapshot is 93 sites, <!--count:remote_sensing_observations-->3,222<!--/count--> derived remote-sensing observations across <!--count:remote_sensing_sites-->92<!--/count--> sites, <!--count:public_web_records-->454<!--/count--> public-web evidence records, and 1,395/1,395 terminal site-domain cells.

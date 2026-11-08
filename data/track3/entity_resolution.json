@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-08T12:11:15.953695+00:00",
+  "generated_at_utc": "2026-11-08T13:40:26.861038+00:00",
   "title": "Track 3 Entity Resolution Layer",
   "semantics": "Confidence is evidence strength, not probability. Name normalization is a reconciliation key, not proof of legal identity. Missing ownership, landowner, colocation and shell-company findings remain unresolved rather than inferred.",
   "stats": {
@@ -9,11 +9,11 @@
     "distinct_core_project_names": 945,
     "project_level_records": 271,
     "site_evidence_records": 102,
-    "entity_count": 2202,
-    "relationship_edge_count": 1874,
+    "entity_count": 2200,
+    "relationship_edge_count": 1875,
     "parent_subsidiary_edges": 31,
     "variant_groups": 211,
-    "legal_entity_research_targets": 683,
+    "legal_entity_research_targets": 682,
     "building_geometry_sites": 92,
     "building_polygons": 183272
   },
@@ -22,7 +22,7 @@
       "id": "DEVELOPER_OPERATOR_DATABASE",
       "item": "Much larger developer/operator database",
       "status": "INGESTED",
-      "coverage": "2202 entity records including 700 distinct developer strings from 1506 core queue rows."
+      "coverage": "2200 entity records including 700 distinct developer strings from 1506 core queue rows."
     },
     {
       "id": "PARENT_SUBSIDIARY_GRAPH",
@@ -58,13 +58,13 @@
       "id": "SHELL_COMPANY_RESOLUTION",
       "item": "Shell-company resolution",
       "status": "RESEARCH_QUEUE",
-      "coverage": "683 legal-form candidates are queued against GLEIF, OpenCorporates, SEC and jurisdictional registries. No entity is called a shell solely from its legal suffix."
+      "coverage": "682 legal-form candidates are queued against GLEIF, OpenCorporates, SEC and jurisdictional registries. No entity is called a shell solely from its legal suffix."
     },
     {
       "id": "CONFIDENCE_EVIDENCE",
       "item": "Confidence score + evidence for every identity match",
       "status": "INGESTED",
-      "coverage": "1874 relationship edges carry evidence IDs, source URLs where available, temporal state and numeric evidence-strength scores."
+      "coverage": "1875 relationship edges carry evidence IDs, source URLs where available, temporal state and numeric evidence-strength scores."
     }
   ],
   "source_catalog": [
@@ -20220,23 +20220,13 @@
       "evidence_strength_max": 0.95
     },
     {
-      "entity_id": "ENT-vnet",
-      "canonical_name": "VNET",
-      "entity_type": "owner_operator",
-      "name_variants": [
-        "VNET"
-      ],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.98
-    },
-    {
       "entity_id": "ENT-bytedance-speculative",
       "canonical_name": "ByteDance #speculative",
-      "entity_type": "compute_user_operator",
+      "entity_type": "owner_operator",
       "name_variants": [
         "ByteDance #speculative"
       ],
-      "source_evidence_count": 1,
+      "source_evidence_count": 2,
       "evidence_strength_max": 0.9
     },
     {
@@ -20990,13 +20980,13 @@
       "evidence_strength_max": 0.97
     },
     {
-      "entity_id": "ENT-qts-cedar-rapids-qts-data-centers",
-      "canonical_name": "QTS Cedar Rapids LLC / QTS Data Centers",
+      "entity_id": "ENT-meta-speculative",
+      "canonical_name": "Meta #speculative",
       "entity_type": "owner_operator",
       "name_variants": [
-        "QTS Cedar Rapids LLC / QTS Data Centers"
+        "Meta #speculative"
       ],
-      "source_evidence_count": 1,
+      "source_evidence_count": 4,
       "evidence_strength_max": 0.9
     },
     {
@@ -21018,16 +21008,6 @@
         "QTS Cedar Rapids Data Center Campus"
       ],
       "source_evidence_count": 1,
-      "evidence_strength_max": 0.9
-    },
-    {
-      "entity_id": "ENT-meta-speculative",
-      "canonical_name": "Meta #speculative",
-      "entity_type": "owner_operator",
-      "name_variants": [
-        "Meta #speculative"
-      ],
-      "source_evidence_count": 2,
       "evidence_strength_max": 0.9
     },
     {
@@ -42617,12 +42597,12 @@
     {
       "relationship_id": "REL-1576",
       "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
-      "to_entity_id": "ENT-vnet",
+      "to_entity_id": "ENT-bytedance-speculative",
       "relationship_type": "SITE_OWNER_OPERATOR",
       "evidence_id": "EPOCH-a286a89bd1c1b6e7",
       "source": "epoch_ai_registry",
       "source_url": "https://epoch.ai/data/data-centers-documentation/records",
-      "confidence_score": 0.98,
+      "confidence_score": 0.9,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "OBSERVED_OR_REPORTED",
       "notes": "Explicit Epoch owner field."
@@ -44788,7 +44768,7 @@
     {
       "relationship_id": "REL-1743",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
-      "to_entity_id": "ENT-qts-cedar-rapids-qts-data-centers",
+      "to_entity_id": "ENT-meta-speculative",
       "relationship_type": "SITE_OWNER_OPERATOR",
       "evidence_id": "EPOCH-d2da66ea035880ce",
       "source": "epoch_ai_registry",
@@ -44801,6 +44781,19 @@
     {
       "relationship_id": "REL-1744",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
+      "to_entity_id": "ENT-meta-speculative",
+      "relationship_type": "SITE_COMPUTE_USER",
+      "evidence_id": "EPOCH-d2da66ea035880ce",
+      "source": "epoch_ai_registry",
+      "source_url": "https://epoch.ai/data/data-centers-documentation/records",
+      "confidence_score": 0.9,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "OBSERVED_OR_REPORTED",
+      "notes": "Explicit Epoch users field."
+    },
+    {
+      "relationship_id": "REL-1745",
+      "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "ENT-alliant-energy",
       "relationship_type": "SITE_ENERGY_COMPANY",
       "evidence_id": "EPOCH-d2da66ea035880ce",
@@ -44812,7 +44805,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1745",
+      "relationship_id": "REL-1746",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "ENT-layton-construction",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -44825,7 +44818,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1746",
+      "relationship_id": "REL-1747",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "ENT-qts-cedar-rapids-data-center-campus",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44838,7 +44831,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1747",
+      "relationship_id": "REL-1748",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-meta-speculative",
       "relationship_type": "SITE_OWNER_OPERATOR",
@@ -44851,7 +44844,7 @@
       "notes": "Explicit Epoch owner field."
     },
     {
-      "relationship_id": "REL-1748",
+      "relationship_id": "REL-1749",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-meta-speculative",
       "relationship_type": "SITE_COMPUTE_USER",
@@ -44864,7 +44857,7 @@
       "notes": "Explicit Epoch users field."
     },
     {
-      "relationship_id": "REL-1749",
+      "relationship_id": "REL-1750",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-rocky-mountain-power-pacificorp",
       "relationship_type": "SITE_ENERGY_COMPANY",
@@ -44877,7 +44870,7 @@
       "notes": "Explicit Epoch energy-company field."
     },
     {
-      "relationship_id": "REL-1750",
+      "relationship_id": "REL-1751",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-layton-construction",
       "relationship_type": "SITE_CONSTRUCTION_COMPANY",
@@ -44890,7 +44883,7 @@
       "notes": "Explicit Epoch construction-company field."
     },
     {
-      "relationship_id": "REL-1751",
+      "relationship_id": "REL-1752",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "ENT-qts-data-center-campus",
       "relationship_type": "SITE_PROJECT_REFERENCE",
@@ -44903,7 +44896,7 @@
       "notes": "Publisher project field; not asserted to be a legal alias."
     },
     {
-      "relationship_id": "REL-1752",
+      "relationship_id": "REL-1753",
       "from_entity_id": "EPOCH-c20399471d1c5e4a",
       "to_entity_id": "BLDGSET-EPOCH-c20399471d1c5e4a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44916,7 +44909,7 @@
       "notes": "4622 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1753",
+      "relationship_id": "REL-1754",
       "from_entity_id": "EPOCH-d9050b43689ed24c",
       "to_entity_id": "BLDGSET-EPOCH-d9050b43689ed24c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44929,7 +44922,7 @@
       "notes": "1116 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1754",
+      "relationship_id": "REL-1755",
       "from_entity_id": "EPOCH-45b3c74314eb1f26",
       "to_entity_id": "BLDGSET-EPOCH-45b3c74314eb1f26",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44942,7 +44935,7 @@
       "notes": "317 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1755",
+      "relationship_id": "REL-1756",
       "from_entity_id": "EPOCH-ea699c935d46e066",
       "to_entity_id": "BLDGSET-EPOCH-ea699c935d46e066",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44955,7 +44948,7 @@
       "notes": "458 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1756",
+      "relationship_id": "REL-1757",
       "from_entity_id": "EPOCH-55d4b5e818b5bb2a",
       "to_entity_id": "BLDGSET-EPOCH-55d4b5e818b5bb2a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44968,7 +44961,7 @@
       "notes": "926 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1757",
+      "relationship_id": "REL-1758",
       "from_entity_id": "EPOCH-8838deed95ffb554",
       "to_entity_id": "BLDGSET-EPOCH-8838deed95ffb554",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44981,7 +44974,7 @@
       "notes": "2615 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1758",
+      "relationship_id": "REL-1759",
       "from_entity_id": "EPOCH-2c2e40ddb178da3e",
       "to_entity_id": "BLDGSET-EPOCH-2c2e40ddb178da3e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44994,7 +44987,7 @@
       "notes": "289 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1759",
+      "relationship_id": "REL-1760",
       "from_entity_id": "EPOCH-04f65e1aee6c98ab",
       "to_entity_id": "BLDGSET-EPOCH-04f65e1aee6c98ab",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45007,7 +45000,7 @@
       "notes": "10558 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1760",
+      "relationship_id": "REL-1761",
       "from_entity_id": "EPOCH-f5dc9d7a3f02c2e9",
       "to_entity_id": "BLDGSET-EPOCH-f5dc9d7a3f02c2e9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45020,7 +45013,7 @@
       "notes": "1624 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1761",
+      "relationship_id": "REL-1762",
       "from_entity_id": "EPOCH-d8b28fdbc55817f9",
       "to_entity_id": "BLDGSET-EPOCH-d8b28fdbc55817f9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45033,7 +45026,7 @@
       "notes": "1420 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1762",
+      "relationship_id": "REL-1763",
       "from_entity_id": "EPOCH-5b353d56a567a70b",
       "to_entity_id": "BLDGSET-EPOCH-5b353d56a567a70b",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45046,7 +45039,7 @@
       "notes": "406 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1763",
+      "relationship_id": "REL-1764",
       "from_entity_id": "EPOCH-83ca909f7eb211c7",
       "to_entity_id": "BLDGSET-EPOCH-83ca909f7eb211c7",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45059,7 +45052,7 @@
       "notes": "10210 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1764",
+      "relationship_id": "REL-1765",
       "from_entity_id": "EPOCH-2dadeb4b013bef05",
       "to_entity_id": "BLDGSET-EPOCH-2dadeb4b013bef05",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45072,7 +45065,7 @@
       "notes": "2924 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1765",
+      "relationship_id": "REL-1766",
       "from_entity_id": "EPOCH-1c8ee8b0305c6313",
       "to_entity_id": "BLDGSET-EPOCH-1c8ee8b0305c6313",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45085,7 +45078,7 @@
       "notes": "347 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1766",
+      "relationship_id": "REL-1767",
       "from_entity_id": "EPOCH-ac1ca1cf8df13b3c",
       "to_entity_id": "BLDGSET-EPOCH-ac1ca1cf8df13b3c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45098,7 +45091,7 @@
       "notes": "1710 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1767",
+      "relationship_id": "REL-1768",
       "from_entity_id": "EPOCH-cc12c3e42b3eaf08",
       "to_entity_id": "BLDGSET-EPOCH-cc12c3e42b3eaf08",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45111,7 +45104,7 @@
       "notes": "1033 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1768",
+      "relationship_id": "REL-1769",
       "from_entity_id": "EPOCH-8358e445402d91c2",
       "to_entity_id": "BLDGSET-EPOCH-8358e445402d91c2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45124,7 +45117,7 @@
       "notes": "832 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1769",
+      "relationship_id": "REL-1770",
       "from_entity_id": "EPOCH-0d287943c30fe239",
       "to_entity_id": "BLDGSET-EPOCH-0d287943c30fe239",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45137,7 +45130,7 @@
       "notes": "2139 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1770",
+      "relationship_id": "REL-1771",
       "from_entity_id": "EPOCH-6db3bc2c79843ffd",
       "to_entity_id": "BLDGSET-EPOCH-6db3bc2c79843ffd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45150,7 +45143,7 @@
       "notes": "2873 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1771",
+      "relationship_id": "REL-1772",
       "from_entity_id": "EPOCH-93a4aa4fa40d40ca",
       "to_entity_id": "BLDGSET-EPOCH-93a4aa4fa40d40ca",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45163,7 +45156,7 @@
       "notes": "1191 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1772",
+      "relationship_id": "REL-1773",
       "from_entity_id": "EPOCH-1ac0959562dee191",
       "to_entity_id": "BLDGSET-EPOCH-1ac0959562dee191",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45176,7 +45169,7 @@
       "notes": "6116 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1773",
+      "relationship_id": "REL-1774",
       "from_entity_id": "EPOCH-6799460068cbed36",
       "to_entity_id": "BLDGSET-EPOCH-6799460068cbed36",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45189,7 +45182,7 @@
       "notes": "330 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1774",
+      "relationship_id": "REL-1775",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45202,7 +45195,7 @@
       "notes": "2534 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1775",
+      "relationship_id": "REL-1776",
       "from_entity_id": "EPOCH-bdc85fadae79b6b2",
       "to_entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45215,7 +45208,7 @@
       "notes": "526 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1776",
+      "relationship_id": "REL-1777",
       "from_entity_id": "EPOCH-4eeccbee73808216",
       "to_entity_id": "BLDGSET-EPOCH-4eeccbee73808216",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45228,7 +45221,7 @@
       "notes": "4140 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1777",
+      "relationship_id": "REL-1778",
       "from_entity_id": "EPOCH-e06bc7faa8b1b187",
       "to_entity_id": "BLDGSET-EPOCH-e06bc7faa8b1b187",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45241,7 +45234,7 @@
       "notes": "101 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1778",
+      "relationship_id": "REL-1779",
       "from_entity_id": "EPOCH-052be5b551cd099b",
       "to_entity_id": "BLDGSET-EPOCH-052be5b551cd099b",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45254,7 +45247,7 @@
       "notes": "946 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1779",
+      "relationship_id": "REL-1780",
       "from_entity_id": "EPOCH-40ccef8ef4236635",
       "to_entity_id": "BLDGSET-EPOCH-40ccef8ef4236635",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45267,7 +45260,7 @@
       "notes": "2317 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1780",
+      "relationship_id": "REL-1781",
       "from_entity_id": "EPOCH-02484a65a5dac16d",
       "to_entity_id": "BLDGSET-EPOCH-02484a65a5dac16d",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45280,7 +45273,7 @@
       "notes": "946 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1781",
+      "relationship_id": "REL-1782",
       "from_entity_id": "EPOCH-0788d9aeb3114553",
       "to_entity_id": "BLDGSET-EPOCH-0788d9aeb3114553",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45293,7 +45286,7 @@
       "notes": "159 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1782",
+      "relationship_id": "REL-1783",
       "from_entity_id": "EPOCH-5de9a1c70a3e2275",
       "to_entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45306,7 +45299,7 @@
       "notes": "667 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1783",
+      "relationship_id": "REL-1784",
       "from_entity_id": "EPOCH-14cecdb5956daea1",
       "to_entity_id": "BLDGSET-EPOCH-14cecdb5956daea1",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45319,7 +45312,7 @@
       "notes": "7675 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1784",
+      "relationship_id": "REL-1785",
       "from_entity_id": "EPOCH-4a87099a6d1e001f",
       "to_entity_id": "BLDGSET-EPOCH-4a87099a6d1e001f",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45332,7 +45325,7 @@
       "notes": "1209 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1785",
+      "relationship_id": "REL-1786",
       "from_entity_id": "EPOCH-27e284efc1b1abc2",
       "to_entity_id": "BLDGSET-EPOCH-27e284efc1b1abc2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45345,7 +45338,7 @@
       "notes": "520 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1786",
+      "relationship_id": "REL-1787",
       "from_entity_id": "EPOCH-a69e48fd129d0cdb",
       "to_entity_id": "BLDGSET-EPOCH-a69e48fd129d0cdb",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45358,7 +45351,7 @@
       "notes": "39 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1787",
+      "relationship_id": "REL-1788",
       "from_entity_id": "EPOCH-534376160415dc84",
       "to_entity_id": "BLDGSET-EPOCH-534376160415dc84",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45371,7 +45364,7 @@
       "notes": "152 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1788",
+      "relationship_id": "REL-1789",
       "from_entity_id": "EPOCH-0bb0b996b7c96beb",
       "to_entity_id": "BLDGSET-EPOCH-0bb0b996b7c96beb",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45384,7 +45377,7 @@
       "notes": "205 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1789",
+      "relationship_id": "REL-1790",
       "from_entity_id": "EPOCH-85492d2b8df586a1",
       "to_entity_id": "BLDGSET-EPOCH-85492d2b8df586a1",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45397,7 +45390,7 @@
       "notes": "355 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1790",
+      "relationship_id": "REL-1791",
       "from_entity_id": "EPOCH-2b89e13933a04725",
       "to_entity_id": "BLDGSET-EPOCH-2b89e13933a04725",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45410,7 +45403,7 @@
       "notes": "68 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1791",
+      "relationship_id": "REL-1792",
       "from_entity_id": "EPOCH-f92e98f4b76a9bcd",
       "to_entity_id": "BLDGSET-EPOCH-f92e98f4b76a9bcd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45423,7 +45416,7 @@
       "notes": "405 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1792",
+      "relationship_id": "REL-1793",
       "from_entity_id": "EPOCH-78f8285078416a9e",
       "to_entity_id": "BLDGSET-EPOCH-78f8285078416a9e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45436,7 +45429,7 @@
       "notes": "1125 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1793",
+      "relationship_id": "REL-1794",
       "from_entity_id": "EPOCH-a2c9f0846296fe65",
       "to_entity_id": "BLDGSET-EPOCH-a2c9f0846296fe65",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45449,7 +45442,7 @@
       "notes": "18241 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1794",
+      "relationship_id": "REL-1795",
       "from_entity_id": "EPOCH-a286a89bd1c1b6e7",
       "to_entity_id": "BLDGSET-EPOCH-a286a89bd1c1b6e7",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45462,7 +45455,7 @@
       "notes": "0 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1795",
+      "relationship_id": "REL-1796",
       "from_entity_id": "EPOCH-785d6e4c34607dd4",
       "to_entity_id": "BLDGSET-EPOCH-785d6e4c34607dd4",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45475,7 +45468,7 @@
       "notes": "1860 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1796",
+      "relationship_id": "REL-1797",
       "from_entity_id": "EPOCH-f1a2bcdd78478bc2",
       "to_entity_id": "BLDGSET-EPOCH-f1a2bcdd78478bc2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45488,7 +45481,7 @@
       "notes": "3715 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1797",
+      "relationship_id": "REL-1798",
       "from_entity_id": "EPOCH-4525348d114e3e8e",
       "to_entity_id": "BLDGSET-EPOCH-4525348d114e3e8e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45501,7 +45494,7 @@
       "notes": "769 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1798",
+      "relationship_id": "REL-1799",
       "from_entity_id": "EPOCH-d29894d37388a96a",
       "to_entity_id": "BLDGSET-EPOCH-d29894d37388a96a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45514,7 +45507,7 @@
       "notes": "414 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1799",
+      "relationship_id": "REL-1800",
       "from_entity_id": "EPOCH-02c050b6b554fadd",
       "to_entity_id": "BLDGSET-EPOCH-02c050b6b554fadd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45527,7 +45520,7 @@
       "notes": "1899 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1800",
+      "relationship_id": "REL-1801",
       "from_entity_id": "EPOCH-768183e4de6062d2",
       "to_entity_id": "BLDGSET-EPOCH-768183e4de6062d2",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45540,7 +45533,7 @@
       "notes": "54 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1801",
+      "relationship_id": "REL-1802",
       "from_entity_id": "EPOCH-4b5df4f52274f2ba",
       "to_entity_id": "BLDGSET-EPOCH-4b5df4f52274f2ba",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45553,7 +45546,7 @@
       "notes": "318 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1802",
+      "relationship_id": "REL-1803",
       "from_entity_id": "EPOCH-77e196fc5320fd70",
       "to_entity_id": "BLDGSET-EPOCH-77e196fc5320fd70",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45566,7 +45559,7 @@
       "notes": "4289 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1803",
+      "relationship_id": "REL-1804",
       "from_entity_id": "EPOCH-2d362a1adb09fddd",
       "to_entity_id": "BLDGSET-EPOCH-2d362a1adb09fddd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45579,7 +45572,7 @@
       "notes": "1533 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1804",
+      "relationship_id": "REL-1805",
       "from_entity_id": "EPOCH-ea5d1ae5837aba5c",
       "to_entity_id": "BLDGSET-EPOCH-ea5d1ae5837aba5c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45592,7 +45585,7 @@
       "notes": "479 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1805",
+      "relationship_id": "REL-1806",
       "from_entity_id": "EPOCH-03aad260b30bfbe1",
       "to_entity_id": "BLDGSET-EPOCH-03aad260b30bfbe1",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45605,7 +45598,7 @@
       "notes": "424 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1806",
+      "relationship_id": "REL-1807",
       "from_entity_id": "EPOCH-eb87487504bda8ed",
       "to_entity_id": "BLDGSET-EPOCH-eb87487504bda8ed",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45618,7 +45611,7 @@
       "notes": "676 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1807",
+      "relationship_id": "REL-1808",
       "from_entity_id": "EPOCH-7d9b5af0cce16f1c",
       "to_entity_id": "BLDGSET-EPOCH-7d9b5af0cce16f1c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45631,7 +45624,7 @@
       "notes": "217 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1808",
+      "relationship_id": "REL-1809",
       "from_entity_id": "EPOCH-af62ae3440fe885a",
       "to_entity_id": "BLDGSET-EPOCH-af62ae3440fe885a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45644,7 +45637,7 @@
       "notes": "845 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1809",
+      "relationship_id": "REL-1810",
       "from_entity_id": "EPOCH-d1b62579c6be3fe8",
       "to_entity_id": "BLDGSET-EPOCH-d1b62579c6be3fe8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45657,7 +45650,7 @@
       "notes": "97 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1810",
+      "relationship_id": "REL-1811",
       "from_entity_id": "EPOCH-71d0091a05448224",
       "to_entity_id": "BLDGSET-EPOCH-71d0091a05448224",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45670,7 +45663,7 @@
       "notes": "68 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1811",
+      "relationship_id": "REL-1812",
       "from_entity_id": "EPOCH-c89a3269719f868a",
       "to_entity_id": "BLDGSET-EPOCH-c89a3269719f868a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45683,7 +45676,7 @@
       "notes": "2207 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1812",
+      "relationship_id": "REL-1813",
       "from_entity_id": "EPOCH-29fb769630142638",
       "to_entity_id": "BLDGSET-EPOCH-29fb769630142638",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45696,7 +45689,7 @@
       "notes": "97 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1813",
+      "relationship_id": "REL-1814",
       "from_entity_id": "EPOCH-781cbfae186209ad",
       "to_entity_id": "BLDGSET-EPOCH-781cbfae186209ad",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45709,7 +45702,7 @@
       "notes": "1902 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1814",
+      "relationship_id": "REL-1815",
       "from_entity_id": "EPOCH-f48a533b01898dfd",
       "to_entity_id": "BLDGSET-EPOCH-f48a533b01898dfd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45722,7 +45715,7 @@
       "notes": "113 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1815",
+      "relationship_id": "REL-1816",
       "from_entity_id": "EPOCH-41dea3fb46d2e6a8",
       "to_entity_id": "BLDGSET-EPOCH-41dea3fb46d2e6a8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45735,7 +45728,7 @@
       "notes": "758 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1816",
+      "relationship_id": "REL-1817",
       "from_entity_id": "EPOCH-827d7832237170bd",
       "to_entity_id": "BLDGSET-EPOCH-827d7832237170bd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45748,7 +45741,7 @@
       "notes": "5542 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1817",
+      "relationship_id": "REL-1818",
       "from_entity_id": "EPOCH-ee5c7acdbc729ef8",
       "to_entity_id": "BLDGSET-EPOCH-ee5c7acdbc729ef8",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45761,7 +45754,7 @@
       "notes": "3035 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1818",
+      "relationship_id": "REL-1819",
       "from_entity_id": "EPOCH-0355f445ca6cbed4",
       "to_entity_id": "BLDGSET-EPOCH-0355f445ca6cbed4",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45774,7 +45767,7 @@
       "notes": "5690 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1819",
+      "relationship_id": "REL-1820",
       "from_entity_id": "EPOCH-96d37578ca36f86c",
       "to_entity_id": "BLDGSET-EPOCH-96d37578ca36f86c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45787,7 +45780,7 @@
       "notes": "4561 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1820",
+      "relationship_id": "REL-1821",
       "from_entity_id": "EPOCH-8696ef81d91560a9",
       "to_entity_id": "BLDGSET-EPOCH-8696ef81d91560a9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45800,7 +45793,7 @@
       "notes": "1285 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1821",
+      "relationship_id": "REL-1822",
       "from_entity_id": "EPOCH-e20c2909085b37fd",
       "to_entity_id": "BLDGSET-EPOCH-e20c2909085b37fd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45813,7 +45806,7 @@
       "notes": "5883 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1822",
+      "relationship_id": "REL-1823",
       "from_entity_id": "EPOCH-8baa344f9717520c",
       "to_entity_id": "BLDGSET-EPOCH-8baa344f9717520c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45826,7 +45819,7 @@
       "notes": "3636 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1823",
+      "relationship_id": "REL-1824",
       "from_entity_id": "EPOCH-495a9afde5e4b96c",
       "to_entity_id": "BLDGSET-EPOCH-495a9afde5e4b96c",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45839,7 +45832,7 @@
       "notes": "7179 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1824",
+      "relationship_id": "REL-1825",
       "from_entity_id": "EPOCH-f1a70be0079d215a",
       "to_entity_id": "BLDGSET-EPOCH-f1a70be0079d215a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45852,7 +45845,7 @@
       "notes": "1231 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1825",
+      "relationship_id": "REL-1826",
       "from_entity_id": "EPOCH-5b05fa7b682be282",
       "to_entity_id": "BLDGSET-EPOCH-5b05fa7b682be282",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45865,7 +45858,7 @@
       "notes": "5291 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1826",
+      "relationship_id": "REL-1827",
       "from_entity_id": "EPOCH-7648e1438308fdae",
       "to_entity_id": "BLDGSET-EPOCH-7648e1438308fdae",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45878,7 +45871,7 @@
       "notes": "3384 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1827",
+      "relationship_id": "REL-1828",
       "from_entity_id": "EPOCH-65e758d676dc06d6",
       "to_entity_id": "BLDGSET-EPOCH-65e758d676dc06d6",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45891,7 +45884,7 @@
       "notes": "100 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1828",
+      "relationship_id": "REL-1829",
       "from_entity_id": "EPOCH-4569f5444951b2fd",
       "to_entity_id": "BLDGSET-EPOCH-4569f5444951b2fd",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45904,7 +45897,7 @@
       "notes": "289 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1829",
+      "relationship_id": "REL-1830",
       "from_entity_id": "EPOCH-dadec9d6ef7fca88",
       "to_entity_id": "BLDGSET-EPOCH-dadec9d6ef7fca88",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45917,7 +45910,7 @@
       "notes": "2967 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1830",
+      "relationship_id": "REL-1831",
       "from_entity_id": "EPOCH-bbf05f2d8903eccc",
       "to_entity_id": "BLDGSET-EPOCH-bbf05f2d8903eccc",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45930,7 +45923,7 @@
       "notes": "55 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1831",
+      "relationship_id": "REL-1832",
       "from_entity_id": "EPOCH-2d6a8403fde79650",
       "to_entity_id": "BLDGSET-EPOCH-2d6a8403fde79650",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45943,7 +45936,7 @@
       "notes": "452 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1832",
+      "relationship_id": "REL-1833",
       "from_entity_id": "EPOCH-f340a33a5ef18d4f",
       "to_entity_id": "BLDGSET-EPOCH-f340a33a5ef18d4f",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45956,7 +45949,7 @@
       "notes": "542 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1833",
+      "relationship_id": "REL-1834",
       "from_entity_id": "EPOCH-177c53f92d72ec4a",
       "to_entity_id": "BLDGSET-EPOCH-177c53f92d72ec4a",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45969,7 +45962,7 @@
       "notes": "218 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1834",
+      "relationship_id": "REL-1835",
       "from_entity_id": "EPOCH-bbcf0efa8bcebd41",
       "to_entity_id": "BLDGSET-EPOCH-bbcf0efa8bcebd41",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45982,7 +45975,7 @@
       "notes": "108 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1835",
+      "relationship_id": "REL-1836",
       "from_entity_id": "EPOCH-1b7cb9c2b0eb479f",
       "to_entity_id": "BLDGSET-EPOCH-1b7cb9c2b0eb479f",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45995,7 +45988,7 @@
       "notes": "178 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1836",
+      "relationship_id": "REL-1837",
       "from_entity_id": "EPOCH-dc6199921ba82b85",
       "to_entity_id": "BLDGSET-EPOCH-dc6199921ba82b85",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46008,7 +46001,7 @@
       "notes": "663 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1837",
+      "relationship_id": "REL-1838",
       "from_entity_id": "EPOCH-145ed5861bdf2982",
       "to_entity_id": "BLDGSET-EPOCH-145ed5861bdf2982",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46021,7 +46014,7 @@
       "notes": "4007 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1838",
+      "relationship_id": "REL-1839",
       "from_entity_id": "EPOCH-e3aa5f34aa5c4a7b",
       "to_entity_id": "BLDGSET-EPOCH-e3aa5f34aa5c4a7b",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46034,7 +46027,7 @@
       "notes": "2852 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1839",
+      "relationship_id": "REL-1840",
       "from_entity_id": "EPOCH-3816121e8d72fe04",
       "to_entity_id": "BLDGSET-EPOCH-3816121e8d72fe04",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46047,7 +46040,7 @@
       "notes": "596 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1840",
+      "relationship_id": "REL-1841",
       "from_entity_id": "EPOCH-b427a75f62d61aae",
       "to_entity_id": "BLDGSET-EPOCH-b427a75f62d61aae",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46060,7 +46053,7 @@
       "notes": "47 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1841",
+      "relationship_id": "REL-1842",
       "from_entity_id": "EPOCH-78e7d8474fbdf968",
       "to_entity_id": "BLDGSET-EPOCH-78e7d8474fbdf968",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46073,7 +46066,7 @@
       "notes": "4050 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1842",
+      "relationship_id": "REL-1843",
       "from_entity_id": "EPOCH-d2da66ea035880ce",
       "to_entity_id": "BLDGSET-EPOCH-d2da66ea035880ce",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46086,7 +46079,7 @@
       "notes": "61 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1843",
+      "relationship_id": "REL-1844",
       "from_entity_id": "EPOCH-4b4d686b6c457a68",
       "to_entity_id": "BLDGSET-EPOCH-4b4d686b6c457a68",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -46099,7 +46092,7 @@
       "notes": "250 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1844",
+      "relationship_id": "REL-1845",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-ii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46112,7 +46105,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1845",
+      "relationship_id": "REL-1846",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-iii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46125,7 +46118,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1846",
+      "relationship_id": "REL-1847",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-iv",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46138,7 +46131,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1847",
+      "relationship_id": "REL-1848",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-v",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46151,7 +46144,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1848",
+      "relationship_id": "REL-1849",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-compute-acquisition-vi",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46164,7 +46157,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1849",
+      "relationship_id": "REL-1850",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-uk",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46177,7 +46170,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1850",
+      "relationship_id": "REL-1851",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-norway-as",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46190,7 +46183,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1851",
+      "relationship_id": "REL-1852",
       "from_entity_id": "ENT-coreweave",
       "to_entity_id": "ENT-coreweave-sweden-ab",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46203,7 +46196,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1852",
+      "relationship_id": "REL-1853",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-canada-enterprises",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46216,7 +46209,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1853",
+      "relationship_id": "REL-1854",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-canada-services",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46229,7 +46222,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1854",
+      "relationship_id": "REL-1855",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-chi-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46242,7 +46235,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1855",
+      "relationship_id": "REL-1856",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-chi-3-procurement",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46255,7 +46248,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1856",
+      "relationship_id": "REL-1857",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-db1",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46268,7 +46261,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1857",
+      "relationship_id": "REL-1858",
       "from_entity_id": "ENT-equinix",
       "to_entity_id": "ENT-equinix-france-sas",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46281,7 +46274,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1858",
+      "relationship_id": "REL-1859",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46294,7 +46287,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1859",
+      "relationship_id": "REL-1860",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-u-s",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46307,7 +46300,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1860",
+      "relationship_id": "REL-1861",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-arizona-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46320,7 +46313,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1861",
+      "relationship_id": "REL-1862",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-data-centers-virginia-3",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46333,7 +46326,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1862",
+      "relationship_id": "REL-1863",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-uk-data-centre",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46346,7 +46339,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1863",
+      "relationship_id": "REL-1864",
       "from_entity_id": "ENT-iron-mountain",
       "to_entity_id": "ENT-iron-mountain-canada-operations-ulc",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46359,7 +46352,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1864",
+      "relationship_id": "REL-1865",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-management-services",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46372,7 +46365,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1865",
+      "relationship_id": "REL-1866",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-property-manager",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46385,7 +46378,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1866",
+      "relationship_id": "REL-1867",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-digital-realty-sweden-ab",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46398,7 +46391,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1867",
+      "relationship_id": "REL-1868",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-nova-dc-fee-owner",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46411,7 +46404,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1868",
+      "relationship_id": "REL-1869",
       "from_entity_id": "ENT-digital-realty-trust",
       "to_entity_id": "ENT-nova-dc",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46424,7 +46417,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1869",
+      "relationship_id": "REL-1870",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qts-critical-facilities-management",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46437,7 +46430,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1870",
+      "relationship_id": "REL-1871",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qts-finance",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46450,7 +46443,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1871",
+      "relationship_id": "REL-1872",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-investment-properties-irving",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46463,7 +46456,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1872",
+      "relationship_id": "REL-1873",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-technology-services-lenexa",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46476,7 +46469,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1873",
+      "relationship_id": "REL-1874",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-quality-technology-services-richmond-ii",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -46489,7 +46482,7 @@
       "notes": "SEC Exhibit 21 lists the subsidiary under the registrant."
     },
     {
-      "relationship_id": "REL-1874",
+      "relationship_id": "REL-1875",
       "from_entity_id": "ENT-qts-realty-trust",
       "to_entity_id": "ENT-qae-acquisition",
       "relationship_type": "PARENT_SUBSIDIARY",
@@ -56878,18 +56871,6 @@
     {
       "entity_id": "ENT-vantage-data-centers-tx1",
       "entity_name": "VANTAGE DATA CENTERS TX1 LLC",
-      "resolution_state": "UNRESOLVED_LEGAL_ENTITY",
-      "next_sources": [
-        "GLEIF LEI / Level 2",
-        "OpenCorporates relationships/statements",
-        "SEC EDGAR Exhibit 21",
-        "State/provincial corporate registry"
-      ],
-      "note": "Legal-form suffix does not establish shell-company status."
-    },
-    {
-      "entity_id": "ENT-qts-cedar-rapids-qts-data-centers",
-      "entity_name": "QTS Cedar Rapids LLC / QTS Data Centers",
       "resolution_state": "UNRESOLVED_LEGAL_ENTITY",
       "next_sources": [
         "GLEIF LEI / Level 2",

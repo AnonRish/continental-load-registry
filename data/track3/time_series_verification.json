@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-11-07T16:28:31.800690+00:00",
-  "today_utc": "2026-11-07",
+  "generated_on": "2026-11-08T13:40:27.442889+00:00",
+  "today_utc": "2026-11-08",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
     "epoch_site_count": 93,
-    "timeline_source_row_count": 548,
+    "timeline_source_row_count": 550,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
-    "observed_timeline_event_count": 458,
-    "future_or_predicted_timeline_event_count": 90,
+    "observed_timeline_event_count": 459,
+    "future_or_predicted_timeline_event_count": 91,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
     "caiso_historical_series_record_count": 8,
@@ -27,7 +27,7 @@
       "id": "MONTHLY_QUARTERLY_MW_CHANGES",
       "item": "Monthly/quarterly MW changes",
       "status": "DERIVED_IRREGULAR_EVENT_SERIES",
-      "coverage": "458 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
+      "coverage": "459 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
     },
     {
       "id": "QUEUE_TO_OPERATION_TIMELINE",
@@ -151,59 +151,59 @@
     },
     {
       "quarter": "2025-Q1",
-      "it_power_delta_mw": 673.33,
-      "total_power_delta_mw": 846.0,
+      "it_power_delta_mw": 672.33,
+      "total_power_delta_mw": 862.0,
       "building_delta": 12.0,
       "site_change_event_count": 21
     },
     {
       "quarter": "2025-Q2",
-      "it_power_delta_mw": 1131.1,
-      "total_power_delta_mw": 1381.5,
+      "it_power_delta_mw": 1137.4,
+      "total_power_delta_mw": 1393.0,
       "building_delta": 21.0,
       "site_change_event_count": 21
     },
     {
       "quarter": "2025-Q3",
-      "it_power_delta_mw": 720.9,
-      "total_power_delta_mw": 939.6,
-      "building_delta": 13.0,
-      "site_change_event_count": 33
+      "it_power_delta_mw": 681.0,
+      "total_power_delta_mw": 898.0,
+      "building_delta": 12.0,
+      "site_change_event_count": 32
     },
     {
       "quarter": "2025-Q4",
-      "it_power_delta_mw": 2105.0,
-      "total_power_delta_mw": 2717.0,
+      "it_power_delta_mw": 2102.0,
+      "total_power_delta_mw": 2718.0,
       "building_delta": 28.0,
       "site_change_event_count": 52
     },
     {
       "quarter": "2026-Q1",
-      "it_power_delta_mw": 1577.798,
-      "total_power_delta_mw": 2013.977,
-      "building_delta": 35.0,
-      "site_change_event_count": 67
+      "it_power_delta_mw": 1538.198,
+      "total_power_delta_mw": 1968.477,
+      "building_delta": 34.0,
+      "site_change_event_count": 66
     },
     {
       "quarter": "2026-Q2",
-      "it_power_delta_mw": 3744.161,
-      "total_power_delta_mw": 4870.511,
-      "building_delta": 39.0,
+      "it_power_delta_mw": 3784.561,
+      "total_power_delta_mw": 4920.111,
+      "building_delta": 40.0,
       "site_change_event_count": 80
     },
     {
       "quarter": "2026-Q3",
-      "it_power_delta_mw": 1647.922,
-      "total_power_delta_mw": 2107.31,
-      "building_delta": 23.0,
-      "site_change_event_count": 38
+      "it_power_delta_mw": 1866.322,
+      "total_power_delta_mw": 2417.71,
+      "building_delta": 25.0,
+      "site_change_event_count": 40
     },
     {
       "quarter": "2026-Q4",
-      "it_power_delta_mw": 1182.222,
-      "total_power_delta_mw": 1561.91,
-      "building_delta": 16.0,
-      "site_change_event_count": 8
+      "it_power_delta_mw": 965.222,
+      "total_power_delta_mw": 1266.91,
+      "building_delta": 14.0,
+      "site_change_event_count": 9
     }
   ],
   "annual_electricity_consumption_snapshots": [
@@ -1505,7 +1505,7 @@
       "site_name": "OpenAI Stargate Abilene",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 9,
+      "observed_event_count": 10,
       "future_or_predicted_event_count": 0,
       "first_observed_date": "2024-05-31",
       "last_observed_date": "2026-11-01",
@@ -1547,14 +1547,14 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Building 1 is fully operational around this date. The first phase was \"live\" on September 30 according a Crusoe [announcement](https://www.crusoe.ai/resources/newsroom/crusoe-announces-flagship-abilene-data-center-is-live). While the first phase consists of Building 1 and 2, the language doesn't outright confirm that both buildings are fully operational. The announcement also stated that \"Oracle began delivering the first NVIDIA GB200 racks in June\", and we think 3 months is enough time to ram to 50,000 GB200s in Building 1. The satellite image also suggests that Building 1 is complete (shell and equipment done, many cars neatly parked) while Building 2 is ongoing (trucks and construction equipment still present). The 200 MW [substation](https://www.mortenson.com/projects/abilene-data-center-development) built in 2022 and expanded in 2024 is enough to power both buildings. To the right of Building 2, five gas turbines are in place with five more turbines still under construction. Chillers are partly installed for Building 3. Roof is complete for Building 4. The larger 1 GW substation is not complete yet.",
           "buildings_operational": 1.0,
-          "it_power_mw": 105.0,
-          "total_power_mw": 147.0,
+          "it_power_mw": 103.0,
+          "total_power_mw": 144.0,
           "h100_equivalents": 127337.03890853966,
           "performance_8bit_ops": 2.52e+20,
           "change_from_previous_observed_event": {
             "date": "2025-09-26",
-            "delta_it_power_mw": 105.0,
-            "delta_total_power_mw": 147.0,
+            "delta_it_power_mw": 103.0,
+            "delta_total_power_mw": 144.0,
             "delta_buildings_operational": 1.0
           }
         },
@@ -1563,14 +1563,14 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Building 2 is fully operational. This exact date corresponds to the expected completion date of \"Four (4) data hall spaces and an administrative office build-out\" according to a [TDLR filing](https://www.tdlr.texas.gov/TABS/Search/Project/TABS2025007742), but this date is also consistent with satellite imagery. By January 15, Building 2 looked as finished as Building 1, whereas on September 26 it did not look finished.",
           "buildings_operational": 2.0,
-          "it_power_mw": 211.0,
-          "total_power_mw": 295.0,
+          "it_power_mw": 206.0,
+          "total_power_mw": 288.0,
           "h100_equivalents": 254674.07781707932,
           "performance_8bit_ops": 5.04e+20,
           "change_from_previous_observed_event": {
             "date": "2025-12-24",
-            "delta_it_power_mw": 106.0,
-            "delta_total_power_mw": 148.0,
+            "delta_it_power_mw": 103.0,
+            "delta_total_power_mw": 144.0,
             "delta_buildings_operational": 1.0
           }
         },
@@ -1579,8 +1579,8 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "The 1 GW substation looks close to completion. Building 3 appears to have all power and cooling equipment installed, but there are still signs of construction work. This seems on track for operation in 3 months. Building 4 has about 80% of chillers installed. Other buildings have few or no chillers installed.",
           "buildings_operational": 2.0,
-          "it_power_mw": 211.0,
-          "total_power_mw": 295.0,
+          "it_power_mw": 206.0,
+          "total_power_mw": 288.0,
           "h100_equivalents": 254674.07781707932,
           "performance_8bit_ops": 5.04e+20,
           "change_from_previous_observed_event": {
@@ -1595,8 +1595,8 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Building 3 and 4 look complete, but are not fully operational. Not as many cars are parked next to it as Building 1-2 which suggests they may still be ramping up. Building 4 was due by now according to a [regulatory filing](https://www.tdlr.texas.gov/TABS/Search/Project/TABS2025014756). Building 5 still has light construction activity, while Building 6 still lacks chillers. The on-site power plant to the right of Building 2 looks complete.",
           "buildings_operational": 2.0,
-          "it_power_mw": 211.0,
-          "total_power_mw": 295.0,
+          "it_power_mw": 206.0,
+          "total_power_mw": 288.0,
           "h100_equivalents": 254674.07781707932,
           "performance_8bit_ops": 5.04e+20,
           "change_from_previous_observed_event": {
@@ -1611,14 +1611,14 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Buildings 3 and 4 are estimated to be operational. On April 22nd, Oracle [posted](https://x.com/i/status/2047012589302153558) that \"In Abilene, 200MW is already operational\". This suggests that there was still only Building 1 and 2 operational. Since Buildings 3 and 4 looked complete from the outside on March 24th, we give it another month after Oracle's post for them to be operational. This would also give the buildings a similar 1 year 4 months timeline that Buildings 1 took from land clearing to being operational.",
           "buildings_operational": 4.0,
-          "it_power_mw": 421.0,
-          "total_power_mw": 590.0,
+          "it_power_mw": 412.0,
+          "total_power_mw": 577.0,
           "h100_equivalents": 509348.15563415864,
           "performance_8bit_ops": 1.008e+21,
           "change_from_previous_observed_event": {
             "date": "2026-05-23",
-            "delta_it_power_mw": 210.0,
-            "delta_total_power_mw": 295.0,
+            "delta_it_power_mw": 206.0,
+            "delta_total_power_mw": 289.0,
             "delta_buildings_operational": 2.0
           }
         },
@@ -1627,8 +1627,8 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Buildings 5-8 are structurally complete and roofed but not yet confirmed operational (fit-out ongoing). The substation looks complete.",
           "buildings_operational": 4.0,
-          "it_power_mw": 421.0,
-          "total_power_mw": 590.0,
+          "it_power_mw": 412.0,
+          "total_power_mw": 577.0,
           "h100_equivalents": 509348.15563415864,
           "performance_8bit_ops": 1.008e+21,
           "change_from_previous_observed_event": {
@@ -1639,19 +1639,35 @@
           }
         },
         {
+          "date": "2026-09-10",
+          "temporal_status": "OBSERVED_OR_REPORTED",
+          "construction_status": "Buildings 5-6 are operational. On Oracle's Q1 FY27 earnings call (September 10, 2026), Clay Magouyrk said \"6 of the 8 campus buildings, representing 618 megawatts and 75% of total capacity have now been delivered to the customer\" ([transcript](https://www.fool.com/earnings/call-transcripts/2026/09/11/oracle-orcl-q1-2027-earnings-call-transcript/)). 618 MW = 6 x 103 MW, matching the per-building IT power figure Crusoe reported earlier. Since Oracle is the chip owner rather than the facility operator, we assume \"delivered\" means the chips are installed and ready to use.",
+          "buildings_operational": 6.0,
+          "it_power_mw": 618.0,
+          "total_power_mw": 865.0,
+          "h100_equivalents": 764022.233451238,
+          "performance_8bit_ops": 1.512e+21,
+          "change_from_previous_observed_event": {
+            "date": "2026-09-10",
+            "delta_it_power_mw": 206.0,
+            "delta_total_power_mw": 288.0,
+            "delta_buildings_operational": 2.0
+          }
+        },
+        {
           "date": "2026-11-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Buildings 5-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24.",
+          "construction_status": "Buildings 7-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24. Oracle gave no date for the last two buildings on its September 10 call.",
           "buildings_operational": 8.0,
-          "it_power_mw": 843.0,
-          "total_power_mw": 1180.0,
+          "it_power_mw": 824.0,
+          "total_power_mw": 1154.0,
           "h100_equivalents": 1018696.3112683173,
           "performance_8bit_ops": 2.016e+21,
           "change_from_previous_observed_event": {
             "date": "2026-11-01",
-            "delta_it_power_mw": 422.0,
-            "delta_total_power_mw": 590.0,
-            "delta_buildings_operational": 4.0
+            "delta_it_power_mw": 206.0,
+            "delta_total_power_mw": 289.0,
+            "delta_buildings_operational": 2.0
           }
         }
       ],
@@ -6100,7 +6116,7 @@
       "site_name": "Meta Los Lunas",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 3,
+      "observed_event_count": 4,
       "future_or_predicted_event_count": 1,
       "first_observed_date": "2024-07-24",
       "last_observed_date": "2026-10-26",
@@ -6135,6 +6151,22 @@
             "delta_it_power_mw": 87.0,
             "delta_total_power_mw": 114.0,
             "delta_buildings_operational": 1.0
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "temporal_status": "OBSERVED_OR_REPORTED",
+          "construction_status": "Building 2 (a tent-like building) shell is complete, but we don't believe it's operational because there is unpaved ground, no cars parked right in front, the first tent buildings at Meta Prometheus took about 16 months (it's been 10 months for this building). North-west of Building 1, the outline of a building of similar dimensions and style to Meta Jeffersonville's Building 1 is visible, this is labeled as Building 3. West of Building 1 we see more land clearing for what could be a building similar to Meta Jeffersonville's Building 2.",
+          "buildings_operational": 1.0,
+          "it_power_mw": 87.0,
+          "total_power_mw": 114.0,
+          "h100_equivalents": 99545.22486104093,
+          "performance_8bit_ops": 1.97e+20,
+          "change_from_previous_observed_event": {
+            "date": "2026-07-28",
+            "delta_it_power_mw": 0.0,
+            "delta_total_power_mw": 0.0,
+            "delta_buildings_operational": 0.0
           }
         },
         {
@@ -6394,15 +6426,15 @@
       "site_name": "Huawei Horinger",
       "country": "China",
       "state_province": null,
-      "observed_event_count": 11,
-      "future_or_predicted_event_count": 1,
+      "observed_event_count": 8,
+      "future_or_predicted_event_count": 2,
       "first_observed_date": "2023-10-08",
       "last_observed_date": "2026-08-18",
       "observed_events": [
         {
           "date": "2023-10-08",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Land clearing begins simultaneously for all three campuses (west, north, and south) after an [official ceremony](https://web.archive.org/web/20260624112951/http://nmg.news.cn/20231008/57bb95be6791497db95bc7d2f229a68e/c.html). Two of the campuses later have the cooling capacity indicative of AI workloads, while the other (the north campus) does not.",
+          "construction_status": "Land clearing begins simultaneously for all three zones (West, North, and South) after an official ceremony. The West and South zones later have the cooling capacity indicative of AI workloads, while the North Zone does not.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
@@ -6418,7 +6450,7 @@
         {
           "date": "2025-02-24",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "On the west zone, building 1 is structurally complete, and building 4 is structurally complete apart from some remaining cooling towers. Buildings 2 and 5 have begun construction.",
+          "construction_status": "In the West Zone, Building 1 is structurally complete. In the South Zone, Building 4 is structurally complete except for several cooling towers to be installed later. Buildings 2 (West Zone) and 5 (South Zone) have shells under construction.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
@@ -6432,78 +6464,46 @@
           }
         },
         {
-          "date": "2025-04-01",
+          "date": "2025-06-08",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Four buildings are seen to be structurally complete via satellite imagery.",
+          "construction_status": "In the South Zone, paving and landscaping around Building 4 is mostly complete, while Building 5 still needs cooling and backup generators to be installed.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2025-04-01",
+            "date": "2025-06-08",
             "delta_it_power_mw": 0.0,
             "delta_total_power_mw": 0.0,
             "delta_buildings_operational": 0.0
           }
         },
         {
-          "date": "2025-06-01",
+          "date": "2025-06-11",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "On the west zone, building 1 is operational, assuming a 3 month fit out post structural completion, as can be seen via satellite imagery.",
+          "construction_status": "In the West Zone, Building 1 is operational, based on its structural completion and colored motion artifacts on some of the cooling tower fans.",
           "buildings_operational": 1.0,
-          "it_power_mw": 36.1,
-          "total_power_mw": 41.5,
-          "h100_equivalents": 17532.64274886306,
-          "performance_8bit_ops": 3.46971e+19,
+          "it_power_mw": 42.4,
+          "total_power_mw": 53.0,
+          "h100_equivalents": 19002.67812026276,
+          "performance_8bit_ops": 3.76063e+19,
           "change_from_previous_observed_event": {
-            "date": "2025-06-01",
-            "delta_it_power_mw": 36.1,
-            "delta_total_power_mw": 41.5,
-            "delta_buildings_operational": 1.0
-          }
-        },
-        {
-          "date": "2025-07-01",
-          "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "On the east zone, building 4 is operational, assuming a 3 month fit out post structural completion, as can be seen via satellite imagery.",
-          "buildings_operational": 2.0,
-          "it_power_mw": 74.0,
-          "total_power_mw": 85.1,
-          "h100_equivalents": 35901.061141990904,
-          "performance_8bit_ops": 7.10482e+19,
-          "change_from_previous_observed_event": {
-            "date": "2025-07-01",
-            "delta_it_power_mw": 37.9,
-            "delta_total_power_mw": 43.599999999999994,
-            "delta_buildings_operational": 1.0
-          }
-        },
-        {
-          "date": "2026-02-01",
-          "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "On the west zone, building 2 is operational assuming a 3 month fit out post structural completion, as can be seen via satellite imagery.",
-          "buildings_operational": 3.0,
-          "it_power_mw": 113.6,
-          "total_power_mw": 130.6,
-          "h100_equivalents": 55096.513390601314,
-          "performance_8bit_ops": 1.09036e+20,
-          "change_from_previous_observed_event": {
-            "date": "2026-02-01",
-            "delta_it_power_mw": 39.599999999999994,
-            "delta_total_power_mw": 45.5,
+            "date": "2025-06-11",
+            "delta_it_power_mw": 42.4,
+            "delta_total_power_mw": 53.0,
             "delta_buildings_operational": 1.0
           }
         },
         {
           "date": "2026-03-05",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Three of the six buildings planned across the three campuses (what can be called phase 1) are operational. One other is near completion, apart from backup generators. The third campus does not have cooling sufficient for AI.",
-          "buildings_operational": 3.0,
-          "it_power_mw": 113.6,
-          "total_power_mw": 130.6,
-          "h100_equivalents": 55096.513390601314,
-          "performance_8bit_ops": 1.09036e+20,
+          "construction_status": "Building 1 appears to have condensed water vapor above some cooling towers, suggesting they are still operating. Cooling towers have been added to Building 4, but we do not see any condensed water vapor, and there is still a crane over the building. So we don't think Building 4 is operational at full capacity yet.",
+          "buildings_operational": 1.0,
+          "it_power_mw": 42.4,
+          "total_power_mw": 53.0,
+          "h100_equivalents": 19002.67812026276,
+          "performance_8bit_ops": 3.76063e+19,
           "change_from_previous_observed_event": {
             "date": "2026-03-05",
             "delta_it_power_mw": 0.0,
@@ -6514,28 +6514,28 @@
         {
           "date": "2026-05-12",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Satellite imagery shows buildings 4 and 5 on the east zone are structurally complete, with landscaping complete.",
-          "buildings_operational": 3.0,
-          "it_power_mw": 113.6,
-          "total_power_mw": 130.6,
-          "h100_equivalents": 55096.513390601314,
-          "performance_8bit_ops": 1.09036e+20,
+          "construction_status": "Building 4 is operational, based on its structural completion, the colored motion artifacts on some of the cooling tower fans, and cars parked out front (between the main building and the backup generator enclosure). Building 5 is almost structurally complete, but there is still some work to do in front of the backup generator enclosure.",
+          "buildings_operational": 2.0,
+          "it_power_mw": 86.8,
+          "total_power_mw": 108.6,
+          "h100_equivalents": 40622.132390096005,
+          "performance_8bit_ops": 8.03912e+19,
           "change_from_previous_observed_event": {
             "date": "2026-05-12",
-            "delta_it_power_mw": 0.0,
-            "delta_total_power_mw": 0.0,
-            "delta_buildings_operational": 0.0
+            "delta_it_power_mw": 44.4,
+            "delta_total_power_mw": 55.599999999999994,
+            "delta_buildings_operational": 1.0
           }
         },
         {
           "date": "2026-06-07",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Satellite imagery shows buildings 1 and 2 on the west zone are structurally complete, with landscaping complete.",
-          "buildings_operational": 3.0,
-          "it_power_mw": 113.6,
-          "total_power_mw": 130.6,
-          "h100_equivalents": 55096.513390601314,
-          "performance_8bit_ops": 1.09036e+20,
+          "construction_status": "In the West Zone, Building 2 is structurally complete but still has some construction equipment around it.",
+          "buildings_operational": 2.0,
+          "it_power_mw": 86.8,
+          "total_power_mw": 108.6,
+          "h100_equivalents": 40622.132390096005,
+          "performance_8bit_ops": 8.03912e+19,
           "change_from_previous_observed_event": {
             "date": "2026-06-07",
             "delta_it_power_mw": 0.0,
@@ -6544,48 +6544,42 @@
           }
         },
         {
-          "date": "2026-07-01",
-          "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "On the east zone, building 5 is operational, assuming a 3 month fit out post structural completion, as can be seen via satellite imagery.",
-          "buildings_operational": 4.0,
-          "it_power_mw": 184.3,
-          "total_power_mw": 212.0,
-          "h100_equivalents": 89439.11066195049,
-          "performance_8bit_ops": 1.77e+20,
-          "change_from_previous_observed_event": {
-            "date": "2026-07-01",
-            "delta_it_power_mw": 70.70000000000002,
-            "delta_total_power_mw": 81.4,
-            "delta_buildings_operational": 1.0
-          }
-        },
-        {
           "date": "2026-08-18",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "On the east zone, building 6 is under construction, and potentially larger than any of the identically sized buildings constructed thus far. Building 3 has not begun construction.",
-          "buildings_operational": 4.0,
-          "it_power_mw": 184.3,
-          "total_power_mw": 212.0,
-          "h100_equivalents": 89439.11066195049,
-          "performance_8bit_ops": 1.77e+20,
+          "construction_status": "In the South Zone, Building 5 is operational, based on its structural completion, and the colored motion artifacts on the some of the cooling tower fans. Building 6 (South Zone) is under construction. In the West Zone, Building 3 has not begun construction.",
+          "buildings_operational": 3.0,
+          "it_power_mw": 169.9,
+          "total_power_mw": 212.4,
+          "h100_equivalents": 81043.96159676605,
+          "performance_8bit_ops": 1.60386e+20,
           "change_from_previous_observed_event": {
             "date": "2026-08-18",
-            "delta_it_power_mw": 0.0,
-            "delta_total_power_mw": 0.0,
-            "delta_buildings_operational": 0.0
+            "delta_it_power_mw": 83.10000000000001,
+            "delta_total_power_mw": 103.80000000000001,
+            "delta_buildings_operational": 1.0
           }
         }
       ],
       "future_or_predicted_events": [
         {
-          "date": "2028-02-14",
+          "date": "2026-12-22",
           "temporal_status": "FUTURE_OR_PREDICTED",
-          "construction_status": "Building 6 is operational (estimate). This was the only new building under construction as of August 2026. Buildings in the previous phases each took 1.6 to 2.3 years from laying the foundations to becoming operational. The new building has a similar shape to a new building at the Huawei Wuhu campus which, based on its cooling and backup power capacity, is about 3.7x the power of previous buildings (see calculations sheet). We expect the chips to be 910C, or to have about the same energy efficiency as the 910C.",
+          "construction_status": "In the West Zone, Building 2 is operational (estimate). A local government announcement said a \"completion acceptance filing\" was completed for Building 2 around September 23, 2026, \"marking a critical step toward the project's entry into operation\". We assume this corresponds to structural completion, since there was minimal construction activity by August 18th. We then allow 3 more months for a full fit-out of AI servers.",
+          "buildings_operational": 4.0,
+          "it_power_mw": 216.4,
+          "total_power_mw": 270.5,
+          "h100_equivalents": 103644.26478019201,
+          "performance_8bit_ops": 2.05112e+20
+        },
+        {
+          "date": "2028-02-17",
+          "temporal_status": "FUTURE_OR_PREDICTED",
+          "construction_status": "Building 6 (South Zone) is operational (estimate). This was the only new building under construction as of August 2026. We estimate the operational date based on an average of (1) previous buildings taking about 2 years on average from starting the building shell to becoming operational at ~full capacity, (2) a similar building at the Huawei Wuhu campus taking an estimated 550 days to become fully operational. Building 6 can reportedly support 100,000 AI accelerator cards and will deploy Huawei Ascend 950 chips. Based on the timing, we assume it has capacity for 100,000 Ascend 950DT chips (Ascend 950DT is ramping a few months later than 950PR). As with the other buildings, we multiply this capacity by the reported rack occupancy rate for the Horinger New Area (about 76%).",
           "buildings_operational": 5.0,
-          "it_power_mw": 346.4,
-          "total_power_mw": 414.6,
-          "h100_equivalents": 168107.6301162203,
-          "performance_8bit_ops": 3.32685e+20
+          "it_power_mw": 351.1,
+          "total_power_mw": 438.8,
+          "h100_equivalents": 140820.61647296615,
+          "performance_8bit_ops": 2.78684e+20
         }
       ],
       "source": {
@@ -7199,48 +7193,48 @@
         {
           "date": "2025-01-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "The first building is operational. On the north campus, building 4 is operational assuming a 3-month fit-out post structural completion.",
+          "construction_status": "The first building is operational. On the north campus, building 4 is operational assuming a 3-month fit-out post structural completion. We multiply each building's estimated capacity by an assumed 65% rack occupancy rate. This is close to the ~62–64% reported for Wuhu and other national data center hubs in 2023, and matches Anhui's 65% target for the Wuhu cluster. Occupied capacity is assumed to be all AI chips.",
           "buildings_operational": 1.0,
-          "it_power_mw": 45.0,
-          "total_power_mw": 51.0,
-          "h100_equivalents": 21628.954017180393,
-          "performance_8bit_ops": 4.28037e+19,
+          "it_power_mw": 44.0,
+          "total_power_mw": 57.0,
+          "h100_equivalents": 7544.871147043961,
+          "performance_8bit_ops": 1.49313e+19,
           "change_from_previous_observed_event": {
             "date": "2025-01-01",
-            "delta_it_power_mw": 45.0,
-            "delta_total_power_mw": 51.0,
+            "delta_it_power_mw": 44.0,
+            "delta_total_power_mw": 57.0,
             "delta_buildings_operational": 1.0
           }
         },
         {
           "date": "2025-03-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Three buildings are operational. On the west campus, building 1 is operational, and on the east campus, building 7 is operational. The second building on the east campus has installed generators, but as of 2026 does not have the cooling sufficient for AI. Assumes a 3-month fit-out post structural completion.",
+          "construction_status": "Three buildings are operational. On the west campus, building 1 is operational, and on the east campus, building 7 is operational. The second building on the east campus has installed generators, but as of 2026 does not have the cooling sufficient for AI. Assumes a 3-month fit-out post structural completion. As with the other buildings, we assume 65% rack occupancy.",
           "buildings_operational": 3.0,
-          "it_power_mw": 119.0,
-          "total_power_mw": 137.0,
-          "h100_equivalents": 57767.55937342092,
-          "performance_8bit_ops": 1.14322e+20,
+          "it_power_mw": 118.0,
+          "total_power_mw": 153.0,
+          "h100_equivalents": 19815.411824153613,
+          "performance_8bit_ops": 3.92147e+19,
           "change_from_previous_observed_event": {
             "date": "2025-03-01",
             "delta_it_power_mw": 74.0,
-            "delta_total_power_mw": 86.0,
+            "delta_total_power_mw": 96.0,
             "delta_buildings_operational": 2.0
           }
         },
         {
           "date": "2025-11-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Four buildings are operational. On the west campus, building 2 is operational assuming a 3-month fit-out post structural completion.",
+          "construction_status": "Four buildings are operational. On the west campus, building 2 is operational assuming a 3-month fit-out post structural completion. As with the other buildings, we assume 65% rack occupancy.",
           "buildings_operational": 4.0,
-          "it_power_mw": 157.0,
-          "total_power_mw": 181.0,
-          "h100_equivalents": 76326.42748863062,
-          "performance_8bit_ops": 1.5105e+20,
+          "it_power_mw": 156.0,
+          "total_power_mw": 202.0,
+          "h100_equivalents": 36010.30823648307,
+          "performance_8bit_ops": 7.12644e+19,
           "change_from_previous_observed_event": {
             "date": "2025-11-01",
             "delta_it_power_mw": 38.0,
-            "delta_total_power_mw": 44.0,
+            "delta_total_power_mw": 49.0,
             "delta_buildings_operational": 1.0
           }
         },
@@ -7249,10 +7243,10 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Four buildings are operational in total. A fifth building, building 5 on the north campus, is finishing installing roofside cooling. Another building on the east campus is complete but does not have sufficient cooling for AI despite its backup generators. The remaining three buildings, one per campus, have not begun construction.",
           "buildings_operational": 4.0,
-          "it_power_mw": 157.0,
-          "total_power_mw": 181.0,
-          "h100_equivalents": 76326.42748863062,
-          "performance_8bit_ops": 1.5105e+20,
+          "it_power_mw": 156.0,
+          "total_power_mw": 202.0,
+          "h100_equivalents": 36010.30823648307,
+          "performance_8bit_ops": 7.12644e+19,
           "change_from_previous_observed_event": {
             "date": "2026-01-24",
             "delta_it_power_mw": 0.0,
@@ -7265,10 +7259,10 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Four buildings are operational. On the north campus, building 5 is nearing structural completion but still has roofing and cooling remaining.",
           "buildings_operational": 4.0,
-          "it_power_mw": 157.0,
-          "total_power_mw": 181.0,
-          "h100_equivalents": 76326.42748863062,
-          "performance_8bit_ops": 1.5105e+20,
+          "it_power_mw": 156.0,
+          "total_power_mw": 202.0,
+          "h100_equivalents": 36010.30823648307,
+          "performance_8bit_ops": 7.12644e+19,
           "change_from_previous_observed_event": {
             "date": "2026-06-01",
             "delta_it_power_mw": 0.0,
@@ -7281,10 +7275,10 @@
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "On the north campus, building 5 is structurally complete but not operational as seen by barricades and no parked cars. Building 6, a much larger building across the pond, should finish construction in approximately one month, given that it is structurally complete and 75% of its cooling looks to be installed. On the east campus, building 9 is under construction.",
           "buildings_operational": 4.0,
-          "it_power_mw": 157.0,
-          "total_power_mw": 181.0,
-          "h100_equivalents": 76326.42748863062,
-          "performance_8bit_ops": 1.5105e+20,
+          "it_power_mw": 156.0,
+          "total_power_mw": 202.0,
+          "h100_equivalents": 36010.30823648307,
+          "performance_8bit_ops": 7.12644e+19,
           "change_from_previous_observed_event": {
             "date": "2026-08-06",
             "delta_it_power_mw": 0.0,
@@ -7295,16 +7289,16 @@
         {
           "date": "2026-11-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Five buildings are operational. On the north campus, building 5 is operational assuming a 3-month fit-out post structural completion.",
+          "construction_status": "Five buildings are operational. On the north campus, building 5 is operational assuming a 3-month fit-out post structural completion. As with the other buildings, we assume 65% rack occupancy.",
           "buildings_operational": 5.0,
-          "it_power_mw": 199.0,
-          "total_power_mw": 229.0,
-          "h100_equivalents": 96537.64527539161,
-          "performance_8bit_ops": 1.91048e+20,
+          "it_power_mw": 197.0,
+          "total_power_mw": 256.0,
+          "h100_equivalents": 52830.72258716523,
+          "performance_8bit_ops": 1.04552e+20,
           "change_from_previous_observed_event": {
             "date": "2026-11-01",
-            "delta_it_power_mw": 42.0,
-            "delta_total_power_mw": 48.0,
+            "delta_it_power_mw": 41.0,
+            "delta_total_power_mw": 54.0,
             "delta_buildings_operational": 1.0
           }
         }
@@ -7313,22 +7307,22 @@
         {
           "date": "2026-12-31",
           "temporal_status": "FUTURE_OR_PREDICTED",
-          "construction_status": "Six buildings are operational. On the north campus, building 6, the larger building, is operational assuming a 3-month fit-out if it is structurally complete in September. We assume Building 6 is about 3.7x more power than one of the previous buildings, based on the size and quantity of cooling and backup generator equipment observed in satellite imagery.",
+          "construction_status": "Six buildings are operational. On the north campus, building 6, the larger building, is operational assuming a 3-month fit-out if it is structurally complete in September. We assume Building 6 is about 3.7x more power than one of the previous buildings, based on the size and quantity of cooling and backup generator equipment observed in satellite imagery. As with the other buildings, we assume 65% rack occupancy.",
           "buildings_operational": 6.0,
-          "it_power_mw": 364.0,
-          "total_power_mw": 419.0,
-          "h100_equivalents": 176595.25012632643,
-          "performance_8bit_ops": 3.49482e+20
+          "it_power_mw": 360.0,
+          "total_power_mw": 468.0,
+          "h100_equivalents": 119460.83880747852,
+          "performance_8bit_ops": 2.36413e+20
         },
         {
           "date": "2027-12-01",
           "temporal_status": "FUTURE_OR_PREDICTED",
-          "construction_status": "All eight AI buildings are operational. Buildings 3 and 9 are assumed to be 1.25x the power and compute of buildings 1 and 7 based on the sizing of the backup generator enclosures; building 8 is excluded due to insufficient cooling. The time from observed land-clearing to operational is 23-26 months based on previous buildings.",
+          "construction_status": "All eight AI buildings are operational. Buildings 3 and 9 are assumed to be 1.25x the power and compute of buildings 1 and 7 based on the sizing of the backup generator enclosures; building 8 is excluded due to insufficient cooling. The time from observed land-clearing to operational is 23-26 months based on previous buildings. As with the other buildings, we assume 65% rack occupancy.",
           "buildings_operational": 8.0,
-          "it_power_mw": 457.0,
-          "total_power_mw": 526.0,
-          "h100_equivalents": 221923.6988377969,
-          "performance_8bit_ops": 4.39187e+20
+          "it_power_mw": 453.0,
+          "total_power_mw": 589.0,
+          "h100_equivalents": 151419.40373926226,
+          "performance_8bit_ops": 2.99659e+20
         }
       ],
       "source": {
@@ -7790,10 +7784,10 @@
       "site_name": "CoreWeave Norway",
       "country": "Norway",
       "state_province": null,
-      "observed_event_count": 3,
+      "observed_event_count": 4,
       "future_or_predicted_event_count": 0,
       "first_observed_date": "2024-01-23",
-      "last_observed_date": "2026-04-25",
+      "last_observed_date": "2026-08-15",
       "observed_events": [
         {
           "date": "2024-01-23",
@@ -7817,13 +7811,13 @@
           "construction_status": "Building 1 appears to be operational based on satellite imagery, so we model it as operational from this date. In addition, [Bulk](https://bulkinfrastructure.com/newsroom/coreweave-partners-with-bulk-infrastructure) said CoreWeave’s Norway AI deployment was expected to be operational by summer 2025. Since this lines up nicely with the new 42 MW building, we assume the 42 MW of Building 1 is fully leased by CoreWeave.",
           "buildings_operational": 1.0,
           "it_power_mw": 42.0,
-          "total_power_mw": 50.0,
+          "total_power_mw": 55.0,
           "h100_equivalents": 50773.11773623042,
           "performance_8bit_ops": 1.0048e+20,
           "change_from_previous_observed_event": {
             "date": "2025-07-27",
             "delta_it_power_mw": 42.0,
-            "delta_total_power_mw": 50.0,
+            "delta_total_power_mw": 55.0,
             "delta_buildings_operational": 1.0
           }
         },
@@ -7833,11 +7827,27 @@
           "construction_status": "Building 1 perimeter is now fully paved. No other significant changes to Building 1 since the July 2025 image.",
           "buildings_operational": 1.0,
           "it_power_mw": 42.0,
-          "total_power_mw": 50.0,
+          "total_power_mw": 55.0,
           "h100_equivalents": 50773.11773623042,
           "performance_8bit_ops": 1.0048e+20,
           "change_from_previous_observed_event": {
             "date": "2026-04-25",
+            "delta_it_power_mw": 0.0,
+            "delta_total_power_mw": 0.0,
+            "delta_buildings_operational": 0.0
+          }
+        },
+        {
+          "date": "2026-08-15",
+          "temporal_status": "OBSERVED_OR_REPORTED",
+          "construction_status": "Building 1 still operational. No new major developments since the April image, though the large land clearing to the southwest is now much more clearly visible. [Bulk](https://bulkinfrastructure.com/newsroom/bulk-infrastructure-secures-410-million-for-n01-data-center-campus-expansion) is saying this expansion could include AI datacenters, but we don't have any confirmation this expansion is for CoreWeave yet.",
+          "buildings_operational": 1.0,
+          "it_power_mw": 42.0,
+          "total_power_mw": 55.0,
+          "h100_equivalents": 50773.11773623042,
+          "performance_8bit_ops": 1.0048e+20,
+          "change_from_previous_observed_event": {
+            "date": "2026-08-15",
             "delta_it_power_mw": 0.0,
             "delta_total_power_mw": 0.0,
             "delta_buildings_operational": 0.0
@@ -10447,10 +10457,10 @@
       "site_name": "QTS Cedar Rapids",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 4,
+      "observed_event_count": 5,
       "future_or_predicted_event_count": 2,
       "first_observed_date": "2025-01-17",
-      "last_observed_date": "2026-05-07",
+      "last_observed_date": "2026-10-23",
       "observed_events": [
         {
           "date": "2025-01-17",
@@ -10488,16 +10498,16 @@
           "date": "2026-04-16",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Based on satellite imagery, the Buildings 1-3 shells look complete. Buildings 4-6 are far along, with roofs largely in place, while the eastern Building 7 foundation is well underway. No buildings operational yet.",
-          "buildings_operational": null,
-          "it_power_mw": null,
-          "total_power_mw": null,
-          "h100_equivalents": null,
-          "performance_8bit_ops": null,
+          "buildings_operational": 0.0,
+          "it_power_mw": 0.0,
+          "total_power_mw": 0.0,
+          "h100_equivalents": 0.0,
+          "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
             "date": "2026-04-16",
-            "delta_it_power_mw": null,
-            "delta_total_power_mw": null,
-            "delta_buildings_operational": null
+            "delta_it_power_mw": 0.0,
+            "delta_total_power_mw": 0.0,
+            "delta_buildings_operational": 0.0
           }
         },
         {
@@ -10511,22 +10521,38 @@
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
             "date": "2026-05-07",
-            "delta_it_power_mw": null,
-            "delta_total_power_mw": null,
-            "delta_buildings_operational": null
+            "delta_it_power_mw": 0.0,
+            "delta_total_power_mw": 0.0,
+            "delta_buildings_operational": 0.0
+          }
+        },
+        {
+          "date": "2026-10-23",
+          "temporal_status": "OBSERVED_OR_REPORTED",
+          "construction_status": "Buildings 1–3 look externally complete, with the air-cooled chillers fully installed, and surrounding yard work cleared. The many cars and trucks parked beside the buildings suggest commissioning is still underway, so we’re not counting any buildings operational yet. Buildings 4-6 shells appear complete, and Building 7 is nearly 90% roofed. This is based on high-resolution satellite imagery from this date.",
+          "buildings_operational": 0.0,
+          "it_power_mw": 0.0,
+          "total_power_mw": 0.0,
+          "h100_equivalents": 0.0,
+          "performance_8bit_ops": 0.0,
+          "change_from_previous_observed_event": {
+            "date": "2026-10-23",
+            "delta_it_power_mw": 0.0,
+            "delta_total_power_mw": 0.0,
+            "delta_buildings_operational": 0.0
           }
         }
       ],
       "future_or_predicted_events": [
         {
-          "date": "2026-11-15",
+          "date": "2026-12-31",
           "temporal_status": "FUTURE_OR_PREDICTED",
-          "construction_status": "Buildings 1-3 are operational. Based on the expected completion date reported by [local news](https://corridorbusiness.com/scope-of-qts-data-project-in-cedar-rapids-continuing-to-grow/): “A QTS spokesperson said in July [2025] that the first phase of the project was expected to be completed in late 2026.\"",
+          "construction_status": "Buildings 1-3 are operational. Based on the visible progress in the October satellite image, and the expected completion date reported by [local news](https://corridorbusiness.com/scope-of-qts-data-project-in-cedar-rapids-continuing-to-grow/): “A QTS spokesperson said in July [2025] that the first phase of the project was expected to be completed in late 2026.\"",
           "buildings_operational": 3.0,
           "it_power_mw": 448.0,
           "total_power_mw": 627.0,
-          "h100_equivalents": 1136975.5639961243,
-          "performance_8bit_ops": 2.25007464114833e+21
+          "h100_equivalents": 510478.8246513189,
+          "performance_8bit_ops": 1.01023759398496e+21
         },
         {
           "date": "2027-11-15",
@@ -10535,8 +10561,8 @@
           "buildings_operational": 7.0,
           "it_power_mw": 1133.0,
           "total_power_mw": 1587.0,
-          "h100_equivalents": 3668823.12124194,
-          "performance_8bit_ops": 7.2606009569378e+21
+          "h100_equivalents": 2250548.600358449,
+          "performance_8bit_ops": 4.45383568010937e+21
         }
       ],
       "source": {

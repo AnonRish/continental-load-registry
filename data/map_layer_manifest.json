@@ -118,14 +118,15 @@
     {
       "id": "BPA_LARGE_LOAD",
       "label": "BPA large-load request layer",
-      "records": 128,
+      "records": 132,
       "mapped_records": 25,
       "geometry": "project/POI geography where the retained source supports it; display precision is preserved",
       "additive_to_core": false,
-      "source_capture_date": "2026-09-28",
+      "source_capture_date": "2026-11-08",
       "unlocated_records": [
         "BPA-L0221",
         "BPA-L0555",
+        "BPA-L0712",
         "BPA-L0359",
         "BPA-L0396",
         "BPA-L0521",
@@ -144,6 +145,7 @@
         "BPA-L0389",
         "BPA-L0481",
         "BPA-L0514",
+        "BPA-L0711",
         "BPA-L0594",
         "BPA-L0614",
         "BPA-L0417",
@@ -167,6 +169,7 @@
         "BPA-L0650",
         "BPA-L0657",
         "BPA-L0700",
+        "BPA-L0709",
         "BPA-L0489",
         "BPA-L0385",
         "BPA-L0397",
@@ -226,11 +229,12 @@
         "BPA-L0548",
         "BPA-L0551",
         "BPA-L0639",
-        "BPA-L0683"
+        "BPA-L0683",
+        "BPA-L0710"
       ],
       "file": "data/bpa_large_load_registry.json",
-      "status": "official BPA workbook snapshot; 128 parsed L-series load requests meeting the >=100 MW threshold; 25 retain display geometry by prior request-ID match",
-      "source_sha256": "c98e1dad406d5615a28defffb7cbf5130b17abfe1818223fd2efeb647bbcd208"
+      "status": "official BPA workbook snapshot; 132 parsed L-series load requests; 25 retain display geometry by prior request-ID match",
+      "source_sha256": "4d67177aae5611c117fd106e686d0f14f97599b11ec531699f4d87d1db0ab2f2"
     }
   ],
   "accounting_note": "Layer counts are not summed across overlays. Missing map coordinates never receive invented site geography. Jurisdiction/state/service-area display points are labeled as display geometry, not facility coordinates."

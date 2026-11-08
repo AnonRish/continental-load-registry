@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_on": "2026-11-07",
+  "generated_on": "2026-11-08",
   "sources": [
     {
       "name": "Compute Atlas",
@@ -8,9 +8,10 @@
       "info_url": "https://www.compute-atlas.com/data",
       "license": "CC BY 4.0",
       "local_snapshot": "data/external/compute_atlas/facilities.json",
-      "status": "NOT_YET_RETAINED",
-      "snapshot_present": false,
-      "detail": "No snapshot has been retained yet; the page reads the publisher's live endpoint until the daily refresh stores one."
+      "checked_at": "2026-11-08T13:38:17+00:00",
+      "status": "FAILED",
+      "detail": "RuntimeError: https://www.compute-atlas.com/api/facilities: HTTP Error 403: Forbidden",
+      "snapshot_present": false
     },
     {
       "name": "Data Center Index",
@@ -18,9 +19,12 @@
       "info_url": "https://datacenterindex.ai/data",
       "license": "CC BY 4.0",
       "local_snapshot": "data/external/data_center_index/campuses.json",
-      "status": "NOT_YET_RETAINED",
-      "snapshot_present": false,
-      "detail": "No snapshot has been retained yet; the page reads the publisher's live endpoint until the daily refresh stores one."
+      "checked_at": "2026-11-08T13:38:17+00:00",
+      "status": "OK",
+      "snapshot_present": true,
+      "record_count": 25,
+      "retrieved_at": "2026-11-08T13:38:17+00:00",
+      "sha256": "d2d5e8258ac4cb9d1f5b094c7572122abbb1417677d2a390e614f6b0b717d955"
     }
   ],
   "policy": "Third-party snapshots are fetched only where the publisher's robots.txt allows automated access; otherwise the page links to the publisher's own data page."
