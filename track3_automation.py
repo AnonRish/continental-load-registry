@@ -233,24 +233,36 @@ def source_health(prev):
         results.append(item)
     return results,failed
 
+# Fields the publisher supplies. A change to anything else (entity class, tier,
+# compute estimates, review flag) is a change in this project's derivation, not
+# in the queue, and is counted separately.
+PUBLISHER_FIELDS=("id","rto","st","co","poi","mw","status","proj","dev")
+
+def _record_key(r):
+    return f"{r.get('rto')}|{r.get('id')}"  # queue IDs are unique only within an RTO
+
 def queue_release_diff():
     current=parse_registry()
     snap_dir=AUTO/"queue_snapshots"; snap_dir.mkdir(parents=True,exist_ok=True)
     existing=sorted(snap_dir.glob("*.json"))
     previous=json.loads(existing[-1].read_text(encoding="utf-8")) if existing else None
-    cur_by={str(x.get("id")):x for x in current}
-    added=[]; removed=[]; changed=[]
+    cur_by={_record_key(x):x for x in current}
+    added=[]; removed=[]; changed=[]; derived_changed=[]
     if previous:
-        prev_by={str(x.get("id")):x for x in previous["records"]}
+        prev_by={_record_key(x):x for x in previous["records"]}
         added=[cur_by[k] for k in sorted(set(cur_by)-set(prev_by))]
         removed=[prev_by[k] for k in sorted(set(prev_by)-set(cur_by))]
-        changed=[{"id":k,"before":prev_by[k],"after":cur_by[k]} for k in sorted(set(cur_by)&set(prev_by)) if cur_by[k]!=prev_by[k]]
+        for k in sorted(set(cur_by)&set(prev_by)):
+            before,after=prev_by[k],cur_by[k]
+            if before==after: continue
+            if any(before.get(f)!=after.get(f) for f in PUBLISHER_FIELDS):
+                changed.append({"id":after.get("id"),"rto":after.get("rto"),"before":before,"after":after})
+            else:
+                derived_changed.append({"id":after.get("id"),"rto":after.get("rto"),
+                                        "fields":sorted(f for f in set(before)|set(after) if before.get(f)!=after.get(f))})
     else:
         prev_by={}
         added=list(current)
-    if previous:
-        removed=[prev_by[k] for k in sorted(set(prev_by)-set(cur_by))]
-        changed=[{"id":k,"before":prev_by[k],"after":cur_by[k]} for k in sorted(set(cur_by)&set(prev_by)) if cur_by[k]!=prev_by[k]]
     by_rto={}
     for r in current: by_rto.setdefault(r.get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["current"]+=1
     if previous:
@@ -260,8 +272,13 @@ def queue_release_diff():
         for r in removed: by_rto.setdefault(r.get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["removed"]+=1
         for x in changed: by_rto.setdefault(x["after"].get("rto"),{"current":0,"added":0,"removed":0,"changed":0})["changed"]+=1
     snapshot={"schema_version":1,"captured_at_utc":NOW_ISO,"record_count":len(current),"registry_sha256":hashlib.sha256(json.dumps(current,sort_keys=True).encode()).hexdigest(),"records":current}
-    snap_path=snap_dir/f"{TODAY}.json"; snap_path.write_text(json.dumps(snapshot,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-    return {"schema_version":1,"generated_at_utc":NOW_ISO,"comparison_basis":previous.get("captured_at_utc") if previous else None,"current_record_count":len(current),"previous_record_count":len(previous["records"]) if previous else None,"added_count":len(added),"removed_count":len(removed),"changed_count":len(changed),"by_rto":by_rto,"added":added,"removed":removed,"changed":changed,"current_snapshot":str(snap_path.relative_to(ROOT)).replace("\\","/")}
+    # Write a dated snapshot only when the published registry changed; an
+    # unchanged day adds nothing that the previous file does not already say.
+    if not previous or previous.get("registry_sha256")!=snapshot["registry_sha256"]:
+        snap_path=snap_dir/f"{TODAY}.json"; snap_path.write_text(json.dumps(snapshot,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+    else:
+        snap_path=existing[-1]
+    return {"schema_version":1,"generated_at_utc":NOW_ISO,"comparison_basis":previous.get("captured_at_utc") if previous else None,"current_record_count":len(current),"previous_record_count":len(previous["records"]) if previous else None,"added_count":len(added),"removed_count":len(removed),"changed_count":len(changed),"derived_only_changed_count":len(derived_changed),"by_rto":by_rto,"added":added,"removed":removed,"changed":changed,"derived_only_changed":derived_changed,"current_snapshot":str(snap_path.relative_to(ROOT)).replace("\\","/")}
 
 def duplicate_report(records):
     by_id={}; by_exact={}; by_project={}
