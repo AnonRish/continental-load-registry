@@ -140,15 +140,20 @@ async function load(){
     {name:"Data Center Index",local:"data/external/data_center_index/campuses.json",live:"https://datacenterindex.ai/data/datacenterindex-campuses.json",count:901,kind:"global campus universe"}
   ];
   const status=document.getElementById("loadStatus");
+  // Third-party snapshots exist only once the daily sync has retained them (see its status file).
+  const snap=await fetch("data/global_compute_universe_snapshot_status.json",{cache:"no-store"}).then(x=>x.ok?x.json():null).catch(()=>null);
+  const retained=new Set((snap?.sources||[]).filter(x=>x.status==="OK").map(x=>x.local_snapshot));
   for(const s of sources){
     let data=null, mode="snapshot";
-    try{const x=await fetch(s.local,{cache:"no-store"}); if(x.ok) data=await x.json(); else throw new Error("no local");}catch(e){
+    try{
+      if(s.name!=="Epoch AI" && !retained.has(s.local)) throw new Error("no retained snapshot");
+      const x=await fetch(s.local,{cache:"no-store"}); if(x.ok) data=await x.json(); else throw new Error("no local");
+    }catch(e){
       mode="live";
       try{const x=await fetch(s.live,{cache:"no-store"}); if(x.ok) data=await x.json();}catch(err){data=null;}
     }
-    if(s.name==="Compute Atlas") data=Array.isArray(data)?data:(data?.facilities||[]);
-    else if(s.name==="Data Center Index") data=Array.isArray(data)?data:(data?.items||data?.records||[]);
-    else data=Array.isArray(data)?data:(data?.records||data?.sites||[]);
+    // Publishers have used several envelopes for the same list ({rows:[...]}, {facilities:[...]}, ...).
+    data=Array.isArray(data)?data:(data?.facilities||data?.rows||data?.items||data?.records||data?.campuses||data?.sites||null);
     if(!Array.isArray(data)){s.loaded=0;s.mode="error";continue;}
     s.loaded=data.length;s.mode=mode;
     for(const r of data){const x=rec(s.name,r); x.sourceMode=mode; ALL.push(x);}

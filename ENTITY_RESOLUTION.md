@@ -13,7 +13,7 @@ Generated from the current repository queue, Epoch site registry, project-level 
 
 Confidence is evidence strength, not a probability. Name normalization is a reconciliation key, not proof of legal identity. LLC/LP status is not evidence that an entity is a shell company.
 
-GLEIF publishes Level 2 data connecting legal entities to direct and ultimate accounting parents; OpenCorporates exposes company relationship statements with provenance; SEC EDGAR Exhibit 21 is an issuer-reported subsidiary source. citeturn387553search9turn387553search0turn390760search1
+GLEIF publishes Level 2 data connecting legal entities to direct and ultimate accounting parents; OpenCorporates exposes company relationship statements with provenance; SEC EDGAR Exhibit 21 is an issuer-reported subsidiary source.
 
 ## Outputs
 
