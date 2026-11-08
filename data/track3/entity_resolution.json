@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-08T01:59:08.615572+00:00",
+  "generated_at_utc": "2026-11-08T12:11:15.953695+00:00",
   "title": "Track 3 Entity Resolution Layer",
   "semantics": "Confidence is evidence strength, not probability. Name normalization is a reconciliation key, not proof of legal identity. Missing ownership, landowner, colocation and shell-company findings remain unresolved rather than inferred.",
   "stats": {
@@ -21083,6 +21083,14 @@
       "evidence_strength_max": 0.99
     },
     {
+      "entity_id": "BLDGSET-EPOCH-55d4b5e818b5bb2a",
+      "canonical_name": "Building footprint set — DayOne Nusajaya",
+      "entity_type": "campus_building_geometry_set",
+      "name_variants": [],
+      "source_evidence_count": 1,
+      "evidence_strength_max": 0.99
+    },
+    {
       "entity_id": "BLDGSET-EPOCH-8838deed95ffb554",
       "canonical_name": "Building footprint set — Meta Prometheus",
       "entity_type": "campus_building_geometry_set",
@@ -21099,16 +21107,16 @@
       "evidence_strength_max": 0.99
     },
     {
-      "entity_id": "BLDGSET-EPOCH-f5dc9d7a3f02c2e9",
-      "canonical_name": "Building footprint set — Microsoft Fairwater Wisconsin",
+      "entity_id": "BLDGSET-EPOCH-04f65e1aee6c98ab",
+      "canonical_name": "Building footprint set — DayOne Kempas",
       "entity_type": "campus_building_geometry_set",
       "name_variants": [],
       "source_evidence_count": 1,
       "evidence_strength_max": 0.99
     },
     {
-      "entity_id": "BLDGSET-EPOCH-04f65e1aee6c98ab",
-      "canonical_name": "Building footprint set — DayOne Kempas",
+      "entity_id": "BLDGSET-EPOCH-f5dc9d7a3f02c2e9",
+      "canonical_name": "Building footprint set — Microsoft Fairwater Wisconsin",
       "entity_type": "campus_building_geometry_set",
       "name_variants": [],
       "source_evidence_count": 1,
@@ -21133,14 +21141,6 @@
     {
       "entity_id": "BLDGSET-EPOCH-83ca909f7eb211c7",
       "canonical_name": "Building footprint set — Google Mesa",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-55d4b5e818b5bb2a",
-      "canonical_name": "Building footprint set — DayOne Nusajaya",
       "entity_type": "campus_building_geometry_set",
       "name_variants": [],
       "source_evidence_count": 1,
@@ -21227,6 +21227,14 @@
       "evidence_strength_max": 0.99
     },
     {
+      "entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
+      "canonical_name": "Building footprint set — Meta Temple",
+      "entity_type": "campus_building_geometry_set",
+      "name_variants": [],
+      "source_evidence_count": 1,
+      "evidence_strength_max": 0.99
+    },
+    {
       "entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
       "canonical_name": "Building footprint set — AWS New Albany",
       "entity_type": "campus_building_geometry_set",
@@ -21285,14 +21293,6 @@
     {
       "entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
       "canonical_name": "Building footprint set — Meta Kuna",
-      "entity_type": "campus_building_geometry_set",
-      "name_variants": [],
-      "source_evidence_count": 1,
-      "evidence_strength_max": 0.99
-    },
-    {
-      "entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
-      "canonical_name": "Building footprint set — Meta Temple",
       "entity_type": "campus_building_geometry_set",
       "name_variants": [],
       "source_evidence_count": 1,
@@ -44913,7 +44913,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4622 polygons; release 2026-09-23.1."
+      "notes": "4622 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1753",
@@ -44926,7 +44926,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1116 polygons; release 2026-09-23.1."
+      "notes": "1116 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1754",
@@ -44939,7 +44939,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "317 polygons; release 2026-09-23.1."
+      "notes": "317 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1755",
@@ -44952,10 +44952,23 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "458 polygons; release 2026-09-23.1."
+      "notes": "458 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1756",
+      "from_entity_id": "EPOCH-55d4b5e818b5bb2a",
+      "to_entity_id": "BLDGSET-EPOCH-55d4b5e818b5bb2a",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-55d4b5e818b5bb2a",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "926 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1757",
       "from_entity_id": "EPOCH-8838deed95ffb554",
       "to_entity_id": "BLDGSET-EPOCH-8838deed95ffb554",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44965,10 +44978,10 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2615 polygons; release 2026-09-23.1."
+      "notes": "2615 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1757",
+      "relationship_id": "REL-1758",
       "from_entity_id": "EPOCH-2c2e40ddb178da3e",
       "to_entity_id": "BLDGSET-EPOCH-2c2e40ddb178da3e",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -44978,20 +44991,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "289 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1758",
-      "from_entity_id": "EPOCH-f5dc9d7a3f02c2e9",
-      "to_entity_id": "BLDGSET-EPOCH-f5dc9d7a3f02c2e9",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-f5dc9d7a3f02c2e9",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1624 polygons; release 2026-09-23.1."
+      "notes": "289 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1759",
@@ -45004,10 +45004,23 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "10558 polygons; release 2026-09-23.1."
+      "notes": "10558 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1760",
+      "from_entity_id": "EPOCH-f5dc9d7a3f02c2e9",
+      "to_entity_id": "BLDGSET-EPOCH-f5dc9d7a3f02c2e9",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-f5dc9d7a3f02c2e9",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "1624 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1761",
       "from_entity_id": "EPOCH-d8b28fdbc55817f9",
       "to_entity_id": "BLDGSET-EPOCH-d8b28fdbc55817f9",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45017,10 +45030,10 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1420 polygons; release 2026-09-23.1."
+      "notes": "1420 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1761",
+      "relationship_id": "REL-1762",
       "from_entity_id": "EPOCH-5b353d56a567a70b",
       "to_entity_id": "BLDGSET-EPOCH-5b353d56a567a70b",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45030,10 +45043,10 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "406 polygons; release 2026-09-23.1."
+      "notes": "406 polygons; release 2026-10-21.0."
     },
     {
-      "relationship_id": "REL-1762",
+      "relationship_id": "REL-1763",
       "from_entity_id": "EPOCH-83ca909f7eb211c7",
       "to_entity_id": "BLDGSET-EPOCH-83ca909f7eb211c7",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45043,20 +45056,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "10210 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1763",
-      "from_entity_id": "EPOCH-55d4b5e818b5bb2a",
-      "to_entity_id": "BLDGSET-EPOCH-55d4b5e818b5bb2a",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-55d4b5e818b5bb2a",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "926 polygons; release 2026-09-23.1."
+      "notes": "10210 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1764",
@@ -45069,7 +45069,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2924 polygons; release 2026-09-23.1."
+      "notes": "2924 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1765",
@@ -45082,7 +45082,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "347 polygons; release 2026-09-23.1."
+      "notes": "347 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1766",
@@ -45095,7 +45095,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1710 polygons; release 2026-09-23.1."
+      "notes": "1710 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1767",
@@ -45108,7 +45108,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1033 polygons; release 2026-09-23.1."
+      "notes": "1033 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1768",
@@ -45121,7 +45121,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "832 polygons; release 2026-09-23.1."
+      "notes": "832 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1769",
@@ -45134,7 +45134,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2139 polygons; release 2026-09-23.1."
+      "notes": "2139 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1770",
@@ -45147,7 +45147,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2873 polygons; release 2026-09-23.1."
+      "notes": "2873 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1771",
@@ -45160,7 +45160,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1191 polygons; release 2026-09-23.1."
+      "notes": "1191 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1772",
@@ -45173,7 +45173,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "6116 polygons; release 2026-09-23.1."
+      "notes": "6116 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1773",
@@ -45186,114 +45186,10 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "330 polygons; release 2026-09-23.1."
+      "notes": "330 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1774",
-      "from_entity_id": "EPOCH-bdc85fadae79b6b2",
-      "to_entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-bdc85fadae79b6b2",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "526 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1775",
-      "from_entity_id": "EPOCH-4eeccbee73808216",
-      "to_entity_id": "BLDGSET-EPOCH-4eeccbee73808216",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-4eeccbee73808216",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4140 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1776",
-      "from_entity_id": "EPOCH-e06bc7faa8b1b187",
-      "to_entity_id": "BLDGSET-EPOCH-e06bc7faa8b1b187",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-e06bc7faa8b1b187",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "101 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1777",
-      "from_entity_id": "EPOCH-052be5b551cd099b",
-      "to_entity_id": "BLDGSET-EPOCH-052be5b551cd099b",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-052be5b551cd099b",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "946 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1778",
-      "from_entity_id": "EPOCH-40ccef8ef4236635",
-      "to_entity_id": "BLDGSET-EPOCH-40ccef8ef4236635",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-40ccef8ef4236635",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2317 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1779",
-      "from_entity_id": "EPOCH-02484a65a5dac16d",
-      "to_entity_id": "BLDGSET-EPOCH-02484a65a5dac16d",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-02484a65a5dac16d",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "946 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1780",
-      "from_entity_id": "EPOCH-0788d9aeb3114553",
-      "to_entity_id": "BLDGSET-EPOCH-0788d9aeb3114553",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-0788d9aeb3114553",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "159 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1781",
-      "from_entity_id": "EPOCH-5de9a1c70a3e2275",
-      "to_entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
-      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
-      "evidence_id": "FP-EPOCH-5de9a1c70a3e2275",
-      "source": "Overture Maps buildings",
-      "source_url": "https://docs.overturemaps.org/getting-data/",
-      "confidence_score": 0.99,
-      "confidence_semantics": "evidence-strength score, not a probability",
-      "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "667 polygons; release 2026-09-23.1."
-    },
-    {
-      "relationship_id": "REL-1782",
       "from_entity_id": "EPOCH-6ff5e1aeb6f0c7e3",
       "to_entity_id": "BLDGSET-EPOCH-6ff5e1aeb6f0c7e3",
       "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
@@ -45303,7 +45199,111 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2534 polygons; release 2026-09-23.1."
+      "notes": "2534 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1775",
+      "from_entity_id": "EPOCH-bdc85fadae79b6b2",
+      "to_entity_id": "BLDGSET-EPOCH-bdc85fadae79b6b2",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-bdc85fadae79b6b2",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "526 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1776",
+      "from_entity_id": "EPOCH-4eeccbee73808216",
+      "to_entity_id": "BLDGSET-EPOCH-4eeccbee73808216",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-4eeccbee73808216",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "4140 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1777",
+      "from_entity_id": "EPOCH-e06bc7faa8b1b187",
+      "to_entity_id": "BLDGSET-EPOCH-e06bc7faa8b1b187",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-e06bc7faa8b1b187",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "101 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1778",
+      "from_entity_id": "EPOCH-052be5b551cd099b",
+      "to_entity_id": "BLDGSET-EPOCH-052be5b551cd099b",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-052be5b551cd099b",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "946 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1779",
+      "from_entity_id": "EPOCH-40ccef8ef4236635",
+      "to_entity_id": "BLDGSET-EPOCH-40ccef8ef4236635",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-40ccef8ef4236635",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "2317 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1780",
+      "from_entity_id": "EPOCH-02484a65a5dac16d",
+      "to_entity_id": "BLDGSET-EPOCH-02484a65a5dac16d",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-02484a65a5dac16d",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "946 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1781",
+      "from_entity_id": "EPOCH-0788d9aeb3114553",
+      "to_entity_id": "BLDGSET-EPOCH-0788d9aeb3114553",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-0788d9aeb3114553",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "159 polygons; release 2026-10-21.0."
+    },
+    {
+      "relationship_id": "REL-1782",
+      "from_entity_id": "EPOCH-5de9a1c70a3e2275",
+      "to_entity_id": "BLDGSET-EPOCH-5de9a1c70a3e2275",
+      "relationship_type": "SITE_BUILDING_GEOMETRY_SET",
+      "evidence_id": "FP-EPOCH-5de9a1c70a3e2275",
+      "source": "Overture Maps buildings",
+      "source_url": "https://docs.overturemaps.org/getting-data/",
+      "confidence_score": 0.99,
+      "confidence_semantics": "evidence-strength score, not a probability",
+      "temporal_status": "CURRENT_SNAPSHOT",
+      "notes": "667 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1783",
@@ -45316,7 +45316,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "7675 polygons; release 2026-09-23.1."
+      "notes": "7675 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1784",
@@ -45329,7 +45329,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1209 polygons; release 2026-09-23.1."
+      "notes": "1209 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1785",
@@ -45342,7 +45342,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "520 polygons; release 2026-09-23.1."
+      "notes": "520 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1786",
@@ -45355,7 +45355,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "39 polygons; release 2026-09-23.1."
+      "notes": "39 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1787",
@@ -45368,7 +45368,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "152 polygons; release 2026-09-23.1."
+      "notes": "152 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1788",
@@ -45381,7 +45381,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "205 polygons; release 2026-09-23.1."
+      "notes": "205 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1789",
@@ -45394,7 +45394,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "355 polygons; release 2026-09-23.1."
+      "notes": "355 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1790",
@@ -45407,7 +45407,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "68 polygons; release 2026-09-23.1."
+      "notes": "68 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1791",
@@ -45420,7 +45420,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "405 polygons; release 2026-09-23.1."
+      "notes": "405 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1792",
@@ -45433,7 +45433,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1125 polygons; release 2026-09-23.1."
+      "notes": "1125 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1793",
@@ -45446,7 +45446,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "18241 polygons; release 2026-09-23.1."
+      "notes": "18241 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1794",
@@ -45459,7 +45459,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "0 polygons; release 2026-09-23.1."
+      "notes": "0 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1795",
@@ -45472,7 +45472,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1860 polygons; release 2026-09-23.1."
+      "notes": "1860 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1796",
@@ -45485,7 +45485,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3715 polygons; release 2026-09-23.1."
+      "notes": "3715 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1797",
@@ -45498,7 +45498,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "769 polygons; release 2026-09-23.1."
+      "notes": "769 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1798",
@@ -45511,7 +45511,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "414 polygons; release 2026-09-23.1."
+      "notes": "414 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1799",
@@ -45524,7 +45524,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1899 polygons; release 2026-09-23.1."
+      "notes": "1899 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1800",
@@ -45537,7 +45537,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "54 polygons; release 2026-09-23.1."
+      "notes": "54 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1801",
@@ -45550,7 +45550,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "318 polygons; release 2026-09-23.1."
+      "notes": "318 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1802",
@@ -45563,7 +45563,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4289 polygons; release 2026-09-23.1."
+      "notes": "4289 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1803",
@@ -45576,7 +45576,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1533 polygons; release 2026-09-23.1."
+      "notes": "1533 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1804",
@@ -45589,7 +45589,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "479 polygons; release 2026-09-23.1."
+      "notes": "479 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1805",
@@ -45602,7 +45602,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "424 polygons; release 2026-09-23.1."
+      "notes": "424 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1806",
@@ -45615,7 +45615,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "676 polygons; release 2026-09-23.1."
+      "notes": "676 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1807",
@@ -45628,7 +45628,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "217 polygons; release 2026-09-23.1."
+      "notes": "217 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1808",
@@ -45641,7 +45641,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "845 polygons; release 2026-09-23.1."
+      "notes": "845 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1809",
@@ -45654,7 +45654,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "97 polygons; release 2026-09-23.1."
+      "notes": "97 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1810",
@@ -45667,7 +45667,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "68 polygons; release 2026-09-23.1."
+      "notes": "68 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1811",
@@ -45680,7 +45680,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2207 polygons; release 2026-09-23.1."
+      "notes": "2207 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1812",
@@ -45693,7 +45693,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "97 polygons; release 2026-09-23.1."
+      "notes": "97 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1813",
@@ -45706,7 +45706,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1902 polygons; release 2026-09-23.1."
+      "notes": "1902 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1814",
@@ -45719,7 +45719,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "113 polygons; release 2026-09-23.1."
+      "notes": "113 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1815",
@@ -45732,7 +45732,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "758 polygons; release 2026-09-23.1."
+      "notes": "758 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1816",
@@ -45745,7 +45745,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "5542 polygons; release 2026-09-23.1."
+      "notes": "5542 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1817",
@@ -45758,7 +45758,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3035 polygons; release 2026-09-23.1."
+      "notes": "3035 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1818",
@@ -45771,7 +45771,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "5690 polygons; release 2026-09-23.1."
+      "notes": "5690 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1819",
@@ -45784,7 +45784,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4561 polygons; release 2026-09-23.1."
+      "notes": "4561 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1820",
@@ -45797,7 +45797,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1285 polygons; release 2026-09-23.1."
+      "notes": "1285 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1821",
@@ -45810,7 +45810,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "5883 polygons; release 2026-09-23.1."
+      "notes": "5883 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1822",
@@ -45823,7 +45823,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3636 polygons; release 2026-09-23.1."
+      "notes": "3636 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1823",
@@ -45836,7 +45836,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "7179 polygons; release 2026-09-23.1."
+      "notes": "7179 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1824",
@@ -45849,7 +45849,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "1231 polygons; release 2026-09-23.1."
+      "notes": "1231 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1825",
@@ -45862,7 +45862,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "5291 polygons; release 2026-09-23.1."
+      "notes": "5291 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1826",
@@ -45875,7 +45875,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "3384 polygons; release 2026-09-23.1."
+      "notes": "3384 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1827",
@@ -45888,7 +45888,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "100 polygons; release 2026-09-23.1."
+      "notes": "100 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1828",
@@ -45901,7 +45901,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "289 polygons; release 2026-09-23.1."
+      "notes": "289 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1829",
@@ -45914,7 +45914,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2967 polygons; release 2026-09-23.1."
+      "notes": "2967 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1830",
@@ -45927,7 +45927,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "55 polygons; release 2026-09-23.1."
+      "notes": "55 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1831",
@@ -45940,7 +45940,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "452 polygons; release 2026-09-23.1."
+      "notes": "452 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1832",
@@ -45953,7 +45953,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "542 polygons; release 2026-09-23.1."
+      "notes": "542 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1833",
@@ -45966,7 +45966,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "218 polygons; release 2026-09-23.1."
+      "notes": "218 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1834",
@@ -45979,7 +45979,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "108 polygons; release 2026-09-23.1."
+      "notes": "108 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1835",
@@ -45992,7 +45992,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "178 polygons; release 2026-09-23.1."
+      "notes": "178 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1836",
@@ -46005,7 +46005,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "663 polygons; release 2026-09-23.1."
+      "notes": "663 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1837",
@@ -46018,7 +46018,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4007 polygons; release 2026-09-23.1."
+      "notes": "4007 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1838",
@@ -46031,7 +46031,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "2852 polygons; release 2026-09-23.1."
+      "notes": "2852 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1839",
@@ -46044,7 +46044,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "596 polygons; release 2026-09-23.1."
+      "notes": "596 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1840",
@@ -46057,7 +46057,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "47 polygons; release 2026-09-23.1."
+      "notes": "47 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1841",
@@ -46070,7 +46070,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "4050 polygons; release 2026-09-23.1."
+      "notes": "4050 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1842",
@@ -46083,7 +46083,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "61 polygons; release 2026-09-23.1."
+      "notes": "61 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1843",
@@ -46096,7 +46096,7 @@
       "confidence_score": 0.99,
       "confidence_semantics": "evidence-strength score, not a probability",
       "temporal_status": "CURRENT_SNAPSHOT",
-      "notes": "250 polygons; release 2026-09-23.1."
+      "notes": "250 polygons; release 2026-10-21.0."
     },
     {
       "relationship_id": "REL-1844",
