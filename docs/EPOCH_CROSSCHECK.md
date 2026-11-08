@@ -5,7 +5,7 @@ Audit date: 2026-09-26
 ## Implemented repository integration
 
 The complete current Epoch AI AI Data Centers dataset is now imported under
-[data/external/epoch_ai/](data/external/epoch_ai/). The September 24, 2026
+[data/external/epoch_ai/](../data/external/epoch_ai). The September 24, 2026
 snapshot contains 93 data-center rows, 545 timeline rows and 227 chip-quantity
 rows. The dashboard exposes all 93 Epoch sites in a searchable secondary
 evidence table, with raw source fields and a crosswalk back to this registry.

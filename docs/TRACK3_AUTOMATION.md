@@ -16,7 +16,7 @@ The repository has source-specific ingestion adapters for the public source fami
 - AESO Connection Project List XLSX capture
 - physical-verification/building acquisition workflows where the source pipeline is executable
 
-These adapters run sequentially in `.github/workflows/track3_automated_pipeline.yml` so one source cannot silently overwrite another source's generated files.
+These adapters run sequentially in the daily `.github/workflows/refresh.yml` job (its "Track 3" steps), so one source cannot silently overwrite another source's generated files.
 
 ## Source coverage contract
 

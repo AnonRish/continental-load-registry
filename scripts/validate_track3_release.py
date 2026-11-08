@@ -93,9 +93,9 @@ def main() -> int:
 
     # Prose must point at the ledgers it summarizes, and any count it states must be current.
     required_refs = {
-        "TRACK3_ONE_PAGE_SUMMARY.md": ["engineering_closure_2026-09-28.json"],
-        "TRACK3_COMPLETION_GATE.md": ["external_capability_handoff_2026-09-28.json", "engineering_closure_2026-09-28.json"],
-        "TRACK3_COMPLETE_COVERAGE.md": ["interval_power_telemetry_protocol.json"],
+        "docs/TRACK3_ONE_PAGE_SUMMARY.md": ["engineering_closure_2026-09-28.json"],
+        "docs/TRACK3_COMPLETION_GATE.md": ["external_capability_handoff_2026-09-28.json", "engineering_closure_2026-09-28.json"],
+        "docs/TRACK3_COMPLETE_COVERAGE.md": ["interval_power_telemetry_protocol.json"],
     }
     stated = {
         "derived remote-sensing observations": rs_count,

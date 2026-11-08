@@ -4,7 +4,7 @@ scripts/investigate_ambiguous_loads.py
 ==============================
 
 Turns the registry's "genuinely ambiguous" large loads into an investigative
-worklist (ambiguous_facilities_dossier.md): for each facility, where the public
+worklist (docs/ambiguous_facilities_dossier.md): for each facility, where the public
 record for it is most likely to live.
 
 WHAT IT DOES
@@ -138,7 +138,7 @@ RTO_SITE = {
     "IESO": "ieso.ca", "AESO": "aeso.ca",
 }
 
-# Entry points taken from the repo's own docs/log messages (SOURCES.md and
+# Entry points taken from the repo's own docs/log messages (docs/SOURCES.md and
 # scripts/ingest_grid_queues.py) where a stable page is known; otherwise the home page.
 RTO_PORTALS = {
     "PJM": "https://www.pjm.com/",
@@ -1299,7 +1299,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--no-html", action="store_true", help="Use the CSV only; do not read index.html")
     p.add_argument("--overrides", type=Path, default=None,
                    help="Overrides JSON (default: ground_truth_overrides.json if it exists)")
-    p.add_argument("--output", type=Path, default=Path("ambiguous_facilities_dossier.md"),
+    p.add_argument("--output", type=Path, default=Path("docs/ambiguous_facilities_dossier.md"),
                    help="Dossier path (default: %(default)s)")
     p.add_argument("--json", type=Path, default=None, dest="json_out",
                    help="Also write the facilities and leads as JSON")

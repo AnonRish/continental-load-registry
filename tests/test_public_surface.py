@@ -235,7 +235,7 @@ def test_closed_cases_and_strict_discovery():
     for x in strict:
         assert x["capacity_mw"] >= 100 and x["load_status"] == "PUBLICLY_CLASSIFIED_LOAD"
         assert x["identity_gap"] and x["physical_gap"]
-    protocol = text("docs/CLOSED_CASE_PROTOCOL.md" if (ROOT / "docs/CLOSED_CASE_PROTOCOL.md").exists() else "CLOSED_CASE_PROTOCOL.md")
+    protocol = text("docs/CLOSED_CASE_PROTOCOL.md")
     assert "Candidate admission gate" in protocol and "Generation, surplus, transmission" in protocol
 
 

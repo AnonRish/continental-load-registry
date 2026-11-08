@@ -1,6 +1,6 @@
 # Track 3 physical-source provenance
 
-This document is the human-readable companion to [`data/track3/physical_source_manifest.json`](./data/track3/physical_source_manifest.json). It applies the same provenance discipline as the grid-source layer, with one important distinction: the satellite pipelines intentionally do **not** commit full source rasters.
+This document is the human-readable companion to [`data/track3/physical_source_manifest.json`](../data/track3/physical_source_manifest.json). It applies the same provenance discipline as the grid-source layer, with one important distinction: the satellite pipelines intentionally do **not** commit full source rasters.
 
 ## Satellite imagery
 
@@ -10,7 +10,7 @@ This document is the human-readable companion to [`data/track3/physical_source_m
 | Copernicus Sentinel-1 | https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-1 | `sentinel-1-grd` | 2021-01-01 through 2026-09-27 | No | Scene ID, STAC item URL, observation date, source collection, processing version, compact VV/VH-derived metrics |
 | USGS/NASA Landsat Collection 2 | https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products | `landsat-c2-l2` | 2021-01-01 through 2026-09-27 | No | Scene ID, STAC item URL, observation date, source collection, processing version, compact surface-temperature metrics |
 
-Because the raw scenes are not retained, a raw-raster SHA-256 would be misleading. The canonical derived ledger at [`data/track3/remote_sensing_observations.json`](./data/track3/remote_sensing_observations.json) records the exact scene/item locator for each retained observation.
+Because the raw scenes are not retained, a raw-raster SHA-256 would be misleading. The canonical derived ledger at [`data/track3/remote_sensing_observations.json`](../data/track3/remote_sensing_observations.json) records the exact scene/item locator for each retained observation.
 
 ## Building footprints
 
@@ -31,7 +31,7 @@ Current retained artifact locators include:
 - `data/track3/building_footprints_index.json` — 93-site footprint acquisition/index manifest.
 - `data/physical_verification_layer.json` — aggregate physical-verification state layer.
 
-The companion validator is [`scripts/validate_physical_provenance.py`](./validate_physical_provenance.py). It is read-only and runs without network access; CI invokes it in [`.github/workflows/track3_validation.yml`](./.github/workflows/track3_validation.yml).
+The companion validator is [`scripts/validate_physical_provenance.py`](../scripts/validate_physical_provenance.py). It is read-only and runs without network access; CI invokes it in `python verify.py` in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml).
 
 ## Interpretation rule
 

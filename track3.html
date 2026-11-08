@@ -97,11 +97,11 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <a class="btn" href="index.html">← Main registry</a>
 <a class="btn" href="plan-a.html">AI 2040 Plan A bridge</a>
 <button class="btn" id="theme">Toggle theme</button>
-<a class="btn" href="TRACK3.md">Track 3 source document</a><a class="btn" href="track3-complete-coverage.html">Complete coverage / gap register</a><a class="btn" href="research.html">Research Operations Console</a><a class="btn" href="closed-cases.html">Closed-case laboratory</a>
+<a class="btn" href="docs/TRACK3.md">Track 3 source document</a><a class="btn" href="track3-complete-coverage.html">Complete coverage / gap register</a><a class="btn" href="research.html">Research Operations Console</a><a class="btn" href="closed-cases.html">Closed-case laboratory</a>
 <a class="btn" href="data/track3_evidence_schema.json">Evidence schema</a>
 <a class="btn" href="data/module1_radar_spec.json">Module 1 specification</a>
 <a class="btn" href="api.html">Public API</a><a class="btn" href="bulk-download.html">Bulk downloads</a>
-<a class="btn" href="data/module1_radar_summary.json">Module 1 audit</a><a class="btn" href="TRACK3_RELEASE_2026-09-28.md">Release snapshot</a><a class="btn" href="data/track3/external_capability_handoff_2026-09-28.json">External handoff</a><a class="btn" href="data/track3/interval_power_telemetry_protocol.json">Interval telemetry contract</a><a class="btn" href="data/track3/physical_target_leads.json">Physical target leads</a>
+<a class="btn" href="data/module1_radar_summary.json">Module 1 audit</a><a class="btn" href="docs/archive/TRACK3_RELEASE_2026-09-28.md">Release snapshot</a><a class="btn" href="data/track3/external_capability_handoff_2026-09-28.json">External handoff</a><a class="btn" href="data/track3/interval_power_telemetry_protocol.json">Interval telemetry contract</a><a class="btn" href="data/track3/physical_target_leads.json">Physical target leads</a>
 </div>
 <div class="mono faint" style="font-size:10px;margin-top:18px;text-transform:uppercase;letter-spacing:.08em">Track 3 · complete evidence surface · revision 2026-09-28</div>
 <h1>Track 3 Evidence Registry</h1>
@@ -115,7 +115,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <section class="section"><div id="cards" class="grid cards"></div></section><section class="section panel" style="padding:16px">
 <div style="display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap">
 <div><h2>Full Track 3 coverage matrix</h2><p id="t3CompletenessMeta" class="soft small">Loading the current implementation inventory…</p></div>
-<div class="tools"><a class="btn" href="data/track3/track3_completeness_matrix.json">Machine-readable matrix</a><a class="btn" href="TRACK3_COMPLETE_COVERAGE.md">Reviewer view</a></div>
+<div class="tools"><a class="btn" href="data/track3/track3_completeness_matrix.json">Machine-readable matrix</a><a class="btn" href="docs/TRACK3_COMPLETE_COVERAGE.md">Reviewer view</a></div>
 </div>
 <div id="t3CoverageStats" class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px"></div>
 <div class="scroll" style="margin-top:12px"><table class="matrix"><thead><tr><th>Track 3 element</th><th>Status</th><th>Repository evidence</th><th>Blocking gap</th></tr></thead><tbody id="t3CoverageBody"></tbody></table></div>
@@ -317,7 +317,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <section class="section panel" style="padding:16px">
 <h2>Automated pipeline</h2>
 <p id="autoMeta" class="soft small">Loading…</p>
-<div class="tools" style="margin-top:10px"><a class="btn" href="data/automation/data_quality_report.json">Data-quality report</a><a class="btn" href="data/automation/source_health.json">Source health</a><a class="btn" href="data/automation/adapter_run_report.json">Adapter runs</a><a class="btn" href="data/automation/queue_release_diff.json">Queue release diff</a><a class="btn" href="data/automation/duplicate_report.json">Duplicate report</a><a class="btn" href="data/automation/geographic_match_report.json">Geographic report</a><a class="btn" href="TRACK3_AUTOMATION.md">Automation procedure</a></div>
+<div class="tools" style="margin-top:10px"><a class="btn" href="data/automation/data_quality_report.json">Data-quality report</a><a class="btn" href="data/automation/source_health.json">Source health</a><a class="btn" href="data/automation/adapter_run_report.json">Adapter runs</a><a class="btn" href="data/automation/queue_release_diff.json">Queue release diff</a><a class="btn" href="data/automation/duplicate_report.json">Duplicate report</a><a class="btn" href="data/automation/geographic_match_report.json">Geographic report</a><a class="btn" href="docs/TRACK3_AUTOMATION.md">Automation procedure</a></div>
 <div id="autoCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Control</th><th>Status</th><th>Count / state</th></tr></thead><tbody id="autoRows"></tbody></table></div>
 </section>
@@ -329,7 +329,7 @@ input,select{width:100%;background:var(--panel);color:var(--ink);border:1px soli
 <a class="btn" href="data/track3/verification_results.json">Verification results</a>
 <a class="btn" href="data/track3/verification_protocol.json">Verification protocol</a>
 <a class="btn" href="data/track3/absence_testing.json">Absence-testing ledger</a><a class="btn" href="data/track3/attestation_status.json">Attestation status</a>
-<a class="btn" href="TRACK3_VERIFICATION.md">Verification procedure</a>
+<a class="btn" href="docs/TRACK3_VERIFICATION.md">Verification procedure</a>
 </div>
 <div id="detCards" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:12px"></div>
 <div class="scroll" style="margin-top:12px"><table><thead><tr><th>Verification status</th><th>Count</th><th>Meaning</th></tr></thead><tbody id="verStatusRows"></tbody></table></div>

@@ -76,7 +76,7 @@ The refresh implementation is `scripts/ingest_bpa_large_loads.py`.
 
 The automated workflow is:
 
-`.github/workflows/refresh_bpa_large_loads.yml`
+`.github/workflows/refresh.yml` (its "BPA" steps)
 
 It:
 
