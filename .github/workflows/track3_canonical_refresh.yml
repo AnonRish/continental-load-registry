@@ -73,6 +73,9 @@ jobs:
           python validate_track3_complete_coverage.py
       - name: Commit generated ledgers
         run: |
+          # Keep every copied count (manifests, catalog, doc counters) current before committing.
+          python refresh_derived_counts.py
+          git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/track3

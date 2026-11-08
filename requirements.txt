@@ -1,12 +1,18 @@
-pandas>=2.0
+# Core pipeline: ingest, estimate, embed, validate (tested with Python 3.12/3.13).
+pandas>=2.0,<4
 requests>=2.31
-pydantic>=2.0
+pydantic>=2.0,<3
 rapidfuzz>=3.0
 openpyxl>=3.1
 urllib3>=2.0
+# HTML/XLSX parsing for the auxiliary publisher captures (ISO-NE, IESO, AESO).
+lxml>=5.0
+html5lib>=1.1
+beautifulsoup4>=4.12
+# Offline verification (python verify.py).
+pytest>=8
 
 # Optional -- ingest_grid_queues.py falls back to a hardcoded User-Agent
 # pool if this isn't installed or its cache can't be warmed (see
-# "USER AGENT HANDLING" in that file's module docstring for why that
-# fallback exists rather than treating this as a hard dependency).
+# "USER AGENT HANDLING" in that file's module docstring).
 # fake-useragent>=1.5

@@ -1,0 +1,1234 @@
+# One daily job refreshes every public source in sequence and makes a single commit.
+# Each source's steps are chained: a failing source skips only its own remaining steps,
+# the other sources still refresh, and the run is marked failed at the end.
+# Generated from the former per-source workflows; edit this file directly from now on.
+name: Refresh public data
+on:
+  schedule:
+  - cron: 17 6 * * *
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Run every source but do not commit
+        type: boolean
+        default: false
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: refresh-public-data
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: pip
+    - name: Install dependencies
+      run: |-
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: '[Registry] Install dependencies'
+      id: g01_s03
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Self-test ingest_grid_queues.py'
+      id: g01_s04
+      if: ${{ steps.g01_s03.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: python ingest_grid_queues.py --selftest
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Self-test compute_anomaly_detector.py'
+      id: g01_s05
+      if: ${{ steps.g01_s04.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: python compute_anomaly_detector.py --selftest
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Self-test Module 1 physical radar'
+      id: g01_s06
+      if: ${{ steps.g01_s05.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python module1_physical_radar.py --selftest
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Self-test investigate_ambiguous_loads.py and guard_registry_refresh.py'
+      id: g01_s07
+      if: ${{ steps.g01_s06.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python investigate_ambiguous_loads.py --selftest
+        python guard_registry_refresh.py --selftest
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Prepare work directory'
+      id: g01_s08
+      if: ${{ steps.g01_s07.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        mkdir -p "$RUNNER_TEMP/registry_work" data
+        echo "WORK=$RUNNER_TEMP/registry_work" >> "$GITHUB_ENV"
+        echo "SYNC_DATE=$(date -u +%Y-%m-%d)" >> "$GITHUB_ENV"
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Pipeline 1/5 - fetch live feeds'
+      id: g01_s09
+      if: ${{ steps.g01_s08.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python ingest_grid_queues.py --include-raw-fields \
+          --source-health-output "$WORK/source_health.json" \
+          --output "$WORK/registry_raw.csv" 2>&1 | tee "$WORK/ingest.log"
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Pipeline 2/5 - require at least one row'
+      id: g01_s10
+      if: ${{ steps.g01_s09.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        rows=$(( $(wc -l < "$WORK/registry_raw.csv") - 1 ))
+        echo "Rows written by ingest: $rows"
+        if [ "$rows" -lt 1 ]; then
+          echo "::error title=No registry rows::Every feed failed or every row was filtered out. See the ingest.log in the run artifacts."
+          exit 1
+        fi
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Pipeline 3/5 - estimate compute load'
+      id: g01_s11
+      if: ${{ steps.g01_s10.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python compute_anomaly_detector.py \
+          --input "$WORK/registry_raw.csv" \
+          --output "$WORK/computational_load_estimates.csv" \
+          --review-table-output "$WORK/review_candidates.md" 2>&1 | tee "$WORK/detector.log"
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Pipeline 4/5 - gate each RTO against the published registry'
+      id: guard
+      if: ${{ steps.g01_s11.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python guard_registry_refresh.py \
+          --html index.html \
+          --raw "$WORK/registry_raw.csv" \
+          --enriched "$WORK/computational_load_estimates.csv" \
+          --out-raw data/registry_raw.csv \
+          --out-enriched data/computational_load_estimates.csv \
+          --source-health "$WORK/source_health.json" \
+          --summary-md "$GITHUB_STEP_SUMMARY" \
+          --github-output "$GITHUB_OUTPUT"
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Pipeline 5/5 - embed accepted RTOs into index.html'
+      id: g01_s13
+      if: ${{ steps.guard.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python embed_registry_data.py \
+          --raw data/registry_raw.csv \
+          --enriched data/computational_load_estimates.csv | tee "$WORK/embed.out"
+        {
+          echo '### Registry embedded in index.html (before / after)'
+          echo '```'
+          cat "$WORK/embed.out"
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Validate and summarize Module 1 radar'
+      id: g01_s14
+      if: ${{ steps.g01_s13.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: python module1_physical_radar.py --selftest --audit
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Build facility research records'
+      id: g01_s15
+      if: ${{ steps.g01_s14.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        python build_facility_records.py \
+          --html index.html \
+          --raw data/registry_raw.csv \
+          --raw data/registry_raw_new5.csv \
+          --enriched data/computational_load_estimates.csv \
+          --source-manifest data/source_manifest.json \
+          --output-dir data/facility_records \
+          --capture-date "$SYNC_DATE" \
+          --check
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Verify the regulatory PDF links are intact'
+      id: g01_s16
+      if: ${{ steps.g01_s15.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        status=0
+        for f in FERC_Docket_RM26-4-000_Comments_Computational_Load_Telemetry.pdf \
+                 BIS_Rulemaking_Petition_5USC553e_Computational_Load_CEII_Protocol.pdf; do
+          if ! grep -Eq "file: *\"$f\", *available: *true" index.html; then
+            echo "::error title=Filing link broken::index.html no longer lists $f as available"
+            status=1
+          fi
+          if [ ! -f "$f" ]; then
+            echo "::warning title=PDF missing from repository root::$f is linked from index.html but is not in the repository root, so its Download button will 404."
+          fi
+        done
+        exit "$status"
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Show what changed'
+      id: g01_s17
+      if: ${{ steps.g01_s16.outcome == 'success' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+      run: |
+        git status --short
+        git diff --stat -- index.html data
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Upload logs and fresh outputs'
+      id: g01_s18
+      if: always()
+      uses: actions/upload-artifact@v6
+      with:
+        name: registry-sync-${{ github.run_id }}
+        path: ${{ runner.temp }}/registry_work
+        retention-days: 30
+        if-no-files-found: ignore
+      env:
+        PYTHONUNBUFFERED: '1'
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[Registry] Fail the run if any RTO refresh was rejected'
+      id: g01_s21
+      if: ${{ always() && steps.guard.outputs.rejected != '' }}
+      env:
+        PYTHONUNBUFFERED: '1'
+        REJECTED: ${{ steps.guard.outputs.rejected }}
+      run: |
+        echo "::error title=Registry refresh partly rejected::Rejected: $REJECTED. Accepted RTOs were committed (unless dry run); the rejected ones kept their previous rows. See the 'Registry refresh gate' table in the run summary."
+        exit 1
+      continue-on-error: true
+      timeout-minutes: 60
+    - name: '[BPA] Sync to latest main before ingestion'
+      id: g02_s02
+      run: |
+        git fetch origin main
+        git reset --hard origin/main
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[BPA] Install dependencies'
+      id: g02_s04
+      if: ${{ steps.g02_s02.outcome == 'success' }}
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[BPA] Self-test BPA parser'
+      id: g02_s05
+      if: ${{ steps.g02_s04.outcome == 'success' }}
+      run: python ingest_bpa_large_loads.py --selftest
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[BPA] Fetch and normalize official BPA load workbook'
+      id: g02_s06
+      if: ${{ steps.g02_s05.outcome == 'success' }}
+      run: python ingest_bpa_large_loads.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[BPA] Run cross-artifact consistency checks'
+      id: g02_s07
+      if: ${{ steps.g02_s06.outcome == 'success' }}
+      run: python refresh_derived_counts.py && python validate_cross_artifact_consistency.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[BPA] Show refresh result'
+      id: g02_s08
+      if: ${{ steps.g02_s07.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        p=json.loads(Path("data/bpa_large_load_registry.json").read_text(encoding="utf-8"))
+        print("BPA rows:", p["record_count"])
+        print("Mapped:", p["mapped_record_count"])
+        print("Unmapped:", p["unmapped_record_count"])
+        print("Capture:", p["generated_on"])
+        print("Workbook SHA-256:", p["source"]["raw_official_snapshot_sha256"])
+        PY
+        git diff --stat -- data/bpa_large_load_registry.json data/bpa_large_load_registry.csv data/map_layer_manifest.json data/map_layer_manifest.csv data/market_universe_manifest.json data/market_universe_manifest.csv data/public_data_catalog.json data/data_universe_checklist.json data/data_universe_checklist.csv index.html
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Compute universe] Refresh open-data snapshots'
+      id: g03_s02
+      run: python scripts/sync_global_compute_sources.py
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[Compute universe] Validate snapshots'
+      id: g03_s03
+      if: ${{ steps.g03_s02.outcome == 'success' }}
+      shell: python
+      run: |
+        import json
+        from pathlib import Path
+        checks = [
+            ("data/external/compute_atlas/facilities.json", "compute_atlas"),
+            ("data/external/data_center_index/campuses.json", "data_center_index"),
+        ]
+        for path, label in checks:
+            p = Path(path)
+            if not p.exists():
+                raise SystemExit(f"{label}: missing {path}")
+            payload = json.loads(p.read_text(encoding="utf-8"))
+            records = payload.get("facilities") if isinstance(payload, dict) and "facilities" in payload else payload
+            if not isinstance(records, list) or not records:
+                raise SystemExit(f"{label}: no records")
+            print(label, len(records), "records")
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[Company universe] Build company/facility snapshot'
+      id: g04_s02
+      run: python scripts/sync_company_universe.py
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[Company universe] Validate snapshot'
+      id: g04_s03
+      if: ${{ steps.g04_s02.outcome == 'success' }}
+      shell: python
+      run: |
+        import json
+        from pathlib import Path
+        p = Path("data/company_operator_universe_2026-09-27.json")
+        s = json.loads(p.read_text(encoding="utf-8"))
+        assert s["operator_count"] > 0
+        assert s["operator_loaded_count"] > 0
+        assert s["facility_reference_count"] > 0
+        assert s["unique_facility_key_count"] > 0
+        print("operators:", s["operator_count"])
+        print("loaded:", s["operator_loaded_count"])
+        print("facility references:", s["facility_reference_count"])
+        print("unique facility keys:", s["unique_facility_key_count"])
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[CAISO] Install dependencies'
+      id: g05_s03
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas openpyxl requests
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[CAISO] Self-test parser'
+      id: g05_s04
+      if: ${{ steps.g05_s03.outcome == 'success' }}
+      run: python sync_caiso_public_queue.py --selftest
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[CAISO] Download and normalize complete CAISO queue'
+      id: g05_s05
+      if: ${{ steps.g05_s04.outcome == 'success' }}
+      run: python sync_caiso_public_queue.py --output-dir data
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[CAISO] Validate output'
+      id: g05_s06
+      if: ${{ steps.g05_s05.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        root = Path("data")
+        q = json.loads((root/"caiso_public_queue.json").read_text(encoding="utf-8"))
+        assert q["record_count"] == len(q["records"]) > 0
+        assert set(q["sheet_counts"]) == {"Grid GenerationQueue", "Completed Generation Projects", "Withdrawn Generation Projects"}
+        assert sum(q["sheet_counts"].values()) == q["record_count"]
+        assert (root/"caiso_public_queue.csv").stat().st_size > 0
+        summary = json.loads((root/"caiso_public_queue_summary.json").read_text(encoding="utf-8"))
+        assert summary["record_count"] == q["record_count"]
+        assert summary["records_with_county_and_state"] > 0
+        print("PASS: complete CAISO public queue dataset")
+        print("records:", q["record_count"])
+        print("sheets:", q["sheet_counts"])
+        print(">=100MW:", summary["records_ge_100mw"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[CAISO] Update queue layer status'
+      id: g05_s07
+      if: ${{ steps.g05_s06.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        now=json.loads(Path("data/caiso_public_queue_summary.json").read_text(encoding="utf-8"))
+        status_path=Path("data/queue_layer_status.json")
+        obj=json.loads(status_path.read_text(encoding="utf-8"))
+        feed=next(f for f in obj["feeds"] if f["id"]=="CAISO")
+        feed["snapshot_present"]=True
+        feed["last_capture"]=now["captured_at"]
+        feed["record_count"]=now["record_count"]
+        if "records_ge_100mw" in now: feed["records_ge_100mw"]=now["records_ge_100mw"]
+        if "missing_ge_100_location" in now: feed["unresolved_ge_100_location"]=now["missing_ge_100_location"]
+        status_path.write_text(json.dumps(obj,indent=2)+"\n",encoding="utf-8")
+        PY
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[CAISO] Refresh derived counts in public artifacts'
+      id: g05_s08
+      if: ${{ steps.g05_s07.outcome == 'success' }}
+      run: python refresh_derived_counts.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Self-test sync code'
+      id: g06_s03
+      run: python sync_epoch_ai_data_centers.py --selftest
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Python syntax check for Track 3 pipeline'
+      id: g06_s04
+      if: ${{ steps.g06_s03.outcome == 'success' }}
+      run: |
+        python -m py_compile build_track3_evidence.py validate_track3_ledger.py sync_track3_external_sources.py module1_physical_radar.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Download and normalize Epoch AI datasets'
+      id: g06_s05
+      if: ${{ steps.g06_s04.outcome == 'success' }}
+      run: python sync_epoch_ai_data_centers.py --sync
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Build grid and queue crosswalk'
+      id: g06_s06
+      if: ${{ steps.g06_s05.outcome == 'success' }}
+      run: python build_epoch_grid_crosswalk.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Build 93-site queue gap analysis'
+      id: g06_s07
+      if: ${{ steps.g06_s06.outcome == 'success' }}
+      run: python build_epoch_queue_gap_analysis.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Sync global Track 3 compute sources'
+      id: g06_s08
+      if: ${{ steps.g06_s07.outcome == 'success' }}
+      run: |
+        python sync_track3_external_sources.py --selftest
+        python sync_track3_external_sources.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Build Track 3 evidence artifacts'
+      id: g06_s09
+      if: ${{ steps.g06_s08.outcome == 'success' }}
+      run: python build_track3_evidence.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Refresh Module 1 audit summary'
+      id: g06_s10
+      if: ${{ steps.g06_s09.outcome == 'success' }}
+      run: python module1_physical_radar.py --audit
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Validate Track 3 evidence artifacts'
+      id: g06_s11
+      if: ${{ steps.g06_s10.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        root = Path("data/track3")
+        summary = json.loads((root/"summary.json").read_text(encoding="utf-8"))
+        status = json.loads((root/"site_status.json").read_text(encoding="utf-8"))
+        evidence = json.loads((root/"evidence_records.json").read_text(encoding="utf-8"))
+        queue = json.loads((root/"research_queue.json").read_text(encoding="utf-8"))
+        external = json.loads((root/"external_source_snapshots.json").read_text(encoding="utf-8"))
+        assert len(external["records"]) == 14
+        assert summary["epoch_site_count"] == 93
+        assert len(status["records"]) == 93
+        assert evidence["record_count"] == len(evidence["records"])
+        assert queue["count"] == len(queue["records"])
+        assert summary["pending_grid_connection_research_count"] == queue["count"]
+        observation = json.loads((root/"observation_queue.json").read_text(encoding="utf-8"))
+        assert observation["task_count"] == len(observation["tasks"])
+        assert summary["observation_task_count"] == observation["task_count"]
+        assert summary["observation_task_counts_by_domain"] == observation["task_counts_by_domain"]
+        assert summary["observation_task_counts_by_priority"] == observation["task_counts_by_priority"]
+        print("verified: Track 3 artifacts")
+        print("site evidence:", summary["site_level_evidence_site_count"])
+        print("site queue IDs:", summary["site_specific_queue_id_count"])
+        print("pending grid research:", summary["pending_grid_connection_research_count"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Run canonical Track 3 ledger validator'
+      id: g06_s12
+      if: ${{ steps.g06_s11.outcome == 'success' }}
+      run: python validate_track3_ledger.py
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Validate inline JavaScript syntax'
+      id: g06_s13
+      if: ${{ steps.g06_s12.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import re
+        from pathlib import Path
+        for html_name, stem in [("index.html","index"),("track3.html","track3")]:
+            html = Path(html_name).read_text(encoding="utf-8")
+            scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+            for i, script in enumerate(scripts, 1):
+                Path(f"/tmp/{stem}-script-{i}.js").write_text(script, encoding="utf-8")
+            print(f"{html_name}: extracted {len(scripts)} inline script blocks")
+        PY
+        for f in /tmp/index-script-*.js /tmp/track3-script-*.js; do
+          node --check "$f"
+        done
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[Epoch AI] Verify the complete Epoch dataset was imported'
+      id: g06_s14
+      if: ${{ steps.g06_s13.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import csv, json
+        from pathlib import Path
+        root = Path("data/external/epoch_ai")
+        reg = json.loads((root/"registry.json").read_text(encoding="utf-8"))
+        assert reg["record_count"] == 93, reg["record_count"]
+        assert len(reg["records"]) == 93
+        with (root/"data_centers.csv").open("r", encoding="utf-8-sig", newline="") as f:
+            assert sum(1 for _ in csv.DictReader(f)) == 93
+        assert (root/"data_center_timelines.csv").stat().st_size > 0
+        assert (root/"data_centers_chip_quantities.csv").stat().st_size > 0
+        cw = list(csv.DictReader((root/"crosswalk.csv").open("r", encoding="utf-8", newline="")))
+        assert len(cw) == 93
+        grid = reg.get("grid_crosswalk_summary", {})
+        assert grid.get("all_sites_have_queue_or_connection_jurisdiction") is True
+        gap = list(csv.DictReader((root/"queue_gap_analysis.csv").open("r", encoding="utf-8", newline="")))
+        assert len(gap) == 93
+        assert all(row.get("epoch_id") for row in cw)
+        ev = json.loads((root/"site_level_connection_evidence.json").read_text(encoding="utf-8"))
+        assert ev["record_count"] == 93
+        assert len(ev["records"]) == 93
+        assert {r["epoch_id"] for r in ev["records"]} == {r["epoch_id"] for r in reg["records"]}
+        assert ev["summary"]["total"] == 93
+        sources = json.loads((root/"queue_source_universe.json").read_text(encoding="utf-8"))
+        assert len(sources["direct_queue_and_connection_sources"]) >= 20
+        assert len(sources["cross_cutting_public_sources"]) >= 10
+        print("verified: 93 Epoch AI data-center records + queue crosswalk + gap analysis")
+        print("matched:", reg["source"]["raw_sha256"]["data_centers.csv"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 20
+    - name: '[MISO] Install dependencies'
+      id: g07_s03
+      run: python -m pip install --upgrade pip pandas openpyxl requests
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[MISO] Self-test'
+      id: g07_s04
+      if: ${{ steps.g07_s03.outcome == 'success' }}
+      run: python sync_miso_public_queue.py --selftest
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[MISO] Download and normalize'
+      id: g07_s05
+      if: ${{ steps.g07_s04.outcome == 'success' }}
+      run: python sync_miso_public_queue.py --output-dir data
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[MISO] Validate'
+      id: g07_s06
+      if: ${{ steps.g07_s05.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        q=Path("data/miso_public_queue.json")
+        o=json.loads(q.read_text(encoding="utf-8"))
+        assert o["record_count"] == len(o["records"]) > 0
+        s=json.loads(Path("data/miso_public_queue_summary.json").read_text(encoding="utf-8"))
+        assert s["record_count"] == o["record_count"]
+        u=json.loads(Path("data/miso_unresolved_large_loads.json").read_text(encoding="utf-8"))
+        assert u["record_count"] == s["missing_ge_100_location"] == len(u["records"])
+        assert all(r["source_url"].startswith("https://") and r["research_query"] for r in u["records"])
+        assert Path("data/miso_public_queue.csv").stat().st_size > 0
+        print("PASS: MISO complete public queue", o["record_count"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[MISO] Update queue layer status'
+      id: g07_s07
+      if: ${{ steps.g07_s06.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        summary=json.loads(Path("data/miso_public_queue_summary.json").read_text(encoding="utf-8"))
+        path=Path("data/queue_layer_status.json")
+        obj=json.loads(path.read_text(encoding="utf-8"))
+        feed=next(f for f in obj["feeds"] if f["id"]=="MISO")
+        feed["snapshot_present"]=True
+        feed["last_capture"]=summary["captured_at"]
+        feed["record_count"]=summary["record_count"]
+        feed["records_ge_100mw"]=summary["records_ge_100mw"]
+        feed["unresolved_ge_100_location"]=summary["missing_ge_100_location"]
+        obj["generated_on"]=summary["captured_at"][:10]
+        path.write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[MISO] Refresh derived counts in public artifacts'
+      id: g07_s08
+      if: ${{ steps.g07_s07.outcome == 'success' }}
+      run: python refresh_derived_counts.py
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[NYISO] Install dependencies'
+      id: g08_s03
+      run: python -m pip install --upgrade pip pandas openpyxl requests
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[NYISO] Self-test'
+      id: g08_s04
+      if: ${{ steps.g08_s03.outcome == 'success' }}
+      run: python sync_nyiso_public_queue.py --selftest
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[NYISO] Download and normalize'
+      id: g08_s05
+      if: ${{ steps.g08_s04.outcome == 'success' }}
+      run: python sync_nyiso_public_queue.py --output-dir data
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[NYISO] Validate'
+      id: g08_s06
+      if: ${{ steps.g08_s05.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        status=Path("data/nyiso_public_queue_status.json")
+        q=Path("data/nyiso_public_queue.json")
+        if status.exists() and not q.exists():
+            o=json.loads(status.read_text(encoding="utf-8"))
+            assert o["status"] == "SOURCE_UNAVAILABLE_AT_CAPTURE"
+            assert o["existing_snapshot_present"] is False
+            print("PASS: NYISO source status recorded; no queue rows fabricated.")
+        else:
+            o=json.loads(q.read_text(encoding="utf-8"))
+            assert o["record_count"] == len(o["records"]) > 0
+            s=json.loads(Path("data/nyiso_public_queue_summary.json").read_text(encoding="utf-8"))
+            assert s["record_count"] == o["record_count"]
+            assert Path("data/nyiso_public_queue.csv").stat().st_size > 0
+            print("PASS: NYISO complete public queue", o["record_count"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[SPP] Install dependencies'
+      id: g09_s03
+      run: python -m pip install --upgrade pip pandas openpyxl requests
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[SPP] Self-test'
+      id: g09_s04
+      if: ${{ steps.g09_s03.outcome == 'success' }}
+      run: python sync_spp_public_queue.py --selftest
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[SPP] Download and normalize'
+      id: g09_s05
+      if: ${{ steps.g09_s04.outcome == 'success' }}
+      run: python sync_spp_public_queue.py --output-dir data
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[SPP] Validate'
+      id: g09_s06
+      if: ${{ steps.g09_s05.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        q=Path("data/spp_public_queue.json")
+        o=json.loads(q.read_text(encoding="utf-8"))
+        assert o["record_count"] == len(o["records"]) > 0
+        s=json.loads(Path("data/spp_public_queue_summary.json").read_text(encoding="utf-8"))
+        assert s["record_count"] == o["record_count"]
+        assert Path("data/spp_public_queue.csv").stat().st_size > 0
+        print("PASS: SPP active public queue", o["record_count"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[SPP] Update queue layer status'
+      id: g09_s07
+      if: ${{ steps.g09_s06.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        summary=json.loads(Path("data/spp_public_queue_summary.json").read_text(encoding="utf-8"))
+        path=Path("data/queue_layer_status.json")
+        obj=json.loads(path.read_text(encoding="utf-8"))
+        feed=next(f for f in obj["feeds"] if f["id"]=="SPP")
+        feed["snapshot_present"]=True
+        feed["last_capture"]=summary["captured_at"]
+        feed["record_count"]=summary["record_count"]
+        feed["records_ge_100mw"]=summary["records_ge_100mw"]
+        obj["generated_on"]=summary["captured_at"][:10]
+        path.write_text(json.dumps(obj,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[SPP] Refresh derived counts in public artifacts'
+      id: g09_s08
+      if: ${{ steps.g09_s07.outcome == 'success' }}
+      run: python refresh_derived_counts.py
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[PJM cycle] Install dependencies'
+      id: g10_s03
+      run: python -m pip install --upgrade pip pandas openpyxl requests lxml
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[PJM cycle] Self-test'
+      id: g10_s04
+      if: ${{ steps.g10_s03.outcome == 'success' }}
+      run: python sync_pjm_cycle_public_queue.py --selftest
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[PJM cycle] Sync'
+      id: g10_s05
+      if: ${{ steps.g10_s04.outcome == 'success' }}
+      run: python sync_pjm_cycle_public_queue.py --output-dir data
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[PJM cycle] Validate'
+      id: g10_s06
+      if: ${{ steps.g10_s05.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        o=json.loads(Path("data/pjm_cycle_public_queue.json").read_text())
+        assert o["record_count"]==len(o["records"])>0
+        s=json.loads(Path("data/pjm_cycle_public_queue_summary.json").read_text())
+        assert s["record_count"]==o["record_count"]
+        print("PASS: PJM cycle queue",o["record_count"])
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[PJM cycle] Update queue layer status'
+      id: g10_s07
+      if: ${{ steps.g10_s06.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        now=json.loads(Path("data/pjm_cycle_public_queue_summary.json").read_text(encoding="utf-8"))
+        status_path=Path("data/queue_layer_status.json")
+        obj=json.loads(status_path.read_text(encoding="utf-8"))
+        feed=next(f for f in obj["feeds"] if f["id"]=="PJM")
+        feed["snapshot_present"]=True
+        feed["last_capture"]=now["captured_at"]
+        feed["record_count"]=now["record_count"]
+        if "records_ge_100mw" in now: feed["records_ge_100mw"]=now["records_ge_100mw"]
+        if "missing_ge_100_location" in now: feed["unresolved_ge_100_location"]=now["missing_ge_100_location"]
+        status_path.write_text(json.dumps(obj,indent=2)+"\n",encoding="utf-8")
+        PY
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[PJM cycle] Refresh derived counts in public artifacts'
+      id: g10_s08
+      if: ${{ steps.g10_s07.outcome == 'success' }}
+      run: python refresh_derived_counts.py
+      continue-on-error: true
+      timeout-minutes: 30
+    - name: '[Track 3] Install pipeline dependencies'
+      id: g11_s03
+      run: python -m pip install --upgrade pip requests pandas openpyxl lxml html5lib beautifulsoup4 pydantic
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Python syntax preflight'
+      id: g11_s04
+      if: ${{ steps.g11_s03.outcome == 'success' }}
+      run: |
+        python -m py_compile \
+          track3_automation.py \
+          run_track3_source_adapters.py \
+          build_track3_evidence.py \
+          build_entity_resolution.py \
+          build_facility_provenance.py \
+          build_time_series_verification.py \
+          build_track3_verification.py \
+          validate_track3_ledger.py \
+          verify_track3.py \
+          refresh_source_manifest.py \
+          build_public_web_claims.py \
+          reconcile_track3_public_enrichment.py \
+          build_track3_research_backlog.py \
+          build_track3_engineering_closure.py \
+          refresh_physical_source_manifest.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Run automated source adapters'
+      id: g11_s05
+      if: ${{ steps.g11_s04.outcome == 'success' }}
+      run: python run_track3_source_adapters.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Refresh source manifest capture metadata'
+      id: g11_s06
+      if: ${{ steps.g11_s05.outcome == 'success' }}
+      run: python refresh_source_manifest.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate normalized auxiliary source artifacts'
+      id: g11_s07
+      if: ${{ steps.g11_s06.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        manifest=Path("data/automation/auxiliary_sources/manifest.json")
+        assert manifest.exists() and manifest.stat().st_size>0
+        obj=json.loads(manifest.read_text(encoding="utf-8"))
+        assert obj.get("source_count")==4
+        assert obj.get("failed_count")==0, obj
+        expected={
+          "ERCOT-GIS":["data/ercot_gis_public_records.json","data/ercot_large_load_candidates.json"],
+          "ISO-NE":["data/iso_ne_public_queue.json"],
+          "IESO":["data/ieso_public_connection_applications.json"],
+          "AESO":["data/aeso_connection_projects.json"],
+        }
+        for sid,paths in expected.items():
+            entry=next(x for x in obj["sources"] if x["source_id"]==sid)
+            assert entry["status"]=="RAW_CAPTURED", entry
+            if sid=="IESO" and entry.get("normalization_status")=="PARSE_BLOCKED":
+                blocked=Path("data/ieso_public_connection_applications.json")
+                assert blocked.exists() and blocked.stat().st_size>0
+                parsed=json.loads(blocked.read_text(encoding="utf-8"))
+                assert parsed.get("status")=="PARSE_BLOCKED"
+                assert parsed.get("record_count")==0
+                assert parsed.get("raw_capture")==entry.get("path")
+                continue
+            assert not entry.get("normalization_error"), entry
+            for path in paths:
+                p=Path(path)
+                assert p.exists() and p.stat().st_size>0, path
+                json.loads(p.read_text(encoding="utf-8"))
+        print("PASS: ERCOT/ISO-NE/IESO/AESO auxiliary captures validated; parse-blocked IESO remains explicit")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild canonical evidence layer'
+      id: g11_s08
+      if: ${{ steps.g11_s07.outcome == 'success' }}
+      run: python build_track3_evidence.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Refresh derived counts in public artifacts'
+      id: g11_s09
+      if: ${{ steps.g11_s08.outcome == 'success' }}
+      run: python refresh_derived_counts.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Reconcile remote-sensing target states'
+      id: g11_s10
+      if: ${{ steps.g11_s09.outcome == 'success' }}
+      run: python build_remote_sensing_target_status.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild physical-coordinate coverage audit'
+      id: g11_s11
+      if: ${{ steps.g11_s10.outcome == 'success' }}
+      run: python build_track3_geo_audit.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Refresh retained physical-artifact provenance'
+      id: g11_s12
+      if: ${{ steps.g11_s11.outcome == 'success' }}
+      run: python refresh_physical_source_manifest.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild public-web claim layer'
+      id: g11_s13
+      if: ${{ steps.g11_s12.outcome == 'success' }}
+      run: python build_public_web_claims.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate public-web claim layer'
+      id: g11_s14
+      if: ${{ steps.g11_s13.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        src=json.loads(Path("data/track3/public_web_enrichment_2026-09-27.json").read_text(encoding="utf-8"))
+        claims=json.loads(Path("data/track3/public_web_claims.json").read_text(encoding="utf-8"))
+        from build_public_web_claims import stable_claim_id
+        source_ids={stable_claim_id(x) for x in src.get("records",[])}
+        claim_ids={x.get("claim_id") for x in claims.get("claims",[])}
+        assert len(source_ids)==len(src.get("records",[]))
+        assert len(claim_ids)==len(claims.get("claims",[]))
+        assert source_ids==claim_ids
+        assert claims.get("accounting",{}).get("claim_count")==len(claims.get("claims",[]))
+        print("PASS: public-web claim layer is lossless and 1:1 with enrichment")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Reconcile public enrichment into closure register'
+      id: g11_s15
+      if: ${{ steps.g11_s14.outcome == 'success' }}
+      run: python reconcile_track3_public_enrichment.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild Track 3 research backlog from reconciled gaps'
+      id: g11_s16
+      if: ${{ steps.g11_s15.outcome == 'success' }}
+      run: python build_track3_research_backlog.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Build Track 3 engineering closure'
+      id: g11_s17
+      if: ${{ steps.g11_s16.outcome == 'success' }}
+      run: python build_track3_engineering_closure.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate engineering closure'
+      id: g11_s18
+      if: ${{ steps.g11_s17.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        p=Path("data/track3/engineering_closure_2026-09-28.json")
+        d=json.loads(p.read_text(encoding="utf-8"))
+        assert d["repository_engineering_status"]=="COMPLETE", d
+        assert d["empirical_track3_verification_status"]=="NOT_CLOSED", d
+        assert d["untracked_gap_count"]==0, d
+        print("PASS: Track 3 engineering closure has zero untracked repository gaps")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate reconciled coverage artifacts'
+      id: g11_s19
+      if: ${{ steps.g11_s18.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        sweep=json.loads(Path("data/track3/site_missing_information_sweep_2026-09-27.json").read_text(encoding="utf-8"))
+        enrich=json.loads(Path("data/track3/public_web_enrichment_2026-09-27.json").read_text(encoding="utf-8"))
+        gap=json.loads(Path("data/track3/coverage_gap_register_2026-09-27.json").read_text(encoding="utf-8"))
+        backlog=json.loads(Path("data/track3/research_backlog_summary.json").read_text(encoding="utf-8"))
+        assert len(sweep.get("records", [])) == 93
+        assert len(gap.get("sites", [])) == 93
+        assert gap["summary"]["public_web_enrichment_records"] == len(enrich.get("records", []))
+        assert gap["summary"]["public_web_enrichment_sites"] == 93
+        assert backlog["sites"] == 93
+        assert backlog["total_tasks"] == backlog["publisher_tasks"] + backlog["domain_tasks"]
+        print("PASS: enrichment, gap register, and backlog reconcile")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate canonical Track 3 ledger'
+      id: g11_s20
+      if: ${{ steps.g11_s19.outcome == 'success' }}
+      run: python validate_track3_ledger.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild entity-resolution layer'
+      id: g11_s21
+      if: ${{ steps.g11_s20.outcome == 'success' }}
+      run: python build_entity_resolution.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate entity-resolution outputs'
+      id: g11_s22
+      if: ${{ steps.g11_s21.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        d=json.loads(Path("data/track3/entity_resolution.json").read_text())
+        assert len(d.get("entities",[]))==d["stats"]["entity_count"]
+        assert len(d.get("relationships",[]))==d["stats"]["relationship_edge_count"]
+        ids={x["entity_id"] for x in d.get("entities",[])}
+        assert all(x["from_entity_id"] in ids and x["to_entity_id"] in ids for x in d.get("relationships",[]))
+        print("PASS: entity-resolution graph validated")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild facility provenance'
+      id: g11_s23
+      if: ${{ steps.g11_s22.outcome == 'success' }}
+      run: python build_facility_provenance.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate facility provenance'
+      id: g11_s24
+      if: ${{ steps.g11_s23.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        d=json.loads(Path("data/track3/facility_provenance.json").read_text())
+        assert len(d.get("facilities",[])) == 93
+        assert len({x["facility_id"] for x in d["facilities"]}) == 93
+        assert len(d.get("checklist",[])) == 15
+        for f in d["facilities"]:
+            assert f.get("field_provenance")
+            assert f.get("canonical_source",{}).get("dataset_url")
+            assert f.get("verification")
+            assert f.get("immutable_snapshot")
+        print("PASS: facility provenance validated")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild time-series verification'
+      id: g11_s25
+      if: ${{ steps.g11_s24.outcome == 'success' }}
+      run: python build_time_series_verification.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild public facility API and crosswalk exports'
+      id: g11_s26
+      if: ${{ steps.g11_s25.outcome == 'success' }}
+      run: python build_public_facility_api.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Rebuild claim-level verification'
+      id: g11_s27
+      if: ${{ steps.g11_s26.outcome == 'success' }}
+      env:
+        GITHUB_SHA: ${{ github.sha }}
+      run: python build_track3_verification.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Run read-only verification'
+      id: g11_s28
+      if: ${{ steps.g11_s27.outcome == 'success' }}
+      run: python verify_track3.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Source/change/duplicate/geographic quality scan'
+      id: g11_s29
+      if: ${{ steps.g11_s28.outcome == 'success' }}
+      run: python track3_automation.py
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Consolidate machine-readable pipeline report'
+      id: g11_s30
+      if: ${{ steps.g11_s29.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        root=Path("data/automation")
+        adapter=json.loads((root/"adapter_run_report.json").read_text()) if (root/"adapter_run_report.json").exists() else {"failed_count":1,"runs":[]}
+        quality=json.loads((root/"data_quality_report.json").read_text()) if (root/"data_quality_report.json").exists() else {"summary":{"remote_source_failures":1}}
+        report={
+          "schema_version":1,
+          "generated_at_utc":quality.get("generated_at_utc"),
+          "pipeline_commit":"${{ github.sha }}",
+          "adapter_run":adapter,
+          "quality_summary":quality.get("summary",{}),
+          "automation_contract":{
+            "automated_ingestion":"Repository-backed adapters execute sequentially; sources without adapters remain explicitly healthcheck/snapshot-only.",
+            "scheduled_updates":"Source-specific adapters and this control plane run on schedules.",
+            "source_change_detection":"ETag/Last-Modified/content-length/sample fingerprint comparison.",
+            "queue_release_diff":"Current REGISTRY_DATA compared with latest retained automation snapshot.",
+            "duplicate_detection":"Duplicate ID, exact-row and same project/developer/MW groups.",
+            "geographic_matching":"Queue and Epoch/crosswalk coverage checks.",
+            "evidence_extraction":"build_track3_evidence.py and facility provenance builder.",
+            "entity_resolution":"Existing entity-resolution builder and validation.",
+            "validation":"Canonical Track 3, entity, provenance and claim-level verification checks.",
+            "ci_cd":"GitHub Actions + GitHub Pages.",
+            "failed_source_alerts":"Open/update GitHub issue on adapter or monitored-source failure."
+          }
+        }
+        (root/"pipeline_report.json").write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n")
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Upload automation reports'
+      id: g11_s31
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: track3-automation-report
+        path: data/automation/
+        if-no-files-found: warn
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Alert on source/adapter failures'
+      id: g11_s32
+      if: always()
+      uses: actions/github-script@v8
+      with:
+        script: |
+          const fs = require('fs');
+          const path = 'data/automation/pipeline_report.json';
+          if (!fs.existsSync(path)) return;
+          const r = JSON.parse(fs.readFileSync(path, 'utf8'));
+          const failures = [];
+          for (const x of (r.adapter_run?.runs || [])) {
+            if (x.status === 'FAILED') failures.push('adapter: ' + x.source + ' (' + x.exit_code + ')');
+          }
+          const q = r.quality_summary || {};
+          if ((q.remote_source_failures || 0) > 0) failures.push('remote sources failed: ' + q.remote_source_failures);
+          if (!failures.length) return;
+          const title = '[Track 3 automated source alert] pipeline failures detected';
+          const body = [
+            'Automated Track 3 pipeline detected source/adapter failures.',
+            '',
+            ...failures.map(x => '- ' + x),
+            '',
+            'Pipeline commit: ' + r.pipeline_commit,
+            'Run: https://github.com/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId,
+            '',
+            'Inspect data/automation/adapter_run_report.json and source_health.json.'
+          ].join('\\n');
+          const open = await github.paginate(github.rest.issues.listForRepo, {
+            owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100
+          });
+          const existing = open.find(i => i.title === title);
+          if (existing) {
+            await github.rest.issues.createComment({owner:context.repo.owner,repo:context.repo.repo,issue_number:existing.number,body});
+          } else {
+            await github.rest.issues.create({owner:context.repo.owner,repo:context.repo.repo,title,body});
+          }
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Track 3] Validate publishable pipeline state'
+      id: g11_s33
+      if: always()
+      run: |
+        python - <<'PY'
+        import json,sys
+        from pathlib import Path
+        root=Path("data/automation")
+        required=("adapter_run_report.json","data_quality_report.json","pipeline_report.json","source_health.json","queue_release_diff.json","duplicate_report.json","geographic_match_report.json")
+        missing=[name for name in required if not (root/name).exists() or (root/name).stat().st_size==0]
+        if missing:
+            print("FAIL: missing Track 3 automation report(s):", ", ".join(missing))
+            sys.exit(1)
+        adapter=json.loads((root/"adapter_run_report.json").read_text())
+        quality=json.loads((root/"data_quality_report.json").read_text())
+        failures=[]
+        if quality.get("summary",{}).get("duplicate_id_groups",0): failures.append('duplicate ID groups=' + str(quality['summary']['duplicate_id_groups']))
+        if quality.get("summary",{}).get("evidence_missing_urls",0): failures.append('evidence records missing URLs=' + str(quality['summary']['evidence_missing_urls']))
+        if failures:
+            print('FAIL:', '; '.join(failures))
+            sys.exit(1)
+        if adapter.get("failed_count",0):
+            print('WARNING: one or more source adapters failed; failure state is retained in adapter_run_report.json and no unavailable source is converted to zero records.')
+        print('PASS: Track 3 publish-state validation')
+        PY
+      continue-on-error: true
+      timeout-minutes: 120
+    - name: '[Research backlog] Reconcile public enrichment into closure register'
+      id: g12_s03
+      run: python reconcile_track3_public_enrichment.py
+      continue-on-error: true
+      timeout-minutes: 15
+    - name: '[Research backlog] Build one-task research backlog'
+      id: g12_s04
+      if: ${{ steps.g12_s03.outcome == 'success' }}
+      run: python build_track3_research_backlog.py
+      continue-on-error: true
+      timeout-minutes: 15
+    - name: '[Research backlog] Validate generated counts'
+      id: g12_s05
+      if: ${{ steps.g12_s04.outcome == 'success' }}
+      run: |
+        python - <<'PY'
+        import json
+        from pathlib import Path
+        d=json.loads(Path("data/track3/research_backlog_summary.json").read_text())
+        assert d["publisher_tasks"] == sum(d["publisher_by_field"].values())
+        assert d["domain_tasks"] == sum(d["domain_by_domain"].values())
+        assert d["total_tasks"] == d["publisher_tasks"] + d["domain_tasks"]
+        assert d["coverage_assertions"]["publisher_tasks_equal_effective_unresolved"]
+        assert d["coverage_assertions"]["domain_tasks_equal_open_cells"]
+        assert d["coverage_assertions"]["all_93_sites_represented"]
+        print("PASS: research backlog coverage assertions")
+        PY
+      continue-on-error: true
+      timeout-minutes: 15
+    - name: Rebuild derived counts and exports
+      run: |-
+        python refresh_derived_counts.py
+        python refresh_source_manifest.py
+    - name: Verify (offline)
+      run: python verify.py
+    - name: Commit and push refreshed data
+      if: ${{ success() && !inputs.dry_run && github.ref == 'refs/heads/main' }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -A
+        if git diff --cached --quiet; then
+          echo "No data changes today."
+          exit 0
+        fi
+        git status --short | head -100
+        git commit -q -m "Daily public-data refresh: $(date -u +%F)"
+        for attempt in 1 2 3 4 5; do
+          git fetch -q origin main
+          git rebase -q origin/main && git push -q origin HEAD:main && exit 0
+          git rebase --abort 2>/dev/null || true
+          sleep $((attempt * 10))
+        done
+        echo "::error::could not push after 5 attempts"; exit 1
+    - name: Report sources that failed today
+      if: always()
+      env:
+        STEPS_JSON: ${{ toJSON(steps) }}
+      shell: python
+      run: |
+        import json, os
+        steps = json.loads(os.environ['STEPS_JSON'])
+        failed = sorted(k for k, v in steps.items() if v.get('outcome') == 'failure')
+        lines = ['### Daily refresh', '']
+        lines += [f'- failed: `{k}`' for k in failed] or ['All sources refreshed.']
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as fh:
+            fh.write('\n'.join(lines) + '\n')
+        print('\n'.join(lines))
+        raise SystemExit(1 if failed else 0)

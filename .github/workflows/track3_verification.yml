@@ -92,6 +92,9 @@ jobs:
           EOF
       - name: Commit generated verification artifacts
         run: |
+          # Keep every copied count (manifests, catalog, doc counters) current before committing.
+          python refresh_derived_counts.py
+          git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/track3/detection_universe.json data/track3/verification_protocol.json data/track3/absence_testing.json data/track3/verification_results.json data/track3/attestation_status.json

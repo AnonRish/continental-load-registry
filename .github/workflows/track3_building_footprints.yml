@@ -49,6 +49,9 @@ jobs:
 
       - name: Commit footprint artifacts
         run: |
+          # Keep every copied count (manifests, catalog, doc counters) current before committing.
+          python refresh_derived_counts.py
+          git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A data/physical_verification_layer.json data/track3_evidence_schema.json \
