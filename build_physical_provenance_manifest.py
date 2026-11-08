@@ -59,7 +59,7 @@ def replacement_manifest()->dict:
     ao["building_footprint_geojson_file_count"]=int(foot.get("polygon_file_count",foot.get("sites_with_polygon_files",0)))
     ao["epoch_site_geocoded_count"]=sum(1 for x in coord.get("records",[]) if x.get("lat") is not None and x.get("lon") is not None)
     ao["epoch_site_unresolved_coordinate_count"]=int(ao["epoch_site_target_count"])-ao["epoch_site_geocoded_count"]
-    obj["last_reconciled_on"]="2026-09-28"
+    # Date stamps are not part of the reproducible content: keep whatever is recorded.
     return obj
 
 def main()->int:

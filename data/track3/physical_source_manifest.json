@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "title": "Track 3 physical-source and retained-artifact provenance manifest",
-  "generated_on": "2026-11-07",
+  "generated_on": "2026-11-08",
   "scope": "Public physical-evidence acquisition for the 93-site Epoch AI reference universe",
   "hash_policy": {
     "raw_source_sha256": "Only populated when raw source bytes are actually retained by the repository. Satellite rasters are intentionally not committed, so a raw-raster SHA-256 is not claimed.",
@@ -67,7 +67,45 @@
       "status": "INGESTED_POLYGONIZED"
     }
   ],
-  "retained_artifacts": [],
+  "retained_artifacts": [
+    {
+      "path": "data/track3/remote_sensing_observations.json",
+      "role": "Canonical derived scene ledger",
+      "sha256": "1e9344f477b69ba50c48bbd7445808ff96008636e18f0ce3041aeaf1e8d944be",
+      "bytes": 4718892,
+      "record_count": 2809
+    },
+    {
+      "path": "data/track3/remote_sensing_observations.csv",
+      "role": "Flattened derived scene ledger",
+      "sha256": "dfd38be1207dca00c8a60a2580b860c2b9aa183de9ba69d161ead93b46edc01a",
+      "bytes": 3420127,
+      "record_count": 2809
+    },
+    {
+      "path": "data/track3/building_footprints_index.json",
+      "role": "93-site footprint acquisition/index manifest",
+      "sha256": "ae1064553c49b097789713b3bfb686cf9dda8d71fc13d75c872f9ebc63e65285",
+      "bytes": 51980,
+      "record_count": 93,
+      "polygon_site_count": 92,
+      "polygon_file_count": 92
+    },
+    {
+      "path": "data/physical_verification_layer.json",
+      "role": "Aggregate physical-verification state layer",
+      "sha256": "6d13d12d80bcb3f89acae16185ea7abdf3778413b43567100acc2de9924e13bf",
+      "bytes": 339258,
+      "site_record_count": 93
+    },
+    {
+      "path": "data/track3/physical_site_coordinates.json",
+      "role": "Geocoding/coordinate provenance cache",
+      "sha256": "29c60924b284607c25c83225b50098583016b5c2a2d35fc982e2eb28fc9b7d78",
+      "bytes": 62916,
+      "record_count": 93
+    }
+  ],
   "acquisition_outputs": {
     "epoch_site_target_count": 93,
     "epoch_site_geocoded_count": 92,
@@ -77,5 +115,5 @@
     "building_footprint_geojson_file_count": 92
   },
   "semantics": "A source scene, building footprint, thermal anomaly, SAR metric, NDVI metric, or geocoded coordinate is an observation layer, not by itself proof of AI compute, ownership, tenancy, or covert activity. Missing source bytes or missing observations are not evidence of absence.",
-  "last_reconciled_on": "2026-11-07"
+  "last_reconciled_on": "2026-11-08"
 }
