@@ -41,8 +41,8 @@ every push, and the daily refresh must pass it before it may commit.
 | BPA large-load requests | <!--count:bpa_records-->128<!--/count--> | daily | `data/bpa_large_load_registry.json` |
 | Project-level utility/regulator records | <!--count:project_records-->271<!--/count--> | curated | `data/project_level_extractions.json` |
 | Epoch AI frontier reference universe | <!--count:epoch_sites-->93<!--/count--> sites | frozen; upstream changes are reported in `data/external/epoch_ai/upstream_delta.json` | `data/external/epoch_ai/` |
-| Track 3 evidence ledger | <!--count:track3_evidence_records-->3,392<!--/count--> records | rebuilt daily | `data/track3/evidence_records.json` |
-| Public satellite observations (Sentinel-1/2, Landsat) | <!--count:remote_sensing_observations-->2,809<!--/count--> across <!--count:remote_sensing_sites-->92<!--/count--> sites | weekly | `data/track3/remote_sensing_observations.json` |
+| Track 3 evidence ledger | <!--count:track3_evidence_records-->3,750<!--/count--> records | rebuilt daily | `data/track3/evidence_records.json` |
+| Public satellite observations (Sentinel-1/2, Landsat) | <!--count:remote_sensing_observations-->3,167<!--/count--> across <!--count:remote_sensing_sites-->92<!--/count--> sites | weekly | `data/track3/remote_sensing_observations.json` |
 
 The figures above are maintained by `scripts/refresh_derived_counts.py`, so they always match the data.
 Of the core rows, <!--count:registry_storage_rows-->1,364<!--/count--> are confirmed grid-scale battery storage and
