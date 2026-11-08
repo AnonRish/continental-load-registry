@@ -27,6 +27,8 @@ jobs:
         shell: bash
     env:
       PYTHONUNBUFFERED: '1'
+      # Inline steps import helpers that live in scripts/.
+      PYTHONPATH: scripts
     steps:
     - name: Check out repository
       uses: actions/checkout@v4

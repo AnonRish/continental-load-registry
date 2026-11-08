@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+env:
+  # Inline steps import helpers that live in scripts/.
+  PYTHONPATH: scripts
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
