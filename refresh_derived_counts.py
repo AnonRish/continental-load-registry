@@ -385,8 +385,64 @@ def _csv_content(text: str) -> list[list[str]]:
     return list(csv.reader(io.StringIO(text)))
 
 
-# CSV exports first so the catalog counts the regenerated files.
-RULES = [rule_csv_exports, rule_queue_status, rule_scope, rule_map_manifest, rule_market_manifest, rule_catalog]
+DOC_COUNTER_RE = re.compile(r"<!--count:([a-z0-9_]+)-->(.*?)<!--/count-->", re.S)
+
+
+def doc_counter_values() -> dict[str, str]:
+    """Values that Markdown docs may embed as <!--count:NAME-->VALUE<!--/count-->."""
+    f = gather_facts()
+    scope = load("data/large_load_scope.json")["definitions"]
+    summary = load("data/track3/summary.json")
+    backlog = load("data/track3/research_backlog_summary.json")
+    physical = load("data/physical_verification_layer.json")["summary"]
+    n = lambda v: f"{int(v):,}"  # noqa: E731
+    values = {
+        "registry_rows": n(f["registry_rows"]),
+        "registry_gw": f"{f['registry_gw']:,.1f}",
+        "expanded_rows": n(scope["expanded_known_scope"]["records"]),
+        "expanded_gw": f"{float(scope['expanded_known_scope']['capacity_gw']):,.1f}",
+        "registry_rtos": n(len(f["registry_rows_by_rto"])),
+        "epoch_sites": n(len(load("data/external/epoch_ai/site_level_connection_evidence.json")["records"])),
+        "project_records": n(f["projects"]),
+        "supplemental_units": n(f["supplemental"]),
+        "aggregate_footprints": n(f["aggregates"]),
+        "bpa_records": n(f["bpa"]),
+        "track3_evidence_records": n(summary["track3_evidence_record_count"]),
+        "public_web_records": n(summary["public_web_evidence_record_count"]),
+        "remote_sensing_observations": n(summary["remote_sensing_derived_observation_count"]),
+        "remote_sensing_sites": n(physical["derived_observation_sites"]),
+        "publisher_tasks": n(backlog["publisher_tasks"]),
+        "observation_tasks": n(summary["observation_task_count"]),
+    }
+    for rto, s in f["queues"].items():
+        values[f"{rto.lower()}_queue_rows"] = n(s["record_count"])
+    return values
+
+
+def rule_doc_counters(f: dict, d: Drift) -> dict[str, Any]:
+    values = doc_counter_values()
+    out: dict[str, Any] = {}
+    for path in sorted(list(ROOT.glob("*.md")) + list(ROOT.glob("docs/**/*.md"))):
+        rel = path.relative_to(ROOT).as_posix()
+        original = path.read_text(encoding="utf-8")
+
+        def sub(m: re.Match) -> str:
+            name = m.group(1)
+            if name not in values:
+                raise SystemExit(f"{rel}: unknown counter <!--count:{name}-->")
+            if m.group(2) != values[name]:
+                d.messages.append(f"{rel}: count:{name} {m.group(2)!r} -> {values[name]!r}")
+            return f"<!--count:{name}-->{values[name]}<!--/count-->"
+
+        updated = DOC_COUNTER_RE.sub(sub, original)
+        if updated != original:
+            out[rel] = updated
+    return out
+
+
+# CSV exports first so the catalog counts the regenerated files; prose counters last.
+RULES = [rule_csv_exports, rule_queue_status, rule_scope, rule_map_manifest, rule_market_manifest, rule_catalog,
+         rule_doc_counters]
 
 
 def run_pass(check: bool) -> list[str]:

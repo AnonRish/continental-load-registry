@@ -10,7 +10,7 @@ Its North American registry currently covers nine organized markets. A separate 
 
 The repository has a reproducible grid-ingestion pipeline with source hashes and filter funnels; conservative entity resolution; facility research records; a 93-site Epoch crosswalk; public site-level utility/service evidence; a structured Track 3 evidence ledger; terminal site/domain accounting; separate research and observation queues; and public API/bulk-download surfaces.
 
-The physical layer is no longer just a design checklist. As of 2026-09-28 it retains 631 derived remote-sensing observations across 92 of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. The current physical-target layer has defensible site coordinates for 92 of 93 sites; one site remains unresolved and is not fabricated into a target. The unresolved site is OpenAI Stargate UAE: September 11, 2026 Reuters reporting adds an area-level lead near Al Dhafra Air Base, but it does not establish a canonical parcel or facility coordinate, so no site-specific observation is claimed there.
+The physical layer is no longer just a design checklist. It retains <!--count:remote_sensing_observations-->2,809<!--/count--> derived remote-sensing observations across <!--count:remote_sensing_sites-->92<!--/count--> of the 93 Epoch sites, based on public Sentinel-2, Sentinel-1, and Landsat Collection 2 STAC scenes. The current physical-target layer has defensible site coordinates for 92 of 93 sites; one site remains unresolved and is not fabricated into a target. The unresolved site is OpenAI Stargate UAE: September 11, 2026 Reuters reporting adds an area-level lead near Al Dhafra Air Base, but it does not establish a canonical parcel or facility coordinate, so no site-specific observation is claimed there.
 
 The physical observations are intentionally compact: scene/item IDs, dates, source URLs, processing version, and derived metrics are retained rather than full raster archives.
 
@@ -53,7 +53,7 @@ Start from the Research Operations Console, the Track 3 completion gate, and the
 
 ## Current engineering closure
 
-The repository now publishes a machine-readable external-capability handoff, an interval-power-telemetry intake protocol, and a physical-target-lead ledger for the one unresolved Epoch reference site. These artifacts turn the remaining gaps into explicit, testable handoff contracts instead of leaving them as prose-only TODOs.
+The repository now publishes a machine-readable external-capability handoff, an interval-power-telemetry intake protocol, and a physical-target-lead ledger for the one unresolved Epoch reference site. These artifacts turn the remaining gaps into explicit, testable handoff contracts instead of leaving them as prose-only TODOs. The register itself is `data/track3/engineering_closure_2026-09-28.json`.
 
 ## Important limits
 
