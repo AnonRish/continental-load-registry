@@ -3,8 +3,8 @@
   "generated_on": "2026-09-27",
   "definitions": {
     "current_row_level": {
-      "records": 1540,
-      "capacity_gw": 358.7181,
+      "records": 1506,
+      "capacity_gw": 353.6728,
       "label": "Current row-level registry",
       "meaning": "Published facility/request rows retained in REGISTRY_DATA and shown in the main registry table; reconciled to the current embedded REGISTRY_DATA snapshot."
     },
@@ -17,10 +17,10 @@
       "official_source_url": "https://www.misoenergy.org/api/giqueue/getprojects"
     },
     "expanded_known_scope": {
-      "records": 1623,
-      "capacity_gw": 394.6181,
+      "records": 1589,
+      "capacity_gw": 389.5728,
       "label": "Expanded known large-load scope",
-      "arithmetic": "1540 + 83 records; 358.7181 + 35.9 GW"
+      "arithmetic": "1506 current rows + 83 MISO records captured 2026-09-19; 353.6728 + 35.9 GW"
     },
     "historical_archive": {
       "records": 1802,
@@ -76,7 +76,7 @@
     },
     "caiso_full_public_queue_report": {
       "published_report_url": "https://www.caiso.com/documents/publicqueuereport.pdf",
-      "capture_date": "2026-09-27",
+      "capture_date": "2026-11-07",
       "report_pages": 181,
       "additive_to_core_row_level": false,
       "full_row_ingest_complete": true,
@@ -105,27 +105,27 @@
     },
     "epoch_connection_research_targets": {
       "records": 93,
-      "sites_with_site_level_evidence": 59,
-      "evidence_items": 68,
+      "sites_with_site_level_evidence": 93,
+      "evidence_items": 102,
       "additive_to_core_row_level": false
     },
     "epoch_site_evidence_inventory": {
-      "records": 68,
-      "sites_with_evidence": 59,
+      "records": 102,
+      "sites_with_evidence": 68,
       "additive_to_core_row_level": false
     },
     "miso_current_complete_queue": {
-      "records": 3873,
-      "records_ge_100mw": 2997,
-      "unresolved_ge_100_location": 153,
-      "capture_date": "2026-09-26",
+      "records": 4080,
+      "records_ge_100mw": 3187,
+      "unresolved_ge_100_location": 343,
+      "capture_date": "2026-11-07",
       "additive_to_core_row_level": false,
       "accounting": "Current complete public MISO queue snapshot. Not added to core or expanded-known totals."
     },
     "spp_current_active_queue": {
-      "records": 3076,
-      "records_ge_100mw": 2332,
-      "capture_date": "2026-09-26",
+      "records": 3079,
+      "records_ge_100mw": 2335,
+      "capture_date": "2026-11-07",
       "additive_to_core_row_level": false,
       "accounting": "Current complete active SPP generator-interconnection snapshot. Not added to core or expanded-known large-load totals."
     },
