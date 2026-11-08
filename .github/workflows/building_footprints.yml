@@ -6,8 +6,8 @@ on:
     paths:
       - "README.md"
       - ".github/workflows/building_footprints.yml"
-      - "acquire_building_footprints.py"
-      - "acquire_physical_verification.py"
+      - "scripts/acquire_building_footprints.py"
+      - "scripts/acquire_physical_verification.py"
       - "data/external/epoch_ai/registry.json"
       - "data/track3/physical_site_coordinates.json"
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
           python -m pip install requests numpy rasterio shapely pyproj duckdb planetary-computer
 
       - name: Acquire current building polygons
-        run: python acquire_building_footprints.py
+        run: python scripts/acquire_building_footprints.py
 
       - name: Validate footprint layer
         run: |
@@ -70,12 +70,12 @@ jobs:
           PY
 
       - name: Validate Python syntax
-        run: python -m py_compile acquire_building_footprints.py
+        run: python -m py_compile scripts/acquire_building_footprints.py
 
       - name: Commit footprint artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -20,8 +20,8 @@ This repository uses a claim-level verification model rather than a single facil
 From a clean checkout:
 
 ```
-python build_track3_verification.py
-python verify_track3.py
+python scripts/build_track3_verification.py
+python scripts/verify_track3.py
 ```
 
 The builder reads the repository-hosted Epoch AI site registry, queue registry embedded in `index.html`, site-level evidence records, physical-verification state and site-level power observations. It emits:
@@ -70,7 +70,7 @@ The absence ledger includes only explicit `NO_MATCH_FOUND` evidence records. A m
 
 ## Independent verification
 
-`verify_track3.py` and `.github/workflows/track3_independent_verifier.yml` are read-only and do not modify data. This creates operational separation between the publication/build workflow and the integrity verifier. It is not a claim that the GitHub repository itself is an independent institution; an external verifier should run the same procedure against a fixed commit.
+`scripts/verify_track3.py` and `.github/workflows/track3_independent_verifier.yml` are read-only and do not modify data. This creates operational separation between the publication/build workflow and the integrity verifier. It is not a claim that the GitHub repository itself is an independent institution; an external verifier should run the same procedure against a fixed commit.
 
 ## Signed/auditable records
 

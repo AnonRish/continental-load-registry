@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "ground_truth_overrides.json"
-      - "investigate_ambiguous_loads.py"
+      - "scripts/investigate_ambiguous_loads.py"
       - ".github/workflows/ambiguous_dossier_refresh.yml"
 
 permissions:
@@ -23,11 +23,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Rebuild dossier
-        run: python investigate_ambiguous_loads.py
+        run: python scripts/investigate_ambiguous_loads.py
       - name: Commit dossier
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

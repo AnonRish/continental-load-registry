@@ -59,6 +59,6 @@ The playbooks prioritize official project/developer records, utility and regulat
 
 Run:
 
-python build_track3_research_backlog.py
+python scripts/build_track3_research_backlog.py
 
 The daily GitHub Actions workflow rebuilds the queue whenever the canonical sweep or workflow definitions change.

@@ -50,20 +50,20 @@ jobs:
         pip install -r requirements.txt
       continue-on-error: true
       timeout-minutes: 60
-    - name: '[Registry] Self-test ingest_grid_queues.py'
+    - name: '[Registry] Self-test scripts/ingest_grid_queues.py'
       id: g01_s04
       if: ${{ steps.g01_s03.outcome == 'success' }}
       env:
         PYTHONUNBUFFERED: '1'
-      run: python ingest_grid_queues.py --selftest
+      run: python scripts/ingest_grid_queues.py --selftest
       continue-on-error: true
       timeout-minutes: 60
-    - name: '[Registry] Self-test compute_anomaly_detector.py'
+    - name: '[Registry] Self-test scripts/compute_anomaly_detector.py'
       id: g01_s05
       if: ${{ steps.g01_s04.outcome == 'success' }}
       env:
         PYTHONUNBUFFERED: '1'
-      run: python compute_anomaly_detector.py --selftest
+      run: python scripts/compute_anomaly_detector.py --selftest
       continue-on-error: true
       timeout-minutes: 60
     - name: '[Registry] Self-test Module 1 physical radar'
@@ -72,17 +72,17 @@ jobs:
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python module1_physical_radar.py --selftest
+        python scripts/module1_physical_radar.py --selftest
       continue-on-error: true
       timeout-minutes: 60
-    - name: '[Registry] Self-test investigate_ambiguous_loads.py and guard_registry_refresh.py'
+    - name: '[Registry] Self-test scripts/investigate_ambiguous_loads.py and scripts/guard_registry_refresh.py'
       id: g01_s07
       if: ${{ steps.g01_s06.outcome == 'success' }}
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python investigate_ambiguous_loads.py --selftest
-        python guard_registry_refresh.py --selftest
+        python scripts/investigate_ambiguous_loads.py --selftest
+        python scripts/guard_registry_refresh.py --selftest
       continue-on-error: true
       timeout-minutes: 60
     - name: '[Registry] Prepare work directory'
@@ -102,7 +102,7 @@ jobs:
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python ingest_grid_queues.py --include-raw-fields \
+        python scripts/ingest_grid_queues.py --include-raw-fields \
           --source-health-output "$WORK/source_health.json" \
           --output "$WORK/registry_raw.csv" 2>&1 | tee "$WORK/ingest.log"
       continue-on-error: true
@@ -127,7 +127,7 @@ jobs:
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python compute_anomaly_detector.py \
+        python scripts/compute_anomaly_detector.py \
           --input "$WORK/registry_raw.csv" \
           --output "$WORK/computational_load_estimates.csv" \
           --review-table-output "$WORK/review_candidates.md" 2>&1 | tee "$WORK/detector.log"
@@ -139,7 +139,7 @@ jobs:
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python guard_registry_refresh.py \
+        python scripts/guard_registry_refresh.py \
           --html index.html \
           --raw "$WORK/registry_raw.csv" \
           --enriched "$WORK/computational_load_estimates.csv" \
@@ -156,7 +156,7 @@ jobs:
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python embed_registry_data.py \
+        python scripts/embed_registry_data.py \
           --raw data/registry_raw.csv \
           --enriched data/computational_load_estimates.csv | tee "$WORK/embed.out"
         {
@@ -172,7 +172,7 @@ jobs:
       if: ${{ steps.g01_s13.outcome == 'success' }}
       env:
         PYTHONUNBUFFERED: '1'
-      run: python module1_physical_radar.py --selftest --audit
+      run: python scripts/module1_physical_radar.py --selftest --audit
       continue-on-error: true
       timeout-minutes: 60
     - name: '[Registry] Build facility research records'
@@ -181,7 +181,7 @@ jobs:
       env:
         PYTHONUNBUFFERED: '1'
       run: |
-        python build_facility_records.py \
+        python scripts/build_facility_records.py \
           --html index.html \
           --raw data/registry_raw.csv \
           --raw data/registry_raw_new5.csv \
@@ -264,19 +264,19 @@ jobs:
     - name: '[BPA] Self-test BPA parser'
       id: g02_s05
       if: ${{ steps.g02_s04.outcome == 'success' }}
-      run: python ingest_bpa_large_loads.py --selftest
+      run: python scripts/ingest_bpa_large_loads.py --selftest
       continue-on-error: true
       timeout-minutes: 20
     - name: '[BPA] Fetch and normalize official BPA load workbook'
       id: g02_s06
       if: ${{ steps.g02_s05.outcome == 'success' }}
-      run: python ingest_bpa_large_loads.py
+      run: python scripts/ingest_bpa_large_loads.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[BPA] Run cross-artifact consistency checks'
       id: g02_s07
       if: ${{ steps.g02_s06.outcome == 'success' }}
-      run: python refresh_derived_counts.py && python validate_cross_artifact_consistency.py
+      run: python scripts/refresh_derived_counts.py && python scripts/validate_cross_artifact_consistency.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[BPA] Show refresh result'
@@ -356,13 +356,13 @@ jobs:
     - name: '[CAISO] Self-test parser'
       id: g05_s04
       if: ${{ steps.g05_s03.outcome == 'success' }}
-      run: python sync_caiso_public_queue.py --selftest
+      run: python scripts/sync_caiso_public_queue.py --selftest
       continue-on-error: true
       timeout-minutes: 20
     - name: '[CAISO] Download and normalize complete CAISO queue'
       id: g05_s05
       if: ${{ steps.g05_s04.outcome == 'success' }}
-      run: python sync_caiso_public_queue.py --output-dir data
+      run: python scripts/sync_caiso_public_queue.py --output-dir data
       continue-on-error: true
       timeout-minutes: 20
     - name: '[CAISO] Validate output'
@@ -411,57 +411,57 @@ jobs:
     - name: '[CAISO] Refresh derived counts in public artifacts'
       id: g05_s08
       if: ${{ steps.g05_s07.outcome == 'success' }}
-      run: python refresh_derived_counts.py
+      run: python scripts/refresh_derived_counts.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Self-test sync code'
       id: g06_s03
-      run: python sync_epoch_ai_data_centers.py --selftest
+      run: python scripts/sync_epoch_ai_data_centers.py --selftest
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Python syntax check for Track 3 pipeline'
       id: g06_s04
       if: ${{ steps.g06_s03.outcome == 'success' }}
       run: |
-        python -m py_compile build_track3_evidence.py validate_track3_ledger.py sync_track3_external_sources.py module1_physical_radar.py
+        python -m py_compile scripts/build_track3_evidence.py scripts/validate_track3_ledger.py scripts/sync_track3_external_sources.py scripts/module1_physical_radar.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Download and normalize Epoch AI datasets'
       id: g06_s05
       if: ${{ steps.g06_s04.outcome == 'success' }}
-      run: python sync_epoch_ai_data_centers.py --sync
+      run: python scripts/sync_epoch_ai_data_centers.py --sync
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Build grid and queue crosswalk'
       id: g06_s06
       if: ${{ steps.g06_s05.outcome == 'success' }}
-      run: python build_epoch_grid_crosswalk.py
+      run: python scripts/build_epoch_grid_crosswalk.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Build 93-site queue gap analysis'
       id: g06_s07
       if: ${{ steps.g06_s06.outcome == 'success' }}
-      run: python build_epoch_queue_gap_analysis.py
+      run: python scripts/build_epoch_queue_gap_analysis.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Sync global Track 3 compute sources'
       id: g06_s08
       if: ${{ steps.g06_s07.outcome == 'success' }}
       run: |
-        python sync_track3_external_sources.py --selftest
-        python sync_track3_external_sources.py
+        python scripts/sync_track3_external_sources.py --selftest
+        python scripts/sync_track3_external_sources.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Build Track 3 evidence artifacts'
       id: g06_s09
       if: ${{ steps.g06_s08.outcome == 'success' }}
-      run: python build_track3_evidence.py
+      run: python scripts/build_track3_evidence.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Refresh Module 1 audit summary'
       id: g06_s10
       if: ${{ steps.g06_s09.outcome == 'success' }}
-      run: python module1_physical_radar.py --audit
+      run: python scripts/module1_physical_radar.py --audit
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Validate Track 3 evidence artifacts'
@@ -498,7 +498,7 @@ jobs:
     - name: '[Epoch AI] Run canonical Track 3 ledger validator'
       id: g06_s12
       if: ${{ steps.g06_s11.outcome == 'success' }}
-      run: python validate_track3_ledger.py
+      run: python scripts/validate_track3_ledger.py
       continue-on-error: true
       timeout-minutes: 20
     - name: '[Epoch AI] Validate inline JavaScript syntax'
@@ -563,13 +563,13 @@ jobs:
     - name: '[MISO] Self-test'
       id: g07_s04
       if: ${{ steps.g07_s03.outcome == 'success' }}
-      run: python sync_miso_public_queue.py --selftest
+      run: python scripts/sync_miso_public_queue.py --selftest
       continue-on-error: true
       timeout-minutes: 30
     - name: '[MISO] Download and normalize'
       id: g07_s05
       if: ${{ steps.g07_s04.outcome == 'success' }}
-      run: python sync_miso_public_queue.py --output-dir data
+      run: python scripts/sync_miso_public_queue.py --output-dir data
       continue-on-error: true
       timeout-minutes: 30
     - name: '[MISO] Validate'
@@ -616,7 +616,7 @@ jobs:
     - name: '[MISO] Refresh derived counts in public artifacts'
       id: g07_s08
       if: ${{ steps.g07_s07.outcome == 'success' }}
-      run: python refresh_derived_counts.py
+      run: python scripts/refresh_derived_counts.py
       continue-on-error: true
       timeout-minutes: 30
     - name: '[NYISO] Install dependencies'
@@ -627,13 +627,13 @@ jobs:
     - name: '[NYISO] Self-test'
       id: g08_s04
       if: ${{ steps.g08_s03.outcome == 'success' }}
-      run: python sync_nyiso_public_queue.py --selftest
+      run: python scripts/sync_nyiso_public_queue.py --selftest
       continue-on-error: true
       timeout-minutes: 30
     - name: '[NYISO] Download and normalize'
       id: g08_s05
       if: ${{ steps.g08_s04.outcome == 'success' }}
-      run: python sync_nyiso_public_queue.py --output-dir data
+      run: python scripts/sync_nyiso_public_queue.py --output-dir data
       continue-on-error: true
       timeout-minutes: 30
     - name: '[NYISO] Validate'
@@ -668,13 +668,13 @@ jobs:
     - name: '[SPP] Self-test'
       id: g09_s04
       if: ${{ steps.g09_s03.outcome == 'success' }}
-      run: python sync_spp_public_queue.py --selftest
+      run: python scripts/sync_spp_public_queue.py --selftest
       continue-on-error: true
       timeout-minutes: 30
     - name: '[SPP] Download and normalize'
       id: g09_s05
       if: ${{ steps.g09_s04.outcome == 'success' }}
-      run: python sync_spp_public_queue.py --output-dir data
+      run: python scripts/sync_spp_public_queue.py --output-dir data
       continue-on-error: true
       timeout-minutes: 30
     - name: '[SPP] Validate'
@@ -717,7 +717,7 @@ jobs:
     - name: '[SPP] Refresh derived counts in public artifacts'
       id: g09_s08
       if: ${{ steps.g09_s07.outcome == 'success' }}
-      run: python refresh_derived_counts.py
+      run: python scripts/refresh_derived_counts.py
       continue-on-error: true
       timeout-minutes: 30
     - name: '[PJM cycle] Install dependencies'
@@ -728,13 +728,13 @@ jobs:
     - name: '[PJM cycle] Self-test'
       id: g10_s04
       if: ${{ steps.g10_s03.outcome == 'success' }}
-      run: python sync_pjm_cycle_public_queue.py --selftest
+      run: python scripts/sync_pjm_cycle_public_queue.py --selftest
       continue-on-error: true
       timeout-minutes: 30
     - name: '[PJM cycle] Sync'
       id: g10_s05
       if: ${{ steps.g10_s04.outcome == 'success' }}
-      run: python sync_pjm_cycle_public_queue.py --output-dir data
+      run: python scripts/sync_pjm_cycle_public_queue.py --output-dir data
       continue-on-error: true
       timeout-minutes: 30
     - name: '[PJM cycle] Validate'
@@ -775,7 +775,7 @@ jobs:
     - name: '[PJM cycle] Refresh derived counts in public artifacts'
       id: g10_s08
       if: ${{ steps.g10_s07.outcome == 'success' }}
-      run: python refresh_derived_counts.py
+      run: python scripts/refresh_derived_counts.py
       continue-on-error: true
       timeout-minutes: 30
     - name: '[Track 3] Install pipeline dependencies'
@@ -788,33 +788,33 @@ jobs:
       if: ${{ steps.g11_s03.outcome == 'success' }}
       run: |
         python -m py_compile \
-          track3_automation.py \
-          run_track3_source_adapters.py \
-          build_track3_evidence.py \
-          build_entity_resolution.py \
-          build_facility_provenance.py \
-          build_time_series_verification.py \
-          build_track3_verification.py \
-          validate_track3_ledger.py \
-          verify_track3.py \
-          refresh_source_manifest.py \
-          build_public_web_claims.py \
-          reconcile_track3_public_enrichment.py \
-          build_track3_research_backlog.py \
-          build_track3_engineering_closure.py \
-          refresh_physical_source_manifest.py
+          scripts/track3_automation.py \
+          scripts/run_track3_source_adapters.py \
+          scripts/build_track3_evidence.py \
+          scripts/build_entity_resolution.py \
+          scripts/build_facility_provenance.py \
+          scripts/build_time_series_verification.py \
+          scripts/build_track3_verification.py \
+          scripts/validate_track3_ledger.py \
+          scripts/verify_track3.py \
+          scripts/refresh_source_manifest.py \
+          scripts/build_public_web_claims.py \
+          scripts/reconcile_track3_public_enrichment.py \
+          scripts/build_track3_research_backlog.py \
+          scripts/build_track3_engineering_closure.py \
+          scripts/refresh_physical_source_manifest.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Run automated source adapters'
       id: g11_s05
       if: ${{ steps.g11_s04.outcome == 'success' }}
-      run: python run_track3_source_adapters.py
+      run: python scripts/run_track3_source_adapters.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Refresh source manifest capture metadata'
       id: g11_s06
       if: ${{ steps.g11_s05.outcome == 'success' }}
-      run: python refresh_source_manifest.py
+      run: python scripts/refresh_source_manifest.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Validate normalized auxiliary source artifacts'
@@ -858,37 +858,37 @@ jobs:
     - name: '[Track 3] Rebuild canonical evidence layer'
       id: g11_s08
       if: ${{ steps.g11_s07.outcome == 'success' }}
-      run: python build_track3_evidence.py
+      run: python scripts/build_track3_evidence.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Refresh derived counts in public artifacts'
       id: g11_s09
       if: ${{ steps.g11_s08.outcome == 'success' }}
-      run: python refresh_derived_counts.py
+      run: python scripts/refresh_derived_counts.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Reconcile remote-sensing target states'
       id: g11_s10
       if: ${{ steps.g11_s09.outcome == 'success' }}
-      run: python build_remote_sensing_target_status.py
+      run: python scripts/build_remote_sensing_target_status.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Rebuild physical-coordinate coverage audit'
       id: g11_s11
       if: ${{ steps.g11_s10.outcome == 'success' }}
-      run: python build_track3_geo_audit.py
+      run: python scripts/build_track3_geo_audit.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Refresh retained physical-artifact provenance'
       id: g11_s12
       if: ${{ steps.g11_s11.outcome == 'success' }}
-      run: python refresh_physical_source_manifest.py
+      run: python scripts/refresh_physical_source_manifest.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Rebuild public-web claim layer'
       id: g11_s13
       if: ${{ steps.g11_s12.outcome == 'success' }}
-      run: python build_public_web_claims.py
+      run: python scripts/build_public_web_claims.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Validate public-web claim layer'
@@ -914,19 +914,19 @@ jobs:
     - name: '[Track 3] Reconcile public enrichment into closure register'
       id: g11_s15
       if: ${{ steps.g11_s14.outcome == 'success' }}
-      run: python reconcile_track3_public_enrichment.py
+      run: python scripts/reconcile_track3_public_enrichment.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Rebuild Track 3 research backlog from reconciled gaps'
       id: g11_s16
       if: ${{ steps.g11_s15.outcome == 'success' }}
-      run: python build_track3_research_backlog.py
+      run: python scripts/build_track3_research_backlog.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Build Track 3 engineering closure'
       id: g11_s17
       if: ${{ steps.g11_s16.outcome == 'success' }}
-      run: python build_track3_engineering_closure.py
+      run: python scripts/build_track3_engineering_closure.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Validate engineering closure'
@@ -969,13 +969,13 @@ jobs:
     - name: '[Track 3] Validate canonical Track 3 ledger'
       id: g11_s20
       if: ${{ steps.g11_s19.outcome == 'success' }}
-      run: python validate_track3_ledger.py
+      run: python scripts/validate_track3_ledger.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Rebuild entity-resolution layer'
       id: g11_s21
       if: ${{ steps.g11_s20.outcome == 'success' }}
-      run: python build_entity_resolution.py
+      run: python scripts/build_entity_resolution.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Validate entity-resolution outputs'
@@ -997,7 +997,7 @@ jobs:
     - name: '[Track 3] Rebuild facility provenance'
       id: g11_s23
       if: ${{ steps.g11_s22.outcome == 'success' }}
-      run: python build_facility_provenance.py
+      run: python scripts/build_facility_provenance.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Validate facility provenance'
@@ -1023,13 +1023,13 @@ jobs:
     - name: '[Track 3] Rebuild time-series verification'
       id: g11_s25
       if: ${{ steps.g11_s24.outcome == 'success' }}
-      run: python build_time_series_verification.py
+      run: python scripts/build_time_series_verification.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Rebuild public facility API and crosswalk exports'
       id: g11_s26
       if: ${{ steps.g11_s25.outcome == 'success' }}
-      run: python build_public_facility_api.py
+      run: python scripts/build_public_facility_api.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Rebuild claim-level verification'
@@ -1037,19 +1037,19 @@ jobs:
       if: ${{ steps.g11_s26.outcome == 'success' }}
       env:
         GITHUB_SHA: ${{ github.sha }}
-      run: python build_track3_verification.py
+      run: python scripts/build_track3_verification.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Run read-only verification'
       id: g11_s28
       if: ${{ steps.g11_s27.outcome == 'success' }}
-      run: python verify_track3.py
+      run: python scripts/verify_track3.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Source/change/duplicate/geographic quality scan'
       id: g11_s29
       if: ${{ steps.g11_s28.outcome == 'success' }}
-      run: python track3_automation.py
+      run: python scripts/track3_automation.py
       continue-on-error: true
       timeout-minutes: 120
     - name: '[Track 3] Consolidate machine-readable pipeline report'
@@ -1075,7 +1075,7 @@ jobs:
             "queue_release_diff":"Current REGISTRY_DATA compared with latest retained automation snapshot.",
             "duplicate_detection":"Duplicate ID, exact-row and same project/developer/MW groups.",
             "geographic_matching":"Queue and Epoch/crosswalk coverage checks.",
-            "evidence_extraction":"build_track3_evidence.py and facility provenance builder.",
+            "evidence_extraction":"scripts/build_track3_evidence.py and facility provenance builder.",
             "entity_resolution":"Existing entity-resolution builder and validation.",
             "validation":"Canonical Track 3, entity, provenance and claim-level verification checks.",
             "ci_cd":"GitHub Actions + GitHub Pages.",
@@ -1164,13 +1164,13 @@ jobs:
       timeout-minutes: 120
     - name: '[Research backlog] Reconcile public enrichment into closure register'
       id: g12_s03
-      run: python reconcile_track3_public_enrichment.py
+      run: python scripts/reconcile_track3_public_enrichment.py
       continue-on-error: true
       timeout-minutes: 15
     - name: '[Research backlog] Build one-task research backlog'
       id: g12_s04
       if: ${{ steps.g12_s03.outcome == 'success' }}
-      run: python build_track3_research_backlog.py
+      run: python scripts/build_track3_research_backlog.py
       continue-on-error: true
       timeout-minutes: 15
     - name: '[Research backlog] Validate generated counts'
@@ -1193,8 +1193,8 @@ jobs:
       timeout-minutes: 15
     - name: Rebuild derived counts and exports
       run: |-
-        python refresh_derived_counts.py
-        python refresh_source_manifest.py
+        python scripts/refresh_derived_counts.py
+        python scripts/refresh_source_manifest.py
     - name: Verify (offline)
       run: python verify.py
     - name: Commit and push refreshed data

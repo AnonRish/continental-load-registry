@@ -36,25 +36,25 @@ The comparison also documents the relationship to Cankaya's public power/cooling
 
 # What's in this repository
 
-- `ingest_grid_queues.py` -- extracts, normalizes, and filters the nine
+- `scripts/ingest_grid_queues.py` -- extracts, normalizes, and filters the nine
   source registers into one schema (`queue_id`, `rto_region`, `state`,
   `county`, `poi_substation`, `capacity_mw`, `projected_date`,
   `developer_entity`, plus `status` / `project_name` / `raw_fuel_technology`
-  with `--include-raw-fields`). Run `python ingest_grid_queues.py --help`
+  with `--include-raw-fields`). Run `python scripts/ingest_grid_queues.py --help`
   for the full flag list, or `--selftest` to run the current 43-check suite
   against synthetic fixtures without hitting any network.
-- `compute_anomaly_detector.py` -- entity resolution against a small known
+- `scripts/compute_anomaly_detector.py` -- entity resolution against a small known
   hyperscaler/colocation-developer list, a PJM-specific heuristic for
   undisclosed developers, and a low/reference/high power-to-compute (FLOPs)
   range estimate. Also has `--selftest`. Unchanged in the MISO/CAISO/NYISO/
   ISO-NE/AESO update: its "Developer Not Disclosed" check already keys on the
   `NOT PUBLISHED...` prefix the new adapters use.
-- `embed_registry_data.py` -- refreshes the data embedded in `index.html`
+- `scripts/embed_registry_data.py` -- refreshes the data embedded in `index.html`
   from the two scripts' CSVs. Only the RTOs present in the CSVs are
   replaced, so one source can be refreshed without re-running the other
   eight, and re-running it is idempotent. `--dry-run` prints the
   before/after row and GW counts without writing.
-- `build_facility_records.py` -- turns each published facility into a
+- `scripts/build_facility_records.py` -- turns each published facility into a
   research-record artifact with the full union of normalized fields, retained
   ingest-level source fields when available, source/capture metadata, official
   links, and a source -> raw extract -> normalization -> enrichment ->
@@ -68,7 +68,7 @@ The comparison also documents the relationship to Cankaya's public power/cooling
   view is opened.
 - `index.html` -- the public dashboard. Single-file, Tailwind (CDN) +
   vanilla JS, no build step. The registry table's data is embedded
-  directly in the file (by `embed_registry_data.py`), not fetched at
+  directly in the file (by `scripts/embed_registry_data.py`), not fetched at
   page-load. Prose that quotes a count or a GW figure is filled in from
   that data at load time, so a re-embed cannot leave a stale number behind.
 - `track3.html` -- the public Track 3 Evidence Observatory.
@@ -83,7 +83,7 @@ The comparison also documents the relationship to Cankaya's public power/cooling
 - `PLAN_A.md` -- the repository-level Plan A contribution notes and scope boundary. This is an independent research contribution, not an AI Futures Project publication or certification.
 - `CONTRIBUTING.md` -- evidence-submission protocol for adding reproducible Track 3 records.
 - `CITATION.cff` -- machine-readable repository citation metadata.
-- `PHYSICAL_SOURCES.md` + `data/track3/physical_source_manifest.json` -- provenance and retention rules for satellite/remote-sensing and building-footprint acquisition, with a read-only validator in `validate_physical_provenance.py`.
+- `PHYSICAL_SOURCES.md` + `data/track3/physical_source_manifest.json` -- provenance and retention rules for satellite/remote-sensing and building-footprint acquisition, with a read-only validator in `scripts/validate_physical_provenance.py`.
 - `TRACK3_ONE_PAGE_SUMMARY.md` -- standalone technical summary for reviewers and outreach, separate from the interactive dashboard.
 - `TRACK3_REVIEW_CHECKLIST_2026-09-27.md` -- current reviewer checklist with closed items and remaining gaps.
 
@@ -113,9 +113,9 @@ The public research-surface CI is defined in `.github/workflows/validate_public_
   publication snapshot from September 24, 2026. It is intentionally separate
   from the current registry so superseded queue rows remain auditable without
   being counted as current active facilities.
-- `guard_registry_refresh.py` -- (2.1) the per-RTO sanity gate that workflow
-  runs between the pipeline and `embed_registry_data.py`. Has `--selftest`.
-- `investigate_ambiguous_loads.py` -- (2.1) builds
+- `scripts/guard_registry_refresh.py` -- (2.1) the per-RTO sanity gate that workflow
+  runs between the pipeline and `scripts/embed_registry_data.py`. Has `--selftest`.
+- `scripts/investigate_ambiguous_loads.py` -- (2.1) builds
   `ambiguous_facilities_dossier.md`, a worklist of search leads for the
   ambiguous large loads, and applies human-verified identities from
   `ground_truth_overrides.json`. Has `--selftest`. See "Investigating the
@@ -170,7 +170,7 @@ The repository keeps the source-specific values separate:
 - data/external/epoch_ai/queue_crosswalk.json -- the same 93-site geographic queue/connection crosswalk in machine-readable JSON.
 - data/external/epoch_ai/manifest.json -- capture metadata, row counts and SHA-256 hashes.
 - data/external/epoch_ai/match_overrides.json -- human-reviewed queue crosswalk overrides; currently records the Lake Mariner campus/phase relationship to NYISO Q1670.
-- build_epoch_grid_crosswalk.py -- rebuilds the 93-site geographic queue/connection crosswalk and embeds it into registry.json.
+- scripts/build_epoch_grid_crosswalk.py -- rebuilds the 93-site geographic queue/connection crosswalk and embeds it into registry.json.
 
 A complete source-universe catalog is maintained in `QUEUE_REGISTRY_UNIVERSE.md`
 and as `data/external/epoch_ai/queue_source_universe.json`. The catalog currently
@@ -184,8 +184,8 @@ The project also produces:
 `data/track3/` -- canonical Track 3 site-status, evidence-record, research-queue, observation-queue, and summary artifacts.
 `data/track3/power_observations.json` -- site-level annual electricity-consumption observations with source provenance; these are not interval meter telemetry.
 `data/track3/cooling_observations.json` -- selected site-level cooling-equipment observations with source provenance.
-- `build_epoch_grid_crosswalk.py` -- rebuilds the complete jurisdiction layer.
-- `build_epoch_queue_gap_analysis.py` -- rebuilds the 93-site gap analysis.
+- `scripts/build_epoch_grid_crosswalk.py` -- rebuilds the complete jurisdiction layer.
+- `scripts/build_epoch_queue_gap_analysis.py` -- rebuilds the 93-site gap analysis.
 The crosswalk is intentionally conservative. **All 93 Epoch sites now have a
 grid/queue or connection-system jurisdiction.** That is different from a
 site-specific queue ID. For the 77 U.S. sites, the jurisdiction points to the
@@ -211,7 +211,7 @@ attribution under CC BY 4.0.
 
 The Research Operations Console (`research.html`) turns the current 93-site missing-information sweep into a one-task queue: **214 effective unresolved publisher fields + 0 open Track 3 domain cells; all 1,395 defined site/domain cells are in terminal evidence-accounting states. A separate follow-on acquisition queue contains 24 observation tasks (18 cooling and 6 power telemetry).**. Each task includes site-specific search links, a source ladder, evidence-capture requirements, acceptance/rejection rules, and a canonical submission schema.
 
-The queue is generated by `build_track3_research_backlog.py` and refreshed by `.github/workflows/track3_research_backlog.yml`. The generator asserts that task counts match the canonical sweep before publishing outputs.
+The queue is generated by `scripts/build_track3_research_backlog.py` and refreshed by `.github/workflows/track3_research_backlog.yml`. The generator asserts that task counts match the canonical sweep before publishing outputs.
 
 ## Track 3 physical verification layers
 
@@ -376,9 +376,9 @@ the repository root.
 runs at 06:00 UTC every day and on demand (Actions tab, *Daily Registry Update*,
 Run workflow; tick `dry_run` to execute everything without committing). It checks
 out the repo, sets up Python 3.12 with a pip cache, installs
-`requirements.txt`, runs the self-tests of `ingest_grid_queues.py`,
-`compute_anomaly_detector.py`, `investigate_ambiguous_loads.py` and
-`guard_registry_refresh.py`, fetches every live feed, estimates compute load,
+`requirements.txt`, runs the self-tests of `scripts/ingest_grid_queues.py`,
+`scripts/compute_anomaly_detector.py`, `scripts/investigate_ambiguous_loads.py` and
+`scripts/guard_registry_refresh.py`, fetches every live feed, estimates compute load,
 gates each RTO, embeds the accepted RTOs into `index.html`, and checks the two
 regulatory PDF links. Then, only on `main` and only if `index.html` or the two
 CSVs in `data/` changed, it commits and pushes as
@@ -406,7 +406,7 @@ The two CSVs the workflow commits (`data/registry_raw.csv`,
 latest run; `index.html` is the cumulative registry. Automated runs do not
 record a SHA-256 of each raw capture the way `data/SOURCES.md` does for the
 v2.0 build; the run log and the git history are the record. The thresholds are
-the `--min-ratio` / `--max-ratio` arguments of the `guard_registry_refresh.py`
+the `--min-ratio` / `--max-ratio` arguments of the `scripts/guard_registry_refresh.py`
 call.
 
 Requirements: GitHub Actions enabled for the repository, no secrets, and a
@@ -415,16 +415,16 @@ requires pull requests will make the final push fail).
 
 ## Investigating the ambiguous tier
 
-`investigate_ambiguous_loads.py` turns the "genuinely ambiguous" large loads
+`scripts/investigate_ambiguous_loads.py` turns the "genuinely ambiguous" large loads
 into a worklist, `ambiguous_facilities_dossier.md`:
 
 ```bash
-python investigate_ambiguous_loads.py                    # all nine sources, from index.html
-python investigate_ambiguous_loads.py --input data/computational_load_estimates_new5.csv
+python scripts/investigate_ambiguous_loads.py                    # all nine sources, from index.html
+python scripts/investigate_ambiguous_loads.py --input data/computational_load_estimates_new5.csv
                                                          # adds POI, status, technology and dates for those RTOs
-python investigate_ambiguous_loads.py --rto PJM,ERCOT,SPP,IESO   # the original four sources
-python investigate_ambiguous_loads.py --top 25 --engine bing --json leads.json
-python investigate_ambiguous_loads.py --selftest
+python scripts/investigate_ambiguous_loads.py --rto PJM,ERCOT,SPP,IESO   # the original four sources
+python scripts/investigate_ambiguous_loads.py --top 25 --engine bing --json leads.json
+python scripts/investigate_ambiguous_loads.py --selftest
 ```
 
 It reads the registry embedded in `index.html` (all nine RTOs) and lets an
@@ -463,21 +463,21 @@ classification or the dashboard.
 
 ```bash
 pip install -r requirements.txt
-python ingest_grid_queues.py --selftest
-python compute_anomaly_detector.py --selftest
-python ingest_grid_queues.py --pjm-file <path> --ercot-file <path> \
+python scripts/ingest_grid_queues.py --selftest
+python scripts/compute_anomaly_detector.py --selftest
+python scripts/ingest_grid_queues.py --pjm-file <path> --ercot-file <path> \
     --miso-file miso_gi_queue.json --caiso-file <cluster xlsx> \
     --nyiso-file <queue xlsx> --isone-file irtt.html --aeso-file <project list xlsx> \
     --include-raw-fields --output registry_raw.csv
-python compute_anomaly_detector.py --input registry_raw.csv --output computational_load_estimates.csv
-python embed_registry_data.py --raw registry_raw.csv --enriched computational_load_estimates.csv
+python scripts/compute_anomaly_detector.py --input registry_raw.csv --output computational_load_estimates.csv
+python scripts/embed_registry_data.py --raw registry_raw.csv --enriched computational_load_estimates.csv
 ```
 
 Sources without a `--*-file` flag are fetched live. For a partial refresh,
-run the two scripts on just the files you have and `embed_registry_data.py`
+run the two scripts on just the files you have and `scripts/embed_registry_data.py`
 replaces only those RTOs in `index.html`.
 
-To produce the dossier after a refresh: `python investigate_ambiguous_loads.py`.
+To produce the dossier after a refresh: `python scripts/investigate_ambiguous_loads.py`.
 
 ## Deploying the dashboard
 

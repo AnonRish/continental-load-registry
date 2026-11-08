@@ -39,9 +39,9 @@ The repository now has explicit machine-readable contracts for the remaining ext
 - `data/track3/external_capability_handoff_2026-09-28.json` — external evidence acceptance contracts.
 - `data/track3/interval_power_telemetry_protocol.json` — interval-meter intake boundary; no site-level telemetry is fabricated.
 - `data/track3/physical_target_leads.json` — lead-only treatment of the unresolved OpenAI Stargate UAE physical target.
-- `build_track3_engineering_closure.py` — reproducible engineering-closure builder.
+- `scripts/build_track3_engineering_closure.py` — reproducible engineering-closure builder.
 - `data/track3/engineering_closure_2026-09-28.json` — machine-readable zero-untracked-gap register.
-- `validate_track3_release.py` — release-consistency validator.
+- `scripts/validate_track3_release.py` — release-consistency validator.
 
 These artifacts close the software/data contract for what the public repository can define and validate; they do not manufacture the missing external evidence.
 

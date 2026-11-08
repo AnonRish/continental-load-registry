@@ -47,7 +47,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] Physical-source provenance manifest exists at data/track3/physical_source_manifest.json.
 - [x] Human-readable physical provenance policy exists at PHYSICAL_SOURCES.md.
 - [x] The physical validator rejects false raw SHA-256 claims when source bytes are not retained.
-- [x] Per-artifact SHA-256 + byte-count generation for retained physical outputs is automated by refresh_physical_source_manifest.py and validated by validate_physical_provenance.py.
+- [x] Per-artifact SHA-256 + byte-count generation for retained physical outputs is automated by scripts/refresh_physical_source_manifest.py and validated by scripts/validate_physical_provenance.py.
 - [x] Track 3 public revision is aligned to 2026-09-28.
 - [x] README filename corrected to ground_truth_overrides_example.json.
 - [x] Claim-level verification results have been refreshed against the retained physical observations: 450 PASS, 293 UNKNOWN, 1 NOT_TESTED; facility-wide state is 0 VERIFIED_PRESENT / 0 VERIFIED_ABSENT / 93 INCONCLUSIVE. A subsequent verifier workflow run failed only at the Git push race; the workflow has since been hardened with serialized runs and rebase-before-push.
@@ -106,7 +106,7 @@ This is the current repository-state checklist for reviewing the Continental Lar
 - [x] External-capability handoff is machine-readable at `data/track3/external_capability_handoff_2026-09-28.json`.
 - [x] Interval telemetry intake contract is machine-readable at `data/track3/interval_power_telemetry_protocol.json`.
 - [x] The unresolved Stargate UAE physical-target question has a documented lead-only ledger at `data/track3/physical_target_leads.json`; conflicting secondary coordinates are preserved as leads and are not promoted to a canonical target.
-- [x] Repository engineering closure is machine-checked by `build_track3_engineering_closure.py` and `data/track3/engineering_closure_2026-09-28.json`, with zero untracked defined repository gaps.
+- [x] Repository engineering closure is machine-checked by `scripts/build_track3_engineering_closure.py` and `data/track3/engineering_closure_2026-09-28.json`, with zero untracked defined repository gaps.
 
 - [x] P3108 / Wild Rose Power Hub has a source-backed 1,300 MW load record, public-project identity from provincial/local government records, an official planning point and legal quarter-section set, and six retained multi-modal remote-sensing observations.
 - [x] The five-case strict discovery queue has terminal dispositions for P3066, P3198, P3108, P2958, and P2614, with unresolved physical/identity boundaries explicitly preserved.

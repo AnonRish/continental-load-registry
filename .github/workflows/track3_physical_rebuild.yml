@@ -4,8 +4,8 @@ on:
     - cron: "15 6 * * 0"
   push:
     paths:
-      - "acquire_physical_verification.py"
-      - "apply_track3_coordinate_overrides.py"
+      - "scripts/acquire_physical_verification.py"
+      - "scripts/apply_track3_coordinate_overrides.py"
       - "data/track3/coordinate_overrides_2026-09-27.json"
       - ".github/workflows/track3_physical_rebuild.yml"
 
@@ -35,11 +35,11 @@ jobs:
           python -m pip install requests numpy rasterio planetary-computer pystac-client
 
       - name: Apply source-backed coordinate overrides
-        run: python apply_track3_coordinate_overrides.py
+        run: python scripts/apply_track3_coordinate_overrides.py
 
       - name: Acquire physical observations
         run: |
-          python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 3
+          python scripts/acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 3
 
       - name: Validate real observations
         run: |
@@ -61,24 +61,24 @@ jobs:
           PY
 
       - name: Reconcile remote-sensing target states
-        run: python build_remote_sensing_target_status.py
+        run: python scripts/build_remote_sensing_target_status.py
 
       - name: Build physical-coordinate coverage audit
-        run: python build_track3_geo_audit.py
+        run: python scripts/build_track3_geo_audit.py
 
       - name: Rebuild Track 3 graph
-        run: python build_track3_evidence.py
+        run: python scripts/build_track3_evidence.py
 
       - name: Refresh physical provenance manifest
-        run: python refresh_physical_source_manifest.py
+        run: python scripts/refresh_physical_source_manifest.py
 
       - name: Validate Python syntax
-        run: python -m py_compile acquire_physical_verification.py apply_track3_coordinate_overrides.py build_track3_geo_audit.py build_track3_evidence.py
+        run: python -m py_compile scripts/acquire_physical_verification.py scripts/apply_track3_coordinate_overrides.py scripts/build_track3_geo_audit.py scripts/build_track3_evidence.py
 
       - name: Commit physical artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

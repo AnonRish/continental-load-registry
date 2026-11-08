@@ -3,7 +3,7 @@ name: Track 3 strict discovery physical acquisition
 on:
   push:
     paths:
-      - "acquire_strict_discovery_physical.py"
+      - "scripts/acquire_strict_discovery_physical.py"
       - "data/track3/strict_discovery_physical_targets.json"
       - ".github/workflows/track3_strict_discovery_physical.yml"
   workflow_dispatch:
@@ -29,9 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests numpy rasterio planetary-computer pystac-client
       - name: Validate syntax
-        run: python -m py_compile acquire_strict_discovery_physical.py acquire_physical_verification.py
+        run: python -m py_compile scripts/acquire_strict_discovery_physical.py scripts/acquire_physical_verification.py
       - name: Acquire strict discovery physical observations
-        run: python acquire_strict_discovery_physical.py
+        run: python scripts/acquire_strict_discovery_physical.py
       - name: Validate output semantics
         run: |
           python - <<'PY'
@@ -52,7 +52,7 @@ jobs:
       - name: Commit strict discovery physical artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

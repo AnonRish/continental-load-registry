@@ -1,9 +1,9 @@
 # Track 3 audit chain
 
-`track3_audit_chain.py` runs the two-layer audit from AI 2040 Recommendation #2 (the covert-projects supplement, Appendix B) on a declared ledger, end to end, and reports the certificate `D + L`. It is a research model over a synthetic or declared ledger, not a verification result. No real transaction ledger is public, so `data/track3/audit_chain_input.example.json` is invented.
+`scripts/track3_audit_chain.py` runs the two-layer audit from AI 2040 Recommendation #2 (the covert-projects supplement, Appendix B) on a declared ledger, end to end, and reports the certificate `D + L`. It is a research model over a synthetic or declared ledger, not a verification result. No real transaction ledger is public, so `data/track3/audit_chain_input.example.json` is invented.
 
 ```bash
-python track3_audit_chain.py --input data/track3/audit_chain_input.example.json --sample-size 300
+python scripts/track3_audit_chain.py --input data/track3/audit_chain_input.example.json --sample-size 300
 ```
 
 The exit code is 0 for `PASS` and 1 otherwise.
@@ -13,7 +13,7 @@ The exit code is 0 for `PASS` and 1 otherwise.
 | Field | Meaning |
 |---|---|
 | `population_closed` | must be `true`, otherwise the status is `UNKNOWN` |
-| `threshold_T` | `{"value": ..., "unit": "H100e"}`; convert MW with `track3_units.py` |
+| `threshold_T` | `{"value": ..., "unit": "H100e"}`; convert MW with `scripts/track3_units.py` |
 | `sales` | vendor sales: `vendor`, `buyer`, `units`, optional `buyer_producible` |
 | `accounts` | per owner: `held`, `inspected` (held chips actually produced), `transfers` (`buyer`, `units`, optional `buyer_producible`), `decommissions` (`units`, `verified`) |
 | `delta`, `seed`, `sample_size` | confidence level, reproducible seed, number of tail traces |
@@ -44,7 +44,7 @@ The tail is everything recorded as delivered to below-T recipients. Units are dr
 
 ## Result
 
-`upper_bound_units = L + D`, where `D` is the tail size times the exact one-sided binomial upper failure rate from `track3_certificate.py` at confidence `1 - delta`. With no failures this is close to the supplement's rule of thumb `D ≈ (tail size / n) × ln(1/δ)`. `clean_traces_needed(tail_units, max_d_units, delta)` returns how many clean traces certify a target `D`.
+`upper_bound_units = L + D`, where `D` is the tail size times the exact one-sided binomial upper failure rate from `scripts/track3_certificate.py` at confidence `1 - delta`. With no failures this is close to the supplement's rule of thumb `D ≈ (tail size / n) × ln(1/δ)`. `clean_traces_needed(tail_units, max_d_units, delta)` returns how many clean traces certify a target `D`.
 
 ## Not modelled
 

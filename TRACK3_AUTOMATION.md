@@ -35,7 +35,7 @@ Source-specific workflows keep their own schedules; the unified control plane ru
 
 ## Source-change detection
 
-`track3_automation.py` fingerprints cataloged URLs using HTTP status plus ETag, Last-Modified, content length, and a bounded response sample hash. It compares the current fingerprint to the previous successful monitor result.
+`scripts/track3_automation.py` fingerprints cataloged URLs using HTTP status plus ETag, Last-Modified, content length, and a bounded response sample hash. It compares the current fingerprint to the previous successful monitor result.
 
 This is change detection, not a claim that a changed source is substantively different in every field.
 
@@ -70,11 +70,11 @@ The quality scan reports state/county coverage for queue records and checks the 
 After source adapters run, the unified workflow rebuilds:
 
 ```
-build_track3_evidence.py
-build_entity_resolution.py
-build_facility_provenance.py
-build_time_series_verification.py
-build_track3_verification.py
+scripts/build_track3_evidence.py
+scripts/build_entity_resolution.py
+scripts/build_facility_provenance.py
+scripts/build_time_series_verification.py
+scripts/build_track3_verification.py
 ```
 
 Then it runs the canonical Track 3 validator and the read-only claim-level verifier.
@@ -113,13 +113,13 @@ Those gaps are explicitly surfaced in the automation matrix rather than being hi
 ## Reproduce
 
 ```
-python track3_automation.py
-python run_track3_source_adapters.py
-python build_track3_evidence.py
-python build_entity_resolution.py
-python build_facility_provenance.py
-python build_time_series_verification.py
-python build_track3_verification.py
-python validate_track3_ledger.py
-python verify_track3.py
+python scripts/track3_automation.py
+python scripts/run_track3_source_adapters.py
+python scripts/build_track3_evidence.py
+python scripts/build_entity_resolution.py
+python scripts/build_facility_provenance.py
+python scripts/build_time_series_verification.py
+python scripts/build_track3_verification.py
+python scripts/validate_track3_ledger.py
+python scripts/verify_track3.py
 ```

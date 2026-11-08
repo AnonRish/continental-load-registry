@@ -6,7 +6,7 @@ on:
     paths:
       - "README.md"
       - ".github/workflows/physical_verification.yml"
-      - "acquire_physical_verification.py"
+      - "scripts/acquire_physical_verification.py"
       - "data/external/epoch_ai/registry.json"
       - "track3.html"
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
       - name: Acquire public physical observations
         env:
           PYTHONUNBUFFERED: "1"
-        run: python acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 3
+        run: python scripts/acquire_physical_verification.py --max-sites 93 --scenes-per-modality 2 --workers 3
 
       - name: Validate generated physical artifacts
         run: |
@@ -78,28 +78,28 @@ jobs:
           PY
 
       - name: Reconcile remote-sensing target states
-        run: python build_remote_sensing_target_status.py
+        run: python scripts/build_remote_sensing_target_status.py
 
       - name: Build physical-coordinate coverage audit
-        run: python build_track3_geo_audit.py
+        run: python scripts/build_track3_geo_audit.py
 
       - name: Rebuild canonical Track 3 evidence/status ledgers
-        run: python build_track3_evidence.py
+        run: python scripts/build_track3_evidence.py
 
       - name: Refresh physical-source provenance manifest
-        run: python refresh_physical_source_manifest.py
+        run: python scripts/refresh_physical_source_manifest.py
 
       - name: Validate physical-source provenance
-        run: python validate_physical_provenance.py
+        run: python scripts/validate_physical_provenance.py
 
       - name: Validate Python syntax
         run: |
-          python -m py_compile acquire_physical_verification.py build_remote_sensing_target_status.py             build_track3_geo_audit.py build_track3_evidence.py refresh_physical_source_manifest.py             validate_physical_provenance.py
+          python -m py_compile scripts/acquire_physical_verification.py scripts/build_remote_sensing_target_status.py             scripts/build_track3_geo_audit.py scripts/build_track3_evidence.py scripts/refresh_physical_source_manifest.py             scripts/validate_physical_provenance.py
 
       - name: Commit updated artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

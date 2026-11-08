@@ -18,7 +18,7 @@ try:
     import pytest
     parametrize = pytest.mark.parametrize
     needs_node = pytest.mark.skipif(shutil.which("node") is None, reason="node is required for the JavaScript syntax check")
-except ImportError:  # validate_cross_artifact_consistency.py imports this module without pytest
+except ImportError:  # scripts/validate_cross_artifact_consistency.py imports this module without pytest
     def parametrize(*_args, **_kwargs):
         return lambda fn: fn
 
@@ -50,7 +50,7 @@ def registry_rows() -> list[dict]:
 
 
 def reference_universe_size() -> int:
-    """The frozen Track 3 reference universe (see sync_epoch_ai_data_centers.py)."""
+    """The frozen Track 3 reference universe (see scripts/sync_epoch_ai_data_centers.py)."""
     return len(load("data/external/epoch_ai/site_level_connection_evidence.json")["records"])
 
 
@@ -62,7 +62,7 @@ def pages() -> list[Path]:
 
 
 def test_derived_counts_match_their_owners():
-    proc = subprocess.run(["python3", str(ROOT / "refresh_derived_counts.py"), "--check"],
+    proc = subprocess.run(["python3", str(ROOT / "scripts/refresh_derived_counts.py"), "--check"],
                           cwd=ROOT, capture_output=True, text=True)
     assert proc.returncode == 0, proc.stdout[-4000:] + proc.stderr[-2000:]
 

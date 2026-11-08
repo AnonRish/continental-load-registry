@@ -28,19 +28,19 @@ adapter accepts either; the JSON is preferred.
 ## How the outputs in this folder were produced
 
 ```bash
-python ingest_grid_queues.py \
+python scripts/ingest_grid_queues.py \
   --miso-file miso_gi_queue.json --caiso-file caiso_cluster15_queue.xlsx \
   --nyiso-file nyiso_interconnection_queue.xlsx --isone-file iso_ne_public_queue.html \
   --aeso-file aeso_september_2026_connection_project_list.xlsx \
   --include-raw-fields --output data/registry_raw_new5.csv
-python compute_anomaly_detector.py --input data/registry_raw_new5.csv \
+python scripts/compute_anomaly_detector.py --input data/registry_raw_new5.csv \
   --output data/computational_load_estimates_new5.csv
-python embed_registry_data.py --raw data/registry_raw_new5.csv \
+python scripts/embed_registry_data.py --raw data/registry_raw_new5.csv \
   --enriched data/computational_load_estimates_new5.csv
 ```
 
 (The four earlier sources were not re-run: their raw files were not available for this update, and
-`embed_registry_data.py` replaces only the RTOs present in the CSVs it is given.)
+`scripts/embed_registry_data.py` replaces only the RTOs present in the CSVs it is given.)
 
 ## Filter funnel per source (ingest run summary)
 

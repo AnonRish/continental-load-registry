@@ -27,7 +27,7 @@ jobs:
           python -m pip install requests numpy rasterio shapely pyproj duckdb planetary-computer
 
       - name: Acquire building polygons
-        run: python acquire_building_footprints.py
+        run: python scripts/acquire_building_footprints.py
 
       - name: Validate polygon layer
         run: |
@@ -50,7 +50,7 @@ jobs:
       - name: Commit footprint artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

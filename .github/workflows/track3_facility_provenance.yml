@@ -1,6 +1,6 @@
 name: Track 3 facility provenance
 on:
-  # The push and schedule triggers were removed: build_facility_provenance.py now runs inside
+  # The push and schedule triggers were removed: scripts/build_facility_provenance.py now runs inside
   # track3_automated_pipeline.yml, so this workflow only duplicated that job.
   workflow_dispatch:
 permissions: {contents: write}
@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: python build_facility_provenance.py
+      - run: python scripts/build_facility_provenance.py
       - name: Validate
         run: |
           python - <<'PY'
@@ -35,7 +35,7 @@ jobs:
       - name: Commit
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

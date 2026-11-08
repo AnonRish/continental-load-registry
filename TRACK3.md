@@ -72,7 +72,7 @@ Each Epoch site receives machine-readable status for site identity, construction
 ## Build
 
 ```
-python build_track3_evidence.py
+python scripts/build_track3_evidence.py
 ```
 
 The builder joins both the primary site-level evidence file and the public evidence embedded in the queue crosswalk. Crosswalk evidence is retained as a separate provenance layer and is never promoted to a queue ID without a defensible match.

@@ -72,7 +72,7 @@ without explicit population accounting.
 
 ## Reproduction and refresh
 
-The refresh implementation is `ingest_bpa_large_loads.py`.
+The refresh implementation is `scripts/ingest_bpa_large_loads.py`.
 
 The automated workflow is:
 

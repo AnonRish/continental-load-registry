@@ -284,7 +284,7 @@ def test_upper_failure_rate_is_the_exact_bound():
 
 
 def _cli(path):
-    return subprocess.run([sys.executable, "track3_audit_chain.py", "--input", str(path)], cwd=ROOT, capture_output=True, text=True)
+    return subprocess.run([sys.executable, "scripts/track3_audit_chain.py", "--input", str(path)], cwd=ROOT, capture_output=True, text=True)
 
 
 def test_cli_exit_code_follows_status(tmp_path):

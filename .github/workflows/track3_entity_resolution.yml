@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "build_entity_resolution.py"
+      - "scripts/build_entity_resolution.py"
       - "index.html"
       - "data/project_level_extractions.json"
       - "data/epoch_site_evidence_records.json"
@@ -33,7 +33,7 @@ jobs:
           python-version: "3.12"
 
       - name: Build entity resolution graph
-        run: python build_entity_resolution.py
+        run: python scripts/build_entity_resolution.py
 
       - name: Validate entity graph contracts
         run: |
@@ -56,7 +56,7 @@ jobs:
       - name: Commit entity resolution artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

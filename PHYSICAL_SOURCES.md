@@ -31,7 +31,7 @@ Current retained artifact locators include:
 - `data/track3/building_footprints_index.json` — 93-site footprint acquisition/index manifest.
 - `data/physical_verification_layer.json` — aggregate physical-verification state layer.
 
-The companion validator is [`validate_physical_provenance.py`](./validate_physical_provenance.py). It is read-only and runs without network access; CI invokes it in [`.github/workflows/track3_validation.yml`](./.github/workflows/track3_validation.yml).
+The companion validator is [`scripts/validate_physical_provenance.py`](./validate_physical_provenance.py). It is read-only and runs without network access; CI invokes it in [`.github/workflows/track3_validation.yml`](./.github/workflows/track3_validation.yml).
 
 ## Interpretation rule
 

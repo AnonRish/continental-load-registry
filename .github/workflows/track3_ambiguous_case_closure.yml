@@ -2,11 +2,11 @@ name: Track 3 ambiguous case closure physical acquisition
 on:
   push:
     paths:
-      - "acquire_ambiguous_case_physical.py"
-      - "acquire_physical_verification.py"
+      - "scripts/acquire_ambiguous_case_physical.py"
+      - "scripts/acquire_physical_verification.py"
       - "data/track3/ambiguous_case_physical_targets.json"
       - "data/track3/ambiguous_case_studies.json"
-      - "validate_ambiguous_case_studies.py"
+      - "scripts/validate_ambiguous_case_studies.py"
       - ".github/workflows/track3_ambiguous_case_closure.yml"
   workflow_dispatch:
 permissions:
@@ -30,9 +30,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests numpy rasterio planetary-computer pystac-client
       - name: Validate syntax
-        run: python -m py_compile acquire_physical_verification.py acquire_ambiguous_case_physical.py validate_ambiguous_case_studies.py
+        run: python -m py_compile scripts/acquire_physical_verification.py scripts/acquire_ambiguous_case_physical.py scripts/validate_ambiguous_case_studies.py
       - name: Acquire physical observations for closure pilot
-        run: python acquire_ambiguous_case_physical.py
+        run: python scripts/acquire_ambiguous_case_physical.py
       - name: Validate pilot output
         run: |
           python - <<'PY'
@@ -49,12 +49,12 @@ jobs:
               print(c["case_id"],c.get("lat"),c.get("lon"),c.get("precision"))
           PY
       - name: Validate published closure case ledger
-        run: python validate_ambiguous_case_studies.py
+        run: python scripts/validate_ambiguous_case_studies.py
 
       - name: Commit pilot physical artifacts
         run: |
           # Keep every copied count (manifests, catalog, doc counters) current before committing.
-          python refresh_derived_counts.py
+          python scripts/refresh_derived_counts.py
           git add -A data ./*.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
