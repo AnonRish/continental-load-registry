@@ -91,7 +91,10 @@ def source_inventory():
             "workflow":AUTOMATED_ADAPTERS.get(key,[None,None])[0],
             "script":AUTOMATED_ADAPTERS.get(key,[None,None])[1],
             "local_file":(local_files or [None])[0],
-            "declared_capture_date":s.get("capture_on") or s.get("capture_date") or s.get("last_captured_utc"),
+            # The adapter's own capture time, not the date of the core registry rows it may also describe.
+            "declared_capture_date":((s.get("latest_public_snapshot") or {}).get("captured_at")
+                                     or (s.get("latest_raw_capture") or {}).get("captured_at")
+                                     or s.get("capture_on") or s.get("capture_date") or s.get("last_captured_utc")),
         }
 
     stack_payload=load("data/track3_source_stack.json")
