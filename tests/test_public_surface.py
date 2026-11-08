@@ -14,7 +14,16 @@ import shutil
 import subprocess
 from pathlib import Path
 
-import pytest
+try:
+    import pytest
+    parametrize = pytest.mark.parametrize
+    needs_node = pytest.mark.skipif(shutil.which("node") is None, reason="node is required for the JavaScript syntax check")
+except ImportError:  # validate_cross_artifact_consistency.py imports this module without pytest
+    def parametrize(*_args, **_kwargs):
+        return lambda fn: fn
+
+    def needs_node(fn):
+        return fn
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://anonrish.github.io/continental-load-registry/"
@@ -266,8 +275,8 @@ def _inline_scripts(html: str) -> list[str]:
     return blocks
 
 
-@pytest.mark.skipif(shutil.which("node") is None, reason="node is required for the JavaScript syntax check")
-@pytest.mark.parametrize("page", [p.name for p in pages()])
+@needs_node
+@parametrize("page", [p.name for p in pages()])
 def test_inline_javascript_parses(page, tmp_path):
     for i, body in enumerate(_inline_scripts(text(page)), 1):
         js = tmp_path / f"block{i}.js"
@@ -276,7 +285,7 @@ def test_inline_javascript_parses(page, tmp_path):
         assert proc.returncode == 0, f"{page} script block {i}: {proc.stderr.strip()[:600]}"
 
 
-@pytest.mark.parametrize("page", [p.name for p in pages()])
+@parametrize("page", [p.name for p in pages()])
 def test_local_links_resolve(page):
     html = text(page)
     broken = []
