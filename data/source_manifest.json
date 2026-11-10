@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-11-09T16:42:06Z",
+  "generated_on": "2026-11-10T15:05:37Z",
   "description": "Official publisher/source catalog for facility research records. Capture dates describe the source data used for the current registry record; they do not imply the publisher is unchanged today.",
   "sources": {
     "PJM": {
@@ -17,9 +17,9 @@
       "source_file": null,
       "source_sha256": null,
       "latest_public_snapshot": {
-        "captured_at": "2026-11-09T16:40:02Z",
+        "captured_at": "2026-11-10T15:03:37Z",
         "file": "data/pjm_cycle_public_queue.json",
-        "sha256": "08cfd760b14b28be61b2c59d33812d03790c9afa60cbb71c360a4770b1d7cf31",
+        "sha256": "bda6853c9f1e6cc132b8901e0c75e90738d23c18e2ebd8299caa468863ce70f2",
         "basis": "Latest successful complete public queue snapshot (non-additive layer; not the core registry rows)."
       }
     },
@@ -37,7 +37,7 @@
       "source_file": null,
       "source_sha256": null,
       "latest_raw_capture": {
-        "captured_at": "2026-11-09T16:40:12.103505+00:00",
+        "captured_at": "2026-11-10T15:03:47.393502+00:00",
         "file": "data/automation/auxiliary_sources/ercot_gis_source.bin",
         "sha256": "d0b05cb6ed7420bdbc7cf45eef6e141e7238a7ef509ea1cb311a9a72a05b4cbf",
         "basis": "Latest successful raw publisher page/file capture (not the core registry rows)."
@@ -54,9 +54,9 @@
       "raw_capture_retained": false,
       "notes": "The retained SPP source does not publish applicant names in the registry build.",
       "latest_public_snapshot": {
-        "captured_at": "2026-11-09T16:40:04Z",
+        "captured_at": "2026-11-10T15:03:39Z",
         "file": "data/spp_public_queue.json",
-        "sha256": "8de4ebdbdb4a8d8c669597c9d0cd1e103dc51d94c8496765a77a2fc97006a0d9",
+        "sha256": "853817cd6b5e489eb0769e0e830acd098c53411b170241082b6ae9ec6c3d2675",
         "basis": "Latest successful complete public queue snapshot (non-additive layer; not the core registry rows)."
       }
     },
@@ -74,9 +74,9 @@
       "raw_capture_retained": false,
       "notes": "The parsed source bytes are identified by SHA-256 in SOURCES.md but are not bundled in the repository.",
       "latest_public_snapshot": {
-        "captured_at": "2026-11-09T16:39:15Z",
+        "captured_at": "2026-11-10T15:03:02Z",
         "file": "data/miso_public_queue.json",
-        "sha256": "b1c0762e69d423beae3a36bcc0adeab621932865fe56bb0a1b278f57d3097f59",
+        "sha256": "4890511178ca98d9e708d60f749f072dc96e033f73b586b204861671320ed0a6",
         "basis": "Latest successful complete public queue snapshot (non-additive layer; not the core registry rows)."
       }
     },
@@ -93,9 +93,9 @@
       "raw_capture_retained": false,
       "notes": "Earlier clusters and serial projects are outside this source file; these rows are therefore a floor for CAISO coverage.",
       "latest_public_snapshot": {
-        "captured_at": "2026-11-09T16:39:13Z",
+        "captured_at": "2026-11-10T15:03:01Z",
         "file": "data/caiso_public_queue.json",
-        "sha256": "6aa0594a37cf605ed5b9772b6fefcf7c3f66ff4c477a3e9bc39ed85a5838a6a4",
+        "sha256": "cfdd849cea9c89cf866a3285363ad2a2dcb104e57a2e50cd4fb8be7b592678fd",
         "basis": "Latest successful complete public queue snapshot (non-additive layer; not the core registry rows)."
       }
     },
@@ -112,7 +112,7 @@
       "source_sha256": "8158c0eb16ef93ce0a4f9f0dd8316d5680edbefbaeaab3758d7eded2e53c8e9b",
       "raw_capture_retained": false,
       "notes": "NYISO is one of the newer sources that publishes applicant names in the retained snapshot.",
-      "last_attempt_at": "2026-11-09T16:39:28Z",
+      "last_attempt_at": "2026-11-10T15:03:15Z",
       "last_attempt_status": "SOURCE_UNAVAILABLE_AT_CAPTURE"
     },
     "ISO-NE": {
@@ -128,9 +128,9 @@
       "raw_capture_retained": false,
       "notes": "The retained public table does not expose study stage, so the registry's status bucket is a documented normalization rather than a literal source label.",
       "latest_raw_capture": {
-        "captured_at": "2026-11-09T16:40:12.103505+00:00",
+        "captured_at": "2026-11-10T15:03:47.393502+00:00",
         "file": "data/automation/auxiliary_sources/iso_ne_public_queue.html",
-        "sha256": "cc080a96269fae300ed85af572f5068a00e3cddaad903ae6950d3d0f6a8848bd",
+        "sha256": "d64c3379c34d5b1c4af148ae403d58d6616b15896ada4e4cdbc8289eadca3b38",
         "basis": "Latest successful raw publisher page/file capture (not the core registry rows)."
       }
     },
@@ -145,9 +145,9 @@
       "raw_capture_retained": false,
       "notes": "The registry's county/zone column is an IESO electrical zone for IESO rows, not a municipality.",
       "latest_raw_capture": {
-        "captured_at": "2026-11-09T16:40:12.103505+00:00",
+        "captured_at": "2026-11-10T15:03:47.393502+00:00",
         "file": "data/automation/auxiliary_sources/ieso_application_status.html",
-        "sha256": "37fb0e9f06236cb8833b42b9569b6bd17671ecae43278f3feb31cca60e08d550",
+        "sha256": "9d9a943d8046293483bae647560cfb29b2dd2844ed19f65487ad7bd8e4634abd",
         "basis": "Latest successful raw publisher page/file capture (not the core registry rows)."
       }
     },
@@ -165,14 +165,14 @@
       "raw_capture_retained": false,
       "notes": "The registry's county/zone column is the AESO planning area/hub field for these rows.",
       "latest_raw_capture": {
-        "captured_at": "2026-11-09T16:40:12.103505+00:00",
+        "captured_at": "2026-11-10T15:03:47.393502+00:00",
         "file": "data/automation/auxiliary_sources/aeso_connection_project_list.xlsx",
         "sha256": "5371af07cde3ae2afac6e92be7c094f3baad093a1b83d6c975d494b8e0e6192d",
         "basis": "Latest successful raw publisher page/file capture (not the core registry rows)."
       }
     }
   },
-  "last_metadata_refresh_utc": "2026-11-09T16:42:06Z",
+  "last_metadata_refresh_utc": "2026-11-10T15:05:37Z",
   "metadata_refresh_policy": "capture_* and source_* fields describe the bytes the core registry rows came from and change only when those rows are re-captured. The daily complete-queue and raw-page captures are recorded separately under latest_public_snapshot / latest_raw_capture.",
   "metadata_refresh_updated_sources": [
     "AESO",
