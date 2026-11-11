@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-11-10T15:03:57.123230+00:00",
-  "today_utc": "2026-11-10",
+  "generated_on": "2026-11-11T14:34:29.789901+00:00",
+  "today_utc": "2026-11-11",
   "title": "Track 3 time-series verification layer",
   "semantics": "This artifact separates observed source records, derived event-to-event changes, future/predicted records, aggregate historical queue material, and research gaps. Missing time-series evidence is not interpreted as absence.",
   "summary": {
     "epoch_site_count": 93,
-    "timeline_source_row_count": 550,
+    "timeline_source_row_count": 552,
     "timeline_rows_unmatched_to_epoch_site": 0,
     "sites_with_observed_timeline": 93,
-    "observed_timeline_event_count": 459,
+    "observed_timeline_event_count": 461,
     "future_or_predicted_timeline_event_count": 91,
     "sites_with_multiple_observed_points": 93,
     "site_level_annual_power_snapshot_count": 6,
@@ -27,7 +27,7 @@
       "id": "MONTHLY_QUARTERLY_MW_CHANGES",
       "item": "Monthly/quarterly MW changes",
       "status": "DERIVED_IRREGULAR_EVENT_SERIES",
-      "coverage": "459 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
+      "coverage": "461 observed Epoch timeline events are retained with event-to-event MW deltas; quarterly aggregation is available, but the source is irregular dated observations rather than a uniform monthly meter series."
     },
     {
       "id": "QUEUE_TO_OPERATION_TIMELINE",
@@ -109,10 +109,10 @@
     },
     {
       "quarter": "2023-Q3",
-      "it_power_delta_mw": 45.0,
-      "total_power_delta_mw": 61.0,
-      "building_delta": 1.0,
-      "site_change_event_count": 2
+      "it_power_delta_mw": 126.0,
+      "total_power_delta_mw": 168.0,
+      "building_delta": 2.0,
+      "site_change_event_count": 3
     },
     {
       "quarter": "2023-Q4",
@@ -130,10 +130,10 @@
     },
     {
       "quarter": "2024-Q2",
-      "it_power_delta_mw": 334.0,
-      "total_power_delta_mw": 422.0,
-      "building_delta": 5.0,
-      "site_change_event_count": 9
+      "it_power_delta_mw": 401.0,
+      "total_power_delta_mw": 502.0,
+      "building_delta": 6.0,
+      "site_change_event_count": 10
     },
     {
       "quarter": "2024-Q3",
@@ -1212,20 +1212,20 @@
       "state_province": null,
       "observed_event_count": 5,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2023-10-01",
+      "first_observed_date": "2023-06-01",
       "last_observed_date": "2026-10-02",
       "observed_events": [
         {
-          "date": "2023-10-01",
+          "date": "2023-06-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Construction for Building 1-2 is underway.",
+          "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-10-01",
+            "date": "2023-06-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -2089,11 +2089,27 @@
       "site_name": "Google New Albany",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 7,
+      "observed_event_count": 8,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2024-04-20",
+      "first_observed_date": "2021-03-01",
       "last_observed_date": "2026-05-18",
       "observed_events": [
+        {
+          "date": "2021-03-01",
+          "temporal_status": "OBSERVED_OR_REPORTED",
+          "construction_status": "Land clearing begins.",
+          "buildings_operational": 0.0,
+          "it_power_mw": 0.0,
+          "total_power_mw": 0.0,
+          "h100_equivalents": null,
+          "performance_8bit_ops": null,
+          "change_from_previous_observed_event": {
+            "date": "2021-03-01",
+            "delta_it_power_mw": null,
+            "delta_total_power_mw": null,
+            "delta_buildings_operational": null
+          }
+        },
         {
           "date": "2024-04-20",
           "temporal_status": "OBSERVED_OR_REPORTED",
@@ -2105,9 +2121,9 @@
           "performance_8bit_ops": 6.67e+19,
           "change_from_previous_observed_event": {
             "date": "2024-04-20",
-            "delta_it_power_mw": null,
-            "delta_total_power_mw": null,
-            "delta_buildings_operational": null
+            "delta_it_power_mw": 67.0,
+            "delta_total_power_mw": 80.0,
+            "delta_buildings_operational": 1.0
           }
         },
         {
@@ -2221,11 +2237,11 @@
       "state_province": null,
       "observed_event_count": 5,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2023-07-01",
+      "first_observed_date": "2023-08-01",
       "last_observed_date": "2026-08-15",
       "observed_events": [
         {
-          "date": "2023-07-01",
+          "date": "2023-08-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins for the entire site.",
           "buildings_operational": 0.0,
@@ -2234,7 +2250,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-07-01",
+            "date": "2023-08-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -2800,20 +2816,20 @@
       "state_province": null,
       "observed_event_count": 9,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2023-10-01",
+      "first_observed_date": "2023-09-01",
       "last_observed_date": "2026-02-13",
       "observed_events": [
         {
-          "date": "2023-10-01",
+          "date": "2023-09-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Land cleared for site expansion, some materials down at substation site. We assume that Buildings 1 and 2 are not running AI workloads at this point due to the lack of cooling infrastructure.",
+          "construction_status": "Land clearing begins for site expansion, some materials down at substation site. We assume that Buildings 1 and 2 are not running AI workloads at this point due to the lack of cooling infrastructure.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-10-01",
+            "date": "2023-09-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -2962,11 +2978,11 @@
       "state_province": null,
       "observed_event_count": 3,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2024-05-01",
+      "first_observed_date": "2024-02-01",
       "last_observed_date": "2026-06-19",
       "observed_events": [
         {
-          "date": "2024-05-01",
+          "date": "2024-02-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
@@ -2975,7 +2991,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2024-05-01",
+            "date": "2024-02-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -3409,20 +3425,20 @@
       "state_province": null,
       "observed_event_count": 7,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2024-01-01",
+      "first_observed_date": "2023-12-01",
       "last_observed_date": "2026-08-01",
       "observed_events": [
         {
-          "date": "2024-01-01",
+          "date": "2023-12-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Land clearing has begun for the site",
+          "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2024-01-01",
+            "date": "2023-12-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -3669,11 +3685,11 @@
       "state_province": null,
       "observed_event_count": 4,
       "future_or_predicted_event_count": 1,
-      "first_observed_date": "2022-07-01",
+      "first_observed_date": "2022-06-01",
       "last_observed_date": "2026-05-18",
       "observed_events": [
         {
-          "date": "2022-07-01",
+          "date": "2022-06-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins for Buildings 5-9 (eastern campus).",
           "buildings_operational": 0.0,
@@ -3682,7 +3698,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2022-07-01",
+            "date": "2022-06-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -3945,20 +3961,20 @@
       "state_province": null,
       "observed_event_count": 3,
       "future_or_predicted_event_count": 1,
-      "first_observed_date": "2023-07-01",
+      "first_observed_date": "2023-06-01",
       "last_observed_date": "2026-05-12",
       "observed_events": [
         {
-          "date": "2023-07-01",
+          "date": "2023-06-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Land clearing begins for the site",
+          "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-07-01",
+            "date": "2023-06-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -4168,20 +4184,20 @@
       "state_province": null,
       "observed_event_count": 3,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2023-05-21",
+      "first_observed_date": "2023-03-01",
       "last_observed_date": "2026-04-29",
       "observed_events": [
         {
-          "date": "2023-05-21",
+          "date": "2023-03-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "First signs of construction.",
+          "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-05-21",
+            "date": "2023-03-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -4528,11 +4544,11 @@
       "state_province": null,
       "observed_event_count": 4,
       "future_or_predicted_event_count": 1,
-      "first_observed_date": "2024-04-01",
+      "first_observed_date": "2024-05-01",
       "last_observed_date": "2026-07-25",
       "observed_events": [
         {
-          "date": "2024-04-01",
+          "date": "2024-05-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
@@ -4541,7 +4557,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2024-04-01",
+            "date": "2024-05-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -4828,7 +4844,7 @@
         {
           "date": "2025-05-31",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "The former [crypto mining](https://web.archive.org/web/20250423225644/https://investor.galaxy.com/news/news-details/2025/Galaxy-Announces-Commitment-with-CoreWeave-to-Host-Additional-Artificial-Intelligence-and-High-Performance-Computing-Infrastructure-at-Helios-Data-Center-Campus/default.aspx) Helios site begins converting the first building and expanding, with land cleared for additional buildings.",
+          "construction_status": "Land clearing: The former [crypto mining](https://web.archive.org/web/20250423225644/https://investor.galaxy.com/news/news-details/2025/Galaxy-Announces-Commitment-with-CoreWeave-to-Host-Additional-Artificial-Intelligence-and-High-Performance-Computing-Infrastructure-at-Helios-Data-Center-Campus/default.aspx) Helios site begins converting the first building and expanding, with land cleared for additional buildings.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
@@ -5055,11 +5071,11 @@
       "state_province": null,
       "observed_event_count": 4,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2023-10-01",
+      "first_observed_date": "2023-08-01",
       "last_observed_date": "2026-05-02",
       "observed_events": [
         {
-          "date": "2023-10-01",
+          "date": "2023-08-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins.",
           "buildings_operational": 0.0,
@@ -5068,7 +5084,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-10-01",
+            "date": "2023-08-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -5137,20 +5153,20 @@
       "state_province": null,
       "observed_event_count": 4,
       "future_or_predicted_event_count": 0,
-      "first_observed_date": "2023-11-28",
+      "first_observed_date": "2023-04-01",
       "last_observed_date": "2026-07-01",
       "observed_events": [
         {
-          "date": "2023-11-28",
+          "date": "2023-04-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
-          "construction_status": "Visible land clearing around the area for Building 1",
+          "construction_status": "Land clearing begins for Building 1.",
           "buildings_operational": 0.0,
           "it_power_mw": 0.0,
           "total_power_mw": 0.0,
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-11-28",
+            "date": "2023-04-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -5217,11 +5233,27 @@
       "site_name": "Google Storey County",
       "country": "United States",
       "state_province": null,
-      "observed_event_count": 5,
+      "observed_event_count": 6,
       "future_or_predicted_event_count": 1,
-      "first_observed_date": "2023-08-30",
+      "first_observed_date": "2019-03-18",
       "last_observed_date": "2026-04-13",
       "observed_events": [
+        {
+          "date": "2019-03-18",
+          "temporal_status": "OBSERVED_OR_REPORTED",
+          "construction_status": "Land clearing begins.",
+          "buildings_operational": 0.0,
+          "it_power_mw": 0.0,
+          "total_power_mw": 0.0,
+          "h100_equivalents": 0.0,
+          "performance_8bit_ops": 0.0,
+          "change_from_previous_observed_event": {
+            "date": "2019-03-18",
+            "delta_it_power_mw": null,
+            "delta_total_power_mw": null,
+            "delta_buildings_operational": null
+          }
+        },
         {
           "date": "2023-08-30",
           "temporal_status": "OBSERVED_OR_REPORTED",
@@ -5233,9 +5265,9 @@
           "performance_8bit_ops": 6.97e+19,
           "change_from_previous_observed_event": {
             "date": "2023-08-30",
-            "delta_it_power_mw": null,
-            "delta_total_power_mw": null,
-            "delta_buildings_operational": null
+            "delta_it_power_mw": 81.0,
+            "delta_total_power_mw": 107.0,
+            "delta_buildings_operational": 1.0
           }
         },
         {
@@ -5606,11 +5638,11 @@
       "state_province": null,
       "observed_event_count": 8,
       "future_or_predicted_event_count": 1,
-      "first_observed_date": "2024-03-15",
+      "first_observed_date": "2024-03-25",
       "last_observed_date": "2026-05-06",
       "observed_events": [
         {
-          "date": "2024-03-15",
+          "date": "2024-03-25",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins late March, as can be seen in satellite images (eastern part: buildings 1 & 2). VNET officially [announces](https://web.archive.org/web/20250620154431/https://www.vnet.com/portal/article/index/cid/14/id/876.html) its signing ceremony with the Ulanqab municipal government and Shandong Hi-Speed Holdings.",
           "buildings_operational": 0.0,
@@ -5619,7 +5651,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2024-03-15",
+            "date": "2024-03-25",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
@@ -7171,11 +7203,11 @@
       "state_province": null,
       "observed_event_count": 8,
       "future_or_predicted_event_count": 2,
-      "first_observed_date": "2023-01-01",
+      "first_observed_date": "2022-12-01",
       "last_observed_date": "2026-11-01",
       "observed_events": [
         {
-          "date": "2023-01-01",
+          "date": "2022-12-01",
           "temporal_status": "OBSERVED_OR_REPORTED",
           "construction_status": "Land clearing begins, with the east campus being the first of the three. Land clearing begins for the other two campuses months after.",
           "buildings_operational": 0.0,
@@ -7184,7 +7216,7 @@
           "h100_equivalents": 0.0,
           "performance_8bit_ops": 0.0,
           "change_from_previous_observed_event": {
-            "date": "2023-01-01",
+            "date": "2022-12-01",
             "delta_it_power_mw": null,
             "delta_total_power_mw": null,
             "delta_buildings_operational": null
