@@ -564,19 +564,19 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
       <div>
         <p class="mono text-[10px] uppercase tracking-[0.08em]" style="color:var(--ink-faint);">MISO unresolved geography</p>
-        <h2 class="font-serif-display text-xl mt-1"><!--count:miso_unresolved_ge100-->352<!--/count--> current ≥100 MW records without public site geography</h2>
+        <h2 class="font-serif-display text-xl mt-1"><!--count:miso_unresolved_ge100-->355<!--/count--> current ≥100 MW records without public site geography</h2>
         <p class="text-sm mt-2 max-w-3xl" style="color:var(--ink-soft);">These records remain in the current MISO queue snapshot and research worklist, but the public response used here does not expose enough location fields to create defensible facility pins. They are searchable below instead of being silently omitted.</p>
       </div>
       <a href="data/miso_unresolved_large_loads.csv" download class="text-sm px-3 py-2 rounded-md border hairline link-underline">Download MISO worklist CSV</a>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl"><!--count:miso_unresolved_ge100-->352<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">Unlocated ≥100 MW records</p></div>
+      <div class="p-4"><p class="mono text-xl"><!--count:miso_unresolved_ge100-->355<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">Unlocated ≥100 MW records</p></div>
       <div class="p-4"><p class="mono text-xl">2,997</p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue records ≥100 MW</p></div>
-      <div class="p-4"><p class="mono text-xl"><!--count:miso_queue_rows-->4,085<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current MISO queue records</p></div>
+      <div class="p-4"><p class="mono text-xl"><!--count:miso_queue_rows-->4,087<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current MISO queue records</p></div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
       <input id="misoUnlocatedSearch" type="search" placeholder="Search queue ID, status, cycle…" class="rounded-md px-3 py-2 text-sm" aria-label="Search MISO unlocated queue records">
-      <div id="misoUnlocatedStatus" class="text-xs self-center" style="color:var(--ink-faint);">Loading <!--count:miso_unresolved_ge100-->352<!--/count-->-record worklist…</div>
+      <div id="misoUnlocatedStatus" class="text-xs self-center" style="color:var(--ink-faint);">Loading <!--count:miso_unresolved_ge100-->355<!--/count-->-record worklist…</div>
     </div>
     <div class="scroll-x mt-4">
       <table class="w-full text-xs min-w-[900px]">
@@ -610,7 +610,7 @@ main > [data-registry-view].registry-module-focus{box-shadow:0 0 0 1px color-mix
           <tr><td class="px-3 py-2">Aggregate / historical evidence</td><td class="px-3 py-2 text-right">66</td><td class="px-3 py-2 text-right">66</td><td class="px-3 py-2">Regional/county/state footprints</td><td class="px-3 py-2">Non-facility evidence; includes MISO 153-record gap footprint</td></tr>
           <tr><td class="px-3 py-2">Supplemental evidence universe</td><td class="px-3 py-2 text-right">61</td><td class="px-3 py-2 text-right">Not separately mapped</td><td class="px-3 py-2">Source/evidence records, not all geographic</td><td class="px-3 py-2">Searchable evidence layer</td></tr>
           <tr><td class="px-3 py-2">Epoch AI sites</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2 text-right">93</td><td class="px-3 py-2">Public-address-derived site display points</td><td class="px-3 py-2">Separate secondary evidence layer</td></tr>
-          <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right"><!--count:miso_queue_rows-->4,085<!--/count--></td><td class="px-3 py-2 text-right">Not separately enumerated</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
+          <tr><td class="px-3 py-2">MISO complete queue</td><td class="px-3 py-2 text-right"><!--count:miso_queue_rows-->4,087<!--/count--></td><td class="px-3 py-2 text-right">Not separately enumerated</td><td class="px-3 py-2">Queue geometry where location is public</td><td class="px-3 py-2">Current snapshot present</td></tr>
           <tr><td class="px-3 py-2">SPP active queue</td><td class="px-3 py-2 text-right"><!--count:spp_queue_rows-->3,079<!--/count--></td><td class="px-3 py-2 text-right">Not separately enumerated</td><td class="px-3 py-2">Queue geography</td><td class="px-3 py-2">Current snapshot present</td></tr>
           <tr><td class="px-3 py-2">CAISO complete current queue snapshot</td><td class="px-3 py-2 text-right"><!--count:caiso_queue_rows-->2,278<!--/count--></td><td class="px-3 py-2 text-right"><!--count:caiso_queue_ge100-->1,391<!--/count--> ≥100 MW</td><td class="px-3 py-2">Official CAISO workbook</td><td class="px-3 py-2">Current snapshot ingested; historical cluster series remains separate</td></tr>
         <tr><td class="px-3 py-2">NYISO complete queue snapshot</td><td class="px-3 py-2 text-right">Not captured</td><td class="px-3 py-2 text-right">Not captured</td><td class="px-3 py-2">Official NYISO workbook</td><td class="px-3 py-2">Live retrieval adapter active; no stale snapshot is substituted</td></tr>
@@ -1021,7 +1021,7 @@ fetch('data/global_ai_datacenter_coverage_2026-09-27.json?v=1',{cache:'no-store'
       </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-px mt-5 panel rounded-lg overflow-hidden">
-      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount"><!--count:miso_queue_rows-->4,085<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p><p class="mono text-[10px] mt-1" id="misoUnresolvedCount" style="color:var(--ink-faint);"></p></div>
+      <div class="p-4"><p class="mono text-xl" id="misoQueueWebCount"><!--count:miso_queue_rows-->4,087<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">MISO queue rows</p><p class="mono text-[10px] mt-1" id="misoUnresolvedCount" style="color:var(--ink-faint);"></p></div>
       <div class="p-4"><p class="mono text-xl" id="sppQueueWebCount"><!--count:spp_queue_rows-->3,079<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">SPP active rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="nyisoQueueWebCount">Not captured</p><p class="text-xs mt-1" style="color:var(--ink-faint);">NYISO queue rows</p></div>
       <div class="p-4"><p class="mono text-xl" id="pjmQueueWebCount"><!--count:pjm_queue_rows-->9,263<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">PJM cycle rows</p></div>
@@ -1143,7 +1143,7 @@ fetch('data/global_ai_datacenter_coverage_2026-09-27.json?v=1',{cache:'no-store'
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px mt-5 panel rounded-lg overflow-hidden">
       <div class="p-4"><p class="mono text-xl">61</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Supplemental evidence units</p></div>
-      <div class="p-4"><p class="mono text-xl"><!--count:miso_unresolved_ge100-->352<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current ≥100 MW MISO rows needing site resolution</p></div>
+      <div class="p-4"><p class="mono text-xl"><!--count:miso_unresolved_ge100-->355<!--/count--></p><p class="text-xs mt-1" style="color:var(--ink-faint);">Current ≥100 MW MISO rows needing site resolution</p></div>
       <div class="p-4"><p class="mono text-xl">70 GW</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Dominion aggregate large-load queue evidence</p></div>
       <div class="p-4"><p class="mono text-xl">6.9M</p><p class="text-xs mt-1" style="color:var(--ink-faint);">Ontario CCIM data points</p></div>
     </div>
