@@ -1,12 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-12T15:28:43.436408+00:00",
+  "generated_at_utc": "2026-11-14T13:42:46.103508+00:00",
   "source_count": 4,
-  "failed_count": 0,
+  "failed_count": 1,
   "normalized_artifacts": [
     "data/ercot_gis_public_records.json",
     "data/ercot_large_load_candidates.json",
-    "data/iso_ne_public_queue.json",
     "data/ieso_public_connection_applications.json",
     "data/aeso_connection_projects.json"
   ],
@@ -14,7 +13,7 @@
     {
       "source_id": "ERCOT-GIS",
       "url": "https://www.ercot.com/mp/data-products/data-product-details?id=pg7-200-er",
-      "captured_at_utc": "2026-11-12T15:28:43.436408+00:00",
+      "captured_at_utc": "2026-11-14T13:42:46.103508+00:00",
       "bytes": 669942,
       "sha256": "d0b05cb6ed7420bdbc7cf45eef6e141e7238a7ef509ea1cb311a9a72a05b4cbf",
       "status": "RAW_CAPTURED",
@@ -23,26 +22,18 @@
     },
     {
       "source_id": "ISO-NE",
+      "status": "FAILED",
+      "error": "HTTPSConnectionPool(host='irtt.iso-ne.com', port=443): Max retries exceeded with url: /reports/external (Caused by ConnectTimeoutError(<HTTPSConnection(host='irtt.iso-ne.com', port=443) at 0x7ad1d67a1850>, 'Connection to irtt.iso-ne.com timed out. (connect timeout=90)'))",
       "url": "https://irtt.iso-ne.com/reports/external",
-      "captured_at_utc": "2026-11-12T15:28:43.436408+00:00",
-      "http_status": 200,
-      "bytes": 3670861,
-      "sha256": "d1a5844b7729300b3cf581495f58c03ca4defc9a723bc36f2287002081049c4d",
-      "content_type": "text/html; charset=utf-8",
-      "status": "RAW_CAPTURED",
-      "path": "data/automation/auxiliary_sources/iso_ne_public_queue.html",
-      "table_count": 1,
-      "table_row_counts": [
-        1751
-      ]
+      "captured_at_utc": "2026-11-14T13:42:46.103508+00:00"
     },
     {
       "source_id": "IESO",
       "url": "https://ieso.ca/Sector-Participants/Connection-Process/Application-Status",
-      "captured_at_utc": "2026-11-12T15:28:43.436408+00:00",
+      "captured_at_utc": "2026-11-14T13:42:46.103508+00:00",
       "http_status": 200,
       "bytes": 49539,
-      "sha256": "504a82f7bbaecb1692816e760fc9d8e4a2f7eb43f4a69e23a707c3ad1ff702b0",
+      "sha256": "99e19674f2a65c13ea02979f15f3807eb145f58e53d1d68cf941268f156c788c",
       "content_type": "text/html; charset=utf-8",
       "status": "RAW_CAPTURED",
       "path": "data/automation/auxiliary_sources/ieso_application_status.html",
@@ -53,7 +44,7 @@
     {
       "source_id": "AESO",
       "url": "https://www.aeso.ca/assets/Uploads/project-reporting/September-2026-Project-List.xlsx",
-      "captured_at_utc": "2026-11-12T15:28:43.436408+00:00",
+      "captured_at_utc": "2026-11-14T13:42:46.103508+00:00",
       "http_status": 200,
       "bytes": 40733,
       "sha256": "5371af07cde3ae2afac6e92be7c094f3baad093a1b83d6c975d494b8e0e6192d",
